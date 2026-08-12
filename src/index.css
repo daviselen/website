@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* TODO: license + self-host Knockout and Ringside (both used throughout
+   HP-23) and point @font-face at the real files, e.g.:
+
+   @font-face {
+     font-family: "Knockout";
+     src: url("/fonts/Knockout.woff2") format("woff2");
+     font-weight: 395 400;
+   }
+   @font-face {
+     font-family: "Ringside Narrow";
+     src: url("/fonts/RingsideNarrow.woff2") format("woff2");
+     font-weight: 300 500;
+   }
+   @font-face {
+     font-family: "Ringside Regular";
+     src: url("/fonts/RingsideRegular.woff2") format("woff2");
+   }
+*/
+
+body {
+  background-color: #000000;
+  color: #ffffff;
+}
