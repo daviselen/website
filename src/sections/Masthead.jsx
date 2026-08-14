@@ -15,15 +15,38 @@ export default function Masthead() {
       <img
         src="/images/masthead.jpg"
         alt="Red Toyota Supra drifting on a bridge at night"
-        className="h-[56vw] max-h-[900px] w-full rounded-lg object-cover"
+        className="h-[56vw] max-h-[900px] w-full rounded-md object-cover"
       />
-      <div className="px-8 py-16">
-        <h1 className="max-w-4xl font-hero text-6xl uppercase leading-none md:text-8xl">
+      {/* Image → headline gap is Scale/2300 = 184px (11.5rem) — this was
+          py-16 (64px/4rem) before, read off a stale HP-23 guess instead of
+          the real itemSpacing on get_design_context's "section-1" frame
+          (`gap-[var(--scale/2300,184px)]`), which was sitting right there
+          in the reference code. Using the named spacing token (mt-2300)
+          instead of a bare mt-[184px] so it's traceable back to Scale/2300.
+
+          No horizontal padding here, on purpose: the real "TITB" node is
+          `pr-[480px] ... w-full` — no pl/pr base padding of its own at
+          all. The section's own `px-0 md:px-8` already provides the one
+          shared edge inset for both the image and this text block (they're
+          siblings in Figma too, both direct children of "section-1" with
+          no padding of their own). Adding a second px-8 here — which the
+          previous pass did, by pattern-matching how other sections open
+          with `px-8` instead of checking this specific node — silently
+          doubled the left inset on desktop (md:px-8 + px-8) and added an
+          inset on mobile that shouldn't be there at all (image is
+          edge-to-edge at that breakpoint; the text was not). */}
+      <div className="pb-16 mt-2300 lg:pr-[calc(100%-1290px)]">
+        <h1 className="font-display text-6xl uppercase leading-none md:text-8xl lg:text-display-h1">
           Think Inside
           <br />
           The Box
         </h1>
-        <p className="mt-8 max-w-2xl font-narrow text-xl font-medium leading-relaxed">
+        {/* Headline → paragraph gap is Scale/700 = 56px, not the mt-8
+            (32px) previously guessed. Real node also has pr-[480px] on the
+            whole text block (TITB), not a max-w cap — reproduced here as a
+            right-side inset on lg+ so the paragraph doesn't span the full
+            frame width like the headline. */}
+        <p className="mt-700 font-narrow text-xl font-medium leading-relaxed lg:text-[40px] lg:leading-[48px]">
           Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien
           vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis.
           Tempus leo eu aenean sed diam urna tempor.
