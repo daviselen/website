@@ -1,30 +1,37 @@
-// HP-23, built section-by-section from the real Figma node tree
-// (fileKey tnP43NMbcFkzFKMsdpukDn, node 1642:454), in real page order
-// (sorted by absolute Y position — the Figma frame uses free-form
-// canvas placement, not auto-layout, so order isn't implicit in the
-// children array), cross-checked against a rendered PDF export.
+// Updated for HP-26 (node 1715:634 in the DE5 file), which rebuilt the
+// homepage with real autolayout — children now come in true visual order,
+// no more sorting by absolute Y like HP-23 required. "SocialPR" was merged
+// into "FromInsideOut" (HP-26 groups them under one "FROM THE INSIDE OUT"
+// heading and drops the old "DE Tuesdays" card), so SocialPR.jsx is no
+// longer used here — kept in the repo in case a future frame needs it
+// standalone again.
 import NavBar from "../sections/NavBar.jsx";
 import Masthead from "../sections/Masthead.jsx";
 import Proof from "../sections/Proof.jsx";
 import PortfolioGrid from "../sections/PortfolioGrid.jsx";
 import HumanAI from "../sections/HumanAI.jsx";
-import SocialPR from "../sections/SocialPR.jsx";
-import NewsAwards from "../sections/NewsAwards.jsx";
 import FromInsideOut from "../sections/FromInsideOut.jsx";
+import NewsAwards from "../sections/NewsAwards.jsx";
 import CTABanner from "../sections/CTABanner.jsx";
 import Footer from "../sections/Footer.jsx";
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-ink font-narrow text-paper">
+    // pb-1800 (144px = Scale/1800) reproduces trailing space below the
+    // page's last element. Verified against the real reference: the
+    // "160px spaxer" frame wrapping [cta-block, Footer] has its own
+    // `pb-[var(--scale/1800,144px)]` after Footer — that's genuinely
+    // there in the source, not "whatever felt right" — this page was
+    // missing it entirely, so the bottom border sat flush against the
+    // end of the page with nothing after it.
+    <div className="min-h-screen bg-surface-default pb-1800 font-narrow text-neutral-0">
       <NavBar />
       <Masthead />
       <Proof />
       <PortfolioGrid />
       <HumanAI />
-      <SocialPR />
-      <NewsAwards />
       <FromInsideOut />
+      <NewsAwards />
       <CTABanner />
       <Footer />
     </div>
