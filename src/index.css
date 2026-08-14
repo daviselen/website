@@ -2,26 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
-/* TODO: license + self-host Knockout and Ringside (both used throughout
-   HP-23) and point @font-face at the real files, e.g.:
+/* TODO: license + self-host Knockout and Ringside Narrow, point @font-face
+   at the real files. Knockout ships as separate family-named cuts, not one
+   family with a weight axis — the family name IS the style name, so each
+   cut needs its own @font-face block with that exact family name (matching
+   tailwind.config.js's `display`/`stat` font tokens):
 
    @font-face {
-     font-family: "Knockout";
-     src: url("/fonts/Knockout.woff2") format("woff2");
-     font-weight: 395 400;
+     font-family: "Knockout 68 Full Featherwt";
+     src: url("/fonts/Knockout-68FullFeatherwt.woff2") format("woff2");
+   }
+   @font-face {
+     font-family: "Knockout 67 Full Bantamweight";
+     src: url("/fonts/Knockout-67FullBantamweight.woff2") format("woff2");
    }
    @font-face {
      font-family: "Ringside Narrow";
      src: url("/fonts/RingsideNarrow.woff2") format("woff2");
      font-weight: 300 500;
    }
-   @font-face {
-     font-family: "Ringside Regular";
-     src: url("/fonts/RingsideRegular.woff2") format("woff2");
-   }
 */
 
 body {
   background-color: #000000;
   color: #ffffff;
+}
+
+/* get_design_context's reference code had `[text-box-edge:cap_alphabetic]
+   [text-box-trim:trim-both]` on nearly every text node — that's Figma's
+   own text-box measurement (cap-height to baseline, no ascender/descender
+   padding) exposed as real CSS. Applying it globally here instead of
+   inline per-element: it trims heading/paragraph line boxes down to match
+   how Figma measures its own type, which is why spacing above/below text
+   read slightly loose everywhere before this.
+
+   Support isn't Baseline yet (landed in Chromium/WebKit, still catching
+   up elsewhere as of testing this in mid-2026) — written as a plain
+   progressive enhancement: browsers that don't recognize the property
+   just ignore it and keep normal line-height, no fallback logic needed.
+   https://developer.mozilla.org/en-US/docs/Web/CSS/text-box-trim */
+h1, h2, h3, h4, h5, h6, p, span, a, li {
+  text-box-trim: trim-both;
+  text-box-edge: cap alphabetic;
 }
