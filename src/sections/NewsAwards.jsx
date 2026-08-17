@@ -1,5 +1,7 @@
 // From HP-26 "news" group — same real "card" component as Proof, shared
-// via <Card /> rather than a second hand-rolled implementation.
+// via <Card /> rather than a second hand-rolled implementation. Image
+// aspect is 6/5, same as Proof, which is <Card />'s default — no
+// override needed here.
 import Card from "../design-system/components/Card.jsx";
 
 const awards = [
