@@ -29,9 +29,22 @@
 // start at the same y position, no stagger like the portfolio grid
 // needed. That offset was exactly the kind of invented number workflow
 // item #9 warns against.
+//
 // aspect="11/6": this section's card images are 880/480 (11/6), same as
 // the portfolio grid — <Card /> defaults to 6/5 (Proof/News), so this is
 // the section that needs the override.
+//
+// mt-3000 (240px): the gap between the HI/AI card above this section and
+// this section's own heading. Figma was rate-limited when this was
+// reported wrong, so this number is a direct value from the person who
+// can see the file, not a get_design_context pull — noting that
+// distinction per FIGMA_WORKFLOW.md #10 rather than presenting it with
+// the same confidence as a tool-verified value.
+//
+// (This file went missing from the sandbox between turns — see the "file
+// persistence" note in README.md — and was reconstructed from this
+// conversation's history rather than re-pulled from Figma. Flagging that
+// explicitly in case anything here drifted from what was last verified.)
 import Card from "../design-system/components/Card.jsx";
 
 const social = {
@@ -55,7 +68,7 @@ const culture = {
 
 export default function FromInsideOut() {
   return (
-    <section className="px-8 py-16">
+    <section className="mt-3000 px-8 py-16">
       <div className="grid gap-8 md:grid-cols-2">
         <div className="flex flex-col gap-2000">
           <h2 className="font-display text-6xl uppercase leading-none md:text-8xl lg:text-display-h2">
