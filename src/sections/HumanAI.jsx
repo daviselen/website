@@ -29,21 +29,18 @@
 // (approximating the real ~113px inset, not an exact scale-token match).
 const concepts = [
   {
-    n: "01",
     title: "What's Possible",
     color: "text-red",
     dot: "border-red",
     copy: "You point AI at the goal, an idea only a human would have.",
   },
   {
-    n: "02",
     title: "Let Robots Do The Work",
     color: "text-blue",
     dot: "border-blue",
     copy: "It clears the roadblocks and does the doing, at scale.",
   },
   {
-    n: "03",
     title: "Unlock Your Potential",
     color: "text-primary-300",
     dot: "border-primary-300",
