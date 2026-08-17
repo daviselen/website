@@ -97,8 +97,22 @@ function ProjectCard({ title, client, src, startColumn2 }) {
           195deg / 60% / 130% below are my best approximation of "angled,
           ends past 100%" — if you can read the exact angle/stop values off
           the Figma inspector, give me those and I'll use them exactly
-          instead. */}
-      <div className="absolute inset-0 bg-[linear-gradient(195deg,transparent_60%,black_130%)]" />
+          instead.
+
+          Inline `style` instead of a Tailwind `bg-[linear-gradient(...)]`
+          arbitrary class: confirmed via a real screenshot of the deployed
+          site that the Tailwind-class version wasn't rendering at all on
+          every single card, bright or dark — no darkening was visible
+          anywhere, even on light illustrated backgrounds where it should
+          have been obvious. HumanAI.jsx's grid-line background uses inline
+          `style` for its own multi-layer background-image and does render
+          correctly on the same deploy, which is why this moved to the
+          same mechanism rather than debugging the Tailwind JIT/purge
+          pipeline blind. */}
+      <div
+        className="absolute inset-0"
+        style={{ backgroundImage: "linear-gradient(195deg, transparent 60%, black 130%)" }}
+      />
       <div className="absolute inset-x-8 bottom-8 flex flex-col gap-300 text-neutral-0">
         <p className="font-narrow text-base leading-6 md:text-2xl md:leading-8">{title}</p>
         <p className="font-display text-4xl uppercase leading-none md:text-6xl lg:text-display-card">
