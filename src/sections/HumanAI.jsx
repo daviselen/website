@@ -13,10 +13,15 @@
 //   - Real icon assets (HI mark, 2 DE cube icons, AI cube icon) — see
 //     public/icons/README.txt for the fetch script; falls back to a
 //     colored-div approximation if those files aren't present yet.
-// The dashed-circle/arrow diagram on the right is still a simplified CSS
-// stand-in, not the real vector chart — that one genuinely wasn't worth
-// reproducing exactly (small decorative arrows, high effort, low payoff)
-// and is called out here rather than silently passed off as real.
+// The dashed-circle/arrow diagram on the right was a simplified CSS
+// stand-in, not the real vector chart, on the reasoning that it was small
+// decorative arrows, high effort, low payoff to reproduce exactly — real
+// asset (`public/images/chart.svg`) has since been provided directly, so
+// that's now a plain `<img>` instead of a CSS approximation. The three
+// individual DE/AI cube icon images this div used to layer on top of the
+// CSS circle are gone too — they were part of approximating the same
+// diagram the real chart.svg now replaces outright, not a separate real
+// element.
 //
 // Same bug class as the Footer border: real "HI/AI" (1715:746) is exactly
 // 1792px wide — the standard inset content width every other section
@@ -27,6 +32,36 @@
 // edge-to-edge instead of as a floating inset card. `mx-8` fixes that;
 // `px-8`/`py-16` stay as the card's own internal content padding
 // (approximating the real ~113px inset, not an exact scale-token match).
+//
+// Re-pulled 1715:746 directly to check reported-off text sizes across the
+// whole section (not just the headline, which turned out to already be
+// exactly right — 144px/106px leading, 11.52px/14.4px tracking on "I"/"x"
+// = 0.08em/0.1em at that size, matching what was already coded). Real
+// mismatches found:
+//   - The "Human Imagination / x Artificial Intelligence" badge text was
+//     one uniform size (text-base/md:text-2xl) for both lines. Real spec
+//     has "Human Imagination" at 48px and "x Artificial Intelligence" +
+//     "®" at 24px — two different sizes, not one.
+//   - The concept list's title and body were two different sizes
+//     (text-2xl/24px for both, actually — but see below) when the real
+//     spec has both at one uniform 32px/40px-line-height, bold+colored
+//     title vs. regular white body via weight, not size.
+//   - The "01"/"02"/"03" numbers: confirmed NOT in the design — removed.
+//     Per direct confirmation, these were never real. Best explanation:
+//     the very first pass at this file was built by hand-reading raw
+//     Figma REST JSON (this file's own history above says as much — "the
+//     previous pass, which was itself built from hand-read raw JSON"),
+//     and a "numbered concept list" was presumably invented at that
+//     point as a reasonable-looking structure for 3 sequential ideas.
+//     Every rewrite since then — including the "Exact copy, not
+//     paraphrased" line above, from the pass that supposedly fixed
+//     things by switching to get_design_context — carried it forward and
+//     described it with the same confidence as the parts that actually
+//     were re-verified, without anyone re-checking this one specific
+//     piece against real data until just now. That's the failure mode
+//     item #10 in FIGMA_WORKFLOW.md is about: once a claim is written
+//     down as "confirmed," it tends to get trusted by the next pass
+//     instead of re-checked.
 const concepts = [
   {
     title: "What's Possible",
@@ -48,49 +83,72 @@ const concepts = [
   },
 ];
 
+// Grid-line background: two 1px-line gradients (vertical + horizontal)
+// tiled at 40x40px, offset -1px/-1px so the lines land on-pixel instead
+// of getting clipped at the edge. Inline style rather than Tailwind
+// classes — arbitrary-value utilities don't have a clean way to express
+// two background-images plus their own background-size/-position at
+// once.
+const gridBackground = {
+  backgroundSize: "40px 40px",
+  backgroundImage:
+    "linear-gradient(to right, #2b2b2b 1px, transparent 1px), linear-gradient(to bottom, #2b2b2b 1px, transparent 1px)",
+  backgroundPosition: "-1px -1px",
+};
+
 export default function HumanAI() {
   return (
-    <section className="mx-8 rounded-md bg-surface-alt px-8 py-16 text-neutral-0">
+    <section
+      className="mx-8 rounded-md bg-surface-alt px-8 py-16 text-neutral-0"
+      style={gridBackground}
+    >
       <div className="mb-16 flex h-[104px] items-center gap-4">
         <img src="/icons/hi-mark.svg" alt="" className="size-[104px]" />
-        <p className="font-narrow text-base font-light leading-tight md:text-2xl">
-          Human Imagination<span className="align-super text-sm">®</span>
-          <br />x Artificial Intelligence
+        <p className="font-narrow font-light leading-tight">
+          <span className="text-2xl md:text-4xl lg:text-[48px]">Human Imagination</span>
+          <span className="align-super text-xs md:text-base lg:text-[24px]">®</span>
+          <br />
+          <span className="text-base md:text-lg lg:text-[24px]">× Artificial Intelligence</span>
         </p>
       </div>
 
+      {/* Kept on one line, deliberately: JSX collapses a line break between
+          two tags with only whitespace between them down to nothing, not a
+          single space. Split across lines (as this was before), "I" and
+          "×" and "AI" all end up jammed together with no space at all —
+          not just "less space than expected." */}
       <h2 className="font-display text-6xl uppercase leading-none md:text-8xl lg:text-display-hiai">
-        THE H<span className="tracking-[0.08em]">I</span>
-        <span className="tracking-[0.1em]">x</span>AI LoOP
+        THE H<span className="tracking-[0.08em]">I</span> <span className="tracking-[0.1em]">×</span> AI LoOP
       </h2>
 
       <div className="mt-16 grid gap-10 md:grid-cols-[auto_1fr] md:items-start">
         <div className="flex gap-4 md:flex-col">
           {concepts.map((c) => (
-            <div key={c.n} className={`size-[22px] shrink-0 border-4 ${c.dot}`} />
+            <div key={c.title} className={`size-[22px] shrink-0 border-4 ${c.dot}`} />
           ))}
         </div>
 
         <ol className="space-y-10">
           {concepts.map((c) => (
-            <li key={c.n} className="flex gap-6">
-              <span className={`font-narrow text-lg font-bold ${c.color}`}>{c.n}</span>
-              <div>
-                <h3 className={`font-narrow text-2xl font-bold uppercase ${c.color}`}>
-                  {c.title}
-                </h3>
-                <p className="mt-1 font-narrow text-2xl leading-tight">{c.copy}</p>
-              </div>
+            <li key={c.title}>
+              <h3
+                className={`font-narrow text-xl font-bold uppercase md:text-2xl lg:text-[32px] lg:leading-[40px] ${c.color}`}
+              >
+                {c.title}
+              </h3>
+              <p className="font-narrow text-xl leading-tight md:text-2xl lg:text-[32px] lg:leading-[40px]">
+                {c.copy}
+              </p>
             </li>
           ))}
         </ol>
       </div>
 
-      <div className="relative mx-auto mt-16 flex aspect-square w-full max-w-md items-center justify-center rounded-full border border-dashed border-neutral-0/30 md:hidden lg:flex">
-        <img src="/icons/de-cube-icon-1.svg" alt="" className="absolute left-4 top-8 h-16 w-16" />
-        <img src="/icons/de-cube-icon-2.svg" alt="" className="absolute bottom-8 right-1/2 h-16 w-16 translate-x-1/2" />
-        <img src="/icons/ai-cube-icon.svg" alt="" className="absolute right-4 top-1/2 h-16 w-16 -translate-y-1/2" />
-      </div>
+      <img
+        src="/images/chart.svg"
+        alt=""
+        className="mx-auto mt-16 block w-full max-w-md md:hidden lg:block"
+      />
     </section>
   );
 }
