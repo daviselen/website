@@ -20,9 +20,16 @@
      tailwind.config.js's comment on the `display`/`stat` font tokens), so
      each cut gets its own @font-face block at a fixed `normal` weight;
      nothing in this codebase applies a font-weight utility alongside
-     font-display/font-stat, so one weight per cut covers every real use. */
+     font-display/font-stat, so one weight per cut covers every real use.
+     `src` filenames are the actual files dropped in public/fonts/
+     (Knockout-68.woff2 / Knockout-67.woff2) — not the more verbose
+     Knockout-68FullFeatherwt.woff2 this used to say, which never matched
+     a real file and meant these two cuts silently never loaded. The
+     `font-family` values themselves stay in the verbose "Full
+     Featherwt"/"Full Bantamweight" form since tailwind.config.js's
+     `display`/`stat` tokens reference that exact string. */
   @font-face {
-    font-family: "Knockout 68 Full Featherweight";
+    font-family: "Knockout 68 Full Featherwt";
     src: url("/fonts/Knockout-68.woff2") format("woff2");
     font-weight: normal;
     font-style: normal;
