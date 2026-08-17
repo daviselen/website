@@ -7,11 +7,12 @@ import DeLogo from "../design-system/components/DeLogo.jsx";
 //   - Alignment is items-end (bottom-aligned), not items-center — the
 //     tagline/logo/links have different internal padding, so centering
 //     them changes the baseline look.
-//   - Border is a solid 1px #666 (neutral/600), not a translucent gray.
 //   - Link labels are ABOUT / CAREERS / CONTACT — HP-23 had this right;
 //     "Archive" in the last pass was a misread off a low-res screenshot.
 //   - Each nav-link has asymmetric padding (pt-8 pb-4 px-4) from the real
 //     component, not uniform padding.
+//   - No border: per direct correction, this doesn't have one — an earlier
+//     pass had added a solid 1px #666 (neutral/600) border, which was wrong.
 export default function NavBar() {
   return (
     <header className="flex items-end justify-between bg-surface-default px-8 py-6">
