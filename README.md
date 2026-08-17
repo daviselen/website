@@ -1,6 +1,10 @@
 See [FIGMA_WORKFLOW.md](./FIGMA_WORKFLOW.md) for the checklist to follow
 when pulling any frame from this file — written to prevent the specific
-mistakes documented below from recurring.
+mistakes documented below from recurring. See [DESIGN.md](./DESIGN.md) for
+the design tokens themselves (colors, type scale, spacing, components) in
+the [DESIGN.md format](https://github.com/google-labs-code/design.md) —
+the reference for *what the system is*, as opposed to FIGMA_WORKFLOW.md's
+process for pulling it out of Figma.
 
 # DE5 Website — HP-26 homepage
 
