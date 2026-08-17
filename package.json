@@ -8,7 +8,7 @@
     "url": "https://github.com/daviselen/website"
   },
   "private": true,
-  "version": "5.0.0-alpha",
+  "version": "5.0.7-alpha",
   "type": "module",
   "scripts": {
     "dev": "vite",
