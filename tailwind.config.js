@@ -27,9 +27,22 @@ export default {
           500: "#818181", // Neutral/500, named style "Gray"
           700: "#4d4d4d", // Neutral/700, named style "Dark Gray"
         },
-        red: "#D71602", // named style "Red" — "WHAT'S POSSIBLE" / HI cube accent
-        blue: "#00BBDE", // named style "Blue" — "LET ROBOTS DO THE WORK" / AI cube accent
-        brick: "#B8483D", // named style "Brick" — "Human Imagination" diagram text
+        red: "#E85746", // named style "Red" — "WHAT'S POSSIBLE" / HI cube accent — per direct
+        // confirmation this is the correct value, not the #D71602 pulled earlier
+        // via get_design_context (which was accurate at the time it was pulled;
+        // this value has since changed on the Figma side, or the earlier pull
+        // was wrong — the person who can see the file said #E85746 is right,
+        // which per FIGMA_WORKFLOW.md #10 outranks a tool-pulled value).
+        // Was `blue: "#00BBDE"` (named style "Blue"). Since the HI/AI frame
+        // in Figma was restructured for clarity, "LET ROBOTS DO THE WORK"'s
+        // accent now resolves through a different pair of variables
+        // (color/cyan/500 and information/500, both #00C3FF) instead of
+        // that named style — close to the old value but not the same hex.
+        // Renamed the token to match what it actually traces to now rather
+        // than leaving a `blue` token pointing at a color/name pairing that
+        // no longer applies.
+        cyan: "#00C3FF", // color/cyan/500, information/500 — "LET ROBOTS DO THE WORK"
+        brick: "#B8483D", // named style "Brick" — "Human Imagination" diagram text (now baked into chart.svg, not live text)
         primary: {
           300: "#a4de02", // Primary/300, named style "DE Brand Green" — "UNLOCK YOUR POTENTIAL"
         },
@@ -58,8 +71,6 @@ export default {
         2300: "184px",
         2400: "192px",
         3000: "240px",
-        3200: "256px",
-        4500: "360px",
       },
       borderRadius: {
         md: "8px", // Border/Radius/md — every card/image corner on the page
