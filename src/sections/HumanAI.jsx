@@ -62,6 +62,37 @@
 //     item #10 in FIGMA_WORKFLOW.md is about: once a claim is written
 //     down as "confirmed," it tends to get trusted by the next pass
 //     instead of re-checked.
+//
+// Re-pulled 1715:746 again after a Figma-side restructure (real autolayout
+// added specifically to make this frame easier to read) — this is what
+// actually fixed the "spacing is still all wrong" report, not another
+// round of number-tweaking on the old structure. The old structure's
+// fundamental shape was wrong: a shared left-hand column of 3 squares
+// next to a separate column of title+body pairs. The real shape (now
+// that it's explicit autolayout instead of loose absolute positions) is
+// a flat list of 3 self-contained items, each its own [square+title row,
+// then body below] — the square lives inline with its OWN title, not in
+// a shared column next to all three. That's a structural fix, which is
+// why no amount of adjusting gap/margin numbers on the old two-column
+// grid was ever going to look right. Real gaps, all confirmed from this
+// pull: HI-text-block → headline = 80px (Scale/1000); headline → list =
+// 64px (Scale/800); between the 3 items = 56px (bare, no named token);
+// within an item, heading-row → body = 24px (Scale/300); within the
+// heading row, square → title = 8px (Scale/100).
+//
+// Chart placement: per direct correction, it belongs beside the copy, not
+// below it — matches the real node data too (the badge/headline/list
+// wrapper is at left-113px, ~631px wide; the chart's own elements sit in
+// the ~844–1584px range of the same 1792px-wide card, vertically centered
+// — side by side, not stacked). Restructured into a two-column flex row
+// at lg+ (text column, then the chart filling the remaining width),
+// stacked on smaller screens since the source is desktop-only and this is
+// a responsive adaptation, not something to reverse-engineer an exact
+// breakpoint for. Also dropped the chart's old `md:hidden` — that was
+// inherited from the CSS-circle placeholder era with no real
+// justification for hiding specifically at `md`, and re-checking it
+// wasn't part of what was asked; simplified to "visible, stacked below
+// the text" until it goes side-by-side at `lg`.
 const concepts = [
   {
     title: "What's Possible",
@@ -71,8 +102,8 @@ const concepts = [
   },
   {
     title: "Let Robots Do The Work",
-    color: "text-blue",
-    dot: "border-blue",
+    color: "text-cyan",
+    dot: "border-cyan",
     copy: "It clears the roadblocks and does the doing, at scale.",
   },
   {
@@ -102,53 +133,52 @@ export default function HumanAI() {
       className="mx-8 rounded-md bg-surface-alt px-8 py-16 text-neutral-0"
       style={gridBackground}
     >
-      <div className="mb-16 flex h-[104px] items-center gap-4">
-        <img src="/icons/hi-mark.svg" alt="" className="size-[104px]" />
-        <p className="font-narrow font-light leading-tight">
-          <span className="text-2xl md:text-4xl lg:text-[48px]">Human Imagination</span>
-          <span className="align-super text-xs md:text-base lg:text-[24px]">®</span>
-          <br />
-          <span className="text-base md:text-lg lg:text-[24px]">× Artificial Intelligence</span>
-        </p>
-      </div>
+      <div className="lg:flex lg:items-center lg:justify-between lg:gap-16">
+        <div className="lg:max-w-2xl lg:shrink-0">
+          <div className="mb-1000 flex h-[104px] items-center gap-4">
+            <img src="/icons/hi-mark.svg" alt="" className="size-[104px]" />
+            <p className="font-narrow font-light leading-tight">
+              <span className="text-2xl md:text-4xl lg:text-[48px]">Human Imagination</span>
+              <span className="align-super text-xs md:text-base lg:text-[24px]">®</span>
+              <br />
+              <span className="text-base md:text-lg lg:text-[24px]">× Artificial Intelligence</span>
+            </p>
+          </div>
 
-      {/* Kept on one line, deliberately: JSX collapses a line break between
-          two tags with only whitespace between them down to nothing, not a
-          single space. Split across lines (as this was before), "I" and
-          "×" and "AI" all end up jammed together with no space at all —
-          not just "less space than expected." */}
-      <h2 className="font-display text-6xl uppercase leading-none md:text-8xl lg:text-display-hiai">
-        THE H<span className="tracking-[0.08em]">I</span> <span className="tracking-[0.1em]">×</span> AI LoOP
-      </h2>
+          {/* Kept on one line, deliberately: JSX collapses a line break
+              between two tags with only whitespace between them down to
+              nothing, not a single space. Split across lines (as this was
+              before), "I" and "×" and "AI" all end up jammed together with
+              no space at all — not just "less space than expected." */}
+          <h2 className="font-display text-6xl uppercase leading-none md:text-8xl lg:text-display-hiai">
+            THE H<span className="tracking-[0.08em]">I</span> <span className="tracking-[0.1em]">×</span> AI LoOP
+          </h2>
 
-      <div className="mt-16 grid gap-10 md:grid-cols-[auto_1fr] md:items-start">
-        <div className="flex gap-4 md:flex-col">
-          {concepts.map((c) => (
-            <div key={c.title} className={`size-[22px] shrink-0 border-4 ${c.dot}`} />
-          ))}
+          <ul className="mt-800 flex flex-col gap-700">
+            {concepts.map((c) => (
+              <li key={c.title} className="flex flex-col gap-300">
+                <div className="flex w-full items-center gap-100">
+                  <div className={`size-[22px] shrink-0 border-4 ${c.dot}`} />
+                  <h3
+                    className={`flex-1 font-narrow text-xl font-bold uppercase md:text-2xl lg:text-[32px] lg:leading-[40px] ${c.color}`}
+                  >
+                    {c.title}
+                  </h3>
+                </div>
+                <p className="font-narrow text-xl leading-tight md:text-2xl lg:text-[32px] lg:leading-[40px]">
+                  {c.copy}
+                </p>
+              </li>
+            ))}
+          </ul>
         </div>
 
-        <ol className="space-y-10">
-          {concepts.map((c) => (
-            <li key={c.title}>
-              <h3
-                className={`font-narrow text-xl font-bold uppercase md:text-2xl lg:text-[32px] lg:leading-[40px] ${c.color}`}
-              >
-                {c.title}
-              </h3>
-              <p className="font-narrow text-xl leading-tight md:text-2xl lg:text-[32px] lg:leading-[40px]">
-                {c.copy}
-              </p>
-            </li>
-          ))}
-        </ol>
+        <img
+          src="/images/chart.svg"
+          alt=""
+          className="mx-auto mt-16 block w-full max-w-md lg:mx-0 lg:mt-0 lg:w-full lg:max-w-none lg:flex-1"
+        />
       </div>
-
-      <img
-        src="/images/chart.svg"
-        alt=""
-        className="mx-auto mt-16 block w-full max-w-md md:hidden lg:block"
-      />
     </section>
   );
 }
