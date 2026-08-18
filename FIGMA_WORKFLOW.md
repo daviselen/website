@@ -1,5 +1,10 @@
 # Figma → code workflow
 
+> **Run `/figma-pull` first.** Skill at `./.claude/skills/figma-pull/SKILL.md`
+> drives the automated pipeline (`./.claude/workflows/figma-pull.js`), which
+> encodes every rule below as an enforced pipeline stage. Use this doc as
+> manual fallback only when Figma MCP / the automation is unavailable.
+
 Checklist for pulling any DE5 frame into this codebase, written after a
 pass that got most of the way there but missed real things — each item
 below exists because of a specific miss, noted in parens.
