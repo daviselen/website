@@ -76,11 +76,32 @@ export default function FromInsideOut() {
             <br />
             Inside Out
           </h2>
-          <Card aspect="11/6" {...social} />
+          {/* Real photographed examples of client work, so these get full
+              CreativeWork microdata (name + image), unlike Proof's
+              unmarked arbitrary stats. */}
+          <Card
+            aspect="11/6"
+            {...social}
+            itemType="https://schema.org/CreativeWork"
+            headingItemProp="name"
+            imageItemProp="image"
+          />
         </div>
         <div className="flex flex-col gap-2000">
-          <Card aspect="11/6" {...pr} />
-          <Card aspect="11/6" {...culture} />
+          <Card
+            aspect="11/6"
+            {...pr}
+            itemType="https://schema.org/CreativeWork"
+            headingItemProp="name"
+            imageItemProp="image"
+          />
+          <Card
+            aspect="11/6"
+            {...culture}
+            itemType="https://schema.org/CreativeWork"
+            headingItemProp="name"
+            imageItemProp="image"
+          />
         </div>
       </div>
     </section>
