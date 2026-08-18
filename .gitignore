@@ -149,5 +149,13 @@ vite.config.ts.timestamp-*
 /playwright/.cache/
 tests/visual/output/
 
-# Figma-pull workflow cache (Extract-phase MCP results, gitignored per spec)
-.zencoder/cache/
+# Zencoder agent session scratch (chat plan/spec/report + Extract-phase
+# MCP cache) — per-session working artifacts, not project source.
+.zencoder/
+
+# Claude-pull scratch: raw screenshots + intermediate node dumps.
+# NOTE: .claude/skills/ and .claude/workflows/ ARE committed (real
+# deliverables) — only these scratch paths are ignored.
+.claude/screenshots/
+.claude/HP-26_node.json
+.DS_Store
