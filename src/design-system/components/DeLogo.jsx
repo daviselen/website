@@ -4,12 +4,13 @@
 // different hardcoded sizes; extracted into one component so there's a
 // single place that maps to the one Figma component, sized via a prop
 // like the real instances are.
-export default function DeLogo({ className = "size-20" }) {
+export default function DeLogo({ className = "size-20", itemProp }) {
   return (
     <img
       src="/icons/de-logo-white.svg"
       alt="Davis Elen (DE) logo mark"
       className={className}
+      {...(itemProp ? { itemProp } : {})}
     />
   );
 }
