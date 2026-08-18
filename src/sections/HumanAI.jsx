@@ -140,14 +140,15 @@ export default function HumanAI() {
     >
       <div className="lg:flex lg:items-center lg:justify-between lg:gap-16">
         <div className="lg:max-w-2xl lg:shrink-0">
-          <div className="mb-1000 flex h-[104px] items-center gap-4">
+          <div className="mb-1000 flex items-center gap-6">
             <img src="/icons/hi-mark.svg" alt="" className="size-[104px]" />
-            <p className="font-narrow font-light leading-tight">
-              <span className="text-2xl md:text-4xl lg:text-[48px]">Human Imagination</span>
-              <span className="align-super text-xs md:text-base lg:text-[24px]">®</span>
-              <br />
+            <div className="font-narrow font-light leading-tight">
+              <div>
+                <span className="text-2xl md:text-4xl lg:text-[48px]">Human Imagination</span>
+                <span className="align-super text-xs md:text-base lg:text-[24px]">®</span>
+              </div>
               <span className="text-base md:text-lg lg:text-[24px]">× Artificial Intelligence</span>
-            </p>
+            </div>
           </div>
 
           {/* Kept on one line, deliberately: JSX collapses a line break
