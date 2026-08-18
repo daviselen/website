@@ -15,7 +15,7 @@ import DeLogo from "../design-system/components/DeLogo.jsx";
 //     pass had added a solid 1px #666 (neutral/600) border, which was wrong.
 export default function NavBar() {
   return (
-    <header className="flex items-end justify-between bg-surface-default px-8 py-6">
+    <header className="flex items-end justify-between bg-surface-default px-8 py-6 uppercase">
       <div className="flex flex-1 items-center py-4">
         {/* content="1948" overrides the machine-readable value for
             Organization.foundingDate (which expects a bare date, not this
