@@ -47,16 +47,45 @@ const aspectClasses = {
   "6/5": "aspect-[6/5]",
 };
 
-export default function Card({ src, alt, heading, body, aspect = "6/5" }) {
+// schema.org microdata is opt-in via these three props, all undefined by
+// default — Card is shared by three sections whose content maps to three
+// different (or no) schema.org properties, so the mapping can't be
+// hardcoded here without mislabeling one of them:
+//   - Proof's cards are arbitrary marketing stats ("$18 Billion in Retail
+//     Sales") — no schema.org property fits that cleanly, so Proof passes
+//     none of these and gets no microdata at all.
+//   - NewsAwards' cards are real awards — passes headingItemProp="award"
+//     only (Organization.award is a plain Text property, no itemType/
+//     itemScope needed on the card itself).
+//   - FromInsideOut's cards are real photographed examples of client work —
+//     passes itemType="https://schema.org/CreativeWork" plus
+//     headingItemProp="name" and imageItemProp="image".
+export default function Card({
+  src,
+  alt,
+  heading,
+  body,
+  aspect = "6/5",
+  itemType,
+  headingItemProp,
+  imageItemProp,
+}) {
   return (
-    <div className="flex flex-col gap-700">
+    <div
+      className="flex flex-col gap-700"
+      {...(itemType ? { itemScope: true, itemType } : {})}
+    >
       <img
         src={src}
         alt={alt}
         className={`${aspectClasses[aspect] ?? aspectClasses["6/5"]} w-full rounded-md object-cover`}
+        {...(imageItemProp ? { itemProp: imageItemProp } : {})}
       />
       <div className="flex flex-col gap-400">
-        <h3 className="font-stat text-3xl uppercase leading-none md:text-5xl lg:text-display-stat">
+        <h3
+          className="font-stat text-3xl uppercase leading-none md:text-5xl lg:text-display-stat"
+          {...(headingItemProp ? { itemProp: headingItemProp } : {})}
+        >
           {heading}
         </h3>
         <p className="font-narrow text-lg leading-relaxed md:text-2xl md:leading-8">{body}</p>
