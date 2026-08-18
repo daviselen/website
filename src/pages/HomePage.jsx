@@ -24,7 +24,28 @@ export default function HomePage() {
     // there in the source, not "whatever felt right" — this page was
     // missing it entirely, so the bottom border sat flush against the
     // end of the page with nothing after it.
-    <div className="min-h-screen bg-surface-default pb-1800 font-narrow text-neutral-0">
+    // Root Organization item: the one place schema.org microdata scattered
+    // across child sections (NavBar's foundingDate, Masthead's slogan,
+    // NewsAwards' award text, Footer's logo/email/telephone/location) all
+    // nest under. `name`/`url` have no single matching visible text node
+    // on the page to attach itemProp to directly, so they're hidden <meta>
+    // tags instead — both values are real, already established elsewhere
+    // in this repo (package.json's "description"/"homepage" fields), not
+    // invented here.
+    //
+    // PortfolioGrid's and FromInsideOut's CreativeWork cards are their own
+    // separate itemScope items, not nested inside this one — a page is
+    // allowed multiple independent schema.org Items, and there's no single
+    // schema.org property that correctly expresses "this Organization's
+    // list of case studies," so they're left unlinked rather than forcing
+    // one.
+    <div
+      itemScope
+      itemType="https://schema.org/Organization"
+      className="min-h-screen bg-surface-default pb-1800 font-narrow text-neutral-0"
+    >
+      <meta itemProp="name" content="Davis Elen Advertising" />
+      <meta itemProp="url" content="https://daviselen.com" />
       <NavBar />
       <Masthead />
       <Proof />
