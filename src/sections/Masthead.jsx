@@ -36,7 +36,13 @@ export default function Masthead() {
           inset on mobile that shouldn't be there at all (image is
           edge-to-edge at that breakpoint; the text was not). */}
       <div className="pb-16 mt-2300 lg:pr-[calc(100%-1290px)]">
-        <h1 className="font-display text-6xl uppercase leading-none md:text-8xl lg:text-display-h1">
+        {/* itemProp="slogan": real Organization.slogan property, and this
+            headline genuinely is the site's tagline — no content=
+            override needed since the visible text IS the value. */}
+        <h1
+          itemProp="slogan"
+          className="font-display text-6xl uppercase leading-none md:text-8xl lg:text-display-h1"
+        >
           Think Inside
           <br />
           The Box
