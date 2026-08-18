@@ -35,7 +35,7 @@ const social = [
 
 export default function Footer() {
   return (
-    <footer className="border-y-2 border-neutral-0 mx-8 py-20 pb-40">
+    <footer id="footer" className="border-y-2 border-neutral-0 mx-8 py-20 pb-40">
       <div className="flex flex-col gap-16 md:flex-row md:justify-between">
         <div className="flex flex-1 flex-col gap-12">
           {/* itemProp="logo" only on this instance, not NavBar's — same

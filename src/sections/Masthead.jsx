@@ -11,7 +11,7 @@
 // 32px margin on either side from md up.
 export default function Masthead() {
   return (
-    <section className="px-0 md:px-8">
+    <section id="masthead" className="px-0 md:px-8">
       <img
         src="/images/masthead.jpg"
         alt="Red Toyota Supra drifting on a bridge at night"

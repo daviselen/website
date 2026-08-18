@@ -68,7 +68,7 @@ const culture = {
 
 export default function FromInsideOut() {
   return (
-    <section className="mt-3000 px-8 py-16">
+    <section id="from-inside-out" className="mt-3000 px-8 py-16">
       <div className="grid gap-8 md:grid-cols-2">
         <div className="flex flex-col gap-2000">
           <h2 className="font-display text-6xl uppercase leading-none md:text-8xl lg:text-display-h2">

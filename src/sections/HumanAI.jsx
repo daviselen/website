@@ -135,6 +135,7 @@ export default function HumanAI() {
     // is unrelated and unchanged — that's margin outside the card, not the
     // padding inside it that was reported wrong here.
     <section
+      id="human-ai"
       className="mx-8 rounded-md bg-surface-alt px-1400 py-1800 text-neutral-0"
       style={gridBackground}
     >

@@ -3,7 +3,7 @@ import Button from "../design-system/components/Button.jsx";
 
 export default function CTABanner() {
   return (
-    <section className="flex flex-col items-start gap-16 px-8 py-24">
+    <section id="cta-banner" className="flex flex-col items-start gap-16 px-8 py-24">
       <h2 className="font-display text-6xl uppercase leading-none md:text-8xl lg:text-display-h2">
         Let's look inside the box
       </h2>
