@@ -148,7 +148,7 @@ export default function HumanAI() {
                 <span className="text-2xl md:text-4xl lg:text-[48px] tracking-[0.6667px]">Human Imagination</span>
                 <span className="align-super text-xs md:text-base lg:text-[24px]">®</span>
               </div>
-              <span className="text-base md:text-lg lg:text-[24px] leading-[40px]">× Artificial Intelligence</span>
+              <span className="text-base md:text-lg lg:text-[24px] leading-[40px]">x Artificial Intelligence</span>
             </div>
           </div>
 
@@ -158,7 +158,7 @@ export default function HumanAI() {
               before), "I" and "×" and "AI" all end up jammed together with
               no space at all — not just "less space than expected." */}
           <h2 className="font-display text-6xl uppercase leading-none md:text-8xl lg:text-display-hiai">
-            THE <abbr title="Human Imagination">HI</abbr>&thinsp;×&thinsp;<abbr title="Artificial Intelligence">AI</abbr> Loop
+            THE <abbr title="Human Imagination">H<span className="tracking-[0.08em]">I</span></abbr><span className="tracking-[0.1em]">x</span><abbr title="Artificial Intelligence">AI</abbr> Loop
           </h2>
 
           <ul className="mt-800 flex flex-col gap-700">
