@@ -1,0 +1,6 @@
+dist
+public/fonts
+tests/visual/output
+tests/visual/design
+node_modules
+package-lock.json
