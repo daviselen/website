@@ -17,7 +17,15 @@ export default function NavBar() {
   return (
     <header className="flex items-end justify-between bg-surface-default px-8 py-6">
       <div className="flex flex-1 items-center py-4">
-        <span className="font-narrow text-2xl leading-8 text-neutral-0">
+        {/* content="1948" overrides the machine-readable value for
+            Organization.foundingDate (which expects a bare date, not this
+            sentence) while leaving the visible text unchanged — standard
+            microdata pattern for exactly this mismatch. */}
+        <span
+          itemProp="foundingDate"
+          content="1948"
+          className="font-narrow text-2xl leading-8 text-neutral-0"
+        >
           Independent Since 1948
         </span>
       </div>
