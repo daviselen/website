@@ -142,12 +142,12 @@ export default function HumanAI() {
         <div className="lg:max-w-2xl lg:shrink-0">
           <div className="mb-1000 flex items-center gap-6">
             <img src="/icons/hi-mark.svg" alt="" className="size-[104px]" />
-            <div className="font-narrow font-light leading-tight">
+            <div className="font-narrow font-light leading-tight mt-[13px]">
               <div>
-                <span className="text-2xl md:text-4xl lg:text-[48px]">Human Imagination</span>
+                <span className="text-2xl md:text-4xl lg:text-[48px] tracking-[0.6667px]">Human Imagination</span>
                 <span className="align-super text-xs md:text-base lg:text-[24px]">®</span>
               </div>
-              <span className="text-base md:text-lg lg:text-[24px]">× Artificial Intelligence</span>
+              <span className="text-base md:text-lg lg:text-[24px] leading-[40px]">× Artificial Intelligence</span>
             </div>
           </div>
 
