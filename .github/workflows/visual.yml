@@ -1,0 +1,28 @@
+name: Visual
+
+on: pull_request
+
+jobs:
+  design-diff:
+    runs-on: ubuntu-latest
+    # Pinned to the installed @playwright/test version so bundled browsers match.
+    container: mcr.microsoft.com/playwright:v1.62.1-jammy
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      # Runs the design-truth diff only (skips the OS-tagged regression
+      # snapshots, which are macOS baselines and won't match Linux).
+      # The spec logs the distance % and passes unless the crop sizes
+      # mismatch, so this is informational — see the uploaded artifacts.
+      - run: npm run test:visual -- design-diff
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: visual-output
+          path: |
+            tests/visual/output/
+            playwright-report/
