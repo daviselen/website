@@ -73,13 +73,25 @@ function ProjectCard({ title, client, src, startColumn2 }) {
       // Aspect is 11/6 (880/480), same as From The Inside Out, per direct
       // correction — not the 879/576 (≈1.526, noticeably narrower) this
       // had before.
+      //
+      // Real case studies, so each card is its own schema.org CreativeWork
+      // item (title -> name, client -> about, plus a hidden creator meta —
+      // true and already established elsewhere in the codebase, e.g.
+      // DeLogo's alt text, not invented for this). This is a separate
+      // itemScope from the page's outer Organization item in HomePage.jsx,
+      // not nested inside it — that's normal; a page can contain multiple
+      // independent schema.org Items.
+      itemScope
+      itemType="https://schema.org/CreativeWork"
       className={`relative mb-2000 aspect-[11/6] w-full overflow-hidden rounded-md break-inside-avoid ${
         startColumn2 ? "break-before-column" : ""
       }`}
     >
+      <meta itemProp="creator" content="Davis Elen Advertising" />
       <img
         src={src}
         alt={`${title} — ${client} project photo`}
+        itemProp="image"
         className="absolute inset-0 h-full w-full object-cover"
       />
       {/* Corrected per direct confirmation (I can't see the actual Figma
@@ -114,8 +126,13 @@ function ProjectCard({ title, client, src, startColumn2 }) {
         style={{ backgroundImage: "linear-gradient(195deg, transparent 60%, black 130%)" }}
       />
       <div className="absolute inset-x-8 bottom-8 flex flex-col gap-300 text-neutral-0">
-        <p className="font-narrow text-base leading-6 md:text-2xl md:leading-8">{title}</p>
-        <p className="font-display text-4xl uppercase leading-none md:text-6xl lg:text-display-card">
+        <p itemProp="name" className="font-narrow text-base leading-6 md:text-2xl md:leading-8">
+          {title}
+        </p>
+        <p
+          itemProp="about"
+          className="font-display text-4xl uppercase leading-none md:text-6xl lg:text-display-card"
+        >
           {client}
         </p>
       </div>

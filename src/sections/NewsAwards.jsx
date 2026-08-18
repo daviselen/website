@@ -33,9 +33,13 @@ export default function NewsAwards() {
         <br />
         Happening
       </h2>
+      {/* headingItemProp="award": these headings are real awards, so each
+          one becomes a value of the page-level Organization item's
+          `award` property (a plain Text property — see HomePage.jsx for
+          where that Organization itemScope starts). */}
       <div className="grid gap-8 md:grid-cols-3">
         {awards.map((a) => (
-          <Card key={a.heading} {...a} />
+          <Card key={a.heading} {...a} headingItemProp="award" />
         ))}
       </div>
     </section>
