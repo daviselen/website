@@ -109,3 +109,11 @@ h1, h2, h3, h4, h5, h6, p, span, a, li {
   text-box-trim: trim-both;
   text-box-edge: cap alphabetic;
 }
+
+/* Per direct instruction, applies to the `abbr` tags now wrapping "HI"/"AI"
+   in HumanAI.jsx's headline. Browsers default abbr to a dotted underline in
+   currentColor — overriding both to a deliberate solid #2b2b2b/1px instead. */
+abbr {
+  text-decoration-color: #2b2b2b;
+  text-decoration-thickness: 1px;
+}
