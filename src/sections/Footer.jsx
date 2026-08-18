@@ -20,35 +20,71 @@
 import DeLogo from "../design-system/components/DeLogo.jsx";
 
 const cities = ["Los Angeles", "San Diego", "Seattle", "Denver", "Kansas City", "Arlington"];
-const social = ["Instagram", "LinkedIn", "YouTube", "Facebook", "X (Twitter)"];
+// Real URLs, direct from the person who added them as Link values on these
+// text layers in Figma — not a get_design_context pull (Figma was
+// rate-limited when this was needed), so noting that distinction per
+// FIGMA_WORKFLOW.md #10 rather than presenting it with tool-verified
+// confidence.
+const social = [
+  { label: "Instagram", href: "https://www.instagram.com/daviselen" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/daviselen" },
+  { label: "YouTube", href: "https://www.youtube.com/@daviselenadvertising" },
+  { label: "Facebook", href: "https://www.facebook.com/daviselen" },
+  { label: "X (Twitter)", href: "https://x.com/daviselen" },
+];
 
 export default function Footer() {
   return (
     <footer className="border-y-2 border-neutral-0 mx-8 py-20 pb-40">
       <div className="flex flex-col gap-16 md:flex-row md:justify-between">
         <div className="flex flex-1 flex-col gap-12">
-          <DeLogo className="h-[200px] w-[192px]" />
+          {/* itemProp="logo" only on this instance, not NavBar's — same
+              component, two DOM instances; marking both would give the
+              Organization item two `logo` values, which is valid but
+              redundant, so this picks one (Footer's, since this is also
+              where the rest of the contact-block microdata lives). */}
+          <DeLogo className="h-[200px] w-[192px]" itemProp="logo" />
           <div className="flex flex-col gap-6 font-narrow text-2xl uppercase leading-8">
-            <a href="mailto:contact@daviselen.com" className="hover:text-primary-300">
+            <a
+              href="mailto:contact@daviselen.com"
+              itemProp="email"
+              className="hover:text-primary-300"
+            >
               contact@daviselen.com
             </a>
-            <a href="tel:2136887000" className="hover:text-primary-300">
+            <a href="tel:2136887000" itemProp="telephone" className="hover:text-primary-300">
               213.688.7000
             </a>
           </div>
+          {/* itemProp="sameAs" now that these are real profile URLs, not
+              placeholder "#"s — sameAs is exactly "the same entity is also
+              at this other URL," which wasn't true before. target=_blank +
+              rel="noopener noreferrer" added alongside since these now
+              genuinely navigate off-site (not needed for a "#" stub). */}
           <ul className="flex flex-col gap-6">
             {social.map((s) => (
-              <li key={s}>
-                <a href="#" className="font-narrow text-link-social uppercase hover:text-primary-300">
-                  {s}
+              <li key={s.label}>
+                <a
+                  href={s.href}
+                  itemProp="sameAs"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-narrow text-link-social uppercase hover:text-primary-300"
+                >
+                  {s.label}
                 </a>
               </li>
             ))}
           </ul>
         </div>
         <ul className="flex flex-1 flex-col gap-12 font-display text-4xl uppercase leading-[130px] md:text-[64px]">
+          {/* Each office city as its own nested Place item (itemProp
+              "location" is repeatable on Organization), rather than plain
+              text — real office locations, not invented. */}
           {cities.map((c) => (
-            <li key={c}>{c}</li>
+            <li key={c} itemProp="location" itemScope itemType="https://schema.org/Place">
+              <span itemProp="name">{c}</span>
+            </li>
           ))}
         </ul>
       </div>
