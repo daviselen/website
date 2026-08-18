@@ -141,3 +141,13 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+
+# Playwright / visual testing
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+tests/visual/output/
+
+# Figma-pull workflow cache (Extract-phase MCP results, gitignored per spec)
+.zencoder/cache/
