@@ -65,6 +65,17 @@ export default {
         700: "56px",
         800: "64px",
         1000: "80px",
+        // 1400: added for HI/AI's real inline (horizontal) padding, per
+        // direct correction. Not independently pulled via get_variable_defs
+        // (Figma was rate-limited) — added on the strength of the pattern
+        // every other entry here already fits with no exception:
+        // Scale/n = n × 0.08px (100→8, 200→16, 300→24, 400→32, 600→48,
+        // 700→56, 800→64, 1000→80, 1600→128, 1800→144, 2000→160, 2300→184,
+        // 2400→192, 3000→240 — all check out). 1400 × 0.08 = 112, the exact
+        // value given, so this is very likely really Scale/1400 — worth
+        // confirming the next time Figma access reopens rather than taking
+        // as fully closed out.
+        1400: "112px",
         1600: "128px",
         1800: "144px",
         2000: "160px",

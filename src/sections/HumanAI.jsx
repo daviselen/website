@@ -129,8 +129,13 @@ const gridBackground = {
 
 export default function HumanAI() {
   return (
+    // px-1400/py-1800 (112px/144px): real inline/block padding, per direct
+    // correction — was Tailwind's own default px-8/py-16 (32px/64px), never
+    // actually tied to a Figma value. mx-8 (the outer floating-card inset)
+    // is unrelated and unchanged — that's margin outside the card, not the
+    // padding inside it that was reported wrong here.
     <section
-      className="mx-8 rounded-md bg-surface-alt px-8 py-16 text-neutral-0"
+      className="mx-8 rounded-md bg-surface-alt px-1400 py-1800 text-neutral-0"
       style={gridBackground}
     >
       <div className="lg:flex lg:items-center lg:justify-between lg:gap-16">
@@ -173,10 +178,20 @@ export default function HumanAI() {
           </ul>
         </div>
 
+        {/* lg:w-[44.8276vw]: real spec is 832px wide at a 1856px viewport
+            — a fixed px:viewport ratio, not a fixed px value, so it needs
+            to scale with the viewport rather than snap to a size at each
+            Tailwind breakpoint the way most of this page's type/spacing
+            does. Converting to vw is the standard way to reproduce that:
+            832/1856 = 0.448275862...; expressed as a percentage of viewport
+            width, that ratio holds at any width, not just exactly 1856px.
+            Paired with lg:shrink-0 instead of the old lg:flex-1 — an
+            explicit width and flex-grow/shrink fighting each other would
+            make the real number here meaningless. */}
         <img
           src="/images/chart.svg"
           alt=""
-          className="mx-auto mt-16 block w-full max-w-md lg:mx-0 lg:mt-0 lg:w-full lg:max-w-none lg:flex-1"
+          className="mx-auto mt-16 block w-full max-w-md lg:mx-0 lg:mt-0 lg:w-[44.8276vw] lg:max-w-none lg:shrink-0"
         />
       </div>
     </section>
