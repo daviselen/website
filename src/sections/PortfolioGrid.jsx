@@ -142,7 +142,7 @@ function ProjectCard({ title, client, src, startColumn2 }) {
 
 export default function PortfolioGrid() {
   return (
-    <section id="portfolio-grid" className="px-8 py-16">
+    <section id="portfolio-grid" className="px-8 py-16 pb-0">
       <div className="columns-1 gap-x-8 md:columns-2">
         <h2 className="mb-2000 font-display text-6xl uppercase leading-none break-inside-avoid md:text-8xl lg:text-display-h2">
           Fresh Out

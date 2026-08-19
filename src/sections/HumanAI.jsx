@@ -136,7 +136,7 @@ export default function HumanAI() {
     // padding inside it that was reported wrong here.
     <section
       id="human-ai"
-      className="mx-8 rounded-md bg-surface-alt px-1400 py-1800 text-neutral-0"
+      className="mx-8 rounded-md bg-surface-alt px-1400 py-1800 text-neutral-0 mt-3000"
       style={gridBackground}
     >
       <div className="lg:flex lg:items-center lg:justify-between lg:gap-16">
