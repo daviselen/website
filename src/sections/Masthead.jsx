@@ -52,7 +52,7 @@ export default function Masthead() {
             whole text block (TITB), not a max-w cap — reproduced here as a
             right-side inset on lg+ so the paragraph doesn't span the full
             frame width like the headline. */}
-        <p className="mt-700 font-narrow text-xl font-medium leading-relaxed lg:text-[40px] lg:leading-[48px]">
+        <p className="mt-700 font-narrow text-xl leading-relaxed lg:text-[40px] lg:leading-[48px]">
           Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien
           vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis.
           Tempus leo eu aenean sed diam urna tempor.
