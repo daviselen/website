@@ -121,7 +121,7 @@ const concepts = [
 // two background-images plus their own background-size/-position at
 // once.
 const gridBackground = {
-  backgroundImage: url('/images/hi-x-ai.png'),
+  backgroundImage: `url('/images/hi-x-ai.png')`,
 };
 
 export default function HumanAI() {
