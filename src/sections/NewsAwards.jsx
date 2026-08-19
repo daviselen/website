@@ -39,7 +39,7 @@ export default function NewsAwards() {
           where that Organization itemScope starts). */}
       <div className="grid gap-8 md:grid-cols-3">
         {awards.map((a) => (
-          <Card key={a.heading} {...a} headingItemProp="award" />
+          <Card key={a.heading} {...a} headingItemProp="award" size="small" />
         ))}
       </div>
     </section>
