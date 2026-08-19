@@ -30,33 +30,23 @@
 // the Figma MCP tool hit its Starter-plan rate limit mid-audit — flagging
 // that explicitly rather than presenting this as fully closed out.
 //
-// Image aspect ratio is NOT one fixed number across every use of this
-// component, per direct correction: Proof's cards are 11/6 (880/480) —
-// the ratio actually measured via get_design_context on 1715:724 — while
-// News/Awards and the From The Inside Out cards are 576/480 (6/5), the
-// original hardcoded value here (correct for those, not for Proof — had
-// this backwards for a moment before the swap). So this needs to be a
-// per-instance prop, not a single constant; defaulting to 6/5 since two
-// of the three call sites use it. Written as explicit, fully-spelled-out
-// classes (not a template-string class name) because Tailwind's JIT
-// scanner needs the literal class text present somewhere in a source
-// file to generate it — an interpolated `aspect-[${x}]` wouldn't
-// reliably get picked up.
+// Figma's "card" has a Size variant, and size drives BOTH the image→copy
+// outer gap AND the image aspect ratio — they go together:
+//   default (large, ≥ half a row: From The Inside Out 2-up) → gap-700, 11/6
+//   small  (≤ a third of a row:   Proof / News-Awards 3-up) → gap-400, 6/5
+// `aspect` stays available as an optional per-instance override; when omitted
+// it follows the size. Written as explicit, fully-spelled-out classes (not a
+// template-string class name) because Tailwind's JIT scanner needs the literal
+// class text present in a source file — an interpolated `aspect-[${x}]` /
+// `gap-[${n}]` wouldn't reliably get picked up.
 const aspectClasses = {
   "11/6": "aspect-[11/6]",
   "6/5": "aspect-[6/5]",
 };
 
-// Figma's "card" component has a Size variant. The two sizes differ by the
-// image→copy outer gap: the large size (≥ half the row width, e.g. the
-// From The Inside Out 2-up cards) uses gap-700 (56px); the small size
-// (≤ a third of the row, e.g. the Proof / News-Awards 3-up cards) uses
-// gap-400 (32px). The heading→body inner gap (gap-400) is the same in both.
-// Explicit, fully-spelled class names so Tailwind's JIT scanner picks them
-// up (an interpolated `gap-[${n}]` wouldn't reliably be generated).
-const gapClasses = {
-  default: "gap-700",
-  small: "gap-400",
+const sizeConfig = {
+  default: { gap: "gap-700", gapInner: "gap-400", aspect: "11/6" },
+  small: { gap: "gap-400", gapInner: "gap-300", aspect: "6/5" },
 };
 
 // schema.org microdata is opt-in via these three props, all undefined by
@@ -77,24 +67,26 @@ export default function Card({
   alt,
   heading,
   body,
-  aspect = "6/5",
   size = "default",
+  aspect,
   itemType,
   headingItemProp,
   imageItemProp,
 }) {
+  const cfg = sizeConfig[size] ?? sizeConfig.default;
+  const aspectKey = aspect ?? cfg.aspect;
   return (
     <div
-      className={`flex flex-col ${gapClasses[size] ?? gapClasses.default}`}
+      className={`flex flex-col ${cfg.gap}`}
       {...(itemType ? { itemScope: true, itemType } : {})}
     >
       <img
         src={src}
         alt={alt}
-        className={`${aspectClasses[aspect] ?? aspectClasses["6/5"]} w-full rounded-md object-cover`}
+        className={`${aspectClasses[aspectKey] ?? aspectClasses[cfg.aspect]} w-full rounded-md object-cover`}
         {...(imageItemProp ? { itemProp: imageItemProp } : {})}
       />
-      <div className="flex flex-col gap-400">
+      <div className={`flex flex-col  ${cfg.gapInner}`}>
         <h3
           className="font-stat text-3xl uppercase leading-none md:text-5xl lg:text-display-stat"
           {...(headingItemProp ? { itemProp: headingItemProp } : {})}
