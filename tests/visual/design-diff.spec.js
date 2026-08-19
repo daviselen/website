@@ -74,7 +74,7 @@ const SECTIONS = [
   { name: "humanai", selector: "#human-ai", contentBox: false, enforce: true },
   { name: "footer", selector: "#footer", contentBox: false, enforce: true },
   { name: "masthead", selector: "#masthead", contentBox: true, enforce: false },
-  { name: "proof", selector: "#proof", contentBox: true, enforce: false },
+  { name: "proof", selector: "#proof", contentBox: true, enforce: true },
   { name: "portfolio-grid", selector: "#portfolio-grid", contentBox: true, enforce: false },
   { name: "from-inside-out", selector: "#from-inside-out", contentBox: true, enforce: false },
   { name: "news-awards", selector: "#news-awards", contentBox: true, enforce: false },
