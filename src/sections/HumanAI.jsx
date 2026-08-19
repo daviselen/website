@@ -121,10 +121,7 @@ const concepts = [
 // two background-images plus their own background-size/-position at
 // once.
 const gridBackground = {
-  backgroundSize: "40px 40px",
-  backgroundImage:
-    "linear-gradient(to right, #2b2b2b 1px, transparent 1px), linear-gradient(to bottom, #2b2b2b 1px, transparent 1px)",
-  backgroundPosition: "-1px -1px",
+  backgroundImage: url('/images/hi-x-ai.png'),
 };
 
 export default function HumanAI() {
@@ -194,6 +191,7 @@ export default function HumanAI() {
           src="/images/chart.svg"
           alt=""
           className="mx-auto mt-16 block w-full max-w-md lg:mx-0 lg:mt-0 lg:w-[44.8276vw] lg:max-w-none lg:shrink-0"
+          style={{ opacity: 0 }}
         />
       </div>
     </section>
