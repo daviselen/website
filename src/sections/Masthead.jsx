@@ -35,7 +35,7 @@ export default function Masthead() {
           doubled the left inset on desktop (md:px-8 + px-8) and added an
           inset on mobile that shouldn't be there at all (image is
           edge-to-edge at that breakpoint; the text was not). */}
-      <div className="pb-16 mt-2300 lg:pr-[calc(100%-1290px)]">
+      <div className="mt-2300 lg:pr-[calc(100%-1290px)]">
         {/* itemProp="slogan": real Organization.slogan property, and this
             headline genuinely is the site's tagline — no content=
             override needed since the visible text IS the value. */}

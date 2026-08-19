@@ -31,7 +31,7 @@ const stats = [
 
 export default function Proof() {
   return (
-    <section id="proof" className="grid gap-8 px-8 py-16 md:grid-cols-3">
+    <section id="proof" className="grid gap-8 px-8 pt-3000 pb-0 md:grid-cols-3">
       {stats.map((s) => (
         <Card key={s.heading} {...s} />
       ))}
