@@ -122,6 +122,8 @@ const concepts = [
 // once.
 const gridBackground = {
   backgroundImage: `url('/images/hi-x-ai.png')`,
+  backgroundSize: "cover",
+  backgroundPosition: "right center"
 };
 
 export default function HumanAI() {
