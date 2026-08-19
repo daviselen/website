@@ -28,7 +28,7 @@ const awards = [
 export default function NewsAwards() {
   return (
     <section id="news-awards" className="px-8">
-      <h2 className="mb-10 font-display text-6xl uppercase leading-none md:text-8xl lg:text-display-h2">
+      <h2 className="mb-20 font-display text-6xl uppercase leading-none md:text-8xl lg:text-display-h2">
         What's
         <br />
         Happening
