@@ -47,6 +47,18 @@ const aspectClasses = {
   "6/5": "aspect-[6/5]",
 };
 
+// Figma's "card" component has a Size variant. The two sizes differ by the
+// image→copy outer gap: the large size (≥ half the row width, e.g. the
+// From The Inside Out 2-up cards) uses gap-700 (56px); the small size
+// (≤ a third of the row, e.g. the Proof / News-Awards 3-up cards) uses
+// gap-400 (32px). The heading→body inner gap (gap-400) is the same in both.
+// Explicit, fully-spelled class names so Tailwind's JIT scanner picks them
+// up (an interpolated `gap-[${n}]` wouldn't reliably be generated).
+const gapClasses = {
+  default: "gap-700",
+  small: "gap-400",
+};
+
 // schema.org microdata is opt-in via these three props, all undefined by
 // default — Card is shared by three sections whose content maps to three
 // different (or no) schema.org properties, so the mapping can't be
@@ -66,13 +78,14 @@ export default function Card({
   heading,
   body,
   aspect = "6/5",
+  size = "default",
   itemType,
   headingItemProp,
   imageItemProp,
 }) {
   return (
     <div
-      className="flex flex-col gap-700"
+      className={`flex flex-col ${gapClasses[size] ?? gapClasses.default}`}
       {...(itemType ? { itemScope: true, itemType } : {})}
     >
       <img

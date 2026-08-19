@@ -19,16 +19,18 @@ function crop(src, w, h) {
   return out;
 }
 
-// Strip `inset` px off BOTH left and right of a full-element screenshot so
-// its width matches the 1792px Figma frame (the render includes the section's
-// full-bleed px-8 page inset; the frame does not). Done in Node on the
-// captured buffer rather than via a viewport clip, so off-screen/tall sections
-// are still captured whole by el.screenshot()'s auto-scroll.
-function cropInsetX(src, inset) {
-  if (!inset) return src;
-  const w = src.width - inset * 2;
-  const out = new PNG({ width: w, height: src.height });
-  PNG.bitblt(src, out, inset, 0, w, src.height, 0, 0);
+// Crop `l/t/r/b` px off each edge of a full-element screenshot. Used to strip
+// a section's own padding so the capture is its CONTENT box — the Figma
+// section export is content-only (no page padding/margin), while el.screenshot
+// captures the border box (content + padding). Done in Node on the captured
+// buffer so off-screen/tall sections are still grabbed whole by
+// el.screenshot()'s auto-scroll (a viewport clip would cut them off).
+function cropBox(src, l, t, r, b) {
+  if (!l && !t && !r && !b) return src;
+  const w = src.width - l - r;
+  const h = src.height - t - b;
+  const out = new PNG({ width: w, height: h });
+  PNG.bitblt(src, out, l, t, w, h, 0, 0);
   return out;
 }
 
@@ -54,13 +56,14 @@ function flattenOntoBlack(src) {
 // Sections to compare against a committed Figma export.
 // Drop the reference PNG at tests/visual/design/<name>.png (export @1x from
 // the 1792px section frame, cropped to the exact frame bounds).
-// `inset` = horizontal PAGE padding (px, @1x) that sits OUTSIDE the Figma
-// section frame and must be clipped off the render before diffing. Sections
-// built with `mx-8` (margin) already render at the 1792px frame width, so
-// inset 0 (humanai's own `px-1400` is INTERNAL card padding — part of the
-// frame — and must NOT be clipped, which is why this can't be auto-derived
-// from computed padding). Sections built with `px-8` render their full-bleed
-// 1856px <section> incl. the 32px page inset on each side → inset 32.
+// `contentBox`: the Figma section export is CONTENT-ONLY — it excludes the
+// page padding/margin the render's <section> carries. So for page-inset
+// sections (px-8 / py-* / pt-*), strip the element's own computed padding on
+// all four sides to get the content box that matches the frame. Sections built
+// with `mx-8` (humanai, footer) put their page inset in the MARGIN (already
+// outside boundingBox) and their padding is INTERNAL frame design (humanai's
+// px-1400/py-1800 card padding) — capture their full border box, strip
+// nothing. This is why the strip can't be auto-derived from computed padding.
 // `enforce`: true = hard-fail past SECTION_MAX_PCT (the render matches its
 // Figma frame today). false = informational only — the render still has real
 // layout drift vs the frame (image proportions / vertical placement) that a
@@ -68,17 +71,17 @@ function flattenOntoBlack(src) {
 // failing CI. Promote a section to enforce:true once its diff is under target.
 const SECTION_MAX_PCT = 3.5;
 const SECTIONS = [
-  { name: "humanai", selector: "#human-ai", inset: 0, enforce: true },
-  { name: "footer", selector: "#footer", inset: 0, enforce: true },
-  { name: "masthead", selector: "#masthead", inset: 32, enforce: false },
-  { name: "proof", selector: "#proof", inset: 32, enforce: false },
-  { name: "portfolio-grid", selector: "#portfolio-grid", inset: 32, enforce: false },
-  { name: "from-inside-out", selector: "#from-inside-out", inset: 32, enforce: false },
-  { name: "news-awards", selector: "#news-awards", inset: 32, enforce: false },
-  { name: "cta-banner", selector: "#cta-banner", inset: 32, enforce: false },
+  { name: "humanai", selector: "#human-ai", contentBox: false, enforce: true },
+  { name: "footer", selector: "#footer", contentBox: false, enforce: true },
+  { name: "masthead", selector: "#masthead", contentBox: true, enforce: false },
+  { name: "proof", selector: "#proof", contentBox: true, enforce: false },
+  { name: "portfolio-grid", selector: "#portfolio-grid", contentBox: true, enforce: false },
+  { name: "from-inside-out", selector: "#from-inside-out", contentBox: true, enforce: false },
+  { name: "news-awards", selector: "#news-awards", contentBox: true, enforce: false },
+  { name: "cta-banner", selector: "#cta-banner", contentBox: true, enforce: false },
 ];
 
-for (const { name, selector, inset, enforce } of SECTIONS) {
+for (const { name, selector, contentBox, enforce } of SECTIONS) {
   test(`${name} distance from design`, async ({ page }, testInfo) => {
     const designPath = path.join(designDir, `${name}.png`);
     test.skip(
@@ -95,8 +98,24 @@ for (const { name, selector, inset, enforce } of SECTIONS) {
     // below the fold — a viewport clip would cut tall sections off).
     const shot = await el.screenshot();
 
-    // Render: opaque, width incl. the px-8 page inset — crop it to the frame.
-    const actualFull = cropInsetX(PNG.sync.read(shot), inset);
+    // Render: opaque border-box capture. For page-inset sections, strip the
+    // element's own padding on all four sides so it becomes the content box
+    // that matches the content-only Figma export (fixes both the horizontal
+    // px-8 and the vertical py-*/pt-* offsets).
+    let renderPng = PNG.sync.read(shot);
+    if (contentBox) {
+      const p = await el.evaluate((node) => {
+        const s = getComputedStyle(node);
+        return {
+          l: Math.round(parseFloat(s.paddingLeft) || 0),
+          t: Math.round(parseFloat(s.paddingTop) || 0),
+          r: Math.round(parseFloat(s.paddingRight) || 0),
+          b: Math.round(parseFloat(s.paddingBottom) || 0),
+        };
+      });
+      renderPng = cropBox(renderPng, p.l, p.t, p.r, p.b);
+    }
+    const actualFull = renderPng;
     // Design: transparent Figma export — flatten onto the render's black bg.
     const designFull = flattenOntoBlack(PNG.sync.read(fs.readFileSync(designPath)));
 
@@ -111,8 +130,8 @@ for (const { name, selector, inset, enforce } of SECTIONS) {
     if (dw > MAX_WIDTH_SLACK) {
       throw new Error(
         `[${name}] width mismatch beyond ${MAX_WIDTH_SLACK}px: render ` +
-          `${actualFull.width}px vs design ${designFull.width}px (inset=${inset}). ` +
-          `Check the section's page inset / export scale.`
+          `${actualFull.width}px vs design ${designFull.width}px ` +
+          `(contentBox=${contentBox}). Check the section's padding / export scale.`
       );
     }
 
