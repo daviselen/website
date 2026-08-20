@@ -1,3 +1,5 @@
+import TextReveal from "../design-system/components/TextReveal";
+
 // From HP-23 "Masthead" (hero image, 1792x900), "Think Inside The Box"
 // headline (Ringside Regular 360px — the one place that font is used),
 // and the lorem-ipsum lede paragraph (literal placeholder copy left in
@@ -35,24 +37,17 @@ export default function Masthead() {
           doubled the left inset on desktop (md:px-8 + px-8) and added an
           inset on mobile that shouldn't be there at all (image is
           edge-to-edge at that breakpoint; the text was not). */}
-      <div className="mt-2300 lg:pr-[calc(100%-1290px)]">
+      <div className="mt-2300">
         {/* itemProp="slogan": real Organization.slogan property, and this
             headline genuinely is the site's tagline — no content=
             override needed since the visible text IS the value. */}
-        <h1
-          itemProp="slogan"
-          className="font-display text-6xl uppercase leading-none md:text-8xl lg:text-display-h1"
-        >
-          Think Inside
-          <br />
-          The Box
-        </h1>
+        <TextReveal text={`Think Inside \nthe Box`} as="h1" className="font-display text-6xl uppercase leading-none md:text-8xl lg:text-display-h1" />
         {/* Headline → paragraph gap is Scale/700 = 56px, not the mt-8
             (32px) previously guessed. Real node also has pr-[480px] on the
             whole text block (TITB), not a max-w cap — reproduced here as a
             right-side inset on lg+ so the paragraph doesn't span the full
             frame width like the headline. */}
-        <p className="mt-700 font-narrow text-xl leading-relaxed lg:text-[40px] lg:leading-[48px]">
+        <p className="mt-700 font-narrow text-xl leading-relaxed lg:text-[40px] lg:leading-[48px] lg:pr-[calc(100%-1290px)]">
           Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien
           vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis.
           Tempus leo eu aenean sed diam urna tempor.
