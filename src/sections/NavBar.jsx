@@ -1,4 +1,6 @@
 import DeLogo from "../design-system/components/DeLogo.jsx";
+import { motion, useScroll, useMotionValueEvent } from "motion/react";
+import { useState } from "react";
 
 // Rebuilt from get_design_context's real reference code for the "Nav"
 // component instance (nodeId 1961:180) — not hand-read from raw JSON this
@@ -14,8 +16,26 @@ import DeLogo from "../design-system/components/DeLogo.jsx";
 //   - No border: per direct correction, this doesn't have one — an earlier
 //     pass had added a solid 1px #666 (neutral/600) border, which was wrong.
 export default function NavBar() {
+  const { scrollY } = useScroll()
+  const [hidden, setHidden] = useState(false)
+
+  useMotionValueEvent(scrollY, "change", (current) => {
+    const previous = scrollY.getPrevious() ?? 0
+    if (current > previous && current > 150) {
+        setHidden(true)
+    } else {
+        setHidden(false)
+    }
+  })
+
   return (
-    <header className="flex items-end justify-between bg-surface-default px-8 py-6 uppercase">
+    <motion.header className="flex items-end justify-between bg-surface-default px-8 py-6 uppercase fixed top-0 left-0 right-0 z-50"
+      animate={{
+        y: hidden ? -140 : 0,
+        opacity: hidden ? 0 : 1,
+      }}
+      transition={{ duration: 0.3, ease: "easeInOut" }}
+    >
       <div className="flex flex-1 items-center py-4">
         {/* content="1948" overrides the machine-readable value for
             Organization.foundingDate (which expects a bare date, not this
@@ -43,6 +63,6 @@ export default function NavBar() {
           Contact
         </a>
       </nav>
-    </header>
+    </motion.header>
   );
 }
