@@ -1,59 +1,63 @@
 import { motion } from "motion/react";
 
-export default function TextReveal({ text, as = "h2", itemProp, className = "" }) {
-  // Dynamically select the motion component (defaults to h2 if not provided)
-  const MotionComponent = motion[as] || motion.div;
+export default function ParagraphReveal({ 
+  text, 
+  as = "p", 
+  className = "", 
+  itemProp,
+  staggerSpeed = 0.02,
+  delay = 0, // Optional delay before the reveal begins (in seconds)
+}) {
+  const MotionComponent = motion[as] || motion.p;
 
-  // Split the text into individual words
-  const lines = text.split("\n");
+  // Split into words while preserving normal paragraph flow
+  const words = text.split(" ");
 
-  // Container variants to stagger the animation of children
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: (i = 1) => ({
-      opacity: 1,
-      transition: { staggerChildren: 0.12, delayChildren: 0.04 * i },
-    }),
-  };
-
-  // Child variants for the reveal effect
-  const childVariants = {
-    hidden: { 
-      y: "100%", 
-      opacity: 0 
-    },
     visible: {
-      y: "0%",
       opacity: 1,
       transition: { 
-        duration: 0.6, 
-        ease: [0.2, 0.65, 0.3, 0.9] 
+        staggerChildren: staggerSpeed, 
+        delayChildren: delay, // Delays the start of word-by-word staggering
+      },
+    },
+  };
+
+  const wordVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 8,
+      filter: "blur(4px)" 
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      filter: "blur(0px)",
+      transition: { 
+        duration: 0.4, 
+        ease: "easeOut" 
       },
     },
   };
 
   return (
-    <MotionComponent 
+    <MotionComponent
       itemProp={itemProp}
-      className={`flex flex-wrap overflow-hidden ${className}`}
+      className={className}
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: false, margin: "-100px" }}
+      viewport={{ once: false, margin: "-50px" }}
     >
-      {lines.map((line, lineIndex) => (
-        <span key={lineIndex} className="flex flex-wrap overflow-hidden">
-          {line.split(" ").map((word, wordIndex) => (
-            <span key={wordIndex} className="overflow-hidden inline-block pb-1 mr-[0.125em]">
-              <motion.span 
-                className="inline-block" 
-                variants={childVariants}
-              >
-                {word}
-              </motion.span>
-            </span>
-          ))}
-        </span>
+      {words.map((word, i) => (
+        <motion.span
+          key={i}
+          className="inline-block"
+          variants={wordVariants}
+        >
+          {word}&nbsp;
+        </motion.span>
       ))}
     </MotionComponent>
   );
