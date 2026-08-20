@@ -6,7 +6,7 @@
 // Proof's card images are 576/480 (6/5), same as News/Awards — <Card />
 // defaults to 6/5, so no override needed here. (From The Inside Out and
 // the portfolio grid are the two sections that use 11/6 instead.)
-import Card from "../design-system/components/Card.jsx";
+import TiltCard from "../design-system/components/TiltCard.jsx";
 
 const stats = [
   {
@@ -33,7 +33,7 @@ export default function Proof() {
   return (
     <section id="proof" className="grid gap-8 px-8 pt-3000 pb-0 md:grid-cols-3">
       {stats.map((s) => (
-        <Card key={s.heading} {...s} size="small" />
+        <TiltCard key={s.heading} {...s} size="small" />
       ))}
     </section>
   );
