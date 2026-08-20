@@ -1,4 +1,4 @@
-import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
+import { motion, useMotionValue, useSpring, useTransform, useMotionTemplate } from "motion/react";
 
 // Matches Figma's "card" component (nodeId 1918:727, componentSet "card"
 // 1918:748, variant Size=Default) — real text styles "card/heading" and
@@ -82,6 +82,9 @@ const aspectClasses = {
     const x = useMotionValue(0);
     const y = useMotionValue(0);
 
+    // Controls glare opacity so it smoothly fades out on mouse exit
+    const glareOpacity = useSpring(0, { stiffness: 300, damping: 30 });
+
     // Smooth out the motion values with spring physics
     const smoothX = useSpring(x, { stiffness: 300, damping: 30 });
     const smoothY = useSpring(y, { stiffness: 300, damping: 30 });
@@ -89,6 +92,17 @@ const aspectClasses = {
     // Map mouse position to tilt rotation degrees based on maxTilt
     const rotateX = useTransform(smoothY, [-0.5, 0.5], [maxTilt, -maxTilt]);
     const rotateY = useTransform(smoothX, [-0.5, 0.5], [-maxTilt, maxTilt]);
+
+    // Converts normalized [-0.5, 0.5] mouse values into [0%, 100%] gradient positions
+    const glareX = useTransform(smoothX, [-0.5, 0.5], [0, 100]);
+    const glareY = useTransform(smoothY, [-0.5, 0.5], [0, 100]);
+
+    // Builds a dynamic CSS radial gradient centered at the cursor position
+    const glareBackground = useMotionTemplate`radial-gradient(
+      500px circle at ${glareX}% ${glareY}%, 
+      rgba(255, 255, 255, 0.25), 
+      transparent 80%
+    )`;
 
     const handleMouseMove = (e) => {
         const rect = e.currentTarget.getBoundingClientRect();
@@ -101,17 +115,20 @@ const aspectClasses = {
         
         x.set(mouseX / width - 0.5);
         y.set(mouseY / height - 0.5);
+
+        glareOpacity.set(1);
     };
 
     const handleMouseLeave = () => {
         x.set(0);
         y.set(0);
+        glareOpacity.set(0);
     };
 
     return (
       <div style={{ perspective: 1000 }}>
         <motion.div
-            className={`flex flex-col ${cfg.gap} transform-3d will-change-transform`}
+            className={`flex flex-col ${cfg.gap} relative transform-3d will-change-transform`}
             {...(itemType ? { itemScope: true, itemType } : {})}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
@@ -120,19 +137,31 @@ const aspectClasses = {
             rotateY,
             }}
         >
+            {/* Full-Card Spotlight Layer */}
+            <motion.div
+              className="pointer-events-none absolute -inset-4 z-20 rounded-xl mix-blend-soft-light"
+              style={{
+                background: glareBackground,
+                opacity: glareOpacity,
+                transform: "translateZ(20px)", // Suspended in 3D space between image and floating text
+              }}
+            />
             <img
             src={src}
             alt={alt}
             className={`${aspectClasses[aspectKey] ?? aspectClasses[cfg.aspect]} w-full rounded-md object-cover`}
             {...(imageItemProp ? { itemProp: imageItemProp } : {})}
+            style={{ transform: "translateZ(0px)" }}
             />
             <div className={`flex flex-col ${cfg.gapInner} translate-z-12`}
               style={{ 
                 transform: "translateZ(40px)", // 3D displacement distance
                 transformStyle: "preserve-3d" 
+              }}>
             <h3
                 className="font-stat text-3xl uppercase leading-none md:text-5xl lg:text-display-stat drop-shadow-md"
                 {...(headingItemProp ? { itemProp: headingItemProp } : {})}
+                style={{ transform: "translateZ(10px)" }}
             >
                 {heading}
             </h3>
