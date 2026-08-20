@@ -65,7 +65,7 @@ const aspectClasses = {
   //     passes itemType="https://schema.org/CreativeWork" plus
   //     headingItemProp="name" and imageItemProp="image".
   export default function TiltCard({
-    maxTilt = 15,
+    maxTilt = 8,
     src,
     alt,
     heading,
@@ -109,7 +109,7 @@ const aspectClasses = {
     };
 
     return (
-      <div className="perspective-1000">
+      <div style={{ perspective: 1000 }}>
         <motion.div
             className={`flex flex-col ${cfg.gap} transform-3d will-change-transform`}
             {...(itemType ? { itemScope: true, itemType } : {})}
@@ -126,14 +126,17 @@ const aspectClasses = {
             className={`${aspectClasses[aspectKey] ?? aspectClasses[cfg.aspect]} w-full rounded-md object-cover`}
             {...(imageItemProp ? { itemProp: imageItemProp } : {})}
             />
-            <div className={`flex flex-col ${cfg.gapInner} translate-z-12`}>
+            <div className={`flex flex-col ${cfg.gapInner} translate-z-12`}
+              style={{ 
+                transform: "translateZ(40px)", // 3D displacement distance
+                transformStyle: "preserve-3d" 
             <h3
-                className="font-stat text-3xl uppercase leading-none md:text-5xl lg:text-display-stat"
+                className="font-stat text-3xl uppercase leading-none md:text-5xl lg:text-display-stat drop-shadow-md"
                 {...(headingItemProp ? { itemProp: headingItemProp } : {})}
             >
                 {heading}
             </h3>
-            <p className="font-narrow text-lg leading-relaxed md:text-2xl md:leading-8">{body}</p>
+            <p className="font-narrow text-lg leading-relaxed md:text-2xl md:leading-8 drop-shadow-sm">{body}</p>
             </div>
         </motion.div>
       </div>
