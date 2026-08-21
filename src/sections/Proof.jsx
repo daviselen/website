@@ -7,6 +7,22 @@
 // defaults to 6/5, so no override needed here. (From The Inside Out and
 // the portfolio grid are the two sections that use 11/6 instead.)
 import Card from "../design-system/components/Card.jsx";
+import { motion } from "motion/react";
+
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1, // delay between each item
+    },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 160 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
 
 const stats = [
   {
@@ -31,10 +47,17 @@ const stats = [
 
 export default function Proof() {
   return (
-    <section id="proof" className="grid gap-8 px-8 pt-3000 pb-0 md:grid-cols-3">
+    <motion.section
+      id="proof"
+      className="grid gap-8 px-8 pt-3000 pb-0 md:grid-cols-3"
+      variants={container}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.2 }}
+    >
       {stats.map((s) => (
         <Card key={s.heading} {...s} size="small" variants={item} />
       ))}
-    </section>
+    </motion.section>
   );
 }
