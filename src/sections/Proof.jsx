@@ -14,14 +14,14 @@ const container = {
   show: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1, // delay between each item
+      staggerChildren: 0.25, // delay between each item
     },
   },
 };
 
 const item = {
   hidden: { opacity: 0, y: 160 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.625 } },
 };
 
 const stats = [
@@ -53,7 +53,7 @@ export default function Proof() {
       variants={container}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: 0.2 }}
+      viewport={{ once: true, amount: 0.25 }}
     >
       {stats.map((s) => (
         <Card key={s.heading} {...s} size="small" variants={item} />
