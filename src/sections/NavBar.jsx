@@ -1,6 +1,7 @@
 import DeLogo from "../design-system/components/DeLogo.jsx";
 import { motion, useScroll, useMotionValueEvent } from "motion/react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 // Rebuilt from get_design_context's real reference code for the "Nav"
 // component instance (nodeId 1961:180) — not hand-read from raw JSON this
@@ -50,12 +51,14 @@ export default function NavBar() {
         </span>
       </div>
       <div className="flex shrink-0 items-center justify-between py-4">
-        <DeLogo className="size-20" />
+        <Link to="/">
+          <DeLogo className="size-20" />
+        </Link>
       </div>
       <nav className="flex flex-1 items-center justify-end gap-6">
-        <a href="#about" className="px-4 pb-4 pt-8 font-narrow text-2xl leading-8 text-neutral-0 hover:text-primary-300">
+        <Link to="/about" className="px-4 pb-4 pt-8 font-narrow text-2xl leading-8 text-neutral-0 hover:text-primary-300">
           About
-        </a>
+        </Link>
         <a href="#careers" className="px-4 pb-4 pt-8 font-narrow text-2xl leading-8 text-neutral-0 hover:text-primary-300">
           Careers
         </a>
