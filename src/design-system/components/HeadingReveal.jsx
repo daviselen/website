@@ -1,60 +1,72 @@
 import { motion } from "motion/react";
 
-export default function HeadingReveal({ text, as = "h2", itemProp, className = "" }) {
-  // Dynamically select the motion component (defaults to h2 if not provided)
+const REVEAL_DURATION = 26.153 / 30;
+const LINE_DELAY = 3.847 / 30;
+const REVEAL_EASE = [0.8, 0, 0.2, 1];
+
+export default function HeadingReveal({
+  text,
+  as = "h2",
+  itemProp,
+  className = "",
+}) {
   const MotionComponent = motion[as] || motion.div;
 
-  // Split the text into individual words
   const lines = text.split("\n");
 
-  // Container variants to stagger the animation of children
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: (i = 1) => ({
-      opacity: 1,
-      transition: { staggerChildren: 0.12, delayChildren: 0.04 * i },
-    }),
-  };
-
-  // Child variants for the reveal effect
-  const childVariants = {
-    hidden: { 
-      y: "100%", 
-      opacity: 0 
-    },
-    visible: {
-      y: "0%",
-      opacity: 1,
-      transition: { 
-        duration: 0.6, 
-        ease: [0.2, 0.65, 0.3, 0.9] 
-      },
-    },
-  };
-
   return (
-    <MotionComponent 
+    <MotionComponent
       itemProp={itemProp}
-      className={`flex flex-wrap overflow-hidden ${className}`}
-      variants={containerVariants}
+      className={className}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: false, margin: "-100px" }}
+      viewport={{
+        once: false,
+        margin: "-100px",
+      }}
     >
-      {lines.map((line, lineIndex) => (
-        <span key={lineIndex} className="flex flex-wrap overflow-hidden">
-          {line.split(" ").map((word, wordIndex) => (
-            <span key={wordIndex} className="overflow-hidden inline-block pb-1 mr-[0.125em]">
-              <motion.span 
-                className="inline-block" 
-                variants={childVariants}
-              >
-                {word}
-              </motion.span>
-            </span>
-          ))}
-        </span>
+      {lines.map((line, index) => (
+        <RevealLine
+          key={index}
+          delay={index * LINE_DELAY}
+        >
+          {line}
+        </RevealLine>
       ))}
     </MotionComponent>
+  );
+}
+
+function RevealLine({ children, delay }) {
+  return (
+    <span
+      className="relative block"
+      style={{
+        overflow: "hidden",
+        padding: "0.0333333em 0px",
+        margin: "-0.0333333em 0px",
+      }}
+    >
+      <motion.span
+        className="block py-[0.015em]"
+        initial={{
+          clipPath: "inset(100% 0% 0% 0%)",
+        }}
+        whileInView={{
+          clipPath: "inset(0% 0% 0% 0%)",
+        }}
+        viewport={{
+          once: false,
+          margin: "-100px",
+        }}
+        transition={{
+          duration: REVEAL_DURATION,
+          delay,
+          ease: REVEAL_EASE,
+        }}
+      >
+        {children}
+      </motion.span>
+    </span>
   );
 }
