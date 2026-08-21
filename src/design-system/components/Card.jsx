@@ -40,6 +40,8 @@
 // class text present in a source file — an interpolated `aspect-[${x}]` /
 // `gap-[${n}]` wouldn't reliably get picked up.
 import { motion } from "motion/react";
+import HorizontalReveal from "./HorizontalReveal";
+import TextReveal from "./TextReveal";
 
 const aspectClasses = {
   "11/6": "aspect-[11/6]",
@@ -95,9 +97,9 @@ export default function Card({
           className="font-stat text-3xl uppercase leading-none md:text-5xl lg:text-display-stat"
           {...(headingItemProp ? { itemProp: headingItemProp } : {})}
         >
-          {heading}
+          <HorizontalReveal>{heading}</HorizontalReveal>
         </h3>
-        <p className="font-narrow text-lg leading-relaxed md:text-2xl md:leading-8">{body}</p>
+        <p className="font-narrow text-lg leading-relaxed md:text-2xl md:leading-8"><TextReveal text={body}>{body}</TextReveal></p>
       </div>
     </motion.div>
   );
