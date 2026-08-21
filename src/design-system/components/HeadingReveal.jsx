@@ -48,7 +48,7 @@ function RevealLine({ children, delay }) {
       }}
     >
       <motion.span
-        className="block w-full py-[0.015em]"
+        className="block w-full pt-[0.0125em] pb-[0.02em]"
         style={{
           willChange: "transform, clip-path",
           transform: "translateZ(0)",
