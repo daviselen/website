@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useLocation, useOutlet } from "react-router-dom";
 import { motion } from "motion/react";
+import NavBar from "../sections/NavBar";
+import Footer from "../sections/Footer";
 
 const DEFAULT_COLORS = [
   "rgba(0, 0, 0, 0.5)",
@@ -158,7 +160,9 @@ export default function PixelCurtain({
     <div className="relative min-h-screen">
       {/* Route content */}
       <div className="min-h-screen">
+        <NavBar />
         {displayedOutlet}
+        <Footer />
       </div>
 
       {/* Curtain */}

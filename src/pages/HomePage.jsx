@@ -46,7 +46,7 @@ export default function HomePage() {
     >
       <meta itemProp="name" content="Davis Elen Advertising" />
       <meta itemProp="url" content="https://daviselen.com" />
-      <NavBar />
+
       <Masthead />
       <Proof />
       <PortfolioGrid />
@@ -54,7 +54,6 @@ export default function HomePage() {
       <FromInsideOut />
       <NewsAwards />
       <CTABanner />
-      <Footer />
     </div>
   );
 }
