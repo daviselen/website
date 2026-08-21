@@ -43,7 +43,7 @@ export default function NavBar() {
             microdata pattern for exactly this mismatch. */}
         <span
           itemProp="foundingDate"
-          content="1948"
+          content="1925"
           className="font-narrow text-2xl leading-8 text-neutral-0"
         >
           Independent Since 1948
