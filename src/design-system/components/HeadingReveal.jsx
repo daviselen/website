@@ -43,17 +43,23 @@ function RevealLine({ children, delay }) {
       className="relative block"
       style={{
         overflow: "hidden",
-        padding: "0.0333333em 0px",
-        margin: "-0.0333333em 0px",
+        padding: "0.0333333em 0",
+        margin: "-0.0333333em 0",
       }}
     >
       <motion.span
-        className="block py-[0.015em]"
+        className="block w-full py-[0.015em]"
+        style={{
+          willChange: "transform, clip-path",
+          transform: "translateZ(0)",
+        }}
         initial={{
-          clipPath: "inset(100% 0% 0% 0%)",
+          y: "0.25em",
+          clipPath: "inset(100% 0 0 0)",
         }}
         whileInView={{
-          clipPath: "inset(0% 0% 0% 0%)",
+          y: "0em",
+          clipPath: "inset(0 0 0 0)",
         }}
         viewport={{
           once: false,
