@@ -39,6 +39,8 @@
 // template-string class name) because Tailwind's JIT scanner needs the literal
 // class text present in a source file — an interpolated `aspect-[${x}]` /
 // `gap-[${n}]` wouldn't reliably get picked up.
+import { motion } from "motion/react";
+
 const aspectClasses = {
   "11/6": "aspect-[11/6]",
   "6/5": "aspect-[6/5]",
@@ -72,12 +74,14 @@ export default function Card({
   itemType,
   headingItemProp,
   imageItemProp,
+  variants,
 }) {
   const cfg = sizeConfig[size] ?? sizeConfig.default;
   const aspectKey = aspect ?? cfg.aspect;
   return (
-    <div
+    <motion.div
       className={`flex flex-col ${cfg.gap}`}
+      variants={variants}
       {...(itemType ? { itemScope: true, itemType } : {})}
     >
       <img
@@ -95,6 +99,6 @@ export default function Card({
         </h3>
         <p className="font-narrow text-lg leading-relaxed md:text-2xl md:leading-8">{body}</p>
       </div>
-    </div>
+    </motion.div>
   );
 }
