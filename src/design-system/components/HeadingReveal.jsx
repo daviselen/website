@@ -11,13 +11,27 @@ export default function HeadingReveal({
   className = "",
 }) {
   const MotionComponent = motion[as] || motion.div;
-
   const lines = text.split("\n");
+
+  // Parent controls the unified Y-translation for the ENTIRE block
+  const parentVariants = {
+    hidden: { 
+      y: "0.25em" 
+    },
+    visible: {
+      y: "0em",
+      transition: {
+        duration: REVEAL_DURATION,
+        ease: REVEAL_EASE,
+      },
+    },
+  };
 
   return (
     <MotionComponent
       itemProp={itemProp}
       className={className}
+      variants={parentVariants}
       initial="hidden"
       whileInView="visible"
       viewport={{
@@ -38,6 +52,21 @@ export default function HeadingReveal({
 }
 
 function RevealLine({ children, delay }) {
+  // Child lines control ONLY their individual staggered clipPath masks
+  const lineVariants = {
+    hidden: {
+      clipPath: "inset(100% 0 0 0)",
+    },
+    visible: {
+      clipPath: "inset(0% 0 0 0)",
+      transition: {
+        duration: REVEAL_DURATION,
+        delay: delay,
+        ease: REVEAL_EASE,
+      },
+    },
+  };
+
   return (
     <span
       className="relative block"
@@ -50,26 +79,10 @@ function RevealLine({ children, delay }) {
       <motion.span
         className="block w-full pt-[0.0125em] pb-[0.02em]"
         style={{
-          willChange: "transform, clip-path",
+          willChange: "clip-path",
           transform: "translateZ(0)",
         }}
-        initial={{
-          y: "0.25em",
-          clipPath: "inset(100% 0 0 0)",
-        }}
-        whileInView={{
-          y: "0em",
-          clipPath: "inset(0 0 0 0)",
-        }}
-        viewport={{
-          once: false,
-          margin: "-100px",
-        }}
-        transition={{
-          duration: REVEAL_DURATION,
-          delay,
-          ease: REVEAL_EASE,
-        }}
+        variants={lineVariants}
       >
         {children}
       </motion.span>
