@@ -31,8 +31,8 @@ export default function NavBar() {
   return (
     <motion.header className="flex items-end justify-between bg-surface-default px-8 py-6 uppercase fixed top-0 left-0 right-0 z-50"
       animate={{
-        y: hidden ? -140 : 0,
-        opacity: hidden ? 0 : 1,
+        y: hidden ? -160 : 0,
+        opacity: hidden ? 1 : 1,
       }}
       transition={{ duration: 0.3, ease: "easeInOut" }}
     >
