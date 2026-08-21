@@ -25,7 +25,7 @@ const stats = [
     heading: "Independent for Over 75 Years",
     body: "No holding company. No conglomerate oversight. Original thinking applied consistently since 1948.",
     src: "/images/proof-founding-partners.jpg",
-    alt: "Davis Elen original founding partners photo",
+    alt: "Davis Elen original founding partners photo: Henry Mayers, Bob Colombatto, ?, ?, and Bob Davis",
   },
 ];
 
