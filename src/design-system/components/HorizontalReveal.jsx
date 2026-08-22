@@ -24,9 +24,9 @@ export default function HorizontalReveal({
   const clip = clipPaths[direction];
 
   return (
-    <span className={`block overflow-hidden ${className}`}>
+    <span className={`block overflow-hidden -my-[0.075em] ${className}`}>
       <motion.span
-        className="block w-full pt-[0.0625em] pb-[0.05em]"
+        className="block w-full py-[0.075em]"
         initial={{
           clipPath: clip.initial,
         }}
