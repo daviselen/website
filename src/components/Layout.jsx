@@ -159,7 +159,7 @@ export default function PixelCurtain({
   return (
     <div className="relative min-h-screen">
       {/* Route content */}
-      <div className="min-h-screen">
+      <div className="min-h-screen bg-surface-default pb-1800 font-narrow text-neutral-0 pt-2000">
         <NavBar />
         {displayedOutlet}
         <Footer />
