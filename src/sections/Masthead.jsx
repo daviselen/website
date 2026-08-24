@@ -19,7 +19,7 @@ export default function Masthead() {
       <MastheadVideo
         src="/videos/davis-elen-masthead.mp4"
         alt="Red Toyota Supra drifting on a bridge at night"
-        className="h-[56vw] max-h-[900px] w-full rounded-md object-cover"
+        className="h-[calc((100vw - 64px) * .5625)] max-h-[1044px] w-full rounded-md object-cover"
       />
       {/* Image → headline gap is Scale/2300 = 184px (11.5rem) — this was
           py-16 (64px/4rem) before, read off a stale HP-23 guess instead of
