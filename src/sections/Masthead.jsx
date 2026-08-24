@@ -18,7 +18,6 @@ export default function Masthead() {
     <section id="masthead" className="px-0 md:px-8">
       <MastheadVideo
         src="/videos/davis-elen-masthead.mp4"
-        alt="Red Toyota Supra drifting on a bridge at night"
         className="h-[calc((100vw - 64px) * .5625)] max-h-[1044px] w-full rounded-md object-cover"
       />
       {/* Image → headline gap is Scale/2300 = 184px (11.5rem) — this was
