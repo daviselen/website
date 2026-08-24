@@ -246,7 +246,6 @@ export default function RetailMap() {
           {toggles.map((t) => (
             <div key={t.id} className={`${styles['menu-item']} ${styles[t.id]}`}>
               <Checkbox
-                id={t.id}
                 checked={t.active}
                 onChange={(e) => {
                   const checked = typeof e === "boolean" ? e : e.target.checked;
