@@ -4,6 +4,22 @@
 // override needed here.
 import Card from "../design-system/components/Card.jsx";
 import HeadingReveal from "../design-system/components/HeadingReveal.jsx";
+import { motion } from "motion/react";
+
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.25, // delay between each item
+    },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 160 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.625 } },
+};
 
 const awards = [
   {
@@ -38,11 +54,16 @@ export default function NewsAwards() {
           one becomes a value of the page-level Organization item's
           `award` property (a plain Text property — see HomePage.jsx for
           where that Organization itemScope starts). */}
-      <div className="grid gap-8 md:grid-cols-3">
+      <motion.div
+        className="grid gap-8 md:grid-cols-3"
+        variants={container}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: false, amount: 0.333 }}>
         {awards.map((a) => (
-          <Card key={a.heading} {...a} headingItemProp="award" size="small" />
+          <Card key={a.heading} {...a} headingItemProp="award" size="small" variants={item} />
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 }
