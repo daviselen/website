@@ -53,7 +53,7 @@ export default function Proof() {
       variants={container}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: 0.25 }}
+      viewport={{ once: true, amount: 0.333 }}
     >
       {stats.map((s) => (
         <Card key={s.heading} {...s} size="small" variants={item} />
