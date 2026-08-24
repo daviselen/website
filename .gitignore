@@ -143,6 +143,7 @@ vite.config.ts.timestamp-*
 .vite/
 
 # Playwright / visual testing
+.playwright-mcp/
 /test-results/
 /playwright-report/
 /blob-report/
