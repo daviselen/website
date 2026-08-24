@@ -77,6 +77,8 @@ export default function RetailMap() {
     const [toggles, setToggles] = useState(TOGGLES);
   
     useEffect(() => {
+      if (!MAPBOX_TOKEN) return;
+
       mapboxgl.accessToken = MAPBOX_TOKEN;
   
       const bounds = new mapboxgl.LngLatBounds(
@@ -205,7 +207,18 @@ export default function RetailMap() {
     const zoomTo = (bounds) => {
       if (mapRef.current) mapRef.current.fitBounds(bounds);
     };
-  
+
+    if (!MAPBOX_TOKEN) {
+      return (
+        <div className="mx-8 p-6 bg-red-50 border border-red-200 rounded-md text-red-700">
+          <h3 className="text-lg font-semibold mb-1">Map Configuration Error</h3>
+          <p className="text-sm">
+            Mapbox token is missing. Please configure <code>VITE_MAPBOX_TOKEN</code> in your environment variables.
+          </p>
+        </div>
+      );
+    }
+
     return (
       <div className={`${styles['map-container']} mx-8`}>
         <div id="menu" className={`${styles.menu} rounded-r-md`}>
