@@ -11,6 +11,18 @@ const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN;
 
 const MAP_STYLE = "mapbox://styles/jrcorey/cm01hdg0k00aq01rb8o9l6tyx";
 
+function circleIcon(color, size = 64) {
+  const canvas = document.createElement("canvas");
+  canvas.width = size;
+  canvas.height = size;
+  const ctx = canvas.getContext("2d");
+  ctx.beginPath();
+  ctx.arc(size / 2, size / 2, size / 2 - 1, 0, Math.PI * 2);
+  ctx.fillStyle = color;
+  ctx.fill();
+  return ctx.getImageData(0, 0, size, size);
+}
+
 // Assets live under public/. Place the label/number SVGs here.
 const ASSETS = "/images/map/";
 
@@ -88,28 +100,29 @@ export default function RetailMap() {
       map.addControl(geocoder, "top-left");
   
       map.on("styleimagemissing", (e) => {
-        const id = e.id;
-        if (!map.hasImage(id)) {
-          console.warn(`Mapbox is missing image: ${id}`);
-        }
+        if (map.hasImage(e.id)) return;
+        const layer = LAYERS.find((l) => l.marker === e.id || l.fallback === e.id);
+        if (!layer) return;
+        map.addImage(e.id, circleIcon(layer.fallback));
       });
-  
+
       map.on("load", () => {
         SOURCES.forEach((s) => map.addSource(s.id, { type: "vector", url: s.url }));
-  
+
         LAYERS.forEach((l) => {
           map.addLayer({
             id: l.id,
             type: "symbol",
             source: l.source,
             "source-layer": l.sourceLayer,
+            filter: ["==", ["get", COMPANY_KEY], l.company],
             layout: {
-              "icon-image": ["match", ["get", COMPANY_KEY], l.company, l.marker, l.fallback],
+              "icon-image": l.marker,
               "icon-size": l.size,
               "icon-allow-overlap": l.overlap,
             },
           });
-  
+
           map.on("mousemove", l.id, (e) => {
             map.getCanvas().style.cursor = "crosshair";
             const coordinates = e.features[0].geometry.coordinates.slice();
