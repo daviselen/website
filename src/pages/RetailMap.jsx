@@ -11,6 +11,15 @@ const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN;
 
 const MAP_STYLE = "mapbox://styles/jrcorey/cm01hdg0k00aq01rb8o9l6tyx";
 
+function escapeHtml(value) {
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
+}
+
 function circleIcon(color, size = 64) {
   const canvas = document.createElement("canvas");
   canvas.width = size;
@@ -124,20 +133,23 @@ export default function RetailMap() {
           });
 
           map.on("mousemove", l.id, (e) => {
+            const feature = e.features?.[0];
+            if (!feature) return;
+
             map.getCanvas().style.cursor = "crosshair";
-            const coordinates = e.features[0].geometry.coordinates.slice();
-            const companyName = e.features[0].properties[COMPANY_KEY];
-            const address = e.features[0].properties["Address"];
-  
+            const coordinates = feature.geometry.coordinates.slice();
+            const companyName = escapeHtml(feature.properties[COMPANY_KEY]);
+            const address = escapeHtml(feature.properties["Address"]);
+
             while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
               coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
             }
-  
+
             popup
               .setLngLat(coordinates)
               .setHTML(
                 `<h3 style="font-size: 16px; line-height: 1; color: #1a1a1a; margin-top: 0.5em; margin-bottom: 0.25em;">${companyName}</h3>` +
-                  `<p style="font-size: 11px; line-height: 1.272727; margin-top: 0; margin-bottom: 1em;">${address}</p>`
+                `<p class="text-neutral-0" style="font-size: 11px; line-height: 1.272727; margin-top: 0; margin-bottom: 1em;">${address}</p>`
               )
               .addTo(map);
           });
