@@ -7,10 +7,7 @@ import { Link } from "react-router-dom";
 import styles from "./RetailMap.module.css";
 import { Checkbox } from "../design-system/components/CheckBox";
 
-// Public Mapbox token (was inlined in the original page). Move to an env
-// var (import.meta.env.VITE_MAPBOX_TOKEN) if you want it out of source.
-const MAPBOX_TOKEN =
-  "pk.eyJ1IjoianJjb3JleSIsImEiOiJjajFsaGxrOXowMDJxMzNsYnF6eDNjNnZiIn0.OsSjte46X_PSnJgkAP2Vfg";
+const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN;
 
 const MAP_STYLE = "mapbox://styles/jrcorey/cm01hdg0k00aq01rb8o9l6tyx";
 
