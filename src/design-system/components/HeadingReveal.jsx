@@ -36,7 +36,7 @@ export default function HeadingReveal({
       whileInView="visible"
       viewport={{
         once: false,
-        margin: "-100px",
+        margin: "0px 0px -100px 0px",
       }}
     >
       {lines.map((line, index) => (
