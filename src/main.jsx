@@ -1,11 +1,12 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./components/Layout";
 import "./index.css";
 import HomePage from "./pages/HomePage";
 import About from "./pages/About";
-import RetailMap from "./pages/RetailMap";
+
+const RetailMap = lazy(() => import("./pages/RetailMap"));
 
 // Define routes using createBrowserRouter
 const router = createBrowserRouter([
@@ -22,7 +23,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/about/retail-map",
-        element: <RetailMap />,
+        element: (
+          <Suspense fallback={<div className="mx-8 min-h-[50vh]" aria-busy="true" />}>
+            <RetailMap />
+          </Suspense>
+        ),
       },
     ],
   },
