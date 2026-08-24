@@ -1,5 +1,5 @@
 import HeadingReveal from "../design-system/components/HeadingReveal";
-import MastheadImage from "../design-system/components/MastheadImage";
+import MastheadVideo from "../design-system/components/MastheadVideo";
 import TextReveal from "../design-system/components/TextReveal";
 
 // From HP-23 "Masthead" (hero image, 1792x900), "Think Inside The Box"
@@ -16,8 +16,8 @@ import TextReveal from "../design-system/components/TextReveal";
 export default function Masthead() {
   return (
     <section id="masthead" className="px-0 md:px-8">
-      <MastheadImage
-        src="/images/masthead.jpg"
+      <MastheadVideo
+        src="/videos/davis-elen-masthead.mp4"
         alt="Red Toyota Supra drifting on a bridge at night"
         className="h-[56vw] max-h-[900px] w-full rounded-md object-cover"
       />
