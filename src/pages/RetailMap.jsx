@@ -77,7 +77,11 @@ export default function RetailMap() {
     const [toggles, setToggles] = useState(TOGGLES);
   
     useEffect(() => {
+      // 1. Guard missing token
       if (!MAPBOX_TOKEN) return;
+
+      // 2. Guard StrictMode double initialization
+      if (mapRef.current || !containerRef.current) return;
 
       mapboxgl.accessToken = MAPBOX_TOKEN;
   
@@ -172,7 +176,9 @@ export default function RetailMap() {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               flyTimer = setTimeout(() => {
-                map.fitBounds(startBounds, { maxZoom: 9.853842673270805, duration: 5000, speed: 0.5 });
+                if (mapRef.current) {
+                  map.fitBounds(startBounds, { maxZoom: 9.853842673270805, duration: 5000, speed: 0.5 });
+                }
               }, 2000);
               observer.disconnect();
             }
@@ -180,14 +186,24 @@ export default function RetailMap() {
         },
         { threshold: 0.5 }
       );
-      observer.observe(containerRef.current);
-  
+      
+      if (containerRef.current) {
+        observer.observe(containerRef.current);
+      }
+
       return () => {
         observer.disconnect();
         if (flyTimer) clearTimeout(flyTimer);
         popup.remove();
+        
+        // Cleanup map instance completely
         map.remove();
         mapRef.current = null;
+
+        // Clear DOM container to prevent StrictMode leftovers
+        if (containerRef.current) {
+          containerRef.current.innerHTML = "";
+        }
       };
     }, []);
   
