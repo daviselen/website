@@ -3,6 +3,7 @@
 // aspect is 6/5, same as Proof, which is <Card />'s default — no
 // override needed here.
 import Card from "../design-system/components/Card.jsx";
+import HeadingReveal from "../design-system/components/HeadingReveal.jsx";
 
 const awards = [
   {
@@ -28,11 +29,11 @@ const awards = [
 export default function NewsAwards() {
   return (
     <section id="news-awards" className="px-8">
-      <h2 className="mb-20 font-display text-6xl uppercase leading-none md:text-8xl lg:text-display-h2">
-        What's
-        <br />
-        Happening
-      </h2>
+      <HeadingReveal
+        as="h2"
+        text={`What's \nHappening`}
+        className="mb-20 font-display text-6xl uppercase leading-none md:text-8xl lg:text-display-h2"
+        />
       {/* headingItemProp="award": these headings are real awards, so each
           one becomes a value of the page-level Organization item's
           `award` property (a plain Text property — see HomePage.jsx for

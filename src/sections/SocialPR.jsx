@@ -1,4 +1,7 @@
 // From HP-23 "PR /SOCA:" group — "Get On The Soap Box" (Social + PR).
+
+import HeadingReveal from "../design-system/components/HeadingReveal";
+
 // Drop real files into public/images/ using the names below.
 const cols = [
   {
@@ -18,11 +21,11 @@ const cols = [
 export default function SocialPR() {
   return (
     <section className="px-8 py-16">
-      <h2 className="mb-10 font-display text-5xl uppercase leading-tight md:text-7xl">
-        Get On The
-        <br />
-        Soap Box
-      </h2>
+      <HeadingReveal
+        as="h2"
+        text={`Get On the \nSoap Box`}
+        className="mb-10 font-display text-5xl uppercase leading-tight md:text-7xl"
+        />
       <div className="grid gap-8 md:grid-cols-2">
         {cols.map((c) => (
           <div key={c.heading}>

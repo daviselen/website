@@ -22,6 +22,9 @@
 // order used previously — on mobile (`columns-1`), cards now read
 // grouped-by-column instead of interleaved. That's a real trade-off for
 // the simpler code, not a free win — if the interleaved mobile order
+
+import HeadingReveal from "../design-system/components/HeadingReveal";
+
 // matters, that's worth a separate ask.
 const projects = [
   {
@@ -144,11 +147,11 @@ export default function PortfolioGrid() {
   return (
     <section id="portfolio-grid" className="px-8 pt-3000 pb-0">
       <div className="columns-1 gap-x-8 md:columns-2">
-        <h2 className="mb-2000 font-display text-6xl uppercase leading-none break-inside-avoid md:text-8xl lg:text-display-h2">
-          Fresh Out
-          <br />
-          Of The Box
-        </h2>
+        <HeadingReveal
+          as="h2"
+          text={`Fresh Out \nof the Box`}
+          className="mb-2000 font-display text-6xl uppercase leading-none break-inside-avoid md:text-8xl lg:text-display-h2"
+          />
         {projects.map((p) => (
           <ProjectCard key={p.title + p.client} {...p} />
         ))}
