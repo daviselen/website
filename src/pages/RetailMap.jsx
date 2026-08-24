@@ -247,10 +247,12 @@ export default function RetailMap() {
                   const checked = typeof e === "boolean" ? e : e.target.checked;
                   toggleLayer(t.id, t.layer, checked);
                 }}
-                label={<div className={`${styles['toggle-label']}`}>
-                  <img className={styles.company} id={t.labelId} src={ASSETS + t.label} alt={t.labelAlt} />
-                  <span className={`${styles.locations} ${styles[t.numberId]}`} id={t.numberId}>{t.numberAlt}</span>
-                </div>}
+                label={
+                  <div className={`${styles['toggle-label']}`}>
+                    <img className={styles.company} id={t.labelId} src={ASSETS + t.label} alt={t.labelAlt} />
+                    <span className={`${styles.locations} ${styles[t.numberId]}`} id={t.numberId}>{t.numberAlt}</span>
+                  </div>
+                }
               />
             </div>
           ))}
