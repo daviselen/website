@@ -138,13 +138,18 @@ export default function RetailMap() {
           });
 
           map.on("mousemove", l.id, (e) => {
-            const feature = e.features?.[0];
-            if (!feature) return;
+            // Guard missing features array or empty feature selection
+            if (!e.features?.length) return;
+            const feature = e.features[0];
+
+            // Guard missing geometry or coordinates
+            if (!feature?.geometry?.coordinates) return;
 
             map.getCanvas().style.cursor = "crosshair";
             const coordinates = feature.geometry.coordinates.slice();
-            const companyName = escapeHtml(feature.properties[COMPANY_KEY]);
-            const address = escapeHtml(feature.properties["Address"]);
+            const props = feature.properties || {};
+            const companyName = escapeHtml(props[COMPANY_KEY]);
+            const address = escapeHtml(props["Address"]);
 
             while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
               coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
