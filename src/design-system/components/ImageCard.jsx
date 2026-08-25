@@ -81,7 +81,7 @@ export default function ProjectCard({ title, client, src, videoSrc, startColumn2
             <video
                 ref={videoRef}
                 src={videoSrc}
-                poster={src}
+                // poster={src}
                 muted
                 loop
                 playsInline
