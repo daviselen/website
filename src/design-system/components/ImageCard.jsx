@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import HorizontalReveal from "../components/HorizontalReveal";
 import TextReveal from "../components/TextReveal";
 
@@ -19,8 +19,22 @@ const cardVariants = {
     },
 };
   
-export default function ProjectCard({ title, client, src, startColumn2 }) {
+export default function ProjectCard({ title, client, src, videoSrc, startColumn2 }) {
+    const videoRef = useRef(null);
+    const [isHovered, setIsHovered] = useState(false);
     const [isRevealed, setIsRevealed] = useState(false);
+
+    const handleMouseEnter = () => {
+        setIsHovered(true);
+        videoRef.current?.play().catch((error) => {
+            console.warn("Autoplay blocked:", error);
+        });
+    };
+
+    const handleMouseLeave = () => {
+        setIsHovered(false);
+        videoRef.current?.pause();
+    };
   
     return (
       <motion.div
@@ -47,6 +61,8 @@ export default function ProjectCard({ title, client, src, startColumn2 }) {
             setIsRevealed(false); 
           }
         }}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
         itemScope
         itemType="https://schema.org/CreativeWork"
         className={`relative mb-2000 aspect-[11/6] w-full overflow-hidden rounded-md break-inside-avoid ${
@@ -60,6 +76,18 @@ export default function ProjectCard({ title, client, src, startColumn2 }) {
           itemProp="image"
           className="absolute inset-0 h-full w-full object-cover"
         />
+        {videoSrc && (
+            <video
+                ref={videoRef}
+                src={videoSrc}
+                muted
+                loop
+                playsInline
+                className={`absolute inset-0 h-full w-full min-w-full min-h-full max-w-none object-cover transition-opacity duration-300 ${
+                isHovered ? "opacity-100" : "opacity-0"
+                }`}
+            />
+        )}
         {/* Corrected per direct confirmation (I can't see the actual Figma
             component myself — no way to view it beyond what get_design_context
             returns, and that data was ambiguous enough that I misread it as
