@@ -22,8 +22,10 @@
 // order used previously — on mobile (`columns-1`), cards now read
 // grouped-by-column instead of interleaved. That's a real trade-off for
 // the simpler code, not a free win — if the interleaved mobile order
-
+import { motion } from "motion/react";
 import HeadingReveal from "../design-system/components/HeadingReveal";
+import HorizontalReveal from "../design-system/components/HorizontalReveal";
+import TextReveal from "../design-system/components/TextReveal";
 
 // matters, that's worth a separate ask.
 const projects = [
@@ -70,9 +72,40 @@ const projects = [
   },
 ];
 
+// 1. Define the orchestration and the top-to-bottom mask reveal
+const cardVariants = {
+  hidden: { 
+    // Inset 100% from the bottom hides the card. 
+    // Animating to 0% creates a top-to-bottom reveal.
+    clipPath: "inset(0% 0% 100% 0%)" 
+  },
+  visible: {
+    clipPath: "inset(0% 0% 0% 0%)",
+    transition: {
+      duration: 26.153 / 30,
+      ease: [0.8, 0, 0.2, 1], // Smooth custom cubic-bezier easing
+      when: "beforeChildren",  // Forces the text to wait until the mask is done
+      staggerChildren: 0.25,   // Staggers the title and client text
+    },
+  },
+};
+
+// 2. Define the subtle fade/slide up for the text
+const textVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+};
+
 function ProjectCard({ title, client, src, startColumn2 }) {
   return (
-    <div
+    <motion.div
       // Aspect is 11/6 (880/480), same as From The Inside Out, per direct
       // correction — not the 879/576 (≈1.526, noticeably narrower) this
       // had before.
@@ -84,6 +117,11 @@ function ProjectCard({ title, client, src, startColumn2 }) {
       // itemScope from the page's outer Organization item in HomePage.jsx,
       // not nested inside it — that's normal; a page can contain multiple
       // independent schema.org Items.
+      // 3. Swap to motion.div, attach variants, and set the viewport trigger
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.4 }} // Triggers when 15% of the card is in view
+      variants={cardVariants}
       itemScope
       itemType="https://schema.org/CreativeWork"
       className={`relative mb-2000 aspect-[11/6] w-full overflow-hidden rounded-md break-inside-avoid ${
@@ -129,17 +167,18 @@ function ProjectCard({ title, client, src, startColumn2 }) {
         style={{ backgroundImage: "linear-gradient(195deg, transparent 60%, black 130%)" }}
       />
       <div className="absolute inset-x-8 bottom-8 flex flex-col gap-300 text-neutral-0">
-        <p itemProp="name" className="font-narrow font-light text-base leading-6 md:text-2xl md:leading-8">
+        <TextReveal itemProp="name" className="font-narrow font-light text-base leading-6 md:text-2xl md:leading-8"
+        text={title}>
           {title}
-        </p>
-        <p
+        </TextReveal>
+        <HorizontalReveal
+          as="h3"
           itemProp="about"
           className="font-display text-4xl uppercase leading-none md:text-6xl lg:text-display-card"
-        >
-          {client}
-        </p>
+          text={client}
+        >{client}</HorizontalReveal>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
