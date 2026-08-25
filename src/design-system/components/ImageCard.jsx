@@ -36,7 +36,10 @@ export default function ProjectCard({ title, client, src, videoSrc, startColumn2
 
     const handleMouseLeave = () => {
         setIsHovered(false);
-        videoRef.current?.pause();
+        if (videoSrc && videoRef.current) {
+          videoRef.current.pause();
+          videoRef.current.currentTime = 0; // Resets video back to 0:00 frame
+        }
     };
   
     return (
