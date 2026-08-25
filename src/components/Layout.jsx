@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { useLocation, useOutlet } from "react-router-dom";
+import { useLocation, useNavigationType, useOutlet } from "react-router-dom";
 import { motion } from "motion/react";
 import NavBar from "../sections/NavBar";
 import Footer from "../sections/Footer";
@@ -15,10 +15,11 @@ const DURATION = 0.25;
 const MAX_DELAY = 0.3;
 
 export default function PixelCurtain({
-  pixelSize = 80,
+  pixelSize = 64,
   colors = DEFAULT_COLORS,
 }) {
   const location = useLocation();
+  const navigationType = useNavigationType();
   const outlet = useOutlet();
 
   const [dimensions, setDimensions] = useState({
@@ -45,6 +46,17 @@ export default function PixelCurtain({
   outletRef.current = outlet;
 
   const [displayedOutlet, setDisplayedOutlet] = useState(outlet);
+
+  // Scroll to top only for Link/navigation (PUSH).
+  // Back/Forward navigation is POP, so let the browser restore the position.
+  useEffect(() => {
+    if (
+      previousPathname.current !== location.pathname &&
+      navigationType === "PUSH"
+    ) {
+      window.scrollTo(0, 0);
+    }
+  }, [location.pathname, navigationType]);
 
   /*
    * -----------------------------------------
@@ -112,6 +124,17 @@ export default function PixelCurtain({
 
   const coverDuration = DURATION + MAX_DELAY;
 
+  // Navigation detection
+  useEffect(() => {
+    if (previousPathname.current === location.pathname) {
+      return;
+    }
+
+    previousPathname.current = location.pathname;
+    setPhase("cover");
+  }, [location.pathname]);
+
+
   /*
    * -----------------------------------------
    * Curtain lifecycle
@@ -159,7 +182,7 @@ export default function PixelCurtain({
   return (
     <div className="relative min-h-screen">
       {/* Route content */}
-      <div className="min-h-screen bg-surface-default py-1800 font-narrow text-neutral-0">
+      <div className="min-h-screen bg-surface-default py-1800 font-narrow font-light text-neutral-0">
         <NavBar />
         {displayedOutlet}
         <Footer />
