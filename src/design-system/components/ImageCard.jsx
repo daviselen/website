@@ -83,7 +83,6 @@ export default function ProjectCard({ title, client, src, videoSrc, startColumn2
                 src={videoSrc}
                 // poster={src}
                 muted
-                loop
                 playsInline
                 preload="metadata"
                 itemProp="image"
