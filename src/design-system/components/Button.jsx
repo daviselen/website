@@ -6,7 +6,7 @@
 // used px-8 py-4 text-sm — roughly a third the real size.
 export default function Button({ variant = "primary", children, ...props }) {
   const base =
-    "inline-flex min-w-[480px] items-center justify-center gap-2 rounded-md border px-16 font-narrow text-[32px] leading-[112px] uppercase transition-colors";
+    "inline-flex min-w-[480px] items-center justify-center gap-2 rounded-md border px-16 font-narrow font-light text-[32px] leading-[112px] uppercase transition-colors";
   const variants = {
     primary: "border-neutral-0 bg-transparent text-neutral-0 hover:bg-neutral-0 hover:text-surface-default",
     solid: "border-surface-primary-default bg-surface-primary-default text-neutral-0 hover:bg-transparent hover:text-surface-primary-default",

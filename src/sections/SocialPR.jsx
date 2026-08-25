@@ -35,7 +35,7 @@ export default function SocialPR() {
               className="aspect-[880/480] w-full rounded-lg object-cover"
             />
             <h3 className="mt-4 font-display text-xl uppercase">{c.heading}</h3>
-            <p className="mt-2 font-narrow text-sm">{c.copy}</p>
+            <p className="mt-2 font-narrow font-light text-sm">{c.copy}</p>
           </div>
         ))}
       </div>

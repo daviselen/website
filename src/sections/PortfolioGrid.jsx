@@ -129,7 +129,7 @@ function ProjectCard({ title, client, src, startColumn2 }) {
         style={{ backgroundImage: "linear-gradient(195deg, transparent 60%, black 130%)" }}
       />
       <div className="absolute inset-x-8 bottom-8 flex flex-col gap-300 text-neutral-0">
-        <p itemProp="name" className="font-narrow text-base leading-6 md:text-2xl md:leading-8">
+        <p itemProp="name" className="font-narrow font-light text-base leading-6 md:text-2xl md:leading-8">
           {title}
         </p>
         <p

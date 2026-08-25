@@ -165,7 +165,7 @@ const aspectClasses = {
             >
                 {heading}
             </h3>
-            <p className="font-narrow text-lg leading-relaxed md:text-2xl md:leading-8 drop-shadow-sm">{body}</p>
+            <p className="font-narrow font-light text-lg leading-relaxed md:text-2xl md:leading-8 drop-shadow-sm">{body}</p>
             </div>
         </motion.div>
       </div>

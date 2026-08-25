@@ -109,7 +109,7 @@ export default function Footer() {
               transform: "translateZ(0)",
             }}
           >
-          <div className="flex flex-col gap-6 font-narrow text-2xl uppercase leading-8">
+          <div className="flex flex-col gap-6 font-narrow font-light text-2xl uppercase leading-8">
             <a
               href="mailto:contact@daviselen.com"
               itemProp="email"
@@ -153,7 +153,7 @@ export default function Footer() {
                   itemProp="sameAs"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-narrow text-link-social uppercase hover:text-primary-300"
+                  className="font-narrow font-light text-link-social uppercase hover:text-primary-300"
                 >
                   <span style={{
                     display: "block",

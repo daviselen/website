@@ -99,7 +99,7 @@ export default function Card({
         >
           <HorizontalReveal>{heading}</HorizontalReveal>
         </h3>
-        <p className="font-narrow text-lg leading-relaxed md:text-2xl md:leading-8"><TextReveal text={body}>{body}</TextReveal></p>
+        <p className="font-narrow font-light text-lg leading-relaxed md:text-2xl md:leading-8"><TextReveal text={body}>{body}</TextReveal></p>
       </div>
     </motion.div>
   );
