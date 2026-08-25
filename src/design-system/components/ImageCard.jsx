@@ -77,25 +77,25 @@ export default function ProjectCard({ title, client, src, videoSrc, startColumn2
           className="relative h-full w-full overflow-hidden rounded-md"
           style={{ willChange: "clip-path" }}
         >
-        <img
-          src={src}
-          alt={`${title} — ${client} project photo`}
-          itemProp="image"
-          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-300 ${
-            videoSrc && isHovered ? "opacity-0" : "opacity-100"
-          }`}
-        />
-        {videoSrc && (
+        {videoSrc ? (
             <video
                 ref={videoRef}
                 src={videoSrc}
+                poster={src}
                 muted
                 loop
                 playsInline
-                className={`absolute inset-0 h-full w-full min-w-full min-h-full max-w-none object-cover transition-opacity duration-300 ${
-                isHovered ? "opacity-100" : "opacity-0"
-                }`}
+                preload="metadata"
+                itemProp="image"
+                className={`absolute inset-0 h-full w-full min-w-full min-h-full max-w-none object-cover`}
             />
+        ) : (
+          <img
+            src={src}
+            alt={`${title} — ${client} project photo`}
+            itemProp="image"
+            className={`absolute inset-0 h-full w-full object-cover`}
+          />
         )}
         {/* Corrected per direct confirmation (I can't see the actual Figma
             component myself — no way to view it beyond what get_design_context
