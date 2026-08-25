@@ -30,7 +30,7 @@
 // needed. That offset was exactly the kind of invented number workflow
 // item #9 warns against.
 //
-// aspect="11/6": this section's card images are 880/480 (11/6), same as
+// aspect="55/36": this section's card images are 880/480 (55/36), same as
 // the portfolio grid — <Card /> defaults to 6/5 (Proof/News), so this is
 // the section that needs the override.
 //
@@ -77,7 +77,7 @@ export default function FromInsideOut() {
               CreativeWork microdata (name + image), unlike Proof's
               unmarked arbitrary stats. */}
           <Card
-            aspect="11/6"
+            aspect="55/36"
             {...social}
             itemType="https://schema.org/CreativeWork"
             headingItemProp="name"
@@ -86,14 +86,14 @@ export default function FromInsideOut() {
         </div>
         <div className="flex flex-col gap-2000">
           <Card
-            aspect="11/6"
+            aspect="55/36"
             {...pr}
             itemType="https://schema.org/CreativeWork"
             headingItemProp="name"
             imageItemProp="image"
           />
           <Card
-            aspect="11/6"
+            aspect="55/36"
             {...culture}
             itemType="https://schema.org/CreativeWork"
             headingItemProp="name"

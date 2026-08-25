@@ -46,13 +46,13 @@ export default function ProjectCard({ title, client, src, videoSrc, startColumn2
         onMouseLeave={handleMouseLeave}
         itemScope
         itemType="https://schema.org/CreativeWork"
-        className={`relative mb-2000 aspect-[11/6] w-full overflow-hidden rounded-md break-inside-avoid ${
+        className={`relative mb-2000 aspect-[55/36] w-full overflow-hidden rounded-md break-inside-avoid ${
           startColumn2 ? "break-before-column" : ""
         }`}
       >
         <meta itemProp="creator" content="Davis Elen Advertising" />
         <motion.div
-          // Aspect is 11/6 (880/480), same as From The Inside Out, per direct
+          // Aspect is 55/36 (880/480), same as From The Inside Out, per direct
           // correction — not the 879/576 (≈1.526, noticeably narrower) this
           // had before.
           //

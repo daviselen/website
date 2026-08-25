@@ -32,7 +32,7 @@
 //
 // Figma's "card" has a Size variant, and size drives BOTH the image→copy
 // outer gap AND the image aspect ratio — they go together:
-//   default (large, ≥ half a row: From The Inside Out 2-up) → gap-700, 11/6
+//   default (large, ≥ half a row: From The Inside Out 2-up) → gap-700, 55/36
 //   small  (≤ a third of a row:   Proof / News-Awards 3-up) → gap-400, 6/5
 // `aspect` stays available as an optional per-instance override; when omitted
 // it follows the size. Written as explicit, fully-spelled-out classes (not a
@@ -44,12 +44,12 @@ import HorizontalReveal from "./HorizontalReveal";
 import TextReveal from "./TextReveal";
 
 const aspectClasses = {
-  "11/6": "aspect-[11/6]",
+  "55/36": "aspect-[55/36]",
   "6/5": "aspect-[6/5]",
 };
 
 const sizeConfig = {
-  default: { gap: "gap-700", gapInner: "gap-400", aspect: "11/6" },
+  default: { gap: "gap-700", gapInner: "gap-400", aspect: "55/36" },
   small: { gap: "gap-400", gapInner: "gap-300", aspect: "6/5" },
 };
 

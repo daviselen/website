@@ -5,7 +5,7 @@
 //
 // Proof's card images are 576/480 (6/5), same as News/Awards — <Card />
 // defaults to 6/5, so no override needed here. (From The Inside Out and
-// the portfolio grid are the two sections that use 11/6 instead.)
+// the portfolio grid are the two sections that use 55/36 instead.)
 import Card from "../design-system/components/Card.jsx";
 import { motion } from "motion/react";
 

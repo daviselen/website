@@ -175,7 +175,7 @@ rectangle — there's no separate pill/circle/blob token set in this design.
   primitive (`src/design-system/components/Card.jsx`), reused by Proof,
   News/Awards, and From The Inside Out rather than each section
   hand-rolling its own markup. Its image aspect ratio is NOT one constant:
-  `6/5` for Proof/News, `11/6` for From The Inside Out (and the portfolio
+  `6/5` for Proof/News, `55/36` for From The Inside Out (and the portfolio
   grid, which doesn't use `<Card>` but shares the same ratio) — pass the
   `aspect` prop rather than assuming the default fits every section.
 - **`button-primary`** — real spec is much larger than a typical button:
