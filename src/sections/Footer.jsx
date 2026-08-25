@@ -55,7 +55,7 @@ const leftRevealVariants = {
 const cityVariants = {
   hidden: {
     opacity: 0,
-    y: "-1em",
+    y: "-0.25em",
   },
   visible: (index) => ({
     opacity: 1,
