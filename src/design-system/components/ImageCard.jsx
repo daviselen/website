@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { motion, useInView } from "motion/react";
 import { useRef, useState } from "react";
 import HorizontalReveal from "../components/HorizontalReveal";
 import TextReveal from "../components/TextReveal";
@@ -8,7 +8,7 @@ const cardVariants = {
     hidden: { 
       // Inset 100% from the bottom hides the card. 
       // Animating to 0% creates a top-to-bottom reveal.
-      clipPath: "inset(0% 0% 100% 0%)" 
+      clipPath: "inset(0% 0% 100% 0%)",
     },
     visible: {
       clipPath: "inset(0% 0% 0% 0%)",
@@ -20,6 +20,9 @@ const cardVariants = {
 };
   
 export default function ProjectCard({ title, client, src, videoSrc, startColumn2 }) {
+  const containerRef = useRef(null);
+  const isInView = useInView(containerRef, { amount: 0.2, once: false });
+
     const videoRef = useRef(null);
     const [isHovered, setIsHovered] = useState(false);
     const [isRevealed, setIsRevealed] = useState(false);
@@ -37,30 +40,8 @@ export default function ProjectCard({ title, client, src, videoSrc, startColumn2
     };
   
     return (
-      <motion.div
-        // Aspect is 11/6 (880/480), same as From The Inside Out, per direct
-        // correction — not the 879/576 (≈1.526, noticeably narrower) this
-        // had before.
-        //
-        // Real case studies, so each card is its own schema.org CreativeWork
-        // item (title -> name, client -> about, plus a hidden creator meta —
-        // true and already established elsewhere in the codebase, e.g.
-        // DeLogo's alt text, not invented for this). This is a separate
-        // itemScope from the page's outer Organization item in HomePage.jsx,
-        // not nested inside it — that's normal; a page can contain multiple
-        // independent schema.org Items.
-        // 3. Swap to motion.div, attach variants, and set the viewport trigger
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false, amount: 0.4 }} // Triggers when 15% of the card is in view
-        variants={cardVariants}
-        onAnimationComplete={(variant) => {
-          if (variant === "visible") {
-            setIsRevealed(true);
-          } else if (variant === "hidden") {
-            setIsRevealed(false); 
-          }
-        }}
+      <div
+        ref={containerRef}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         itemScope
@@ -70,11 +51,39 @@ export default function ProjectCard({ title, client, src, videoSrc, startColumn2
         }`}
       >
         <meta itemProp="creator" content="Davis Elen Advertising" />
+        <motion.div
+          // Aspect is 11/6 (880/480), same as From The Inside Out, per direct
+          // correction — not the 879/576 (≈1.526, noticeably narrower) this
+          // had before.
+          //
+          // Real case studies, so each card is its own schema.org CreativeWork
+          // item (title -> name, client -> about, plus a hidden creator meta —
+          // true and already established elsewhere in the codebase, e.g.
+          // DeLogo's alt text, not invented for this). This is a separate
+          // itemScope from the page's outer Organization item in HomePage.jsx,
+          // not nested inside it — that's normal; a page can contain multiple
+          // independent schema.org Items.
+          // 3. Swap to motion.div, attach variants, and set the viewport trigger
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          variants={cardVariants}
+          onAnimationComplete={(variant) => {
+            if (variant === "visible") {
+              setIsRevealed(true);
+            } else if (variant === "hidden") {
+              setIsRevealed(false); 
+            }
+          }}
+          className="relative h-full w-full overflow-hidden rounded-md"
+          style={{ willChange: "clip-path" }}
+        >
         <img
           src={src}
           alt={`${title} — ${client} project photo`}
           itemProp="image"
-          className="absolute inset-0 h-full w-full object-cover"
+          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-300 ${
+            videoSrc && isHovered ? "opacity-0" : "opacity-100"
+          }`}
         />
         {videoSrc && (
             <video
@@ -143,6 +152,7 @@ export default function ProjectCard({ title, client, src, videoSrc, startColumn2
             </>
           )}
         </div>
-      </motion.div>
+        </motion.div>
+      </div>
     );
 }
