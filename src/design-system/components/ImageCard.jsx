@@ -49,7 +49,7 @@ export default function ProjectCard({ title, client, src, videoSrc, startColumn2
         onMouseLeave={handleMouseLeave}
         itemScope
         itemType="https://schema.org/CreativeWork"
-        className={`relative mb-2000 aspect-[55/36] w-full overflow-hidden rounded-md break-inside-avoid ${
+        className={`relative mb-2000 aspect-[11/4] hover:aspect-[55/36] transition-all ease-in-out w-full overflow-hidden rounded-md break-inside-avoid ${
           startColumn2 ? "break-before-column" : ""
         }`}
       >
