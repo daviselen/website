@@ -45,6 +45,7 @@ import TextReveal from "./TextReveal";
 
 const aspectClasses = {
   "55/36": "aspect-[55/36]",
+  "11/6": "aspect-[11/6]",
   "6/5": "aspect-[6/5]",
 };
 
