@@ -121,8 +121,8 @@ const concepts = [
 // two background-images plus their own background-size/-position at
 // once.
 const gridBackground = {
-  backgroundImage: `url('/images/hi-x-ai.png')`,
-  backgroundSize: "cover",
+  backgroundImage: `linear-gradient(to left, #2b2b2b 1px, transparent 1px), linear-gradient(to bottom, #2b2b2b 1px, transparent 1px)`,
+  backgroundSize: "40px 40px",
   backgroundPosition: "right center"
 };
 
