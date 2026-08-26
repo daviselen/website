@@ -83,14 +83,16 @@ export default function ProjectCard({ title, client, src, videoSrc, startColumn2
         {videoSrc ? (
             <video
                 ref={videoRef}
-                src={videoSrc}
                 // poster={src}
                 muted
                 playsInline
                 preload="metadata"
                 itemProp="image"
                 className={`absolute inset-0 h-full w-full min-w-full min-h-full max-w-none object-cover`}
-            />
+            >
+              <source src={videoSrc.webm} type="video/webm" />
+              <source src={videoSrc.mp4} type="video/mp4" />
+            </video>
         ) : (
           <img
             src={src}

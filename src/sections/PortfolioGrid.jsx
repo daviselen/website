@@ -51,7 +51,10 @@ const projects = [
     title: "Hola Mexico Film Festival",
     client: "McDonald's",
     src: "/images/portfolio-hola-mexico-mcdonalds.jpg",
-    videoSrc: "/videos/portfolio-hola-mexico-mcdonalds.mp4",
+    videoSrc: {
+      webm: "/videos/portfolio-hola-mexico-mcdonalds.webm"
+      mp4: "/videos/portfolio-hola-mexico-mcdonalds.mp4",
+    }
     startColumn2: true,
   },
   {
