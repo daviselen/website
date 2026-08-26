@@ -52,9 +52,9 @@ const projects = [
     client: "McDonald's",
     src: "/images/portfolio-hola-mexico-mcdonalds.jpg",
     videoSrc: {
-      webm: "/videos/portfolio-hola-mexico-mcdonalds.webm"
+      webm: "/videos/portfolio-hola-mexico-mcdonalds.webm",
       mp4: "/videos/portfolio-hola-mexico-mcdonalds.mp4",
-    }
+    },
     startColumn2: true,
   },
   {
