@@ -61,7 +61,7 @@ export default function NewsAwards() {
         whileInView="show"
         viewport={{ once: false, amount: 0.333 }}>
         {awards.map((a) => (
-          <Card key={a.heading} {...a} headingItemProp="award" size="small" aspect="11/6" variants={item} />
+          <Card key={a.heading} {...a} headingItemProp="award" size="small" variants={item} />
         ))}
       </motion.div>
     </section>
