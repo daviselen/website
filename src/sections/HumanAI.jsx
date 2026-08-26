@@ -193,7 +193,6 @@ export default function HumanAI() {
           src="/images/chart.svg"
           alt="Unlock your potential. Human Imagination and Artificial Intelligence synergize to eliminate roadblocks and unlock what's possible. Let robots do the work!"
           className="mx-auto mt-16 block w-full max-w-md lg:mx-0 lg:mt-0 lg:w-[44.8276vw] lg:max-w-none lg:shrink-0"
-          style={{ opacity: 0 }}
         />
       </div>
     </section>
