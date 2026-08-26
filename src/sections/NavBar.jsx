@@ -47,7 +47,7 @@ export default function NavBar() {
           content="1925"
           className="font-narrow font-light text-2xl leading-8 text-neutral-0"
         >
-          Independent Since 1948
+          Davis Elen Advertising
         </span>
       </div>
       <div className="flex shrink-0 items-center justify-between py-4">
