@@ -1,6 +1,6 @@
 import DeLogo from "../design-system/components/DeLogo.jsx";
 import { motion, useScroll, useMotionValueEvent } from "motion/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 // Rebuilt from get_design_context's real reference code for the "Nav"
@@ -16,9 +16,16 @@ import { Link } from "react-router-dom";
 //     component, not uniform padding.
 //   - No border: per direct correction, this doesn't have one — an earlier
 //     pass had added a solid 1px #666 (neutral/600) border, which was wrong.
+const TAGLINES = ["Davis Elen Advertising", "Independent since 1948"]
+const WIPE_MS = 600 // must match the clipPath transition duration below
+const HOLD_MS = 5000 // how long the text stays fully visible
+const BLACK_MS = 400 // extra all-black pause after the wipe, before the reveal
+
 export default function NavBar() {
   const { scrollY } = useScroll()
   const [hidden, setHidden] = useState(false)
+  const [index, setIndex] = useState(0)
+  const [visible, setVisible] = useState(true)
 
   useMotionValueEvent(scrollY, "change", (current) => {
     const previous = scrollY.getPrevious() ?? 0
@@ -29,13 +36,29 @@ export default function NavBar() {
     }
   })
 
+  // Alternate the tagline in two phases per swap: while visible, hold ~2s
+  // then wipe out right-to-left; while hidden, wait for that wipe to finish
+  // (WIPE_MS), swap to the next line, then reveal left-to-right.
+  useEffect(() => {
+    let timer
+    if (visible) {
+      timer = setTimeout(() => setVisible(false), HOLD_MS)
+    } else {
+      timer = setTimeout(() => {
+        setIndex((prev) => (prev + 1) % TAGLINES.length)
+        setVisible(true)
+      }, WIPE_MS + BLACK_MS)
+    }
+    return () => clearTimeout(timer)
+  }, [visible])
+
   return (
     <motion.header className="flex items-end justify-between bg-surface-default px-8 py-4 uppercase fixed top-0 left-0 right-0 z-50"
       animate={{
         y: hidden ? -144 : 0,
         opacity: hidden ? 1 : 1,
       }}
-      transition={{ duration: 0.3, ease: "easeInOut" }}
+      transition={{ duration: 0.3, ease: [0.8, 0, 0.2, 1] }}
     >
       <div className="flex flex-1 items-center py-4">
         {/* content="1948" overrides the machine-readable value for
@@ -45,9 +68,20 @@ export default function NavBar() {
         <span
           itemProp="foundingDate"
           content="1925"
-          className="font-narrow font-light text-[18px] leading-8 text-neutral-0"
+          className="relative inline-block overflow-hidden font-narrow font-light text-[18px] leading-[13px] text-neutral-0"
         >
-          Davis Elen Advertising
+          {/* Single line whose clip edge sweeps horizontally: visible ->
+              hidden wipes out right-to-left (right inset 0 -> 100%); the text
+              is swapped while hidden, then hidden -> visible reveals
+              left-to-right (right inset 100% -> 0). */}
+          <motion.span
+            className="inline-block whitespace-nowrap"
+            initial={false}
+            animate={{ clipPath: visible ? "inset(0 0 0 0)" : "inset(0 100% 0 0)" }}
+            transition={{ duration: 0.6, ease: [0.8, 0, 0.2, 1] }}
+          >
+            {TAGLINES[index]}
+          </motion.span>
         </span>
       </div>
       <div className="flex shrink-0 items-center justify-between py-4">
