@@ -166,7 +166,7 @@ export default function HumanAI() {
                 <div className="flex w-full items-center gap-100">
                   <div className={`size-[22px] shrink-0 border-4 ${c.dot}`} />
                   <h3
-                    className={`flex-1 font-narrow font-light text-xl font-bold uppercase md:text-2xl lg:text-[32px] lg:leading-[40px] ${c.color}`}
+                    className={`flex-1 font-narrow text-xl font-semibold uppercase md:text-2xl lg:text-[32px] lg:leading-[40px] ${c.color}`}
                   >
                     {c.title}
                   </h3>
