@@ -121,8 +121,11 @@ const concepts = [
 // two background-images plus their own background-size/-position at
 // once.
 const gridBackground = {
-  backgroundImage: `linear-gradient(to left, #2b2b2b 1px, transparent 1px), linear-gradient(to bottom, #2b2b2b 1px, transparent 1px)`,
-  backgroundSize: "40px 40px",
+  // backgroundImage: `linear-gradient(to left, #2b2b2b 1px, transparent 1px), linear-gradient(to bottom, #2b2b2b 1px, transparent 1px)`,
+  // backgroundSize: "40px 40px",
+  // backgroundPosition: "right center",
+  backgroundImage: `url('/images/hi-x-ai.png')`,
+  backgroundSize: "cover",
   backgroundPosition: "right center"
 };
 
@@ -193,6 +196,7 @@ export default function HumanAI() {
           src="/images/chart.svg"
           alt="Unlock your potential. Human Imagination and Artificial Intelligence synergize to eliminate roadblocks and unlock what's possible. Let robots do the work!"
           className="mx-auto mt-16 block w-full max-w-md lg:mx-0 lg:mt-0 lg:w-[44.8276vw] lg:max-w-none lg:shrink-0"
+          style={{opacity: 0}}
         />
       </div>
     </section>
