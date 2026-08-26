@@ -86,7 +86,7 @@ export default function ProjectCard({ title, client, src, videoSrc, startColumn2
                 // poster={src}
                 muted
                 playsInline
-                preload="metadata"
+                preload="auto"
                 itemProp="image"
                 className={`absolute inset-0 h-full w-full min-w-full min-h-full max-w-none object-cover`}
             >
