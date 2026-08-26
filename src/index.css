@@ -117,3 +117,14 @@ abbr {
   text-decoration-color: #2b2b2b;
   text-decoration-thickness: 1px;
 }
+
+/* Target Chrome/Chromium engines using vendor property detection */
+@supports (-webkit-app-region: inherit) {
+  .chrome-gradient-adjust {
+    /* Set to 'none' or '0' to hide completely on Chrome: */
+    display: none; 
+
+    /* OR adjust opacity down if you want a lighter gradient: */
+    /* opacity: 0.3; */
+  }
+}

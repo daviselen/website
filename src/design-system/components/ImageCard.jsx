@@ -127,7 +127,7 @@ export default function ProjectCard({ title, client, src, videoSrc, startColumn2
             same mechanism rather than debugging the Tailwind JIT/purge
             pipeline blind. */}
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 pointer-events-none chrome-gradient-adjust"
           style={{ backgroundImage: "linear-gradient(195deg, transparent 60%, black 130%)" }}
         />
         <div className="absolute inset-x-8 bottom-8 flex flex-col gap-300 text-neutral-0">
