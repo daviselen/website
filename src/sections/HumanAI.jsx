@@ -157,7 +157,7 @@ export default function HumanAI() {
               before), "I" and "×" and "AI" all end up jammed together with
               no space at all — not just "less space than expected." */}
           <h2 className="font-display text-6xl uppercase leading-none md:text-8xl lg:text-display-hiai">
-            THE <abbr title="Human Imagination">H<span className="tracking-[0.08em]">I</span></abbr><span className="tracking-[0.1em]">x</span><abbr title="Artificial Intelligence">AI</abbr> Loop
+            THE <abbr title="Human Imagination">H<span className="tracking-[0.08em]">I</span></abbr><span className="tracking-[0.1em] lowercase">x</span><abbr title="Artificial Intelligence">AI</abbr> Loop
           </h2>
 
           <ul className="mt-800 flex flex-col gap-700">
