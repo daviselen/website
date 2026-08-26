@@ -45,7 +45,7 @@ export default function NavBar() {
         <span
           itemProp="foundingDate"
           content="1925"
-          className="font-narrow font-light text-2xl leading-8 text-neutral-0"
+          className="font-narrow font-light text-[18px] leading-8 text-neutral-0"
         >
           Davis Elen Advertising
         </span>
@@ -56,13 +56,13 @@ export default function NavBar() {
         </Link>
       </div>
       <nav className="flex flex-1 items-center justify-end gap-6">
-        <Link to="/about" className="px-4 pb-4 pt-8 font-narrow font-light text-2xl leading-8 text-neutral-0 hover:text-primary-300">
+        <Link to="/about" className="px-4 pb-4 pt-8 font-narrow font-light text-[18px] leading-8 text-neutral-0 hover:text-primary-300">
           About
         </Link>
-        <a href="#careers" className="px-4 pb-4 pt-8 font-narrow font-light text-2xl leading-8 text-neutral-0 hover:text-primary-300">
+        <a href="#careers" className="px-4 pb-4 pt-8 font-narrow font-light text-[18px] leading-8 text-neutral-0 hover:text-primary-300">
           Careers
         </a>
-        <a href="#contact" className="px-4 pb-4 pt-8 font-narrow font-light text-2xl leading-8 text-neutral-0 hover:text-primary-300">
+        <a href="#contact" className="px-4 pb-4 pt-8 font-narrow font-light text-[18px] leading-8 text-neutral-0 hover:text-primary-300">
           Contact
         </a>
       </nav>
