@@ -1,31 +1,19 @@
 // Rebuilt from get_design_context's real reference for the "FOOTB" group.
 //
-// Back to CSS multi-column (`columns-2`) for real per-column masonry flow
-// — simpler than two hand-split flex containers, and this actually does
-// solve the row-sharing problem that plain grid/flex-wrap can't (see the
-// note that used to live here about why those failed; kept here for
-// context: both are row-based layout models, every item sharing a row is
-// sized against that row's tallest member, so a short item can't make a
-// sibling column's next item start earlier — `columns` is genuinely
-// column-independent, which is what a masonry stagger needs).
+// Two independent flex columns, split at the startColumn2 boundary. This
+// replaced CSS multi-column (`columns-2`): multi-column's default
+// `column-fill: balance` rebalances column heights whenever content grows,
+// so growing a card on hover (aspect-[11/4] -> aspect-[55/36]) pushed the
+// last card of column 1 into column 2. Flex columns pin each card to a
+// fixed column, so hover growth stays contained in its own column.
 //
-// The one thing `columns` doesn't give you for free: which items land in
-// which column. Its default (`column-fill: balance`) tries to equalize
-// total column height, which is NOT the same goal as "heading + these 4
-// specific cards on the left, these other 4 on the right" — so instead of
-// trusting the balance algorithm to happen to land there, this forces the
-// break explicitly with `break-before-column` on the exact card that's
-// supposed to start the second column (verified this utility is real
-// Tailwind, not assumed: tailwindcss.com/docs/break-before). That also
-// means the array below is grouped (heading + all 4 left-column cards,
-// then all 4 right-column cards) rather than the interleaved reading
-// order used previously — on mobile (`columns-1`), cards now read
-// grouped-by-column instead of interleaved. That's a real trade-off for
-// the simpler code, not a free win — if the interleaved mobile order
+// The array below stays grouped (all 4 left-column cards, then all 4
+// right-column cards) rather than interleaved reading order — on mobile
+// (single stacked column) cards read grouped-by-column. That's a real
+// trade-off; if the interleaved mobile order matters, that's a separate ask.
 import HeadingReveal from "../design-system/components/HeadingReveal";
 import ProjectCard from "../design-system/components/ImageCard";
 
-// matters, that's worth a separate ask.
 const projects = [
   {
     title: "We Got You",
@@ -75,16 +63,30 @@ const projects = [
 ];
 
 export default function PortfolioGrid() {
+  // Split at the startColumn2 boundary into two fixed column groups.
+  // Two independent flex columns instead of CSS `columns-2`: multi-column's
+  // default `column-fill: balance` rebalances column heights, so growing a
+  // card on hover pushed col 1's last card into col 2. Flex columns pin each
+  // card to its column, so hover growth stays contained.
+  const splitIndex = projects.findIndex((p) => p.startColumn2);
+  const columns = [projects.slice(0, splitIndex), projects.slice(splitIndex)];
+
   return (
     <section id="portfolio-grid" className="px-8 pt-3000 pb-0">
-      <div className="columns-1 gap-x-8 md:columns-2">
-        <HeadingReveal
-          as="h2"
-          text={`Fresh Out \nof the Box`}
-          className="mb-2000 font-display text-6xl uppercase leading-none break-inside-avoid md:text-8xl lg:text-display-h2"
-          />
-        {projects.map((p) => (
-          <ProjectCard key={p.title + p.client} {...p} />
+      <div className="flex flex-col gap-x-8 md:flex-row">
+        {columns.map((column, i) => (
+          <div key={i} className="flex flex-1 flex-col">
+            {i === 0 && (
+              <HeadingReveal
+                as="h2"
+                text={`Fresh Out \nof the Box`}
+                className="mb-1000 font-display text-6xl uppercase leading-none md:text-8xl lg:text-display-h2"
+              />
+            )}
+            {column.map((p) => (
+              <ProjectCard key={p.title + p.client} {...p} />
+            ))}
+          </div>
         ))}
       </div>
     </section>
