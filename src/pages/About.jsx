@@ -120,6 +120,7 @@ export default function About() {
         </div>
       </section>
       <MediaObject
+        onClick={() => StereoPannerNode(true)}
         imageSide="left"
         title="Our Origin Story"
         titleSize="large"
