@@ -32,8 +32,17 @@ const sideConfig = {
   },
 };
 
+// Named type tokens only — never a raw step like `text-7xl` (see DESIGN.md
+// "Knockout" note). `default` is Headings/H-hi-ai (144/104), `large` is
+// Headings/H3 (184/128), the size the standalone section headlines use.
+const titleSizes = {
+  default: "text-display-hiai",
+  large: "text-display-h2 pt-10",
+};
+
 export default function MediaObject({
   imageSide = "right",
+  titleSize = "default",
   title,
   subhead,
   text,
@@ -41,11 +50,12 @@ export default function MediaObject({
   imgAlt,
 }) {
   const side = sideConfig[imageSide] ?? sideConfig.right;
+  const heading = titleSizes[titleSize] ?? titleSizes.default;
 
   return (
     <div className="grid grid-cols-12 grid-rows-1 gap-400 px-8">
       <div className={`${side.copy} row-start-1 flex flex-col gap-600`}>
-        <h2 className="font-display text-display-hiai uppercase">{title}</h2>
+        <h2 className={`font-display uppercase ${heading}`}>{title}</h2>
         <div className={`flex flex-col gap-200 ${side.measure}`}>
           {subhead ? (
             <span className="font-narrow text-base">{subhead}</span>
