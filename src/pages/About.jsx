@@ -119,6 +119,15 @@ export default function About() {
           ))}
         </div>
       </section>
+      <MediaObject
+        imageSide="left"
+        title="Our Origin Story"
+        titleSize="large"
+        subhead="Runtime 44:32"
+        text="From a small print shop in Glendale to one of the largest independently-owned agencies in the country."
+        imgSrc="/images/about-history.jpg"
+        imgAlt="Photo of Henry Mayers and the four partners who took over in 1958."
+      />
     </main>
   );
 }
