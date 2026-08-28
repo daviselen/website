@@ -128,3 +128,15 @@ abbr {
     /* opacity: 0.3; */
   }
 }
+
+.teams-video:hover::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  box-shadow:
+    0 8px 24px 0 rgba(0 0 0 / 75%),
+    0 0 4px 0 rgb(203, 239, 149, 0.75),
+    inset 0 0 0 3px #a4de02,
+    inset 0 0 0 5px #000;
+}

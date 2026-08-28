@@ -26,6 +26,7 @@ export default {
           0: "#ffffff", // Neutral/0 — primary text/logo color
           500: "#818181", // Neutral/500, named style "Gray"
           700: "#4d4d4d", // Neutral/700, named style "Dark Gray"
+          1000: "#000", // Neutral/1000 - primary surface color
         },
         red: "#E85746", // named style "Red" — "WHAT'S POSSIBLE" / HI cube accent — per direct
         // confirmation this is the correct value, not the #D71602 pulled earlier
@@ -57,6 +58,7 @@ export default {
       // these named keys for new work; a follow-up pass could migrate the
       // rest if full 1:1 traceability matters more than the churn.
       spacing: {
+        50: "4px",
         100: "8px",
         200: "16px",
         300: "24px",
@@ -123,9 +125,10 @@ export default {
       fontSize: {
         "display-h1": ["360px", { lineHeight: "256px" }], // Font/Headings/H1 — Masthead
         "display-h2": ["184px", { lineHeight: "128px" }], // Headings/H3 (Scale/2300 + Scale/1600) — section headlines
-        "display-hiai": ["144px", { lineHeight: "106px" }], // "THE HI x AI LOOP"
+        "display-hiai": ["144px", { lineHeight: "104px" }], // "THE HI x AI LOOP"
         "display-card": ["80px", { lineHeight: "56px" }], // FootB/heading — portfolio card brand name
         "display-stat": ["64px", { lineHeight: "56px" }], // card/heading, det/heading — Proof/News stat headline
+        "pre-title": ["40px", { lineHeight: "48px" }],
         "link-social": ["18px", { lineHeight: "18px" }], // links/social — Footer social links
       },
     },
