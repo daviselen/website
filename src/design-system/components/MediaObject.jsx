@@ -26,7 +26,7 @@ const sideConfig = {
     measure: "pr-1000",
   },
   left: {
-    copy: "col-start-8 col-end-13 pl-400 pr-700",
+    copy: "col-start-8 col-end-13 px-400",
     image: "col-start-1 col-end-8",
     measure: "",
   },
