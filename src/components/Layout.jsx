@@ -184,16 +184,6 @@ export default function PixelCurtain({
     setPhase("cover");
   }, [location.pathname]);
 
-  // Navigation detection
-  useEffect(() => {
-    if (previousPathname.current === location.pathname) {
-      return;
-    }
-
-    previousPathname.current = location.pathname;
-    setPhase("cover");
-  }, [location.pathname]);
-
 
   /*
    * -----------------------------------------
