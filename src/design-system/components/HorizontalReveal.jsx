@@ -1,8 +1,5 @@
-import { useEffect, useRef, useState } from "react";
-import { motion } from "motion/react";
-
-const REVEAL_DURATION = 26.153 / 30;
-const REVEAL_EASE = [0.8, 0, 0.2, 1];
+import { useRef } from "react";
+import { gsap, useGSAP, REVEAL_DURATION, EASE_REVEAL } from "../animation";
 
 export default function HorizontalReveal({
   children,
@@ -24,46 +21,52 @@ export default function HorizontalReveal({
 
   const clip = clipPaths[direction];
 
-  // Observe the OUTER wrapper, not the inner span. The inner span starts at
-  // `clip-path: inset(0% 100% 0% 0%)` (clipped to zero width), and Chromium's
-  // IntersectionObserver uses the clipped paint area — a zero-area target
-  // never reports "in view", so a reveal gated on its own visibility would
-  // deadlock (this is why the first heading in each row never animated). The
-  // wrapper has a full layout box (clip-path doesn't shrink it), so it always
-  // reports real intersection.
+  // Trigger off the OUTER wrapper, not the inner span. The inner span starts
+  // at `clip-path: inset(0% 100% 0% 0%)` (clipped to zero width). The old
+  // IntersectionObserver used the clipped paint area, so a zero-area target
+  // never reported "in view" and the reveal deadlocked (this is why the first
+  // heading in each row never animated). ScrollTrigger measures layout bounds
+  // via getBoundingClientRect, which clip-path doesn't shrink, so it wouldn't
+  // hit that specific bug — but the wrapper stays the trigger anyway, since
+  // it's the element whose box actually describes where the text sits.
   const wrapRef = useRef(null);
-  const [inView, setInView] = useState(false);
+  const innerRef = useRef(null);
 
-  useEffect(() => {
-    const el = wrapRef.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setInView(true);
-          observer.disconnect(); // once
+  useGSAP(
+    () => {
+      // start "top bottom-=100" reproduces the observer's rootMargin: -100px
+      // (fire 100px after the element's top crosses the viewport bottom),
+      // and once: true reproduces its observer.disconnect().
+      gsap.fromTo(
+        innerRef.current,
+        { clipPath: clip.initial },
+        {
+          clipPath: clip.animate,
+          duration: REVEAL_DURATION,
+          delay,
+          ease: EASE_REVEAL,
+          scrollTrigger: {
+            trigger: wrapRef.current,
+            start: "top bottom-=100",
+            once: true,
+          },
         }
-      },
-      { rootMargin: "-100px" }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+      );
+    },
+    { scope: wrapRef, dependencies: [direction, delay] }
+  );
 
   return (
     <span ref={wrapRef} className={`block overflow-hidden -my-[0.075em] ${className}`}>
-      <motion.span
+      <span
+        ref={innerRef}
         className="block w-full py-[0.075em]"
-        initial={{ clipPath: clip.initial }}
-        animate={{ clipPath: inView ? clip.animate : clip.initial }}
-        transition={{
-          duration: REVEAL_DURATION,
-          delay,
-          ease: REVEAL_EASE,
-        }}
+        // Inline so the clipped state is correct on first paint, before GSAP
+        // runs — motion's `initial` prop did this same job.
+        style={{ clipPath: clip.initial }}
       >
         {children}
-      </motion.span>
+      </span>
     </span>
   );
 }

@@ -6,23 +6,9 @@
 // Proof's card images are 576/480 (6/5), same as News/Awards — <Card />
 // defaults to 6/5, so no override needed here. (From The Inside Out and
 // the portfolio grid are the two sections that use 55/36 instead.)
+import { useRef } from "react";
 import Card from "../design-system/components/Card.jsx";
-import { motion } from "motion/react";
-
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.25, // delay between each item
-    },
-  },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 160 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.625 } },
-};
+import { useStaggerReveal } from "../design-system/animation.js";
 
 const stats = [
   {
@@ -46,18 +32,22 @@ const stats = [
 ];
 
 export default function Proof() {
+  const gridRef = useRef(null);
+
+  // The stagger lives in the parent now — Card no longer takes a `variants`
+  // prop. Same timings as before: 0.25s between items, 0.625s each, from
+  // 160px below.
+  useStaggerReveal(gridRef, { amount: 0.333 });
+
   return (
-    <motion.section
+    <section
+      ref={gridRef}
       id="proof"
       className="grid gap-8 px-8 pt-3000 pb-0 md:grid-cols-3"
-      variants={container}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: false, amount: 0.333 }}
     >
       {stats.map((s) => (
-        <Card key={s.heading} {...s} size="small" variants={item} />
+        <Card key={s.heading} {...s} size="small" />
       ))}
-    </motion.section>
+    </section>
   );
 }

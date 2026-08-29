@@ -1,11 +1,11 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useLocation, useNavigationType, useOutlet } from "react-router-dom";
-import { motion } from "motion/react";
+import { gsap, useGSAP } from "../design-system/animation.js";
 import NavBar from "../sections/NavBar";
 import Footer from "../sections/Footer";
 
 const DEFAULT_COLORS = [
-  "rgba(0, 0, 0, 0.5)",
+  "rgba(0, 0, 0, 0.85)",
   "#2b2b2b",
   "#1f1f1f",
   "#000",
@@ -13,6 +13,17 @@ const DEFAULT_COLORS = [
 
 const DURATION = 0.25;
 const MAX_DELAY = 0.6;
+
+// Onset delay before the first pixel moves. Reproduces the ~80ms that
+// motion's per-pixel component mount cost used to add for free. See the
+// "Curtain lifecycle" note below.
+const START_LAG = 0.08;
+
+// When the phase flips, measured on the timeline's clock. Deliberately
+// SHORTER than START_LAG + MAX_DELAY + DURATION (0.93s), so the reveal starts
+// while the last pixels are still landing — that slight overlap is the
+// original look, and it's why the screen never quite goes fully solid.
+const COVER_WINDOW = DURATION + MAX_DELAY;
 
 export default function PixelCurtain({
   pixelSize = 64,
@@ -173,17 +184,6 @@ export default function PixelCurtain({
     setPhase("cover");
   }, [location.pathname]);
 
-  /*
-   * -----------------------------------------
-   * Calculate how long the cover takes
-   * -----------------------------------------
-   *
-   * The last pixel can start at MAX_DELAY
-   * and then takes DURATION to finish.
-   */
-
-  const coverDuration = DURATION + MAX_DELAY;
-
   // Navigation detection
   useEffect(() => {
     if (previousPathname.current === location.pathname) {
@@ -199,39 +199,90 @@ export default function PixelCurtain({
    * -----------------------------------------
    * Curtain lifecycle
    * -----------------------------------------
+   *
+   * One timeline per phase. Two constants below exist to preserve the LOOK of
+   * the original motion implementation, whose timing came partly from
+   * incidental library behaviour rather than from anything declared:
+   *
+   * 1. START_LAG. motion mounted one component per pixel (~450 of them at a
+   *    1792px viewport), each spinning up its own animation loop, so nothing
+   *    moved until ~80ms after the click — the curtain eased up out of
+   *    nothing. GSAP starts inside useLayoutEffect and renders its first
+   *    frame BEFORE paint, so without this the curtain's first painted frame
+   *    is already ~45% faded in, reading as a pop rather than a fade.
+   *    Measured, not guessed: first pixel moved at 82ms under motion vs 13ms
+   *    under GSAP, and the offset stayed constant across the whole ramp
+   *    (all pixels started at 682ms vs 603ms), confirming it's a start-time
+   *    shift and not an easing difference.
+   *
+   * 2. COVER_WINDOW. The old code advanced phases on setTimeout(850ms) while
+   *    the animation ran ~80ms behind it, so the reveal began BEFORE the last
+   *    pixels landed — average coverage peaked at 0.984 and the screen never
+   *    quite went solid. Advancing on the timeline's own onComplete (the
+   *    obvious "correct" translation) waits for true full coverage and then
+   *    holds it ~100ms, which reads as heavier and slower. Firing the phase
+   *    change at a fixed position on the timeline restores the original
+   *    slight overlap.
+   *
+   * Both are dials: raise COVER_WINDOW past DURATION + MAX_DELAY + START_LAG
+   * to get a real solid hold, drop START_LAG to 0 for an immediate start.
    */
 
-  useEffect(() => {
-    if (phase !== "cover") {
-      return;
-    }
+  const curtainRef = useRef(null);
 
-    const timer = setTimeout(() => {
-      // Fully covered: swap route content behind the curtain, then reveal.
-      setDisplayedOutlet(outletRef.current);
-      setPhase("reveal");
-    }, coverDuration * 1000);
+  useGSAP(
+    () => {
+      if (phase === null) return;
 
-    return () => clearTimeout(timer);
-  }, [phase, coverDuration]);
+      const pixels = gsap.utils.toArray("[data-pixel]");
+      if (!pixels.length) return;
 
-  /*
-   * -----------------------------------------
-   * Reveal lifecycle
-   * -----------------------------------------
-   */
+      const covering = phase === "cover";
 
-  useEffect(() => {
-    if (phase !== "reveal") {
-      return;
-    }
+      const tl = gsap.timeline();
 
-    const timer = setTimeout(() => {
-      setPhase(null);
-    }, coverDuration * 1000);
+      pixels.forEach((el, i) => {
+        const pixel = pixelData[i];
+        if (!pixel) return;
 
-    return () => clearTimeout(timer);
-  }, [phase, coverDuration]);
+        if (covering) {
+          // circOut -> circ.out: same curve, GSAP's naming.
+          tl.fromTo(
+            el,
+            { opacity: 0, scale: 0.5 },
+            { opacity: 1, scale: 1.05, duration: DURATION, ease: "circ.out" },
+            START_LAG + pixel.delayIn
+          );
+        } else {
+          // Reveal starts from wherever cover left the pixel, so `to`, not
+          // `fromTo` — mirroring motion animating out of its current state.
+          tl.to(
+            el,
+            { opacity: 0, scale: 0.5, duration: DURATION, ease: "circ.in" },
+            START_LAG + pixel.delayOut
+          );
+        }
+      });
+
+      // Phase advance at a fixed position on the timeline's clock — NOT
+      // onComplete. See note 2 above: the overlap is the original look.
+      // Still one clock, so it can't drift the way a parallel setTimeout did.
+      tl.call(
+        () => {
+          if (covering) {
+            // Swap route content behind the curtain, then reveal.
+            setDisplayedOutlet(outletRef.current);
+            setPhase("reveal");
+          } else {
+            setPhase(null);
+          }
+        },
+        null,
+        COVER_WINDOW
+      );
+    },
+    { scope: curtainRef, dependencies: [phase, pixelData] }
+  );
 
   /*
    * -----------------------------------------
@@ -251,43 +302,28 @@ export default function PixelCurtain({
       {/* Curtain */}
       {phase !== null && dimensions.cols > 0 && (
         <div
+          ref={curtainRef}
           className="pointer-events-none fixed inset-0 z-50 grid"
           style={{
             gridTemplateColumns: `repeat(${dimensions.cols}, 1fr)`,
             gridTemplateRows: `repeat(${dimensions.rows}, 1fr)`,
           }}
         >
+          {/* Plain divs, not motion components: at 64px per cell a 1792px
+              viewport is ~450 of these, and each motion.div carried its own
+              hook state and animation loop. The timeline above drives them
+              all as raw DOM nodes off a single ticker. Order here matches
+              pixelData's order, which is how each node finds its own
+              delayIn/delayOut. */}
           {pixelData.map((pixel, index) => (
-            <motion.div
+            <div
               key={index}
+              data-pixel=""
               style={{
                 backgroundColor: pixel.color,
-              }}
-              initial={{
                 opacity: 0,
-                scale: 0.5,
+                transform: "scale(0.5)",
               }}
-              animate={
-                phase === "cover"
-                  ? {
-                      opacity: 1,
-                      scale: 1.05,
-                      transition: {
-                        duration: DURATION,
-                        delay: pixel.delayIn,
-                        ease: "circOut",
-                      },
-                    }
-                  : {
-                      opacity: 0,
-                      scale: 0.5,
-                      transition: {
-                        duration: DURATION,
-                        delay: pixel.delayOut,
-                        ease: "circIn",
-                      },
-                    }
-              }
             />
           ))}
         </div>

@@ -2,24 +2,10 @@
 // via <Card /> rather than a second hand-rolled implementation. Image
 // aspect is 6/5, same as Proof, which is <Card />'s default — no
 // override needed here.
+import { useRef } from "react";
 import Card from "../design-system/components/Card.jsx";
 import HeadingReveal from "../design-system/components/HeadingReveal.jsx";
-import { motion } from "motion/react";
-
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.25, // delay between each item
-    },
-  },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 160 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.625 } },
-};
+import { useStaggerReveal } from "../design-system/animation.js";
 
 const awards = [
   {
@@ -43,6 +29,13 @@ const awards = [
 ];
 
 export default function NewsAwards() {
+  const gridRef = useRef(null);
+
+  // Note the ref goes on the inner grid, NOT the <section> — the section also
+  // contains the HeadingReveal, which runs its own reveal and must not be
+  // caught by the stagger's direct-child selector.
+  useStaggerReveal(gridRef, { amount: 0.333 });
+
   return (
     <section id="news-awards" className="px-8">
       <HeadingReveal
@@ -54,16 +47,11 @@ export default function NewsAwards() {
           one becomes a value of the page-level Organization item's
           `award` property (a plain Text property — see HomePage.jsx for
           where that Organization itemScope starts). */}
-      <motion.div
-        className="grid gap-8 md:grid-cols-3"
-        variants={container}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: false, amount: 0.333 }}>
+      <div ref={gridRef} className="grid gap-8 md:grid-cols-3">
         {awards.map((a) => (
-          <Card key={a.heading} {...a} headingItemProp="award" size="small" variants={item} />
+          <Card key={a.heading} {...a} headingItemProp="award" size="small" />
         ))}
-      </motion.div>
+      </div>
     </section>
   );
 }

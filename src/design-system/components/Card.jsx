@@ -39,7 +39,6 @@
 // template-string class name) because Tailwind's JIT scanner needs the literal
 // class text present in a source file — an interpolated `aspect-[${x}]` /
 // `gap-[${n}]` wouldn't reliably get picked up.
-import { motion } from "motion/react";
 import HorizontalReveal from "./HorizontalReveal";
 import TextReveal from "./TextReveal";
 
@@ -77,14 +76,20 @@ export default function Card({
   itemType,
   headingItemProp,
   imageItemProp,
-  variants,
 }) {
   const cfg = sizeConfig[size] ?? sizeConfig.default;
   const aspectKey = aspect ?? cfg.aspect;
+  // The `variants` prop is gone. It only existed so motion could propagate a
+  // parent's staggerChildren state into this component; GSAP has no
+  // equivalent inheritance, so the stagger now lives entirely in the parent
+  // section, which tweens these root divs as DOM nodes (see Proof.jsx /
+  // NewsAwards.jsx). Card is purely presentational again — and critically,
+  // it renders VISIBLE by default, so the sections that never animated it
+  // (FromInsideOut) are unaffected. The animating parents set the hidden
+  // start state themselves via fromTo.
   return (
-    <motion.div
+    <div
       className={`flex flex-col ${cfg.gap}`}
-      variants={variants}
       {...(itemType ? { itemScope: true, itemType } : {})}
     >
       <img
@@ -102,6 +107,6 @@ export default function Card({
         </h3>
         <p className="font-narrow font-light text-lg leading-relaxed md:text-2xl md:leading-8"><TextReveal text={body}>{body}</TextReveal></p>
       </div>
-    </motion.div>
+    </div>
   );
 }
