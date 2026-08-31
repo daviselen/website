@@ -15,6 +15,14 @@ export default defineConfig({
   },
   use: {
     baseURL: "http://localhost:5173",
+    // Emulate a reduced-motion preference, which switches ScrollSmoother off
+    // (see useSmoothScroll in src/design-system/animation.js). The smoother
+    // scrolls by transforming #smooth-content and easing toward the target
+    // over ~1s, so with it running a screenshot taken right after a scroll
+    // catches the page mid-glide, and section crops land at the wrong offset.
+    // Native scrolling makes the captures deterministic again — and this only
+    // disables the smoothing, not the ScrollTrigger animations under test.
+    reducedMotion: "reduce",
   },
   // Match the Figma frame you export against. Width = frame width,
   // deviceScaleFactor = export scale (@2x).

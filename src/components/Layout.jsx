@@ -1,6 +1,11 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useLocation, useNavigationType, useOutlet } from "react-router-dom";
-import { gsap, useGSAP } from "../design-system/animation.js";
+import {
+  gsap,
+  useGSAP,
+  ScrollSmoother,
+  useSmoothScroll,
+} from "../design-system/animation.js";
 import NavBar from "../sections/NavBar";
 import Footer from "../sections/Footer";
 

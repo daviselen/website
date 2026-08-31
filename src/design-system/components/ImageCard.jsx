@@ -8,12 +8,39 @@ import TextReveal from "../components/TextReveal";
 const CARD_HIDDEN = "inset(0% 0% 100% 0%)";
 const CARD_VISIBLE = "inset(0% 0% 0% 0%)";
 
+// 2. Scroll-scrubbed card height. Same two ratios the old hover state
+// toggled between (`aspect-[55/36]` -> `aspect-[11/4]`), as numbers so a
+// height in px can be derived from the card's own width. The card lives at
+// TALL and is scrubbed down to SHORT while pinned.
+const ASPECT_TALL = 55 / 36;
+const ASPECT_SHORT = 11 / 4;
+
+// Seconds the height takes to catch up to the scroll position. This is the
+// dial for how soft the shrink feels: 0 (or `true`) locks it to the scrollbar,
+// higher values let it glide on after the wheel stops. Past ~1s the card is
+// still visibly moving well after the page has settled, which reads as lag
+// rather than smoothness.
+const SCRUB_DAMPING = 0.6;
+
+// How much scrolling the shrink is spread over, as a multiple of the height
+// the card loses. 1 is the natural runway — the card stays pinned for exactly
+// the distance the content below it would have travelled anyway. 2 holds the
+// pin for twice that, so the same shrink is metered out over twice the
+// scrolling and reads at half the speed.
+//
+// The cost of going above 1 is that the pin stops being distance-neutral:
+// `pinSpacing` pads the runway out to the full end value, so the extra travel
+// is scroll where the card is fixed and shrinking but the page around it has
+// nothing left to do. At 2 that's one card-height of quiet scroll per card,
+// which is the intended slow hold. Much past 2 it starts reading as the page
+// being stuck rather than the card being deliberate.
+const PIN_RUNWAY_MULTIPLIER = 2;
+
 export default function ProjectCard({ title, client, src, videoSrc, startColumn2 }) {
   const containerRef = useRef(null);
   const maskRef = useRef(null);
 
     const videoRef = useRef(null);
-    const [isHovered, setIsHovered] = useState(false);
     const [isRevealed, setIsRevealed] = useState(false);
 
     // isRevealed gates whether the caption children RENDER at all (see note
@@ -47,19 +74,98 @@ export default function ProjectCard({ title, client, src, videoSrc, startColumn2
             },
           }
         );
+        // The pinned height scrub. Separate tween, not part of the mask
+        // reveal: the reveal is a toggleActions play/reverse, this one is a
+        // scrub tied to scroll position, so they can't share a timeline.
+        //
+        // Sequence: the card scrolls up at full height, pins when its centre
+        // hits the viewport centre, shrinks in place while pinned, then
+        // unpins and carries on up.
+        //
+        // Heights are tweened in PIXELS, not as `aspectRatio`. Pinning writes
+        // an inline `height` onto the element (ScrollTrigger has to freeze the
+        // box before taking it out of flow), and an explicit height beats
+        // `aspect-ratio` in the cascade — so an aspect-ratio tween would
+        // silently do nothing for exactly the stretch of scroll where it
+        // matters.
+        //
+        // The values are functions so `invalidateOnRefresh` re-reads them at
+        // the current column width instead of baking in the width from first
+        // paint.
+        const tallHeight = () => containerRef.current.offsetWidth / ASPECT_TALL;
+        const shortHeight = () => containerRef.current.offsetWidth / ASPECT_SHORT;
+
+        gsap.fromTo(
+          containerRef.current,
+          { height: tallHeight },
+          {
+            height: shortHeight,
+            // `ease: "none"` because scrub already maps progress linearly to
+            // scroll — any other ease would double-apply a curve.
+            ease: "none",
+            scrollTrigger: {
+              trigger: containerRef.current,
+              // "centre of the card meets centre of the viewport".
+              start: "center center",
+              // Pin runway = the height the card is about to lose, times
+              // PIN_RUNWAY_MULTIPLIER. At 1 the scroll distance spent pinned
+              // equals the distance the content below would have travelled
+              // anyway; the multiplier stretches the shrink over more
+              // scrolling to slow it down. `pinSpacing` reserves whatever
+              // this returns, so the unpin still lands without a jump at any
+              // multiplier — see the constant for what the stretch costs.
+              end: () =>
+                `+=${(tallHeight() - shortHeight()) * PIN_RUNWAY_MULTIPLIER}`,
+              pin: true,
+              pinSpacing: true,
+              // Damped, not locked: the height eases toward the scroll
+              // position over SCRUB_DAMPING seconds instead of tracking it
+              // frame-for-frame, which takes the mechanical edge off a wheel
+              // notch or a trackpad flick.
+              scrub: SCRUB_DAMPING,
+              // No anticipatePin. It pre-fires the pin in proportion to
+              // scroll velocity, which is what you want when a smooth-scroll
+              // library is interpolating scroll position — but this site
+              // scrolls natively, so it just pins early and the card
+              // teleports: measured a 128px snap (top 478 -> 230 in one wheel
+              // step) at flick speed, and nothing at all when creeping.
+              // Velocity-dependent jump = the thing being reported.
+              invalidateOnRefresh: true,
+              // Unpinning restores the inline styles ScrollTrigger cached at
+              // pin start — including the height, which by then the scrub has
+              // rewritten. Left alone the card snaps back to full height the
+              // moment it unpins (measured: 304px -> 440px in a single frame).
+              //
+              // This re-assert hangs off onScrubComplete rather than
+              // onLeave/onLeaveBack precisely BECAUSE the scrub is damped. On
+              // exit the tween is still easing toward its end value, so an
+              // immediate set would slam the card to 244 while the tween is
+              // mid-flight at ~280 and the next frame would drag it back up —
+              // trading the snap for a bounce. onScrubComplete fires once the
+              // catch-up has settled, and the progress check keeps it to the
+              // two ends, where the restore is the only thing that can have
+              // touched the height.
+              onScrubComplete: (self) => {
+                if (self.progress === 1) {
+                  gsap.set(containerRef.current, { height: shortHeight() });
+                } else if (self.progress === 0) {
+                  gsap.set(containerRef.current, { height: tallHeight() });
+                }
+              },
+            },
+          }
+        );
       },
       { scope: containerRef }
     );
 
     const handleMouseEnter = () => {
-        setIsHovered(true);
         videoRef.current?.play().catch((error) => {
             console.warn("Autoplay blocked:", error);
         });
     };
 
     const handleMouseLeave = () => {
-        setIsHovered(false);
         if (videoSrc && videoRef.current) {
           videoRef.current.pause();
           videoRef.current.currentTime = 0; // Resets video back to 0:00 frame
@@ -73,7 +179,12 @@ export default function ProjectCard({ title, client, src, videoSrc, startColumn2
         onMouseLeave={handleMouseLeave}
         itemScope
         itemType="https://schema.org/CreativeWork"
-        className={`relative mb-1000 aspect-[11/4] hover:aspect-[55/36] transition-all ease-in-out w-full overflow-hidden rounded-md break-inside-avoid ${
+        // No `aspect-[…]` class and no `transition-all` any more: height is
+        // owned by the scrub tween above, and a CSS transition on the same
+        // property would fight it every frame. The tall start value is
+        // inline so it's correct on first paint, before GSAP runs.
+        style={{ aspectRatio: ASPECT_TALL }}
+        className={`relative mb-1000 w-full overflow-hidden rounded-md break-inside-avoid ${
           startColumn2 ? "break-before-column" : ""
         }`}
       >

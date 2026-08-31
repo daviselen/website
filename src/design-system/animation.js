@@ -8,11 +8,17 @@
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { CustomEase } from "gsap/CustomEase";
 
 // Registration is idempotent, but doing it here means a component only has
 // to import this module — it can't forget a plugin and fail at runtime.
-gsap.registerPlugin(useGSAP, ScrollTrigger, CustomEase);
+//
+// ScrollSmoother ships in the public `gsap` package as of 3.13 (it was a Club
+// plugin before Webflow made the whole library free), so this is a plain
+// import off the dependency already in package.json — no extra install, and
+// no third-party smooth-scroll library to keep in sync with ScrollTrigger.
+gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollSmoother, CustomEase);
 
 // ScrollTrigger caches every start/end as a pixel offset when it first
 // measures, and auto-refreshes on resize and on window "load". On this app
@@ -85,6 +91,81 @@ const STAGGER_STEP = 0.25; // delay between each item
 const ITEM_DURATION = 0.625;
 const ITEM_OFFSET_Y = 160;
 
+// Only the Y axis is scrubbed; the fade stays on the clock. That split is
+// load-bearing, not stylistic.
+//
+// Each card's heading runs its own <HorizontalReveal /> — a 0.87s clip-path
+// wipe on a separate `once: true` ScrollTrigger, firing on the wall clock.
+// When the fade was scrubbed too, the card's opacity was stretched across a
+// whole viewport of scrolling while that wipe still took its fixed 0.87s, so
+// the wipe ran to completion behind a card that was still translucent.
+// Measured mid-scroll: card 3's heading was fully unwiped
+// (`inset(0% 0.335% 0% 0%)`) at `opacity: 0.62`. The animation wasn't gone,
+// it had already happened where nobody could see it.
+//
+// Keeping opacity on its original played timeline restores the overlap the
+// wipe depends on — the card is opaque by the time its heading is triggered —
+// while Y still tracks the scroll position. Anything added here that a child
+// component's own clock-based reveal has to line up with belongs on the
+// played timeline, not the scrubbed one.
+//
+// Distance the Y scrub is spread over, starting from the trigger's start.
+// Deliberately viewport-relative rather than tied to the grid's own bounds:
+// these grids are one card tall at md+ but three stacked cards tall on
+// mobile, so a grid-relative end ("bottom bottom") would make the same
+// animation crawl over ~3 viewports of scrolling on a phone. One viewport of
+// travel reads the same at every breakpoint.
+const STAGGER_DISTANCE = "100%";
+
+// Seconds the timeline takes to catch up to the scroll position — same dial
+// as ImageCard's SCRUB_DAMPING. `true` would weld it to the scrollbar, which
+// feels mechanical on top of ScrollSmoother; this lets it settle.
+const STAGGER_SCRUB = 0.5;
+
+// How long the viewport takes to catch up to the real scroll position, in
+// seconds. This is the page-wide counterpart to ImageCard's SCRUB_DAMPING:
+// that one softens the card's height, this one softens the scroll itself, so
+// a wheel notch arrives as a glide instead of a step.
+const SMOOTH_DURATION = 1;
+
+/**
+ * Installs page-wide smooth scrolling. Call once, from the app shell.
+ *
+ * ScrollSmoother works by pinning a wrapper to the viewport and translating
+ * the content inside it, so two things follow for callers:
+ *
+ * 1. The markup must be `#smooth-wrapper > #smooth-content > …page…`.
+ * 2. Anything `position: fixed` has to live OUTSIDE `#smooth-content`. A
+ *    transformed ancestor makes a fixed child position against that ancestor
+ *    instead of the viewport, so a fixed navbar inside the content would
+ *    scroll away with the page.
+ *
+ * ScrollTrigger needs no changes — it detects the smoother and switches pins
+ * to transform-based positioning by itself.
+ */
+export function useSmoothScroll() {
+  useGSAP(() => {
+    // Smooth scrolling overrides how far a gesture travels, which is exactly
+    // what someone asking for reduced motion is asking not to happen. Skip
+    // the smoother entirely and leave native scrolling alone.
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const smoother = ScrollSmoother.create({
+      wrapper: "#smooth-wrapper",
+      content: "#smooth-content",
+      smooth: SMOOTH_DURATION,
+      // No data-speed/data-lag parallax anywhere yet; leaving this off skips
+      // the per-element effect scan on every refresh.
+      effects: false,
+      // Keep the wheel/touch handling on the main thread so scroll position
+      // and the pinned cards can't tear apart on fast gestures.
+      normalizeScroll: true,
+    });
+
+    return () => smoother.kill();
+  });
+}
+
 /**
  * Reveals a grid's direct children in sequence as it scrolls into view.
  *
@@ -93,6 +174,12 @@ const ITEM_OFFSET_Y = 160;
  * inheritance, so the parent tweens the child DOM nodes itself. Children stay
  * plain, visible-by-default components — the hidden start state is applied
  * here by fromTo, not baked into the child.
+ *
+ * The Y translation is scrubbed — its progress is bound to scroll position
+ * over STAGGER_DISTANCE, so the cards rise exactly as far as the user has
+ * scrolled and walk back down on a reversed gesture. The fade stays on a
+ * played timeline; see the note above STAGGER_DISTANCE for why the two can't
+ * both be scrubbed.
  *
  * @param {object} scopeRef       ref to the grid element
  * @param {number} options.amount fraction of the grid visible before firing
@@ -103,30 +190,58 @@ export function useStaggerReveal(scopeRef, { amount = 0.333 } = {}) {
     () => {
       const threshold = `${amount * 100}%`;
 
-      const tl = gsap.timeline({
+      // Percentages in the first half of a start/end string measure against
+      // the TRIGGER's height, which is what viewport.amount meant. Both
+      // timelines share this start so the fade and the rise begin together.
+      const start = `top+=${threshold} bottom`;
+
+      // 1. Opacity, played. Unchanged from before the scrub existed:
+      //    once: false in both scroll directions.
+      const fade = gsap.timeline({
         scrollTrigger: {
           trigger: scopeRef.current,
-          // Percentages in the first half of a start/end string measure
-          // against the TRIGGER's height, which is what viewport.amount meant.
-          start: `top+=${threshold} bottom`,
+          start,
           end: `bottom-=${threshold} top`,
-          // once: false in both scroll directions.
           toggleActions: "play reverse play reverse",
         },
       });
 
       // The container's own fade. motion gave this no explicit duration, so
       // it ran on the library default (~0.3s).
-      tl.fromTo(scopeRef.current, { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0);
+      fade.fromTo(scopeRef.current, { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0);
 
       // ":scope > *" is the direct children only — grandchildren (the card's
       // own image/heading/body, which run their own reveals) must not be
-      // swept up by this selector.
-      tl.fromTo(
+      // swept up by this selector. Same on both timelines.
+      fade.fromTo(
         ":scope > *",
-        { opacity: 0, y: ITEM_OFFSET_Y },
+        { opacity: 0 },
         {
           opacity: 1,
+          duration: ITEM_DURATION,
+          ease: EASE_OUT,
+          stagger: STAGGER_STEP,
+        },
+        0
+      );
+
+      // 2. Y, scrubbed. "+=" measures from the START, not from the trigger —
+      //    this is the scroll travel the timeline maps onto. No
+      //    `toggleActions`: scrub supersedes it, since there are no discrete
+      //    play/reverse events left to toggle, only a progress value.
+      const rise = gsap.timeline({
+        scrollTrigger: {
+          trigger: scopeRef.current,
+          start,
+          end: `+=${STAGGER_DISTANCE}`,
+          scrub: STAGGER_SCRUB,
+        },
+      });
+
+      rise.fromTo(
+        ":scope > *",
+        { y: ITEM_OFFSET_Y },
+        {
           y: 0,
           duration: ITEM_DURATION,
           ease: EASE_OUT,
@@ -139,4 +254,4 @@ export function useStaggerReveal(scopeRef, { amount = 0.333 } = {}) {
   );
 }
 
-export { gsap, useGSAP, ScrollTrigger };
+export { gsap, useGSAP, ScrollTrigger, ScrollSmoother };
