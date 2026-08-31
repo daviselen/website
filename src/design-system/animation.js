@@ -14,6 +14,55 @@ import { CustomEase } from "gsap/CustomEase";
 // to import this module — it can't forget a plugin and fail at runtime.
 gsap.registerPlugin(useGSAP, ScrollTrigger, CustomEase);
 
+// ScrollTrigger caches every start/end as a pixel offset when it first
+// measures, and auto-refreshes on resize and on window "load". On this app
+// "load" is useless: the bundle is a module, so React hasn't mounted yet when
+// it fires — measured on the home page, `load` AND `document.fonts.ready`
+// both resolve at ~60ms against a still-empty body, while the real layout
+// only exists from ~500ms. Every trigger therefore cached offsets from a
+// zero-height page, off by the height of everything above it (~670px for the
+// first portfolio card, i.e. its heading).
+//
+// Toggling states that was survivable — a reveal firing early still reveals.
+// Pinning is not: a pin whose start is 670px early yanks the element from
+// flow into position:fixed, so the card visibly teleports up the page.
+//
+// Chasing that with a timer or a rAF-after-mount doesn't hold — it just moves
+// the guess. Instead, re-measure whenever the document's height actually
+// changes, which is the observable event every one of those causes shares:
+// React mounting, Knockout swapping in, media resolving.
+//
+// Safe to hang off body height specifically because nothing this site
+// animates changes it. Verified across the whole home page scroll: pinned
+// cards resize inside a pin-spacer whose height ScrollTrigger holds fixed, so
+// document height stays put (11577px at every scroll offset) and this never
+// fires mid-pin. The height comparison makes it self-limiting anyway — a
+// refresh that doesn't change the height can't schedule another one.
+if (typeof window !== "undefined") {
+  let lastHeight = 0;
+  let queued = false;
+
+  const refresh = () => {
+    queued = false;
+    const height = document.body.scrollHeight;
+    if (height === lastHeight) return;
+    lastHeight = height;
+    ScrollTrigger.refresh();
+  };
+
+  // Coalesce to one refresh per frame: a font swap and an image landing in
+  // the same frame are one layout change, not two.
+  const queueRefresh = () => {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(refresh);
+  };
+
+  new ResizeObserver(queueRefresh).observe(document.body);
+  window.addEventListener("load", queueRefresh);
+  document.fonts?.ready.then(queueRefresh);
+}
+
 // 26.153 frames @ 30fps — the standard clip-path reveal.
 export const REVEAL_DURATION = 26.153 / 30;
 
