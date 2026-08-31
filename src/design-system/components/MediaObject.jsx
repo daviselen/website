@@ -87,7 +87,7 @@ export default function MediaObject({
       {...rest}
       // w-full and text-left undo the shrink-to-fit and centering a
       // <button> gets by default; the grid itself is unchanged.
-      className={`grid w-full grid-cols-12 grid-rows-1 gap-400 px-8 text-left ${
+      className={`grid w-full grid-cols-12 grid-rows-1 gap-400 px-8 pt-3000 text-left ${
         isInteractive
           ? "group focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-300"
           : ""
