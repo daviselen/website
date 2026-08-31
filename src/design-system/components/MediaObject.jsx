@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const cardVariants = {
     hidden: { 
       // Inset 100% from the bottom hides the card. 
@@ -40,6 +42,27 @@ const titleSizes = {
   large: "text-display-h2 pt-10",
 };
 
+// The root element is chosen by which prop is passed, so the whole media
+// object becomes one hit target without ever being a div with an onClick —
+// that pattern loses keyboard focus, Enter/Space, and the screen-reader
+// role, and jsx-a11y (on as an error in eslint.config.js) rejects it.
+//   to      -> react-router Link, for in-app routes (/about) — keeps the
+//              SPA navigation the router in main.jsx sets up
+//   href    -> plain <a>, for off-site, mailto:, tel:, and #hash targets
+//              that must not go through the router
+//   onClick -> <button type="button">, for openers that don't navigate
+//              (modal, video, filter). type is explicit so it can never
+//              submit a surrounding form.
+//   none    -> <div>, unchanged non-interactive default
+// Precedence is to > href > onClick; onClick still fires when passed
+// alongside to/href, since a link can also want a side effect.
+function resolveRoot({ to, href, onClick }) {
+  if (to) return { Root: Link, rootProps: { to, onClick } };
+  if (href) return { Root: "a", rootProps: { href, onClick } };
+  if (onClick) return { Root: "button", rootProps: { type: "button", onClick } };
+  return { Root: "div", rootProps: {} };
+}
+
 export default function MediaObject({
   imageSide = "right",
   titleSize = "default",
@@ -48,14 +71,36 @@ export default function MediaObject({
   text,
   imgSrc,
   imgAlt,
+  to,
+  href,
+  onClick,
+  ...rest
 }) {
   const side = sideConfig[imageSide] ?? sideConfig.right;
   const heading = titleSizes[titleSize] ?? titleSizes.default;
+  const { Root, rootProps } = resolveRoot({ to, href, onClick });
+  const isInteractive = Root !== "div";
 
   return (
-    <div className="grid grid-cols-12 grid-rows-1 gap-400 px-8">
+    <Root
+      {...rootProps}
+      {...rest}
+      // w-full and text-left undo the shrink-to-fit and centering a
+      // <button> gets by default; the grid itself is unchanged.
+      className={`grid w-full grid-cols-12 grid-rows-1 gap-400 px-8 pt-3000 text-left ${
+        isInteractive
+          ? "group focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-300"
+          : ""
+      }`}
+    >
       <div className={`${side.copy} row-start-1 flex flex-col gap-600`}>
-        <h2 className={`font-display uppercase ${heading}`}>{title}</h2>
+        <h2
+          className={`font-display uppercase ${heading} ${
+            isInteractive ? "transition-colors group-hover:text-primary-300" : ""
+          }`}
+        >
+          {title}
+        </h2>
         <div className={`flex flex-col gap-200 ${side.measure}`}>
           {subhead ? (
             <span className="font-narrow text-base">{subhead}</span>
@@ -66,8 +111,10 @@ export default function MediaObject({
       <img
         src={imgSrc}
         alt={imgAlt}
-        className={`${side.image} row-start-1 rounded-md`}
+        className={`${side.image} row-start-1 rounded-md ${
+            isInteractive ? "hover:ring-2 hover:ring-primary-300" : ""
+        }`}
       />
-    </div>
+    </Root>
   );
 }
