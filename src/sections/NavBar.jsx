@@ -1,6 +1,11 @@
 import DeLogo from "../design-system/components/DeLogo.jsx";
-import { motion, useScroll, useMotionValueEvent } from "motion/react";
-import { useState, useEffect } from "react";
+import {
+  gsap,
+  useGSAP,
+  ScrollTrigger,
+  EASE_REVEAL,
+} from "../design-system/animation.js";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
 // Rebuilt from get_design_context's real reference code for the "Nav"
@@ -21,20 +26,62 @@ const WIPE_MS = 600 // must match the clipPath transition duration below
 const HOLD_MS = 5000 // how long the text stays fully visible
 const BLACK_MS = 400 // extra all-black pause after the wipe, before the reveal
 
+const HIDE_DURATION = 0.3
+const HIDE_OFFSET = -144 // header height it slides up by
+const HIDE_THRESHOLD = 150 // px scrolled before hiding is allowed
+
 export default function NavBar() {
-  const { scrollY } = useScroll()
-  const [hidden, setHidden] = useState(false)
   const [index, setIndex] = useState(0)
   const [visible, setVisible] = useState(true)
 
-  useMotionValueEvent(scrollY, "change", (current) => {
-    const previous = scrollY.getPrevious() ?? 0
-    if (current > previous && current > 150) {
-        setHidden(true)
-    } else {
-        setHidden(false)
-    }
-  })
+  const headerRef = useRef(null)
+  const taglineRef = useRef(null)
+
+  // Scroll-direction hide/show. The `hidden` React state is GONE: it existed
+  // only to feed motion's `animate` prop, so every direction change forced a
+  // re-render of the whole header. GSAP writes the transform directly, and
+  // the current state is tracked in a local closure variable instead.
+  useGSAP(
+    () => {
+      let hidden = false
+
+      ScrollTrigger.create({
+        start: 0,
+        end: "max",
+        onUpdate: (self) => {
+          // self.direction === 1 is scrolling down, which is what the old
+          // `current > previous` comparison against getPrevious() meant.
+          const shouldHide = self.direction === 1 && self.scroll() > HIDE_THRESHOLD
+
+          // Only tween on an actual change — onUpdate fires on every scroll
+          // frame, and re-firing an identical tween each frame would fight
+          // itself.
+          if (shouldHide === hidden) return
+          hidden = shouldHide
+
+          gsap.to(headerRef.current, {
+            y: hidden ? HIDE_OFFSET : 0,
+            duration: HIDE_DURATION,
+            ease: EASE_REVEAL,
+          })
+        },
+      })
+    },
+    { scope: headerRef }
+  )
+
+  // Tagline wipe. `visible` stays React state because it also drives the text
+  // swap and the timer chain below — but the clip-path itself is GSAP's now.
+  useGSAP(
+    () => {
+      gsap.to(taglineRef.current, {
+        clipPath: visible ? "inset(0 0 0 0)" : "inset(0 100% 0 0)",
+        duration: WIPE_MS / 1000, // keep in lockstep with the timer above
+        ease: EASE_REVEAL,
+      })
+    },
+    { scope: headerRef, dependencies: [visible] }
+  )
 
   // Alternate the tagline in two phases per swap: while visible, hold ~2s
   // then wipe out right-to-left; while hidden, wait for that wipe to finish
@@ -53,12 +100,9 @@ export default function NavBar() {
   }, [visible])
 
   return (
-    <motion.header className="flex items-end justify-between bg-surface-default px-8 py-4 uppercase fixed top-0 left-0 right-0 z-50"
-      animate={{
-        y: hidden ? -144 : 0,
-        opacity: hidden ? 1 : 1,
-      }}
-      transition={{ duration: 0.3, ease: [0.8, 0, 0.2, 1] }}
+    <header
+      ref={headerRef}
+      className="flex items-end justify-between bg-surface-default px-8 py-4 uppercase fixed top-0 left-0 right-0 z-50"
     >
       <div className="flex flex-1 items-center py-4">
         {/* content="1948" overrides the machine-readable value for
@@ -74,14 +118,16 @@ export default function NavBar() {
               hidden wipes out right-to-left (right inset 0 -> 100%); the text
               is swapped while hidden, then hidden -> visible reveals
               left-to-right (right inset 100% -> 0). */}
-          <motion.span
+          <span
+            ref={taglineRef}
             className="inline-block whitespace-nowrap"
-            initial={false}
-            animate={{ clipPath: visible ? "inset(0 0 0 0)" : "inset(0 100% 0 0)" }}
-            transition={{ duration: 0.6, ease: [0.8, 0, 0.2, 1] }}
+            // Starts fully revealed, matching motion's initial={false} —
+            // the first tween runs to this same value, so nothing animates
+            // on mount.
+            style={{ clipPath: "inset(0 0 0 0)" }}
           >
             {TAGLINES[index]}
-          </motion.span>
+          </span>
         </span>
       </div>
       <div className="flex shrink-0 items-center justify-between py-4">
@@ -100,6 +146,6 @@ export default function NavBar() {
           Contact
         </a>
       </nav>
-    </motion.header>
+    </header>
   );
 }

@@ -1,64 +1,85 @@
-import { motion } from "motion/react";
+import { useRef } from "react";
+import { gsap, useGSAP, EASE_OUT } from "../animation";
 
-export default function ParagraphReveal({ 
-  text, 
-  as = "p", 
-  className = "", 
+export default function ParagraphReveal({
+  text,
+  as: Tag = "p",
+  className = "",
   itemProp,
   staggerSpeed = 0.02,
   delay = 0, // Optional delay before the reveal begins (in seconds)
 }) {
-  const MotionComponent = motion[as] || motion.p;
+  // Plain intrinsic tag now — motion[as] existed only to attach variants.
+  // GSAP animates the real DOM node through a ref, so no wrapper component
+  // is needed and `as` can be any element name without a motion equivalent.
+  const rootRef = useRef(null);
 
   // Split into words while preserving normal paragraph flow
   const words = text.split(" ");
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { 
-        staggerChildren: staggerSpeed, 
-        delayChildren: delay, // Delays the start of word-by-word staggering
-      },
-    },
-  };
+  useGSAP(
+    () => {
+      // motion propagated `variants` from parent to children automatically;
+      // GSAP has no such inheritance, so the parent fade and the per-word
+      // stagger become two explicit tweens on one timeline. Position "0"
+      // and `delay` place them on the same shared clock, which is what
+      // delayChildren + staggerChildren did implicitly.
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: rootRef.current,
+          // viewport: { margin: "-50px" } — fire 50px inside each edge.
+          start: "top bottom-=50",
+          end: "bottom top+=50",
+          // once: false meant motion re-hid the text on exit and replayed on
+          // re-entry, in BOTH directions. These four actions
+          // (onEnter/onLeave/onEnterBack/onLeaveBack) reproduce that.
+          toggleActions: "play reverse play reverse",
+        },
+      });
 
-  const wordVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 8,
-      filter: "blur(4px)" 
+      tl.to(rootRef.current, { opacity: 1, duration: 0.4, ease: EASE_OUT }, 0);
+      tl.to(
+        // Scoped selector — only this instance's words, never a sibling's.
+        // A data attribute rather than a class: eslint's tailwindcss plugin
+        // treats any non-Tailwind classname as an error, and this hook is
+        // for JS, not styling.
+        "[data-reveal-word]",
+        {
+          opacity: 1,
+          y: 0,
+          filter: "blur(0px)",
+          duration: 0.4,
+          ease: EASE_OUT,
+          stagger: staggerSpeed,
+        },
+        delay
+      );
     },
-    visible: {
-      opacity: 1,
-      y: 0,
-      filter: "blur(0px)",
-      transition: { 
-        duration: 0.4, 
-        ease: "easeOut" 
-      },
-    },
-  };
+    { scope: rootRef, dependencies: [text, staggerSpeed, delay] }
+  );
 
   return (
-    <MotionComponent
+    <Tag
+      ref={rootRef}
       itemProp={itemProp}
       className={className}
-      variants={containerVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: false, margin: "-50px" }}
+      // Hidden state inline so it's right on first paint, before GSAP runs.
+      style={{ opacity: 0 }}
     >
       {words.map((word, i) => (
-        <motion.span
+        <span
           key={i}
+          data-reveal-word=""
           className="inline-block"
-          variants={wordVariants}
+          style={{
+            opacity: 0,
+            transform: "translateY(8px)",
+            filter: "blur(4px)",
+          }}
         >
           {word}&nbsp;
-        </motion.span>
+        </span>
       ))}
-    </MotionComponent>
+    </Tag>
   );
 }

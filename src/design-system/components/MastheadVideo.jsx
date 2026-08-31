@@ -1,41 +1,54 @@
-import { motion } from "motion/react";
-import { useState } from "react";
-
-const REVEAL_DURATION = 26.153 / 30;
-const REVEAL_EASE = [0.8, 0, 0.2, 1];
+import { useRef, useState } from "react";
+import { gsap, useGSAP, REVEAL_DURATION, EASE_REVEAL } from "../animation";
 
 export default function MastheadVideo({
   src,
   className = "",
 }) {
   const [loaded, setLoaded] = useState(false);
+  const wrapRef = useRef(null);
+  const maskRef = useRef(null);
+  const videoRef = useRef(null);
+
+  // First-frame-gated, not scroll-gated — onLoadedData below flips `loaded`,
+  // and this dependency re-runs the reveal at that moment.
+  useGSAP(
+    () => {
+      if (!loaded) return;
+
+      const tl = gsap.timeline({
+        defaults: { duration: REVEAL_DURATION, ease: EASE_REVEAL },
+      });
+
+      tl.fromTo(
+        maskRef.current,
+        { clipPath: "inset(0% 0% 100% 0%)" },
+        { clipPath: "inset(0% 0% 0% 0%)" },
+        0
+      );
+      // yPercent matches motion's y: "-1%" — both are relative to the
+      // element's own height.
+      tl.fromTo(
+        videoRef.current,
+        { scale: 1.04, yPercent: -1 },
+        { scale: 1, yPercent: 0 },
+        0
+      );
+    },
+    { scope: wrapRef, dependencies: [loaded] }
+  );
 
   return (
     <div
+      ref={wrapRef}
       className={`overflow-hidden ${className}`}
       style={{
         visibility: loaded ? "visible" : "hidden",
       }}
     >
-      <motion.div
-        initial={{
-          clipPath: "inset(0% 0% 100% 0%)",
-        }}
-        animate={
-          loaded
-            ? {
-                clipPath: "inset(0% 0% 0% 0%)",
-              }
-            : {
-                clipPath: "inset(0% 0% 100% 0%)",
-              }
-        }
-        transition={{
-          duration: REVEAL_DURATION,
-          ease: REVEAL_EASE,
-        }}
-      >
-        <motion.video
+      <div ref={maskRef} style={{ clipPath: "inset(0% 0% 100% 0%)" }}>
+        <video
+          ref={videoRef}
           src={src}
           className="block w-full h-full object-cover"
           // Crucial attributes for background autoplay
@@ -45,27 +58,9 @@ export default function MastheadVideo({
           playsInline
           // Trigger the animation once the first frame is ready
           onLoadedData={() => setLoaded(true)}
-          initial={{
-            scale: 1.04,
-            y: "-1%",
-          }}
-          animate={
-            loaded
-              ? {
-                  scale: 1,
-                  y: "0%",
-                }
-              : {
-                  scale: 1.04,
-                  y: "-1%",
-                }
-          }
-          transition={{
-            duration: REVEAL_DURATION,
-            ease: REVEAL_EASE,
-          }}
+          style={{ transform: "scale(1.04) translateY(-1%)" }}
         />
-      </motion.div>
+      </div>
     </div>
   );
 }

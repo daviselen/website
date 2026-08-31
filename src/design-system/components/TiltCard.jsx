@@ -1,4 +1,20 @@
-import { motion, useMotionValue, useSpring, useTransform, useMotionTemplate } from "motion/react";
+import { useRef } from "react";
+import { gsap, useGSAP } from "../animation";
+
+// The glare is a radial gradient that follows the cursor. motion built this
+// string reactively with useMotionTemplate; GSAP has no template primitive,
+// so the string is composed by hand in writeGlare() below and written to
+// backgroundImage on each frame of the smoothing tween.
+const glareGradient = (xPercent, yPercent) =>
+  `radial-gradient(500px circle at ${xPercent}% ${yPercent}%, rgba(255, 255, 255, 0.25), transparent 80%)`;
+
+// motion used useSpring({ stiffness: 300, damping: 30 }). With an implied
+// mass of 1 that's a damping ratio of ~0.87 — slightly underdamped, settling
+// in roughly half a second with a barely perceptible overshoot. GSAP's
+// duration-based eases can't express a spring exactly; this is the closest
+// match in feel. If it reads as too stiff or too loose next to the old
+// build, this single object is the place to tune it.
+const SMOOTHING = { duration: 0.5, ease: "power3.out" };
 
 // Matches Figma's "card" component (nodeId 1918:727, componentSet "card"
 // 1918:748, variant Size=Default) — real text styles "card/heading" and
@@ -79,70 +95,100 @@ const aspectClasses = {
     const cfg = sizeConfig[size] ?? sizeConfig.default;
     const aspectKey = aspect ?? cfg.aspect;
 
-    const x = useMotionValue(0);
-    const y = useMotionValue(0);
+    const wrapRef = useRef(null);
+    const cardRef = useRef(null);
+    const glareRef = useRef(null);
 
-    // Controls glare opacity so it smoothly fades out on mouse exit
-    const glareOpacity = useSpring(0, { stiffness: 300, damping: 30 });
+    // Holds the quickTo setters. motion's chain was
+    // useMotionValue -> useSpring -> useTransform -> useMotionTemplate: a
+    // reactive graph where setting x cascaded through smoothing and mapping
+    // on its own. GSAP has no such graph, so the mapping arithmetic moves
+    // into the event handlers (below) and quickTo supplies the smoothing.
+    // quickTo compiles its tween ONCE and just re-aims it per call, which is
+    // what makes it safe to fire from mousemove.
+    const setters = useRef(null);
 
-    // Smooth out the motion values with spring physics
-    const smoothX = useSpring(x, { stiffness: 300, damping: 30 });
-    const smoothY = useSpring(y, { stiffness: 300, damping: 30 });
+    useGSAP(
+      () => {
+        // Glare position is smoothed on a plain JS object rather than the
+        // element, because the animated thing is two numbers inside a
+        // gradient string, not a CSS property GSAP can write directly.
+        const glarePos = { x: 50, y: 50 };
+        const writeGlare = () => {
+          if (!glareRef.current) return;
+          glareRef.current.style.backgroundImage = glareGradient(
+            glarePos.x,
+            glarePos.y
+          );
+        };
 
-    // Map mouse position to tilt rotation degrees based on maxTilt
-    const rotateX = useTransform(smoothY, [-0.5, 0.5], [maxTilt, -maxTilt]);
-    const rotateY = useTransform(smoothX, [-0.5, 0.5], [-maxTilt, maxTilt]);
-
-    // Converts normalized [-0.5, 0.5] mouse values into [0%, 100%] gradient positions
-    const glareX = useTransform(smoothX, [-0.5, 0.5], [0, 100]);
-    const glareY = useTransform(smoothY, [-0.5, 0.5], [0, 100]);
-
-    // Builds a dynamic CSS radial gradient centered at the cursor position
-    const glareBackground = useMotionTemplate`radial-gradient(
-      500px circle at ${glareX}% ${glareY}%, 
-      rgba(255, 255, 255, 0.25), 
-      transparent 80%
-    )`;
+        setters.current = {
+          rotateX: gsap.quickTo(cardRef.current, "rotationX", SMOOTHING),
+          rotateY: gsap.quickTo(cardRef.current, "rotationY", SMOOTHING),
+          opacity: gsap.quickTo(glareRef.current, "opacity", SMOOTHING),
+          glareX: gsap.quickTo(glarePos, "x", { ...SMOOTHING, onUpdate: writeGlare }),
+          glareY: gsap.quickTo(glarePos, "y", { ...SMOOTHING, onUpdate: writeGlare }),
+        };
+      },
+      { scope: wrapRef, dependencies: [] }
+    );
 
     const handleMouseMove = (e) => {
+        if (!setters.current) return;
+
         const rect = e.currentTarget.getBoundingClientRect();
         const width = rect.width;
         const height = rect.height;
-        
+
         // Get mouse position relative to card center (-0.5 to 0.5)
         const mouseX = e.clientX - rect.left;
         const mouseY = e.clientY - rect.top;
-        
-        x.set(mouseX / width - 0.5);
-        y.set(mouseY / height - 0.5);
 
-        glareOpacity.set(1);
+        const normX = mouseX / width - 0.5;
+        const normY = mouseY / height - 0.5;
+
+        // These four lines are the old useTransform ranges written out:
+        // [-0.5, 0.5] -> [maxTilt, -maxTilt] for the tilt (note Y drives
+        // rotateX and is inverted), and [-0.5, 0.5] -> [0, 100] for the
+        // gradient position.
+        setters.current.rotateX(-normY * 2 * maxTilt);
+        setters.current.rotateY(normX * 2 * maxTilt);
+        setters.current.glareX((normX + 0.5) * 100);
+        setters.current.glareY((normY + 0.5) * 100);
+        setters.current.opacity(1);
     };
 
     const handleMouseLeave = () => {
-        x.set(0);
-        y.set(0);
-        glareOpacity.set(0);
+        if (!setters.current) return;
+
+        setters.current.rotateX(0);
+        setters.current.rotateY(0);
+        // Recentre the gradient as it fades, matching what x/y -> 0 did.
+        setters.current.glareX(50);
+        setters.current.glareY(50);
+        setters.current.opacity(0);
     };
 
     return (
-      <div style={{ perspective: 1000 }}>
-        <motion.div
+      <div ref={wrapRef} style={{ perspective: 1000 }}>
+        <div
+            ref={cardRef}
             className={`flex flex-col ${cfg.gap} relative transform-3d will-change-transform`}
             {...(itemType ? { itemScope: true, itemType } : {})}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            style={{
-            rotateX,
-            rotateY,
-            }}
+            // rotationX/rotationY are written here by quickTo. transformStyle
+            // has to stay preserve-3d for the children's translateZ layering
+            // to survive GSAP taking over this element's transform.
+            style={{ transformStyle: "preserve-3d" }}
         >
             {/* Full-Card Spotlight Layer */}
-            <motion.div
+            <div
+              ref={glareRef}
               className="pointer-events-none absolute -inset-4 z-20 rounded-xl mix-blend-soft-light"
               style={{
-                background: glareBackground,
-                opacity: glareOpacity,
+                backgroundImage: glareGradient(50, 50),
+                opacity: 0,
                 transform: "translateZ(20px)", // Suspended in 3D space between image and floating text
               }}
             />
@@ -167,7 +213,7 @@ const aspectClasses = {
             </h3>
             <p className="font-narrow font-light text-lg leading-relaxed md:text-2xl md:leading-8 drop-shadow-sm">{body}</p>
             </div>
-        </motion.div>
+        </div>
       </div>
     );
   }

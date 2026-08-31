@@ -1,31 +1,55 @@
-import { motion, useInView } from "motion/react";
 import { useRef, useState } from "react";
+import { gsap, useGSAP, REVEAL_DURATION, EASE_REVEAL } from "../animation";
 import HorizontalReveal from "../components/HorizontalReveal";
 import TextReveal from "../components/TextReveal";
 
-// 1. Define the orchestration and the top-to-bottom mask reveal
-const cardVariants = {
-    hidden: { 
-      // Inset 100% from the bottom hides the card. 
-      // Animating to 0% creates a top-to-bottom reveal.
-      clipPath: "inset(0% 0% 100% 0%)",
-    },
-    visible: {
-      clipPath: "inset(0% 0% 0% 0%)",
-      transition: {
-        duration: 26.153 / 30,
-        ease: [0.8, 0, 0.2, 1], // Smooth custom cubic-bezier easing
-      },
-    },
-};
-  
+// 1. The top-to-bottom mask reveal. Inset 100% from the bottom hides the
+// card; animating to 0% wipes it in downward.
+const CARD_HIDDEN = "inset(0% 0% 100% 0%)";
+const CARD_VISIBLE = "inset(0% 0% 0% 0%)";
+
 export default function ProjectCard({ title, client, src, videoSrc, startColumn2 }) {
   const containerRef = useRef(null);
-  const isInView = useInView(containerRef, { amount: 0.2, once: false });
+  const maskRef = useRef(null);
 
     const videoRef = useRef(null);
     const [isHovered, setIsHovered] = useState(false);
     const [isRevealed, setIsRevealed] = useState(false);
+
+    // isRevealed gates whether the caption children RENDER at all (see note
+    // 4 below), so the timeline has to report back into React state — this
+    // is the one place in the migration where an animation callback still
+    // drives a re-render. motion did it via onAnimationComplete(variant);
+    // GSAP splits the same two cases across onComplete/onReverseComplete.
+    useGSAP(
+      () => {
+        gsap.fromTo(
+          maskRef.current,
+          { clipPath: CARD_HIDDEN },
+          {
+            clipPath: CARD_VISIBLE,
+            duration: REVEAL_DURATION,
+            ease: EASE_REVEAL,
+            onComplete: () => setIsRevealed(true),
+            onReverseComplete: () => setIsRevealed(false),
+            scrollTrigger: {
+              trigger: containerRef.current,
+              // useInView's `amount: 0.2` meant "20% of the ELEMENT is
+              // visible". The percentage in the first half of a start/end
+              // string is measured against the trigger's own height, so
+              // "top+=20% bottom" is that same threshold — note this is NOT
+              // "top bottom-=20%", which would measure 20% of the viewport.
+              start: "top+=20% bottom",
+              end: "bottom-=20% top",
+              // once: false — the card re-hides on exit and replays on
+              // re-entry, in both scroll directions.
+              toggleActions: "play reverse play reverse",
+            },
+          }
+        );
+      },
+      { scope: containerRef }
+    );
 
     const handleMouseEnter = () => {
         setIsHovered(true);
@@ -54,7 +78,7 @@ export default function ProjectCard({ title, client, src, videoSrc, startColumn2
         }`}
       >
         <meta itemProp="creator" content="Davis Elen Advertising" />
-        <motion.div
+        <div
           // Aspect is 55/36 (880/480), same as From The Inside Out, per direct
           // correction — not the 880/576 (≈1.527, noticeably narrower) this
           // had before.
@@ -66,19 +90,11 @@ export default function ProjectCard({ title, client, src, videoSrc, startColumn2
           // itemScope from the page's outer Organization item in HomePage.jsx,
           // not nested inside it — that's normal; a page can contain multiple
           // independent schema.org Items.
-          // 3. Swap to motion.div, attach variants, and set the viewport trigger
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          variants={cardVariants}
-          onAnimationComplete={(variant) => {
-            if (variant === "visible") {
-              setIsRevealed(true);
-            } else if (variant === "hidden") {
-              setIsRevealed(false); 
-            }
-          }}
+          // 3. The mask element the timeline above drives. Its hidden state is
+          // inline so it's correct on first paint, before GSAP runs.
+          ref={maskRef}
           className="relative h-full w-full overflow-hidden rounded-md"
-          style={{ willChange: "clip-path" }}
+          style={{ clipPath: CARD_HIDDEN, willChange: "clip-path" }}
         >
         {videoSrc ? (
             <video
@@ -156,7 +172,7 @@ export default function ProjectCard({ title, client, src, videoSrc, startColumn2
             </>
           )}
         </div>
-        </motion.div>
+        </div>
       </div>
     );
 }

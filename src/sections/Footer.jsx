@@ -17,8 +17,15 @@
 //     tracking-widest.
 //   - Cities are 64px Knockout with an unusually loose 130px line-height
 //     (a deliberate spaced-out look) and a 48px gap, not space-y-2.
+import { useRef } from "react";
 import DeLogo from "../design-system/components/DeLogo.jsx";
-import { motion } from "motion/react";
+import {
+  gsap,
+  useGSAP,
+  REVEAL_DURATION,
+  LINE_DELAY,
+  EASE_REVEAL,
+} from "../design-system/animation.js";
 
 const cities = ["Los Angeles", "San Diego", "Seattle", "Denver", "Kansas City", "Arlington"];
 // Real URLs, direct from the person who added them as Link values on these
@@ -34,55 +41,80 @@ const social = [
   { label: "X (Twitter)", href: "https://x.com/daviselen" },
 ];
 
-const REVEAL_DURATION = 26.153 / 30;
-const LINE_DELAY = 3.847 / 30;
-const REVEAL_EASE = [0.8, 0, 0.2, 1];
-
-const leftRevealVariants = {
-  hidden: {
-    clipPath: "inset(0 0 100% 0)",
-  },
-  visible: (index) => ({
-    clipPath: "inset(0 0 0% 0)",
-    transition: {
-      duration: REVEAL_DURATION,
-      delay: index * LINE_DELAY,
-      ease: REVEAL_EASE,
-    },
-  }),
-};
-
-const cityVariants = {
-  hidden: {
-    opacity: 0,
-    y: "-0.25em",
-  },
-  visible: (index) => ({
-    opacity: 1,
-    y: "0em",
-    transition: {
-      duration: REVEAL_DURATION,
-      delay: index * LINE_DELAY,
-      ease: REVEAL_EASE,
-    },
-  }),
-};
+// motion's `custom={index}` fed a variant FUNCTION, which returned a
+// per-element delay. GSAP has no custom-prop mechanism, so the index comes
+// from the element's position in the queried array instead — same
+// `index * LINE_DELAY` arithmetic, sourced from the DOM rather than a prop.
+//
+// Deliberately NOT a stagger: every block below carries its own
+// ScrollTrigger, exactly as each motion element carried its own
+// whileInView. These blocks sit in a tall column and scroll into view at
+// genuinely different times — a single parent-driven stagger would fire
+// them all off one trigger and change the behaviour.
+const REVEAL_START = "top bottom-=100"; // viewport margin "0px 0px -100px 0px"
+const REVEAL_END = "bottom top"; // no top inset, so the real viewport top
 
 export default function Footer() {
+  const footerRef = useRef(null);
+
+  useGSAP(
+    () => {
+      gsap.utils.toArray("[data-left-reveal]").forEach((el, index) => {
+        gsap.fromTo(
+          el,
+          { clipPath: "inset(0 0 100% 0)" },
+          {
+            clipPath: "inset(0 0 0% 0)",
+            duration: REVEAL_DURATION,
+            delay: index * LINE_DELAY,
+            ease: EASE_REVEAL,
+            scrollTrigger: {
+              trigger: el,
+              start: REVEAL_START,
+              end: REVEAL_END,
+              toggleActions: "play reverse play reverse",
+            },
+          }
+        );
+      });
+
+      gsap.utils.toArray("[data-city-reveal]").forEach((el, index) => {
+        gsap.fromTo(
+          el,
+          { opacity: 0, y: "-0.25em" },
+          {
+            opacity: 1,
+            y: "0em",
+            duration: REVEAL_DURATION,
+            delay: index * LINE_DELAY,
+            ease: EASE_REVEAL,
+            scrollTrigger: {
+              trigger: el,
+              start: REVEAL_START,
+              end: REVEAL_END,
+              toggleActions: "play reverse play reverse",
+            },
+          }
+        );
+      });
+    },
+    { scope: footerRef }
+  );
+
   return (
-    <footer id="footer" className="border-y-2 border-neutral-0 mx-8 py-20 pb-40">
+    <footer
+      ref={footerRef}
+      id="footer"
+      className="border-y-2 border-neutral-0 mx-8 py-20 pb-40"
+    >
       <div className="flex flex-col gap-16 md:flex-row md:justify-between">
         <div className="flex flex-1 flex-col gap-12">
-          <motion.div
-            custom={0}
-            variants={leftRevealVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{
-              once: false,
-              margin: "0px 0px -100px 0px",
-            }}
+          {/* data-left-reveal index 0 — document order supplies what
+              custom={0} used to. */}
+          <div
+            data-left-reveal=""
             style={{
+              clipPath: "inset(0 0 100% 0)",
               willChange: "clip-path",
               transform: "translateZ(0)",
             }}
@@ -93,18 +125,12 @@ export default function Footer() {
               redundant, so this picks one (Footer's, since this is also
               where the rest of the contact-block microdata lives). */}
           <DeLogo className="h-[200px] w-[192px]" itemProp="logo" />
-          </motion.div>
+          </div>
 
-          <motion.div
-            custom={1}
-            variants={leftRevealVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{
-              once: false,
-              margin: "0px 0px -100px 0px",
-            }}
+          <div
+            data-left-reveal=""
             style={{
+              clipPath: "inset(0 0 100% 0)",
               willChange: "clip-path",
               transform: "translateZ(0)",
             }}
@@ -121,7 +147,7 @@ export default function Footer() {
               213.688.7000
             </a>
           </div>
-        </motion.div>
+        </div>
 
           <div
             className="relative overflow-hidden"
@@ -130,15 +156,9 @@ export default function Footer() {
               margin: "-0.0333333em 0",
             }}
           >
-            <motion.div
-              custom={2}
-              variants={leftRevealVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{
-                once: false,
-                margin: "0px 0px -100px 0px",
-              }}
+            <div
+              data-left-reveal=""
+              style={{ clipPath: "inset(0 0 100% 0)" }}
             >
           {/* itemProp="sameAs" now that these are real profile URLs, not
               placeholder "#"s — sameAs is exactly "the same entity is also
@@ -164,33 +184,27 @@ export default function Footer() {
               </li>
             ))}
           </ul>
-        </motion.div>
+        </div>
       </div>
     </div>
         <ul className="flex flex-1 flex-col gap-12 font-display text-4xl uppercase leading-[130px] md:text-[64px]">
           {/* Each office city as its own nested Place item (itemProp
               "location" is repeatable on Organization), rather than plain
               text — real office locations, not invented. */}
-          {cities.map((city, index) => (
+          {cities.map((city) => (
             <li
               key={city}
               itemProp="location"
               itemScope
               itemType="https://schema.org/Place"
             >
-              <motion.span
+              <span
+                data-city-reveal=""
                 className="block"
-                variants={cityVariants}
-                custom={index}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{
-                  once: false,
-                  margin: "0px 0px -100px 0px",
-                }}
+                style={{ opacity: 0, transform: "translateY(-0.25em)" }}
               >
                 <span itemProp="name">{city}</span>
-              </motion.span>
+              </span>
             </li>
           ))}
         </ul>
