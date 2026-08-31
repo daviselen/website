@@ -84,6 +84,7 @@ export default {
         2300: "184px",
         2400: "192px",
         3000: "240px",
+        3200: "256px",
       },
       borderRadius: {
         md: "8px", // Border/Radius/md — every card/image corner on the page
