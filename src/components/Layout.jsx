@@ -3,8 +3,8 @@ import { useLocation, useNavigationType, useOutlet } from "react-router-dom";
 import {
   gsap,
   useGSAP,
-  ScrollSmoother,
-  useSmoothScroll,
+  // ScrollSmoother,
+  // useSmoothScroll,
 } from "../design-system/animation.js";
 import { VideoOverlayProvider } from "../design-system/components/VideoOverlay.jsx";
 import NavBar from "../sections/NavBar";
@@ -70,7 +70,7 @@ export default function PixelCurtain({
   // Page-wide smooth scrolling. Mounted here because ScrollSmoother needs the
   // #smooth-wrapper/#smooth-content pair below to exist, and there must only
   // ever be one instance for the app.
-  useSmoothScroll();
+  // useSmoothScroll();
 
   // Scroll to top only for Link/navigation (PUSH).
   // Back/Forward navigation is POP, so let the browser restore the position.
