@@ -112,7 +112,7 @@ export default function NavBar() {
         <span
           itemProp="foundingDate"
           content="1925"
-          className="relative inline-block overflow-hidden font-narrow font-light text-[18px] leading-[13px] text-neutral-0"
+          className="relative inline-block overflow-hidden font-narrow font-light text-[18px] leading-[13px] mb-[0.075em] text-neutral-0"
         >
           {/* Single line whose clip edge sweeps horizontally: visible ->
               hidden wipes out right-to-left (right inset 0 -> 100%); the text
@@ -120,7 +120,7 @@ export default function NavBar() {
               left-to-right (right inset 100% -> 0). */}
           <span
             ref={taglineRef}
-            className="inline-block whitespace-nowrap"
+            className="inline-block whitespace-nowrap py-[0.075em]"
             // Starts fully revealed, matching motion's initial={false} —
             // the first tween runs to this same value, so nothing animates
             // on mount.
