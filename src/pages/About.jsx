@@ -2,6 +2,15 @@ import NavBar from "../sections/NavBar.jsx";
 import MastheadImage from "../design-system/components/MastheadImage";
 import Footer from "../sections/Footer.jsx";
 import MediaObject from "../design-system/components/MediaObject.jsx";
+import { useVideoOverlay } from "../design-system/components/VideoOverlay.jsx";
+
+// NOTE: this asset does not exist in /public/videos yet — only
+// davis-elen-masthead.mp4 and the hola-mexico portfolio pair are present.
+// Drop the real file in and correct this path before shipping.
+const ORIGIN_STORY = {
+  src: "/videos/about-origin-story.mp4",
+  title: "Our Origin Story",
+};
 
 const people = [
   {
@@ -79,6 +88,7 @@ const people = [
 ];
 
 export default function About() {
+  const { openVideo } = useVideoOverlay();
   return (
     <main
       itemScope
@@ -122,12 +132,13 @@ export default function About() {
       <MediaObject
         onClick={() => StereoPannerNode(true)}
         imageSide="left"
-        title="Our Origin Story"
+        title={ORIGIN_STORY.title}
         titleSize="large"
         subhead="Runtime 44:32"
         text="From a small print shop in Glendale to one of the largest independently-owned agencies in the country."
         imgSrc="/images/about-history.jpg"
         imgAlt="Photo of Henry Mayers and the four partners who took over in 1958."
+        onClick={() => openVideo(ORIGIN_STORY)}
       />
     </main>
   );

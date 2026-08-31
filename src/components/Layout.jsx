@@ -1,6 +1,12 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useLocation, useNavigationType, useOutlet } from "react-router-dom";
-import { gsap, useGSAP } from "../design-system/animation.js";
+import {
+  gsap,
+  useGSAP,
+  ScrollSmoother,
+  useSmoothScroll,
+} from "../design-system/animation.js";
+import { VideoOverlayProvider } from "../design-system/components/VideoOverlay.jsx";
 import NavBar from "../sections/NavBar";
 import Footer from "../sections/Footer";
 
@@ -61,6 +67,11 @@ export default function PixelCurtain({
 
   const [displayedOutlet, setDisplayedOutlet] = useState(outlet);
 
+  // Page-wide smooth scrolling. Mounted here because ScrollSmoother needs the
+  // #smooth-wrapper/#smooth-content pair below to exist, and there must only
+  // ever be one instance for the app.
+  useSmoothScroll();
+
   // Scroll to top only for Link/navigation (PUSH).
   // Back/Forward navigation is POP, so let the browser restore the position.
   useEffect(() => {
@@ -68,7 +79,15 @@ export default function PixelCurtain({
       previousPathname.current !== location.pathname &&
       navigationType === "PUSH"
     ) {
-      window.scrollTo(0, 0);
+      // While the smoother is running, window.scrollTo fights it — the
+      // smoother keeps easing toward its own target and drags the page back.
+      // Its scrollTo(0, false) jumps without animating, matching the old
+      // behaviour of landing at the top instantly behind the curtain.
+      // Falls through to the native call when the smoother is absent, i.e.
+      // under prefers-reduced-motion.
+      const smoother = ScrollSmoother.get();
+      if (smoother) smoother.scrollTo(0, false);
+      else window.scrollTo(0, 0);
     }
   }, [location.pathname, navigationType]);
 
@@ -282,12 +301,30 @@ export default function PixelCurtain({
 
   return (
     <div className="relative min-h-screen">
-      {/* Route content */}
-      <div className="min-h-screen bg-surface-default py-1800 font-narrow font-light text-neutral-0">
-        <NavBar />
-        {displayedOutlet}
-        <Footer />
-      </div>
+      {/* Route content. Wrapped in the video-overlay provider so any section
+          on any route can call useVideoOverlay().openVideo(...) — one overlay
+          instance for the whole app, mounted here rather than per-section. */}
+      <VideoOverlayProvider>
+        {/* NavBar is position:fixed, so it sits OUTSIDE #smooth-content:
+            ScrollSmoother scrolls the page by transforming that element, and
+            a transformed ancestor re-parents fixed positioning to itself — a
+            fixed navbar inside it would scroll away with the content. It
+            keeps the typography classes it used to inherit from the page
+            wrapper below. The overlay VideoOverlayProvider renders after
+            these children is fixed too, and is already outside for the same
+            reason. */}
+        <div className="font-narrow font-light text-neutral-0">
+          <NavBar />
+        </div>
+        <div id="smooth-wrapper">
+          <div id="smooth-content">
+            <div className="min-h-screen bg-surface-default py-1800 font-narrow font-light text-neutral-0">
+              {displayedOutlet}
+              <Footer />
+            </div>
+          </div>
+        </div>
+      </VideoOverlayProvider>
 
       {/* Curtain */}
       {phase !== null && dimensions.cols > 0 && (
