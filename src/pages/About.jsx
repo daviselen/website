@@ -1,5 +1,6 @@
 import NavBar from "../sections/NavBar.jsx";
 import MastheadImage from "../design-system/components/MastheadImage";
+import CTABanner from "../sections/CTABanner";
 import Footer from "../sections/Footer.jsx";
 import MediaObject from "../design-system/components/MediaObject.jsx";
 import { useVideoOverlay } from "../design-system/components/VideoOverlay.jsx";
@@ -87,13 +88,136 @@ const people = [
   },
 ];
 
+const clients = [
+  {
+    img: {
+      src: "/images/clients/client-logo-01-toyota.svg",
+      alt: "Toyota",
+    },
+  },
+  {
+    img: {
+      src: "/images/clients/client-logo-02-mcdonalds.svg",
+      alt: "McDonald's",
+    },
+  },
+  {
+    img: {
+      src: "/images/clients/client-logo-03-smart-and-final.svg",
+      alt: "Smart & Final",
+    },
+  },
+  {
+    img: {
+      src: "/images/clients/client-logo-04-best-buy-health.svg",
+      alt: "Best Buy Health",
+    },
+  },
+  {
+    img: {
+      src: "/images/clients/client-logo-05-lively.svg",
+      alt: "Lively",
+    },
+  },
+  {
+    img: {
+      src: "/images/clients/client-logo-06-warner-bros-studio-tour.svg",
+      alt: "Warner Bros. Studio Tour Hollywood",
+    },
+  },
+  {
+    img: {
+      src: "/images/clients/client-logo-07-zircon.svg",
+      alt: "Zircon Corp.",
+    },
+  },
+  {
+    img: {
+      src: "/images/clients/client-logo-08-asana.svg",
+      alt: "Asana",
+    },
+  },
+  {
+    img: {
+      src: "/images/clients/client-logo-09-dice.svg",
+      alt: "Dice",
+    },
+  },
+  {
+    img: {
+      src: "/images/clients/client-logo-10-alkaline88.svg",
+      alt: "The Alkaline Water Co.'s Alkaline88",
+    },
+  },
+  {
+    img: {
+      src: "/images/clients/client-logo-11-los-angeles-chargers.svg",
+      alt: "The Los Angeles Chargers",
+    },
+  },
+  {
+    img: {
+      src: "/images/clients/client-logo-12-autodesk.svg",
+      alt: "Autodesk",
+    },
+  },
+  {
+    img: {
+      src: "/images/clients/client-logo-13-fremont-bank.svg",
+      alt: "Fremont Bank",
+    },
+  },
+  {
+    img: {
+      src: "/images/clients/client-logo-14-purity.svg",
+      alt: "Purity Coffee",
+    },
+  },
+  {
+    img: {
+      src: "/images/clients/client-logo-15-peatos.svg",
+      alt: "Peatos",
+    },
+  },
+  {
+    img: {
+      src: "/images/clients/client-logo-16-udacity.svg",
+      alt: "Udacity",
+    },
+  },
+  {
+    img: {
+      src: "/images/clients/client-logo-17-dolby.svg",
+      alt: "Dolby",
+    },
+  },
+  {
+    img: {
+      src: "/images/clients/client-logo-18-cisco.svg",
+      alt: "Cisco",
+    },
+  },
+  {
+    img: {
+      src: "/images/clients/client-logo-19-walmart-labs.svg",
+      alt: "Walmart Labs",
+    },
+  },
+  {
+    img: {
+      src: "/images/clients/client-logo-20-special-olympics-2015.svg",
+      alt: "Special Olympics World Games 2015",
+    },
+  },
+];
+
 export default function About() {
   const { openVideo } = useVideoOverlay();
   return (
     <main
       itemScope
       itemType="https://schema.org/Organization"
-      className="min-h-screen bg-surface-default pb-1800 font-narrow font-light text-neutral-0 flex flex-col gap-3000"
+      className="min-h-screen bg-surface-default pb-1800 font-narrow font-light text-neutral-0 flex flex-col gap-0"
     >
       <meta itemProp="name" content="Davis Elen Advertising" />
       <meta itemProp="url" content="https://daviselen.com" />
@@ -111,7 +235,7 @@ export default function About() {
         imgSrc="/images/about-map.jpg"
         imgAlt="Map of Los Angeles County showing the locations of Toyota dealership, McDonald's restaurant, Best Buy and Smart & Final locations."
       />
-      <section id="" className="px-8 flex flex-col gap-1000">
+      <section id="people" className="pt-3000 px-8 flex flex-col gap-1000">
         <h2 className="text-display-h2 font-display uppercase">Let’s<br></br> Meet Up</h2>
         <div className="grid grid-cols-4 gap-50 p-50 bg-[#292828]">
           {people.map((person, index) => (
@@ -140,6 +264,17 @@ export default function About() {
         imgAlt="Photo of Henry Mayers and the four partners who took over in 1958."
         onClick={() => openVideo(ORIGIN_STORY)}
       />
+      <section id="clients" className="pt-3000 px-8 flex flex-col gap-0">
+        <h2 className="text-display-h2 font-display uppercase">Client <br />Experience</h2>
+        <div className="grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-400">
+          {clients.map((client, index) => (
+            <div key={index} className="">
+              <img src={client.img.src} alt={client.img.alt} />
+            </div>
+          ))}
+        </div>
+      </section>
+      <CTABanner />
     </main>
   );
 }
