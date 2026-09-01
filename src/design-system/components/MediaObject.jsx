@@ -104,7 +104,7 @@ export default function MediaObject({
           splitLines
           text={title}
           className={`font-display uppercase ${heading} ${
-            isInteractive ? "transition-colors group-hover:text-primary-300" : ""
+            isInteractive ? "transition-colors group-hover:text-neutral-100" : ""
           }`}
         />
         <div className={`flex flex-col gap-200 ${side.measure}`}>
@@ -122,7 +122,7 @@ export default function MediaObject({
         src={imgSrc}
         alt={imgAlt}
         className={`${side.image} row-start-1 rounded-md ${
-            isInteractive ? "hover:ring-2 hover:ring-primary-300" : ""
+            isInteractive ? "hover:ring-2 hover:ring-neutral-800" : ""
         }`}
       />
     </Root>
