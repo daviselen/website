@@ -237,10 +237,10 @@ export default function About() {
       />
       <section id="people" className="pt-3000 px-8 flex flex-col gap-1000">
         <h2 className="text-display-h2 font-display uppercase">Let’s<br></br> Meet Up</h2>
-        <div className="grid grid-cols-4 gap-50 p-50 bg-[#292828]">
+        <div className="grid grid-cols-4 gap-400">
           {people.map((person, index) => (
-          <div key={index} className="teams-video bg-surface-alt relative">
-            <img className="h-auto w-full aspect-[16/9] flex justify-center items-center" src={person.img.src} alt={person.name} />
+          <div key={index} className="teams-video bg-surface-alt relative rounded-md">
+            <img className="h-auto w-full aspect-[16/9] flex justify-center items-center rounded-md" src={person.img.src} alt={person.name} />
             {!person.img.src ? (
               <span className="absolute bottom-100 left-100 flex gap-[6px] bg-neutral-1000/50 text-[12px] tracking-200 tracking-[0.03em] px-[8px] rounded-[3px]">
                 <span className="py-[8px]">{person.name}</span>
