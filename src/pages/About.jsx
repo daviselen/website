@@ -5,6 +5,7 @@ import Footer from "../sections/Footer.jsx";
 import MediaObject from "../design-system/components/MediaObject.jsx";
 import TextReveal from "../design-system/components/TextReveal.jsx";
 import { useVideoOverlay } from "../design-system/components/VideoOverlay.jsx";
+import HeadingReveal from "../design-system/components/HeadingReveal.jsx";
 
 // Hosted on Vimeo rather than self-served from /public/videos, so the overlay
 // gets its `embed` payload (an iframe player URL) instead of `src`. The
@@ -243,7 +244,10 @@ export default function About() {
         imgAlt="Map of Los Angeles County showing the locations of Toyota dealership, McDonald's restaurant, Best Buy and Smart & Final locations."
       />
       <section id="people" className="pt-3000 px-8 flex flex-col gap-1000">
-        <h2 className="text-display-h2 font-display uppercase">Let’s<br></br> Meet Up</h2>
+        <HeadingReveal
+          className="text-display-h2 font-display uppercase"
+          text={`Let’s \nMeet Up`}
+        />
         <div className="grid grid-cols-4 gap-400">
           {people.map((person, index) => (
           <div key={index} className="teams-video bg-surface-alt relative rounded-md">
@@ -271,7 +275,11 @@ export default function About() {
         onClick={() => openVideo(ORIGIN_STORY)}
       />
       <section id="clients" className="pt-3000 px-8 flex flex-col gap-0">
-        <h2 className="text-display-h2 font-display uppercase">Client <br />Experience</h2>
+        <HeadingReveal
+          as="h2"
+          className="text-display-h2 font-display uppercase"
+          text={`Client \nExperience`}
+        />
         <div className="grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-400">
           {clients.map((client, index) => (
             <div key={index} className="">

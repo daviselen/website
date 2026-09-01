@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import HeadingReveal from "./HeadingReveal";
+import TextReveal from "./TextReveal";
 
 const cardVariants = {
     hidden: { 
@@ -106,7 +107,11 @@ export default function MediaObject({
           {subhead ? (
             <span className="font-narrow text-base">{subhead}</span>
           ) : null}
-          <p className="text-pre-title">{text}</p>
+          <TextReveal
+            as="p"
+            className="text-pre-title"
+            text={text}
+          />
         </div>
       </div>
       <img
