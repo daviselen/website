@@ -11,9 +11,6 @@ import NavBar from "../sections/NavBar";
 import Footer from "../sections/Footer";
 
 const DEFAULT_COLORS = [
-  "rgba(0, 0, 0, 0.85)",
-  "#2b2b2b",
-  "#1f1f1f",
   "#000",
 ];
 
