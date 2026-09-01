@@ -10,6 +10,7 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { CustomEase } from "gsap/CustomEase";
+import { SplitText } from "gsap/SplitText";
 
 // Registration is idempotent, but doing it here means a component only has
 // to import this module — it can't forget a plugin and fail at runtime.
@@ -18,7 +19,8 @@ import { CustomEase } from "gsap/CustomEase";
 // plugin before Webflow made the whole library free), so this is a plain
 // import off the dependency already in package.json — no extra install, and
 // no third-party smooth-scroll library to keep in sync with ScrollTrigger.
-gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollSmoother, CustomEase);
+// SplitText is free in the same 3.13 release, so it imports the same way.
+gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollSmoother, CustomEase, SplitText);
 
 // ScrollTrigger caches every start/end as a pixel offset when it first
 // measures, and auto-refreshes on resize and on window "load". On this app
@@ -254,4 +256,4 @@ export function useStaggerReveal(scopeRef, { amount = 0.333 } = {}) {
   );
 }
 
-export { gsap, useGSAP, ScrollTrigger, ScrollSmoother };
+export { gsap, useGSAP, ScrollTrigger, ScrollSmoother, SplitText };
