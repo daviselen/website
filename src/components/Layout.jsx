@@ -253,10 +253,13 @@ export default function PixelCurtain({
 
         if (covering) {
           // circOut -> circ.out: same curve, GSAP's naming.
+          // Opacity only: cells stay at their grid size for the whole
+          // animation, so the curtain reads as a fade-in rather than a
+          // pop. Timing (START_LAG, delays, DURATION) is unchanged.
           tl.fromTo(
             el,
-            { opacity: 0, scale: 0.5 },
-            { opacity: 1, scale: 1.05, duration: DURATION, ease: "circ.out" },
+            { opacity: 0 },
+            { opacity: 1, duration: DURATION, ease: "circ.out" },
             START_LAG + pixel.delayIn
           );
         } else {
@@ -264,7 +267,7 @@ export default function PixelCurtain({
           // `fromTo` — mirroring motion animating out of its current state.
           tl.to(
             el,
-            { opacity: 0, scale: 0.5, duration: DURATION, ease: "circ.in" },
+            { opacity: 0, duration: DURATION, ease: "circ.in" },
             START_LAG + pixel.delayOut
           );
         }
@@ -346,7 +349,6 @@ export default function PixelCurtain({
               style={{
                 backgroundColor: pixel.color,
                 opacity: 0,
-                transform: "scale(0.5)",
               }}
             />
           ))}
