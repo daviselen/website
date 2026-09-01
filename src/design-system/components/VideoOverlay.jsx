@@ -137,6 +137,13 @@ function VideoOverlay({ video, onClose }) {
   const sources =
     typeof rendered.src === "string" ? null : rendered.src ?? null;
 
+  // `embed` is a third payload shape, for videos hosted off-site (Vimeo,
+  // YouTube). A player URL can't feed <video> — it serves an HTML page, not a
+  // media file — so it needs an <iframe>. Everything around it (backdrop,
+  // escape, focus restore, exit tween) is identical; only the player swaps.
+  // Unmounting the iframe on close is what stops playback, same as <video>.
+  const { embed } = rendered;
+
   return (
     <div
       ref={rootRef}
@@ -166,18 +173,30 @@ function VideoOverlay({ video, onClose }) {
           Close
         </button>
 
-        <video
-          ref={videoRef}
-          poster={rendered.poster}
-          controls
-          autoPlay
-          playsInline
-          className="block aspect-video w-full rounded-md"
-          {...(sources ? {} : { src: rendered.src })}
-        >
-          {sources?.webm ? <source src={sources.webm} type="video/webm" /> : null}
-          {sources?.mp4 ? <source src={sources.mp4} type="video/mp4" /> : null}
-        </video>
+        {embed ? (
+          <iframe
+            src={embed}
+            title={rendered.title ?? "Video player"}
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowFullScreen
+            className="block aspect-video w-full rounded-md"
+          />
+        ) : (
+          <video
+            ref={videoRef}
+            poster={rendered.poster}
+            controls
+            autoPlay
+            playsInline
+            className="block aspect-video w-full rounded-md"
+            {...(sources ? {} : { src: rendered.src })}
+          >
+            {sources?.webm ? (
+              <source src={sources.webm} type="video/webm" />
+            ) : null}
+            {sources?.mp4 ? <source src={sources.mp4} type="video/mp4" /> : null}
+          </video>
+        )}
       </div>
     </div>
   );
