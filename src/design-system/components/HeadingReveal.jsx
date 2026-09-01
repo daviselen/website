@@ -26,9 +26,15 @@ const LINE_BLEED_PULLBACK = "-0.15em";
 // first and last line's negative margin-block from collapsing out through the
 // heading's own edges — parent/child margins collapse only when nothing sits
 // between them, so any padding here blocks it — and it puts the block back on
-// the position the design has it. The non-split path is left alone: RevealLine
-// has its own padding for this, and every existing heading on the site is
-// positioned against that geometry.
+// the position the design has it.
+//
+// Block axis only. The shorthand would inset the text horizontally too, and
+// these headings sit in a 5-column measure whose left edge is a grid line —
+// ~11px of inline padding at the 144px display size would visibly break the
+// heading's alignment with the copy under it.
+//
+// The non-split path is left alone: RevealLine has its own padding for this,
+// and every existing heading on the site is positioned against that geometry.
 const HEADING_BLEED = "0.075em";
 
 // Both split strategies below animate identically — only the set of elements
@@ -155,7 +161,7 @@ export default function HeadingReveal({
       ref={rootRef}
       itemProp={itemProp}
       className={className}
-      style={splitLines ? { padding: HEADING_BLEED } : undefined}
+      style={splitLines ? { paddingBlock: HEADING_BLEED } : undefined}
     >
       {splitLines
         ? text
