@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { gsap, useGSAP } from "../animation";
+import Picture from "./Picture";
 
 // The glare is a radial gradient that follows the cursor. motion built this
 // string reactively with useMotionTemplate; GSAP has no template primitive,
@@ -192,7 +193,7 @@ const aspectClasses = {
                 transform: "translateZ(20px)", // Suspended in 3D space between image and floating text
               }}
             />
-            <img
+            <Picture
             src={src}
             alt={alt}
             className={`${aspectClasses[aspectKey] ?? aspectClasses[cfg.aspect]} w-full rounded-md object-cover`}

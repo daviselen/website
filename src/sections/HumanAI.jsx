@@ -114,20 +114,16 @@ const concepts = [
   },
 ];
 
-// Grid-line background: two 1px-line gradients (vertical + horizontal)
-// tiled at 40x40px, offset -1px/-1px so the lines land on-pixel instead
-// of getting clipped at the edge. Inline style rather than Tailwind
-// classes — arbitrary-value utilities don't have a clean way to express
-// two background-images plus their own background-size/-position at
-// once.
-const gridBackground = {
-  // backgroundImage: `linear-gradient(to left, #2b2b2b 1px, transparent 1px), linear-gradient(to bottom, #2b2b2b 1px, transparent 1px)`,
-  // backgroundSize: "40px 40px",
-  // backgroundPosition: "right center",
-  backgroundImage: `url('/images/hi-x-ai.png')`,
-  backgroundSize: "cover",
-  backgroundPosition: "right center"
-};
+// The grid-line backdrop (hi-x-ai.png, cover, right-aligned) now lives in
+// the .hi-x-ai-bg rule in src/index.css rather than in an inline style
+// object here. It had to move: as a CSS background it is the one raster
+// <picture> can't negotiate a format for, and the way a background does
+// negotiate — two background-image declarations, image-set() overriding a
+// plain url() fallback — needs the same property declared twice, which a
+// React style object (a plain object, unique keys) cannot express.
+//
+// It replaced an earlier pair of 1px linear-gradients tiled at 40x40px;
+// that's what the "grid-line" name refers to.
 
 export default function HumanAI() {
   return (
@@ -138,8 +134,7 @@ export default function HumanAI() {
     // padding inside it that was reported wrong here.
     <section
       id="human-ai"
-      className="mx-8 rounded-md bg-surface-alt px-1400 py-1800 text-neutral-0 mt-3000"
-      style={gridBackground}
+      className="hi-x-ai-bg mx-8 rounded-md bg-surface-alt px-1400 py-1800 text-neutral-0 mt-3000"
     >
       <div className="lg:flex lg:items-center lg:justify-between lg:gap-16">
         <div className="lg:max-w-2xl lg:shrink-0">

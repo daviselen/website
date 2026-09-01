@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { gsap, useGSAP, REVEAL_DURATION, EASE_REVEAL } from "../animation";
 import HorizontalReveal from "../components/HorizontalReveal";
+import Picture from "../components/Picture";
 import TextReveal from "../components/TextReveal";
 
 // 1. The top-to-bottom mask reveal. Inset 100% from the bottom hides the
@@ -221,7 +222,7 @@ export default function ProjectCard({ title, client, src, videoSrc, startColumn2
               <source src={videoSrc.mp4} type="video/mp4" />
             </video>
         ) : (
-          <img
+          <Picture
             src={src}
             alt={`${title} — ${client} project photo`}
             itemProp="image"

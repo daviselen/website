@@ -40,6 +40,7 @@
 // class text present in a source file — an interpolated `aspect-[${x}]` /
 // `gap-[${n}]` wouldn't reliably get picked up.
 import HorizontalReveal from "./HorizontalReveal";
+import Picture from "./Picture";
 import TextReveal from "./TextReveal";
 
 const aspectClasses = {
@@ -92,7 +93,7 @@ export default function Card({
       className={`flex flex-col ${cfg.gap}`}
       {...(itemType ? { itemScope: true, itemType } : {})}
     >
-      <img
+      <Picture
         src={src}
         alt={alt}
         className={`${aspectClasses[aspectKey] ?? aspectClasses[cfg.aspect]} w-full rounded-md object-cover`}

@@ -1,6 +1,7 @@
 // From HP-23 "PR /SOCA:" group — "Get On The Soap Box" (Social + PR).
 
 import HeadingReveal from "../design-system/components/HeadingReveal";
+import Picture from "../design-system/components/Picture";
 
 // Drop real files into public/images/ using the names below.
 const cols = [
@@ -29,7 +30,7 @@ export default function SocialPR() {
       <div className="grid gap-8 md:grid-cols-2">
         {cols.map((c) => (
           <div key={c.heading}>
-            <img
+            <Picture
               src={c.src}
               alt={c.alt}
               className="aspect-[880/480] w-full rounded-lg object-cover"

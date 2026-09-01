@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import HeadingReveal from "./HeadingReveal";
+import Picture from "./Picture";
 import TextReveal from "./TextReveal";
 
 const cardVariants = {
@@ -118,7 +119,7 @@ export default function MediaObject({
           />
         </div>
       </div>
-      <img
+      <Picture
         src={imgSrc}
         alt={imgAlt}
         className={`${side.image} row-start-1 rounded-md ${

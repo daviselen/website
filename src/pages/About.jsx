@@ -7,6 +7,7 @@ import TextReveal from "../design-system/components/TextReveal.jsx";
 import { useVideoOverlay } from "../design-system/components/VideoOverlay.jsx";
 import HeadingReveal from "../design-system/components/HeadingReveal.jsx";
 import Marquee from "../design-system/components/Marquee.jsx";
+import Picture from "../design-system/components/Picture.jsx";
 
 // Hosted on Vimeo rather than self-served from /public/videos, so the overlay
 // gets its `embed` payload (an iframe player URL) instead of `src`. The
@@ -240,7 +241,8 @@ export default function About() {
       
       <section id="top">
         <div class="px-8 pb-1000 rounded-md overflow-hidden">
-          <img src="/images/about-masthead.jpg" alt="About Davis Elen Advertising" class="block w-full h-auto rounded-md" />
+          <MastheadImage src="/images/about-masthead.jpg" alt="About Davis Elen Advertising" />
+          <Picture src="/images/about-masthead.jpg" alt="About Davis Elen Advertising" className="block w-full h-auto rounded-md" />
         </div>
         <div className="px-8">
           <div className="grid grid-cols-12 gap-400">
@@ -264,7 +266,7 @@ export default function About() {
         <div className="grid grid-cols-4 gap-400">
           {people.map((person, index) => (
           <div key={index} className="teams-video bg-surface-alt relative rounded-md">
-            <img className="h-auto w-full aspect-[16/9] flex justify-center items-center rounded-md" src={person.img.src} alt={person.name} />
+            <Picture className="h-auto w-full aspect-[16/9] flex justify-center items-center rounded-md" src={person.img.src} alt={person.name} />
             {!person.img.src ? (
               <span className="absolute bottom-100 left-100 flex gap-[6px] bg-neutral-1000/50 text-[12px] tracking-200 tracking-[0.03em] px-[8px] rounded-[3px]">
                 <span className="py-[8px]">{person.name}</span>
@@ -306,7 +308,7 @@ export default function About() {
                 direction={index % 2 === 0 ? "left" : "right"}
               >
                 {(client, itemIndex, isClone) => (
-                  <img
+                  <Picture
                     className="h-auto w-full"
                     src={client.img.src}
                     // Copies past the first are decorative repeats of a logo
