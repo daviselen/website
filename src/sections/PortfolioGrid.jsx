@@ -80,7 +80,7 @@ export default function PortfolioGrid() {
               <HeadingReveal
                 as="h2"
                 text={`Fresh Out \nof the Box`}
-                className="mb-3200 font-display text-6xl uppercase leading-none md:text-8xl lg:text-display-h2"
+                className="mb-3200 font-display text-6xl uppercase leading-none md:text-8xl lg:text-display-h3"
               />
             )}
             {column.map((p) => (

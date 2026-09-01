@@ -42,7 +42,7 @@ const sideConfig = {
 // Headings/H3 (184/128), the size the standalone section headlines use.
 const titleSizes = {
   default: "text-display-hiai",
-  large: "text-display-h2 mt-10",
+  large: "text-display-h3 mt-10",
 };
 
 // The root element is chosen by which prop is passed, so the whole media

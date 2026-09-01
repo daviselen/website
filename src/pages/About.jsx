@@ -260,7 +260,7 @@ export default function About() {
       />
       <section id="people" className="pt-3000 px-8 flex flex-col gap-1000">
         <HeadingReveal
-          className="text-display-h2 font-display uppercase"
+          className="text-display-h3 font-display uppercase"
           text={`Let’s \nMeet Up`}
         />
         <div className="grid grid-cols-4 gap-400">
@@ -292,7 +292,7 @@ export default function About() {
       <section id="clients" className="pt-3000 px-8 flex flex-col gap-0">
         <HeadingReveal
           as="h2"
-          className="text-display-h2 font-display uppercase"
+          className="text-display-h3 font-display uppercase"
           text={`Client \nExperience`}
         />
         {/* Full-bleed breakout: the section keeps its px-8 so the heading stays
