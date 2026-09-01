@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import HeadingReveal from "./HeadingReveal";
 
 const cardVariants = {
     hidden: { 
@@ -94,13 +95,13 @@ export default function MediaObject({
       }`}
     >
       <div className={`${side.copy} row-start-1 flex flex-col gap-600`}>
-        <h2
+        <HeadingReveal
+          as="h2"
+          text={title}
           className={`font-display uppercase ${heading} ${
             isInteractive ? "transition-colors group-hover:text-primary-300" : ""
           }`}
-        >
-          {title}
-        </h2>
+        />
         <div className={`flex flex-col gap-200 ${side.measure}`}>
           {subhead ? (
             <span className="font-narrow text-base">{subhead}</span>

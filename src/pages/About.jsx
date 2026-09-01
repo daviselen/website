@@ -3,6 +3,7 @@ import MastheadImage from "../design-system/components/MastheadImage";
 import CTABanner from "../sections/CTABanner";
 import Footer from "../sections/Footer.jsx";
 import MediaObject from "../design-system/components/MediaObject.jsx";
+import TextReveal from "../design-system/components/TextReveal.jsx";
 import { useVideoOverlay } from "../design-system/components/VideoOverlay.jsx";
 
 // Hosted on Vimeo rather than self-served from /public/videos, so the overlay
@@ -227,8 +228,12 @@ export default function About() {
       <section id="top">
         <MastheadImage src="/images/about-masthead.jpg" alt="About Davis Elen Advertising" className="px-8 pb-1000 rounded-md overflow-hidden" />
         <div className="px-8 columns-2">
-          <p className="text-pre-title mb-6">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.</p>
-          <p className="text-pre-title mb-6">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam.</p>
+          <TextReveal className="text-pre-title mb-6"
+            text="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit."
+          />
+          <TextReveal className="text-pre-title mb-6"
+            text="Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam."
+          />
         </div>
       </section>
       <MediaObject
