@@ -125,7 +125,8 @@ export default {
       // desktop-only).
       fontSize: {
         "display-h1": ["360px", { lineHeight: "256px" }], // Font/Headings/H1 — Masthead
-        "display-h2": ["184px", { lineHeight: "128px" }], // Headings/H3 (Scale/2300 + Scale/1600) — section headlines
+        "display-h2": ["272px", { lineHeight: "192px" }], // Font/Headings/H2 — Masthead alt
+        "display-h3": ["184px", { lineHeight: "128px" }], // Headings/H3 (Scale/2300 + Scale/1600) — section headlines
         "display-hiai": ["144px", { lineHeight: "104px" }], // "THE HI x AI LOOP"
         "display-card": ["80px", { lineHeight: "56px" }], // FootB/heading — portfolio card brand name
         "display-stat": ["64px", { lineHeight: "56px" }], // card/heading, det/heading — Proof/News stat headline
