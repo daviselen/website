@@ -5,11 +5,13 @@ import Footer from "../sections/Footer.jsx";
 import MediaObject from "../design-system/components/MediaObject.jsx";
 import { useVideoOverlay } from "../design-system/components/VideoOverlay.jsx";
 
-// NOTE: this asset does not exist in /public/videos yet — only
-// davis-elen-masthead.mp4 and the hola-mexico portfolio pair are present.
-// Drop the real file in and correct this path before shipping.
+// Hosted on Vimeo rather than self-served from /public/videos, so the overlay
+// gets its `embed` payload (an iframe player URL) instead of `src`. The
+// canonical share link is https://vimeo.com/849298824 — the player.vimeo.com
+// host is the embeddable form of the same video, and autoplay=1 matches the
+// autoPlay the overlay already applies to self-hosted files.
 const ORIGIN_STORY = {
-  src: "/videos/about-origin-story.mp4",
+  embed: "https://player.vimeo.com/video/849298824?autoplay=1",
   title: "Our Origin Story",
 };
 
@@ -254,7 +256,6 @@ export default function About() {
         </div>
       </section>
       <MediaObject
-        onClick={() => StereoPannerNode(true)}
         imageSide="left"
         title={ORIGIN_STORY.title}
         titleSize="large"
