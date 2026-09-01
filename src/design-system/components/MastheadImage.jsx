@@ -83,11 +83,16 @@ export default function MastheadImage({
       }}
     >
       <div ref={maskRef} style={{ clipPath: "inset(0% 0% 100% 0%)" }}>
+        {/* The radius lives on the <img>, not the outer wrapper: callers put
+            page padding (px-8 pb-1000) on that wrapper, so a radius there
+            would round the padding box and leave the image square. rounded.md
+            is the site's only corner radius (DESIGN.md), so it's fixed here
+            rather than passed in. */}
         <img
           ref={imgRef}
           src={src}
           alt={alt}
-          className="block w-full h-full object-cover"
+          className="block w-full h-full object-cover rounded-md"
           style={{ transform: "scale(1.04) translateY(-1%)" }}
         />
       </div>

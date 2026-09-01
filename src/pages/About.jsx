@@ -227,7 +227,9 @@ export default function About() {
       <meta itemProp="url" content="https://daviselen.com" />
       
       <section id="top">
-        <MastheadImage src="/images/about-masthead.jpg" alt="About Davis Elen Advertising" className="px-8 pb-1000 rounded-md overflow-hidden" />
+        <div class="px-8 pb-1000 rounded-md overflow-hidden" style="visibility: visible;">
+          <img src="/images/about-masthead.jpg" alt="About Davis Elen Advertising" class="block w-full h-auto rounded-md" />
+        </div>
         <div className="px-8 columns-2">
           <TextReveal className="text-pre-title mb-6"
             text="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit."
