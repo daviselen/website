@@ -242,13 +242,12 @@ export default function About() {
         <div class="px-8 pb-1000 rounded-md overflow-hidden">
           <img src="/images/about-masthead.jpg" alt="About Davis Elen Advertising" class="block w-full h-auto rounded-md" />
         </div>
-        <div className="px-8 columns-2">
-          <TextReveal className="text-pre-title mb-6"
-            text="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit."
-          />
-          <TextReveal className="text-pre-title mb-6"
-            text="Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam."
-          />
+        <div className="px-8">
+          <div className="grid grid-cols-12 gap-400">
+            <TextReveal className="text-pre-title mb-6 col-span-7 col-start-6"
+              text="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit."
+            />
+          </div>
         </div>
       </section>
       <MediaObject
