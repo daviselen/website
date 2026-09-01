@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap, useGSAP, REVEAL_DURATION, EASE_REVEAL } from "../animation";
+import HeadingReveal from "./HeadingReveal";
 
 export default function MastheadImage({
   src,
@@ -77,11 +78,22 @@ export default function MastheadImage({
   return (
     <div
       ref={wrapRef}
-      className={`overflow-hidden ${className}`}
+      className={`relative overflow-hidden ${className}`}
       style={{
         visibility: loaded ? "visible" : "hidden",
       }}
     >
+      {/* Centering lives on this wrapper, not the heading: HeadingReveal
+          animates the heading's own `y`, and GSAP writes `transform: none`
+          onto it when that tween settles — which would wipe out any
+          -translate-y-1/2 the heading carried. Flex centering survives it. */}
+      <div className="absolute inset-y-0 left-8 z-50 flex items-center">
+        <HeadingReveal
+          as="h1"
+          text={`Inside \nthe Box`}
+          className="font-display text-display-h2 uppercase"
+        />
+      </div>
       <div ref={maskRef} style={{ clipPath: "inset(0% 0% 100% 0%)" }}>
         {/* The radius lives on the <img>, not the outer wrapper: callers put
             page padding (px-8 pb-1000) on that wrapper, so a radius there
@@ -93,7 +105,6 @@ export default function MastheadImage({
           src={src}
           alt={alt}
           className="block w-full h-full object-cover rounded-md"
-          style={{ transform: "scale(1.04) translateY(-1%)" }}
         />
       </div>
     </div>
