@@ -40,7 +40,7 @@ const people = [
   {
     name: "Cassedy Banks",
     img: {
-      src: "",
+      src: "/images/portraits/cassedy-banks.jpg",
     },
   },
   {
@@ -52,7 +52,7 @@ const people = [
   {
     name: "Lucía Galicia",
     img: {
-      src: "",
+      src: "/images/portraits/lucia-galicia.jpg",
     },
   },
   {
@@ -64,31 +64,31 @@ const people = [
   {
     name: "Joshua Walan",
     img: {
-      src: "",
+      src: "/images/portraits/joshua-walan.jpg",
     },
   },
   {
     name: "Alonso Núñez Sarrapy",
     img: {
-      src: "",
+      src: "/images/portraits/alonso-nunez-sarrapy.jpg",
     },
   },
   {
     name: "Christina Dominguez",
     img: {
-      src: "",
+      src: "/images/portraits/christina-dominguez.jpg",
     },
   },
   {
     name: "Tyler Grinham",
     img: {
-      src: "",
+      src: "/images/portraits/tyler-grinham.jpg",
     },
   },
   {
     name: "Jorge Rodriguez",
     img: {
-      src: "",
+      src: "/images/portraits/jorge-rodriguez.jpg",
     },
   },
 ];
