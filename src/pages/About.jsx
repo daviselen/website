@@ -6,6 +6,7 @@ import MediaObject from "../design-system/components/MediaObject.jsx";
 import TextReveal from "../design-system/components/TextReveal.jsx";
 import { useVideoOverlay } from "../design-system/components/VideoOverlay.jsx";
 import HeadingReveal from "../design-system/components/HeadingReveal.jsx";
+import Marquee from "../design-system/components/Marquee.jsx";
 
 // Hosted on Vimeo rather than self-served from /public/videos, so the overlay
 // gets its `embed` payload (an iframe player URL) instead of `src`. The
@@ -215,6 +216,17 @@ const clients = [
   },
 ];
 
+// Four marquee rows of five logos, preserving the grouping the old grid gave
+// them. Chunked at module scope and NOT keyed off the breakpoint: the row count
+// stays fixed at 4 at every width — only the tile width inside a row is
+// responsive — so resizing never reshuffles which logo sits in which row or
+// remounts a row's tween.
+const ROW_SIZE = 5;
+const CLIENT_ROWS = Array.from(
+  { length: Math.ceil(clients.length / ROW_SIZE) },
+  (_, row) => clients.slice(row * ROW_SIZE, row * ROW_SIZE + ROW_SIZE)
+);
+
 export default function About() {
   const { openVideo } = useVideoOverlay();
   return (
@@ -282,12 +294,30 @@ export default function About() {
           className="text-display-h2 font-display uppercase"
           text={`Client \nExperience`}
         />
-        <div className="grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-400">
-          {clients.map((client, index) => (
-            <div key={index} className="">
-              <img src={client.img.src} alt={client.img.alt} />
-            </div>
-          ))}
+        {/* Full-bleed breakout: the section keeps its px-8 so the heading stays
+            gutter-aligned, and only the rows run edge to edge. -mx-8 is the
+            default-scale 32px negative margin (a real class, unlike -mx-400),
+            so it clears the repo's no-arbitrary-value rule. */}
+        <div className="-mx-8">
+          <div className="flex flex-col gap-400">
+            {CLIENT_ROWS.map((row, index) => (
+              <Marquee
+                key={index}
+                items={row}
+                direction={index % 2 === 0 ? "left" : "right"}
+              >
+                {(client, itemIndex, isClone) => (
+                  <img
+                    className="h-auto w-full"
+                    src={client.img.src}
+                    // Copies past the first are decorative repeats of a logo
+                    // the first copy already announced.
+                    alt={isClone ? "" : client.img.alt}
+                  />
+                )}
+              </Marquee>
+            ))}
+          </div>
         </div>
       </section>
       <CTABanner />
