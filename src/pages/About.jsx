@@ -242,7 +242,7 @@ export default function About() {
       <section id="top">
         <div class="px-8 pb-1000 rounded-md overflow-hidden">
           <MastheadImage src="/images/about-masthead.jpg" alt="About Davis Elen Advertising" />
-          <Picture src="/images/about-masthead.jpg" alt="About Davis Elen Advertising" className="block w-full h-auto rounded-md" />
+          {/* <Picture src="/images/about-masthead.jpg" alt="About Davis Elen Advertising" className="block w-full h-auto rounded-md" /> */}
         </div>
         <div className="px-8">
           <div className="grid grid-cols-12 gap-400">
