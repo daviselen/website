@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  @page {
+    size: A4;
+    margin: 22mm 18mm 25mm 18mm;
+    @bottom-center {
+      content: "Page " counter(page) " of " counter(pages);
+      font-size: 9pt;
+      color: #6b7280;
+      font-family: 'DejaVu Serif', 'Times New Roman', Georgia, serif;
+    }
+    @bottom-left {
+      content: "Confidential";
+      font-size: 7pt;
+      color: #d6d3cc;
+      font-family: 'DejaVu Serif', 'Times New Roman', Georgia, serif;
+    }
+    @bottom-right {
+      content: "daviselen.com Google SEO Report";
+      font-size: 8pt;
+      color: #cbd5e1;
+      font-family: 'DejaVu Serif', 'Times New Roman', Georgia, serif;
+    }
+  }
+
+  @page :first {
+    margin: 0;
+    @bottom-left { content: none; }
+    @bottom-center { content: none; }
+    @bottom-right { content: none; }
+  }
+
+  @page toc {
+    @bottom-center {
+      content: counter(page);
+      font-size: 9pt;
+      color: #6b7280;
+    }
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Times New Roman', 'DejaVu Serif', Georgia, serif;
+    font-size: 10pt;
+    line-height: 1.55;
+    color: #1e293b;
+    background: white;
+  }
+
+  /* ─── Title Page (Clean White) ─── */
+  .title-page {
+    page: first;
+    width: 210mm;
+    height: 297mm;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #1a1a2e;
+    position: relative;
+    padding: 50mm 30mm 40mm 30mm;
+    border-top: 6mm solid #1e3a5f;
+  }
+
+  .title-page .badge {
+    background: #f7f6f3;
+    border: 1px solid #d6d3cc;
+    border-radius: 20px;
+    padding: 6px 18px;
+    font-size: 9pt;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 15mm;
+    color: #1e3a5f;
+  }
+
+  .title-page h1 {
+    font-size: 28pt;
+    font-weight: bold;
+    margin-bottom: 5mm;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+    color: #1a1a2e;
+  }
+
+  .title-page .subtitle {
+    font-size: 13pt;
+    color: #6b7280;
+    margin-bottom: 12mm;
+    font-weight: 300;
+  }
+
+  .title-page .url {
+    font-size: 12pt;
+    color: #1e3a5f;
+    margin-bottom: 15mm;
+    padding: 4mm 8mm;
+    border: 1px solid #d6d3cc;
+    border-radius: 6px;
+    background: #faf9f7;
+  }
+
+  .title-page .score-box {
+    background: #faf9f7;
+    border: 2px solid #d6d3cc;
+    border-radius: 12px;
+    padding: 6mm 12mm;
+    margin-bottom: 15mm;
+  }
+
+  .title-page .score-number {
+    font-size: 42pt;
+    font-weight: bold;
+    color: #1e3a5f;
+    line-height: 1;
+  }
+
+  .title-page .score-label {
+    font-size: 10pt;
+    color: #6b7280;
+    margin-top: 2mm;
+  }
+
+  .title-page .meta {
+    font-size: 9pt;
+    color: #6b7280;
+    margin-top: 8mm;
+    padding-top: 5mm;
+    border-top: 1px solid #d6d3cc;
+  }
+
+  .title-page .meta span {
+    margin: 0 8px;
+  }
+
+  /* ─── Table of Contents ─── */
+  .toc-page {
+    page: toc;
+    page-break-before: always;
+  }
+
+  .toc-page h2 {
+    font-size: 18pt;
+    color: #1e3a5f;
+    margin-bottom: 8mm;
+    padding-bottom: 3mm;
+    border-bottom: 2px solid #1e3a5f;
+  }
+
+  .toc-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .toc-list li {
+    padding: 2mm 0;
+    border-bottom: 1px solid #f1f5f9;
+    overflow: hidden;
+  }
+
+  .toc-list li.toc-section {
+    font-weight: bold;
+    font-size: 11pt;
+    padding-top: 4mm;
+    color: #0f172a;
+  }
+
+  .toc-list li.toc-sub {
+    padding-left: 8mm;
+    font-size: 9.5pt;
+    color: #475569;
+  }
+
+  .toc-score {
+    display: inline-block;
+    float: right;
+    padding: 1px 8px;
+    border-radius: 10px;
+    font-size: 9pt;
+    font-weight: bold;
+    color: white;
+  }
+
+  .score-good { background: #2d6a4f; }
+  .score-warn { background: #d4740e; }
+  .score-bad { background: #c53030; }
+
+  /* ─── Section Styles ─── */
+  div.section {
+    page-break-before: always;
+  }
+
+  .section-header {
+    background: #faf9f7;
+    border-left: 4px solid #1e3a5f;
+    padding: 5mm 6mm;
+    margin-bottom: 6mm;
+    page-break-after: avoid;
+  }
+
+  .section-header h2 {
+    font-size: 16pt;
+    color: #0f172a;
+    margin-bottom: 1mm;
+  }
+
+  .section-header .section-score {
+    font-size: 12pt;
+    font-weight: bold;
+    float: right;
+    margin-top: -6mm;
+  }
+
+  h3 {
+    font-size: 12pt;
+    color: #1e3a5f;
+    margin-top: 6mm;
+    margin-bottom: 3mm;
+    padding-bottom: 1.5mm;
+    border-bottom: 1px solid #d6d3cc;
+    page-break-after: avoid;
+  }
+
+  h4 {
+    font-size: 10.5pt;
+    color: #334155;
+    margin-top: 4mm;
+    margin-bottom: 2mm;
+    page-break-after: avoid;
+  }
+
+  p {
+    margin-bottom: 3mm;
+    color: #334155;
+  }
+
+  .highlight {
+    background: #fef3c7;
+    border-left: 3px solid #d4740e;
+    padding: 3mm 4mm;
+    margin: 4mm 0;
+    font-size: 9.5pt;
+    /* allow page breaks to prevent white gaps */
+  }
+
+  .critical-box {
+    background: #fef2f2;
+    border-left: 3px solid #c53030;
+    padding: 3mm 4mm;
+    margin: 4mm 0;
+    font-size: 9.5pt;
+    /* allow page breaks to prevent white gaps */
+  }
+
+  .success-box {
+    background: #f0fdf4;
+    border-left: 3px solid #2d6a4f;
+    padding: 3mm 4mm;
+    margin: 4mm 0;
+    font-size: 9.5pt;
+    /* allow page breaks to prevent white gaps */
+  }
+
+  /* ─── Tables ─── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 4mm 0 6mm 0;
+    font-size: 9pt;
+  }
+
+  thead th {
+    background: #f7f6f3;
+    color: #0f172a;
+    font-weight: bold;
+    padding: 3mm 4mm;
+    text-align: left;
+    border-bottom: 2px solid #d6d3cc;
+    font-size: 9pt;
+  }
+
+  tbody td {
+    padding: 2.5mm 3mm;
+    border-bottom: 1px solid #f1f5f9;
+    vertical-align: top;
+  }
+
+  tbody tr:nth-child(even) {
+    background: #fdfcfa;
+  }
+
+  .status-pass {
+    color: #2d6a4f;
+    font-weight: bold;
+  }
+
+  .status-fail {
+    color: #c53030;
+    font-weight: bold;
+  }
+
+  .status-warn {
+    color: #d4740e;
+    font-weight: bold;
+  }
+
+  .status-partial {
+    color: #4a5568;
+    font-weight: bold;
+  }
+
+  /* ─── Charts ─── */
+  .chart-container {
+    text-align: center;
+    margin: 4mm 0;
+  }
+
+  .chart-container img {
+    max-width: 100%;
+    max-height: 120mm;
+    height: auto;
+  }
+
+  .chart-caption {
+    font-size: 8.5pt;
+    color: #6b7280;
+    font-style: italic;
+    margin-top: 2mm;
+    text-align: center;
+  }
+
+  .chart-half {
+    display: inline-block;
+    width: 48%;
+    vertical-align: top;
+    text-align: center;
+    margin: 2mm 0;
+  }
+
+  .chart-half img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* ─── Two column layout ─── */
+  .two-col {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    margin: 3mm 0;
+  }
+
+  .two-col .col {
+    display: table-cell;
+    vertical-align: top;
+    padding: 0 2mm;
+  }
+
+  .four-col {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    margin: 3mm 0;
+  }
+
+  .four-col .col {
+    display: table-cell;
+    vertical-align: top;
+    padding: 0 1.5mm;
+  }
+
+  /* ─── Metric Cards ─── */
+  .metric-card {
+    background: #faf9f7;
+    border: 1px solid #d6d3cc;
+    border-radius: 6px;
+    padding: 2.5mm 3mm;
+    text-align: center;
+    margin: 2mm 0;
+  }
+
+  .metric-card .value {
+    font-size: 14pt;
+    font-weight: bold;
+    line-height: 1.2;
+  }
+
+  .metric-card .label {
+    font-size: 7.5pt;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 1mm;
+  }
+
+  /* ─── Action Plan ─── */
+  .action-item {
+    background: #faf9f7;
+    border-radius: 4px;
+    padding: 3mm 4mm;
+    margin: 3mm 0;
+    border-left: 3px solid #cbd5e1;
+    /* allow page breaks to prevent white gaps */
+  }
+
+  .action-item.critical {
+    border-left-color: #c53030;
+    background: #fdf2f2;
+  }
+
+  .action-item.high {
+    border-left-color: #d4740e;
+    background: #fdf8ef;
+  }
+
+  .action-item.medium {
+    border-left-color: #1e3a5f;
+    background: #f0f4f8;
+  }
+
+  .action-item.low {
+    border-left-color: #94a3b8;
+  }
+
+  .action-item h4 {
+    margin-top: 0;
+    margin-bottom: 1.5mm;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .action-item .effort {
+    font-size: 8.5pt;
+    color: #64748b;
+    float: right;
+  }
+
+  .priority-tag {
+    display: inline-block;
+    padding: 0.5mm 3mm;
+    border-radius: 3px;
+    font-size: 8pt;
+    font-weight: bold;
+    color: white;
+    margin-right: 2mm;
+    vertical-align: middle;
+  }
+
+  .priority-critical { background: #c53030; }
+  .priority-high { background: #d4740e; }
+  .priority-medium { background: #1e3a5f; }
+  .priority-low { background: #94a3b8; }
+
+  /* ─── Code blocks ─── */
+  .code-block {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 3mm 4mm;
+    border-radius: 4px;
+    font-family: 'DejaVu Sans Mono', monospace;
+    font-size: 8pt;
+    line-height: 1.6;
+    margin: 3mm 0;
+    white-space: pre-wrap;
+    word-break: break-all;
+    /* allow page breaks to prevent white gaps */
+  }
+
+  /* ─── Divider ─── */
+  .divider {
+    border: none;
+    border-top: 1px solid #d6d3cc;
+    margin: 5mm 0;
+  }
+
+  /* ─── Roadmap ─── */
+  .roadmap-phase {
+    background: #faf9f7;
+    border-radius: 6px;
+    padding: 4mm 5mm;
+    margin: 4mm 0;
+    border: 1px solid #d6d3cc;
+    /* allow page breaks to prevent white gaps */
+  }
+
+  .roadmap-phase h4 {
+    margin-top: 0;
+    border-bottom: none;
+    color: #1e3a5f;
+  }
+
+  .roadmap-phase ul {
+    margin: 2mm 0 0 5mm;
+    padding: 0;
+  }
+
+  .roadmap-phase li {
+    margin-bottom: 1.5mm;
+    font-size: 9.5pt;
+    color: #334155;
+  }
+
+  /* ─── Lists ─── */
+  ul {
+    margin-left: 5mm;
+    margin-bottom: 3mm;
+  }
+
+  li {
+    margin-bottom: 1.5mm;
+  }
+
+  /* ─── Data freshness ─── */
+  .data-freshness {
+    font-size: 8pt;
+    color: #6b7280;
+    font-style: italic;
+    margin-top: 4mm;
+    padding-top: 2mm;
+    border-top: 1px solid #d6d3cc;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ======================================================= TITLE PAGE === -->
+<div class="title-page">
+  <div class="badge">Full SEO Audit Report</div>
+  <h1>daviselen.com</h1>
+  <div class="subtitle">Prepared by Claude SEO</div>
+  <div class="score-box">
+    <div class="score-number">41<span style="font-size: 20pt; color: #94a3b8;">/100</span></div>
+    <div class="score-label">SEO Health Score</div>
+  </div>
+  <div class="meta">
+    <span>September 01, 2026</span>
+    <span>Full Audit</span>
+  </div>
+</div>
+
+
+<!-- ======================================================= TABLE OF CONTENTS === -->
+<div class="toc-page">
+  <h2>Table of Contents</h2>
+  <ul class="toc-list">
+    <li class="toc-section"><span>1. Executive Summary</span></li>
+    <li class="toc-sub"><span>Key Metrics, Critical Issues &amp; Quick Wins</span></li>
+    <li class="toc-section"><span>2. Audit Categories</span></li>
+    <li class="toc-sub"><span>What Works</span></li>
+    <li class="toc-sub"><span>Findings by Severity</span></li>
+    <li class="toc-section"><span>3. Action Plan</span></li>
+    <li class="toc-sub"><span>Phased Roadmap</span></li>
+    <li class="toc-section"><span>4. Data Sources &amp; Methodology</span></li>
+  </ul>
+</div>
+
+
+<!-- ======================================================= 1. EXECUTIVE SUMMARY === -->
+<div class="section">
+  <div class="section-header">
+    <h2>1. Executive Summary</h2>
+  </div>
+
+  <p>This report presents a comprehensive SEO audit of <strong>daviselen.com</strong> for a <strong>Agency (advertising / creative services, multi-location)</strong> site, generated on September 01, 2026. Findings combine technical, content, schema, performance, visual, and search-readiness evidence as available.</p>
+
+  <div class="two-col">
+    <div class="col">
+      <div class="metric-card">
+        <div class="value" style="color: #c53030;">41/100</div>
+        <div class="label">SEO Health Score</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="critical-box">
+    <strong>Critical Issues Found:</strong>
+    <ol>
+      <li><strong>Critical:</strong> Zero headings sitewide - not one &lt;h1&gt;-&lt;h6&gt; element in the rendered DOM on the homepage</li>
+      <li><strong>Critical:</strong> WordPress demo pages and a test page are live, indexable, and listed in the XML sitemap</li>
+      <li><strong>Critical:</strong> Cumulative Layout Shift of 0.58 on the homepage, 5.8x the 0.10 &#x27;good&#x27; threshold</li>
+      <li><strong>High:</strong> 23 of 30 pages carry a missing or placeholder meta description</li>
+      <li><strong>High:</strong> Every commercial capabilities page is thin content, 228 to 535 words</li>
+    </ol>
+  </div>
+
+  <div class="success-box">
+    <strong>Quick Wins:</strong>
+    <ol>
+      <li>Delete /sample-page, /hello-world, and /test in WordPress, then resubmit the sitemap - removes 3 thin indexable pages in minutes</li>
+      <li>Add &#x27;Sitemap: https://daviselen.com/sitemap_index.xml&#x27; to robots.txt - one line, currently absent</li>
+      <li>Remove &#x27;Crawl-delay: 3&#x27; from robots.txt - ignored by Google, actively throttles Bing for no benefit</li>
+      <li>Add width and height attributes plus loading=lazy to images - this is the single largest CLS and page-weight win available</li>
+      <li>Add alt text to the 9 images in the shared capabilities template - one component fix corrects 9 pages at once</li>
+    </ol>
+  </div>
+
+</div>
+
+<!-- ======================================================= 2. AUDIT CATEGORIES === -->
+<div class="section">
+  <div class="section-header">
+    <h2>2. Audit Categories</h2>
+  </div>
+
+  <h3>2.1 Technical SEO</h3>
+  <p><strong>Score:</strong> <span class="status-warn">62/100</span></p>
+  <h4>What Works</h4>
+  <ul>
+    <li>HTTPS enforced; http:// and www. both 301 to the canonical https://daviselen.com/ apex</li>
+    <li>Self-referencing canonical tags present on every page checked</li>
+    <li>Genuine 404 status returned for non-existent URLs (verified with and without trailing slash)</li>
+    <li>Yoast sitemap index is valid and segmented: post, page, project, category, author</li>
+    <li>Fastly CDN in front of Flywheel; cached TTFB measured at 0.03s</li>
+    <li>No AI crawler blocks - GPTBot, ClaudeBot, PerplexityBot and CCBot are all permitted, which is the correct default</li>
+  </ul>
+  <h4>Findings</h4>
+  <div class="action-item medium">
+    <h4>robots.txt omits the Sitemap directive <span class="status-warn">High</span></h4>
+    <p>No &#x27;Sitemap:&#x27; line anywhere in robots.txt, so crawlers must discover sitemap_index.xml by convention alone.</p>
+    <p><strong>Recommendation:</strong> Add &#x27;Sitemap: https://daviselen.com/sitemap_index.xml&#x27; to robots.txt.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>&#x27;Disallow: /*?&#x27; blocks every query-string URL and contradicts the site&#x27;s own WebSite schema <span class="status-warn">High</span></h4>
+    <p>The wildcard blocks ?s= search results and would block any future paginated or filtered URL. Meanwhile the WebSite JSON-LD declares a SearchAction targeting https://daviselen.com/?s={search_term_string}, a URL pattern robots.txt forbids.</p>
+    <p><strong>Recommendation:</strong> Replace the blanket wildcard with disallow rules for specific tracking parameters, or remove it and control indexation with canonical tags.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>&#x27;Crawl-delay: 3&#x27; throttles Bing for no benefit <span class="status-warn">Medium</span></h4>
+    <p>Google ignores crawl-delay entirely; Bing honours it, so this only slows Bing discovery.</p>
+    <p><strong>Recommendation:</strong> Delete the Crawl-delay line.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>Cold-cache TTFB reaches 4.7 seconds on a primary service page <span class="status-warn">Medium</span></h4>
+    <p>Measured TTFB: /capabilities/advertising 4.70s cold, /capabilities/digital 1.36s, /about 0.94s, / 0.03s on a Fastly HIT. Origin response is the variable, not the CDN.</p>
+    <p><strong>Recommendation:</strong> Investigate origin PHP/plugin time on capabilities templates and extend Fastly cache TTL so these pages stay warm.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>Security headers are nearly absent <span class="status-warn">Medium</span></h4>
+    <p>Only &#x27;referrer-policy: no-referrer-when-downgrade&#x27; is set. No HSTS, no Content-Security-Policy, no X-Frame-Options, no Permissions-Policy.</p>
+    <p><strong>Recommendation:</strong> Add Strict-Transport-Security, a baseline CSP, X-Frame-Options and Permissions-Policy at the Flywheel/Fastly layer. Not a direct ranking factor, but a trust and E-E-A-T signal.</p>
+  </div>
+  <hr class="divider">
+  <h3>2.2 Content Quality (E-E-A-T)</h3>
+  <p><strong>Score:</strong> <span class="status-fail">35/100</span></p>
+  <h4>What Works</h4>
+  <ul>
+    <li>Genuine experience signals exist in the copy: 75+ years in business, Toyota for 5 decades, McDonald&#x27;s for 6, $18 billion in annual retail sales</li>
+    <li>Real third-party validation is linked out: NBA.com Lakers, Innovid case study, One Club award, PadSquad case study</li>
+    <li>/privacy-policy is substantive at 7,909 words</li>
+  </ul>
+  <h4>Findings</h4>
+  <div class="action-item medium">
+    <h4>All 9 capabilities pages are thin <span class="status-warn">High</span></h4>
+    <p>Word counts: advertising 535, digital 344, multicultural 331, activations 331, packaging 326, branding 309, pr-social 311, experiential 268, who 228. These are the site&#x27;s commercial pages and cannot compete for &#x27;[service] agency los angeles&#x27; style queries at this depth.</p>
+    <p><strong>Recommendation:</strong> Expand each to 800+ words with named client work, campaign results, process detail and team credentials.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>Homepage carries only 194 rendered words <span class="status-warn">High</span></h4>
+    <p>Playwright body innerText word count is 194 against a 171 KB HTML payload. The page is almost entirely video and styling.</p>
+    <p><strong>Recommendation:</strong> Add substantive positioning copy that states who the agency serves, in which categories, with what proof.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>WordPress demo content is publicly live <span class="status-warn">Critical</span></h4>
+    <p>/sample-page, /hello-world and /test all return 200 and sit in the sitemap.</p>
+    <p><strong>Recommendation:</strong> Delete all three in WordPress. Do not noindex - delete, then confirm 404/410 and resubmit the sitemap.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>The only page with real depth is the legal boilerplate <span class="status-warn">Medium</span></h4>
+    <p>/privacy-policy at 7,909 words dwarfs every commercial page on the site, and it carries two &lt;h1&gt; elements and no meta description.</p>
+    <p><strong>Recommendation:</strong> Fix the duplicate H1, add a meta description, and treat the depth gap as the content roadmap&#x27;s starting signal.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>Two near-empty pages sit in the sitemap <span class="status-warn">Medium</span></h4>
+    <p>/capabilities-deck is 124 words and /davis-elen-advertising-retail-presence-map is 19 words.</p>
+    <p><strong>Recommendation:</strong> Either build these out or noindex them and drop them from the sitemap.</p>
+  </div>
+  <hr class="divider">
+  <h3>2.3 On-Page SEO</h3>
+  <p><strong>Score:</strong> <span class="status-fail">30/100</span></p>
+  <h4>What Works</h4>
+  <ul>
+    <li>Title tags are present and unique on all 30 pages, mostly within the 28-72 character range</li>
+    <li>Canonical URLs are correct sitewide</li>
+    <li>Primary navigation exposes real crawlable &lt;a href&gt; links to /work, /about, /careers and /contact</li>
+  </ul>
+  <h4>Findings</h4>
+  <div class="action-item medium">
+    <h4>25 of 30 pages have no &lt;h1&gt;; the homepage has no heading of any level <span class="status-warn">Critical</span></h4>
+    <p>Only /about (1), /about-leadership (1) and /privacy-policy (2, a duplicate) contain an H1. The rendered homepage DOM returns headingsTotal: 0 across h1 through h6. Search engines and LLM retrieval pipelines both chunk pages by heading hierarchy; with none present, each page is one undifferentiated blob. This single defect simultaneously depresses On-Page, Content Quality and AI Search Readiness.</p>
+    <p><strong>Recommendation:</strong> Add one semantic &lt;h1&gt; per page and convert styled section divs into &lt;h2&gt;/&lt;h3&gt;. Fix the duplicate H1 on /privacy-policy.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>17 pages have no meta description <span class="status-warn">High</span></h4>
+    <p>Affected: all 9 /capabilities/*, /careers, /privacy-policy, /toyota-ugc, /lively-sim, /capabilities-deck, /test, /davis-elen-advertising-retail-presence-map, and 3 of 4 position pages.</p>
+    <p><strong>Recommendation:</strong> Write unique 135-160 character descriptions for each.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>6 pages ship the literal Yoast placeholder description <span class="status-warn">High</span></h4>
+    <p>/contact, /about-leadership, /game-on, /smart-final-alex, /de-tuesdays and /position-project-manager all serve: &#x27;Add a description about your page or projects. Should be around 135 to 160 characters.&#x27;</p>
+    <p><strong>Recommendation:</strong> Replace all six immediately - this text is visible in SERP snippets.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>Only 3 of 30 pages have a real meta description <span class="status-warn">High</span></h4>
+    <p>/ (130 chars), /work (158 chars) and /about (165 chars, 5 over the practical truncation limit).</p>
+    <p><strong>Recommendation:</strong> Trim /about to under 160 and treat these three as the template for the other 27.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>Homepage does not link to any capabilities page <span class="status-warn">Medium</span></h4>
+    <p>All 9 /capabilities/* URLs are linked only from /work. /about and /careers link to none of them. This concentrates all capability-page authority behind a single hub.</p>
+    <p><strong>Recommendation:</strong> Add contextual links to capabilities pages from the homepage and from /about.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>og:title drops the brand differentiator <span class="status-warn">Low</span></h4>
+    <p>og:title is &#x27;Davis Elen Advertising&#x27; while the &lt;title&gt; is &#x27;Davis Elen Advertising - The oldest independent agency on the West Coast&#x27;. Social shares lose the positioning line.</p>
+    <p><strong>Recommendation:</strong> Align og:title and twitter:title with the full title tag.</p>
+  </div>
+  <hr class="divider">
+  <h3>2.4 Schema / Structured Data</h3>
+  <p><strong>Score:</strong> <span class="status-fail">45/100</span></p>
+  <h4>What Works</h4>
+  <ul>
+    <li>Valid Yoast @graph on every page: WebPage, BreadcrumbList, WebSite, Organization</li>
+    <li>Organization includes logo as a proper ImageObject with dimensions and caption</li>
+    <li>sameAs covers Facebook, X, Instagram, YouTube and LinkedIn</li>
+    <li>inLanguage set to en-US consistently</li>
+  </ul>
+  <h4>Findings</h4>
+  <div class="action-item medium">
+    <h4>Organization is missing every local and entity property that matters <span class="status-warn">High</span></h4>
+    <p>No address, no telephone, no foundingDate, no numberOfEmployees, and the generic Organization type rather than the AdvertisingAgency subtype. The site publicly states 75+ years in business and lists six offices, none of it marked up.</p>
+    <p><strong>Recommendation:</strong> Upgrade to @type AdvertisingAgency with postalAddress, telephone +1-213-688-7000, foundingDate and numberOfEmployees.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>Four open job postings carry no JobPosting schema <span class="status-warn">High</span></h4>
+    <p>/position-copywriter, /position-art-director, /position-production-designer and /position-project-manager return only the generic Yoast graph. Without JobPosting they are ineligible for Google Jobs.</p>
+    <p><strong>Recommendation:</strong> Add JobPosting to all four with title, description, datePosted, validThrough, hiringOrganization, jobLocation and baseSalary where disclosable.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>Six office locations have no LocalBusiness markup <span class="status-warn">High</span></h4>
+    <p>Los Angeles HQ, San Diego, Seattle, Arlington, Kansas City and Denver appear on /contact as plain unmarked text.</p>
+    <p><strong>Recommendation:</strong> Add a LocalBusiness entity per office. Six locations is well under the 30-page location quality gate, so dedicated location pages are safe to build - provided each carries genuinely local content rather than a city-swapped template.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>Leadership page has no Person schema <span class="status-warn">Medium</span></h4>
+    <p>/about-leadership renders 78 images (headshots) with no Person entities, so no author or executive entity graph exists.</p>
+    <p><strong>Recommendation:</strong> Add Person schema per executive with name, jobTitle, image and worksFor pointing at the Organization @id.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>BreadcrumbList contains a single &#x27;Home&#x27; item on every page <span class="status-warn">Low</span></h4>
+    <p>Yoast default, never configured, so no page communicates its position in the hierarchy.</p>
+    <p><strong>Recommendation:</strong> Configure breadcrumb depth in Yoast so /capabilities/* pages emit Home &gt; Capabilities &gt; [Service].</p>
+  </div>
+  <hr class="divider">
+  <h3>2.5 Performance (Core Web Vitals)</h3>
+  <p><strong>Score:</strong> <span class="status-fail">35/100</span></p>
+  <h4>What Works</h4>
+  <ul>
+    <li>LCP measured at 1,524 ms, inside the 2.5s &#x27;good&#x27; threshold</li>
+    <li>FCP at 1,188 ms</li>
+    <li>Light DOM: 588 nodes on the homepage</li>
+    <li>Only one long task recorded during load</li>
+  </ul>
+  <h4>Findings</h4>
+  <div class="action-item medium">
+    <h4>CLS of 0.58 against a 0.10 &#x27;good&#x27; threshold <span class="status-warn">Critical</span></h4>
+    <p>Two layout shifts with no recent input. Root causes: images served without width/height attributes, and the hero video replacing its placeholder after load.</p>
+    <p><strong>Recommendation:</strong> Set intrinsic width/height on every image and reserve an aspect-ratio box for the hero video container.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>Homepage transfers 30.1 MB <span class="status-warn">Critical</span></h4>
+    <p>Breakdown: video 25,474 KB (hompageLoop-6.mp4 alone), CSS 2,530 KB across 12 files, images 1,272 KB, scripts 788 KB. DE4-TYT-Thumb-Long.jpg is 1,700 KB by itself.</p>
+    <p><strong>Recommendation:</strong> Compress and re-encode the hero video, or poster-frame it and load on interaction. Target under 3 MB total.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>2.5 MB of CSS across 12 separate files <span class="status-warn">High</span></h4>
+    <p>Twelve render-blocking stylesheets totalling more than the entire recommended page budget.</p>
+    <p><strong>Recommendation:</strong> Concatenate, purge unused rules and inline critical CSS.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>INP not measurable without field data <span class="status-warn">Info</span></h4>
+    <p>INP requires real user interaction data from CrUX. No Google API key is configured, so no field measurement was possible in this run.</p>
+    <p><strong>Recommendation:</strong> Configure a GOOGLE_API_KEY and re-run to capture CrUX p75 INP, LCP and CLS with 25 weeks of history.</p>
+  </div>
+  <hr class="divider">
+  <h3>2.6 AI Search Readiness (GEO)</h3>
+  <p><strong>Score:</strong> <span class="status-fail">30/100</span></p>
+  <h4>What Works</h4>
+  <ul>
+    <li>No AI crawler is blocked in robots.txt - GPTBot, ClaudeBot, PerplexityBot, CCBot and Google-Extended all have access</li>
+    <li>Organization entity with sameAs gives AI systems a resolvable brand identity</li>
+    <li>External third-party citations (Innovid, One Club, NBA.com, PadSquad) corroborate claims made on-site</li>
+  </ul>
+  <h4>Findings</h4>
+  <div class="action-item medium">
+    <h4>No heading structure means no citable passages <span class="status-warn">Critical</span></h4>
+    <p>AI retrieval systems extract and cite passage-level chunks bounded by headings. With zero headings sitewide, there is nothing for a retrieval pipeline to isolate and quote.</p>
+    <p><strong>Recommendation:</strong> Fixing the heading defect is the single highest-leverage GEO action available; every other GEO improvement depends on it.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>Content depth is below the citation threshold <span class="status-warn">High</span></h4>
+    <p>194-535 words per page gives AI systems almost nothing quotable about services, process or results.</p>
+    <p><strong>Recommendation:</strong> Pair the content expansion with explicit, self-contained factual statements that read correctly when quoted out of context.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>Entity data is incomplete for AI knowledge extraction <span class="status-warn">Medium</span></h4>
+    <p>No address, telephone, founding date or employee count in structured data, so AI systems cannot confidently resolve the firm&#x27;s size, age or locations.</p>
+    <p><strong>Recommendation:</strong> Complete the Organization/AdvertisingAgency entity as described in the Schema findings.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>No llms.txt file present <span class="status-warn">Low</span></h4>
+    <p>https://daviselen.com/llms.txt returns 404. Google Search ignores llms.txt entirely; treatment by ChatGPT and Perplexity is unconfirmed.</p>
+    <p><strong>Recommendation:</strong> Low cost, unproven benefit. Backlog item, not a priority - do not displace heading or content work for it.</p>
+  </div>
+  <hr class="divider">
+  <h3>2.7 Images</h3>
+  <p><strong>Score:</strong> <span class="status-fail">45/100</span></p>
+  <h4>What Works</h4>
+  <ul>
+    <li>Homepage, /about, /work, /careers and the position pages have complete alt coverage</li>
+    <li>Logo delivered as SVG</li>
+    <li>Only one homepage image lacks alt text</li>
+  </ul>
+  <h4>Findings</h4>
+  <div class="action-item medium">
+    <h4>9 images missing alt text on every capabilities page <span class="status-warn">Medium</span></h4>
+    <p>Identical count of 9 across all 9 /capabilities/* pages, indicating a single shared template component is at fault.</p>
+    <p><strong>Recommendation:</strong> Fix the one component - it corrects 81 image instances across 9 pages.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>Zero lazy loading sitewide <span class="status-warn">Medium</span></h4>
+    <p>Playwright reports lazyImgs: 0. Every below-fold image loads eagerly, including 78 headshots on /about-leadership and 71 images on /about.</p>
+    <p><strong>Recommendation:</strong> Add loading=lazy to all below-fold images.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>No modern image formats in use <span class="status-warn">Medium</span></h4>
+    <p>Only jpg, png and svg are served. No WebP or AVIF anywhere. DE4-TYT-Thumb-Long.jpg is 1,700 KB and would be roughly 150 KB as WebP.</p>
+    <p><strong>Recommendation:</strong> Convert raster images to WebP with jpg/png fallback via &lt;picture&gt;.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>Images lack intrinsic dimensions <span class="status-warn">Medium</span></h4>
+    <p>Directly contributes to the 0.58 CLS finding.</p>
+    <p><strong>Recommendation:</strong> Emit width and height attributes from the WordPress media pipeline.</p>
+  </div>
+  <hr class="divider">
+  <h3>2.8 DE5 Rebuild Risk</h3>
+  <p><strong>Score:</strong> <span class="status-fail">40/100</span></p>
+  <h4>What Works</h4>
+  <ul>
+    <li>Modern stack in the local repository: React 18, Vite, Tailwind, GSAP, React Router 7</li>
+    <li>Playwright visual regression tests already wired up in the project</li>
+    <li>Rebuild is pre-launch, so SEO defects can be prevented rather than retrofitted</li>
+  </ul>
+  <h4>Findings</h4>
+  <div class="action-item medium">
+    <h4>Client-rendered SPA with no SSR or prerender step <span class="status-warn">High</span></h4>
+    <p>The local repository (davis-elen-website 5.1.2-alpha) is a React Router SPA built with Vite. Without server-side rendering or a prerender step, the initial HTML response is an empty shell. This is a harder version of the current site&#x27;s problem, not a fix for it.</p>
+    <p><strong>Recommendation:</strong> Add SSR or static prerendering before launch, and verify that view-source (not just the rendered DOM) contains titles, meta descriptions, headings and body copy.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>Heading semantics must be enforced in components <span class="status-warn">High</span></h4>
+    <p>The live site&#x27;s zero-heading defect comes from styling divs as display type. The same pattern in React components would carry the defect straight through the rebuild.</p>
+    <p><strong>Recommendation:</strong> Add a lint rule or review gate requiring semantic h1-h6 for all display type, and assert one H1 per route in the existing Playwright suite.</p>
+  </div>
+  <div class="action-item medium">
+    <h4>Per-route meta tags need explicit handling <span class="status-warn">Medium</span></h4>
+    <p>React Router does not manage document head by default, so per-route titles and descriptions must be wired deliberately.</p>
+    <p><strong>Recommendation:</strong> Implement per-route head management and port the corrected meta descriptions from the DE4 fixes rather than re-authoring them.</p>
+  </div>
+  <hr class="divider">
+</div>
+
+<!-- ======================================================= 3. ACTION PLAN === -->
+<div class="section">
+  <div class="section-header">
+    <h2>3. Action Plan</h2>
+  </div>
+
+  <div class="roadmap-phase">
+    <h4>Phase 1 - Unblock (Critical) <span class="effort">Week 1</span></h4>
+    <ul>
+      <li>Delete /sample-page, /hello-world and /test in WordPress; verify they return 404; resubmit sitemap_index.xml</li>
+      <li>Add a semantic &lt;h1&gt; to the 25 pages that have none, and convert styled section divs to &lt;h2&gt;/&lt;h3&gt;; fix the duplicate &lt;h1&gt; on /privacy-policy</li>
+      <li>Add width and height attributes to all images and loading=lazy below the fold - this is the CLS fix and the largest page-weight win in one change</li>
+      <li>Add &#x27;Sitemap: https://daviselen.com/sitemap_index.xml&#x27; to robots.txt; remove &#x27;Crawl-delay: 3&#x27;; narrow or remove &#x27;Disallow: /*?&#x27;</li>
+      <li>Falsifiability check: if non-brand GSC impressions stay flat 4-6 weeks after the heading fix, the constraint is content depth rather than markup</li>
+    </ul>
+  </div>
+  <div class="roadmap-phase">
+    <h4>Phase 2 - On-Page and Weight <span class="effort">Week 2</span></h4>
+    <ul>
+      <li>Write 23 unique meta descriptions at 135-160 characters; eliminate all 6 Yoast placeholder strings; trim /about from 165 characters</li>
+      <li>Re-encode the 25 MB hero video and compress the 1,700 KB JPEG; convert raster images to WebP; target under 3 MB total page weight</li>
+      <li>Add alt text to the 9 images in the shared capabilities template component</li>
+      <li>Consolidate the 12 CSS files and purge unused rules</li>
+      <li>Falsifiability check: re-measure CLS after the dimension fix. If still above 0.10, the shift source is the video container rather than the images</li>
+    </ul>
+  </div>
+  <div class="roadmap-phase">
+    <h4>Phase 3 - Content and Schema <span class="effort">Weeks 3-4</span></h4>
+    <ul>
+      <li>Expand all 9 capabilities pages to 800+ words with named client work, campaign results, process detail and team credentials</li>
+      <li>Add JobPosting schema to the 4 open position pages for Google Jobs eligibility</li>
+      <li>Upgrade Organization to AdvertisingAgency with address, telephone, foundingDate and numberOfEmployees</li>
+      <li>Add Person schema to the leadership team on /about-leadership</li>
+      <li>Add contextual internal links from the homepage and /about to the capabilities pages</li>
+      <li>Configure Yoast breadcrumb depth so capabilities pages emit Home &gt; Capabilities &gt; [Service]</li>
+    </ul>
+  </div>
+  <div class="roadmap-phase">
+    <h4>Phase 4 - Local and Hardening <span class="effort">Month 2</span></h4>
+    <ul>
+      <li>Build 6 location pages (Los Angeles HQ, San Diego, Seattle, Arlington, Kansas City, Denver) with LocalBusiness schema and genuinely local content per office - no city-swap templating</li>
+      <li>Add Strict-Transport-Security, Content-Security-Policy, X-Frame-Options and Permissions-Policy headers</li>
+      <li>Investigate the 4.7s cold TTFB on capabilities templates and extend Fastly cache TTL</li>
+      <li>Configure GOOGLE_API_KEY and Search Console OAuth, then re-run for CrUX field CWV, indexation coverage and query-level data</li>
+      <li>Leading indicator to monitor: GSC Performance filtered to exclude brand terms - watch non-brand impressions weekly</li>
+    </ul>
+  </div>
+  <div class="roadmap-phase">
+    <h4>Phase 5 - DE5 Launch Gate <span class="effort">Before rebuild cutover</span></h4>
+    <ul>
+      <li>Add SSR or static prerendering to the Vite build so crawlers receive populated HTML, not an empty React shell</li>
+      <li>Enforce semantic h1-h6 in components via lint rule; assert exactly one H1 per route in the existing Playwright suite</li>
+      <li>Wire per-route document head management for titles and meta descriptions</li>
+      <li>Port the corrected DE4 metadata into DE5 rather than re-authoring it</li>
+      <li>Capture a drift baseline on DE4 before cutover and compare post-launch: /seo drift baseline daviselen.com</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ======================================================= DATA SOURCES & METHODOLOGY === -->
+<div class="section" style="text-align: center; padding-top: 15mm;">
+  <hr class="divider">
+  <h3 style="text-align: left;">Data Sources &amp; Methodology</h3>
+  <table>
+    <thead>
+      <tr><th>Source</th><th>Description</th><th>Update Frequency</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>PageSpeed Insights API</td>
+          <td>Lighthouse lab audit (mobile emulation, Moto G Power, slow 4G)</td>
+          <td>Real-time</td></tr>
+      <tr><td>Chrome UX Report (CrUX)</td>
+          <td>28-day rolling field data from real Chrome users</td>
+          <td>Daily ~04:00 UTC</td></tr>
+      <tr><td>CrUX History API</td>
+          <td>25-week p75 trend data per metric</td>
+          <td>Weekly</td></tr>
+      <tr><td>Google Search Console</td>
+          <td>Search Analytics (clicks, impressions, CTR, position)</td>
+          <td>2-3 day lag</td></tr>
+      <tr><td>URL Inspection API</td>
+          <td>Per-URL index status, coverage state, crawl info</td>
+          <td>Real-time (2,000/day)</td></tr>
+    </tbody>
+  </table>
+  <p style="color: #94a3b8; font-size: 9pt; margin-top: 5mm;">
+    Report generated by Claude SEO &mdash; Google SEO Intelligence Skill &mdash; September 01, 2026<br>
+    Methodology based on Google Web Vitals thresholds, Search Console documentation, and Lighthouse scoring algorithms.
+  </p>
+</div>
+
+</body>
+</html>
