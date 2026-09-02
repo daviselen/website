@@ -11,9 +11,16 @@
  * `<Picture>` component can derive both paths by a plain extension swap. The
  * derivatives are gitignored and rebuilt by the `predev` / `prebuild` hooks.
  *
+ * Production only: encoding ~every raster on the site is the slowest part of a
+ * build and buys nothing on a staging preview, so this exits early unless
+ * `imageFormatsEnabled()` says otherwise. vite.config.js reads the same
+ * predicate and switches the client off in lockstep — see scripts/
+ * image-formats.mjs for why that pairing is mandatory rather than tidy.
+ *
  * Usage:
  *   node scripts/generate-image-formats.mjs            # incremental
  *   node scripts/generate-image-formats.mjs --force    # ignore the manifest
+ *   IMAGE_FORMATS=1 node scripts/…                     # run outside prod
  */
 
 import { createHash } from "node:crypto";
@@ -22,6 +29,8 @@ import { dirname, extname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import sharp from "sharp";
+
+import { imageFormatsEnabled } from "./image-formats.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const SOURCE_DIR = join(ROOT, "public", "images");
@@ -275,6 +284,15 @@ function printSummary(results) {
 
 async function main() {
   const startedAt = process.hrtime.bigint();
+
+  if (!imageFormatsEnabled()) {
+    console.log(
+      `[images] skipped — AVIF/WebP derivatives are production-only ` +
+        `(VERCEL_ENV=${process.env.VERCEL_ENV ?? "unset"}). ` +
+        `Set IMAGE_FORMATS=1 to run anyway.`,
+    );
+    return;
+  }
 
   if (!(await fileExists(SOURCE_DIR))) {
     console.log(

@@ -28,6 +28,16 @@ const router = createBrowserRouter([
   },
 ]);
 
+// Opts the stylesheet into the generated AVIF/WebP siblings. Only
+// .hi-x-ai-bg needs it — it is the one raster the site paints as a CSS
+// background rather than through <Picture>, so it cannot read the flag
+// itself. vite.config.js sets VITE_IMAGE_DERIVATIVES from the same predicate
+// the generator uses (scripts/image-formats.mjs), which is production-only;
+// without the class the plain .png declaration renders instead.
+if (import.meta.env.VITE_IMAGE_DERIVATIVES === true) {
+  document.documentElement.classList.add("image-derivatives");
+}
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <RouterProvider router={router} />

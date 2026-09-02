@@ -9,6 +9,14 @@ import { forwardRef } from "react";
 // extension swap, so section data objects and the /figma-pull convention of
 // emitting `/images/*.jpg` string paths stay unchanged.
 
+// Whether this build's derivatives exist at all. The pipeline is
+// production-only (scripts/image-formats.mjs), and vite.config.js bakes the
+// same predicate in here as a literal, so on dev and staging every image
+// takes the pass-through path below. Skipping that would be worse than
+// wasteful: a <source> whose file 404s is not retried against the <img>, so
+// advertising .avif we never encoded means no image renders at all.
+const DERIVATIVES_ENABLED = import.meta.env.VITE_IMAGE_DERIVATIVES === true;
+
 // Only the extensions the generator actually emits siblings for. Anything
 // else (.svg, .gif, an already-optimised .webp) takes the pass-through path
 // below rather than pointing a <source> at a file that would 404.
@@ -39,6 +47,7 @@ function withExtension(src, extension) {
 }
 
 function hasDerivatives(src) {
+  if (!DERIVATIVES_ENABLED) return false;
   if (typeof src !== "string" || src === "") return false;
   if (EXTERNAL_SRC.test(src)) return false;
 
