@@ -7,7 +7,7 @@ import {
   useSmoothScroll,
 } from "../design-system/animation.js";
 import { VideoOverlayProvider } from "../design-system/components/VideoOverlay.jsx";
-import NavBar from "../sections/NavBar";
+import NavBarAlt from "../sections/NavBarAlt";
 import Footer from "../sections/Footer";
 
 const DEFAULT_COLORS = [
@@ -314,7 +314,7 @@ export default function PixelCurtain({
             these children is fixed too, and is already outside for the same
             reason. */}
         <div className="font-narrow font-light text-neutral-0">
-          <NavBar />
+          <NavBarAlt />
         </div>
         <div id="smooth-wrapper">
           <div id="smooth-content">
