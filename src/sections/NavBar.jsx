@@ -139,9 +139,13 @@ export default function NavBar() {
         <Link to="/about" className="px-4 pb-4 pt-8 font-narrow font-light text-[18px] leading-8 text-neutral-0 hover:text-primary-300">
           About
         </Link>
-        <a href="#careers" className="px-4 pb-4 pt-8 font-narrow font-light text-[18px] leading-8 text-neutral-0 hover:text-primary-300">
+        {/* Was a dead <a href="#careers"> pointing at an anchor that has
+            never existed on any page. Now a real route. Classes and label are
+            byte-identical to the old anchor, so the rendered <a href> differs
+            only in its href — design-diff should show zero pixel change. */}
+        <Link to="/careers" className="px-4 pb-4 pt-8 font-narrow font-light text-[18px] leading-8 text-neutral-0 hover:text-primary-300">
           Careers
-        </a>
+        </Link>
         <a href="#contact" className="px-4 pb-4 pt-8 font-narrow font-light text-[18px] leading-8 text-neutral-0 hover:text-primary-300">
           Contact
         </a>

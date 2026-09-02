@@ -5,6 +5,7 @@ import Layout from "./components/Layout";
 import "./index.css";
 import HomePage from "./pages/HomePage";
 import About from "./pages/About";
+import Careers from "./pages/Careers";
 
 // Define routes using createBrowserRouter
 const router = createBrowserRouter([
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
       {
         path: "/about",
         element: <About />,
+      },
+      {
+        path: "/careers",
+        element: <Careers />,
       },
     ],
   },

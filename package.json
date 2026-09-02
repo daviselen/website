@@ -12,9 +12,10 @@
   "type": "module",
   "scripts": {
     "images": "node scripts/generate-image-formats.mjs",
+    "jobs": "node scripts/fetch-job-openings.mjs",
     "predev": "npm run images",
     "dev": "vite",
-    "prebuild": "npm run images",
+    "prebuild": "npm run images && npm run jobs",
     "build": "vite build",
     "preview": "vite preview",
     "test:visual": "playwright test",
