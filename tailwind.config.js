@@ -67,6 +67,7 @@ export default {
         700: "56px",
         800: "64px",
         1000: "80px",
+        1200: "96px",
         // 1400: added for HI/AI's real inline (horizontal) padding, per
         // direct correction. Not independently pulled via get_variable_defs
         // (Figma was rate-limited) — added on the strength of the pattern

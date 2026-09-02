@@ -57,6 +57,12 @@ function prefersReducedMotion() {
  * @param {number}   ratio         row px travelled per px scrolled
  * @param {?number}  itemsPerView  null derives it from the container width
  * @param {number}   gap           gutter between items, in px
+ * @param {number}   imageScale    fraction of tile width the child fills
+ *                                 (1 = full tile, 0.84 = 16% smaller).
+ *                                 The outer tile and loop geometry are
+ *                                 unaffected; only the inner image wrapper
+ *                                 shrinks so the visual size changes without
+ *                                 touching the scroll mathematics.
  */
 export default function Marquee({
   items,
@@ -65,6 +71,7 @@ export default function Marquee({
   ratio = SCROLL_RATIO,
   itemsPerView = null,
   gap = GAP,
+  imageScale = 1,
   className = "",
 }) {
   const rootRef = useRef(null);
@@ -217,7 +224,11 @@ export default function Marquee({
               // first copy already announced.
               aria-hidden={copy > 0 ? "true" : undefined}
             >
-              {children(item, index, copy > 0)}
+              {/* imageScale < 1 shrinks the child relative to the tile
+                  without affecting `step`, so loop geometry stays exact. */}
+              <div style={imageScale !== 1 ? { width: tile * imageScale } : undefined}>
+                {children(item, index, copy > 0)}
+              </div>
             </div>
           ))
         )}

@@ -105,6 +105,12 @@ const people = [
 const clients = [
   {
     img: {
+      src: "/images/clients/client-logo-05-lively.svg",
+      alt: "Lively",
+    },
+  },
+  {
+    img: {
       src: "/images/clients/client-logo-01-toyota.svg",
       alt: "Toyota",
     },
@@ -125,12 +131,6 @@ const clients = [
     img: {
       src: "/images/clients/client-logo-04-best-buy-health.svg",
       alt: "Best Buy Health",
-    },
-  },
-  {
-    img: {
-      src: "/images/clients/client-logo-05-lively.svg",
-      alt: "Lively",
     },
   },
   {
@@ -320,7 +320,7 @@ export default function About() {
       <section id="clients" className="pt-3000 px-8 flex flex-col gap-0">
         <HeadingReveal
           as="h2"
-          className="text-display-h3 font-display uppercase"
+          className="text-display-h3 font-display uppercase mb-1200"
           text={`Client \nExperience`}
         />
         {/* Full-bleed breakout: the section keeps its px-8 so the heading stays
@@ -334,6 +334,7 @@ export default function About() {
                 key={index}
                 items={row}
                 direction={index % 2 === 0 ? "left" : "right"}
+                imageScale={0.84}
               >
                 {(client, itemIndex, isClone) => (
                   <Picture
