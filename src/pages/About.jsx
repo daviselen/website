@@ -22,6 +22,14 @@ const ORIGIN_STORY = {
 const people = [
   {
     name: "David Moranville",
+    // Same `{ webm, mp4 }` shape PortfolioGrid passes to ImageCard, so the
+    // <source> ordering (webm first, mp4 fallback) matches the rest of the
+    // site. `img` stays as the poster frame: it's what shows before the
+    // first video frame decodes, and what remains if the file 404s.
+    video: {
+      webm: "/videos/people/david-moranville.webm",
+      mp4: "/videos/people/david-moranville.mp4",
+    },
     img: {
       src: "/images/portraits/david-moranville.jpg",
     },
@@ -266,7 +274,27 @@ export default function About() {
         <div className="grid grid-cols-4 gap-400">
           {people.map((person, index) => (
           <div key={index} className="teams-video bg-surface-alt relative rounded-md">
-            <Picture className="h-auto w-full aspect-[16/9] flex justify-center items-center rounded-md" src={person.img.src} alt={person.name} />
+            {person.video ? (
+              // autoPlay + loop + muted + playsInline is the same background
+              // -video contract as MastheadVideo: muted is what makes autoplay
+              // legal in Safari/Chrome, playsInline what stops iOS taking it
+              // fullscreen. aspect-video is Tailwind's built-in 16/9, so the
+              // tile keeps the exact ratio the <Picture> below it uses.
+              <video
+                className="aspect-video h-auto w-full rounded-md object-cover"
+                poster={person.img?.src}
+                aria-label={person.name}
+                autoPlay
+                loop
+                muted
+                playsInline
+              >
+                <source src={person.video.webm} type="video/webm" />
+                <source src={person.video.mp4} type="video/mp4" />
+              </video>
+            ) : (
+              <Picture className="h-auto w-full aspect-[16/9] flex justify-center items-center rounded-md" src={person.img.src} alt={person.name} />
+            )}
             {!person.img.src ? (
               <span className="absolute bottom-100 left-100 flex gap-[6px] bg-neutral-1000/50 text-[12px] tracking-200 tracking-[0.03em] px-[8px] rounded-[3px]">
                 <span className="py-[8px]">{person.name}</span>
