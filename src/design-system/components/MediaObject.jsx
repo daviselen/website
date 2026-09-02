@@ -1,23 +1,17 @@
+import { useRef } from "react";
 import { Link } from "react-router-dom";
+import { gsap, useGSAP, REVEAL_DURATION, EASE_REVEAL } from "../animation";
 import HeadingReveal from "./HeadingReveal";
 import Picture from "./Picture";
 import TextReveal from "./TextReveal";
 
-const cardVariants = {
-    hidden: { 
-      // Inset 100% from the bottom hides the card. 
-      // Animating to 0% creates a top-to-bottom reveal.
-      clipPath: "inset(0% 0% 100% 0%)",
-    },
-    visible: {
-      clipPath: "inset(0% 0% 0% 0%)",
-      transition: {
-        duration: 26.153 / 30,
-        ease: [0.8, 0, 0.2, 1], // Smooth custom cubic-bezier easing
-      },
-    },
-};
-  
+// Inset 100% from the bottom hides the image; animating that back to 0%
+// wipes it in from the top down. Same pair MastheadImage and MastheadVideo
+// use — this is the site's one image-reveal shape, only the trigger differs
+// (those are decode-gated, this one is scroll-gated).
+const IMAGE_HIDDEN = "inset(0% 0% 100% 0%)";
+const IMAGE_VISIBLE = "inset(0% 0% 0% 0%)";
+
 // Copy keeps its 5-column measure and the image its 7 columns in both
 // arrangements — only the grid lines they sit on swap, so the reversed
 // layout is a mirror, not a reflow. Classes are fully spelled out rather
@@ -83,6 +77,44 @@ export default function MediaObject({
   const heading = titleSizes[titleSize] ?? titleSizes.default;
   const { Root, rootProps } = resolveRoot({ to, href, onClick });
   const isInteractive = Root !== "div";
+  const maskRef = useRef(null);
+
+  useGSAP(
+    () => {
+      gsap.fromTo(
+        maskRef.current,
+        { clipPath: IMAGE_HIDDEN },
+        {
+          clipPath: IMAGE_VISIBLE,
+          duration: REVEAL_DURATION,
+          ease: EASE_REVEAL,
+          scrollTrigger: {
+            // The mask itself is the trigger: clip-path doesn't shrink
+            // layout bounds, so ScrollTrigger still measures the full box
+            // even while the image is clipped to zero height.
+            trigger: maskRef.current,
+            // Same window as the HeadingReveal in the copy column above, so
+            // the two halves of the media object wipe in together.
+            start: "top bottom-=100",
+            end: "bottom top",
+            // NOT `once: true`. ScrollTrigger takes its first measurement
+            // before the page has its real height (see the refresh note in
+            // animation.js), and a `once` trigger kills itself the instant
+            // it fires — so a fire against that early measurement is
+            // permanent. Measured on /about: the wipe ran at scrollY 0 with
+            // the image still 1494px down the page, i.e. it played to
+            // completion where nobody could see it, and the ScrollTrigger
+            // refresh that follows had nothing left to correct. A
+            // play/reverse toggle survives that: the refresh re-evaluates
+            // the real position, reverses the image back to hidden, and it
+            // replays on the way in.
+            toggleActions: "play reverse play reverse",
+          },
+        }
+      );
+    },
+    { scope: maskRef }
+  );
 
   return (
     <Root
@@ -119,13 +151,28 @@ export default function MediaObject({
           />
         </div>
       </div>
-      <Picture
-        src={imgSrc}
-        alt={imgAlt}
-        className={`${side.image} row-start-1 rounded-md ${
-            isInteractive ? "hover:ring-2 hover:ring-neutral-800" : ""
-        }`}
-      />
+      {/* The grid placement moves onto this mask wrapper so the clipped box
+          is the same box the image used to occupy; the image fills it, so
+          the layout is unchanged. Inline clip-path (not a class) so the
+          hidden state is right on first paint, before GSAP runs. */}
+      <div
+        ref={maskRef}
+        className={`${side.image} row-start-1`}
+        style={{ clipPath: IMAGE_HIDDEN }}
+      >
+        <Picture
+          src={imgSrc}
+          alt={imgAlt}
+          // ring-inset, added with the mask: the wrapper's clip-path stays
+          // parked at inset(0%) once the wipe has played, and inset(0%)
+          // clips to the border box — an outside ring is drawn beyond that
+          // box, so it would be invisible on exactly the interactive cards
+          // it exists for. Drawn inside, it survives the clip.
+          className={`block size-full rounded-md ${
+            isInteractive ? "hover:ring-2 hover:ring-inset hover:ring-neutral-800" : ""
+          }`}
+        />
+      </div>
     </Root>
   );
 }
