@@ -79,22 +79,22 @@ export default function NavBar() {
         </Link>
       </div>
       <nav className="flex items-center justify-center gap-6">
-        <Link to="/about" className="px-4 py-4 font-narrow font-light text-[24px] leading-8 text-neutral-0 hover:text-primary-300">
+        <Link to="/about" className="px-4 py-4 font-narrow font-light text-[20px] leading-8 text-neutral-0 hover:text-primary-300">
           About
         </Link>
         {/* Was a dead <a href="#careers"> pointing at an anchor that has
             never existed on any page. Now a real route. Classes and label are
             byte-identical to the old anchor, so the rendered <a href> differs
             only in its href — design-diff should show zero pixel change. */}
-        <Link to="/careers" className="px-4 py-4 font-narrow font-light text-[24px] leading-8 text-neutral-0 hover:text-primary-300">
+        <Link to="/careers" className="px-4 py-4 font-narrow font-light text-[20px] leading-8 text-neutral-0 hover:text-primary-300">
           Careers
         </Link>
-        <a href="#contact" className="px-4 py-4 font-narrow font-light text-[24px] leading-8 text-neutral-0 hover:text-primary-300">
+        <a href="#contact" className="px-4 py-4 font-narrow font-light text-[20px] leading-8 text-neutral-0 hover:text-primary-300">
           Contact
         </a>
       </nav>
       <div className="flex flex-1 items-center justify-end py-4">
-        <button className="px-5 py-3 font-narrow font-light text-[24px] leading-8 uppercase text-neutral-0 border-2 border-neutral-0 rounded-full hover:text-primary-300">
+        <button className="px-5 py-3 font-narrow font-light text-[20px] leading-8 uppercase text-neutral-0 border-2 border-neutral-0 rounded-full hover:text-primary-300">
           Let's Chat
         </button>
       </div>
