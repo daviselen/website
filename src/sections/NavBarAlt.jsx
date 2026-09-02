@@ -94,7 +94,7 @@ export default function NavBar() {
         </a>
       </nav>
       <div className="flex flex-1 items-center justify-end py-4">
-        <button className="px-5 py-3 font-narrow font-light text-[20px] leading-8 uppercase text-neutral-0 border-2 border-neutral-0 rounded-full hover:text-primary-300">
+        <button className="px-8 py-3 font-narrow font-light text-[20px] leading-8 uppercase text-neutral-0 border-2 border-neutral-0 rounded-full hover:text-primary-300 hover:border-primary-300 transition-all duration-300">
           Let's Chat
         </button>
       </div>
