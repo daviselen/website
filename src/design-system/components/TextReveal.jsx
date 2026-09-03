@@ -8,6 +8,7 @@ export default function ParagraphReveal({
   itemProp,
   staggerSpeed = 0.02,
   delay = 0, // Optional delay before the reveal begins (in seconds)
+  scrollTriggerConfig = {},
 }) {
   // Plain intrinsic tag now — motion[as] existed only to attach variants.
   // GSAP animates the real DOM node through a ref, so no wrapper component
@@ -28,12 +29,15 @@ export default function ParagraphReveal({
         scrollTrigger: {
           trigger: rootRef.current,
           // viewport: { margin: "-50px" } — fire 50px inside each edge.
-          start: "top bottom-=50",
-          end: "bottom top+=50",
+          // scrollTriggerConfig lets a parent override these defaults — used
+          // by the horizontal-scroll PortfolioGrid so titles don't reverse
+          // mid-pin as the scroll position advances through the pin spacer.
+          start: scrollTriggerConfig.start ?? "top bottom-=50",
+          end: scrollTriggerConfig.end ?? "bottom top+=50",
           // once: false meant motion re-hid the text on exit and replayed on
           // re-entry, in BOTH directions. These four actions
           // (onEnter/onLeave/onEnterBack/onLeaveBack) reproduce that.
-          toggleActions: "play reverse play reverse",
+          toggleActions: scrollTriggerConfig.toggleActions ?? "play reverse play reverse",
         },
       });
 

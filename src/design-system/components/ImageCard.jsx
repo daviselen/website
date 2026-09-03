@@ -8,7 +8,7 @@ import TextReveal from "../components/TextReveal";
 const CARD_HIDDEN = "inset(0% 0% 100% 0%)";
 const CARD_VISIBLE = "inset(0% 0% 0% 0%)";
 
-export default function ProjectCard({ title, client, src, videoSrc, startColumn2 }) {
+export default function ProjectCard({ title, client, src, videoSrc, startColumn2, scrollTriggerConfig = {} }) {
   const containerRef = useRef(null);
   const maskRef = useRef(null);
 
@@ -39,11 +39,16 @@ export default function ProjectCard({ title, client, src, videoSrc, startColumn2
               // string is measured against the trigger's own height, so
               // "top+=20% bottom" is that same threshold — note this is NOT
               // "top bottom-=20%", which would measure 20% of the viewport.
-              start: "top+=20% bottom",
-              end: "bottom-=20% top",
+              //
+              // scrollTriggerConfig lets a parent (e.g. the horizontal-scroll
+              // PortfolioGrid) override these three values so the reveal fires
+              // at the right time even when the section is pinned. All other
+              // usages pass nothing and get the defaults below unchanged.
+              start: scrollTriggerConfig.start ?? "top+=20% bottom",
+              end: scrollTriggerConfig.end ?? "bottom-=20% top",
               // once: false — the card re-hides on exit and replays on
               // re-entry, in both scroll directions.
-              toggleActions: "play reverse play reverse",
+              toggleActions: scrollTriggerConfig.toggleActions ?? "play reverse play reverse",
             },
           }
         );
@@ -73,14 +78,14 @@ export default function ProjectCard({ title, client, src, videoSrc, startColumn2
         onMouseLeave={handleMouseLeave}
         itemScope
         itemType="https://schema.org/CreativeWork"
-        className={`relative mb-1000 aspect-[11/4] transition-all ease-in-out w-full overflow-hidden rounded-md break-inside-avoid ${
+        className={`relative aspect-[11/6] basis-[calc(50%-1rem)] grow shrink-0 transition-all ease-in-out w-full overflow-hidden rounded-md break-inside-avoid ${
           startColumn2 ? "break-before-column" : ""
         }`}
       >
         <meta itemProp="creator" content="Davis Elen Advertising" />
         <div
-          // Aspect is 55/36 (880/480), same as From The Inside Out, per direct
-          // correction — not the 880/576 (≈1.527, noticeably narrower) this
+          // Aspect is 11/6 (880/480), same as From The Inside Out, per direct
+          // correction — not the 55/36 (880/576) (≈1.527, noticeably narrower) this
           // had before.
           //
           // Real case studies, so each card is its own schema.org CreativeWork
@@ -154,10 +159,11 @@ export default function ProjectCard({ title, client, src, videoSrc, startColumn2
               the text won't break the layout or height of the card. */}
           {isRevealed && (
             <>
-              <TextReveal 
-                itemProp="name" 
+              <TextReveal
+                itemProp="name"
                 className="font-narrow font-light text-base leading-6 md:text-2xl md:leading-8"
                 text={title}
+                scrollTriggerConfig={scrollTriggerConfig}
               >
                 {title}
               </TextReveal>
