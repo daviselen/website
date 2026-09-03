@@ -53,10 +53,8 @@ function buildReveal(root, lines) {
       // viewport margin "0px 0px -100px 0px" — bottom edge only, so the
       // start is inset 100px but the end is the real viewport top.
       start: "top bottom-=100",
-      end: "bottom top",
-      // once: false — motion re-hid on exit and replayed on re-entry,
-      // in both scroll directions.
-      toggleActions: "play reverse play reverse",
+      // once: true — play on first enter; never re-hide or replay.
+      once: true,
     },
   });
 

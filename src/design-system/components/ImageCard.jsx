@@ -33,7 +33,6 @@ export default function ProjectCard({ title, client, src, videoSrc, startColumn2
             onComplete: () => setIsRevealed(true),
             onReverseComplete: () => setIsRevealed(false),
             scrollTrigger: {
-              trigger: containerRef.current,
               // useInView's `amount: 0.2` meant "20% of the ELEMENT is
               // visible". The percentage in the first half of a start/end
               // string is measured against the trigger's own height, so
@@ -44,10 +43,15 @@ export default function ProjectCard({ title, client, src, videoSrc, startColumn2
               // PortfolioGrid) override these three values so the reveal fires
               // at the right time even when the section is pinned. All other
               // usages pass nothing and get the defaults below unchanged.
+              // trigger: lets a parent supply a different element so the
+              // reveal is scoped to that element's viewport presence instead
+              // of the card's own position. PortfolioGrid passes sectionRef
+              // so both start and end are measured against the section's pin
+              // spacer — the card stays revealed for the full pin duration
+              // and only reverses after the section has scrolled off-screen.
+              trigger: scrollTriggerConfig.trigger?.current ?? containerRef.current,
               start: scrollTriggerConfig.start ?? "top+=20% bottom",
               end: scrollTriggerConfig.end ?? "bottom-=20% top",
-              // once: false — the card re-hides on exit and replays on
-              // re-entry, in both scroll directions.
               toggleActions: scrollTriggerConfig.toggleActions ?? "play reverse play reverse",
             },
           }
@@ -163,7 +167,12 @@ export default function ProjectCard({ title, client, src, videoSrc, startColumn2
                 itemProp="name"
                 className="font-narrow font-light text-base leading-6 md:text-2xl md:leading-8"
                 text={title}
-                scrollTriggerConfig={scrollTriggerConfig}
+                // playOnMount: the text mounts only after the card's clip-path
+                // reveal finishes (isRevealed gate). At that point the scroll
+                // position is deep inside the pinned section — a ScrollTrigger
+                // initialised mid-pin can't reliably determine its own state
+                // and ends up hidden. Playing on mount sidesteps that entirely.
+                playOnMount
               >
                 {title}
               </TextReveal>
@@ -172,6 +181,8 @@ export default function ProjectCard({ title, client, src, videoSrc, startColumn2
                 itemProp="about"
                 className="font-display text-4xl uppercase leading-none md:text-6xl lg:text-display-card"
                 text={client}
+                // Same reasoning as TextReveal above.
+                playOnMount
               >
                 {client}
               </HorizontalReveal>

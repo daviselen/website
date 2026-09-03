@@ -6,6 +6,13 @@ export default function HorizontalReveal({
   className = "",
   direction = "left",
   delay = 0,
+  // playOnMount: skip ScrollTrigger and play immediately on mount.
+  // Used by ImageCard — the text mounts only after the card's clip-path
+  // reveal completes (isRevealed gate), so the scroll position is already
+  // deep inside the pinned section. A ScrollTrigger initialised at that
+  // point can't reliably determine which side of its boundaries we're on
+  // and ends up stuck in the reversed (hidden) state.
+  playOnMount = false,
 }) {
   const clipPaths = {
     left: {
@@ -45,15 +52,17 @@ export default function HorizontalReveal({
           duration: REVEAL_DURATION,
           delay,
           ease: EASE_REVEAL,
-          scrollTrigger: {
-            trigger: wrapRef.current,
-            start: "top bottom-=100",
-            once: true,
-          },
+          scrollTrigger: playOnMount
+            ? undefined
+            : {
+                trigger: wrapRef.current,
+                start: "top bottom-=100",
+                once: true,
+              },
         }
       );
     },
-    { scope: wrapRef, dependencies: [direction, delay] }
+    { scope: wrapRef, dependencies: [direction, delay, playOnMount] }
   );
 
   return (

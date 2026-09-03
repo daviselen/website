@@ -82,6 +82,19 @@ export default function PortfolioGrid() {
   const sectionRef = useRef(null);
   const clipRef = useRef(null);
   const trackRef = useRef(null);
+  // Holds the pin's own ScrollTrigger instance once created below, so each
+  // card's mask-reveal end (see scrollTriggerConfig.end passed to
+  // ProjectCard) can read its *live* `.end` value directly instead of
+  // re-deriving it from sectionRef's geometry. GSAP's pin-compensation math
+  // (the offset it adds to another trigger's start/end when that trigger's
+  // element is the pinned element) only kicks in when the other trigger's
+  // *start* falls at or after the pin's start — ours intentionally starts
+  // earlier (cards begin revealing before the pin engages), so GSAP leaves
+  // our end un-offset and it lands at sectionRef's unpinned natural bottom,
+  // ~3300px short of the true pinned range. Referencing the pin trigger's
+  // `.end` sidesteps that geometry math entirely: a numeric end value is
+  // used as an absolute scroll position, no trigger-relative math applied.
+  const pinTriggerRef = useRef(null);
 
   useGSAP(
     () => {
@@ -93,7 +106,7 @@ export default function PortfolioGrid() {
       // so resize and late-loading fonts never leave a stale offset.
       const getDistance = () => track.scrollWidth - clip.offsetWidth;
 
-      gsap.to(track, {
+      const pinTween = gsap.to(track, {
         x: () => -getDistance(),
         ease: "none",
         scrollTrigger: {
@@ -110,6 +123,12 @@ export default function PortfolioGrid() {
           // visible during the horizontal scroll, but measure the trigger
           // position from the cards container above.
           pin: sectionRef.current,
+          // Gives GSAP's refresh pass a hint to resolve (and build the pin
+          // spacer for) this trigger before default-priority triggers that
+          // also reference sectionRef — doesn't fix the mask's `end` by
+          // itself (see pinTriggerRef above for why), but keeps refresh
+          // ordering predictable for anything that does depend on it.
+          refreshPriority: 1,
           scrub: 1,
           // Smooths the layout jump when the pin kicks in (especially
           // noticeable with ScrollSmoother's transform-based pinning).
@@ -118,6 +137,7 @@ export default function PortfolioGrid() {
           invalidateOnRefresh: true,
         },
       });
+      pinTriggerRef.current = pinTween.scrollTrigger;
     },
     { scope: sectionRef },
   );
@@ -144,17 +164,30 @@ export default function PortfolioGrid() {
               key={index}
               {...project}
               scrollTriggerConfig={{
-                // Fire as soon as the section's top enters the viewport —
-                // the section is approaching the pin point so all cards
-                // are already fully visible vertically; no need to wait
-                // for a 20% threshold.
+                // Use the section itself as the trigger so start is measured
+                // against the section's own natural position (before the pin
+                // engages), not against each card's own position inside the
+                // pin. Card positions inside a pinned element are unreliable
+                // as trigger boundaries because GSAP adjusts them for the pin
+                // spacer in ways that can cause mid-scroll reversals.
+                //
+                // start: "top bottom" — section enters the viewport (just
+                //   before the pin kicks in); all cards begin revealing.
+                trigger: sectionRef,
                 start: "top bottom",
-                // Push the reset point far past the end of the pin spacer
-                // so the reveal never reverses while the user is scrolling
-                // horizontally through the cards.
-                end: "bottom+=500% top",
-                // Play once on the way in; never reverse mid-scroll.
-                toggleActions: "play none none none",
+                // end: the pin's own live end, not "bottom top" against
+                // sectionRef. GSAP's pin-compensation only offsets another
+                // trigger's start/end when that trigger's *start* is at or
+                // after the pin's start — ours starts earlier (cards reveal
+                // before the pin engages), so "bottom top" resolves against
+                // sectionRef's unpinned natural height instead of the true
+                // pinned range, and the mask reverses mid-pin. Reading the
+                // pin ScrollTrigger's `.end` directly (a plain number, used
+                // as an absolute scroll position — see pinTriggerRef above)
+                // sidesteps that geometry math and always matches the real
+                // pinned range, however long it ends up being.
+                end: () => pinTriggerRef.current?.end,
+                toggleActions: "play reverse play reverse",
               }}
             />
           ))}

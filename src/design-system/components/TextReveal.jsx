@@ -9,6 +9,13 @@ export default function ParagraphReveal({
   staggerSpeed = 0.02,
   delay = 0, // Optional delay before the reveal begins (in seconds)
   scrollTriggerConfig = {},
+  // playOnMount: skip ScrollTrigger entirely and play immediately when the
+  // component mounts. Used by ImageCard — its text mounts only after the
+  // card's own clip-path reveal completes (isRevealed gate), so the scroll
+  // position is already deep inside the pinned section. A ScrollTrigger
+  // initialised at that point can't reliably determine which side of its
+  // boundaries we're on and ends up in the reversed (hidden) state.
+  playOnMount = false,
 }) {
   // Plain intrinsic tag now — motion[as] existed only to attach variants.
   // GSAP animates the real DOM node through a ref, so no wrapper component
@@ -25,21 +32,21 @@ export default function ParagraphReveal({
       // stagger become two explicit tweens on one timeline. Position "0"
       // and `delay` place them on the same shared clock, which is what
       // delayChildren + staggerChildren did implicitly.
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: rootRef.current,
-          // viewport: { margin: "-50px" } — fire 50px inside each edge.
-          // scrollTriggerConfig lets a parent override these defaults — used
-          // by the horizontal-scroll PortfolioGrid so titles don't reverse
-          // mid-pin as the scroll position advances through the pin spacer.
-          start: scrollTriggerConfig.start ?? "top bottom-=50",
-          end: scrollTriggerConfig.end ?? "bottom top+=50",
-          // once: false meant motion re-hid the text on exit and replayed on
-          // re-entry, in BOTH directions. These four actions
-          // (onEnter/onLeave/onEnterBack/onLeaveBack) reproduce that.
-          toggleActions: scrollTriggerConfig.toggleActions ?? "play reverse play reverse",
-        },
-      });
+      const tl = gsap.timeline(
+        playOnMount
+          ? // No ScrollTrigger — play straight through on mount.
+            {}
+          : {
+              scrollTrigger: {
+                trigger: rootRef.current,
+                // viewport: { margin: "-50px" } — fire 50px inside each edge.
+                // scrollTriggerConfig lets a parent override these defaults.
+                start: scrollTriggerConfig.start ?? "top bottom-=50",
+                end: scrollTriggerConfig.end ?? "bottom top+=50",
+                toggleActions: scrollTriggerConfig.toggleActions ?? "play none none none",
+              },
+            }
+      );
 
       tl.to(rootRef.current, { opacity: 1, duration: 0.4, ease: EASE_OUT }, 0);
       tl.to(
@@ -59,7 +66,7 @@ export default function ParagraphReveal({
         delay
       );
     },
-    { scope: rootRef, dependencies: [text, staggerSpeed, delay] }
+    { scope: rootRef, dependencies: [text, staggerSpeed, delay, playOnMount] }
   );
 
   return (
