@@ -18,7 +18,7 @@ export default function Masthead() {
     <section id="masthead" className="px-0 md:px-8">
       <MastheadVideo
         src="/videos/davis-elen-masthead.mp4"
-        className="h-[calc((100vw - 64px) * .5625)] max-h-[1044px] w-full rounded-md object-cover"
+        className="h-[calc((100vw-78px)*0.5625)] max-h-[1044px] w-full rounded-md object-cover"
       />
       {/* Image → headline gap is Scale/2300 = 184px (11.5rem) — this was
           py-16 (64px/4rem) before, read off a stale HP-23 guess instead of
@@ -42,7 +42,14 @@ export default function Masthead() {
         {/* itemProp="slogan": real Organization.slogan property, and this
             headline genuinely is the site's tagline — no content=
             override needed since the visible text IS the value. */}
-        <HeadingReveal text={`Think Inside \nthe Box`} as="h1" className="font-display text-6xl uppercase leading-none md:text-8xl lg:text-display-h1" />
+        {/* fullyInView: this is the tallest heading on the site (display-h1
+            is 360px/line, hand-broken onto two), and it scrolls up from
+            under a masthead video up to 1044px tall. On the default
+            top-edge start the two-line reveal was effectively over by the
+            time the second line appeared — the trigger fired with only the
+            first line's cap height past the fold. Waiting for the whole
+            block means the reveal plays where it can actually be read. */}
+        <HeadingReveal text={`Think Inside \nthe Box`} as="h1" fullyInView className="font-display text-6xl uppercase leading-none md:text-8xl lg:text-display-h1" />
         {/* Headline → paragraph gap is Scale/700 = 56px, not the mt-8
             (32px) previously guessed. Real node also has pr-[480px] on the
             whole text block (TITB), not a max-w cap — reproduced here as a
