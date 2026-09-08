@@ -125,13 +125,13 @@ export default {
       // reasonable adaptation, not something in the source (which is
       // desktop-only).
       fontSize: {
-        "display-h1": ["360px", { lineHeight: "256px" }], // Font/Headings/H1 — Masthead
-        "display-h2": ["272px", { lineHeight: "192px" }], // Font/Headings/H2 — Masthead alt
-        "display-h3": ["184px", { lineHeight: "128px" }], // Headings/H3 (Scale/2300 + Scale/1600) — section headlines
-        "display-hiai": ["144px", { lineHeight: "104px" }], // "THE HI x AI LOOP"
-        "display-card": ["80px", { lineHeight: "56px" }], // FootB/heading — portfolio card brand name
-        "display-stat": ["64px", { lineHeight: "56px" }], // card/heading, det/heading — Proof/News stat headline
-        "pre-title": ["40px", { lineHeight: "48px" }],
+        "display-h1": ["272px", { lineHeight: "192px" }], // Font/Headings/H1 — Masthead
+        "display-h2": ["184px", { lineHeight: "128px" }], // Font/Headings/H2 — Masthead alt
+        "display-h3": ["144px", { lineHeight: "104px" }], // Headings/H3 (Scale/2300 + Scale/1600) — section headlines
+        "display-hiai": ["80px", { lineHeight: "56px" }], // "THE HI x AI LOOP"
+        "display-card": ["64px", { lineHeight: "48px" }], // FootB/heading — portfolio card brand name
+        "display-stat": ["40px", { lineHeight: "48px" }], // card/heading, det/heading — Proof/News stat headline
+        "pre-title": ["32px", { lineHeight: "40px" }],
         "link-social": ["18px", { lineHeight: "18px" }], // links/social — Footer social links
       },
     },
