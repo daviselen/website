@@ -318,7 +318,7 @@ export default function PixelCurtain({
         </div>
         <div id="smooth-wrapper">
           <div id="smooth-content">
-            <div className="min-h-screen bg-surface-default py-1800 font-narrow font-light text-neutral-0">
+            <div className="min-h-screen bg-surface-default pt-1600 pb-1800 font-narrow font-light text-neutral-0">
               {displayedOutlet}
               <Footer />
             </div>
