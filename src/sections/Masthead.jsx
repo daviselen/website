@@ -18,7 +18,7 @@ export default function Masthead() {
     <section id="masthead" className="px-0 md:px-8">
       <MastheadVideo
         src="/videos/davis-elen-masthead.mp4"
-        className="h-[calc((100vw-78px)*0.5625)] max-h-[1044px] w-full rounded-md object-cover"
+        className="h-[calc((100vw-83px)*0.5625)] max-h-[1044px] w-full rounded-md object-cover"
       />
       {/* Image → headline gap is Scale/2300 = 184px (11.5rem) — this was
           py-16 (64px/4rem) before, read off a stale HP-23 guess instead of
