@@ -59,7 +59,7 @@ export default function Masthead() {
           text="Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor."
           as="p"
           delay={0.4}
-          className="mt-700 font-narrow font-light text-pre-title leading-relaxed lg:pr-[calc(100%-1290px)]"
+          className="mt-700 font-narrow font-light text-pre-title lg:pr-[calc(100%-1000px)]"
         />
       </div>
     </section>
