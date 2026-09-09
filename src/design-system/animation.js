@@ -152,20 +152,21 @@ export function useSmoothScroll() {
     // the smoother entirely and leave native scrolling alone.
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    const smoother = ScrollSmoother.create({
-      wrapper: "#smooth-wrapper",
-      content: "#smooth-content",
-      smooth: SMOOTH_DURATION,
-      // No data-speed/data-lag parallax anywhere yet; leaving this off skips
-      // the per-element effect scan on every refresh.
-      effects: false,
-      // Keep the wheel/touch handling on the main thread so scroll position
-      // and the pinned cards can't tear apart on fast gestures.
-      normalizeScroll: true,
-    });
-
-    return () => smoother.kill();
-  });
+    // Only initialize if ScrollSmoother exists and hasn't been created yet
+    if (typeof window !== "undefined" && !ScrollSmoother.get()) {
+      ScrollSmoother.create({
+        wrapper: "#smooth-wrapper",
+        content: "#smooth-content",
+        smooth: SMOOTH_DURATION,
+        // No data-speed/data-lag parallax anywhere yet; leaving this off skips
+        // the per-element effect scan on every refresh.
+        effects: false,
+        // Keep the wheel/touch handling on the main thread so scroll position
+        // and the pinned cards can't tear apart on fast gestures.
+        normalizeScroll: true,
+      });
+    }
+  }, []); // Empty dependency array ensures it NEVER tears down on navigation
 }
 
 /**

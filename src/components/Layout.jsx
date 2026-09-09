@@ -1,318 +1,135 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { useLocation, useNavigationType, useOutlet } from "react-router-dom";
 import {
   gsap,
   useGSAP,
   ScrollSmoother,
   useSmoothScroll,
+  ScrollTrigger,
 } from "../design-system/animation.js";
 import { VideoOverlayProvider } from "../design-system/components/VideoOverlay.jsx";
 import NavBarAlt from "../sections/NavBarAlt";
 import Footer from "../sections/Footer";
 
-const DEFAULT_COLORS = [
-  "#000",
-];
+const FADE_DURATION = 0.3;
 
-const DURATION = 0.25;
-const MAX_DELAY = 0.6;
-
-// Onset delay before the first pixel moves. Reproduces the ~80ms that
-// motion's per-pixel component mount cost used to add for free. See the
-// "Curtain lifecycle" note below.
-const START_LAG = 0.08;
-
-// When the phase flips, measured on the timeline's clock. Deliberately
-// SHORTER than START_LAG + MAX_DELAY + DURATION (0.93s), so the reveal starts
-// while the last pixels are still landing — that slight overlap is the
-// original look, and it's why the screen never quite goes fully solid.
-const COVER_WINDOW = DURATION + MAX_DELAY;
-
-export default function PixelCurtain({
-  pixelSize = 64,
-  colors = DEFAULT_COLORS,
-}) {
+export default function PageTransition({ overlayColor = "#000" }) {
   const location = useLocation();
   const navigationType = useNavigationType();
   const outlet = useOutlet();
 
-  const [dimensions, setDimensions] = useState({
-    cols: 0,
-    rows: 0,
-  });
-
-  const [phase, setPhase] = useState(null);
-
-  const [clickOrigin, setClickOrigin] = useState(null);
-  const lastClickRef = useRef(null);
-  const clickTimeoutRef = useRef(null);
+  const [phase, setPhase] = useState(null); // null | "cover" | "reveal"
   const previousPathname = useRef(location.pathname);
+  const overlayRef = useRef(null);
 
-  /*
-   * -----------------------------------------
-   * Frozen route content
-   * -----------------------------------------
-   *
-   * outletRef always holds the latest route element.
-   * displayedOutlet is what actually renders, and only
-   * updates while the curtain fully covers the screen,
-   * so the swap happens hidden behind the pixels.
-   */
+  // Store active navigation state in refs so React state updates
+  // don't trigger re-renders that reset ScrollSmoother prematurely
+  const activeOutletRef = useRef(outlet);
+  const pendingOutletRef = useRef(outlet);
+  const navigationTypeRef = useRef(navigationType);
 
-  const outletRef = useRef(outlet);
-  outletRef.current = outlet;
-
+  // Maintain displayed content in state
   const [displayedOutlet, setDisplayedOutlet] = useState(outlet);
 
-  // Page-wide smooth scrolling. Mounted here because ScrollSmoother needs the
-  // #smooth-wrapper/#smooth-content pair below to exist, and there must only
-  // ever be one instance for the app.
+  // Initialize smooth scroll wrapper ONCE
   useSmoothScroll();
 
-  // Scroll to top only for Link/navigation (PUSH).
-  // Back/Forward navigation is POP, so let the browser restore the position.
-  useEffect(() => {
-    if (
-      previousPathname.current !== location.pathname &&
-      navigationType === "PUSH"
-    ) {
-      // While the smoother is running, window.scrollTo fights it — the
-      // smoother keeps easing toward its own target and drags the page back.
-      // Its scrollTo(0, false) jumps without animating, matching the old
-      // behaviour of landing at the top instantly behind the curtain.
-      // Falls through to the native call when the smoother is absent, i.e.
-      // under prefers-reduced-motion.
-      const smoother = ScrollSmoother.get();
-      if (smoother) smoother.scrollTo(0, false);
-      else window.scrollTo(0, 0);
-    }
-  }, [location.pathname, navigationType]);
-
   /*
    * -----------------------------------------
-   * Global Click Capture
-   * -----------------------------------------
-   * Listens for clicks anywhere on the page to set the ripple origin.
-   */
-  useEffect(() => {
-    const handleGlobalClick = (e) => {
-      lastClickRef.current = { x: e.clientX, y: e.clientY };
-      
-      // Clear the click reference after 1 second. 
-      // This ensures that if the user navigates via the browser's 
-      // Back/Forward buttons (without clicking), the ripple defaults to the center.
-      clearTimeout(clickTimeoutRef.current);
-      clickTimeoutRef.current = setTimeout(() => {
-        lastClickRef.current = null;
-      }, 1000);
-    };
-
-    window.addEventListener("click", handleGlobalClick, true); // use capture phase
-    return () => window.removeEventListener("click", handleGlobalClick, true);
-  }, []);
-
-  /*
-   * -----------------------------------------
-   * Grid dimensions
+   * Synchronous Route Intercept
    * -----------------------------------------
    */
-
-  useEffect(() => {
-    const updateDimensions = () => {
-      setDimensions({
-        cols: Math.ceil(window.innerWidth / pixelSize),
-        rows: Math.ceil(window.innerHeight / pixelSize),
-      });
-    };
-
-    updateDimensions();
-
-    window.addEventListener("resize", updateDimensions);
-
-    return () => {
-      window.removeEventListener("resize", updateDimensions);
-    };
-  }, [pixelSize]);
-
-  /*
-   * -----------------------------------------
-   * Distance-based Pixel Data
-   * -----------------------------------------
-   */
-  const jitter = 0.4;
-  const pixelData = useMemo(() => {
-    if (dimensions.cols === 0 || dimensions.rows === 0) return [];
-
-    const originX = clickOrigin ? clickOrigin.x : window.innerWidth / 2;
-    const originY = clickOrigin ? clickOrigin.y : window.innerHeight / 2;
-
-    const originCol = Math.floor(originX / pixelSize);
-    const originRow = Math.floor(originY / pixelSize);
-
-    const maxDist = Math.max(
-      Math.sqrt(Math.pow(0 - originCol, 2) + Math.pow(0 - originRow, 2)),
-      Math.sqrt(Math.pow(dimensions.cols - 1 - originCol, 2) + Math.pow(0 - originRow, 2)),
-      Math.sqrt(Math.pow(0 - originCol, 2) + Math.pow(dimensions.rows - 1 - originRow, 2)),
-      Math.sqrt(Math.pow(dimensions.cols - 1 - originCol, 2) + Math.pow(dimensions.rows - 1 - originRow, 2))
-    );
-
-    const totalPixels = dimensions.cols * dimensions.rows;
-
-    return Array.from({ length: totalPixels }, (_, index) => {
-      const col = index % dimensions.cols;
-      const row = Math.floor(index / dimensions.cols);
-      
-      const dist = Math.sqrt(Math.pow(col - originCol, 2) + Math.pow(row - originRow, 2));
-      
-      // Base radial distance delay (0.0 to MAX_DELAY)
-      const baseDelay = (dist / maxDist) * MAX_DELAY;
-
-      // Add a random offset centered around 0 (-jitter/2 to +jitter/2)
-      const noiseIn = (Math.random() - 0.5) * jitter;
-      const noiseOut = (Math.random() - 0.5) * jitter;
-
-      // Clamp between 0 and MAX_DELAY so the curtain timing remains exact
-      const delayIn = Math.min(MAX_DELAY, Math.max(0, baseDelay + noiseIn));
-      const delayOut = Math.min(MAX_DELAY, Math.max(0, baseDelay + noiseOut));
-
-      return {
-        color: colors[Math.floor(Math.random() * colors.length)],
-        delayIn,
-        delayOut,
-      };
-    });
-  }, [dimensions.cols, dimensions.rows, colors, clickOrigin, pixelSize, jitter]);
-
-  /*
-   * -----------------------------------------
-   * Navigation detection
-   * -----------------------------------------
-   */
-
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (previousPathname.current === location.pathname) {
       return;
     }
+
     previousPathname.current = location.pathname;
+    navigationTypeRef.current = navigationType;
+    pendingOutletRef.current = outlet;
 
-    // Lock in the click origin at the exact moment navigation starts
-    setClickOrigin(lastClickRef.current);
+    // Immediately kick off the transition phase
     setPhase("cover");
-  }, [location.pathname]);
-
+  }, [location.pathname, navigationType, outlet]);
 
   /*
    * -----------------------------------------
-   * Curtain lifecycle
+   * Fade Lifecycle & Scroll Lock
    * -----------------------------------------
-   *
-   * One timeline per phase. Two constants below exist to preserve the LOOK of
-   * the original motion implementation, whose timing came partly from
-   * incidental library behaviour rather than from anything declared:
-   *
-   * 1. START_LAG. motion mounted one component per pixel (~450 of them at a
-   *    1792px viewport), each spinning up its own animation loop, so nothing
-   *    moved until ~80ms after the click — the curtain eased up out of
-   *    nothing. GSAP starts inside useLayoutEffect and renders its first
-   *    frame BEFORE paint, so without this the curtain's first painted frame
-   *    is already ~45% faded in, reading as a pop rather than a fade.
-   *    Measured, not guessed: first pixel moved at 82ms under motion vs 13ms
-   *    under GSAP, and the offset stayed constant across the whole ramp
-   *    (all pixels started at 682ms vs 603ms), confirming it's a start-time
-   *    shift and not an easing difference.
-   *
-   * 2. COVER_WINDOW. The old code advanced phases on setTimeout(850ms) while
-   *    the animation ran ~80ms behind it, so the reveal began BEFORE the last
-   *    pixels landed — average coverage peaked at 0.984 and the screen never
-   *    quite went solid. Advancing on the timeline's own onComplete (the
-   *    obvious "correct" translation) waits for true full coverage and then
-   *    holds it ~100ms, which reads as heavier and slower. Firing the phase
-   *    change at a fixed position on the timeline restores the original
-   *    slight overlap.
-   *
-   * Both are dials: raise COVER_WINDOW past DURATION + MAX_DELAY + START_LAG
-   * to get a real solid hold, drop START_LAG to 0 for an immediate start.
    */
-
-  const curtainRef = useRef(null);
-
   useGSAP(
     () => {
-      if (phase === null) return;
+      if (!phase || !overlayRef.current) return;
 
-      const pixels = gsap.utils.toArray("[data-pixel]");
-      if (!pixels.length) return;
+      const smoother = ScrollSmoother.get();
 
-      const covering = phase === "cover";
-
-      const tl = gsap.timeline();
-
-      pixels.forEach((el, i) => {
-        const pixel = pixelData[i];
-        if (!pixel) return;
-
-        if (covering) {
-          // circOut -> circ.out: same curve, GSAP's naming.
-          // Opacity only: cells stay at their grid size for the whole
-          // animation, so the curtain reads as a fade-in rather than a
-          // pop. Timing (START_LAG, delays, DURATION) is unchanged.
-          tl.fromTo(
-            el,
-            { opacity: 0 },
-            { opacity: 1, duration: DURATION, ease: "circ.out" },
-            START_LAG + pixel.delayIn
-          );
-        } else {
-          // Reveal starts from wherever cover left the pixel, so `to`, not
-          // `fromTo` — mirroring motion animating out of its current state.
-          tl.to(
-            el,
-            { opacity: 0, duration: DURATION, ease: "circ.in" },
-            START_LAG + pixel.delayOut
-          );
+      if (phase === "cover") {
+        // 1. Lock current scroll position while overlay fades in
+        if (smoother) {
+          smoother.paused(true);
         }
-      });
 
-      // Phase advance at a fixed position on the timeline's clock — NOT
-      // onComplete. See note 2 above: the overlap is the original look.
-      // Still one clock, so it can't drift the way a parallel setTimeout did.
-      tl.call(
-        () => {
-          if (covering) {
-            // Swap route content behind the curtain, then reveal.
-            setDisplayedOutlet(outletRef.current);
-            setPhase("reveal");
-          } else {
-            setPhase(null);
+        // 2. Animate overlay opacity
+        gsap.fromTo(
+          overlayRef.current,
+          { opacity: 0 },
+          {
+            opacity: 1,
+            duration: FADE_DURATION,
+            ease: "power2.inOut",
+            onComplete: () => {
+              // --- SCREEN IS NOW 100% COVERED ---
+
+              // Swap out the frozen route element for the new route
+              activeOutletRef.current = pendingOutletRef.current;
+              setDisplayedOutlet(pendingOutletRef.current);
+
+              // Perform scroll-to-top safely behind the black curtain
+              if (navigationTypeRef.current === "PUSH") {
+                if (smoother) {
+                  smoother.scrollTo(0, false);
+                } else {
+                  window.scrollTo(0, 0);
+                }
+              }
+
+              // Re-enable smooth scrolling
+              if (smoother) {
+                smoother.paused(false);
+              }
+
+              // Refresh ScrollTrigger calculations for new page dimensions
+              requestAnimationFrame(() => {
+                const ST = ScrollTrigger || window.ScrollTrigger;
+                if (ST) ST.refresh();
+              });
+
+              // Start reveal phase
+              setPhase("reveal");
+            },
           }
-        },
-        null,
-        COVER_WINDOW
-      );
+        );
+      } else if (phase === "reveal") {
+        gsap.fromTo(
+          overlayRef.current,
+          { opacity: 1 },
+          {
+            opacity: 0,
+            duration: FADE_DURATION,
+            ease: "power2.inOut",
+            onComplete: () => {
+              setPhase(null);
+            },
+          }
+        );
+      }
     },
-    { scope: curtainRef, dependencies: [phase, pixelData] }
+    { scope: overlayRef, dependencies: [phase] }
   );
-
-  /*
-   * -----------------------------------------
-   * Render
-   * -----------------------------------------
-   */
 
   return (
     <div className="relative min-h-screen">
-      {/* Route content. Wrapped in the video-overlay provider so any section
-          on any route can call useVideoOverlay().openVideo(...) — one overlay
-          instance for the whole app, mounted here rather than per-section. */}
       <VideoOverlayProvider>
-        {/* NavBar is position:fixed, so it sits OUTSIDE #smooth-content:
-            ScrollSmoother scrolls the page by transforming that element, and
-            a transformed ancestor re-parents fixed positioning to itself — a
-            fixed navbar inside it would scroll away with the content. It
-            keeps the typography classes it used to inherit from the page
-            wrapper below. The overlay VideoOverlayProvider renders after
-            these children is fixed too, and is already outside for the same
-            reason. */}
         <div className="font-narrow font-light text-neutral-0">
           <NavBarAlt />
         </div>
@@ -326,34 +143,16 @@ export default function PixelCurtain({
         </div>
       </VideoOverlayProvider>
 
-      {/* Curtain */}
-      {phase !== null && dimensions.cols > 0 && (
-        <div
-          ref={curtainRef}
-          className="pointer-events-none fixed inset-0 z-50 grid"
-          style={{
-            gridTemplateColumns: `repeat(${dimensions.cols}, 1fr)`,
-            gridTemplateRows: `repeat(${dimensions.rows}, 1fr)`,
-          }}
-        >
-          {/* Plain divs, not motion components: at 64px per cell a 1792px
-              viewport is ~450 of these, and each motion.div carried its own
-              hook state and animation loop. The timeline above drives them
-              all as raw DOM nodes off a single ticker. Order here matches
-              pixelData's order, which is how each node finds its own
-              delayIn/delayOut. */}
-          {pixelData.map((pixel, index) => (
-            <div
-              key={index}
-              data-pixel=""
-              style={{
-                backgroundColor: pixel.color,
-                opacity: 0,
-              }}
-            />
-          ))}
-        </div>
-      )}
+      {/* Hardware-accelerated persistent black curtain */}
+      <div
+        ref={overlayRef}
+        className="pointer-events-none fixed inset-0 z-50 opacity-0"
+        style={{
+          backgroundColor: overlayColor,
+          willChange: "opacity",
+          transform: "translateZ(0)",
+        }}
+      />
     </div>
   );
 }
