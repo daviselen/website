@@ -87,6 +87,11 @@ const projects = [
     src: "/images/portfolio-alex-in-the-wild-smart-final.jpg",
   },
   {
+    title: "Legendary Partners",
+    client: "Los Angeles Lakers",
+    src: "/images/portfolio-legendary-partners-lakers.jpg",
+  },
+  {
     title: "Beyond The Arches",
     client: "McDonald's",
     src: "/images/portfolio-beyond-the-arches-mcdonalds.jpg",
@@ -95,11 +100,6 @@ const projects = [
     title: "Keys To Tech",
     client: "DICE",
     src: "/images/portfolio-keys-to-tech-dice.jpg",
-  },
-  {
-    title: "Legendary Partners",
-    client: "Los Angeles Lakers",
-    src: "/images/portfolio-legendary-partners-lakers.jpg",
   },
   {
     title: "Super Snorkel Tours",
