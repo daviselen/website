@@ -197,6 +197,10 @@ export function useStaggerReveal(scopeRef, { amount = 0.333 } = {}) {
       // timelines share this start so the fade and the rise begin together.
       const start = `top+=${threshold} bottom`;
 
+      // Set initial state immediately to avoid layout jumps
+      gsap.set(scopeRef.current, { opacity: 0 });
+      gsap.set(":scope > *", { y: ITEM_OFFSET_Y, opacity: 0 });
+
       // 1. Opacity, played. Unchanged from before the scrub existed:
       //    once: false in both scroll directions.
       const fade = gsap.timeline({
