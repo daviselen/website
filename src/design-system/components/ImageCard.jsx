@@ -8,7 +8,14 @@ import TextReveal from "../components/TextReveal";
 const CARD_HIDDEN = "inset(0% 0% 100% 0%)";
 const CARD_VISIBLE = "inset(0% 0% 0% 0%)";
 
-export default function ProjectCard({ title, client, src, videoSrc, startColumn2, scrollTriggerConfig = {} }) {
+// `decorative` marks a card that is a repeat of one already on the page —
+// PortfolioGrid's carousel paints several copies of the same eight case
+// studies so the strip can loop seamlessly. A repeat still has to look
+// identical, so it renders the same markup, but it carries no alt text, no
+// schema.org item, and is hidden from assistive tech: otherwise the page
+// would announce every project two or three times and publish duplicate
+// CreativeWork items in its structured data.
+export default function ProjectCard({ title, client, src, videoSrc, startColumn2, decorative = false }) {
   const containerRef = useRef(null);
   const maskRef = useRef(null);
 
@@ -39,20 +46,18 @@ export default function ProjectCard({ title, client, src, videoSrc, startColumn2
               // "top+=20% bottom" is that same threshold — note this is NOT
               // "top bottom-=20%", which would measure 20% of the viewport.
               //
-              // scrollTriggerConfig lets a parent (e.g. the horizontal-scroll
-              // PortfolioGrid) override these three values so the reveal fires
-              // at the right time even when the section is pinned. All other
-              // usages pass nothing and get the defaults below unchanged.
-              // trigger: lets a parent supply a different element so the
-              // reveal is scoped to that element's viewport presence instead
-              // of the card's own position. PortfolioGrid passes sectionRef
-              // so both start and end are measured against the section's pin
-              // spacer — the card stays revealed for the full pin duration
-              // and only reverses after the section has scrolled off-screen.
-              trigger: scrollTriggerConfig.trigger?.current ?? containerRef.current,
-              start: scrollTriggerConfig.start ?? "top+=20% bottom",
-              end: scrollTriggerConfig.end ?? "bottom-=20% top",
-              toggleActions: scrollTriggerConfig.toggleActions ?? "play reverse play reverse",
+              // The card's own box is the trigger. PortfolioGrid used to
+              // override this with the section, because a pinned section
+              // made every card's own position an unreliable boundary; now
+              // that nothing is pinned there is no pin spacer to measure
+              // against and the card's own geometry is correct again. Cards
+              // sitting off the horizontal edge of a carousel still resolve
+              // fine: ScrollTrigger reads vertical position only, and every
+              // card in a strip shares one, so a strip reveals in lockstep.
+              trigger: containerRef.current,
+              start: "top+=20% bottom",
+              end: "bottom-=20% top",
+              toggleActions: "play reverse play reverse",
             },
           }
         );
@@ -80,13 +85,14 @@ export default function ProjectCard({ title, client, src, videoSrc, startColumn2
         ref={containerRef}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        itemScope
-        itemType="https://schema.org/CreativeWork"
+        itemScope={decorative ? undefined : true}
+        itemType={decorative ? undefined : "https://schema.org/CreativeWork"}
+        aria-hidden={decorative ? "true" : undefined}
         className={`relative aspect-[8/9] basis-[32rem] grow shrink-0 transition-all ease-in-out w-full overflow-hidden rounded-md break-inside-avoid ${
           startColumn2 ? "break-before-column" : ""
         }`}
       >
-        <meta itemProp="creator" content="Davis Elen Advertising" />
+        {!decorative && <meta itemProp="creator" content="Davis Elen Advertising" />}
         <div
           // Aspect is 11/6 (880/480), same as From The Inside Out, per direct
           // correction — not the 55/36 (880/576) (≈1.527, noticeably narrower) this
@@ -112,7 +118,7 @@ export default function ProjectCard({ title, client, src, videoSrc, startColumn2
                 muted
                 playsInline
                 preload="auto"
-                itemProp="image"
+                itemProp={decorative ? undefined : "image"}
                 className={`absolute inset-0 h-full w-full min-w-full min-h-full max-w-none object-cover`}
             >
               <source src={videoSrc.webm} type="video/webm" />
@@ -121,8 +127,8 @@ export default function ProjectCard({ title, client, src, videoSrc, startColumn2
         ) : (
           <img
             src={src}
-            alt={`${title} — ${client} project photo`}
-            itemProp="image"
+            alt={decorative ? "" : `${title} — ${client} project photo`}
+            itemProp={decorative ? undefined : "image"}
             className={`absolute inset-0 h-full w-full object-cover`}
           />
         )}
@@ -164,21 +170,22 @@ export default function ProjectCard({ title, client, src, videoSrc, startColumn2
           {isRevealed && (
             <>
               <TextReveal
-                itemProp="name"
+                itemProp={decorative ? undefined : "name"}
                 className="font-narrow font-light text-base leading-6 md:text-2xl md:leading-8"
                 text={title}
                 // playOnMount: the text mounts only after the card's clip-path
-                // reveal finishes (isRevealed gate). At that point the scroll
-                // position is deep inside the pinned section — a ScrollTrigger
-                // initialised mid-pin can't reliably determine its own state
-                // and ends up hidden. Playing on mount sidesteps that entirely.
+                // reveal finishes (isRevealed gate), so by definition the card
+                // is already on screen and past its own trigger point. A
+                // ScrollTrigger created at that moment has no entry left to
+                // detect and initialises hidden; playing on mount sidesteps
+                // the question entirely.
                 playOnMount
               >
                 {title}
               </TextReveal>
               <HorizontalReveal
                 as="h3"
-                itemProp="about"
+                itemProp={decorative ? undefined : "about"}
                 className="font-display text-4xl uppercase leading-none md:text-6xl lg:text-display-card"
                 text={client}
                 // Same reasoning as TextReveal above.
