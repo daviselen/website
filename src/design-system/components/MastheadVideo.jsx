@@ -50,7 +50,7 @@ export default function MastheadVideo({
         <video
           ref={videoRef}
           src={src}
-          className="block w-full h-full object-cover"
+          className="block w-full h-full object-cover rounded-md"
           // Crucial attributes for background autoplay
           autoPlay
           loop
