@@ -252,6 +252,7 @@ export function useStaggerReveal(scopeRef, { amount = 0.333 } = {}) {
           duration: ITEM_DURATION,
           ease: EASE_OUT,
           stagger: STAGGER_STEP,
+          immediateRender: false,
         },
         0
       );
