@@ -90,7 +90,7 @@ export default function Card({
   // start state themselves via fromTo.
   return (
     <div
-      className={`flex flex-col ${cfg.gap}`}
+      className={`flex flex-col will-change-transform ${cfg.gap}`}
       {...(itemType ? { itemScope: true, itemType } : {})}
     >
       <Picture
