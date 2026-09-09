@@ -271,7 +271,7 @@ export default function PortfolioGrid() {
   );
 
   // Cursor position across the clip, as −1 (left edge) … 0 (centre) … +1
-  // (right edge), scaled to a speed. Note the sign: a cursor on the LEFT
+  // (right edge), scaled to a speed. Note the sign: a cursor on the RIGHT
   // drives the offset negative, i.e. the strip travels left and reveals the
   // cards that were off the right edge. Flip the sign here to reverse that.
   const handlePointerMove = (event) => {
@@ -281,7 +281,7 @@ export default function PortfolioGrid() {
     if (event.pointerType === "touch") return;
     const rect = clipRef.current.getBoundingClientRect();
     const centered = ((event.clientX - rect.left) / rect.width - 0.5) * 2;
-    targetSpeedRef.current = gsap.utils.clamp(-1, 1, centered) * MAX_SPEED;
+    targetSpeedRef.current = gsap.utils.clamp(-1, 1, centered) * -MAX_SPEED;
   };
 
   // Decelerate to a stop. Setting the TARGET rather than the speed is what
