@@ -38,6 +38,20 @@ const projects = [
     src: "/images/portfolio-we-got-you-toyota.jpg",
   },
   {
+    title: "Hola Mexico Film Festival",
+    client: "McDonald's",
+    src: "/images/portfolio-hola-mexico-mcdonalds.jpg",
+    videoSrc: {
+      webm: "/videos/portfolio-hola-mexico-mcdonalds.webm",
+      mp4: "/videos/portfolio-hola-mexico-mcdonalds.mp4",
+    },
+  },
+  {
+    title: "Let's Admit It",
+    client: "Best Buy Health",
+    src: "/images/portfolio-lets-admit-it-best-buy-health.jpg",
+  },
+  {
     title: "Alex in the Wild",
     client: "Smart & Final",
     src: "/images/portfolio-alex-in-the-wild-smart-final.jpg",
@@ -51,20 +65,6 @@ const projects = [
     title: "Keys To Tech",
     client: "DICE",
     src: "/images/portfolio-keys-to-tech-dice.jpg",
-  },
-  {
-    title: "Hola Mexico Film Festival",
-    client: "McDonald's",
-    src: "/images/portfolio-hola-mexico-mcdonalds.jpg",
-    videoSrc: {
-      webm: "/videos/portfolio-hola-mexico-mcdonalds.webm",
-      mp4: "/videos/portfolio-hola-mexico-mcdonalds.mp4",
-    },
-  },
-  {
-    title: "Let's Admit It",
-    client: "Best Buy Health",
-    src: "/images/portfolio-lets-admit-it-best-buy-health.jpg",
   },
   {
     title: "Legendary Partners",
