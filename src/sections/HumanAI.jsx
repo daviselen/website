@@ -93,6 +93,16 @@
 // justification for hiding specifically at `md`, and re-checking it
 // wasn't part of what was asked; simplified to "visible, stacked below
 // the text" until it goes side-by-side at `lg`.
+import { useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(ScrollTrigger);
+
+const MOVEMENT_FACTOR = 0.25;
+const EXTRA_HEIGHT = MOVEMENT_FACTOR * 100; // 80% height buffer for parallax movement
+
 const concepts = [
   {
     title: "What's Possible",
@@ -124,8 +134,43 @@ const concepts = [
 //
 // It replaced an earlier pair of 1px linear-gradients tiled at 40x40px;
 // that's what the "grid-line" name refers to.
+const gridBackground = {
+  backgroundImage: `linear-gradient(to left, #2b2b2b 2.5px, transparent 2.5px), linear-gradient(to bottom, #2b2b2b 2.5px, transparent 2.5px)`,
+  backgroundSize: "40px 40px",
+  backgroundPosition: "right center",
+};
 
 export default function HumanAI() {
+  const containerRef = useRef(null);
+
+  useGSAP(
+    () => {
+      const bg = containerRef.current?.querySelector(".bg");
+      if (!bg) return;
+
+      const parent = containerRef.current;
+
+      gsap.fromTo(
+        bg,
+        {
+          y: () => -MOVEMENT_FACTOR * 0.5 * parent.offsetHeight,
+        },
+        {
+          y: () => MOVEMENT_FACTOR * 0.5 * parent.offsetHeight,
+          ease: "none",
+          scrollTrigger: {
+            trigger: parent,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+            invalidateOnRefresh: true,
+          },
+        }
+      );
+    },
+    { scope: containerRef }
+  );
+
   return (
     // px-1400/py-1800 (112px/144px): real inline/block padding, per direct
     // correction — was Tailwind's own default px-8/py-16 (32px/64px), never
@@ -134,9 +179,20 @@ export default function HumanAI() {
     // padding inside it that was reported wrong here.
     <section
       id="human-ai"
-      className="hi-x-ai-bg mx-8 rounded-md bg-surface-alt px-1400 py-1800 text-neutral-0 mt-3000"
+      ref={containerRef}
+      className="relative mx-8 rounded-md bg-surface-alt px-1400 py-1800 text-neutral-0 mt-3000 overflow-hidden"
     >
-      <div className="lg:flex lg:items-center lg:justify-between lg:gap-16">
+      {/* Parallax CSS Grid Layer */}
+      <div
+        className="bg absolute left-0 w-full pointer-events-none z-0"
+        style={{
+          ...gridBackground,
+          height: `${100 + EXTRA_HEIGHT}%`,
+          top: `-${EXTRA_HEIGHT / 2}%`,
+        }}
+      />
+
+      <div className=" relative z-10 lg:flex lg:items-center lg:justify-between lg:gap-16">
         <div className="lg:max-w-2xl lg:shrink-0">
           <div className="mb-1000 flex items-center gap-6">
             <img src="/icons/hi-mark.svg" alt="" className="size-[104px]" />
