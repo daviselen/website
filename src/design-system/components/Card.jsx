@@ -101,7 +101,7 @@ export default function Card({
       />
       <div className={`flex flex-col  ${cfg.gapInner}`}>
         <h3
-          className="font-stat text-3xl uppercase leading-none md:text-5xl lg:text-display-stat"
+          className="font-stat text-display-card uppercase leading-none lg:text-display-h6"
           {...(headingItemProp ? { itemProp: headingItemProp } : {})}
         >
           <HorizontalReveal>{heading}</HorizontalReveal>
