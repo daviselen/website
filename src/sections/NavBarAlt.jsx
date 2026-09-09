@@ -123,7 +123,7 @@ export default function NavBar() {
   return (
     <header
       ref={headerRef}
-      className="flex items-center justify-between bg-surface-default px-8 py-4 uppercase fixed top-0 left-0 w-screen z-50"
+      className="flex items-center justify-between box-border bg-surface-default px-8 py-4 uppercase fixed top-0 left-0 right-0 w-screen z-50"
     >
       {/* Every `data-nav-item` below is a flex item of its own container, so
           it is blockified — a bare inline <a> would ignore the intro's
