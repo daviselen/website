@@ -32,8 +32,9 @@ export default function ParagraphReveal({
       // stagger become two explicit tweens on one timeline. Position "0"
       // and `delay` place them on the same shared clock, which is what
       // delayChildren + staggerChildren did implicitly.
-      const tl = gsap.timeline(
-        playOnMount
+      const tl = gsap.timeline({
+        delay,
+        ...(playOnMount
           ? // No ScrollTrigger — play straight through on mount.
             {}
           : {
@@ -45,8 +46,8 @@ export default function ParagraphReveal({
                 end: scrollTriggerConfig.end ?? "bottom top+=50",
                 toggleActions: scrollTriggerConfig.toggleActions ?? "play none none none",
               },
-            }
-      );
+            }),
+    });
 
       tl.to(rootRef.current, { opacity: 1, duration: 0.4, ease: EASE_OUT }, 0);
       tl.to(
