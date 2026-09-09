@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useLocation, useNavigationType, useOutlet } from "react-router-dom";
 import {
   gsap,
@@ -27,6 +27,9 @@ export default function PageTransition({ overlayColor = "#000" }) {
   const activeOutletRef = useRef(outlet);
   const pendingOutletRef = useRef(outlet);
   const navigationTypeRef = useRef(navigationType);
+  // Tracks the pending double-rAF used to defer the route swap below; kept
+  // in a ref so it can be cancelled if the component unmounts mid-transition.
+  const swapRafRef = useRef(null);
 
   // Maintain displayed content in state
   const [displayedOutlet, setDisplayedOutlet] = useState(outlet);
@@ -79,33 +82,50 @@ export default function PageTransition({ overlayColor = "#000" }) {
             ease: "power2.inOut",
             onComplete: () => {
               // --- SCREEN IS NOW 100% COVERED ---
+              // ...as far as GSAP is concerned: `onComplete` fires once the
+              // opacity value has been *set*, not once the browser has
+              // actually painted that opaque frame. Swapping routes
+              // synchronously here races the compositor — on browsers/
+              // conditions where the overlay isn't guaranteed its own layer,
+              // a heavy synchronous remount (Home mounts an autoplaying
+              // video plus several ScrollTrigger-heavy sections) can let an
+              // under-covered frame slip through as a visible flicker. Two
+              // rAFs guarantee at least one full painted+composited frame
+              // of the opaque overlay lands before the old route is torn
+              // down. See .zencoder/chats/7e75cef9-7800-4ef6-849d-899ad55bc8b3/investigation.md.
+              swapRafRef.current = requestAnimationFrame(() => {
+                swapRafRef.current = requestAnimationFrame(() => {
+                  swapRafRef.current = null;
 
-              // Swap out the frozen route element for the new route
-              activeOutletRef.current = pendingOutletRef.current;
-              setDisplayedOutlet(pendingOutletRef.current);
+                  // Swap out the frozen route element for the new route
+                  activeOutletRef.current = pendingOutletRef.current;
+                  setDisplayedOutlet(pendingOutletRef.current);
 
-              // Perform scroll-to-top safely behind the black curtain
-              if (navigationTypeRef.current === "PUSH") {
-                if (smoother) {
-                  smoother.scrollTo(0, false);
-                } else {
-                  window.scrollTo(0, 0);
-                }
-              }
+                  // Perform scroll-to-top safely behind the black curtain
+                  if (navigationTypeRef.current === "PUSH") {
+                    if (smoother) {
+                      smoother.scrollTo(0, false);
+                    } else {
+                      window.scrollTo(0, 0);
+                    }
+                  }
 
-              // Re-enable smooth scrolling
-              if (smoother) {
-                smoother.paused(false);
-              }
+                  // Re-enable smooth scrolling
+                  if (smoother) {
+                    smoother.paused(false);
+                  }
 
-              // Refresh ScrollTrigger calculations for new page dimensions
-              requestAnimationFrame(() => {
-                const ST = ScrollTrigger || window.ScrollTrigger;
-                if (ST) ST.refresh();
+                  // Refresh ScrollTrigger calculations for new page
+                  // dimensions
+                  requestAnimationFrame(() => {
+                    const ST = ScrollTrigger || window.ScrollTrigger;
+                    if (ST) ST.refresh();
+                  });
+
+                  // Start reveal phase
+                  setPhase("reveal");
+                });
               });
-
-              // Start reveal phase
-              setPhase("reveal");
             },
           }
         );
@@ -126,6 +146,20 @@ export default function PageTransition({ overlayColor = "#000" }) {
     },
     { scope: overlayRef, dependencies: [phase] }
   );
+
+  // Cancel a pending double-rAF swap on unmount so it never fires against
+  // stale refs. NOTE: this can't live inside the useGSAP callback above —
+  // `useGSAP` runs it via `gsap.context().add(callback, scope)`, which
+  // discards whatever the callback returns, so a `return () => {...}`
+  // cleanup there is silently never called.
+  useEffect(() => {
+    return () => {
+      if (swapRafRef.current !== null) {
+        cancelAnimationFrame(swapRafRef.current);
+        swapRafRef.current = null;
+      }
+    };
+  }, []);
 
   return (
     <div className="relative min-h-screen">
@@ -151,6 +185,15 @@ export default function PageTransition({ overlayColor = "#000" }) {
           backgroundColor: overlayColor,
           willChange: "opacity",
           transform: "translateZ(0)",
+          // `translateZ(0)` alone reliably forces a compositor layer in
+          // Chromium/WebKit, but Firefox's WebRender compositor promotes
+          // layers by its own heuristics and doesn't treat a static
+          // transform on a will-change element as a strong enough signal.
+          // `backfaceVisibility` + `isolation` give it two more explicit,
+          // standards-based hints to composite this overlay independently
+          // of the DOM churning underneath during the route swap.
+          backfaceVisibility: "hidden",
+          isolation: "isolate",
         }}
       />
     </div>
