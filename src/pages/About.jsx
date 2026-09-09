@@ -41,9 +41,13 @@ const people = [
     },
   },
   {
-    name: "Jenny Rusinko",
+    name: "Stan Kaplan",
+    video: {
+      webm: "/videos/people/stan-kaplan.webm",
+      mp4: "/videos/people/stan-kaplan.mp4",
+    },
     img: {
-      src: "/images/portraits/jenny-rusinko.jpg",
+      src: "/images/portraits/stan-kaplan.jpg",
     },
   },
   {
@@ -65,9 +69,9 @@ const people = [
     },
   },
   {
-    name: "Stan Kaplan",
+    name: "Jenny Rusinko",
     img: {
-      src: "/images/portraits/stan-kaplan.jpg",
+      src: "/images/portraits/jenny-rusinko.jpg",
     },
   },
   {
