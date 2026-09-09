@@ -1,4 +1,4 @@
-import DeLogoIntro from "../design-system/components/DeLogoIntro.jsx";
+import DeLogo from "../design-system/components/DeLogo.jsx";
 import {
   gsap,
   useGSAP,
@@ -130,7 +130,7 @@ export default function NavBar() {
           transform entirely. Keep that true for anything added here. */}
       <div className="flex-1 flex shrink-0 items-center justify-between py-4">
         <Link to="/" data-nav-item="">
-          <DeLogoIntro className="size-16" />
+          <DeLogo className="size-16" />
         </Link>
       </div>
       <nav className="flex items-center justify-center gap-6">
