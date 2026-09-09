@@ -82,7 +82,7 @@ export default function ProjectCard({ title, client, src, videoSrc, startColumn2
         onMouseLeave={handleMouseLeave}
         itemScope
         itemType="https://schema.org/CreativeWork"
-        className={`relative aspect-[11/6] basis-[calc(50%-1rem)] grow shrink-0 transition-all ease-in-out w-full overflow-hidden rounded-md break-inside-avoid ${
+        className={`relative aspect-[8/9] basis-[32rem] grow shrink-0 transition-all ease-in-out w-full overflow-hidden rounded-md break-inside-avoid ${
           startColumn2 ? "break-before-column" : ""
         }`}
       >
