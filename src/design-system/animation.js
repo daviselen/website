@@ -11,6 +11,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { CustomEase } from "gsap/CustomEase";
 import { SplitText } from "gsap/SplitText";
+import { MorphSVGPlugin } from "gsap/MorphSVGPlugin";
 
 // Registration is idempotent, but doing it here means a component only has
 // to import this module — it can't forget a plugin and fail at runtime.
@@ -20,7 +21,20 @@ import { SplitText } from "gsap/SplitText";
 // import off the dependency already in package.json — no extra install, and
 // no third-party smooth-scroll library to keep in sync with ScrollTrigger.
 // SplitText is free in the same 3.13 release, so it imports the same way.
-gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollSmoother, CustomEase, SplitText);
+// MorphSVGPlugin too — same 3.13 unlock, same plain import. Registering it
+// here rather than in the one component that morphs keeps the rule intact:
+// a component imports this module and gets every plugin, so `morphSVG:` can
+// never silently no-op because a registration was forgotten (an unregistered
+// plugin makes GSAP treat the property as an unknown CSS prop and skip it,
+// with no error).
+gsap.registerPlugin(
+  useGSAP,
+  ScrollTrigger,
+  ScrollSmoother,
+  CustomEase,
+  SplitText,
+  MorphSVGPlugin
+);
 
 // ScrollTrigger caches every start/end as a pixel offset when it first
 // measures, and auto-refreshes on resize and on window "load". On this app
@@ -262,4 +276,11 @@ export function useStaggerReveal(scopeRef, { amount = 0.333 } = {}) {
   );
 }
 
-export { gsap, useGSAP, ScrollTrigger, ScrollSmoother, SplitText };
+export {
+  gsap,
+  useGSAP,
+  ScrollTrigger,
+  ScrollSmoother,
+  SplitText,
+  MorphSVGPlugin,
+};
