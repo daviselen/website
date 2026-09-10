@@ -3,6 +3,16 @@ import HeadingReveal from "../design-system/components/HeadingReveal";
 import TextReveal from "../design-system/components/TextReveal";
 import JobOpenings from "../sections/JobOpenings.jsx";
 import CTABanner from "../sections/CTABanner.jsx";
+import ListMaskReveal from "../design-system/components/ListMaskReveal.jsx";
+
+const benefits = [
+  'Comprehensive health plan',
+  '401(k) retirement plan',
+  'Generous paid vacation and sick days',
+  'Hybrid remote/in-office work environment',
+  'Various wellness programs, including discounted gym membership',
+  'Selective options, including pet insurance, supplemental life insurance, and more',
+];
 
 // NavBar and Footer are not rendered here: Layout.jsx already mounts both
 // around every route, and its wrapper supplies the page background, the
@@ -161,6 +171,11 @@ export default function Careers() {
               text="Work is important but so is your life outside of work. Davis Elen dedicates resources and support so you can stay healthy:"
             />
             <ul className="text-display-stat list-[square] list-inside pl-200">
+            {/* <ListMaskReveal
+              items={benefits}
+              barColor="#ff3366"
+              className="text-display-stat list-[square] pl-200"
+            /> */}
               <li className="mb-300">Comprehensive health plan</li>
               <li className="mb-300">401(k) retirement plan</li>
               <li className="mb-300">Generous paid vacation and sick days</li>
