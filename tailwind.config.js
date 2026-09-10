@@ -24,6 +24,7 @@ export default {
         },
         neutral: {
           0: "#ffffff", // Neutral/0 — primary text/logo color
+          400: "#9a9a9a", // Neutral/400
           500: "#818181", // Neutral/500, named style "Gray"
           700: "#4d4d4d", // Neutral/700, named style "Dark Gray"
           1000: "#000", // Neutral/1000 - primary surface color
@@ -135,6 +136,7 @@ export default {
         "display-stat": ["40px", { lineHeight: "48px" }], // card/heading, det/heading — Proof/News stat headline
         "pre-title": ["32px", { lineHeight: "40px" }],
         "link-social": ["18px", { lineHeight: "18px" }], // links/social — Footer social links
+        "small": ["16px", { lineHeight: "24px" }], // Careers eyebrows
       },
     },
   },

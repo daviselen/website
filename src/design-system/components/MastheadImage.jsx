@@ -6,6 +6,7 @@ export default function MastheadImage({
   src,
   alt = "",
   className = "",
+  title = "",
 }) {
   const [loaded, setLoaded] = useState(false);
   const wrapRef = useRef(null);
@@ -90,7 +91,7 @@ export default function MastheadImage({
       <div className="absolute inset-y-0 left-8 z-50 flex items-center">
         <HeadingReveal
           as="h1"
-          text={`Inside \nthe Box`}
+          text={title}
           className="font-display text-display-h2 uppercase"
         />
       </div>

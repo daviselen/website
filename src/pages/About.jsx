@@ -253,7 +253,7 @@ export default function About() {
       
       <section id="top">
         <div class="px-8 pb-1000 rounded-md overflow-hidden">
-          <MastheadImage src="/images/about-masthead.jpg" alt="About Davis Elen Advertising" />
+          <MastheadImage src="/images/about-masthead.jpg" alt="About Davis Elen Advertising" title={`Inside \nthe Box`} />
           {/* <Picture src="/images/about-masthead.jpg" alt="About Davis Elen Advertising" className="block w-full h-auto rounded-md" /> */}
         </div>
         <div className="px-8">

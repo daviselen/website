@@ -109,12 +109,12 @@ export default function JobOpenings() {
     <section
       id="job-openings"
       data-status={status}
-      className="flex flex-col gap-1000 px-8"
+      className="flex flex-col gap-1000 px-8 mt-3000"
     >
       <HeadingReveal
-        as="h1"
-        text={`Get \na Job`}
-        className="font-display text-6xl uppercase leading-none md:text-8xl lg:text-display-h3"
+        as="h2"
+        text={`Open \nPositions`}
+        className="font-display text-display-h3 uppercase leading-none"
       />
 
       {openings.length === 0 ? (
@@ -140,17 +140,29 @@ export default function JobOpenings() {
                 href={applyUrl(opening.externalJobId)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex flex-col gap-100 py-400 hover:text-primary-300 md:flex-row md:items-baseline md:justify-between md:gap-400"
+                className="flex flex-col gap-100 pt-600 pb-800 hover:text-primary-300 transition-colors md:flex-row md:items-baseline md:justify-between md:gap-400"
               >
-                <span className="font-display text-4xl uppercase md:text-display-stat">
-                  {opening.title}
-                </span>
+                <div className="flex flex-col gap-200 basis-[calc(100%-26rem)] px-600">
+                  <span className="text-small uppercase text-neutral-400">
+                    Position
+                  </span>
+                  <span className="font-narrow uppercase text-display-stat">
+                    {opening.title}
+                  </span>
+                </div>
                 {/* Omitted entirely rather than rendered empty: one live
                     opening has `requisitionLocations: []`. */}
                 {opening.locations.length > 0 && (
-                  <span className="shrink-0 font-narrow text-link-social uppercase text-neutral-500">
-                    {opening.locations.join(" / ")}
-                  </span>
+                  <div className="flex flex-col gap-200 basis-[26rem] px-600">
+                    <span className="text-small uppercase text-neutral-400">
+                      Location
+                    </span>
+                    <span className="shrink-0 font-narrow text-display-stat uppercase">
+                      {opening.locations.map((location, index) => (
+                        <span key={index} className="inline-block">{location}</span>
+                      ))}
+                    </span>
+                  </div>
                 )}
               </a>
             </li>
