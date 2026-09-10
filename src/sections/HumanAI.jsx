@@ -180,7 +180,7 @@ export default function HumanAI() {
     <section
       id="human-ai"
       ref={containerRef}
-      className="relative mx-8 rounded-md bg-surface-alt px-1400 py-1800 text-neutral-0 mt-3000 overflow-hidden"
+      className="relative mx-8 rounded-md bg-surface-alt px-600 sm:px-800 md:px-1000 xl:px-1200 2xl:px-1400 2xl:py-1800 text-neutral-0 mt-3000 overflow-hidden"
     >
       {/* Parallax CSS Grid Layer */}
       <div
