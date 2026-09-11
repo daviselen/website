@@ -9,6 +9,7 @@ import {
 } from "../design-system/animation.js";
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import DeLogoMorph from "../design-system/components/DeLogoMorph.jsx";
 
 // Rebuilt from get_design_context's real reference code for the "Nav"
 // component instance (nodeId 1961:180) — not hand-read from raw JSON this
@@ -130,7 +131,7 @@ export default function NavBar() {
           transform entirely. Keep that true for anything added here. */}
       <div className="flex-1 flex shrink-0 items-center justify-between py-4">
         <Link to="/" data-nav-item="">
-          <DeLogo className="size-16" />
+          <DeLogoMorph className="size-16" />
         </Link>
       </div>
       <nav className="flex items-center justify-center gap-6">
