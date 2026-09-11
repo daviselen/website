@@ -1,10 +1,16 @@
-import { useRef, useState } from "react";
+import { useId, useRef, useState } from "react";
 import DeLogo from "./DeLogo.jsx";
-import { gsap, useGSAP, EASE_REVEAL, REVEAL_DURATION } from "../animation.js";
+import {
+  gsap,
+  useGSAP,
+  EASE_REVEAL,
+  REVEAL_DURATION,
+  LINE_DELAY,
+} from "../animation.js";
 
 // One-shot header intro, morph variant of <DeLogoIntro />: the full
 // "DAVISELEN" wordmark (/icons/de-logo-h-stroked.svg, inlined below as JSX so
-// GSAP can target individual letters) plays AVIS-out -> LEN-out -> morph, then
+// GSAP can target individual letters) plays LEN-out -> AVIS-out -> morph, then
 // crossfades to the real static <DeLogo /> ("DE" monogram,
 // /icons/de-logo-white.svg).
 //
@@ -15,7 +21,8 @@ import { gsap, useGSAP, EASE_REVEAL, REVEAL_DURATION } from "../animation.js";
 // import of this module is what guarantees the tween does anything.
 //
 // AVIS and LEN are NOT morphed — they have no counterpart in the monogram, so
-// they fade (a morph needs a target shape; there is none to morph them into).
+// they drop through the shared baseline clip and vanish (a morph needs a target
+// shape; there is none to morph them into).
 //
 // Both this SVG and de-logo-white.svg share a 132px intrinsic height, so sizing
 // everything off `h-16` scales the letterforms identically in both files. The
@@ -29,7 +36,68 @@ import { gsap, useGSAP, EASE_REVEAL, REVEAL_DURATION } from "../animation.js";
 // with `col-start-1 row-start-1`, so they occupy identical in-flow space and
 // simply overlap for the crossfade — nothing in the header (nav links, "Let's
 // Chat") ever reflows, on load or at hand-off.
-const HOLD = REVEAL_DURATION * 0.3;
+const HOLD = REVEAL_DURATION;
+
+// Where the falling letters get cut off, in this SVG's own user units. The
+// seven of them sit on one baseline, so this is ONE number and one <clipPath>
+// (defined once in <defs>, referenced by both letter groups) rather than seven
+// per-letter clips — each letter dissolves into the line its own bottom rests
+// on, and the shared line is the only geometry that has to be right.
+//
+// 102.362 is the lowest coordinate across all seven paths: six bottom out at
+// 101.551, the S overshoots to 102.362 on its terminal curve. Taking the max
+// rather than the common 101.551 is deliberate — clipping at 101.551 would
+// shave a flat off the resting S before anything moves. The other six start
+// 0.811 units (~0.4rendered px at h-16) above the line, i.e. they begin eating
+// into it immediately.
+//
+// The clip CANNOT be a CSS `clip-path: inset()` like the rest of the codebase
+// uses: on an SVG element that resolves against the element's own fill-box and
+// travels with its transform, so it would ride down with the letter instead of
+// staying put. An SVG <clipPath> with a <rect> is fixed in the group's user
+// space, which is what a mask-at-the-baseline needs.
+const LETTER_CLIP_BOTTOM = 102.362;
+
+// Highest coordinate across the same seven paths (again the S, at 29.6433 —
+// the others start at 30.5696).
+const LETTER_TOP = 29.6433;
+
+// How far each letter travels down. Derived, not chosen: it's exactly the
+// distance that carries a letter's top edge to the clip line, so the tween
+// finishes at the same instant the last sliver disappears. Nothing moves after
+// it can no longer be seen, and no dead air opens up before the morph beat.
+const DROP_DISTANCE = LETTER_CLIP_BOTTOM - LETTER_TOP + 5;
+
+// Gap between one letter starting its drop and the next. LINE_DELAY is the
+// existing "offset between sequential elements" token (3.847 frames @ 30fps),
+// which is what this is — the same beat the stacked heading lines use, applied
+// to letters instead. Seven letters drop, so the last one starts 6 * LINE_DELAY
+// (~0.77s) after the first and the whole exit runs ~1.64s, close to the two
+// back-to-back group tweens it replaces.
+const DROP_STAGGER = LINE_DELAY;
+
+// 1. Physical & Spatial Constants
+const GRAVITY = 9.80665; // m/s^2
+const M_PER_UNIT = 0.01; // 1 SVG unit = 1 cm (visual spatial scale)
+
+const DROP_UNITS = LETTER_CLIP_BOTTOM - LETTER_TOP; // ~72.72 units
+const LIFT_UNITS = 6; // ~3px subtle apex lift upwards
+
+// 2. Exact Kinematic Durations under constant g
+// Rise time to apex: t1 = sqrt(2 * h_up / g)
+const t1 = Math.sqrt((2 * (LIFT_UNITS * M_PER_UNIT)) / GRAVITY); 
+// Fall time from apex: t2 = sqrt(2 * h_total / g)
+const t2 = Math.sqrt((2 * ((LIFT_UNITS + DROP_UNITS) * M_PER_UNIT)) / GRAVITY); 
+
+const TOTAL_PHYSICAL_DURATION = t1 + t2; // ~0.51s total trajectory
+
+// 3. Custom Continuous Gravity Ease: y(t) = 0.5*g*t^2 - g*t1*t
+// Returns normalized displacement fraction E(p) where p in [0, 1]
+const gravityTrajectoryEase = (p) => {
+  const t = p * TOTAL_PHYSICAL_DURATION;
+  const posMeters = 0.5 * GRAVITY * t * t - GRAVITY * t1 * t;
+  return posMeters / (DROP_UNITS * M_PER_UNIT);
+};
 
 // The morph targets below are de-logo-white.svg's own path data, rescaled from
 // its viewBox="0 0 81 81" into this SVG's viewBox="0 0 346 132". Both files
@@ -84,6 +152,12 @@ export default function DeLogoMorph({ className = "size-16", onComplete }) {
   );
   const [showIntro, setShowIntro] = useState(!reducedMotion);
 
+  // SVG <clipPath> is referenced by id, and ids are document-global — a second
+  // instance (a mobile nav, a style page rendering the logo twice) would emit a
+  // duplicate and both groups would resolve to whichever came first. useId is
+  // the cheap guard against that.
+  const clipId = useId();
+
   const rootRef = useRef(null);
   const svgRef = useRef(null);
   const frameRef = useRef(null);
@@ -107,16 +181,28 @@ export default function DeLogoMorph({ className = "size-16", onComplete }) {
         },
       });
 
+      // The letters drop one at a time, L-E-N then A-V-I-S — no opacity
+      // anywhere on them. They stay fully opaque the whole way down and are
+      // eaten by the shared baseline <clipPath>, so each one reads as sinking
+      // through the line it was sitting on rather than dissolving in place.
+      //
+      // Tweening the group CHILDREN (each <path> is one letter), not the two
+      // <g>s, is what makes a per-letter stagger possible — a group can only
+      // move as one block. They're passed as a single flat array in exit order
+      // rather than as two staggered tweens so the L->S cadence is one evenly
+      // spaced run; two tweens would restart the stagger clock at A and put a
+      // seam in the middle. Array order, not DOM order, drives the stagger, so
+      // LEN leading despite AVIS coming first in the markup costs nothing.
       tl.to(
-        avisRef.current,
-        { opacity: 0, duration: REVEAL_DURATION, ease: EASE_REVEAL },
+        [...lenRef.current.children, ...avisRef.current.children],
+        {
+          y: DROP_UNITS,
+          duration: TOTAL_PHYSICAL_DURATION,
+          ease: gravityTrajectoryEase, // Single continuous parabola
+          stagger: DROP_STAGGER,
+        },
         HOLD
       )
-        .to(lenRef.current, {
-          opacity: 0,
-          duration: REVEAL_DURATION,
-          ease: EASE_REVEAL,
-        })
         // The morph beat: kept "D" and "E" and the frame around them all
         // interpolate into the monogram's outlines at the same time.
         .to(dRef.current, {
@@ -131,7 +217,7 @@ export default function DeLogoMorph({ className = "size-16", onComplete }) {
             duration: REVEAL_DURATION,
             ease: EASE_REVEAL,
           },
-          "<"
+          "-=1"
         )
         .to(
           frameRef.current,
@@ -174,6 +260,16 @@ export default function DeLogoMorph({ className = "size-16", onComplete }) {
           aria-hidden="true"
           focusable="false"
         >
+          {/* One clip for all seven falling letters — they share a baseline,
+              so they share this line. Deliberately NOT wrapped around the
+              frame or the kept D/E: the frame runs to y=132 and would lose its
+              bottom edge, and the D/E morph downward to y=99.815 with no need
+              to be cut at all. */}
+          <defs>
+            <clipPath id={clipId}>
+              <rect x="0" y="0" width="346" height={LETTER_CLIP_BOTTOM} />
+            </clipPath>
+          </defs>
           <path
             ref={frameRef}
             fill="currentColor"
@@ -185,8 +281,9 @@ export default function DeLogoMorph({ className = "size-16", onComplete }) {
             fill="currentColor"
             d="M44.5852 88.8137C44.5852 93.3297 43.6563 94.9508 40.9858 94.9508H36.806V37.054H40.9858C43.6563 37.054 44.5852 38.7909 44.5852 43.3069V88.8137ZM40.9858 30.5696H30.304V101.551H40.9858C48.1845 101.551 50.9711 97.0351 50.9711 87.54V44.4648C50.9711 34.9697 48.1845 30.5696 40.9858 30.5696Z"
           />
-          {/* AVIS — fades out first. */}
-          <g ref={avisRef}>
+          {/* AVIS — drops through the baseline last (see the tween's array
+              order; markup order and exit order are independent). */}
+          <g ref={avisRef} clipPath={`url(#${clipId})`}>
             <path
               fill="currentColor"
               d="M71.0585 80.824L74.4257 47.9386L76.98 80.824H71.0585ZM71.0585 30.5696L63.0471 101.551H68.9686L70.478 87.1926H77.5606L78.6055 101.551H85.3398L77.7928 30.5696H71.0585Z"
@@ -210,8 +307,8 @@ export default function DeLogoMorph({ className = "size-16", onComplete }) {
             fill="currentColor"
             d="M201.911 101.551H219.211V95.414H208.413V68.0867H216.308V61.9496H208.413V36.5908H219.211V30.5696H201.911V101.551Z"
           />
-          {/* LEN — fades out second. */}
-          <g ref={lenRef}>
+          {/* LEN — drops through the baseline first, same shared clip. */}
+          <g ref={lenRef} clipPath={`url(#${clipId})`}>
             <path
               fill="currentColor"
               d="M239.182 30.5698H232.68V101.551H249.632V95.0668H239.182V30.5698Z"
