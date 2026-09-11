@@ -6,6 +6,7 @@ import "./index.css";
 import HomePage from "./pages/HomePage";
 import About from "./pages/About";
 import Careers from "./pages/Careers";
+import Contact from "./pages/Contact";
 
 const RetailMap = lazy(() => import("./pages/RetailMap"));
 
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: "/careers",
         element: <Careers />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
       },
     ],
   },
