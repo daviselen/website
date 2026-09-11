@@ -8,8 +8,8 @@ jobs:
     # Pinned to the installed @playwright/test version so bundled browsers match.
     container: mcr.microsoft.com/playwright:v1.62.1-jammy
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
           node-version: 22
           cache: npm
@@ -19,7 +19,7 @@ jobs:
       # The spec logs the distance % and passes unless the crop sizes
       # mismatch, so this is informational — see the uploaded artifacts.
       - run: npm run test:visual -- design-diff
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: visual-output
