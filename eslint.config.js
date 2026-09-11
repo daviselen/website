@@ -38,6 +38,12 @@ const TAILWIND_TOKEN_RULES_WARN_FILES = [
   "src/design-system/components/Button.jsx",
   "src/design-system/components/Card.jsx",
   "src/design-system/components/DeLogo.jsx",
+  // Animation components: intentional 3D-transform / arbitrary classes
+  // (perspective-1000, transform-3d, translate-z-12, mr-[0.125em]). NOTE:
+  // the 3D utilities are inert under Tailwind v3.4 — define them in
+  // tailwind.config.js (or move to v4) to actually render the tilt depth.
+  "src/design-system/components/TiltCard.jsx",
+  "src/design-system/components/TextReveal.jsx",
 ];
 
 export default [
