@@ -106,8 +106,14 @@ export default [
     rules,
   })),
   {
-    // Node-context scripts (test helpers, not app/browser code).
-    files: ["tests/visual/**/*.mjs", "tests/visual/support/**/*.js"],
+    // Node-context scripts (test helpers and build tooling, not app/browser
+    // code). `scripts/` holds the build-time image generator, which runs under
+    // plain Node and needs `process`/`console` in scope.
+    files: [
+      "tests/visual/**/*.mjs",
+      "tests/visual/support/**/*.js",
+      "scripts/**/*.mjs",
+    ],
     languageOptions: {
       globals: { ...globals.node },
     },

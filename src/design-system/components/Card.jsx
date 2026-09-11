@@ -32,24 +32,25 @@
 //
 // Figma's "card" has a Size variant, and size drives BOTH the image→copy
 // outer gap AND the image aspect ratio — they go together:
-//   default (large, ≥ half a row: From The Inside Out 2-up) → gap-700, 11/6
+//   default (large, ≥ half a row: From The Inside Out 2-up) → gap-700, 55/36
 //   small  (≤ a third of a row:   Proof / News-Awards 3-up) → gap-400, 6/5
 // `aspect` stays available as an optional per-instance override; when omitted
 // it follows the size. Written as explicit, fully-spelled-out classes (not a
 // template-string class name) because Tailwind's JIT scanner needs the literal
 // class text present in a source file — an interpolated `aspect-[${x}]` /
 // `gap-[${n}]` wouldn't reliably get picked up.
-import { motion } from "motion/react";
 import HorizontalReveal from "./HorizontalReveal";
+import Picture from "./Picture";
 import TextReveal from "./TextReveal";
 
 const aspectClasses = {
+  "55/36": "aspect-[55/36]",
   "11/6": "aspect-[11/6]",
   "6/5": "aspect-[6/5]",
 };
 
 const sizeConfig = {
-  default: { gap: "gap-700", gapInner: "gap-400", aspect: "11/6" },
+  default: { gap: "gap-700", gapInner: "gap-400", aspect: "55/36" },
   small: { gap: "gap-400", gapInner: "gap-300", aspect: "6/5" },
 };
 
@@ -76,17 +77,23 @@ export default function Card({
   itemType,
   headingItemProp,
   imageItemProp,
-  variants,
 }) {
   const cfg = sizeConfig[size] ?? sizeConfig.default;
   const aspectKey = aspect ?? cfg.aspect;
+  // The `variants` prop is gone. It only existed so motion could propagate a
+  // parent's staggerChildren state into this component; GSAP has no
+  // equivalent inheritance, so the stagger now lives entirely in the parent
+  // section, which tweens these root divs as DOM nodes (see Proof.jsx /
+  // NewsAwards.jsx). Card is purely presentational again — and critically,
+  // it renders VISIBLE by default, so the sections that never animated it
+  // (FromInsideOut) are unaffected. The animating parents set the hidden
+  // start state themselves via fromTo.
   return (
-    <motion.div
-      className={`flex flex-col ${cfg.gap}`}
-      variants={variants}
+    <div
+      className={`flex flex-col will-change-transform ${cfg.gap}`}
       {...(itemType ? { itemScope: true, itemType } : {})}
     >
-      <img
+      <Picture
         src={src}
         alt={alt}
         className={`${aspectClasses[aspectKey] ?? aspectClasses[cfg.aspect]} w-full rounded-md object-cover`}
@@ -94,13 +101,13 @@ export default function Card({
       />
       <div className={`flex flex-col  ${cfg.gapInner}`}>
         <h3
-          className="font-stat text-3xl uppercase leading-none md:text-5xl lg:text-display-stat"
+          className="font-stat text-display-card uppercase leading-none lg:text-display-h6"
           {...(headingItemProp ? { itemProp: headingItemProp } : {})}
         >
           <HorizontalReveal>{heading}</HorizontalReveal>
         </h3>
-        <p className="font-narrow text-lg leading-relaxed md:text-2xl md:leading-8"><TextReveal text={body}>{body}</TextReveal></p>
+        <p className="font-narrow font-light text-lg leading-relaxed md:text-2xl md:leading-8"><TextReveal text={body}>{body}</TextReveal></p>
       </div>
-    </motion.div>
+    </div>
   );
 }

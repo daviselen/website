@@ -160,3 +160,9 @@ tests/visual/output/
 .claude/screenshots/
 .claude/HP-26_node.json
 .DS_Store
+
+# Generated image derivatives — rebuilt by `npm run images` (predev/prebuild).
+# Originals stay tracked; these can never drift because they are never committed.
+public/images/**/*.avif
+public/images/**/*.webp
+.image-cache.json

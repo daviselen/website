@@ -93,6 +93,16 @@
 // justification for hiding specifically at `md`, and re-checking it
 // wasn't part of what was asked; simplified to "visible, stacked below
 // the text" until it goes side-by-side at `lg`.
+import { useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(ScrollTrigger);
+
+const MOVEMENT_FACTOR = 0.25;
+const EXTRA_HEIGHT = MOVEMENT_FACTOR * 100; // 80% height buffer for parallax movement
+
 const concepts = [
   {
     title: "What's Possible",
@@ -114,19 +124,53 @@ const concepts = [
   },
 ];
 
-// Grid-line background: two 1px-line gradients (vertical + horizontal)
-// tiled at 40x40px, offset -1px/-1px so the lines land on-pixel instead
-// of getting clipped at the edge. Inline style rather than Tailwind
-// classes — arbitrary-value utilities don't have a clean way to express
-// two background-images plus their own background-size/-position at
-// once.
+// The grid-line backdrop (hi-x-ai.png, cover, right-aligned) now lives in
+// the .hi-x-ai-bg rule in src/index.css rather than in an inline style
+// object here. It had to move: as a CSS background it is the one raster
+// <picture> can't negotiate a format for, and the way a background does
+// negotiate — two background-image declarations, image-set() overriding a
+// plain url() fallback — needs the same property declared twice, which a
+// React style object (a plain object, unique keys) cannot express.
+//
+// It replaced an earlier pair of 1px linear-gradients tiled at 40x40px;
+// that's what the "grid-line" name refers to.
 const gridBackground = {
-  backgroundImage: `url('/images/hi-x-ai.png')`,
-  backgroundSize: "cover",
-  backgroundPosition: "right center"
+  backgroundImage: `linear-gradient(to left, #2b2b2b 2.5px, transparent 2.5px), linear-gradient(to bottom, #2b2b2b 2.5px, transparent 2.5px)`,
+  backgroundSize: "40px 40px",
+  backgroundPosition: "right center",
 };
 
 export default function HumanAI() {
+  const containerRef = useRef(null);
+
+  useGSAP(
+    () => {
+      const bg = containerRef.current?.querySelector(".bg");
+      if (!bg) return;
+
+      const parent = containerRef.current;
+
+      gsap.fromTo(
+        bg,
+        {
+          y: () => -MOVEMENT_FACTOR * 0.5 * parent.offsetHeight,
+        },
+        {
+          y: () => MOVEMENT_FACTOR * 0.5 * parent.offsetHeight,
+          ease: "none",
+          scrollTrigger: {
+            trigger: parent,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+            invalidateOnRefresh: true,
+          },
+        }
+      );
+    },
+    { scope: containerRef }
+  );
+
   return (
     // px-1400/py-1800 (112px/144px): real inline/block padding, per direct
     // correction — was Tailwind's own default px-8/py-16 (32px/64px), never
@@ -135,10 +179,20 @@ export default function HumanAI() {
     // padding inside it that was reported wrong here.
     <section
       id="human-ai"
-      className="mx-8 rounded-md bg-surface-alt px-1400 py-1800 text-neutral-0 mt-3000"
-      style={gridBackground}
+      ref={containerRef}
+      className="relative mx-8 rounded-md bg-surface-alt px-600 sm:px-800 md:px-1000 xl:px-1200 2xl:px-1400 2xl:py-1800 text-neutral-0 mt-3000 overflow-hidden"
     >
-      <div className="lg:flex lg:items-center lg:justify-between lg:gap-16">
+      {/* Parallax CSS Grid Layer */}
+      <div
+        className="bg absolute left-0 w-full pointer-events-none z-0"
+        style={{
+          ...gridBackground,
+          height: `${100 + EXTRA_HEIGHT}%`,
+          top: `-${EXTRA_HEIGHT / 2}%`,
+        }}
+      />
+
+      <div className=" relative z-10 lg:flex lg:items-center lg:justify-between lg:gap-16">
         <div className="lg:max-w-2xl lg:shrink-0">
           <div className="mb-1000 flex items-center gap-6">
             <img src="/icons/hi-mark.svg" alt="" className="size-[104px]" />
@@ -157,7 +211,7 @@ export default function HumanAI() {
               before), "I" and "×" and "AI" all end up jammed together with
               no space at all — not just "less space than expected." */}
           <h2 className="font-display text-6xl uppercase leading-none md:text-8xl lg:text-display-hiai">
-            THE <abbr title="Human Imagination">H<span className="tracking-[0.08em]">I</span></abbr><span className="tracking-[0.1em]">x</span><abbr title="Artificial Intelligence">AI</abbr> Loop
+            THE <abbr title="Human Imagination">H<span className="tracking-[0.08em]">I</span></abbr><span className="tracking-[0.1em] lowercase">x</span><abbr title="Artificial Intelligence">AI</abbr> Loop
           </h2>
 
           <ul className="mt-800 flex flex-col gap-700">
@@ -166,12 +220,12 @@ export default function HumanAI() {
                 <div className="flex w-full items-center gap-100">
                   <div className={`size-[22px] shrink-0 border-4 ${c.dot}`} />
                   <h3
-                    className={`flex-1 font-narrow text-xl font-bold uppercase md:text-2xl lg:text-[32px] lg:leading-[40px] ${c.color}`}
+                    className={`flex-1 font-narrow text-xl font-semibold uppercase md:text-2xl lg:text-[32px] lg:leading-[40px] ${c.color}`}
                   >
                     {c.title}
                   </h3>
                 </div>
-                <p className="font-narrow text-xl leading-tight md:text-2xl lg:text-[32px] lg:leading-[40px]">
+                <p className="font-narrow font-light text-xl leading-tight md:text-2xl lg:text-[32px] lg:leading-[40px]">
                   {c.copy}
                 </p>
               </li>
@@ -191,9 +245,8 @@ export default function HumanAI() {
             make the real number here meaningless. */}
         <img
           src="/images/chart.svg"
-          alt=""
+          alt="Unlock your potential. Human Imagination and Artificial Intelligence synergize to eliminate roadblocks and unlock what's possible. Let robots do the work!"
           className="mx-auto mt-16 block w-full max-w-md lg:mx-0 lg:mt-0 lg:w-[44.8276vw] lg:max-w-none lg:shrink-0"
-          style={{ opacity: 0 }}
         />
       </div>
     </section>

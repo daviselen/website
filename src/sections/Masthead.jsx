@@ -1,5 +1,5 @@
 import HeadingReveal from "../design-system/components/HeadingReveal";
-import MastheadImage from "../design-system/components/MastheadImage";
+import MastheadVideo from "../design-system/components/MastheadVideo";
 import TextReveal from "../design-system/components/TextReveal";
 
 // From HP-23 "Masthead" (hero image, 1792x900), "Think Inside The Box"
@@ -16,10 +16,9 @@ import TextReveal from "../design-system/components/TextReveal";
 export default function Masthead() {
   return (
     <section id="masthead" className="px-0 md:px-8">
-      <MastheadImage
-        src="/images/masthead.jpg"
-        alt="Red Toyota Supra drifting on a bridge at night"
-        className="h-[56vw] max-h-[900px] w-full rounded-md object-cover"
+      <MastheadVideo
+        src="/videos/davis-elen-masthead.mp4"
+        className="h-[calc((100vw-83px)*0.5625)] max-h-[1044px] w-full rounded-md object-cover"
       />
       {/* Image → headline gap is Scale/2300 = 184px (11.5rem) — this was
           py-16 (64px/4rem) before, read off a stale HP-23 guess instead of
@@ -43,7 +42,14 @@ export default function Masthead() {
         {/* itemProp="slogan": real Organization.slogan property, and this
             headline genuinely is the site's tagline — no content=
             override needed since the visible text IS the value. */}
-        <HeadingReveal text={`Think Inside \nthe Box`} as="h1" className="font-display text-6xl uppercase leading-none md:text-8xl lg:text-display-h1" />
+        {/* fullyInView: this is the tallest heading on the site (display-h1
+            is 360px/line, hand-broken onto two), and it scrolls up from
+            under a masthead video up to 1044px tall. On the default
+            top-edge start the two-line reveal was effectively over by the
+            time the second line appeared — the trigger fired with only the
+            first line's cap height past the fold. Waiting for the whole
+            block means the reveal plays where it can actually be read. */}
+        <HeadingReveal text={`Think Inside \nthe Box`} as="h1" fullyInView className="font-display text-6xl uppercase leading-none md:text-8xl lg:text-display-h1" />
         {/* Headline → paragraph gap is Scale/700 = 56px, not the mt-8
             (32px) previously guessed. Real node also has pr-[480px] on the
             whole text block (TITB), not a max-w cap — reproduced here as a
@@ -52,8 +58,8 @@ export default function Masthead() {
         <TextReveal
           text="Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor."
           as="p"
-          delay={0.4}
-          className="mt-700 font-narrow text-xl leading-relaxed lg:text-[40px] lg:leading-[48px] lg:pr-[calc(100%-1290px)]"
+          delay={0.75}
+          className="mt-700 font-narrow font-light text-pre-title lg:pr-[calc(100%-1000px)]"
         />
       </div>
     </section>

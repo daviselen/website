@@ -4,3 +4,8 @@ tests/visual/output
 tests/visual/design
 node_modules
 package-lock.json
+# Machine-written by scripts/fetch-job-openings.mjs, which owns its exact
+# formatting so the file is byte-stable across runs. Prettier would collapse
+# the short arrays and the next `npm run jobs` would expand them again,
+# manufacturing a diff on every build.
+src/data/job-openings.json

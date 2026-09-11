@@ -24,8 +24,10 @@ export default {
         },
         neutral: {
           0: "#ffffff", // Neutral/0 — primary text/logo color
+          400: "#9a9a9a", // Neutral/400
           500: "#818181", // Neutral/500, named style "Gray"
           700: "#4d4d4d", // Neutral/700, named style "Dark Gray"
+          1000: "#000", // Neutral/1000 - primary surface color
         },
         red: "#E85746", // named style "Red" — "WHAT'S POSSIBLE" / HI cube accent — per direct
         // confirmation this is the correct value, not the #D71602 pulled earlier
@@ -57,6 +59,7 @@ export default {
       // these named keys for new work; a follow-up pass could migrate the
       // rest if full 1:1 traceability matters more than the churn.
       spacing: {
+        50: "4px",
         100: "8px",
         200: "16px",
         300: "24px",
@@ -65,6 +68,7 @@ export default {
         700: "56px",
         800: "64px",
         1000: "80px",
+        1200: "96px",
         // 1400: added for HI/AI's real inline (horizontal) padding, per
         // direct correction. Not independently pulled via get_variable_defs
         // (Figma was rate-limited) — added on the strength of the pattern
@@ -82,6 +86,7 @@ export default {
         2300: "184px",
         2400: "192px",
         3000: "240px",
+        3200: "256px",
       },
       borderRadius: {
         md: "8px", // Border/Radius/md — every card/image corner on the page
@@ -121,12 +126,17 @@ export default {
       // reasonable adaptation, not something in the source (which is
       // desktop-only).
       fontSize: {
-        "display-h1": ["360px", { lineHeight: "256px" }], // Font/Headings/H1 — Masthead
-        "display-h2": ["184px", { lineHeight: "128px" }], // Headings/H3 (Scale/2300 + Scale/1600) — section headlines
-        "display-hiai": ["144px", { lineHeight: "106px" }], // "THE HI x AI LOOP"
-        "display-card": ["80px", { lineHeight: "56px" }], // FootB/heading — portfolio card brand name
-        "display-stat": ["64px", { lineHeight: "56px" }], // card/heading, det/heading — Proof/News stat headline
+        "display-h1": ["272px", { lineHeight: "192px" }], // Font/Headings/H1 — Masthead
+        "display-h2": ["184px", { lineHeight: "128px" }], // Font/Headings/H2 — Masthead alt
+        "display-h3": ["144px", { lineHeight: "104px" }], // Headings/H3 (Scale/2300 + Scale/1600) — section headlines
+        "display-h4": ["104px", { lineHeight: "80px" }], // Headings/H4
+        "display-hiai": ["80px", { lineHeight: "56px" }], // "THE HI x AI LOOP"
+        "display-card": ["64px", { lineHeight: "48px" }], // FootB/heading — portfolio card brand name
+        "display-h6": ["56px", { lineHeight: "40px" }],
+        "display-stat": ["40px", { lineHeight: "48px" }], // card/heading, det/heading — Proof/News stat headline
+        "pre-title": ["32px", { lineHeight: "40px" }],
         "link-social": ["18px", { lineHeight: "18px" }], // links/social — Footer social links
+        "small": ["16px", { lineHeight: "24px" }], // Careers eyebrows
       },
     },
   },
