@@ -70,9 +70,15 @@ function VideoOverlay({ video, onClose }) {
   const closeRef = useRef(null);
   const lastFocusedRef = useRef(null);
 
-  useEffect(() => {
-    if (video) setRendered(video);
-  }, [video]);
+  // Adjusted during render rather than in an effect. Setting state in an
+  // effect body makes every open cost a second render pass, which
+  // react-hooks/set-state-in-effect (new in v7) flags; React handles a
+  // render-phase setState by re-running this component before it commits,
+  // so the held-payload behaviour is identical with one fewer commit.
+  // https://react.dev/learn/you-might-not-need-an-effect
+  if (video && video !== rendered) {
+    setRendered(video);
+  }
 
   // Escape to close, plus a scroll lock while open. Both belong here rather
   // than in the caller — that's the whole point of centralising the overlay.
