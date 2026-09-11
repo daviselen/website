@@ -54,7 +54,7 @@ export default function Careers() {
           className="font-display text-display-h3 uppercase leading-none"
         />
         <ul className="flex flex-col">
-          <li className="border-t-2 border-neutral-0 last:border-b-2">
+          <li className="border-t-2 border-neutral-0 border-x-2 last:border-b-2">
             <a
               href="#"
               target="_blank"
@@ -87,7 +87,7 @@ export default function Careers() {
               </div>
             </a>
           </li>
-          <li className="border-t-2 border-neutral-0 last:border-b-2">
+          <li className="border-t-2 border-neutral-0 border-x-2 last:border-b-2">
             <a
               href="#"
               target="_blank"
@@ -120,7 +120,7 @@ export default function Careers() {
               </div>
             </a>
           </li>
-          <li className="border-t-2 border-neutral-0 last:border-b-2">
+          <li className="border-t-2 border-neutral-0 border-x-2 last:border-b-2">
             <a
               href="#"
               target="_blank"

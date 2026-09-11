@@ -124,7 +124,7 @@ export default function JobOpenings() {
           {openings.map((opening) => (
             <li
               key={opening.id}
-              className="border-t-2 border-neutral-0 last:border-b-2"
+              className="border-t-2 border-neutral-0 border-x-2 last:border-b-2"
             >
               {/* A real anchor rather than a div with onClick, for the same
                   reason documented in MediaObject.jsx: the whole row is one
