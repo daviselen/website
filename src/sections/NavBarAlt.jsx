@@ -145,7 +145,7 @@ export default function NavBar() {
         <Link to="/careers" data-nav-item="" className="px-5 py-4 font-narrow font-light text-base leading-8 text-neutral-0 hover:text-primary-300">
           Careers
         </Link>
-        <a href="#contact" data-nav-item="" className="px-5 py-4 font-narrow font-light text-base leading-8 text-neutral-0 hover:text-primary-300">
+        <a href="/contact" data-nav-item="" className="px-5 py-4 font-narrow font-light text-base leading-8 text-neutral-0 hover:text-primary-300">
           Contact
         </a>
       </nav>
