@@ -159,6 +159,7 @@ export default function DeLogoMorph({ className = "size-16", onComplete }) {
   const clipId = useId();
 
   const rootRef = useRef(null);
+  const timelineRef = useRef(null);
   const svgRef = useRef(null);
   const frameRef = useRef(null);
   const avisRef = useRef(null);
@@ -176,10 +177,12 @@ export default function DeLogoMorph({ className = "size-16", onComplete }) {
 
       const tl = gsap.timeline({
         onComplete: () => {
-          setShowIntro(false);
+          // setShowIntro(false);
           onComplete?.();
         },
       });
+
+      timelineRef.current = tl;
 
       // The letters drop one at a time, L-E-N then A-V-I-S — no opacity
       // anywhere on them. They stay fully opaque the whole way down and are
@@ -246,12 +249,29 @@ export default function DeLogoMorph({ className = "size-16", onComplete }) {
     { scope: rootRef, dependencies: [reducedMotion] }
   );
 
+  const handleMouseEnter = () => {
+    if (timelineRef.current) {
+      timelineRef.current.reverse();
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (timelineRef.current) {
+      timelineRef.current.play();
+    }
+  };
+
   if (reducedMotion) {
     return <DeLogo className={className} />;
   }
 
   return (
-    <span ref={rootRef} className="grid h-16 w-2300">
+    <span
+      ref={rootRef}
+      className="grid h-16 w-2300 cursor-pointer"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       {showIntro && (
         <svg
           ref={svgRef}
