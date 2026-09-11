@@ -170,12 +170,12 @@ export default function Careers() {
               className="text-display-stat mb-300 pr-600"
               text="Work is important but so is your life outside of work. Davis Elen dedicates resources and support so you can stay healthy:"
             />
-            <ul className="text-display-stat list-[square] list-inside pl-200">
             {/* <ListMaskReveal
               items={benefits}
               barColor="#ff3366"
               className="text-display-stat list-[square] pl-200"
             /> */}
+            <ul className="text-display-stat list-[square] list-outside pl-600">
               <li className="mb-300">Comprehensive health plan</li>
               <li className="mb-300">401(k) retirement plan</li>
               <li className="mb-300">Generous paid vacation and sick days</li>
