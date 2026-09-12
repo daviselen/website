@@ -135,18 +135,14 @@ export default function NavBar() {
         </Link>
       </div>
       <nav className="flex items-center justify-center gap-6">
-        <Link to="/about" data-nav-item="" className="px-5 py-4 font-narrow font-light text-base leading-8 text-neutral-0 hover:text-primary-300">
-          About
+        <Link to="/about" data-nav-item="" className="inline-block relative cursor-pointer m-0 px-6 py-2 font-narrow font-light text-base leading-8 text-neutral-0 hover:text-primary-300 rounded-full overflow-hidden before:absolute before:-inset-1 before:block before:bg-primary-300 before:transition-all before:duration-300 before:ease-in-out before:translate-y-full hover:before:translate-y-0">
+          <span className="relative mix-blend-difference">About</span>
         </Link>
-        {/* Was a dead <a href="#careers"> pointing at an anchor that has
-            never existed on any page. Now a real route. Classes and label are
-            byte-identical to the old anchor, so the rendered <a href> differs
-            only in its href — design-diff should show zero pixel change. */}
-        <Link to="/careers" data-nav-item="" className="px-5 py-4 font-narrow font-light text-base leading-8 text-neutral-0 hover:text-primary-300">
-          Careers
+        <Link to="/careers" data-nav-item="" className="inline-block relative cursor-pointer m-0 px-6 py-2 font-narrow font-light text-base leading-8 text-neutral-0 hover:text-primary-300 rounded-full overflow-hidden before:absolute before:-inset-1 before:block before:bg-primary-300 before:transition-all before:duration-300 before:ease-in-out before:translate-y-full hover:before:translate-y-0">
+          <span className="relative mix-blend-difference">Careers</span>
         </Link>
-        <a href="/contact" data-nav-item="" className="px-5 py-4 font-narrow font-light text-base leading-8 text-neutral-0 hover:text-primary-300">
-          Contact
+        <a href="/contact" data-nav-item="" className="inline-block relative cursor-pointer m-0 px-6 py-2 font-narrow font-light text-base leading-8 text-neutral-0 hover:text-primary-300 rounded-full overflow-hidden before:absolute before:-inset-1 before:block before:bg-primary-300 before:transition-all before:duration-300 before:ease-in-out before:translate-y-full hover:before:translate-y-0">
+          <span className="relative mix-blend-difference">Contact</span>
         </a>
       </nav>
       <div className="flex flex-1 items-center justify-end py-4">
