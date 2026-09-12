@@ -1,7 +1,6 @@
 import MastheadImage from "../design-system/components/MastheadImage";
 import HeadingReveal from "../design-system/components/HeadingReveal";
 import TextReveal from "../design-system/components/TextReveal";
-import JobOpenings from "../sections/JobOpenings.jsx";
 import CTABanner from "../sections/CTABanner.jsx";
 
 // NavBar and Footer are not rendered here: Layout.jsx already mounts both
