@@ -34,10 +34,10 @@ export default function Careers() {
         </div>
         <div className="px-8">
           <div className="grid grid-cols-12 gap-400">
-            <TextReveal className="text-display-stat mb-6 pr-300 col-span-6 col-start-1"
+            <TextReveal className="text-pre-title mb-6 pr-300 col-span-6 col-start-1"
               text="Davis Elen, or DE, is one of the largest independently owned agencies in the country. We have a storied 50-year past but we’re not resting on what we’ve done. We’re always looking for what’s next. For people who can bring fresh, no-holds-barred thinking and a similar independent spirit to our table. Might that be you?"
             />
-            <TextReveal className="text-display-stat mb-6 pr-600 col-span-6 col-start-7"
+            <TextReveal className="text-pre-title mb-6 pr-600 col-span-6 col-start-7"
               text="Headquartered in the heart of downtown LA, but with ridiculously talented people found all throughout the country, our multicultural staff is expert in crafting ads for the general market, Hispanic market, and Asian markets. Sound like your kind of place? If so, we always have open positions. Take a look."
             />
           </div>
