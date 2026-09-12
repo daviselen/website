@@ -2,6 +2,7 @@ import MastheadImage from "../design-system/components/MastheadImage";
 import HeadingReveal from "../design-system/components/HeadingReveal";
 import TextReveal from "../design-system/components/TextReveal";
 import CTABanner from "../sections/CTABanner.jsx";
+import StyledField from "../design-system/components/Field";
 
 // NavBar and Footer are not rendered here: Layout.jsx already mounts both
 // around every route, and its wrapper supplies the page background, the
@@ -48,7 +49,9 @@ export default function Contact() {
           text={`Locations`}
           className="font-display text-display-h2 uppercase leading-none"
         />
-        
+        <StyledField type="text" label="Name" />
+        <StyledField type="tel" label="Phone" />
+        <StyledField type="email" label="E-mail" />
       </section>
     </main>
   );
