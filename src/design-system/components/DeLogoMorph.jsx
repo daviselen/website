@@ -140,6 +140,36 @@ const D_TARGET =
 const E_TARGET =
   "M70.641 99.815H87.673V93.689H77.042V66.411H84.815V60.285H77.042V34.971H87.673V28.961H70.641V99.815Z";
 
+// The intro is a first-impression beat, not a per-navigation one. sessionStorage
+// (not localStorage) is the right scope: it's per-tab and cleared when the tab
+// closes, so a returning visitor in a new tab gets the animation again while a
+// reload, a back/forward navigation, or a second tab-local full page load during
+// the same visit does not.
+//
+// Reads/writes are wrapped because storage access THROWS, not returns null, in
+// Safari private browsing and under a blocked-cookies policy. A failed read
+// falls back to "not played yet", which degrades to the current behaviour
+// (animation plays) rather than to a permanently hidden intro.
+const INTRO_SESSION_KEY = "de-logo-morph-played";
+
+function hasPlayedThisSession() {
+  if (typeof window === "undefined") return false;
+  try {
+    return window.sessionStorage.getItem(INTRO_SESSION_KEY) === "1";
+  } catch {
+    return false;
+  }
+}
+
+function markPlayedThisSession() {
+  if (typeof window === "undefined") return;
+  try {
+    window.sessionStorage.setItem(INTRO_SESSION_KEY, "1");
+  } catch {
+    // Storage unavailable — the intro simply plays again next load.
+  }
+}
+
 export default function DeLogoMorph({ className = "size-16", onComplete }) {
   // Lazy initializer so this resolves during the very first render, before
   // paint — matching useSmoothScroll's reduced-motion check (same matchMedia
@@ -150,7 +180,15 @@ export default function DeLogoMorph({ className = "size-16", onComplete }) {
       typeof window !== "undefined" &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches
   );
-  const [showIntro, setShowIntro] = useState(!reducedMotion);
+  // Same lazy-initializer reasoning as reducedMotion above: resolved during the
+  // first render so a repeat load renders the static monogram directly and the
+  // wordmark never paints for a frame. Read ONCE into state rather than on every
+  // render — the effect below writes the flag, and a live read would then
+  // disagree with the markup this render already committed.
+  const [alreadyPlayed] = useState(hasPlayedThisSession);
+  const skipIntro = reducedMotion || alreadyPlayed;
+
+  const [showIntro, setShowIntro] = useState(!skipIntro);
 
   // SVG <clipPath> is referenced by id, and ids are document-global — a second
   // instance (a mobile nav, a style page rendering the logo twice) would emit a
@@ -170,10 +208,16 @@ export default function DeLogoMorph({ className = "size-16", onComplete }) {
 
   useGSAP(
     () => {
-      // Reduced motion never builds a timeline at all — the component
-      // renders the static <DeLogo /> straight away (see below) and this
-      // effect has nothing to animate.
-      if (reducedMotion) return;
+      // Reduced motion, or an intro that already played this session, never
+      // builds a timeline at all — the component renders the static <DeLogo />
+      // straight away (see below) and this effect has nothing to animate.
+      if (skipIntro) return;
+
+      // Marked at build time, not in onComplete: a reload or a navigation
+      // partway through the ~4s sequence still counts as "seen it", and
+      // replaying from the top in that case is exactly the repeat the flag
+      // exists to prevent.
+      markPlayedThisSession();
 
       const tl = gsap.timeline({
         onComplete: () => {
@@ -246,7 +290,7 @@ export default function DeLogoMorph({ className = "size-16", onComplete }) {
           "<"
         );
     },
-    { scope: rootRef, dependencies: [reducedMotion] }
+    { scope: rootRef, dependencies: [skipIntro] }
   );
 
   const handleMouseEnter = () => {
@@ -261,7 +305,9 @@ export default function DeLogoMorph({ className = "size-16", onComplete }) {
     }
   };
 
-  if (reducedMotion) {
+  // No timeline was built, so the hover reverse/play handlers below would be
+  // dead wiring — return the plain static monogram instead.
+  if (skipIntro) {
     return <DeLogo className={className} />;
   }
 
