@@ -13,19 +13,19 @@ import { useStaggerReveal } from "../design-system/animation.js";
 const stats = [
   {
     heading: "$18 Billion in Retail Sales",
-    body: "Today, Davis Elen's reputation and national footprint are surging like never before.",
+    body: "We get results. But don't take our word for it. A number like this speaks volumes.",
     src: "/images/proof-best-buy-health.jpg",
     alt: "Interior of a Best Buy Health retail location",
   },
   {
     heading: "4000+ Retail Locations",
-    body: "Including 25% of every McDonald's restaurant in the United States. Scale that speaks for itself.",
+    body: "Including one in four McDonald's in America. We're in more neighborhoods than most agencies have clients.",
     src: "/images/proof-locations-map.jpg",
     alt: "Map showing Davis Elen client retail locations across Southern California",
   },
   {
     heading: "Independent for Over 75 Years",
-    body: "No holding company. No conglomerate oversight. Original thinking applied consistently since 1948.",
+    body: "No holding company. No quarterly panic. Nobody to ask permission from except the client.",
     src: "/images/proof-founding-partners.jpg",
     alt: "Davis Elen original founding partners photo: Henry Mayers, Bob Colombatto, ?, ?, and Bob Davis",
   },

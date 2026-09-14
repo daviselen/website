@@ -108,19 +108,19 @@ const concepts = [
     title: "What's Possible",
     color: "text-red",
     dot: "border-red",
-    copy: "You point AI at the goal, an idea only a human would have.",
+    copy: "Somebody human has an idea worth chasing. That part hasn't been automated.",
   },
   {
     title: "Let Robots Do The Work",
     color: "text-cyan",
     dot: "border-cyan",
-    copy: "It clears the roadblocks and does the doing, at scale.",
+    copy: "The machine clears the roadblocks and does the doing, at a volume we couldn't touch.",
   },
   {
     title: "Unlock Your Potential",
     color: "text-primary-300",
     dot: "border-primary-300",
-    copy: "Multiply your bandwidth, free to imagine the next thing.",
+    copy: "You get the afternoon back. Spend it thinking of the next thing.",
   },
 ];
 

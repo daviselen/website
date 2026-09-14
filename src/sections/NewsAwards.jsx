@@ -10,19 +10,19 @@ import { useStaggerReveal } from "../design-system/animation.js";
 const awards = [
   {
     heading: "Davis Elen Wins 8 Telly Awards",
-    body: "Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas.",
+    body: "Eight of them, in one year, for work we would have made anyway.",
     src: "/images/news-telly-awards.jpg",
     alt: "Telly Award trophies",
   },
   {
     heading: "Davis Elen Wins a Shorty Award",
-    body: "Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis.",
+    body: "Our fifth nomination and the one that came with hardware. Social work, judged by people who actually live on social.",
     src: "/images/news-shorty-award.jpg",
     alt: "Shorty Award trophy",
   },
   {
     heading: "DE Wins a Silver and Bronze Pencil",
-    body: "Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis.",
+    body: "Two pencils from The One Show. They're somewhere safe and slightly visible.",
     src: "/images/news-pencil-award.jpg",
     alt: "Silver and bronze One Show Pencil awards",
   },

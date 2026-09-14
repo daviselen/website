@@ -50,19 +50,19 @@ import HeadingReveal from "../design-system/components/HeadingReveal.jsx";
 
 const social = {
   heading: "Social Media",
-  body: "Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Pulvinar vivamus fringilla lacus nec metus bibendum egestas.",
+  body: "Fifteen years, every platform that mattered and a few that didn't. Paid, organic, influencer, social PR. It isn't a department down the hall.",
   src: "/images/socialpr-social.jpg",
   alt: "Toyota social media content example",
 };
 const pr = {
   heading: "Public Relations",
-  body: "Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Pulvinar vivamus fringilla lacus nec metus bibendum egestas.",
+  body: "Earned coverage, events, partnerships and the occasional stunt. If it gets people talking without a media buy behind it, we're interested.",
   src: "/images/socialpr-public-relations.jpg",
   alt: "Public relations event photo",
 };
 const culture = {
   heading: "DE Culture",
-  body: "Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Pulvinar vivamus fringilla lacus nec metus bibendum egestas.",
+  body: "Mixed teams. Strong opinions. Steak and bones for everybody. We'd rather slow down the crazy ones than push the nice ones.",
   src: "/images/socialpr-de-culture.jpg",
   alt: "Davis Elen team member portrait",
 };

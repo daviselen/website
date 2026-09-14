@@ -258,15 +258,17 @@ export default function About() {
         </div>
         <div className="px-8">
           <div className="grid grid-cols-12 gap-400">
-            <TextReveal className="text-pre-title mb-6 col-span-7 col-start-6"
-              text="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit."
+            <TextReveal className="text-pre-title mb-6 col-span-6 col-start-1"
+              text="Davis Elen has been in business since 1948 and independent every single day of it. No holding company, no parent, nobody upstairs to run it past. That isn't nostalgia. It's just how we like to work." />
+            <TextReveal className="text-pre-title mb-6 col-span-6 col-start-7"
+              text="We make advertising that has a job to do. Move product off a shelf. Get a car onto a lot. Put a person in a store. The constraint is the whole point. Give us a real budget, a real deadline and a real strategy and we'll show you what happens inside the box."
             />
           </div>
         </div>
       </section>
       <MediaObject
         title="$18 Billion in Sales from Over 4000 Locations."
-        text="Through Toyota, Best Buy, Smart & Final, and over 25% of McDonald’s restaurants nationwide."
+        text="Toyota. Best Buy Health. Smart & Final. One in four McDonald's in the country. Zoom in on the map. We're probably in your neighborhood."
         imgSrc="/images/about-map.jpg"
         imgAlt="Map of Los Angeles County showing the locations of Toyota dealership, McDonald's restaurant, Best Buy and Smart & Final locations."
       />
@@ -274,6 +276,9 @@ export default function About() {
         <HeadingReveal
           className="text-display-h3 font-display uppercase"
           text={`Let’s \nMeet Up`}
+        />
+        <TextReveal className="text-pre-title max-w-prose"
+          text="This is the whole meeting. No account person you'll never see again, no bench of strangers who vanish after the pitch. The people in the room are the people who do the work."
         />
         <div className="grid grid-cols-4 gap-400">
           {people.map((person, index) => (
@@ -316,7 +321,7 @@ export default function About() {
         title={ORIGIN_STORY.title}
         titleSize="large"
         subhead="Runtime 44:32"
-        text="From a small print shop in Glendale to one of the largest independently-owned agencies in the country."
+        text="It started as a print shop in Glendale. Nobody planned the rest of it."
         imgSrc="/images/about-history.jpg"
         imgAlt="Photo of Henry Mayers and the four partners who took over in 1958."
         onClick={() => openVideo(ORIGIN_STORY)}
