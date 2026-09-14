@@ -135,13 +135,13 @@ export default function NavBar() {
         </Link>
       </div>
       <nav className="flex items-center justify-center gap-6">
-        <Link to="/about" data-nav-item="" className="inline-block relative cursor-pointer m-0 px-6 py-2 font-narrow font-light text-base leading-8 text-neutral-0 hover:text-primary-300 rounded-full overflow-hidden before:absolute before:-inset-1 before:block before:bg-primary-300 before:transition-all before:duration-300 before:ease-in-out before:translate-y-full hover:before:translate-y-0">
+        <Link to="/about" data-nav-item="" className="inline-block relative cursor-pointer m-0 px-6 py-2 font-narrow font-light text-base leading-8 text-neutral-0 hover:text-primary-300 rounded-full overflow-hidden before:absolute before:-inset-1 before:block before:bg-primary-300 before:transition-all before:duration-300 before:ease-in-out before:translate-y-full hover:before:translate-y-0 will-change-transform">
           <span className="relative mix-blend-difference">About</span>
         </Link>
-        <Link to="/careers" data-nav-item="" className="inline-block relative cursor-pointer m-0 px-6 py-2 font-narrow font-light text-base leading-8 text-neutral-0 hover:text-primary-300 rounded-full overflow-hidden before:absolute before:-inset-1 before:block before:bg-primary-300 before:transition-all before:duration-300 before:ease-in-out before:translate-y-full hover:before:translate-y-0">
+        <Link to="/careers" data-nav-item="" className="inline-block relative cursor-pointer m-0 px-6 py-2 font-narrow font-light text-base leading-8 text-neutral-0 hover:text-primary-300 rounded-full overflow-hidden before:absolute before:-inset-1 before:block before:bg-primary-300 before:transition-all before:duration-300 before:ease-in-out before:translate-y-full hover:before:translate-y-0 will-change-transform">
           <span className="relative mix-blend-difference">Careers</span>
         </Link>
-        <a href="/contact" data-nav-item="" className="inline-block relative cursor-pointer m-0 px-6 py-2 font-narrow font-light text-base leading-8 text-neutral-0 hover:text-primary-300 rounded-full overflow-hidden before:absolute before:-inset-1 before:block before:bg-primary-300 before:transition-all before:duration-300 before:ease-in-out before:translate-y-full hover:before:translate-y-0">
+        <a href="/contact" data-nav-item="" className="inline-block relative cursor-pointer m-0 px-6 py-2 font-narrow font-light text-base leading-8 text-neutral-0 hover:text-primary-300 rounded-full overflow-hidden before:absolute before:-inset-1 before:block before:bg-primary-300 before:transition-all before:duration-300 before:ease-in-out before:translate-y-full hover:before:translate-y-0 will-change-transform">
           <span className="relative mix-blend-difference">Contact</span>
         </a>
       </nav>
