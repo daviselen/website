@@ -135,18 +135,18 @@ export default function NavBar() {
         </Link>
       </div>
       <nav className="flex items-center justify-center gap-6">
-        <Link to="/about" data-nav-item="" className="inline-flex items-center justify-center relative cursor-pointer h-600 m-0 px-6 py-2 font-narrow font-light text-base leading-8 text-neutral-0 rounded-full overflow-hidden before:absolute before:-inset-1 before:block before:bg-[#4c9a2a] before:transition-all before:duration-500 before:ease-in-out before:translate-y-full hover:before:translate-y-0 will-change-transform">
+        <Link to="/about" data-nav-item="" className="inline-flex items-center justify-center relative cursor-pointer h-600 m-0 px-6 py-2 font-narrow font-light text-base leading-8 text-neutral-0 rounded-full overflow-hidden before:absolute before:-inset-1 before:block before:bg-surface-primary-default before:transition-all before:duration-500 before:ease-in-out before:translate-y-full hover:before:translate-y-0 will-change-transform">
           <span className="relative">About</span>
         </Link>
-        <Link to="/careers" data-nav-item="" className="inline-flex items-center justify-center relative cursor-pointer h-600 m-0 px-[25.5px] py-[9.5px] font-narrow font-light text-base leading-8 text-neutral-0 rounded-full overflow-hidden before:absolute before:-inset-1 before:block before:bg-[#4c9a2a] before:transition-all before:duration-500 before:ease-in-out before:translate-y-full hover:before:translate-y-0 will-change-transform">
+        <Link to="/careers" data-nav-item="" className="inline-flex items-center justify-center relative cursor-pointer h-600 m-0 px-[25.5px] py-[9.5px] font-narrow font-light text-base leading-8 text-neutral-0 rounded-full overflow-hidden before:absolute before:-inset-1 before:block before:bg-surface-primary-default before:transition-all before:duration-500 before:ease-in-out before:translate-y-full hover:before:translate-y-0 will-change-transform">
           <span className="relative">Careers</span>
         </Link>
-        <a href="/contact" data-nav-item="" className="inline-flex items-center justify-center relative cursor-pointer h-600 m-0 px-[25.5px] py-[9.5px] font-narrow font-light text-base leading-8 text-neutral-00 rounded-full overflow-hidden before:absolute before:-inset-1 before:block before:bg-[#4c9a2a] before:transition-all before:duration-500 before:ease-in-out before:translate-y-full hover:before:translate-y-0 will-change-transform">
+        <a href="/contact" data-nav-item="" className="inline-flex items-center justify-center relative cursor-pointer h-600 m-0 px-[25.5px] py-[9.5px] font-narrow font-light text-base leading-8 text-neutral-00 rounded-full overflow-hidden before:absolute before:-inset-1 before:block before:bg-surface-primary-default before:transition-all before:duration-500 before:ease-in-out before:translate-y-full hover:before:translate-y-0 will-change-transform">
           <span className="relative">Contact</span>
         </a>
       </nav>
       <div className="flex flex-1 items-center justify-end py-4">
-        <button data-nav-item="" className="px-6 py-2 font-narrow font-light text-base leading-8 uppercase text-neutral-0 border-[1.5px] border-neutral-0 rounded-full hover:border-[#4c9a2a] transition-colors duration-500 overflow-hidden before:absolute before:-inset-1 before:block before:bg-[#4c9a2a] before:transition-all before:duration-300 before:ease-in-out before:translate-y-full hover:before:translate-y-0 will-change-transform">
+        <button data-nav-item="" className="px-6 py-2 font-narrow font-light text-base leading-8 uppercase text-neutral-0 border-[1.5px] border-neutral-0 rounded-full hover:border-surface-primary-default transition-colors duration-500 overflow-hidden before:absolute before:-inset-1 before:block before:bg-surface-primary-default before:transition-all before:duration-300 before:ease-in-out before:translate-y-full hover:before:translate-y-0 will-change-transform">
           <span className="relative">Let's Chat</span>
         </button>
       </div>
