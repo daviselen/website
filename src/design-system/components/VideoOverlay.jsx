@@ -156,7 +156,7 @@ function VideoOverlay({ video, onClose }) {
       role="dialog"
       aria-modal="true"
       aria-label={rendered.title ?? "Video player"}
-      className="fixed inset-0 z-50 flex items-center justify-center p-400"
+      className="fixed inset-0 z-50 flex items-center justify-center min-h-[100dvh]"
     >
       {/* A real <button>, not a div with onClick: it gives the backdrop a
           keyboard-reachable, screen-reader-announced way to dismiss, and
@@ -166,26 +166,28 @@ function VideoOverlay({ video, onClose }) {
         type="button"
         aria-label="Close video"
         onClick={onClose}
-        className="absolute inset-0 size-full cursor-default bg-surface-default/90"
+        className="absolute inset-0 size-full cursor-default bg-surface-default/75 backdrop-blur-sm"
       />
 
-      <div ref={panelRef} className="relative w-full max-w-5xl">
+      <div ref={panelRef} className="relative w-full">
         <button
           ref={closeRef}
           type="button"
           onClick={onClose}
-          className="absolute right-0 top-0 -translate-y-full p-200 font-narrow text-base uppercase text-neutral-0 hover:text-primary-300"
+          className="absolute right-10 top-10 p-200 font-narrow text-base uppercase text-neutral-0 hover:text-primary-300"
         >
           Close
         </button>
 
+        <div className="h-[100dvh] flex items-start justify-center pt-[8dvh]">
         {embed ? (
           <iframe
             src={embed}
             title={rendered.title ?? "Video player"}
             allow="autoplay; fullscreen; picture-in-picture"
             allowFullScreen
-            className="block aspect-video w-full rounded-md"
+            
+            className="block aspect-[16/10] h-auto w-[90vw] max-h-[80dvh] bg-surface-default shadow-lg rounded-md"
           />
         ) : (
           <video
@@ -203,6 +205,7 @@ function VideoOverlay({ video, onClose }) {
             {sources?.mp4 ? <source src={sources.mp4} type="video/mp4" /> : null}
           </video>
         )}
+        </div>
       </div>
     </div>
   );
