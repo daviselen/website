@@ -126,7 +126,7 @@ export default {
       // reasonable adaptation, not something in the source (which is
       // desktop-only).
       fontSize: {
-        "display-h1": ["272px", { lineHeight: "192px" }], // Font/Headings/H1 — Masthead
+        "display-h1": ["304px", { lineHeight: "208px" }], // Font/Headings/H1 — Masthead
         "display-h2": ["184px", { lineHeight: "128px" }], // Font/Headings/H2 — Masthead alt
         "display-h3": ["144px", { lineHeight: "104px" }], // Headings/H3 (Scale/2300 + Scale/1600) — section headlines
         "display-h4": ["104px", { lineHeight: "80px" }], // Headings/H4
