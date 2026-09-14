@@ -146,8 +146,8 @@ export default function NavBar() {
         </a>
       </nav>
       <div className="flex flex-1 items-center justify-end py-4">
-        <button data-nav-item="" className="px-6 py-2 font-narrow font-light text-base leading-8 uppercase text-neutral-0 border-[1.5px] border-neutral-0 rounded-full hover:text-primary-300 hover:border-primary-300 transition-colors duration-300">
-          Let's Chat
+        <button data-nav-item="" className="px-6 py-2 font-narrow font-light text-base leading-8 uppercase text-neutral-0 border-[1.5px] border-neutral-0 rounded-full hover:text-primary-300 hover:border-primary-300 transition-colors duration-300 overflow-hidden before:absolute before:-inset-1 before:block before:bg-primary-300 before:transition-all before:duration-300 before:ease-in-out before:translate-y-full hover:before:translate-y-0 will-change-transform">
+          <span className="relative mix-blend-difference">Let's Chat</span>
         </button>
       </div>
     </header>
