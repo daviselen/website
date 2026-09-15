@@ -142,7 +142,7 @@ export default function JobOpenings() {
                 rel="noopener noreferrer"
                 className="flex flex-col gap-100 pt-600 pb-800 hover:text-primary-300 transition-colors md:flex-row md:items-baseline md:justify-between md:gap-400"
               >
-                <div className="flex flex-col gap-200 basis-[calc(100%-26rem)] px-600">
+                <div className="flex flex-col gap-200 px-600">
                   <span className="text-small uppercase text-neutral-400">
                     Position
                   </span>
@@ -153,14 +153,12 @@ export default function JobOpenings() {
                 {/* Omitted entirely rather than rendered empty: one live
                     opening has `requisitionLocations: []`. */}
                 {opening.locations.length > 0 && (
-                  <div className="flex flex-col gap-200 basis-[26rem] px-600">
-                    <span className="text-small uppercase text-neutral-400">
+                  <div className="flex flex-col gap-200 px-600">
+                    <span className="text-small uppercase text-right text-neutral-400">
                       Location
                     </span>
-                    <span className="shrink-0 font-narrow text-pre-title uppercase">
-                      {opening.locations.map((location, index) => (
-                        <span key={index} className="inline-block">{location}</span>
-                      ))}
+                    <span className="shrink-0 font-narrow text-pre-title uppercase text-right">
+                      {opening.locations.join(" + ")}
                     </span>
                   </div>
                 )}
