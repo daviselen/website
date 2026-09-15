@@ -71,7 +71,11 @@ const ZOOMS = [
   { id: "zoom_midwest", label: "Mid-West", bounds: [[-104.351149, 33.937557], [-83.784742, 43.05575]] },
 ];
 
-export default function RetailMap() {
+// `className` is the page gutter, not part of the map: the /about/retail-map
+// route renders this at full width and wants the default `mx-8`, while the
+// About-page overlay already sits inside its own width-capped panel and passes
+// "" so the gutter isn't applied twice.
+export default function RetailMap({ className = "mx-8" }) {
     const containerRef = useRef(null);
     const mapRef = useRef(null);
     const [toggles, setToggles] = useState(TOGGLES);
@@ -241,7 +245,7 @@ export default function RetailMap() {
     }
 
     return (
-      <div className={`${styles['map-container']} mx-8`}>
+      <div className={`${styles['map-container']} ${className}`}>
         <div id="menu" className={`${styles.menu} rounded-r-md`}>
           {toggles.map((t) => (
             <div key={t.id} className={`${styles['menu-item']} ${styles[t.id]}`}>

@@ -11,22 +11,22 @@ import { gsap, useGSAP, EASE_OUT } from "../animation";
 
 // ONE overlay instance lives at the app root and is driven through context.
 // The alternative — each section holding its own `isOpen` state and rendering
-// its own <VideoOverlay> — would duplicate the escape handling, scroll lock,
+// its own <Overlay> — would duplicate the escape handling, scroll lock,
 // focus restore, and z-index in every caller, and would let two overlays open
-// at once. Callers here only ever say WHAT to play, never how to present it:
+// at once. Callers here only ever say WHAT to show, never how to present it:
 //
-//   const { openVideo } = useVideoOverlay();
-//   <MediaObject onClick={() => openVideo({ src, title })} />
+//   const { openOverlay } = useOverlay();
+//   <MediaObject onClick={() => openOverlay({ src, title })} />
 //
 // Nothing about this is MediaObject-specific: a Button, a Card, or a bare
 // <button> triggers it identically.
 
-const VideoOverlayContext = createContext(null);
+const OverlayContext = createContext(null);
 
-export function useVideoOverlay() {
-  const ctx = useContext(VideoOverlayContext);
+export function useOverlay() {
+  const ctx = useContext(OverlayContext);
   if (!ctx) {
-    throw new Error("useVideoOverlay must be used inside <VideoOverlayProvider>");
+    throw new Error("useOverlay must be used inside <OverlayProvider>");
   }
   return ctx;
 }
@@ -35,33 +35,33 @@ export function useVideoOverlay() {
 // Not one of the Figma-derived reveal timings — this is chrome, not content.
 const OVERLAY_DURATION = 0.3;
 
-export function VideoOverlayProvider({ children }) {
-  const [video, setVideo] = useState(null);
+export function OverlayProvider({ children }) {
+  const [payload, setPayload] = useState(null);
 
-  const openVideo = useCallback((next) => setVideo(next), []);
-  const closeVideo = useCallback(() => setVideo(null), []);
+  const openOverlay = useCallback((next) => setPayload(next), []);
+  const closeOverlay = useCallback(() => setPayload(null), []);
 
   // Memoised so consumers don't re-render on every provider render.
   const value = useMemo(
-    () => ({ openVideo, closeVideo, isVideoOpen: Boolean(video) }),
-    [openVideo, closeVideo, video]
+    () => ({ openOverlay, closeOverlay, isOverlayOpen: Boolean(payload) }),
+    [openOverlay, closeOverlay, payload]
   );
 
   return (
-    <VideoOverlayContext.Provider value={value}>
+    <OverlayContext.Provider value={value}>
       {children}
-      <VideoOverlay video={video} onClose={closeVideo} />
-    </VideoOverlayContext.Provider>
+      <Overlay payload={payload} onClose={closeOverlay} />
+    </OverlayContext.Provider>
   );
 }
 
-function VideoOverlay({ video, onClose }) {
-  // `video` clears the instant close is requested, but the exit animation
+function Overlay({ payload, onClose }) {
+  // `payload` clears the instant close is requested, but the exit animation
   // still needs its src for a few hundred ms — so the last payload is held
   // here until the tween finishes. Same mount-through-exit pattern the
   // PixelCurtain uses for its phases.
   const [rendered, setRendered] = useState(null);
-  const isOpen = Boolean(video);
+  const isOpen = Boolean(payload);
 
   const rootRef = useRef(null);
   const backdropRef = useRef(null);
@@ -76,8 +76,8 @@ function VideoOverlay({ video, onClose }) {
   // render-phase setState by re-running this component before it commits,
   // so the held-payload behaviour is identical with one fewer commit.
   // https://react.dev/learn/you-might-not-need-an-effect
-  if (video && video !== rendered) {
-    setRendered(video);
+  if (payload && payload !== rendered) {
+    setRendered(payload);
   }
 
   // Escape to close, plus a scroll lock while open. Both belong here rather
@@ -148,14 +148,22 @@ function VideoOverlay({ video, onClose }) {
   // media file — so it needs an <iframe>. Everything around it (backdrop,
   // escape, focus restore, exit tween) is identical; only the player swaps.
   // Unmounting the iframe on close is what stops playback, same as <video>.
-  const { embed } = rendered;
+  //
+  // `content` is the fourth shape and the only non-video one: any React node,
+  // for things that are interactive rather than playable (the /about retail
+  // map). It exists so a second modal host — with its own copy of the escape
+  // key handling, scroll lock, focus restore and z-index — never has to be
+  // written. Unmounting on close still does the teardown: the map's own
+  // effect cleanup runs `map.remove()` and frees the WebGL context, exactly
+  // as unmounting <video> stops playback.
+  const { embed, content } = rendered;
 
   return (
     <div
       ref={rootRef}
       role="dialog"
       aria-modal="true"
-      aria-label={rendered.title ?? "Video player"}
+      aria-label={rendered.title ?? (content ? "Dialog" : "Video player")}
       className="fixed inset-0 z-50 flex items-center justify-center min-h-[100dvh]"
     >
       {/* A real <button>, not a div with onClick: it gives the backdrop a
@@ -164,7 +172,7 @@ function VideoOverlay({ video, onClose }) {
       <button
         ref={backdropRef}
         type="button"
-        aria-label="Close video"
+        aria-label="Close"
         onClick={onClose}
         className="absolute inset-0 size-full cursor-default bg-surface-default/75 backdrop-blur-sm"
       />
@@ -180,8 +188,23 @@ function VideoOverlay({ video, onClose }) {
           <img src="/icons/close.svg" width={24} height={24} />
         </button>
 
-        <div className="h-[100dvh] flex items-start justify-center pt-[8dvh]">
-        {embed ? (
+        {/* Players are top-aligned and sized by their own aspect ratio, so
+            they only need the top inset. `content` instead STRETCHES: the
+            same 8dvh is mirrored onto the bottom and the row switches to
+            items-stretch, which hands the child an exact height (100 - 16dvh)
+            to fill rather than a ceiling to overflow. */}
+        <div
+          className={`h-[100dvh] flex justify-center pt-[8dvh] ${
+            content ? "items-stretch pb-[8dvh]" : "items-start"
+          }`}
+        >
+        {content ? (
+          // min-h-0 undoes the flex item's `min-height: auto`, which would
+          // otherwise let a tall child (the map's intrinsic 16/9 box) push
+          // this past the height it was just given — the exact overflow the
+          // stretch is here to prevent.
+          <div className="w-[90vw] min-h-0">{content}</div>
+        ) : embed ? (
           <iframe
             src={embed}
             title={rendered.title ?? "Video player"}

@@ -1,10 +1,11 @@
+import { lazy, Suspense } from "react";
 import NavBar from "../sections/NavBar.jsx";
 import MastheadImage from "../design-system/components/MastheadImage";
 import CTABanner from "../sections/CTABanner";
 import Footer from "../sections/Footer.jsx";
 import MediaObject from "../design-system/components/MediaObject.jsx";
 import TextReveal from "../design-system/components/TextReveal.jsx";
-import { useVideoOverlay } from "../design-system/components/VideoOverlay.jsx";
+import { useOverlay } from "../design-system/components/Overlay.jsx";
 import HeadingReveal from "../design-system/components/HeadingReveal.jsx";
 import Marquee from "../design-system/components/Marquee.jsx";
 import Picture from "../design-system/components/Picture.jsx";
@@ -17,6 +18,25 @@ import Picture from "../design-system/components/Picture.jsx";
 const ORIGIN_STORY = {
   embed: "https://player.vimeo.com/video/849298824?autoplay=1",
   title: "Our Origin Story",
+};
+
+// Same lazy import main.jsx gives the /about/retail-map route, so the two
+// share one chunk: mapbox-gl and the geocoder (the heaviest dependencies in
+// the app) stay out of the About bundle and only download when the overlay is
+// actually opened. The element is built once at module scope — `lazy` defers
+// the import until React renders it, which is the open, not this line.
+const RetailMap = lazy(() => import("./RetailMap.jsx"));
+
+// `content` instead of `src`/`embed`: the overlay renders this node as-is.
+// className="" drops RetailMap's page gutter — the overlay panel supplies its
+// own width.
+const RETAIL_MAP = {
+  title: "Retail locations map",
+  content: (
+    <Suspense fallback={<div className="aspect-video w-full" aria-busy="true" />}>
+      <RetailMap className="" />
+    </Suspense>
+  ),
 };
 
 const people = [
@@ -241,7 +261,7 @@ const CLIENT_ROWS = Array.from(
 );
 
 export default function About() {
-  const { openVideo } = useVideoOverlay();
+  const { openOverlay } = useOverlay();
   return (
     <main
       itemScope
@@ -271,7 +291,7 @@ export default function About() {
         text="Toyota. Best Buy Health. Smart & Final. One in four McDonald's in the country. Zoom in on the map. We're probably in your neighborhood."
         imgSrc="/images/about-map.jpg"
         imgAlt="Map of Los Angeles County showing the locations of Toyota dealership, McDonald's restaurant, Best Buy and Smart & Final locations."
-        to="/about/retail-map"
+        onClick={() => openOverlay(RETAIL_MAP)}
       />
       <section id="people" className="pt-3000 px-8 flex flex-col gap-1000">
         <HeadingReveal
@@ -325,7 +345,7 @@ export default function About() {
         text="It started as a print shop in Glendale. Nobody planned the rest of it."
         imgSrc="/images/about-history.jpg"
         imgAlt="Photo of Henry Mayers and the four partners who took over in 1958."
-        onClick={() => openVideo(ORIGIN_STORY)}
+        onClick={() => openOverlay(ORIGIN_STORY)}
         opensVideo
       />
       <section id="clients" className="pt-3000 px-8 flex flex-col gap-0">

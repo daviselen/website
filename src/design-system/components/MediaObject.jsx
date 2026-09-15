@@ -55,10 +55,10 @@ const titleSizes = {
 // alongside to/href, since a link can also want a side effect.
 //
 // Note that being interactive says nothing about WHAT the click does — both
-// /about media objects pass an onClick, but one opens a video and the other
-// routes to the retail map. That's why the play badge is gated on the
-// explicit `opensVideo` prop rather than on interactivity: the callback is an
-// opaque closure and the component cannot introspect it.
+// /about media objects pass an onClick, but one opens a video in the overlay
+// and the other opens the retail map in it. That's why the play badge is
+// gated on the explicit `opensVideo` prop rather than on interactivity: the
+// callback is an opaque closure and the component cannot introspect it.
 function resolveRoot({ to, href, onClick }) {
   if (to) return { Root: Link, rootProps: { to, onClick } };
   if (href) return { Root: "a", rootProps: { href, onClick } };

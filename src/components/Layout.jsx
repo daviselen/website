@@ -7,7 +7,7 @@ import {
   useSmoothScroll,
   ScrollTrigger,
 } from "../design-system/animation.js";
-import { VideoOverlayProvider } from "../design-system/components/VideoOverlay.jsx";
+import { OverlayProvider } from "../design-system/components/Overlay.jsx";
 import NavBarAlt from "../sections/NavBarAlt";
 import Footer from "../sections/Footer";
 
@@ -186,7 +186,7 @@ export default function PageTransition({ overlayColor = "#000" }) {
 
   return (
     <div className="relative min-h-screen">
-      <VideoOverlayProvider>
+      <OverlayProvider>
         <div className="font-narrow font-light text-neutral-0">
           <NavBarAlt logoOnly={bareChrome} />
         </div>
@@ -202,7 +202,7 @@ export default function PageTransition({ overlayColor = "#000" }) {
             </div>
           </div>
         </div>
-      </VideoOverlayProvider>
+      </OverlayProvider>
 
       {/* Hardware-accelerated persistent black curtain */}
       <div
