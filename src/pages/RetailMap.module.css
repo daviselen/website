@@ -9,10 +9,7 @@
   aspect-ratio: 16/9;
 }
 .map {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 100%;
+  @apply absolute inset-0 w-full rounded-l-md;
   
   /* Fixes Safari/WebKit clipping bugs */
   transform: translateZ(0);
@@ -24,21 +21,15 @@
   filter: invert(0.9);
 }
 .zoom {
-  width: 100%;
-  display: flex;
+  @apply flex w-full justify-center;
   gap: 0.833333vw;
-  justify-content: center;
 }
 .zoom button {
-  appearance: none;
-  border: 1px solid currentColor;
+  @apply appearance-none text-neutral-0 font-display rounded-md uppercase border border-neutral-0;
   background-color: rgba(0, 0, 0, 0.5);
-	color: white;
 	font-family: "Knockout-31", "Knockout 31 Junior Middleweight", Arial, sans-serif;
   font-size: 0.6875em;
 	padding: 0.5em 1em;
-	border-radius: 8px;
-	text-transform: uppercase;
 }
 .zoom button:hover {
   cursor: pointer;
@@ -54,14 +45,7 @@
   align-items: center;
 }
 .menu {
-  cursor: pointer;
-  display: flex;
-	gap: 2.5em;
-  justify-content: center;
-  align-items: center; 
-	background: #1c1c1c;
-	padding: 20px;
-	z-index: 1;
+  @apply flex gap-[2.5em] justify-center lg:flex-col lg:items-stretch lg:gap-200 bg-surface-alt p-200 cursor-pointer z-10;
 }
 .menu-item {
   padding-top: 1em;
@@ -89,6 +73,7 @@
   height: 14px;
 }
 .toggle-label .locations {
+  @apply text-neutral-0;
   margin-top: 4px;
   font-size: 10px;
   text-transform: uppercase;
@@ -191,11 +176,6 @@
 	.zoom {
 	  position: absolute;
 	  bottom: 5vh;
-	}
-	.menu {
-	  flex-direction: column;
-	  align-items: start;
-	  gap: 1em;
 	}
 }
 @media screen and (min-width: 1024px) {
