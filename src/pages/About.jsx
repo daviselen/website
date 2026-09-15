@@ -341,7 +341,7 @@ export default function About() {
         imageSide="left"
         title={ORIGIN_STORY.title}
         titleSize="large"
-        subhead="Runtime 44:32"
+        subhead="Runtime 15:50"
         text="It started as a print shop in Glendale. Nobody planned the rest of it."
         imgSrc="/images/about-history.jpg"
         imgAlt="Photo of Henry Mayers and the four partners who took over in 1958."
