@@ -170,15 +170,15 @@ export default function Careers() {
           />
           <div>
             <TextReveal
-              className="text-display-stat mb-300 pr-600"
+              className="text-pre-title mb-300 pr-600"
               text="Work matters. So does the rest of your life. We put real money behind that:"
             />
             {/* <ListMaskReveal
               items={benefits}
               barColor="#ff3366"
-              className="text-display-stat list-[square] pl-200"
+              className="text-pre-title list-[square] pl-200"
             /> */}
-            <ul className="text-display-stat list-[square] list-outside pl-600">
+            <ul className="text-pre-title list-[square] list-outside pl-600">
               <li className="mb-300">Comprehensive health plan</li>
               <li className="mb-300">401(k) retirement plan</li>
               <li className="mb-300">Generous paid vacation and sick days</li>
@@ -199,11 +199,11 @@ export default function Careers() {
               className="font-display text-display-h3 uppercase leading-none"
             />
             <TextReveal
-              className="text-display-stat pr-600"
+              className="text-pre-title pr-600"
               text="Never work under someone who isn't better than you. That's the standard we hire against, and it's why the room is worth showing up to. Davis Elen's work and culture thrive on diversity and we're proud to be an equal opportunity employer."
             />
             <TextReveal
-              className="text-display-stat pr-600"
+              className="text-pre-title pr-600"
               text="All individuals seeking employment at Davis Elen are considered without regard to race, color, religion, national origin, age, sex, marital status, ancestry, physical or mental disability, veteran status, gender identity, sexual orientation, or any other legally protected characteristic."
             />
           </div>
