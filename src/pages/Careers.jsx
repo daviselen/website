@@ -101,7 +101,7 @@ export default function Careers() {
                 <span className="text-small uppercase text-neutral-400">
                   Position
                 </span>
-                <span className="font-narrow uppercase text-display-stat">
+                <span className="font-narrow uppercase text-pre-title">
                   Art Director
                 </span>
               </div>
@@ -109,7 +109,7 @@ export default function Careers() {
                 <span className="text-small uppercase text-neutral-400">
                   Group
                 </span>
-                <span className="shrink-0 font-narrow text-display-stat uppercase">
+                <span className="shrink-0 font-narrow text-pre-title uppercase">
                   <span className="inline-block">Creative</span>
                 </span>
               </div>
