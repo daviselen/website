@@ -4,7 +4,7 @@
 // cheap, whereas unpicking a bespoke design is not. It is also why this
 // section is absent from tests/visual/design-diff.spec.js — there is nothing
 // to diff against.
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import HeadingReveal from "../design-system/components/HeadingReveal.jsx";
 import snapshot from "../data/job-openings.json";
 import { applyUrl, jobListUrl } from "../data/adp.js";
@@ -100,6 +100,32 @@ export default function JobOpenings() {
     return () => controller.abort();
   }, []);
 
+  const locationRefs = useRef([]);
+
+  useEffect(() => {
+    if (!locationRefs.current.length) return;
+
+    // 1. Reset widths to 'auto' so we can measure their natural content size
+    locationRefs.current.forEach((el) => {
+      if (el) el.style.width = 'auto';
+    });
+
+    // 2. Find the maximum width among all location spans
+    let maxWidth = 0;
+    locationRefs.current.forEach((el) => {
+      if (el) {
+        maxWidth = Math.max(maxWidth, el.getBoundingClientRect().width);
+      }
+    });
+
+    // 3. Apply that maximum width to every location span
+    locationRefs.current.forEach((el) => {
+      if (el) {
+        el.style.width = `${maxWidth}px`;
+      }
+    });
+  }, [openings]);
+
   // No useStaggerReveal here, unlike the other sections. A scroll-triggered
   // stagger binds to the elements present when it initialises, and this list
   // can change identity after mount when the runtime fetch resolves — exactly
@@ -121,7 +147,7 @@ export default function JobOpenings() {
         <p className="font-narrow text-2xl">{EMPTY_COPY}</p>
       ) : (
         <ul className="flex flex-col">
-          {openings.map((opening) => (
+          {openings.map((opening, index) => (
             <li
               key={opening.id}
               className="border-t-2 border-neutral-0 last:border-b-2"
@@ -140,7 +166,7 @@ export default function JobOpenings() {
                 href={applyUrl(opening.externalJobId)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex flex-col gap-100 pt-600 pb-800 hover:text-primary-300 transition-colors md:flex-row md:items-baseline md:justify-between md:gap-400"
+                className="grid grid-cols-[1fr_auto] md:grid-cols-[1fr_auto_auto] items-baseline pt-600 pb-800 hover:text-primary-300 transition-colors gap-y-400"
               >
                 <div className="flex flex-col gap-200 px-600">
                   <span className="text-small uppercase text-neutral-400">
@@ -154,11 +180,15 @@ export default function JobOpenings() {
                     opening has `requisitionLocations: []`. */}
                 {opening.locations.length > 0 && (
                   <div className="flex flex-col gap-200 px-600">
-                    <span className="text-small uppercase text-right text-neutral-400">
-                      Location
+                    <span className="text-small uppercase text-neutral-400">
+                      {opening.locations.length === 1 ? "Location" : "Locations"}
                     </span>
-                    <span className="shrink-0 font-narrow text-pre-title uppercase text-right">
-                      {opening.locations.join(", + ")}
+                    <span
+                      ref={(el) => (locationRefs.current[index] = el)}
+                      className="shrink-0 font-narrow text-pre-title uppercase"
+                    >
+                      {opening.locations[0]}
+                      {opening.locations.length > 1 && `, + ${opening.locations.length - 1}`}
                     </span>
                   </div>
                 )}
