@@ -45,7 +45,7 @@ const VIEWPORT_INSET = 100;
 // Default: fire as soon as the heading's top edge clears the inset fold. Right
 // for the body-copy-sized headings, which are short enough that "top enters"
 // and "all of it is visible" are nearly the same scroll position.
-const START_ON_ENTER = `center center+=${VIEWPORT_INSET}`;
+const START_ON_ENTER = `top bottom-=${VIEWPORT_INSET}`;
 
 // Opt-in (`fullyInView`): wait for the heading's BOTTOM edge to clear the fold,
 // i.e. the whole block is on screen before the first line unmasks. Display type
