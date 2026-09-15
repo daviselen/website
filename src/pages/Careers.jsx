@@ -46,7 +46,7 @@ export default function Careers() {
       <JobOpenings />
       <section
         id="always_looking"
-        className="flex flex-col gap-1000 px-8 mt-3000"
+        className="flex flex-col gap-600 px-8 mt-3000"
       >
         <HeadingReveal
           as="h3"
@@ -160,7 +160,7 @@ export default function Careers() {
       </section>
       <section
         id="culture"
-        className="flex flex-row gap-1000 px-8 mt-3000"
+        className="flex flex-row gap-600 px-8 mt-3000"
       >
         <div className="flex flex-col gap-600 basis-[50%]">
           <HeadingReveal
