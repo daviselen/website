@@ -100,7 +100,13 @@
 .mcd .toggle-label .locations {
   margin-top: 5.5px;
 }
-#toy-svg {
+/* Per-item overrides key off the toggle's own class (`.toy`, set from
+   `t.id` on the menu-item wrapper), matching the `.mcd` rules above. These
+   were `#toy-svg` / `#toyota-locations` ID selectors, which silently did
+   nothing: CSS Modules hashes id selectors just like classes, so the rule
+   compiled to `#_toy-svg_5frjv_1` while the JSX emitted the raw, unhashed
+   `id="toy-svg"`. Nothing ever matched. */
+.toy .toggle-label .company {
   width: 85px;
   height: auto;
 }
@@ -141,7 +147,7 @@
   height: 9px;
   margin-left: 3px;
 }
-#toyota-locations {
+.toy .toggle-label .locations {
   width: auto;
   height: 8.5px;
   margin-left: 3px;

@@ -55,7 +55,7 @@ const LAYERS = [
 
 // Header toggles, in display order. `layer` maps each checkbox to its layer.
 const TOGGLES = [
-  { id: "toy", layer: "toyota-icon-layer", label: "toyota-label.svg", labelAlt: "Toyota", labelId: "toy-svg", number: "Toyota-Number.svg", numberAlt: "76 locations", numberId: "toyota-locations", active: true },
+  { id: "toy", layer: "toyota-icon-layer", label: "toyota-label.svg", labelAlt: "Toyota", number: "Toyota-Number.svg", numberAlt: "76 locations", active: true },
   { id: "mcd", layer: "mcd-icon-layer", label: "mcdonalds-label.svg", labelAlt: "McDonald’s", number: "McD-Number.svg", numberAlt: "2,654 locations", active: true },
   { id: "bb", layer: "bb-icon-layer", label: "best-buy-label.svg", labelAlt: "BestBuy", number: "BestBuy-Number.svg", numberAlt: "1,056 locations", active: true },
   { id: "sf", layer: "sf-icon-layer", label: "smart-and-final-label.svg", labelAlt: "Smart & Final", number: "SF-Number.svg", numberAlt: "254 locations", active: true },
@@ -253,8 +253,8 @@ export default function RetailMap() {
                 }}
                 label={
                   <div className={`${styles['toggle-label']}`}>
-                    <img className={styles.company} id={t.labelId} src={ASSETS + t.label} alt={t.labelAlt} />
-                    <span className={`${styles.locations} ${styles[t.numberId]}`} id={t.numberId}>{t.numberAlt}</span>
+                    <img className={styles.company} src={ASSETS + t.label} alt={t.labelAlt} />
+                    <span className={styles.locations}>{t.numberAlt}</span>
                   </div>
                 }
               />
