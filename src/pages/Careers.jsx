@@ -117,7 +117,7 @@ export default function Careers() {
                 <span className="text-small uppercase text-neutral-400">
                   Location
                 </span>
-                <span className="shrink-0 font-narrow text-display-stat uppercase">
+                <span className="shrink-0 font-narrow text-pre-title uppercase">
                     <span className="inline-block">Los Angeles, <abbr title="California">CA</abbr></span>
                 </span>
               </div>
