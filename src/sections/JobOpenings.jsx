@@ -124,7 +124,7 @@ export default function JobOpenings() {
           {openings.map((opening) => (
             <li
               key={opening.id}
-              className="border-t-2 border-neutral-0 border-x-2 last:border-b-2"
+              className="border-t-2 border-neutral-0 last:border-b-2"
             >
               {/* A real anchor rather than a div with onClick, for the same
                   reason documented in MediaObject.jsx: the whole row is one
@@ -146,7 +146,7 @@ export default function JobOpenings() {
                   <span className="text-small uppercase text-neutral-400">
                     Position
                   </span>
-                  <span className="font-narrow uppercase text-display-stat">
+                  <span className="font-narrow uppercase text-pre-title">
                     {opening.title}
                   </span>
                 </div>
@@ -157,7 +157,7 @@ export default function JobOpenings() {
                     <span className="text-small uppercase text-neutral-400">
                       Location
                     </span>
-                    <span className="shrink-0 font-narrow text-display-stat uppercase">
+                    <span className="shrink-0 font-narrow text-pre-title uppercase">
                       {opening.locations.map((location, index) => (
                         <span key={index} className="inline-block">{location}</span>
                       ))}

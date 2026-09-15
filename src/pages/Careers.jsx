@@ -57,7 +57,7 @@ export default function Careers() {
           text="These aren't posted because they're open. They're posted because we'll always make time for someone good."
         />
         <ul className="flex flex-col">
-          <li className="border-t-2 border-neutral-0 border-x-2 last:border-b-2">
+          <li className="border-t-2 border-neutral-0 last:border-b-2">
             <a
               href="#"
               target="_blank"
@@ -68,7 +68,7 @@ export default function Careers() {
                 <span className="text-small uppercase text-neutral-400">
                   Position
                 </span>
-                <span className="font-narrow uppercase text-display-stat">
+                <span className="font-narrow uppercase text-pre-title">
                   Copywriter
                 </span>
               </div>
@@ -76,7 +76,7 @@ export default function Careers() {
                 <span className="text-small uppercase text-neutral-400">
                   Group
                 </span>
-                <span className="shrink-0 font-narrow text-display-stat uppercase">
+                <span className="shrink-0 font-narrow text-pre-title uppercase">
                   <span className="inline-block">Creative</span>
                 </span>
               </div>
@@ -84,13 +84,13 @@ export default function Careers() {
                 <span className="text-small uppercase text-neutral-400">
                   Location
                 </span>
-                <span className="shrink-0 font-narrow text-display-stat uppercase">
+                <span className="shrink-0 font-narrow text-pre-title uppercase">
                     <span className="inline-block">Los Angeles, <abbr title="California">CA</abbr></span>
                 </span>
               </div>
             </a>
           </li>
-          <li className="border-t-2 border-neutral-0 border-x-2 last:border-b-2">
+          <li className="border-t-2 border-neutral-0 last:border-b-2">
             <a
               href="#"
               target="_blank"
@@ -123,7 +123,7 @@ export default function Careers() {
               </div>
             </a>
           </li>
-          <li className="border-t-2 border-neutral-0 border-x-2 last:border-b-2">
+          <li className="border-t-2 border-neutral-0 last:border-b-2">
             <a
               href="#"
               target="_blank"
