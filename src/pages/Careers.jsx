@@ -59,9 +59,7 @@ export default function Careers() {
         <ul className="flex flex-col">
           <li className="border-t-2 border-neutral-0 last:border-b-2">
             <a
-              href="#"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/contact?position=copywriter"
               className="flex flex-col gap-100 pt-600 pb-800 hover:text-primary-300 transition-colors md:flex-row md:items-baseline md:justify-between md:gap-400"
             >
               <div className="flex flex-col gap-200 basis-[calc(100%-46rem)] px-600">
@@ -92,9 +90,7 @@ export default function Careers() {
           </li>
           <li className="border-t-2 border-neutral-0 last:border-b-2">
             <a
-              href="#"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/contact?position=art_director"
               className="flex flex-col gap-100 pt-600 pb-800 hover:text-primary-300 transition-colors md:flex-row md:items-baseline md:justify-between md:gap-400"
             >
               <div className="flex flex-col gap-200 basis-[calc(100%-46rem)] px-600">
@@ -125,9 +121,7 @@ export default function Careers() {
           </li>
           <li className="border-t-2 border-neutral-0 last:border-b-2">
             <a
-              href="#"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/contact?position=production_designer"
               className="flex flex-col gap-100 pt-600 pb-800 hover:text-primary-300 transition-colors md:flex-row md:items-baseline md:justify-between md:gap-400"
             >
               <div className="flex flex-col gap-200 basis-[calc(100%-46rem)] px-600">
