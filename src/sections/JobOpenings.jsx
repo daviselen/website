@@ -158,7 +158,7 @@ export default function JobOpenings() {
                       Location
                     </span>
                     <span className="shrink-0 font-narrow text-pre-title uppercase text-right">
-                      {opening.locations.join(" + ")}
+                      {opening.locations.join(", + ")}
                     </span>
                   </div>
                 )}
