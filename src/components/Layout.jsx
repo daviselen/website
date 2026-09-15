@@ -11,7 +11,7 @@ import { OverlayProvider } from "../design-system/components/Overlay.jsx";
 import NavBarAlt from "../sections/NavBarAlt";
 import Footer from "../sections/Footer";
 
-const FADE_DURATION = 0.3;
+const FADE_DURATION = 0.5;
 
 // Routes that render their own full-bleed UI: no footer, and the nav bar
 // collapses to just the logo. Matched against the *displayed* pathname
