@@ -176,7 +176,8 @@ function VideoOverlay({ video, onClose }) {
           onClick={onClose}
           className="absolute right-10 top-10 p-200 font-narrow text-base uppercase text-neutral-0 hover:text-primary-300"
         >
-          Close
+          <span className="sr-only">Close</span>
+          <img src="/icons/close.svg" width={24} height={24} />
         </button>
 
         <div className="h-[100dvh] flex items-start justify-center pt-[8dvh]">
