@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="a" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 17">
+  <path d="M1.4,0l8.5,8.5-1.4,1.4L0,1.4,1.4,0Z" fill="#fff"/>
+  <path d="M0,15.6L8.5,7.1l1.4,1.4L1.4,17l-1.4-1.4Z" fill="#fff"/>
+  <path d="M15.6,17L7.1,8.5l1.4-1.4,8.5,8.5-1.4,1.4Z" fill="#fff"/>
+  <path d="M17,1.4l-8.5,8.5-1.4-1.4L15.6,0l1.4,1.4Z" fill="#fff"/>
+</svg>
