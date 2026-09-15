@@ -53,6 +53,12 @@ const titleSizes = {
 //   none    -> <div>, unchanged non-interactive default
 // Precedence is to > href > onClick; onClick still fires when passed
 // alongside to/href, since a link can also want a side effect.
+//
+// Note that being interactive says nothing about WHAT the click does — both
+// /about media objects pass an onClick, but one opens a video and the other
+// routes to the retail map. That's why the play badge is gated on the
+// explicit `opensVideo` prop rather than on interactivity: the callback is an
+// opaque closure and the component cannot introspect it.
 function resolveRoot({ to, href, onClick }) {
   if (to) return { Root: Link, rootProps: { to, onClick } };
   if (href) return { Root: "a", rootProps: { href, onClick } };
@@ -71,6 +77,7 @@ export default function MediaObject({
   to,
   href,
   onClick,
+  opensVideo = false,
   ...rest
 }) {
   const side = sideConfig[imageSide] ?? sideConfig.right;
@@ -172,8 +179,16 @@ export default function MediaObject({
             isInteractive ? "hover:ring-2 hover:ring-inset hover:ring-neutral-800" : ""
           }`}
         />
-        {isInteractive && (
-          <img src="/icons/play.svg" className="absolute top-400 left-400" />
+        {/* Decorative: alt="" keeps it out of the accessibility tree because
+            the badge duplicates what the copy already says (the origin-story
+            object carries a "Runtime 44:32" subhead), and the root is already
+            announced as a button. */}
+        {opensVideo && (
+          <img
+            src="/icons/play.svg"
+            alt=""
+            className="absolute left-400 top-400"
+          />
         )}
       </div>
     </Root>

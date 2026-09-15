@@ -271,6 +271,7 @@ export default function About() {
         text="Toyota. Best Buy Health. Smart & Final. One in four McDonald's in the country. Zoom in on the map. We're probably in your neighborhood."
         imgSrc="/images/about-map.jpg"
         imgAlt="Map of Los Angeles County showing the locations of Toyota dealership, McDonald's restaurant, Best Buy and Smart & Final locations."
+        to="/about/retail-map"
       />
       <section id="people" className="pt-3000 px-8 flex flex-col gap-1000">
         <HeadingReveal
@@ -325,6 +326,7 @@ export default function About() {
         imgSrc="/images/about-history.jpg"
         imgAlt="Photo of Henry Mayers and the four partners who took over in 1958."
         onClick={() => openVideo(ORIGIN_STORY)}
+        opensVideo
       />
       <section id="clients" className="pt-3000 px-8 flex flex-col gap-0">
         <HeadingReveal
