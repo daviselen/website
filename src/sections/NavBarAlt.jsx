@@ -46,7 +46,12 @@ const HIDE_THRESHOLD = 150 // px scrolled before hiding is allowed
 // global motion tokens; only the distance is local.
 const DROP_OFFSET = -HEADER_HEIGHT
 
-export default function NavBar() {
+// `logoOnly` renders the bare variant used by full-bleed pages (e.g. the
+// retail map), which own the whole viewport and get no footer either: the
+// links and the "Let's Chat" button are dropped, leaving just the logo. The
+// intro/hide animations are untouched — they select `[data-nav-item]`, so
+// they simply have fewer items to stagger.
+export default function NavBar({ logoOnly = false }) {
   const [index, setIndex] = useState(0)
   const [visible, setVisible] = useState(true)
 
@@ -134,6 +139,7 @@ export default function NavBar() {
           <DeLogoMorph className="size-16" />
         </Link>
       </div>
+      {!logoOnly && (
       <nav className="flex items-center justify-center gap-6">
         <Link to="/about" data-nav-item="" className="inline-flex items-center justify-center relative cursor-pointer h-600 m-0 px-6 py-2 font-narrow font-light text-base leading-8 text-neutral-0 rounded-full overflow-hidden before:absolute before:-inset-1 before:block before:bg-surface-primary-default before:transition-all before:duration-500 before:ease-in-out before:translate-y-full hover:before:translate-y-0 will-change-transform">
           <span className="relative">About</span>
@@ -145,11 +151,14 @@ export default function NavBar() {
           <span className="relative">Contact</span>
         </a>
       </nav>
+      )}
+      {!logoOnly && (
       <div className="flex flex-1 items-center justify-end py-4">
         <button data-nav-item="" className="px-6 py-2 font-narrow font-light text-base leading-8 uppercase text-neutral-0 border-[1.5px] border-neutral-0 rounded-full hover:border-surface-primary-default transition-colors duration-500 overflow-hidden before:absolute before:-inset-1 before:block before:bg-surface-primary-default before:transition-all before:duration-300 before:ease-in-out before:translate-y-full hover:before:translate-y-0 will-change-transform">
           <span className="relative">Let's Chat</span>
         </button>
       </div>
+      )}
     </header>
   );
 }

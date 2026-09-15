@@ -13,6 +13,16 @@ import Footer from "../sections/Footer";
 
 const FADE_DURATION = 0.3;
 
+// Routes that render their own full-bleed UI: no footer, and the nav bar
+// collapses to just the logo. Matched against the *displayed* pathname
+// (see below), never `location.pathname`.
+const BARE_CHROME_ROUTES = ["/about/retail-map"];
+
+const isBareChrome = (pathname) =>
+  BARE_CHROME_ROUTES.some(
+    (route) => pathname === route || pathname.startsWith(`${route}/`)
+  );
+
 export default function PageTransition({ overlayColor = "#000" }) {
   const location = useLocation();
   const navigationType = useNavigationType();
@@ -27,12 +37,23 @@ export default function PageTransition({ overlayColor = "#000" }) {
   const activeOutletRef = useRef(outlet);
   const pendingOutletRef = useRef(outlet);
   const navigationTypeRef = useRef(navigationType);
+  const pendingPathnameRef = useRef(location.pathname);
   // Tracks the pending double-rAF used to defer the route swap below; kept
   // in a ref so it can be cancelled if the component unmounts mid-transition.
   const swapRafRef = useRef(null);
 
   // Maintain displayed content in state
   const [displayedOutlet, setDisplayedOutlet] = useState(outlet);
+  // The pathname of whatever `displayedOutlet` currently is. The persistent
+  // chrome (nav bar, footer) is driven off this rather than off
+  // `location.pathname`, which flips the instant navigation starts — that
+  // would pop the footer out and collapse the nav while the outgoing page is
+  // still visible behind a half-faded curtain. Updating it in the same swap
+  // as the outlet keeps the chrome change hidden behind the opaque overlay.
+  const [displayedPathname, setDisplayedPathname] = useState(
+    location.pathname
+  );
+  const bareChrome = isBareChrome(displayedPathname);
 
   // Initialize smooth scroll wrapper ONCE
   useSmoothScroll();
@@ -50,6 +71,7 @@ export default function PageTransition({ overlayColor = "#000" }) {
     previousPathname.current = location.pathname;
     navigationTypeRef.current = navigationType;
     pendingOutletRef.current = outlet;
+    pendingPathnameRef.current = location.pathname;
 
     // Immediately kick off the transition phase
     setPhase("cover");
@@ -100,6 +122,7 @@ export default function PageTransition({ overlayColor = "#000" }) {
                   // Swap out the frozen route element for the new route
                   activeOutletRef.current = pendingOutletRef.current;
                   setDisplayedOutlet(pendingOutletRef.current);
+                  setDisplayedPathname(pendingPathnameRef.current);
 
                   // Perform scroll-to-top safely behind the black curtain
                   if (navigationTypeRef.current === "PUSH") {
@@ -165,13 +188,17 @@ export default function PageTransition({ overlayColor = "#000" }) {
     <div className="relative min-h-screen">
       <VideoOverlayProvider>
         <div className="font-narrow font-light text-neutral-0">
-          <NavBarAlt />
+          <NavBarAlt logoOnly={bareChrome} />
         </div>
         <div id="smooth-wrapper">
           <div id="smooth-content">
-            <div className="min-h-screen bg-surface-default pt-1600 pb-1800 font-narrow font-light text-neutral-0">
+            <div
+              className={`min-h-screen bg-surface-default pt-1600 font-narrow font-light text-neutral-0 ${
+                bareChrome ? "" : "pb-1800"
+              }`}
+            >
               {displayedOutlet}
-              <Footer />
+              {!bareChrome && <Footer />}
             </div>
           </div>
         </div>
