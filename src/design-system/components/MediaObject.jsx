@@ -157,7 +157,7 @@ export default function MediaObject({
           hidden state is right on first paint, before GSAP runs. */}
       <div
         ref={maskRef}
-        className={`${side.image} row-start-1`}
+        className={`${side.image} row-start-1 relative`}
         style={{ clipPath: IMAGE_HIDDEN }}
       >
         <Picture
@@ -172,6 +172,9 @@ export default function MediaObject({
             isInteractive ? "hover:ring-2 hover:ring-inset hover:ring-neutral-800" : ""
           }`}
         />
+        {isInteractive && (
+          <img src="/icons/play.svg" className="absolute top-400 left-400" />
+        )}
       </div>
     </Root>
   );
