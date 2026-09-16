@@ -106,8 +106,8 @@ const EXTRA_HEIGHT = MOVEMENT_FACTOR * 100; // 80% height buffer for parallax mo
 const concepts = [
   {
     title: "What's Possible",
-    color: "text-red",
-    dot: "border-red",
+    color: "text-[#d71602]",
+    dot: "border-[#d71602]",
     copy: "Somebody human has an idea worth chasing. That part hasn't been automated.",
   },
   {
@@ -180,7 +180,7 @@ export default function HumanAI() {
     <section
       id="human-ai"
       ref={containerRef}
-      className="relative mx-8 rounded-md bg-surface-alt px-600 sm:px-800 md:px-1000 xl:px-1200 2xl:px-1000 2xl:py-600 text-neutral-0 mt-3000 overflow-hidden"
+      className="relative mx-8 rounded-md bg-surface-alt px-600 sm:px-800 md:px-1000 xl:px-1200 2xl:px-1000 2xl:py-400 text-neutral-0 mt-3000 overflow-hidden"
     >
       {/* Parallax CSS Grid Layer */}
       <div
@@ -195,7 +195,7 @@ export default function HumanAI() {
       <div className=" relative z-10 lg:flex lg:items-center lg:justify-between lg:gap-16">
         <div className="lg:max-w-2xl lg:shrink-0">
           <div className="mb-800 flex items-center gap-6">
-            <img src="/icons/hi-mark.svg" alt="" className="w-[432px]" />
+            <img src="/icons/hi-mark.svg" alt="" className="w-[352px]" />
           </div>
 
           {/* Kept on one line, deliberately: JSX collapses a line break
@@ -203,11 +203,11 @@ export default function HumanAI() {
               nothing, not a single space. Split across lines (as this was
               before), "I" and "×" and "AI" all end up jammed together with
               no space at all — not just "less space than expected." */}
-          <h2 className="font-display text-4xl uppercase leading-none md:text-6xl lg:text-display-card">
+          <h2 className="font-display text-4xl uppercase leading-none md:text-6xl lg:text-display-hiai">
             THE <abbr title="Human Imagination">H<span className="tracking-[0.08em]">I</span></abbr><span className="tracking-[0.1em] lowercase">x</span><abbr title="Artificial Intelligence">AI</abbr> Loop
           </h2>
 
-          <ul className="mt-600 flex flex-col gap-700">
+          <ul className="mt-600 flex flex-col gap-600">
             {concepts.map((c) => (
               <li key={c.title} className="flex flex-col gap-300">
                 <div className="flex w-full items-center gap-100">
