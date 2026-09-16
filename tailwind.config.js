@@ -135,6 +135,7 @@ export default {
         "display-h6": ["56px", { lineHeight: "40px" }],
         "display-stat": ["40px", { lineHeight: "48px" }], // card/heading, det/heading — Proof/News stat headline
         "pre-title": ["32px", { lineHeight: "40px" }],
+        "body-hiai": ["24px", { lineHeight: "32px" }],
         "link-social": ["18px", { lineHeight: "18px" }], // links/social — Footer social links
         "small": ["16px", { lineHeight: "24px" }], // Careers eyebrows
       },

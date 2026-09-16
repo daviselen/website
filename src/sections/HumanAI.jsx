@@ -180,7 +180,7 @@ export default function HumanAI() {
     <section
       id="human-ai"
       ref={containerRef}
-      className="relative mx-8 rounded-md bg-surface-alt px-600 sm:px-800 md:px-1000 xl:px-1200 2xl:px-1400 2xl:py-1800 text-neutral-0 mt-3000 overflow-hidden"
+      className="relative mx-8 rounded-md bg-surface-alt px-600 sm:px-800 md:px-1000 xl:px-1200 2xl:px-1000 2xl:py-600 text-neutral-0 mt-3000 overflow-hidden"
     >
       {/* Parallax CSS Grid Layer */}
       <div
@@ -194,15 +194,8 @@ export default function HumanAI() {
 
       <div className=" relative z-10 lg:flex lg:items-center lg:justify-between lg:gap-16">
         <div className="lg:max-w-2xl lg:shrink-0">
-          <div className="mb-1000 flex items-center gap-6">
-            <img src="/icons/hi-mark.svg" alt="" className="size-[104px]" />
-            <div className="font-narrow font-light leading-tight mt-[13px]">
-              <div>
-                <span className="text-2xl md:text-4xl lg:text-[48px] tracking-[0.6667px]">Human Imagination</span>
-                <span className="align-super text-xs md:text-base lg:text-[24px]">®</span>
-              </div>
-              <span className="text-base md:text-lg lg:text-[24px] leading-[40px]">x Artificial Intelligence</span>
-            </div>
+          <div className="mb-800 flex items-center gap-6">
+            <img src="/icons/hi-mark.svg" alt="" className="w-[432px]" />
           </div>
 
           {/* Kept on one line, deliberately: JSX collapses a line break
@@ -210,22 +203,22 @@ export default function HumanAI() {
               nothing, not a single space. Split across lines (as this was
               before), "I" and "×" and "AI" all end up jammed together with
               no space at all — not just "less space than expected." */}
-          <h2 className="font-display text-6xl uppercase leading-none md:text-8xl lg:text-display-hiai">
+          <h2 className="font-display text-4xl uppercase leading-none md:text-6xl lg:text-display-card">
             THE <abbr title="Human Imagination">H<span className="tracking-[0.08em]">I</span></abbr><span className="tracking-[0.1em] lowercase">x</span><abbr title="Artificial Intelligence">AI</abbr> Loop
           </h2>
 
-          <ul className="mt-800 flex flex-col gap-700">
+          <ul className="mt-600 flex flex-col gap-700">
             {concepts.map((c) => (
               <li key={c.title} className="flex flex-col gap-300">
                 <div className="flex w-full items-center gap-100">
                   <div className={`size-[22px] shrink-0 border-4 ${c.dot}`} />
                   <h3
-                    className={`flex-1 font-narrow text-xl font-semibold uppercase md:text-2xl lg:text-[32px] lg:leading-[40px] ${c.color}`}
+                    className={`flex-1 font-narrow text-xl font-semibold uppercase md:text-2xl lg:text-body-hiai ${c.color}`}
                   >
                     {c.title}
                   </h3>
                 </div>
-                <p className="font-narrow font-light text-xl leading-tight md:text-2xl lg:text-[32px] lg:leading-[40px]">
+                <p className="font-narrow font-light text-xl leading-tight md:text-2xl lg:text-body-hiai max-w-[42ch]">
                   {c.copy}
                 </p>
               </li>
@@ -246,7 +239,7 @@ export default function HumanAI() {
         <img
           src="/images/chart.svg"
           alt="Unlock your potential. Human Imagination and Artificial Intelligence synergize to eliminate roadblocks and unlock what's possible. Let robots do the work!"
-          className="mx-auto mt-16 block w-full max-w-md lg:mx-0 lg:mt-0 lg:w-[44.8276vw] lg:max-w-none lg:shrink-0"
+          className="mx-auto mt-16 block w-full max-w-md lg:mx-0 lg:mt-0 lg:w-[38.793vw] lg:max-w-none lg:shrink-0"
         />
       </div>
     </section>
