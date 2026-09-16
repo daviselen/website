@@ -94,11 +94,13 @@
 // wasn't part of what was asked; simplified to "visible, stacked below
 // the text" until it goes side-by-side at `lg`.
 import { useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
-
-gsap.registerPlugin(ScrollTrigger);
+import {
+  gsap,
+  useGSAP,
+  REVEAL_DURATION,
+  LINE_DELAY,
+  EASE_REVEAL,
+} from "../design-system/animation.js";
 
 const MOVEMENT_FACTOR = 0.25;
 const EXTRA_HEIGHT = MOVEMENT_FACTOR * 100; // 80% height buffer for parallax movement
@@ -140,11 +142,64 @@ const gridBackground = {
   backgroundPosition: "right center",
 };
 
+// Same reveal the Footer's city list runs (see Footer.jsx): a per-item
+// opacity + short downward-drop fade rather than the site's clip-path wipe,
+// each item carrying its OWN ScrollTrigger and taking its delay from its
+// position in the queried array. Not a parent stagger — matching the
+// Footer's behaviour means matching that too, so an item that's already
+// past the trigger line doesn't wait on the ones below it.
+const REVEAL_START = "top bottom-=100";
+const REVEAL_END = "bottom top";
+
+// The drop distance, deliberately in `rem` and not the Footer's `em`. `em`
+// resolves against the animated element's OWN font-size, which is fine in
+// the Footer where every revealed item is one 64px city, but not here: the
+// items in this column range from the 144px headline down to the concept
+// list items sitting at the inherited base size, so `0.25em` had the
+// headline travelling ~36px while a concept item moved ~4px — visibly
+// different amounts for what should be one motion. `rem` is root-relative,
+// so all five items move identically no matter what size the type is. The
+// concept items are the reference for how far that should be: they sit at
+// the inherited base size, so their original 0.25em was 4px — this is
+// tuned up from there to read at the scale of the headline too.
+const REVEAL_OFFSET_Y = "-0.5rem";
+
+// The hidden start state, in the markup as well as in the tween, so an item
+// can't paint at full opacity and full position for a frame before GSAP's
+// fromTo takes over. Built from REVEAL_OFFSET_Y rather than written out
+// again: hard-coding the distance in both places means retuning the
+// constant silently leaves the markup behind, and the element then jumps
+// from the stale offset to the real one on the first frame.
+const REVEAL_START_STYLE = {
+  opacity: 0,
+  transform: `translateY(${REVEAL_OFFSET_Y})`,
+};
+
 export default function HumanAI() {
   const containerRef = useRef(null);
 
   useGSAP(
     () => {
+      gsap.utils.toArray("[data-item-reveal]").forEach((el, index) => {
+        gsap.fromTo(
+          el,
+          { opacity: 0, y: REVEAL_OFFSET_Y },
+          {
+            opacity: 1,
+            y: "0rem",
+            duration: REVEAL_DURATION,
+            delay: index * LINE_DELAY,
+            ease: EASE_REVEAL,
+            scrollTrigger: {
+              trigger: el,
+              start: REVEAL_START,
+              end: REVEAL_END,
+              toggleActions: "play reverse play reverse",
+            },
+          }
+        );
+      });
+
       const bg = containerRef.current?.querySelector(".bg");
       if (!bg) return;
 
@@ -194,7 +249,13 @@ export default function HumanAI() {
 
       <div className=" relative z-10 lg:flex lg:items-center lg:justify-between lg:gap-16">
         <div className="lg:max-w-2xl lg:shrink-0">
-          <div className="mb-300 flex items-center gap-6">
+          {/* data-item-reveal index 0 — document order supplies the delay,
+              exactly as it does for the Footer's cities. */}
+          <div
+            data-item-reveal=""
+            className="mb-300 flex items-center gap-6"
+            style={REVEAL_START_STYLE}
+          >
             <img src="/icons/hi-mark.svg" alt="" className="w-[304px]" />
           </div>
 
@@ -203,13 +264,22 @@ export default function HumanAI() {
               nothing, not a single space. Split across lines (as this was
               before), "I" and "×" and "AI" all end up jammed together with
               no space at all — not just "less space than expected." */}
-          <h2 className="font-display text-4xl uppercase leading-none md:text-6xl lg:text-display-h4">
+          <h2
+            data-item-reveal=""
+            className="font-display text-4xl uppercase leading-none md:text-6xl lg:text-display-h4"
+            style={REVEAL_START_STYLE}
+          >
             THE <abbr title="Human Imagination">H<span className="tracking-[0.08em]">I</span></abbr><span className="tracking-[0.1em] lowercase">x</span><abbr title="Artificial Intelligence">AI</abbr> Loop
           </h2>
 
           <ul className="mt-600 flex flex-col gap-400">
             {concepts.map((c) => (
-              <li key={c.title} className="flex flex-col gap-200">
+              <li
+                key={c.title}
+                data-item-reveal=""
+                className="flex flex-col gap-200"
+                style={REVEAL_START_STYLE}
+              >
                 <div className="flex w-full items-center gap-100">
                   <div className={`size-[22px] shrink-0 border-4 ${c.dot}`} />
                   <h3
