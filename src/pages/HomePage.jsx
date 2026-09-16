@@ -5,7 +5,6 @@
 // heading and drops the old "DE Tuesdays" card), so SocialPR.jsx is no
 // longer used here — kept in the repo in case a future frame needs it
 // standalone again.
-import NavBar from "../sections/NavBar.jsx";
 import Masthead from "../sections/Masthead.jsx";
 import Proof from "../sections/Proof.jsx";
 import PortfolioGrid from "../sections/PortfolioGrid.jsx";
@@ -13,7 +12,6 @@ import HumanAI from "../sections/HumanAI.jsx";
 import FromInsideOut from "../sections/FromInsideOut.jsx";
 import NewsAwards from "../sections/NewsAwards.jsx";
 import CTABanner from "../sections/CTABanner.jsx";
-import Footer from "../sections/Footer.jsx";
 
 export default function HomePage() {
   return (
