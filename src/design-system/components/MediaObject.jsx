@@ -181,7 +181,7 @@ export default function MediaObject({
         />
         {/* Decorative: alt="" keeps it out of the accessibility tree because
             the badge duplicates what the copy already says (the origin-story
-            object carries a "Runtime 44:32" subhead), and the root is already
+            object carries a "Runtime 15:50" subhead), and the root is already
             announced as a button. */}
         {opensVideo && (
           <img
