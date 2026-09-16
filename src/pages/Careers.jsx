@@ -183,12 +183,9 @@ export default function Careers() {
               className="text-pre-title list-[square] pl-200"
             /> */}
             <ul className="text-lg md:text-xl lg:text-pre-title list-[square] list-outside pl-600">
-              <li className="mb-300">Comprehensive health plan</li>
-              <li className="mb-300">401(k) retirement plan</li>
-              <li className="mb-300">Generous paid vacation and sick days</li>
-              <li className="mb-300">Hybrid remote/in-office work environment</li>
-              <li className="mb-300">Various wellness programs, including discounted gym membership</li>
-              <li className="mb-300">Selective options, including pet insurance, supplemental life insurance, and more</li>
+              {benefits.map((benefit) => (
+                <li className="mb-300">{benefit}</li>
+              ))}
             </ul>
           </div>
         </div>
