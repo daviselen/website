@@ -37,7 +37,7 @@ export default function Proof() {
   // The stagger lives in the parent now — Card no longer takes a `variants`
   // prop. Same timings as before: 0.25s between items, 0.625s each, from
   // 160px below.
-  useStaggerReveal(gridRef, { amount: 0.333 });
+  useStaggerReveal(gridRef, { amount: 0.2 });
 
   return (
     <section

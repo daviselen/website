@@ -39,19 +39,28 @@
 // template-string class name) because Tailwind's JIT scanner needs the literal
 // class text present in a source file — an interpolated `aspect-[${x}]` /
 // `gap-[${n}]` wouldn't reliably get picked up.
+import React, { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HorizontalReveal from "./HorizontalReveal";
 import Picture from "./Picture";
 import TextReveal from "./TextReveal";
+
+// Register ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger);
 
 const aspectClasses = {
   "55/36": "aspect-[55/36]",
   "11/6": "aspect-[11/6]",
   "6/5": "aspect-[6/5]",
+  "3/2": "aspect-[3/2]",
 };
 
 const sizeConfig = {
   default: { gap: "gap-700", gapInner: "gap-400", aspect: "55/36" },
-  small: { gap: "gap-400", gapInner: "gap-300", aspect: "6/5" },
+  med: { gap: "gap-400", gapInner: "gap-300", aspect: "6/5" },
+  small: { gap: "gap-400", gapInner: "gap-300", aspect: "3/2" },
 };
 
 // schema.org microdata is opt-in via these three props, all undefined by
@@ -80,6 +89,32 @@ export default function Card({
 }) {
   const cfg = sizeConfig[size] ?? sizeConfig.default;
   const aspectKey = aspect ?? cfg.aspect;
+  // Refs for targeting elements and overflow clipping
+  const containerRef = useRef(null);
+  const imageRef = useRef(null);
+
+  useGSAP(
+    () => {
+      if (!imageRef.current || !containerRef.current) return;
+
+      // Parallax animation
+      gsap.fromTo(
+        imageRef.current,
+        { yPercent: -20 },
+        {
+          yPercent: 5,
+          ease: "none",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top bottom", // Starts when top of card hits bottom of viewport
+            end: "bottom top",   // Ends when bottom of card leaves top of viewport
+            scrub: true,         // Links animation directly to scrollbar
+          },
+        }
+      );
+    },
+    { scope: containerRef }
+  );
   // The `variants` prop is gone. It only existed so motion could propagate a
   // parent's staggerChildren state into this component; GSAP has no
   // equivalent inheritance, so the stagger now lives entirely in the parent
@@ -90,15 +125,20 @@ export default function Card({
   // start state themselves via fromTo.
   return (
     <div
+    ref={containerRef}
       className={`flex flex-col will-change-transform ${cfg.gap}`}
       {...(itemType ? { itemScope: true, itemType } : {})}
     >
-      <Picture
-        src={src}
-        alt={alt}
-        className={`${aspectClasses[aspectKey] ?? aspectClasses[cfg.aspect]} w-full rounded-md object-cover`}
-        {...(imageItemProp ? { itemProp: imageItemProp } : {})}
-      />
+      {/* Wrapper with overflow-hidden so the scaled/moving image stays inside bounds */}
+      <div className={`${aspectClasses[aspectKey] ?? aspectClasses[cfg.aspect]} w-full overflow-hidden rounded-md`}>
+        <Picture
+          ref={imageRef}
+          src={src}
+          alt={alt}
+          className={`w-full rounded-md object-cover`}
+          {...(imageItemProp ? { itemProp: imageItemProp } : {})}
+        />
+      </div>
       <div className={`flex flex-col  ${cfg.gapInner}`}>
         <h3
           className="font-stat text-display-card uppercase leading-none lg:text-display-h6"
