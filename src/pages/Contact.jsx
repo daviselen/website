@@ -19,11 +19,7 @@ export default function Contact() {
       className="min-h-screen bg-surface-default pb-1800 font-narrow font-light text-neutral-0 flex flex-col gap-0"
     >
       <section id="top">
-        {/* Was `class=`, a plain HTML attribute React silently drops — none
-            of px-8/pb-1000/rounded-md/overflow-hidden were ever applying. */}
-        <div className="px-8 pb-1000 rounded-md overflow-hidden">
-          <MastheadImage src="/images/contact-masthead.jpg" alt="Contact Davis Elen Advertising" title={`Open \nthe \nBox`} />
-        </div>
+        <MastheadImage src="/images/contact-masthead.jpg" alt="Contact Davis Elen Advertising" title={`Open \nthe \nBox`} />
         <div className="px-8">
           <div className="lg:grid lg:grid-cols-12 lg:gap-400">
             <HeadingReveal

@@ -29,11 +29,7 @@ export default function Careers() {
       className="min-h-screen bg-surface-default pb-1800 font-narrow font-light text-neutral-0 flex flex-col gap-0"
     >
       <section id="top">
-        {/* Was `class=`, a plain HTML attribute React silently drops — none
-            of px-8/pb-1000/rounded-md/overflow-hidden were ever applying. */}
-        <div className="px-8 pb-1000 rounded-md overflow-hidden">
-          <MastheadImage src="/images/careers-masthead.jpg" alt="Get a Job" title={`Get \na Job`} />
-        </div>
+        <MastheadImage src="/images/careers-masthead.jpg" alt="Get a Job" title={`Get \na Job`} />
         <div className="px-8">
           <div className="lg:grid lg:grid-cols-12 lg:gap-400">
             <TextReveal className="text-lg md:text-xl lg:text-pre-title mb-6 lg:pr-300 lg:col-span-6 lg:col-start-1"

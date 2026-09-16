@@ -270,12 +270,8 @@ export default function About() {
       <meta itemProp="url" content="https://daviselen.com" />
       
       <section id="top">
-        {/* Was `class=`, a plain HTML attribute React silently drops — none
-            of px-8/pb-1000/rounded-md/overflow-hidden were ever applying. */}
-        <div className="px-8 pb-1000 rounded-md overflow-hidden">
-          <MastheadImage src="/images/about-masthead.jpg" alt="About Davis Elen Advertising" title={`Inside \nthe Box`} />
-          {/* <Picture src="/images/about-masthead.jpg" alt="About Davis Elen Advertising" className="block w-full h-auto rounded-md" /> */}
-        </div>
+        <MastheadImage src="/images/about-masthead.jpg" alt="About Davis Elen Advertising" title={`Inside \nthe Box`} />
+        {/* <Picture src="/images/about-masthead.jpg" alt="About Davis Elen Advertising" className="block w-full h-auto rounded-md" /> */}
         <div className="px-8">
           {/* grid-cols-12 with a fixed col-span-6 was applying at every
               width — on a phone that's a ~150px-wide copy column with every
