@@ -311,10 +311,19 @@ export default function DeLogoMorph({ className = "size-16", onComplete }) {
     return <DeLogo className={className} />;
   }
 
+  // h-16/w-2300 (184px) is the real desktop reserved slot; it was fixed at
+  // every width, and on a phone that alone eats about half the header row —
+  // the single biggest contributor to NavBarAlt overflowing on mobile. The
+  // SVG's own math (drop distances, morph targets) is all in its viewBox's
+  // user units, so scaling the rendered box down is purely visual — nothing
+  // here needs to change to support a smaller height. w-1400 (112px) is the
+  // closest named token that still comfortably contains the wordmark's
+  // rendered width at h-10 (346 * 40/132 ≈ 105px), same reasoning as the
+  // w-2300 comment below used to size the desktop slot.
   return (
     <span
       ref={rootRef}
-      className="grid h-16 w-2300 cursor-pointer"
+      className="grid h-10 w-1400 cursor-pointer md:h-16 md:w-2300"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -322,7 +331,7 @@ export default function DeLogoMorph({ className = "size-16", onComplete }) {
         <svg
           ref={svgRef}
           viewBox="0 0 346 132"
-          className="col-start-1 row-start-1 h-16 w-auto justify-self-start text-neutral-0"
+          className="col-start-1 row-start-1 h-10 w-auto justify-self-start text-neutral-0 md:h-16"
           aria-hidden="true"
           focusable="false"
         >

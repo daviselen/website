@@ -89,10 +89,14 @@ export default function MastheadImage({
           onto it when that tween settles — which would wipe out any
           -translate-y-1/2 the heading carried. Flex centering survives it. */}
       <div className="absolute inset-y-0 left-8 z-50 flex items-center">
+        {/* text-display-h2 (184px/128px) was fixed at every width — real
+            spec is desktop-only, and Masthead.jsx's own h1 already scales
+            the same way (text-6xl -> md:text-8xl -> lg:text-display-h1);
+            this one had no mobile/tablet step at all. */}
         <HeadingReveal
           as="h1"
           text={title}
-          className="font-display text-display-h2 uppercase"
+          className="font-display text-5xl uppercase leading-none md:text-7xl lg:text-display-h2"
         />
       </div>
       <div ref={maskRef} style={{ clipPath: "inset(0% 0% 100% 0%)" }}>

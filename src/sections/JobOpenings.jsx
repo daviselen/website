@@ -135,12 +135,12 @@ export default function JobOpenings() {
     <section
       id="job-openings"
       data-status={status}
-      className="flex flex-col gap-1000 px-8 mt-3000"
+      className="flex flex-col gap-1000 px-8 mt-1000 md:mt-3000"
     >
       <HeadingReveal
         as="h2"
         text={`Open \nPositions`}
-        className="font-display text-display-h3 uppercase leading-none"
+        className="font-display text-5xl md:text-7xl lg:text-display-h3 uppercase leading-none"
       />
 
       {openings.length === 0 ? (
@@ -172,7 +172,7 @@ export default function JobOpenings() {
                   <span className="text-small uppercase text-neutral-400">
                     Position
                   </span>
-                  <span className="font-narrow uppercase text-pre-title">
+                  <span className="font-narrow uppercase text-lg md:text-xl lg:text-pre-title">
                     {opening.title}
                   </span>
                 </div>
@@ -185,7 +185,7 @@ export default function JobOpenings() {
                     </span>
                     <span
                       ref={(el) => (locationRefs.current[index] = el)}
-                      className="shrink-0 font-narrow text-pre-title uppercase"
+                      className="shrink-0 font-narrow text-lg md:text-xl lg:text-pre-title uppercase"
                     >
                       {opening.locations[0]}
                       {opening.locations.length > 1 && `, + ${opening.locations.length - 1}`}

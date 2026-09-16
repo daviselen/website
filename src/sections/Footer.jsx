@@ -187,7 +187,12 @@ export default function Footer() {
         </div>
       </div>
     </div>
-        <ul className="flex flex-1 flex-col gap-12 font-display text-4xl uppercase leading-[130px] md:text-[64px]">
+        {/* leading-[130px] is the real 64px-desktop line-height (2.03x the
+            type size, the deliberately loose look the header comment
+            describes) — it was fixed even at the mobile text-4xl (36px)
+            size, which blew the gap between city names out of proportion.
+            Scaled at the same ratio: 36 * 2.03 ≈ 73px. */}
+        <ul className="flex flex-1 flex-col gap-12 font-display text-4xl uppercase leading-[73px] md:text-[64px] md:leading-[130px]">
           {/* Each office city as its own nested Place item (itemProp
               "location" is repeatable on Organization), rather than plain
               text — real office locations, not invented. */}

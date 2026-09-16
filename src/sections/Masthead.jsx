@@ -55,11 +55,13 @@ export default function Masthead() {
             whole text block (TITB), not a max-w cap — reproduced here as a
             right-side inset on lg+ so the paragraph doesn't span the full
             frame width like the headline. */}
+        {/* text-pre-title (32px) had no mobile/tablet step, unlike the
+            headline right above it. */}
         <TextReveal
           text="Everybody brags about thinking outside the box. Nobody sells anything out there. The box is the budget, the deadline, the strategy somebody already signed off on. That's the room we work in, and it's the room we're good in. Outside the box is a vacation. Inside the box is the job."
           as="p"
           delay={0.75}
-          className="mt-700 font-narrow font-light text-pre-title lg:pr-[calc(100%-1086px)]"
+          className="mt-700 font-narrow font-light text-lg md:text-xl lg:text-pre-title lg:pr-[calc(100%-1086px)]"
         />
       </div>
     </section>

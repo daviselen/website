@@ -272,15 +272,22 @@ export default function About() {
       <meta itemProp="url" content="https://daviselen.com" />
       
       <section id="top">
-        <div class="px-8 pb-1000 rounded-md overflow-hidden">
+        {/* Was `class=`, a plain HTML attribute React silently drops — none
+            of px-8/pb-1000/rounded-md/overflow-hidden were ever applying. */}
+        <div className="px-8 pb-1000 rounded-md overflow-hidden">
           <MastheadImage src="/images/about-masthead.jpg" alt="About Davis Elen Advertising" title={`Inside \nthe Box`} />
           {/* <Picture src="/images/about-masthead.jpg" alt="About Davis Elen Advertising" className="block w-full h-auto rounded-md" /> */}
         </div>
         <div className="px-8">
-          <div className="grid grid-cols-12 gap-400">
-            <TextReveal className="text-pre-title mb-6 col-span-6 col-start-1"
+          {/* grid-cols-12 with a fixed col-span-6 was applying at every
+              width — on a phone that's a ~150px-wide copy column with every
+              word wrapping. Single column below md, real 2-up split at md+
+              (Careers.jsx's matching intro block already gates this
+              correctly with `lg:grid`; this one had no gate at all). */}
+          <div className="grid grid-cols-1 gap-400 md:grid-cols-12">
+            <TextReveal className="text-lg md:text-xl lg:text-pre-title mb-6 md:col-span-6 md:col-start-1"
               text="Davis Elen has been in business since 1948 and independent every single day of it. No holding company, no parent, nobody upstairs to run it past. That isn't nostalgia. It's just how we like to work." />
-            <TextReveal className="text-pre-title mb-6 col-span-6 col-start-7"
+            <TextReveal className="text-lg md:text-xl lg:text-pre-title mb-6 md:col-span-6 md:col-start-7"
               text="We make advertising that has a job to do. Move product off a shelf. Get a car onto a lot. Put a person in a store. The constraint is the whole point. Give us a real budget, a real deadline and a real strategy and we'll show you what happens inside the box."
             />
           </div>
@@ -293,15 +300,17 @@ export default function About() {
         imgAlt="Map of Los Angeles County showing the locations of Toyota dealership, McDonald's restaurant, Best Buy and Smart & Final locations."
         onClick={() => openOverlay(RETAIL_MAP)}
       />
-      <section id="people" className="pt-3000 px-8 flex flex-col gap-1000">
+      <section id="people" className="pt-1000 md:pt-3000 px-8 flex flex-col gap-1000">
         <HeadingReveal
-          className="text-display-h3 font-display uppercase"
+          className="text-5xl md:text-7xl lg:text-display-h3 font-display uppercase"
           text={`Let’s \nMeet Up`}
         />
-        <TextReveal className="text-pre-title max-w-prose"
+        <TextReveal className="text-lg md:text-xl lg:text-pre-title max-w-prose"
           text="This is the whole meeting. No account person you'll never see again, no bench of strangers who vanish after the pitch. The people in the room are the people who do the work."
         />
-        <div className="grid grid-cols-4 gap-400">
+        {/* grid-cols-4 at every width put 12 portrait tiles four-across on a
+            phone (~80px tiles) — 2-up below md, real 4-up unchanged. */}
+        <div className="grid grid-cols-2 gap-400 md:grid-cols-4">
           {people.map((person, index) => (
           <div key={index} className="teams-video bg-surface-alt relative rounded-md">
             {person.video ? (
@@ -348,10 +357,10 @@ export default function About() {
         onClick={() => openOverlay(ORIGIN_STORY)}
         opensVideo
       />
-      <section id="clients" className="pt-3000 px-8 flex flex-col gap-0">
+      <section id="clients" className="pt-1000 md:pt-3000 px-8 flex flex-col gap-0">
         <HeadingReveal
           as="h2"
-          className="text-display-h3 font-display uppercase mb-1200"
+          className="text-5xl md:text-7xl lg:text-display-h3 font-display uppercase mb-1200"
           text={`Client \nExperience`}
         />
         {/* Full-bleed breakout: the section keeps its px-8 so the heading stays

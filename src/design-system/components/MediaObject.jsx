@@ -17,26 +17,35 @@ const IMAGE_VISIBLE = "inset(0% 0% 0% 0%)";
 // layout is a mirror, not a reflow. Classes are fully spelled out rather
 // than built from a template string because Tailwind's JIT scanner only
 // sees literal class text in source.
+//
+// The 12-col split is real spec at desktop, but it was applying at every
+// width — on a phone, "5 of 12 columns" is a ~150px-wide copy column with
+// every word wrapping. `md:` gates the whole grid split; below that the
+// grid falls back to its own `grid-cols-1` (set on the root below) and
+// these two blocks just stack in DOM order.
 const sideConfig = {
   right: {
-    copy: "col-start-1 col-end-6",
-    image: "col-start-6 col-end-13",
+    copy: "md:col-start-1 md:col-end-6",
+    image: "md:col-start-6 md:col-end-13",
     // Padding sits on the inner edge, away from the page margin.
-    measure: "pr-1000",
+    measure: "md:pr-1000",
   },
   left: {
-    copy: "col-start-8 col-end-13 px-400 justify-center",
-    image: "col-start-1 col-end-8",
+    copy: "md:col-start-8 md:col-end-13 px-400 justify-center",
+    image: "md:col-start-1 md:col-end-8",
     measure: "",
   },
 };
 
-// Named type tokens only — never a raw step like `text-7xl` (see DESIGN.md
-// "Knockout" note). `default` is Headings/H-hi-ai (144/104), `large` is
-// Headings/H3 (184/128), the size the standalone section headlines use.
+// `default` is Headings/H-hi-ai (80/64 — see the display-hiai token, whose
+// own comment corrects the 144/104 this comment used to claim), `large` is
+// Headings/H3 (144/104), the size the standalone section headlines use.
+// Both were the bare desktop token with no mobile/tablet step — same
+// pattern as every other big headline on the site (Masthead.jsx,
+// HumanAI.jsx): small mobile default, real size at `lg`.
 const titleSizes = {
-  default: "text-display-hiai",
-  large: "text-display-h3",
+  default: "text-4xl md:text-6xl lg:text-display-hiai",
+  large: "text-5xl md:text-7xl lg:text-display-h3",
 };
 
 // The root element is chosen by which prop is passed, so the whole media
@@ -128,14 +137,18 @@ export default function MediaObject({
       {...rootProps}
       {...rest}
       // w-full and text-left undo the shrink-to-fit and centering a
-      // <button> gets by default; the grid itself is unchanged.
-      className={`grid w-full grid-cols-12 grid-rows-1 gap-400 px-8 pt-3000 text-left ${
+      // <button> gets by default; the 12-col grid itself is unchanged at
+      // md+. Below that: a single column, so copy and image just stack in
+      // DOM order — `grid-rows-1` + `row-start-1` on both children would
+      // otherwise force them into the same cell instead of stacking, and
+      // `pt-3000` (240px) was fixed at every width, not just desktop.
+      className={`grid w-full grid-cols-1 gap-400 px-8 pt-1000 text-left md:grid-cols-12 md:grid-rows-1 md:pt-3000 ${
         isInteractive
           ? "group focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-300"
           : ""
       }`}
     >
-      <div className={`${side.copy} row-start-1 flex flex-col gap-600`}>
+      <div className={`${side.copy} md:row-start-1 flex flex-col gap-600`}>
         <HeadingReveal
           as="h2"
           // These titles are sentences ("$18 Billion in Sales from Over 4000
@@ -153,7 +166,7 @@ export default function MediaObject({
           ) : null}
           <TextReveal
             as="p"
-            className="text-pre-title"
+            className="text-lg md:text-xl lg:text-pre-title"
             text={text}
           />
         </div>
@@ -164,7 +177,7 @@ export default function MediaObject({
           hidden state is right on first paint, before GSAP runs. */}
       <div
         ref={maskRef}
-        className={`${side.image} row-start-1 relative`}
+        className={`${side.image} md:row-start-1 relative`}
         style={{ clipPath: IMAGE_HIDDEN }}
       >
         <Picture
