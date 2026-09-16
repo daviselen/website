@@ -276,6 +276,49 @@ export function useStaggerReveal(scopeRef, { amount = 0.333 } = {}) {
   );
 }
 
+/**
+ * The clip-path wipe + scale/yPercent settle MastheadImage and MastheadVideo
+ * both ran as an identical, hand-copied GSAP timeline — same tween, same
+ * values, only the gating differed (decode-gated vs loadeddata-gated, which
+ * stays with each caller). This is just that shared timeline.
+ *
+ * fromTo (not to), so a changed `loaded` (a swapped src, a reset) replays
+ * from the hidden state instead of animating from wherever it stopped —
+ * matching what both callers already relied on.
+ *
+ * @param {object}  scopeRef  ref to scope the tween to (each caller's wrapper)
+ * @param {object}  maskRef   ref to the clip-path mask element
+ * @param {object}  mediaRef  ref to the <img>/<video> being scaled
+ * @param {boolean} loaded    gate — the tween only builds once this is true
+ */
+export function useMediaReveal(scopeRef, { maskRef, mediaRef, loaded }) {
+  useGSAP(
+    () => {
+      if (!loaded) return;
+
+      const tl = gsap.timeline({
+        defaults: { duration: REVEAL_DURATION, ease: EASE_REVEAL },
+      });
+
+      tl.fromTo(
+        maskRef.current,
+        { clipPath: "inset(0% 0% 100% 0%)" },
+        { clipPath: "inset(0% 0% 0% 0%)" },
+        0
+      );
+      // yPercent is the exact equivalent of motion's y: "-1%" — both resolve
+      // the percentage against the element's own height.
+      tl.fromTo(
+        mediaRef.current,
+        { scale: 1.04, yPercent: -1 },
+        { scale: 1, yPercent: 0 },
+        0
+      );
+    },
+    { scope: scopeRef, dependencies: [loaded] }
+  );
+}
+
 export {
   gsap,
   useGSAP,

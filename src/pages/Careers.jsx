@@ -1,9 +1,22 @@
 import MastheadImage from "../design-system/components/MastheadImage";
 import HeadingReveal from "../design-system/components/HeadingReveal";
 import TextReveal from "../design-system/components/TextReveal";
+import SplitIntro from "../design-system/components/SplitIntro.jsx";
+import { JobRow, JobPositionField, JobMetaField } from "../design-system/components/JobRow.jsx";
 import JobOpenings from "../sections/JobOpenings.jsx";
 import CTABanner from "../sections/CTABanner.jsx";
 import ListMaskReveal from "../design-system/components/ListMaskReveal.jsx";
+
+// "Always Looking" static rows — not real ADP openings (see the section
+// comment below), so they don't share JobOpenings.jsx's data model. Group
+// and location are the same for all three, which is exactly why these were
+// three copy-pasted JSX blocks before rather than three genuinely different
+// rows.
+const ALWAYS_LOOKING_JOBS = [
+  { href: "/contact?position=copywriter", title: "Copywriter" },
+  { href: "/contact?position=art_director", title: "Art Director" },
+  { href: "/contact?position=production_designer", title: "Production Designer" },
+];
 
 const benefits = [
   'Comprehensive health plan',
@@ -31,14 +44,13 @@ export default function Careers() {
       <section id="top">
         <MastheadImage src="/images/careers-masthead.jpg" alt="Get a Job" title={`Get \na Job`} />
         <div className="px-8">
-          <div className="lg:grid lg:grid-cols-12 lg:gap-400">
-            <TextReveal className="text-lg md:text-xl lg:text-pre-title mb-6 lg:pr-300 lg:col-span-6 lg:col-start-1"
-              text="Davis Elen is one of the largest independently owned agencies in the country. We've been at it since 1948 and we're not coasting on it. We're looking for people who bring fresh, no-holds-barred thinking and the same independent streak we have. Might be you."
-            />
-            <TextReveal className="text-lg md:text-xl lg:text-pre-title mb-6 lg:pr-600 lg:col-span-6 lg:col-start-7"
-              text="We're headquartered in downtown LA with ridiculously talented people scattered across the country. Our multicultural staff writes for the general market, the Hispanic market and Asian markets. Sound like your kind of place? Here's what's open."
-            />
-          </div>
+          <SplitIntro
+            gridClassName="lg:grid lg:grid-cols-12 lg:gap-400"
+            leftClassName="lg:pr-300 lg:col-span-6 lg:col-start-1"
+            rightClassName="lg:pr-600 lg:col-span-6 lg:col-start-7"
+            left="Davis Elen is one of the largest independently owned agencies in the country. We've been at it since 1948 and we're not coasting on it. We're looking for people who bring fresh, no-holds-barred thinking and the same independent streak we have. Might be you."
+            right="We're headquartered in downtown LA with ridiculously talented people scattered across the country. Our multicultural staff writes for the general market, the Hispanic market and Asian markets. Sound like your kind of place? Here's what's open."
+          />
         </div>
       </section>
       <JobOpenings />
@@ -57,99 +69,25 @@ export default function Careers() {
         />
         </div>
         <ul className="flex flex-col">
-          <li className="border-t-2 border-neutral-0 last:border-b-2">
-            <a
-              href="/contact?position=copywriter"
-              className="flex flex-col gap-100 pt-600 pb-800 hover:text-primary-300 transition-colors md:flex-row md:items-baseline md:justify-between md:gap-400"
+          {ALWAYS_LOOKING_JOBS.map((job) => (
+            <JobRow
+              key={job.href}
+              href={job.href}
+              linkClassName="flex flex-col gap-100 pt-600 pb-800 hover:text-primary-300 transition-colors md:flex-row md:items-baseline md:justify-between md:gap-400"
             >
-              <div className="flex flex-col gap-200 md:basis-[calc(100%-46rem)] px-600">
-                <span className="text-small uppercase text-neutral-400">
-                  Position
-                </span>
-                <span className="font-narrow uppercase text-lg md:text-xl lg:text-pre-title">
-                  Copywriter
-                </span>
-              </div>
-              <div className="flex flex-col gap-200 md:basis-[20rem] px-600">
-                <span className="text-small uppercase text-neutral-400">
-                  Group
-                </span>
-                <span className="shrink-0 font-narrow text-lg md:text-xl lg:text-pre-title uppercase">
-                  <span className="inline-block">Creative</span>
-                </span>
-              </div>
-              <div className="flex flex-col gap-200 md:basis-[26rem] px-600">
-                <span className="text-small uppercase text-neutral-400">
-                  Location
-                </span>
-                <span className="shrink-0 font-narrow text-lg md:text-xl lg:text-pre-title uppercase">
-                    <span className="inline-block">Los Angeles, <abbr title="California">CA</abbr></span>
-                </span>
-              </div>
-            </a>
-          </li>
-          <li className="border-t-2 border-neutral-0 last:border-b-2">
-            <a
-              href="/contact?position=art_director"
-              className="flex flex-col gap-100 pt-600 pb-800 hover:text-primary-300 transition-colors md:flex-row md:items-baseline md:justify-between md:gap-400"
-            >
-              <div className="flex flex-col gap-200 md:basis-[calc(100%-46rem)] px-600">
-                <span className="text-small uppercase text-neutral-400">
-                  Position
-                </span>
-                <span className="font-narrow uppercase text-lg md:text-xl lg:text-pre-title">
-                  Art Director
-                </span>
-              </div>
-              <div className="flex flex-col gap-200 md:basis-[20rem] px-600">
-                <span className="text-small uppercase text-neutral-400">
-                  Group
-                </span>
-                <span className="shrink-0 font-narrow text-lg md:text-xl lg:text-pre-title uppercase">
-                  <span className="inline-block">Creative</span>
-                </span>
-              </div>
-              <div className="flex flex-col gap-200 md:basis-[26rem] px-600">
-                <span className="text-small uppercase text-neutral-400">
-                  Location
-                </span>
-                <span className="shrink-0 font-narrow text-lg md:text-xl lg:text-pre-title uppercase">
-                    <span className="inline-block">Los Angeles, <abbr title="California">CA</abbr></span>
-                </span>
-              </div>
-            </a>
-          </li>
-          <li className="border-t-2 border-neutral-0 last:border-b-2">
-            <a
-              href="/contact?position=production_designer"
-              className="flex flex-col gap-100 pt-600 pb-800 hover:text-primary-300 transition-colors md:flex-row md:items-baseline md:justify-between md:gap-400"
-            >
-              <div className="flex flex-col gap-200 md:basis-[calc(100%-46rem)] px-600">
-                <span className="text-small uppercase text-neutral-400">
-                  Position
-                </span>
-                <span className="font-narrow uppercase text-lg md:text-xl lg:text-pre-title">
-                  Production Designer
-                </span>
-              </div>
-              <div className="flex flex-col gap-200 md:basis-[20rem] px-600">
-                <span className="text-small uppercase text-neutral-400">
-                  Group
-                </span>
-                <span className="shrink-0 font-narrow text-lg md:text-xl lg:text-pre-title uppercase">
-                  <span className="inline-block">Creative</span>
-                </span>
-              </div>
-              <div className="flex flex-col gap-200 md:basis-[26rem] px-600">
-                <span className="text-small uppercase text-neutral-400">
-                  Location
-                </span>
-                <span className="shrink-0 font-narrow text-lg md:text-xl lg:text-pre-title uppercase">
-                    <span className="inline-block">Los Angeles, <abbr title="California">CA</abbr></span>
-                </span>
-              </div>
-            </a>
-          </li>
+              <JobPositionField value={job.title} className="flex flex-col gap-200 md:basis-[calc(100%-46rem)] px-600" />
+              <JobMetaField
+                label="Group"
+                value={<span className="inline-block">Creative</span>}
+                className="flex flex-col gap-200 md:basis-[20rem] px-600"
+              />
+              <JobMetaField
+                label="Location"
+                value={<span className="inline-block">Los Angeles, <abbr title="California">CA</abbr></span>}
+                className="flex flex-col gap-200 md:basis-[26rem] px-600"
+              />
+            </JobRow>
+          ))}
         </ul>
       </section>
       {/* flex-row + basis-[50%] on both children was unconditional — on a
@@ -180,7 +118,7 @@ export default function Careers() {
             /> */}
             <ul className="text-lg md:text-xl lg:text-pre-title list-[square] list-outside pl-600">
               {benefits.map((benefit) => (
-                <li className="mb-300">{benefit}</li>
+                <li key={benefit} className="mb-300">{benefit}</li>
               ))}
             </ul>
           </div>

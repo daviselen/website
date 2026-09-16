@@ -6,6 +6,7 @@
 // to diff against.
 import { useEffect, useRef, useState } from "react";
 import HeadingReveal from "../design-system/components/HeadingReveal.jsx";
+import { JobRow, JobPositionField, JobMetaField } from "../design-system/components/JobRow.jsx";
 import snapshot from "../data/job-openings.json";
 import { applyUrl, jobListUrl } from "../data/adp.js";
 import { normalize, toJobPosting } from "../lib/job-openings.js";
@@ -148,52 +149,37 @@ export default function JobOpenings() {
       ) : (
         <ul className="flex flex-col">
           {openings.map((opening, index) => (
-            <li
+            // A real anchor rather than a div with onClick, for the same
+            // reason documented in MediaObject.jsx: the whole row is one hit
+            // target, and only an <a href> gives keyboard focus, middle-click,
+            // and "open in new tab" for free. External, so `external`.
+            //
+            // Visible content is title + location(s) only, on purpose. The
+            // `description` on this object is raw third-party HTML and is
+            // never rendered — see the field's comment in
+            // src/lib/job-openings.js.
+            <JobRow
               key={opening.id}
-              className="border-t-2 border-neutral-0 last:border-b-2"
+              href={applyUrl(opening.externalJobId)}
+              external
+              linkClassName="grid grid-cols-[1fr_auto] md:grid-cols-[1fr_auto_auto] items-baseline pt-600 pb-800 hover:text-primary-300 transition-colors gap-y-400"
             >
-              {/* A real anchor rather than a div with onClick, for the same
-                  reason documented in MediaObject.jsx: the whole row is one
-                  hit target, and only an <a href> gives keyboard focus,
-                  middle-click, and "open in new tab" for free. External, so
-                  target=_blank + rel="noopener noreferrer".
-
-                  Visible content is title + location(s) only, on purpose. The
-                  `description` on this object is raw third-party HTML and is
-                  never rendered — see the field's comment in
-                  src/lib/job-openings.js. */}
-              <a
-                href={applyUrl(opening.externalJobId)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="grid grid-cols-[1fr_auto] md:grid-cols-[1fr_auto_auto] items-baseline pt-600 pb-800 hover:text-primary-300 transition-colors gap-y-400"
-              >
-                <div className="flex flex-col gap-200 px-600">
-                  <span className="text-small uppercase text-neutral-400">
-                    Position
-                  </span>
-                  <span className="font-narrow uppercase text-lg md:text-xl lg:text-pre-title">
-                    {opening.title}
-                  </span>
-                </div>
-                {/* Omitted entirely rather than rendered empty: one live
-                    opening has `requisitionLocations: []`. */}
-                {opening.locations.length > 0 && (
-                  <div className="flex flex-col gap-200 px-600">
-                    <span className="text-small uppercase text-neutral-400">
-                      {opening.locations.length === 1 ? "Location" : "Locations"}
-                    </span>
-                    <span
-                      ref={(el) => (locationRefs.current[index] = el)}
-                      className="shrink-0 font-narrow text-lg md:text-xl lg:text-pre-title uppercase"
-                    >
+              <JobPositionField value={opening.title} />
+              {/* Omitted entirely rather than rendered empty: one live
+                  opening has `requisitionLocations: []`. */}
+              {opening.locations.length > 0 && (
+                <JobMetaField
+                  label={opening.locations.length === 1 ? "Location" : "Locations"}
+                  value={
+                    <>
                       {opening.locations[0]}
                       {opening.locations.length > 1 && `, + ${opening.locations.length - 1}`}
-                    </span>
-                  </div>
-                )}
-              </a>
-            </li>
+                    </>
+                  }
+                  valueRef={(el) => (locationRefs.current[index] = el)}
+                />
+              )}
+            </JobRow>
           ))}
         </ul>
       )}

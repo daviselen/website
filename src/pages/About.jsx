@@ -3,6 +3,7 @@ import MastheadImage from "../design-system/components/MastheadImage";
 import CTABanner from "../sections/CTABanner";
 import MediaObject from "../design-system/components/MediaObject.jsx";
 import TextReveal from "../design-system/components/TextReveal.jsx";
+import SplitIntro from "../design-system/components/SplitIntro.jsx";
 import { useOverlay } from "../design-system/components/Overlay.jsx";
 import HeadingReveal from "../design-system/components/HeadingReveal.jsx";
 import Marquee from "../design-system/components/Marquee.jsx";
@@ -278,13 +279,13 @@ export default function About() {
               word wrapping. Single column below md, real 2-up split at md+
               (Careers.jsx's matching intro block already gates this
               correctly with `lg:grid`; this one had no gate at all). */}
-          <div className="grid grid-cols-1 gap-400 md:grid-cols-12">
-            <TextReveal className="text-lg md:text-xl lg:text-pre-title mb-6 md:col-span-6 md:col-start-1"
-              text="Davis Elen has been in business since 1948 and independent every single day of it. No holding company, no parent, nobody upstairs to run it past. That isn't nostalgia. It's just how we like to work." />
-            <TextReveal className="text-lg md:text-xl lg:text-pre-title mb-6 md:col-span-6 md:col-start-7"
-              text="We make advertising that has a job to do. Move product off a shelf. Get a car onto a lot. Put a person in a store. The constraint is the whole point. Give us a real budget, a real deadline and a real strategy and we'll show you what happens inside the box."
-            />
-          </div>
+          <SplitIntro
+            gridClassName="grid grid-cols-1 gap-400 md:grid-cols-12"
+            leftClassName="md:col-span-6 md:col-start-1"
+            rightClassName="md:col-span-6 md:col-start-7"
+            left="Davis Elen has been in business since 1948 and independent every single day of it. No holding company, no parent, nobody upstairs to run it past. That isn't nostalgia. It's just how we like to work."
+            right="We make advertising that has a job to do. Move product off a shelf. Get a car onto a lot. Put a person in a store. The constraint is the whole point. Give us a real budget, a real deadline and a real strategy and we'll show you what happens inside the box."
+          />
         </div>
       </section>
       <MediaObject

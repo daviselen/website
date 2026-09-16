@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { gsap, useGSAP, REVEAL_DURATION, EASE_REVEAL } from "../animation";
+import { useMediaReveal } from "../animation";
 import HeadingReveal from "./HeadingReveal";
 
 export default function MastheadImage({
@@ -46,35 +46,10 @@ export default function MastheadImage({
     };
   }, [src]);
 
-  // Decode-gated, not scroll-gated: no ScrollTrigger here. The `loaded`
-  // dependency re-runs this hook exactly where motion re-evaluated its
-  // `animate` prop, and fromTo (rather than to) means a changed src replays
-  // from the hidden state instead of animating from wherever it stopped.
-  useGSAP(
-    () => {
-      if (!loaded) return;
-
-      const tl = gsap.timeline({
-        defaults: { duration: REVEAL_DURATION, ease: EASE_REVEAL },
-      });
-
-      tl.fromTo(
-        maskRef.current,
-        { clipPath: "inset(0% 0% 100% 0%)" },
-        { clipPath: "inset(0% 0% 0% 0%)" },
-        0
-      );
-      // yPercent is the exact equivalent of motion's y: "-1%" — both resolve
-      // the percentage against the element's own height.
-      tl.fromTo(
-        imgRef.current,
-        { scale: 1.04, yPercent: -1 },
-        { scale: 1, yPercent: 0 },
-        0
-      );
-    },
-    { scope: wrapRef, dependencies: [loaded] }
-  );
+  // Decode-gated, not scroll-gated: no ScrollTrigger here. `loaded` is what
+  // gates the shared reveal below — same dependency shape motion's `animate`
+  // prop re-evaluated on.
+  useMediaReveal(wrapRef, { maskRef, mediaRef: imgRef, loaded });
 
   return (
     <div className="px-8 pb-1000 rounded-md overflow-hidden">

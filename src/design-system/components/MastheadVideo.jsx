@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { gsap, useGSAP, REVEAL_DURATION, EASE_REVEAL } from "../animation";
+import { useMediaReveal } from "../animation";
 
 export default function MastheadVideo({
   src,
@@ -11,32 +11,8 @@ export default function MastheadVideo({
   const videoRef = useRef(null);
 
   // First-frame-gated, not scroll-gated — onLoadedData below flips `loaded`,
-  // and this dependency re-runs the reveal at that moment.
-  useGSAP(
-    () => {
-      if (!loaded) return;
-
-      const tl = gsap.timeline({
-        defaults: { duration: REVEAL_DURATION, ease: EASE_REVEAL },
-      });
-
-      tl.fromTo(
-        maskRef.current,
-        { clipPath: "inset(0% 0% 100% 0%)" },
-        { clipPath: "inset(0% 0% 0% 0%)" },
-        0
-      );
-      // yPercent matches motion's y: "-1%" — both are relative to the
-      // element's own height.
-      tl.fromTo(
-        videoRef.current,
-        { scale: 1.04, yPercent: -1 },
-        { scale: 1, yPercent: 0 },
-        0
-      );
-    },
-    { scope: wrapRef, dependencies: [loaded] }
-  );
+  // which is what gates the shared reveal below.
+  useMediaReveal(wrapRef, { maskRef, mediaRef: videoRef, loaded });
 
   return (
     <div
