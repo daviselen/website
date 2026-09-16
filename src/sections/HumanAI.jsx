@@ -180,7 +180,7 @@ export default function HumanAI() {
     <section
       id="human-ai"
       ref={containerRef}
-      className="relative mx-8 rounded-md bg-surface-alt px-600 sm:px-800 md:px-1000 xl:px-1200 2xl:px-1000 2xl:py-400 text-neutral-0 mt-3000 overflow-hidden"
+      className="relative mx-8 rounded-md bg-surface-alt px-600 sm:px-800 md:px-1000 xl:px-1200 2xl:px-1000 2xl:py-1000 text-neutral-0 mt-3000 overflow-hidden"
     >
       {/* Parallax CSS Grid Layer */}
       <div
@@ -194,8 +194,8 @@ export default function HumanAI() {
 
       <div className=" relative z-10 lg:flex lg:items-center lg:justify-between lg:gap-16">
         <div className="lg:max-w-2xl lg:shrink-0">
-          <div className="mb-800 flex items-center gap-6">
-            <img src="/icons/hi-mark.svg" alt="" className="w-[352px]" />
+          <div className="mb-300 flex items-center gap-6">
+            <img src="/icons/hi-mark.svg" alt="" className="w-[304px]" />
           </div>
 
           {/* Kept on one line, deliberately: JSX collapses a line break
@@ -203,13 +203,13 @@ export default function HumanAI() {
               nothing, not a single space. Split across lines (as this was
               before), "I" and "×" and "AI" all end up jammed together with
               no space at all — not just "less space than expected." */}
-          <h2 className="font-display text-4xl uppercase leading-none md:text-6xl lg:text-display-hiai">
+          <h2 className="font-display text-4xl uppercase leading-none md:text-6xl lg:text-display-h4">
             THE <abbr title="Human Imagination">H<span className="tracking-[0.08em]">I</span></abbr><span className="tracking-[0.1em] lowercase">x</span><abbr title="Artificial Intelligence">AI</abbr> Loop
           </h2>
 
-          <ul className="mt-600 flex flex-col gap-600">
+          <ul className="mt-600 flex flex-col gap-400">
             {concepts.map((c) => (
-              <li key={c.title} className="flex flex-col gap-300">
+              <li key={c.title} className="flex flex-col gap-200">
                 <div className="flex w-full items-center gap-100">
                   <div className={`size-[22px] shrink-0 border-4 ${c.dot}`} />
                   <h3
@@ -239,7 +239,7 @@ export default function HumanAI() {
         <img
           src="/images/chart.svg"
           alt="Unlock your potential. Human Imagination and Artificial Intelligence synergize to eliminate roadblocks and unlock what's possible. Let robots do the work!"
-          className="mx-auto mt-16 block w-full max-w-md lg:mx-0 lg:mt-0 lg:w-[38.793vw] lg:max-w-none lg:shrink-0"
+          className="mx-auto mt-16 block w-full max-w-md lg:mx-0 lg:mt-0 lg:w-[39.655vw] lg:max-w-none lg:shrink-0"
         />
       </div>
     </section>
