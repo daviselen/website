@@ -1,8 +1,6 @@
 import { lazy, Suspense } from "react";
-import NavBar from "../sections/NavBar.jsx";
 import MastheadImage from "../design-system/components/MastheadImage";
 import CTABanner from "../sections/CTABanner";
-import Footer from "../sections/Footer.jsx";
 import MediaObject from "../design-system/components/MediaObject.jsx";
 import TextReveal from "../design-system/components/TextReveal.jsx";
 import { useOverlay } from "../design-system/components/Overlay.jsx";
