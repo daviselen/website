@@ -46,8 +46,9 @@ export default function Careers() {
       <JobOpenings />
       <section
         id="always_looking"
-        className="flex flex-col gap-600 px-8 mt-3000"
+        className="flex flex-col gap-1000 px-8 mt-3000"
       >
+        <div className="flex flex-col gap-600">
         <HeadingReveal
           as="h3"
           text={`Always \nLooking`}
@@ -56,6 +57,7 @@ export default function Careers() {
         <TextReveal className="text-pre-title max-w-prose"
           text="These aren't posted because they're open. They're posted because we'll always make time for someone good."
         />
+        </div>
         <ul className="flex flex-col">
           <li className="border-t-2 border-neutral-0 last:border-b-2">
             <a
@@ -154,7 +156,7 @@ export default function Careers() {
       </section>
       <section
         id="culture"
-        className="flex flex-row gap-600 px-8 mt-3000"
+        className="flex flex-row gap-1000 px-8 mt-3000"
       >
         <div className="flex flex-col gap-600 basis-[50%]">
           <HeadingReveal
