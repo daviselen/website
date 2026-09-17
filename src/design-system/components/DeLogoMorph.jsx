@@ -62,12 +62,6 @@ const LETTER_CLIP_BOTTOM = 102.362;
 // the others start at 30.5696).
 const LETTER_TOP = 29.6433;
 
-// How far each letter travels down. Derived, not chosen: it's exactly the
-// distance that carries a letter's top edge to the clip line, so the tween
-// finishes at the same instant the last sliver disappears. Nothing moves after
-// it can no longer be seen, and no dead air opens up before the morph beat.
-const DROP_DISTANCE = LETTER_CLIP_BOTTOM - LETTER_TOP + 5;
-
 // Gap between one letter starting its drop and the next. LINE_DELAY is the
 // existing "offset between sequential elements" token (3.847 frames @ 30fps),
 // which is what this is — the same beat the stacked heading lines use, applied
@@ -188,7 +182,10 @@ export default function DeLogoMorph({ className = "size-16", onComplete }) {
   const [alreadyPlayed] = useState(hasPlayedThisSession);
   const skipIntro = reducedMotion || alreadyPlayed;
 
-  const [showIntro, setShowIntro] = useState(!skipIntro);
+  // The setter was never called (see the commented-out `setShowIntro(false)`
+  // below) — the intro SVG stays mounted in the DOM after it plays rather
+  // than being torn down, so this only ever needs its initial value.
+  const [showIntro] = useState(!skipIntro);
 
   // SVG <clipPath> is referenced by id, and ids are document-global — a second
   // instance (a mobile nav, a style page rendering the logo twice) would emit a
