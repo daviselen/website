@@ -293,13 +293,13 @@ export default function PortfolioGrid() {
   };
 
   return (
-    <section id="portfolio-grid" ref={sectionRef} className="pb-0 pt-3000">
+    <section id="portfolio-grid" ref={sectionRef} className="pb-0 pt-1000 lg:pt-3000">
       {/* Heading lives outside the clip so it isn't cropped by overflow-hidden */}
-      <div className="px-8">
+      <div className="px-2 lg:px-8">
         <HeadingReveal
           as="h2"
           text={`Fresh Out \nof the Box`}
-          className="mb-1000 font-display text-6xl uppercase leading-none md:text-8xl lg:text-display-h3"
+          className="mb-600 lg:mb-1000 font-display text-6xl uppercase leading-none md:text-8xl lg:text-display-h3"
         />
       </div>
 
@@ -323,7 +323,7 @@ export default function PortfolioGrid() {
             padded track cannot wrap seamlessly. */}
         <div
           ref={trackRef}
-          className={`flex flex-nowrap gap-x-8 ${animated ? "" : "px-8"}`}
+          className={`flex flex-col lg:flex-nowrap gap-y-2 gap-x-8 ${animated ? "" : "px-2 lg:px-8"}`}
           style={{ willChange: "transform" }}
         >
           {Array.from({ length: copies }, (_, copy) =>

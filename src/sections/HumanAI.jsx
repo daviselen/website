@@ -235,7 +235,7 @@ export default function HumanAI() {
     <section
       id="human-ai"
       ref={containerRef}
-      className="relative mx-8 mt-3000 overflow-hidden rounded-md bg-surface-alt px-600 text-neutral-0 sm:px-800 md:px-1000 xl:px-1200 2xl:p-1000"
+      className="relative mx-2 lg:mx-8 mt-1000 lg:mt-3000 overflow-hidden rounded-md bg-surface-alt px-200 py-500 text-neutral-0 sm:px-800 md:px-1000 xl:px-1200 2xl:p-1000"
     >
       {/* Parallax CSS Grid Layer. `.bg` was a plain classname doing double
           duty as a JS query hook (eslint's tailwindcss plugin flags any

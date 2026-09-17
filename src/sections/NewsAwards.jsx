@@ -37,17 +37,17 @@ export default function NewsAwards() {
   useStaggerReveal(gridRef, { amount: 0.333 });
 
   return (
-    <section id="news-awards" className="px-8">
+    <section id="news-awards" className="mt-1000 lg:mt-0 px-2 lg:px-8">
       <HeadingReveal
         as="h2"
         text={`What's \nHappening`}
-        className="mb-20 font-display text-6xl uppercase leading-none md:text-8xl lg:text-display-h3"
+        className="mb-400 lg:mb-1000 font-display text-6xl uppercase leading-none md:text-8xl lg:text-display-h3"
         />
       {/* headingItemProp="award": these headings are real awards, so each
           one becomes a value of the page-level Organization item's
           `award` property (a plain Text property — see HomePage.jsx for
           where that Organization itemScope starts). */}
-      <div ref={gridRef} className="grid gap-8 md:grid-cols-3">
+      <div ref={gridRef} className="grid gap-1000 lg:gap-8 md:grid-cols-3">
         {awards.map((a) => (
           <Card key={a.heading} {...a} headingItemProp="award" size="med" />
         ))}

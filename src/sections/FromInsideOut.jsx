@@ -69,9 +69,9 @@ const culture = {
 
 export default function FromInsideOut() {
   return (
-    <section id="from-inside-out" className="mt-3000 px-8">
+    <section id="from-inside-out" className="mt-1000 lg:mt-3000 px-2 lg:px-8">
       <div className="grid gap-8 md:grid-cols-2">
-        <div className="flex flex-col gap-2000">
+        <div className="flex flex-col gap-600 lg:gap-2000">
           <HeadingReveal as="h2" className="font-display text-6xl uppercase leading-none md:text-8xl lg:text-display-h3" text={`From the \nInside Out`} />
           {/* Real photographed examples of client work, so these get full
               CreativeWork microdata (name + image), unlike Proof's
@@ -84,7 +84,7 @@ export default function FromInsideOut() {
             imageItemProp="image"
           />
         </div>
-        <div className="flex flex-col gap-2000">
+        <div className="flex flex-col gap-600 lg:gap-2000">
           <Card
             aspect="11/6"
             {...pr}

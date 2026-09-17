@@ -105,9 +105,9 @@ export default function Footer() {
     <footer
       ref={footerRef}
       id="footer"
-      className="mx-8 border-y-2 border-neutral-0 py-20 pb-40"
+      className="mx-2 lg:mx-8 border-y-2 border-neutral-0 py-800 lg:py-20 pb-1000 lg:pb-40"
     >
-      <div className="flex flex-col gap-16 md:flex-row md:justify-between">
+      <div className="flex flex-col gap-800 lg:gap-16 md:flex-row md:justify-between">
         <div className="flex flex-1 flex-col gap-12">
           {/* data-left-reveal index 0 — document order supplies what
               custom={0} used to. */}
@@ -124,7 +124,7 @@ export default function Footer() {
               Organization item two `logo` values, which is valid but
               redundant, so this picks one (Footer's, since this is also
               where the rest of the contact-block microdata lives). */}
-          <DeLogo className="h-[200px] w-2400" itemProp="logo" />
+          <DeLogo className="h-1000 xl:h-[200px] xl:w-2400" itemProp="logo" />
           </div>
 
           <div
@@ -135,7 +135,7 @@ export default function Footer() {
               transform: "translateZ(0)",
             }}
           >
-          <div className="flex flex-col gap-6 font-narrow text-2xl font-light uppercase leading-8">
+          <div className="flex flex-col gap-4 lg:gap-6 font-narrow text-2xl font-light uppercase leading-8">
             <a
               href="mailto:contact@daviselen.com"
               itemProp="email"
@@ -165,7 +165,7 @@ export default function Footer() {
               at this other URL," which wasn't true before. target=_blank +
               rel="noopener noreferrer" added alongside since these now
               genuinely navigate off-site (not needed for a "#" stub). */}
-          <ul className="flex flex-col gap-6">
+          <ul className="flex flex-col gap-4 lg:gap-6">
             {social.map((s) => (
               <li key={s.label}>
                 <a
@@ -192,7 +192,7 @@ export default function Footer() {
             describes) — it was fixed even at the mobile text-4xl (36px)
             size, which blew the gap between city names out of proportion.
             Scaled at the same ratio: 36 * 2.03 ≈ 73px. */}
-        <ul className="flex flex-1 flex-col gap-12 font-display text-4xl uppercase leading-[73px] md:text-[64px] md:leading-[130px]">
+        <ul className="flex flex-1 flex-col gap-4 lg:gap-12 font-display text-4xl uppercase leading-[73px] md:text-[64px] md:leading-[130px]">
           {/* Each office city as its own nested Place item (itemProp
               "location" is repeatable on Organization), rather than plain
               text — real office locations, not invented. */}

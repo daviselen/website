@@ -122,7 +122,7 @@ export default function NavBar({ logoOnly = false }) {
   return (
     <header
       ref={headerRef}
-      className="fixed inset-x-0 top-0 z-50 box-border flex w-auto items-center justify-between bg-surface-default px-4 py-2 uppercase md:px-8 md:py-4"
+      className="fixed inset-x-0 top-0 z-50 box-border flex w-auto items-center justify-between bg-surface-default px-2 lg:px-4 py-2 uppercase md:px-8 md:py-4"
     >
       {/* Every `data-nav-item` below is a flex item of its own container, so
           it is blockified — a bare inline <a> would ignore the intro's
@@ -137,13 +137,13 @@ export default function NavBar({ logoOnly = false }) {
           (h-600, px-6/py-2, text-base) is untouched at md+. */}
       {!logoOnly && (
       <nav className="flex items-center justify-center gap-1 md:gap-6">
-        <Link to="/about" data-nav-item="" className="relative m-0 inline-flex h-400 cursor-pointer items-center justify-center overflow-hidden whitespace-nowrap rounded-full px-3 py-1 font-narrow text-xs font-light leading-none text-neutral-0 will-change-transform before:absolute before:-inset-1 before:block before:translate-y-full before:bg-surface-primary-default before:transition-all before:duration-500 before:ease-in-out hover:before:translate-y-0 md:h-600 md:px-6 md:py-2 md:text-base md:leading-8">
+        <Link to="/about" data-nav-item="" className="relative m-0 inline-flex h-400 cursor-pointer items-center justify-center overflow-hidden whitespace-nowrap rounded-full px-2 py-2 font-narrow text-xs font-light leading-none text-neutral-0 will-change-transform before:absolute before:-inset-1 before:block before:translate-y-full before:bg-surface-primary-default before:transition-all before:duration-500 before:ease-in-out hover:before:translate-y-0 md:h-600 md:px-6 md:py-2 md:text-base md:leading-8">
           <span className="relative">About</span>
         </Link>
-        <Link to="/careers" data-nav-item="" className="relative m-0 inline-flex h-400 cursor-pointer items-center justify-center overflow-hidden whitespace-nowrap rounded-full px-3 py-1 font-narrow text-xs font-light leading-none text-neutral-0 will-change-transform before:absolute before:-inset-1 before:block before:translate-y-full before:bg-surface-primary-default before:transition-all before:duration-500 before:ease-in-out hover:before:translate-y-0 md:h-600 md:px-[25.5px] md:py-[9.5px] md:text-base md:leading-8">
+        <Link to="/careers" data-nav-item="" className="relative m-0 inline-flex h-400 cursor-pointer items-center justify-center overflow-hidden whitespace-nowrap rounded-full px-2 py-2 font-narrow text-xs font-light leading-none text-neutral-0 will-change-transform before:absolute before:-inset-1 before:block before:translate-y-full before:bg-surface-primary-default before:transition-all before:duration-500 before:ease-in-out hover:before:translate-y-0 md:h-600 md:px-[25.5px] md:py-[9.5px] md:text-base md:leading-8">
           <span className="relative">Careers</span>
         </Link>
-        <a href="/contact" data-nav-item="" className="text-neutral-0 relative m-0 inline-flex h-400 cursor-pointer items-center justify-center overflow-hidden whitespace-nowrap rounded-full px-3 py-1 font-narrow text-xs font-light leading-none will-change-transform before:absolute before:-inset-1 before:block before:translate-y-full before:bg-surface-primary-default before:transition-all before:duration-500 before:ease-in-out hover:before:translate-y-0 md:h-600 md:px-[25.5px] md:py-[9.5px] md:text-base md:leading-8">
+        <a href="/contact" data-nav-item="" className="text-neutral-0 relative m-0 inline-flex h-400 cursor-pointer items-center justify-center overflow-hidden whitespace-nowrap rounded-full px-2 py-2 font-narrow text-xs font-light leading-none will-change-transform before:absolute before:-inset-1 before:block before:translate-y-full before:bg-surface-primary-default before:transition-all before:duration-500 before:ease-in-out hover:before:translate-y-0 md:h-600 md:px-[25.5px] md:py-[9.5px] md:text-base md:leading-8">
           <span className="relative">Contact</span>
         </a>
       </nav>

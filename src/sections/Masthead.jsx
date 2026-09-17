@@ -15,7 +15,7 @@ import TextReveal from "../design-system/components/TextReveal";
 // 32px margin on either side from md up.
 export default function Masthead() {
   return (
-    <section id="masthead" className="px-0 md:px-8">
+    <section id="masthead" className="px-2 md:px-8">
       <MastheadVideo
         src="/videos/davis-elen-masthead.mp4"
         className="h-[calc((100vw-83px)*0.5625)] max-h-[1044px] w-full rounded-md object-cover"
@@ -38,7 +38,7 @@ export default function Masthead() {
           doubled the left inset on desktop (md:px-8 + px-8) and added an
           inset on mobile that shouldn't be there at all (image is
           edge-to-edge at that breakpoint; the text was not). */}
-      <div className="mt-2300">
+      <div className="mt-1000 lg:mt-2300">
         {/* itemProp="slogan": real Organization.slogan property, and this
             headline genuinely is the site's tagline — no content=
             override needed since the visible text IS the value. */}
@@ -61,7 +61,7 @@ export default function Masthead() {
           text="Everybody brags about thinking outside the box. Nobody sells anything out there. The box is the budget, the deadline, the strategy somebody already signed off on. That's the room we work in, and it's the room we're good in. Outside the box is a vacation. Inside the box is the job."
           as="p"
           delay={0.75}
-          className="mt-700 font-narrow text-lg font-light md:text-xl lg:pr-[calc(100%-1086px)] lg:text-pre-title"
+          className="mt-600 lg:mt-700 font-narrow text-lg font-light md:text-xl lg:pr-[calc(100%-1086px)] lg:text-pre-title"
         />
       </div>
     </section>
