@@ -323,7 +323,7 @@ export default function PortfolioGrid() {
             padded track cannot wrap seamlessly. */}
         <div
           ref={trackRef}
-          className={`flex flex-col lg:flex-nowrap gap-y-2 gap-x-8 ${animated ? "" : "px-2 lg:px-8"}`}
+          className={`flex flex-col lg:flex-row lg:flex-nowrap gap-y-2 gap-x-8 ${animated ? "" : "px-2 lg:px-8"}`}
           style={{ willChange: "transform" }}
         >
           {Array.from({ length: copies }, (_, copy) =>
