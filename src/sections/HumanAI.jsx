@@ -200,7 +200,7 @@ export default function HumanAI() {
         );
       });
 
-      const bg = containerRef.current?.querySelector(".bg");
+      const bg = containerRef.current?.querySelector("[data-bg]");
       if (!bg) return;
 
       const parent = containerRef.current;
@@ -237,9 +237,14 @@ export default function HumanAI() {
       ref={containerRef}
       className="relative mx-8 mt-3000 overflow-hidden rounded-md bg-surface-alt px-600 text-neutral-0 sm:px-800 md:px-1000 xl:px-1200 2xl:p-1000"
     >
-      {/* Parallax CSS Grid Layer */}
+      {/* Parallax CSS Grid Layer. `.bg` was a plain classname doing double
+          duty as a JS query hook (eslint's tailwindcss plugin flags any
+          non-Tailwind classname); `data-bg` matches the site's existing
+          convention for this exact case (see e.g. HeadingReveal's
+          `data-reveal-line`, NavBarAlt's `data-nav-item`). */}
       <div
-        className="bg pointer-events-none absolute left-0 z-0 w-full"
+        data-bg=""
+        className="pointer-events-none absolute left-0 z-0 w-full"
         style={{
           ...gridBackground,
           height: `${100 + EXTRA_HEIGHT}%`,
