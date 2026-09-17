@@ -1,4 +1,3 @@
-import DeLogo from "../design-system/components/DeLogo.jsx";
 import {
   gsap,
   useGSAP,
@@ -7,7 +6,7 @@ import {
   REVEAL_DURATION,
   LINE_DELAY,
 } from "../design-system/animation.js";
-import { useState, useEffect, useRef } from "react";
+import { useRef } from "react";
 import { Link } from "react-router-dom";
 import DeLogoMorph from "../design-system/components/DeLogoMorph.jsx";
 
