@@ -265,7 +265,7 @@ export default function About() {
     <main
       itemScope
       itemType="https://schema.org/Organization"
-      className="flex min-h-screen flex-col gap-0 bg-surface-default pb-1800 font-narrow font-light text-neutral-0"
+      className="flex min-h-screen flex-col gap-0 bg-surface-default pb-1000 lg:pb-1800 font-narrow font-light text-neutral-0"
     >
       <meta itemProp="name" content="Davis Elen Advertising" />
       <meta itemProp="url" content="https://daviselen.com" />
@@ -273,7 +273,7 @@ export default function About() {
       <section id="top">
         <MastheadImage src="/images/about-masthead.jpg" alt="About Davis Elen Advertising" title={`Inside \nthe Box`} />
         {/* <Picture src="/images/about-masthead.jpg" alt="About Davis Elen Advertising" className="block w-full h-auto rounded-md" /> */}
-        <div className="px-8">
+        <div className="px-2 lg:px-8">
           {/* grid-cols-12 with a fixed col-span-6 was applying at every
               width — on a phone that's a ~150px-wide copy column with every
               word wrapping. Single column below md, real 2-up split at md+
@@ -295,7 +295,7 @@ export default function About() {
         imgAlt="Map of Los Angeles County showing the locations of Toyota dealership, McDonald's restaurant, Best Buy and Smart & Final locations."
         onClick={() => openOverlay(RETAIL_MAP)}
       />
-      <section id="people" className="flex flex-col gap-1000 px-8 pt-1000 md:pt-3000">
+      <section id="people" className="flex flex-col gap-600 lg:gap-1000 px-2 lg:px-8 pt-1000 md:pt-3000">
         <div className="flex flex-col gap-600">
           <HeadingReveal
             className="font-display text-5xl uppercase md:text-7xl lg:text-display-h3"
@@ -307,7 +307,7 @@ export default function About() {
         </div>
         {/* grid-cols-4 at every width put 12 portrait tiles four-across on a
             phone (~80px tiles) — 2-up below md, real 4-up unchanged. */}
-        <div className="grid grid-cols-2 gap-400 md:grid-cols-4">
+        <div className="grid grid-cols-2 gap-100 lg:gap-400 md:grid-cols-4">
           {people.map((person, index) => (
           <div key={index} className="teams-video relative rounded-md bg-surface-alt">
             {person.video ? (
@@ -354,17 +354,17 @@ export default function About() {
         onClick={() => openOverlay(ORIGIN_STORY)}
         opensVideo
       />
-      <section id="clients" className="flex flex-col gap-0 px-8 pt-1000 md:pt-3000">
+      <section id="clients" className="flex flex-col gap-0 px-2 lg:px-8 pt-1000 md:pt-3000">
         <HeadingReveal
           as="h2"
           className="mb-1200 font-display text-5xl uppercase md:text-7xl lg:text-display-h3"
           text={`Client \nExperience`}
         />
-        {/* Full-bleed breakout: the section keeps its px-8 so the heading stays
-            gutter-aligned, and only the rows run edge to edge. -mx-8 is the
-            default-scale 32px negative margin (a real class, unlike -mx-400),
-            so it clears the repo's no-arbitrary-value rule. */}
-        <div className="-mx-8">
+        {/* Full-bleed breakout: the section keeps its px-2/px-8 so the heading
+            stays gutter-aligned, and only the rows run edge to edge. -mx-2/
+            -mx-8 are the matching negative margins (real classes, unlike
+            -mx-400), so it clears the repo's no-arbitrary-value rule. */}
+        <div className="-mx-2 lg:-mx-8">
           <div className="flex flex-col gap-400">
             {CLIENT_ROWS.map((row, index) => (
               <Marquee

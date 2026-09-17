@@ -31,7 +31,7 @@ const sideConfig = {
     measure: "md:pr-1000",
   },
   left: {
-    copy: "md:col-start-8 md:col-end-13 px-400 justify-center",
+    copy: "md:col-start-8 md:col-end-13 px-0 lg:px-400 justify-center",
     image: "md:col-start-1 md:col-end-8",
     measure: "",
   },
@@ -142,13 +142,13 @@ export default function MediaObject({
       // DOM order — `grid-rows-1` + `row-start-1` on both children would
       // otherwise force them into the same cell instead of stacking, and
       // `pt-3000` (240px) was fixed at every width, not just desktop.
-      className={`grid w-full grid-cols-1 gap-400 px-8 pt-1000 text-left md:grid-cols-12 md:grid-rows-1 md:pt-3000 ${
+      className={`grid w-full grid-cols-1 gap-400 px-2 lg:px-8 pt-1000 text-left md:grid-cols-12 md:grid-rows-1 md:pt-3000 ${
         isInteractive
           ? "group focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-300"
           : ""
       }`}
     >
-      <div className={`${side.copy} flex flex-col gap-600 md:row-start-1`}>
+      <div className={`${side.copy} flex flex-col gap-400 lg:gap-600 md:row-start-1`}>
         <HeadingReveal
           as="h2"
           // These titles are sentences ("$18 Billion in Sales from Over 4000

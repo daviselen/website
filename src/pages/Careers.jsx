@@ -43,7 +43,7 @@ export default function Careers() {
     >
       <section id="top">
         <MastheadImage src="/images/careers-masthead.jpg" alt="Get a Job" title={`Get \na Job`} />
-        <div className="px-8">
+        <div className="px-2 lg:px-8">
           <SplitIntro
             gridClassName="lg:grid lg:grid-cols-12 lg:gap-400"
             leftClassName="lg:pr-300 lg:col-span-6 lg:col-start-1"
@@ -56,7 +56,7 @@ export default function Careers() {
       <JobOpenings />
       <section
         id="always_looking"
-        className="mt-1000 flex flex-col gap-1000 px-8 md:mt-3000"
+        className="mt-1000 flex flex-col gap-600 lg:gap-1000 px-2 lg:px-8 md:mt-3000"
       >
         <div className="flex flex-col gap-600">
         <HeadingReveal
@@ -98,7 +98,7 @@ export default function Careers() {
           section's height too. Stacked below md, real 2-up at md+. */}
       <section
         id="culture"
-        className="mt-1000 flex flex-col gap-1000 px-8 md:mt-3000 md:flex-row"
+        className="mt-1000 flex flex-col gap-600 lg:gap-1000 px-2 lg:px-8 md:mt-3000 md:flex-row"
       >
         <div className="flex flex-col gap-600 md:basis-[50%]">
           <HeadingReveal
