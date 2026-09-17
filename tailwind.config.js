@@ -131,7 +131,7 @@ export default {
         "display-h2": ["184px", { lineHeight: "128px" }], // Font/Headings/H2 — Masthead alt
         "display-h3": ["144px", { lineHeight: "104px" }], // Headings/H3 (Scale/2300 + Scale/1600) — section headlines
         "display-h4": ["104px", { lineHeight: "80px" }], // Headings/H4
-        "display-hiai": ["80px", { lineHeight: "64px" }], // "THE HI x AI LOOP"
+        "display-h5": ["80px", { lineHeight: "64px" }], // "THE HI x AI LOOP"
         "display-card": ["64px", { lineHeight: "48px" }], // FootB/heading — portfolio card brand name
         "display-h6": ["56px", { lineHeight: "40px" }],
         "display-stat": ["40px", { lineHeight: "48px" }], // card/heading, det/heading — Proof/News stat headline

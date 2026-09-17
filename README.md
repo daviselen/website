@@ -71,7 +71,7 @@ into this project's conventions. Concrete fixes this caught:
   `text-7xl`) — this was the single biggest source of visual drift, since
   oversized condensed Knockout type is this site's dominant visual
   signature. Added a real `fontSize` scale to `tailwind.config.js`
-  (`display-h1` / `display-h2` / `display-hiai` / `display-card` /
+  (`display-h1` / `display-h2` / `display-h5` / `display-card` /
   `display-stat`) instead of guessing at Tailwind's default steps.
 - **Portfolio cards were structurally wrong.** Text sits ON the image
   (bottom-anchored, over a dark gradient scrim), not below it as a

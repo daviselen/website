@@ -37,14 +37,14 @@ const sideConfig = {
   },
 };
 
-// `default` is Headings/H-hi-ai (80/64 — see the display-hiai token, whose
+// `default` is Headings/H-hi-ai (80/64 — see the display-h5 token, whose
 // own comment corrects the 144/104 this comment used to claim), `large` is
 // Headings/H3 (144/104), the size the standalone section headlines use.
 // Both were the bare desktop token with no mobile/tablet step — same
 // pattern as every other big headline on the site (Masthead.jsx,
 // HumanAI.jsx): small mobile default, real size at `lg`.
 const titleSizes = {
-  default: "text-4xl md:text-6xl lg:text-display-hiai",
+  default: "text-4xl md:text-6xl lg:text-display-h5",
   large: "text-5xl md:text-7xl lg:text-display-h3",
 };
 

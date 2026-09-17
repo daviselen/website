@@ -29,10 +29,18 @@ typography:
     fontFamily: "Knockout 68 Full Featherwt"
     fontSize: 184px
     lineHeight: 128px
-  hiai:
+  h3:
     fontFamily: "Knockout 68 Full Featherwt"
     fontSize: 144px
-    lineHeight: 106px
+    lineHeight: 104px
+  h4:
+    fontFamily: "Knockout 68 Full Featherwt"
+    fontSize: 104px
+    lineHeight: 80px
+  h5:
+    fontFamily: "Knockout 68 Full Featherwt"
+    fontSize: 80px
+    lineHeight: 64px
   card-brand:
     fontFamily: "Knockout 68 Full Featherwt"
     fontSize: 80px
@@ -129,7 +137,7 @@ Two families, never mixed within one text role:
 
 - **Knockout** — display headlines, always uppercase, always one of the
   named sizes below. Ships as separate family-named cuts rather than one
-  family with a weight axis: **Featherwt** (`h1`/`h2`/`hiai`/`card-brand`)
+  family with a weight axis: **Featherwt** (`h1`/`h2`/`h5`/`card-brand`)
   is airier and used for every big headline; **Bantamweight** (`stat`) is
   heavier and reserved for the Proof/News/culture card headlines. Don't
   substitute one cut for the other, and don't reach for a Tailwind default
