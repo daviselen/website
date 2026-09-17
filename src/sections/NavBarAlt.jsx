@@ -23,9 +23,6 @@ import DeLogoMorph from "../design-system/components/DeLogoMorph.jsx";
 //     component, not uniform padding.
 //   - No border: per direct correction, this doesn't have one — an earlier
 //     pass had added a solid 1px #666 (neutral/600) border, which was wrong.
-const WIPE_MS = 600 // must match the clipPath transition duration below
-const HOLD_MS = 5000 // how long the text stays fully visible
-const BLACK_MS = 400 // extra all-black pause after the wipe, before the reveal
 
 // Tallest the header ever renders (logo cell 64px + its own py-4 wrapper +
 // the header's px-8/py-4 padding, rounded up). Both the scroll hide and the
@@ -51,9 +48,6 @@ const DROP_OFFSET = -HEADER_HEIGHT
 // intro/hide animations are untouched — they select `[data-nav-item]`, so
 // they simply have fewer items to stagger.
 export default function NavBar({ logoOnly = false }) {
-  const [index, setIndex] = useState(0)
-  const [visible, setVisible] = useState(true)
-
   const headerRef = useRef(null)
 
   // One-shot intro: every header item drops into place from above, in DOM
