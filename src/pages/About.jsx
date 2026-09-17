@@ -330,7 +330,7 @@ export default function About() {
               <Picture className="flex aspect-[16/9] h-auto w-full items-center justify-center rounded-md" src={person.img.src} alt={person.name} />
             )}
             {person.video ? (
-              <span className="tracking-200 absolute bottom-100 left-100 flex gap-[6px] rounded-[3px] bg-neutral-1000/50 px-100 text-[12px] tracking-[0.03em]">
+              <span className="absolute bottom-100 left-100 flex gap-[6px] rounded-[3px] bg-neutral-1000/50 px-100 text-[12px] tracking-[0.03em]">
                 <span className="py-100">{person.name}</span>
                 <img src="/icons/teams-mic.svg" />
               </span>
