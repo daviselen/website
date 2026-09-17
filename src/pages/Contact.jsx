@@ -2,7 +2,18 @@ import MastheadImage from "../design-system/components/MastheadImage";
 import HeadingReveal from "../design-system/components/HeadingReveal";
 import TextReveal from "../design-system/components/TextReveal";
 import CTABanner from "../sections/CTABanner.jsx";
+import { Field } from "@headlessui/react";
 import StyledField from "../design-system/components/Field";
+import StyledLabel from "../design-system/components/Label.jsx";
+import StyledCombobox from "../design-system/components/Combobox.jsx";
+
+const topics = [
+  { id: 1, name: 'New Business Inquiry' },
+  { id: 2, name: 'Public Relations' },
+  { id: 3, name: 'Media Planning' },
+  { id: 4, name: 'Media Buying' },
+  { id: 5, name: 'Careers' },
+]
 
 // NavBar and Footer are not rendered here: Layout.jsx already mounts both
 // around every route, and its wrapper supplies the page background, the
@@ -50,6 +61,15 @@ export default function Contact() {
         <StyledField type="text" label="Name" />
         <StyledField type="tel" label="Phone" />
         <StyledField type="email" label="E-mail" />
+        <Field className="flex flex-col gap-2">
+          <StyledLabel className="text-xs font-semibold uppercase tracking-widest text-neutral-400">
+            Subject
+          </StyledLabel>
+          
+          <StyledCombobox
+            options={topics}
+          />
+        </Field>
       </section>
     </main>
   );
