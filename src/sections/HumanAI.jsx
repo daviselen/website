@@ -94,6 +94,7 @@
 // wasn't part of what was asked; simplified to "visible, stacked below
 // the text" until it goes side-by-side at `lg`.
 import { useRef } from "react";
+import HumanAIAnimation from "../components/HumanAIAnimation.jsx";
 import {
   gsap,
   useGSAP,
@@ -311,11 +312,12 @@ export default function HumanAI() {
             Paired with lg:shrink-0 instead of the old lg:flex-1 — an
             explicit width and flex-grow/shrink fighting each other would
             make the real number here meaningless. */}
-        <img
+        {/* <img
           src="/images/chart.svg"
           alt="Unlock your potential. Human Imagination and Artificial Intelligence synergize to eliminate roadblocks and unlock what's possible. Let robots do the work!"
           className="mx-auto mt-16 block w-full max-w-md lg:mx-0 lg:mt-0 lg:w-[39.655vw] lg:max-w-none lg:shrink-0"
-        />
+        /> */}
+        <HumanAIAnimation />
       </div>
     </section>
   );
