@@ -332,7 +332,7 @@ export default function About() {
             {person.video ? (
               <span className="absolute bottom-100 left-100 flex gap-[6px] rounded-[3px] bg-neutral-1000/50 px-100 text-[12px] tracking-[0.03em]">
                 <span className="py-100">{person.name}</span>
-                <img src="/icons/teams-mic.svg" />
+                <img src="/icons/teams-mic.svg" alt="" />
               </span>
             ) : (
               <></>
