@@ -151,7 +151,7 @@ export default function NavBar({ logoOnly = false }) {
       {!logoOnly && (
       <div className="flex flex-1 items-center justify-end py-2 md:py-4">
         <button data-nav-item="" className="overflow-hidden whitespace-nowrap rounded-full border-[1.5px] border-neutral-0 px-3 py-1 font-narrow text-xs font-light uppercase leading-none text-neutral-0 transition-colors duration-500 will-change-transform before:absolute before:-inset-1 before:block before:translate-y-full before:bg-surface-primary-default before:transition-all before:duration-300 before:ease-in-out hover:border-surface-primary-default hover:before:translate-y-0 md:px-6 md:py-2 md:text-base md:leading-8">
-          <span className="relative">Let's Chat</span>
+          <span className="relative">Let&apos;s Chat</span>
         </button>
       </div>
       )}
