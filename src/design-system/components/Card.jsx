@@ -86,6 +86,7 @@ export default function Card({
   itemType,
   headingItemProp,
   imageItemProp,
+  parallax = false,
 }) {
   const cfg = sizeConfig[size] ?? sizeConfig.default;
   const aspectKey = aspect ?? cfg.aspect;
@@ -95,7 +96,7 @@ export default function Card({
 
   useGSAP(
     () => {
-      if (!imageRef.current || !containerRef.current) return;
+      if (!parallax || !imageRef.current || !containerRef.current) return;
 
       // Parallax animation
       gsap.fromTo(
@@ -113,7 +114,7 @@ export default function Card({
         }
       );
     },
-    { scope: containerRef }
+    { scope: containerRef, dependencies: [parallax] }
   );
   // The `variants` prop is gone. It only existed so motion could propagate a
   // parent's staggerChildren state into this component; GSAP has no
@@ -126,7 +127,7 @@ export default function Card({
   return (
     <div
     ref={containerRef}
-      className={`flex flex-col will-change-transform ${cfg.gap}`}
+      className={`flex flex-col ${parallax ? "will-change-transform" : ""} ${cfg.gap}`}
       {...(itemType ? { itemScope: true, itemType } : {})}
     >
       {/* Wrapper with overflow-hidden so the scaled/moving image stays inside bounds */}

@@ -49,7 +49,7 @@ export default function NewsAwards() {
           where that Organization itemScope starts). */}
       <div ref={gridRef} className="grid gap-8 md:grid-cols-3">
         {awards.map((a) => (
-          <Card key={a.heading} {...a} headingItemProp="award" size="small" />
+          <Card key={a.heading} {...a} headingItemProp="award" size="med" />
         ))}
       </div>
     </section>

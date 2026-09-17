@@ -46,7 +46,7 @@ export default function Proof() {
       className="grid gap-8 px-8 pb-0 pt-3000 md:grid-cols-3"
     >
       {stats.map((s) => (
-        <Card key={s.heading} {...s} size="small" />
+        <Card key={s.heading} {...s} size="small" parallax="true" />
       ))}
     </section>
   );
