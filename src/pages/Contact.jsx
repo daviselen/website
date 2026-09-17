@@ -58,18 +58,20 @@ export default function Contact() {
           text={`Locations`}
           className="font-display text-5xl uppercase leading-none md:text-7xl lg:text-display-h2"
         />
-        <StyledField type="text" label="Name" />
-        <StyledField type="tel" label="Phone" />
-        <StyledField type="email" label="E-mail" />
-        <Field className="flex flex-col gap-2">
-          <StyledLabel className="text-xs font-semibold uppercase tracking-widest text-neutral-400">
-            Subject
-          </StyledLabel>
-          
-          <StyledCombobox
-            options={topics}
-          />
+        <form className="flex flex-col gap-600">
+          <StyledField type="text" label="Name" />
+          <StyledField type="tel" label="Phone" />
+          <StyledField type="email" label="E-mail" />
+          <Field className="flex flex-col gap-2">
+            <StyledLabel className="text-xs font-semibold uppercase tracking-widest text-neutral-400">
+              Subject
+            </StyledLabel>
+            
+            <StyledCombobox
+              options={topics}
+            />
         </Field>
+        </form>
       </section>
     </main>
   );
