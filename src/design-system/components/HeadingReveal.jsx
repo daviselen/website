@@ -214,7 +214,7 @@ function RevealLine({ children }) {
         // class because eslint's tailwindcss plugin errors on any classname
         // it doesn't recognize, and this is a JS hook, not styling.
         data-reveal-line=""
-        className="block w-full pt-[0.0125em] pb-[0.02em]"
+        className="block w-full pb-[0.02em] pt-[0.0125em]"
         style={{
           clipPath: "inset(100% 0 0 0)",
           willChange: "clip-path",

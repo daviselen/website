@@ -39,7 +39,7 @@ const benefits = [
 export default function Careers() {
   return (
     <main
-      className="min-h-screen bg-surface-default pb-1800 font-narrow font-light text-neutral-0 flex flex-col gap-0"
+      className="flex min-h-screen flex-col gap-0 bg-surface-default pb-1800 font-narrow font-light text-neutral-0"
     >
       <section id="top">
         <MastheadImage src="/images/careers-masthead.jpg" alt="Get a Job" title={`Get \na Job`} />
@@ -56,15 +56,15 @@ export default function Careers() {
       <JobOpenings />
       <section
         id="always_looking"
-        className="flex flex-col gap-1000 px-8 mt-1000 md:mt-3000"
+        className="mt-1000 flex flex-col gap-1000 px-8 md:mt-3000"
       >
         <div className="flex flex-col gap-600">
         <HeadingReveal
           as="h3"
           text={`Always \nLooking`}
-          className="font-display text-5xl md:text-7xl lg:text-display-h3 uppercase leading-none"
+          className="font-display text-5xl uppercase leading-none md:text-7xl lg:text-display-h3"
         />
-        <TextReveal className="text-lg md:text-xl lg:text-pre-title max-w-prose"
+        <TextReveal className="max-w-prose text-lg md:text-xl lg:text-pre-title"
           text="These aren't posted because they're open. They're posted because we'll always make time for someone good."
         />
         </div>
@@ -75,16 +75,16 @@ export default function Careers() {
               href={job.href}
               linkClassName="flex flex-col gap-100 pt-600 pb-800 hover:text-primary-300 transition-colors md:flex-row md:items-baseline md:justify-between md:gap-400"
             >
-              <JobPositionField value={job.title} className="flex flex-col gap-200 md:basis-[calc(100%-46rem)] px-600" />
+              <JobPositionField value={job.title} className="flex flex-col gap-200 px-600 md:basis-[calc(100%-46rem)]" />
               <JobMetaField
                 label="Group"
                 value={<span className="inline-block">Creative</span>}
-                className="flex flex-col gap-200 md:basis-[20rem] px-600"
+                className="flex flex-col gap-200 px-600 md:basis-80"
               />
               <JobMetaField
                 label="Location"
                 value={<span className="inline-block">Los Angeles, <abbr title="California">CA</abbr></span>}
-                className="flex flex-col gap-200 md:basis-[26rem] px-600"
+                className="flex flex-col gap-200 px-600 md:basis-[26rem]"
               />
             </JobRow>
           ))}
@@ -98,17 +98,17 @@ export default function Careers() {
           section's height too. Stacked below md, real 2-up at md+. */}
       <section
         id="culture"
-        className="flex flex-col md:flex-row gap-1000 px-8 mt-1000 md:mt-3000"
+        className="mt-1000 flex flex-col gap-1000 px-8 md:mt-3000 md:flex-row"
       >
         <div className="flex flex-col gap-600 md:basis-[50%]">
           <HeadingReveal
             as="h3"
             text={`Live your \nbest life`}
-            className="font-display text-5xl md:text-7xl lg:text-display-h3 uppercase leading-none"
+            className="font-display text-5xl uppercase leading-none md:text-7xl lg:text-display-h3"
           />
           <div>
             <TextReveal
-              className="text-lg md:text-xl lg:text-pre-title mb-300 pr-600"
+              className="mb-300 pr-600 text-lg md:text-xl lg:text-pre-title"
               text="Work matters. So does the rest of your life. We put real money behind that:"
             />
             {/* <ListMaskReveal
@@ -116,7 +116,7 @@ export default function Careers() {
               barColor="#ff3366"
               className="text-pre-title list-[square] pl-200"
             /> */}
-            <ul className="text-lg md:text-xl lg:text-pre-title list-[square] list-outside pl-600">
+            <ul className="list-outside list-[square] pl-600 text-lg md:text-xl lg:text-pre-title">
               {benefits.map((benefit) => (
                 <li key={benefit} className="mb-300">{benefit}</li>
               ))}
@@ -131,14 +131,14 @@ export default function Careers() {
             <HeadingReveal
               as="h3"
               text={`Hang with the \nbest people`}
-              className="font-display text-5xl md:text-7xl lg:text-display-h3 uppercase leading-none"
+              className="font-display text-5xl uppercase leading-none md:text-7xl lg:text-display-h3"
             />
             <TextReveal
-              className="text-lg md:text-xl lg:text-pre-title pr-600"
+              className="pr-600 text-lg md:text-xl lg:text-pre-title"
               text="Never work under someone who isn't better than you. That's the standard we hire against, and it's why the room is worth showing up to. Davis Elen's work and culture thrive on diversity and we're proud to be an equal opportunity employer."
             />
             <TextReveal
-              className="text-lg md:text-xl lg:text-pre-title pr-600"
+              className="pr-600 text-lg md:text-xl lg:text-pre-title"
               text="All individuals seeking employment at Davis Elen are considered without regard to race, color, religion, national origin, age, sex, marital status, ancestry, physical or mental disability, veteran status, gender identity, sexual orientation, or any other legally protected characteristic."
             />
           </div>

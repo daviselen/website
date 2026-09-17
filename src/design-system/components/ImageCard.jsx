@@ -20,7 +20,6 @@ export default function ProjectCard({ title, client, src, videoSrc, startColumn2
   const maskRef = useRef(null);
 
     const videoRef = useRef(null);
-    const [isHovered, setIsHovered] = useState(false);
     const [isRevealed, setIsRevealed] = useState(false);
 
     // isRevealed gates whether the caption children RENDER at all (see note
@@ -66,14 +65,12 @@ export default function ProjectCard({ title, client, src, videoSrc, startColumn2
     );
 
     const handleMouseEnter = () => {
-        setIsHovered(true);
         videoRef.current?.play().catch((error) => {
             console.warn("Autoplay blocked:", error);
         });
     };
 
     const handleMouseLeave = () => {
-        setIsHovered(false);
         if (videoSrc && videoRef.current) {
           videoRef.current.pause();
           videoRef.current.currentTime = 0; // Resets video back to 0:00 frame
@@ -88,7 +85,7 @@ export default function ProjectCard({ title, client, src, videoSrc, startColumn2
         itemScope={decorative ? undefined : true}
         itemType={decorative ? undefined : "https://schema.org/CreativeWork"}
         aria-hidden={decorative ? "true" : undefined}
-        className={`relative aspect-[8/9] basis-[32rem] grow shrink-0 transition-all ease-in-out w-full overflow-hidden rounded-md break-inside-avoid ${
+        className={`relative aspect-[8/9] w-full shrink-0 grow basis-[32rem] break-inside-avoid overflow-hidden rounded-md transition-all ease-in-out ${
           startColumn2 ? "break-before-column" : ""
         }`}
       >
@@ -108,7 +105,7 @@ export default function ProjectCard({ title, client, src, videoSrc, startColumn2
           // 3. The mask element the timeline above drives. Its hidden state is
           // inline so it's correct on first paint, before GSAP runs.
           ref={maskRef}
-          className="relative h-full w-full overflow-hidden rounded-md"
+          className="relative size-full overflow-hidden rounded-md"
           style={{ clipPath: CARD_HIDDEN, willChange: "clip-path" }}
         >
         {videoSrc ? (
@@ -119,7 +116,7 @@ export default function ProjectCard({ title, client, src, videoSrc, startColumn2
                 playsInline
                 preload="auto"
                 itemProp={decorative ? undefined : "image"}
-                className={`absolute inset-0 h-full w-full min-w-full min-h-full max-w-none object-cover`}
+                className={`absolute inset-0 size-full min-h-full min-w-full max-w-none object-cover`}
             >
               <source src={videoSrc.webm} type="video/webm" />
               <source src={videoSrc.mp4} type="video/mp4" />
@@ -129,7 +126,7 @@ export default function ProjectCard({ title, client, src, videoSrc, startColumn2
             src={src}
             alt={decorative ? "" : `${title} — ${client} project photo`}
             itemProp={decorative ? undefined : "image"}
-            className={`absolute inset-0 h-full w-full object-cover`}
+            className={`absolute inset-0 size-full object-cover`}
           />
         )}
         {/* Corrected per direct confirmation (I can't see the actual Figma
@@ -160,7 +157,7 @@ export default function ProjectCard({ title, client, src, videoSrc, startColumn2
             same mechanism rather than debugging the Tailwind JIT/purge
             pipeline blind. */}
         <div
-          className="absolute inset-0 pointer-events-none chrome-gradient-adjust"
+          className="chrome-gradient-adjust pointer-events-none absolute inset-0"
           style={{ backgroundImage: "linear-gradient(195deg, transparent 60%, black 130%)" }}
         />
         <div className="absolute inset-x-8 bottom-8 flex flex-col gap-300 text-neutral-0">
@@ -171,7 +168,7 @@ export default function ProjectCard({ title, client, src, videoSrc, startColumn2
             <>
               <TextReveal
                 itemProp={decorative ? undefined : "name"}
-                className="font-narrow font-light text-base leading-6 md:text-2xl md:leading-8"
+                className="font-narrow text-base font-light leading-6 md:text-2xl md:leading-8"
                 text={title}
                 // playOnMount: the text mounts only after the card's clip-path
                 // reveal finishes (isRevealed gate), so by definition the card

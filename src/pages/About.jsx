@@ -265,7 +265,7 @@ export default function About() {
     <main
       itemScope
       itemType="https://schema.org/Organization"
-      className="min-h-screen bg-surface-default pb-1800 font-narrow font-light text-neutral-0 flex flex-col gap-0"
+      className="flex min-h-screen flex-col gap-0 bg-surface-default pb-1800 font-narrow font-light text-neutral-0"
     >
       <meta itemProp="name" content="Davis Elen Advertising" />
       <meta itemProp="url" content="https://daviselen.com" />
@@ -295,19 +295,19 @@ export default function About() {
         imgAlt="Map of Los Angeles County showing the locations of Toyota dealership, McDonald's restaurant, Best Buy and Smart & Final locations."
         onClick={() => openOverlay(RETAIL_MAP)}
       />
-      <section id="people" className="pt-1000 md:pt-3000 px-8 flex flex-col gap-1000">
+      <section id="people" className="flex flex-col gap-1000 px-8 pt-1000 md:pt-3000">
         <HeadingReveal
-          className="text-5xl md:text-7xl lg:text-display-h3 font-display uppercase"
+          className="font-display text-5xl uppercase md:text-7xl lg:text-display-h3"
           text={`Let’s \nMeet Up`}
         />
-        <TextReveal className="text-lg md:text-xl lg:text-pre-title max-w-prose"
+        <TextReveal className="max-w-prose text-lg md:text-xl lg:text-pre-title"
           text="This is the whole meeting. No account person you'll never see again, no bench of strangers who vanish after the pitch. The people in the room are the people who do the work."
         />
         {/* grid-cols-4 at every width put 12 portrait tiles four-across on a
             phone (~80px tiles) — 2-up below md, real 4-up unchanged. */}
         <div className="grid grid-cols-2 gap-400 md:grid-cols-4">
           {people.map((person, index) => (
-          <div key={index} className="teams-video bg-surface-alt relative rounded-md">
+          <div key={index} className="teams-video relative rounded-md bg-surface-alt">
             {person.video ? (
               // autoPlay + loop + muted + playsInline is the same background
               // -video contract as MastheadVideo: muted is what makes autoplay
@@ -327,11 +327,11 @@ export default function About() {
                 <source src={person.video.mp4} type="video/mp4" />
               </video>
             ) : (
-              <Picture className="h-auto w-full aspect-[16/9] flex justify-center items-center rounded-md" src={person.img.src} alt={person.name} />
+              <Picture className="flex aspect-[16/9] h-auto w-full items-center justify-center rounded-md" src={person.img.src} alt={person.name} />
             )}
             {person.video ? (
-              <span className="absolute bottom-100 left-100 flex gap-[6px] bg-neutral-1000/50 text-[12px] tracking-200 tracking-[0.03em] px-[8px] rounded-[3px]">
-                <span className="py-[8px]">{person.name}</span>
+              <span className="tracking-200 absolute bottom-100 left-100 flex gap-[6px] rounded-[3px] bg-neutral-1000/50 px-100 text-[12px] tracking-[0.03em]">
+                <span className="py-100">{person.name}</span>
                 <img src="/icons/teams-mic.svg" />
               </span>
             ) : (
@@ -352,10 +352,10 @@ export default function About() {
         onClick={() => openOverlay(ORIGIN_STORY)}
         opensVideo
       />
-      <section id="clients" className="pt-1000 md:pt-3000 px-8 flex flex-col gap-0">
+      <section id="clients" className="flex flex-col gap-0 px-8 pt-1000 md:pt-3000">
         <HeadingReveal
           as="h2"
-          className="text-5xl md:text-7xl lg:text-display-h3 font-display uppercase mb-1200"
+          className="mb-1200 font-display text-5xl uppercase md:text-7xl lg:text-display-h3"
           text={`Client \nExperience`}
         />
         {/* Full-bleed breakout: the section keeps its px-8 so the heading stays

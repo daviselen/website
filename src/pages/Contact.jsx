@@ -16,7 +16,7 @@ import StyledField from "../design-system/components/Field";
 export default function Contact() {
   return (
     <main
-      className="min-h-screen bg-surface-default pb-1800 font-narrow font-light text-neutral-0 flex flex-col gap-0"
+      className="flex min-h-screen flex-col gap-0 bg-surface-default pb-1800 font-narrow font-light text-neutral-0"
     >
       <section id="top">
         <MastheadImage src="/images/contact-masthead.jpg" alt="Contact Davis Elen Advertising" title={`Open \nthe \nBox`} />
@@ -25,10 +25,10 @@ export default function Contact() {
             <HeadingReveal
               as="h2"
               text={`Find out \nwhat’s inside`}
-              className="lg:col-span-6 lg:col-start-7 font-display text-5xl md:text-7xl lg:text-display-h3 uppercase mb-100"
+              className="mb-100 font-display text-5xl uppercase md:text-7xl lg:col-span-6 lg:col-start-7 lg:text-display-h3"
             />
             <div className="lg:col-span-6 lg:col-start-7 lg:pr-600">
-              <TextReveal className="text-3xl md:text-5xl lg:text-display-stat mb-300"
+              <TextReveal className="mb-300 text-3xl md:text-5xl lg:text-display-stat"
                 text="contact@daviselen.com"
               />
               <TextReveal className="text-3xl md:text-5xl lg:text-display-stat"
@@ -40,12 +40,12 @@ export default function Contact() {
       </section>
       <section
         id="locations"
-        className="flex flex-col gap-1000 px-8 mt-1000 md:mt-3000"
+        className="mt-1000 flex flex-col gap-1000 px-8 md:mt-3000"
       >
         <HeadingReveal
           as="h2"
           text={`Locations`}
-          className="font-display text-5xl md:text-7xl lg:text-display-h2 uppercase leading-none"
+          className="font-display text-5xl uppercase leading-none md:text-7xl lg:text-display-h2"
         />
         <StyledField type="text" label="Name" />
         <StyledField type="tel" label="Phone" />

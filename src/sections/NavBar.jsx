@@ -102,7 +102,7 @@ export default function NavBar() {
   return (
     <header
       ref={headerRef}
-      className="flex items-end justify-between bg-surface-default px-8 py-4 uppercase fixed top-0 left-0 right-0 z-50"
+      className="fixed inset-x-0 top-0 z-50 flex items-end justify-between bg-surface-default px-8 py-4 uppercase"
     >
       <div className="flex flex-1 items-center py-4">
         {/* content="1948" overrides the machine-readable value for
@@ -112,7 +112,7 @@ export default function NavBar() {
         <span
           itemProp="foundingDate"
           content="1925"
-          className="relative inline-block overflow-hidden font-narrow font-light text-[18px] leading-[13px] mb-[0.075em] text-neutral-0"
+          className="relative mb-[0.075em] inline-block overflow-hidden font-narrow text-[18px] font-light leading-[13px] text-neutral-0"
         >
           {/* Single line whose clip edge sweeps horizontally: visible ->
               hidden wipes out right-to-left (right inset 0 -> 100%); the text
@@ -136,17 +136,17 @@ export default function NavBar() {
         </Link>
       </div>
       <nav className="flex flex-1 items-center justify-end gap-6">
-        <Link to="/about" className="px-4 pb-4 pt-8 font-narrow font-light text-[18px] leading-8 text-neutral-0 hover:text-primary-300">
+        <Link to="/about" className="px-4 pb-4 pt-8 font-narrow text-[18px] font-light leading-8 text-neutral-0 hover:text-primary-300">
           About
         </Link>
         {/* Was a dead <a href="#careers"> pointing at an anchor that has
             never existed on any page. Now a real route. Classes and label are
             byte-identical to the old anchor, so the rendered <a href> differs
             only in its href — design-diff should show zero pixel change. */}
-        <Link to="/careers" className="px-4 pb-4 pt-8 font-narrow font-light text-[18px] leading-8 text-neutral-0 hover:text-primary-300">
+        <Link to="/careers" className="px-4 pb-4 pt-8 font-narrow text-[18px] font-light leading-8 text-neutral-0 hover:text-primary-300">
           Careers
         </Link>
-        <a href="#contact" className="px-4 pb-4 pt-8 font-narrow font-light text-[18px] leading-8 text-neutral-0 hover:text-primary-300">
+        <a href="#contact" className="px-4 pb-4 pt-8 font-narrow text-[18px] font-light leading-8 text-neutral-0 hover:text-primary-300">
           Contact
         </a>
       </nav>

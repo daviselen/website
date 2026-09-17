@@ -39,7 +39,7 @@
 // template-string class name) because Tailwind's JIT scanner needs the literal
 // class text present in a source file — an interpolated `aspect-[${x}]` /
 // `gap-[${n}]` wouldn't reliably get picked up.
-import React, { useRef } from "react";
+import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -146,7 +146,7 @@ export default function Card({
         >
           <HorizontalReveal>{heading}</HorizontalReveal>
         </h3>
-        <p className="font-narrow font-light text-lg leading-relaxed md:text-2xl md:leading-8"><TextReveal text={body}>{body}</TextReveal></p>
+        <p className="font-narrow text-lg font-light leading-relaxed md:text-2xl md:leading-8"><TextReveal text={body}>{body}</TextReveal></p>
       </div>
     </div>
   );

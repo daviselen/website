@@ -105,7 +105,7 @@ export default function Footer() {
     <footer
       ref={footerRef}
       id="footer"
-      className="border-y-2 border-neutral-0 mx-8 py-20 pb-40"
+      className="mx-8 border-y-2 border-neutral-0 py-20 pb-40"
     >
       <div className="flex flex-col gap-16 md:flex-row md:justify-between">
         <div className="flex flex-1 flex-col gap-12">
@@ -124,7 +124,7 @@ export default function Footer() {
               Organization item two `logo` values, which is valid but
               redundant, so this picks one (Footer's, since this is also
               where the rest of the contact-block microdata lives). */}
-          <DeLogo className="h-[200px] w-[192px]" itemProp="logo" />
+          <DeLogo className="h-[200px] w-2400" itemProp="logo" />
           </div>
 
           <div
@@ -135,7 +135,7 @@ export default function Footer() {
               transform: "translateZ(0)",
             }}
           >
-          <div className="flex flex-col gap-6 font-narrow font-light text-2xl uppercase leading-8">
+          <div className="flex flex-col gap-6 font-narrow text-2xl font-light uppercase leading-8">
             <a
               href="mailto:contact@daviselen.com"
               itemProp="email"
@@ -173,7 +173,7 @@ export default function Footer() {
                   itemProp="sameAs"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-narrow font-light text-link-social uppercase hover:text-primary-300"
+                  className="font-narrow text-link-social font-light uppercase hover:text-primary-300"
                 >
                   <span style={{
                     display: "block",

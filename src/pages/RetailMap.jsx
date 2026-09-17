@@ -235,8 +235,8 @@ export default function RetailMap({ className = "mx-8" }) {
 
     if (!MAPBOX_TOKEN) {
       return (
-        <div className="mx-8 p-6 bg-red-50 border border-red-200 rounded-md text-red-700">
-          <h3 className="text-lg font-semibold mb-1">Map Configuration Error</h3>
+        <div className="bg-red-50 border-red-200 text-red-700 mx-8 rounded-md border p-6">
+          <h3 className="mb-1 text-lg font-semibold">Map Configuration Error</h3>
           <p className="text-sm">
             Mapbox token is missing. Please configure <code>VITE_MAPBOX_TOKEN</code> in your environment variables.
           </p>
@@ -266,7 +266,7 @@ export default function RetailMap({ className = "mx-8" }) {
           ))}
         </div>
   
-        <div className={`${styles['map-wrap']} rounded-l-md overflow-hidden`}>
+        <div className={`${styles['map-wrap']} overflow-hidden rounded-l-md`}>
           <div id="map" className={`${styles.map}`} ref={containerRef} />
           <div id="zoom" className={styles.zoom}>
             {ZOOMS.map((z) => (

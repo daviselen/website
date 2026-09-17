@@ -68,12 +68,12 @@ export default function ListMaskReveal({
           {/* Masking Rectangle */}
           <span
             data-reveal-bar
-            className={`absolute inset-0 z-10 pointer-events-none scale-x-0 origin-left ${barClassName}`}
+            className={`pointer-events-none absolute inset-0 z-10 origin-left scale-x-0 ${barClassName}`}
             aria-hidden="true"
           />
           <div className="flex items-center gap-6">
             {/* Square Bullet */}
-            <span className="h-3 w-3 bg-current shrink-0" role="none" />
+            <span className="size-3 shrink-0 bg-current" role="none" />
             {/* Text Content */}
             <span data-reveal-text className="relative z-0 opacity-0" style={{paddingBlockStart: "0.075em", paddingBlockEnd: "0.1625em"}}>
               {renderItem ? renderItem(item, index) : item}

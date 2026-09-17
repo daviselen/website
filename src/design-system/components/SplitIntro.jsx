@@ -16,8 +16,8 @@ export default function SplitIntro({
 }) {
   return (
     <div className={gridClassName}>
-      <TextReveal className={`text-lg md:text-xl lg:text-pre-title mb-6 ${leftClassName}`} text={left} />
-      <TextReveal className={`text-lg md:text-xl lg:text-pre-title mb-6 ${rightClassName}`} text={right} />
+      <TextReveal className={`mb-6 text-lg md:text-xl lg:text-pre-title ${leftClassName}`} text={left} />
+      <TextReveal className={`mb-6 text-lg md:text-xl lg:text-pre-title ${rightClassName}`} text={right} />
     </div>
   );
 }

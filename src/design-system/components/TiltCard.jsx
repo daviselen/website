@@ -174,7 +174,7 @@ const aspectClasses = {
       <div ref={wrapRef} style={{ perspective: 1000 }}>
         <div
             ref={cardRef}
-            className={`flex flex-col ${cfg.gap} relative transform-3d will-change-transform`}
+            className={`flex flex-col ${cfg.gap} transform-3d relative will-change-transform`}
             {...(itemType ? { itemScope: true, itemType } : {})}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
@@ -206,13 +206,13 @@ const aspectClasses = {
                 transformStyle: "preserve-3d" 
               }}>
             <h3
-                className="font-stat text-3xl uppercase leading-none md:text-5xl lg:text-display-stat drop-shadow-md"
+                className="font-stat text-3xl uppercase leading-none drop-shadow-md md:text-5xl lg:text-display-stat"
                 {...(headingItemProp ? { itemProp: headingItemProp } : {})}
                 style={{ transform: "translateZ(10px)" }}
             >
                 {heading}
             </h3>
-            <p className="font-narrow font-light text-lg leading-relaxed md:text-2xl md:leading-8 drop-shadow-sm">{body}</p>
+            <p className="font-narrow text-lg font-light leading-relaxed drop-shadow-sm md:text-2xl md:leading-8">{body}</p>
             </div>
         </div>
       </div>

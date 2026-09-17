@@ -4,7 +4,7 @@ import HeadingReveal from "../design-system/components/HeadingReveal.jsx";
 
 export default function CTABanner() {
   return (
-    <section id="cta-banner" className="flex flex-col items-start gap-16 px-8 pt-3000 pb-2000">
+    <section id="cta-banner" className="flex flex-col items-start gap-16 px-8 pb-2000 pt-3000">
       <HeadingReveal
         as="h2"
         text={`Let’s Look \nInside the Box`}

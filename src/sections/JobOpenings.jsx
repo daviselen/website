@@ -136,12 +136,12 @@ export default function JobOpenings() {
     <section
       id="job-openings"
       data-status={status}
-      className="flex flex-col gap-1000 px-8 mt-1000 md:mt-3000"
+      className="mt-1000 flex flex-col gap-1000 px-8 md:mt-3000"
     >
       <HeadingReveal
         as="h2"
         text={`Open \nPositions`}
-        className="font-display text-5xl md:text-7xl lg:text-display-h3 uppercase leading-none"
+        className="font-display text-5xl uppercase leading-none md:text-7xl lg:text-display-h3"
       />
 
       {openings.length === 0 ? (

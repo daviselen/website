@@ -235,11 +235,11 @@ export default function HumanAI() {
     <section
       id="human-ai"
       ref={containerRef}
-      className="relative mx-8 rounded-md bg-surface-alt px-600 sm:px-800 md:px-1000 xl:px-1200 2xl:px-1000 2xl:py-1000 text-neutral-0 mt-3000 overflow-hidden"
+      className="relative mx-8 mt-3000 overflow-hidden rounded-md bg-surface-alt px-600 text-neutral-0 sm:px-800 md:px-1000 xl:px-1200 2xl:p-1000"
     >
       {/* Parallax CSS Grid Layer */}
       <div
-        className="bg absolute left-0 w-full pointer-events-none z-0"
+        className="bg pointer-events-none absolute left-0 z-0 w-full"
         style={{
           ...gridBackground,
           height: `${100 + EXTRA_HEIGHT}%`,
@@ -269,7 +269,7 @@ export default function HumanAI() {
             className="font-display text-4xl uppercase leading-none md:text-6xl lg:text-display-h4"
             style={REVEAL_START_STYLE}
           >
-            THE <abbr title="Human Imagination">H<span className="tracking-[0.08em]">I</span></abbr><span className="tracking-[0.1em] lowercase">x</span><abbr title="Artificial Intelligence">AI</abbr> Loop
+            THE <abbr title="Human Imagination">H<span className="tracking-[0.08em]">I</span></abbr><span className="lowercase tracking-widest">x</span><abbr title="Artificial Intelligence">AI</abbr> Loop
           </h2>
 
           <ul className="mt-600 flex flex-col gap-400">
@@ -288,7 +288,7 @@ export default function HumanAI() {
                     {c.title}
                   </h3>
                 </div>
-                <p className="font-narrow font-light text-xl leading-tight md:text-2xl lg:text-body-hiai max-w-[42ch]">
+                <p className="max-w-[42ch] font-narrow text-xl font-light leading-tight md:text-2xl lg:text-body-hiai">
                   {c.copy}
                 </p>
               </li>

@@ -52,7 +52,7 @@ export default function MastheadImage({
   useMediaReveal(wrapRef, { maskRef, mediaRef: imgRef, loaded });
 
   return (
-    <div className="px-8 pb-1000 rounded-md overflow-hidden">
+    <div className="overflow-hidden rounded-md px-8 pb-1000">
       <div
         ref={wrapRef}
         className={`relative overflow-hidden ${className}`}
@@ -85,7 +85,7 @@ export default function MastheadImage({
             ref={imgRef}
             src={src}
             alt={alt}
-            className="block w-full h-full object-cover rounded-md"
+            className="block size-full rounded-md object-cover"
           />
         </div>
       </div>

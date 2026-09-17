@@ -61,7 +61,7 @@ export default function Masthead() {
           text="Everybody brags about thinking outside the box. Nobody sells anything out there. The box is the budget, the deadline, the strategy somebody already signed off on. That's the room we work in, and it's the room we're good in. Outside the box is a vacation. Inside the box is the job."
           as="p"
           delay={0.75}
-          className="mt-700 font-narrow font-light text-lg md:text-xl lg:text-pre-title lg:pr-[calc(100%-1086px)]"
+          className="mt-700 font-narrow text-lg font-light md:text-xl lg:pr-[calc(100%-1086px)] lg:text-pre-title"
         />
       </div>
     </section>

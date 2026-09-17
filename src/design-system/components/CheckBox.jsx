@@ -1,4 +1,4 @@
-import React, { useId } from 'react';
+import { useId } from 'react';
 
 const checkboxStyles = {
   base: 'flex gap-2 items-center group font-sans text-sm transition relative [-webkit-tap-highlight-color:transparent]',
@@ -74,7 +74,7 @@ export function Checkbox({
           )}
         </div>
         
-        <label htmlFor={id} className="select-none cursor-pointer">
+        <label htmlFor={id} className="cursor-pointer select-none">
           {label}
         </label>
   

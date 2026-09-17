@@ -66,7 +66,7 @@ export default function HorizontalReveal({
   );
 
   return (
-    <span ref={wrapRef} className={`block overflow-hidden -my-[0.075em] ${className}`}>
+    <span ref={wrapRef} className={`-my-[0.075em] block overflow-hidden ${className}`}>
       <span
         ref={innerRef}
         className="block w-full py-[0.075em]"

@@ -164,7 +164,7 @@ function Overlay({ payload, onClose }) {
       role="dialog"
       aria-modal="true"
       aria-label={rendered.title ?? (content ? "Dialog" : "Video player")}
-      className="fixed inset-0 z-50 flex items-center justify-center min-h-[100dvh]"
+      className="fixed inset-0 z-50 flex min-h-dvh items-center justify-center"
     >
       {/* A real <button>, not a div with onClick: it gives the backdrop a
           keyboard-reachable, screen-reader-announced way to dismiss, and
@@ -185,7 +185,9 @@ function Overlay({ payload, onClose }) {
           className="absolute right-10 top-10 p-200 font-narrow text-base uppercase text-neutral-0 hover:text-primary-300"
         >
           <span className="sr-only">Close</span>
-          <img src="/icons/close.svg" width={24} height={24} />
+          {/* Decorative: the adjacent sr-only "Close" span already gives the
+              button its accessible name. */}
+          <img src="/icons/close.svg" alt="" width={24} height={24} />
         </button>
 
         {/* Players are top-aligned and sized by their own aspect ratio, so
@@ -194,7 +196,7 @@ function Overlay({ payload, onClose }) {
             items-stretch, which hands the child an exact height (100 - 16dvh)
             to fill rather than a ceiling to overflow. */}
         <div
-          className={`h-[100dvh] flex justify-center pt-[8dvh] ${
+          className={`flex h-dvh justify-center pt-[8dvh] ${
             content ? "items-stretch pb-[8dvh]" : "items-start"
           }`}
         >
@@ -203,7 +205,7 @@ function Overlay({ payload, onClose }) {
           // otherwise let a tall child (the map's intrinsic 16/9 box) push
           // this past the height it was just given — the exact overflow the
           // stretch is here to prevent.
-          <div className="w-[90vw] min-h-0">{content}</div>
+          <div className="min-h-0 w-[90vw]">{content}</div>
         ) : embed ? (
           <iframe
             src={embed}
@@ -211,7 +213,7 @@ function Overlay({ payload, onClose }) {
             allow="autoplay; fullscreen; picture-in-picture"
             allowFullScreen
             
-            className="block aspect-[16/10] h-auto w-[90vw] max-h-[80dvh] bg-surface-default shadow-lg rounded-md"
+            className="block aspect-[16/10] h-auto max-h-[80dvh] w-[90vw] rounded-md bg-surface-default shadow-lg"
           />
         ) : (
           <video

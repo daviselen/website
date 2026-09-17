@@ -26,7 +26,7 @@ export default function MastheadVideo({
         <video
           ref={videoRef}
           src={src}
-          className="block w-full h-full object-cover rounded-md"
+          className="block size-full rounded-md object-cover"
           // Crucial attributes for background autoplay
           autoPlay
           loop

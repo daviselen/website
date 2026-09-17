@@ -31,7 +31,7 @@ export function JobPositionField({ value, className = "flex flex-col gap-200 px-
   return (
     <div className={className}>
       <span className="text-small uppercase text-neutral-400">Position</span>
-      <span className="font-narrow uppercase text-lg md:text-xl lg:text-pre-title">{value}</span>
+      <span className="font-narrow text-lg uppercase md:text-xl lg:text-pre-title">{value}</span>
     </div>
   );
 }
@@ -43,7 +43,7 @@ export function JobMetaField({ label, value, valueRef, className = "flex flex-co
   return (
     <div className={className}>
       <span className="text-small uppercase text-neutral-400">{label}</span>
-      <span ref={valueRef} className="shrink-0 font-narrow text-lg md:text-xl lg:text-pre-title uppercase">
+      <span ref={valueRef} className="shrink-0 font-narrow text-lg uppercase md:text-xl lg:text-pre-title">
         {value}
       </span>
     </div>

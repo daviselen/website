@@ -129,12 +129,12 @@ export default function NavBar({ logoOnly = false }) {
   return (
     <header
       ref={headerRef}
-      className="flex items-center justify-between box-border bg-surface-default px-4 py-2 uppercase fixed top-0 left-0 right-0 w-auto z-50 md:px-8 md:py-4"
+      className="fixed inset-x-0 top-0 z-50 box-border flex w-auto items-center justify-between bg-surface-default px-4 py-2 uppercase md:px-8 md:py-4"
     >
       {/* Every `data-nav-item` below is a flex item of its own container, so
           it is blockified — a bare inline <a> would ignore the intro's
           transform entirely. Keep that true for anything added here. */}
-      <div className="flex-1 flex shrink-0 items-center justify-between py-2 md:py-4">
+      <div className="flex flex-1 shrink-0 items-center justify-between py-2 md:py-4">
         <Link to="/" data-nav-item="">
           <DeLogoMorph className="size-10 md:size-16" />
         </Link>
@@ -144,20 +144,20 @@ export default function NavBar({ logoOnly = false }) {
           (h-600, px-6/py-2, text-base) is untouched at md+. */}
       {!logoOnly && (
       <nav className="flex items-center justify-center gap-1 md:gap-6">
-        <Link to="/about" data-nav-item="" className="inline-flex items-center justify-center relative cursor-pointer h-400 md:h-600 m-0 px-3 py-1 md:px-6 md:py-2 font-narrow font-light whitespace-nowrap text-xs md:text-base leading-none md:leading-8 text-neutral-0 rounded-full overflow-hidden before:absolute before:-inset-1 before:block before:bg-surface-primary-default before:transition-all before:duration-500 before:ease-in-out before:translate-y-full hover:before:translate-y-0 will-change-transform">
+        <Link to="/about" data-nav-item="" className="relative m-0 inline-flex h-400 cursor-pointer items-center justify-center overflow-hidden whitespace-nowrap rounded-full px-3 py-1 font-narrow text-xs font-light leading-none text-neutral-0 will-change-transform before:absolute before:-inset-1 before:block before:translate-y-full before:bg-surface-primary-default before:transition-all before:duration-500 before:ease-in-out hover:before:translate-y-0 md:h-600 md:px-6 md:py-2 md:text-base md:leading-8">
           <span className="relative">About</span>
         </Link>
-        <Link to="/careers" data-nav-item="" className="inline-flex items-center justify-center relative cursor-pointer h-400 md:h-600 m-0 px-3 py-1 md:px-[25.5px] md:py-[9.5px] font-narrow font-light whitespace-nowrap text-xs md:text-base leading-none md:leading-8 text-neutral-0 rounded-full overflow-hidden before:absolute before:-inset-1 before:block before:bg-surface-primary-default before:transition-all before:duration-500 before:ease-in-out before:translate-y-full hover:before:translate-y-0 will-change-transform">
+        <Link to="/careers" data-nav-item="" className="relative m-0 inline-flex h-400 cursor-pointer items-center justify-center overflow-hidden whitespace-nowrap rounded-full px-3 py-1 font-narrow text-xs font-light leading-none text-neutral-0 will-change-transform before:absolute before:-inset-1 before:block before:translate-y-full before:bg-surface-primary-default before:transition-all before:duration-500 before:ease-in-out hover:before:translate-y-0 md:h-600 md:px-[25.5px] md:py-[9.5px] md:text-base md:leading-8">
           <span className="relative">Careers</span>
         </Link>
-        <a href="/contact" data-nav-item="" className="inline-flex items-center justify-center relative cursor-pointer h-400 md:h-600 m-0 px-3 py-1 md:px-[25.5px] md:py-[9.5px] font-narrow font-light whitespace-nowrap text-xs md:text-base leading-none md:leading-8 text-neutral-00 rounded-full overflow-hidden before:absolute before:-inset-1 before:block before:bg-surface-primary-default before:transition-all before:duration-500 before:ease-in-out before:translate-y-full hover:before:translate-y-0 will-change-transform">
+        <a href="/contact" data-nav-item="" className="text-neutral-00 relative m-0 inline-flex h-400 cursor-pointer items-center justify-center overflow-hidden whitespace-nowrap rounded-full px-3 py-1 font-narrow text-xs font-light leading-none will-change-transform before:absolute before:-inset-1 before:block before:translate-y-full before:bg-surface-primary-default before:transition-all before:duration-500 before:ease-in-out hover:before:translate-y-0 md:h-600 md:px-[25.5px] md:py-[9.5px] md:text-base md:leading-8">
           <span className="relative">Contact</span>
         </a>
       </nav>
       )}
       {!logoOnly && (
       <div className="flex flex-1 items-center justify-end py-2 md:py-4">
-        <button data-nav-item="" className="px-3 py-1 md:px-6 md:py-2 font-narrow font-light whitespace-nowrap text-xs md:text-base leading-none md:leading-8 uppercase text-neutral-0 border-[1.5px] border-neutral-0 rounded-full hover:border-surface-primary-default transition-colors duration-500 overflow-hidden before:absolute before:-inset-1 before:block before:bg-surface-primary-default before:transition-all before:duration-300 before:ease-in-out before:translate-y-full hover:before:translate-y-0 will-change-transform">
+        <button data-nav-item="" className="overflow-hidden whitespace-nowrap rounded-full border-[1.5px] border-neutral-0 px-3 py-1 font-narrow text-xs font-light uppercase leading-none text-neutral-0 transition-colors duration-500 will-change-transform before:absolute before:-inset-1 before:block before:translate-y-full before:bg-surface-primary-default before:transition-all before:duration-300 before:ease-in-out hover:border-surface-primary-default hover:before:translate-y-0 md:px-6 md:py-2 md:text-base md:leading-8">
           <span className="relative">Let's Chat</span>
         </button>
       </div>

@@ -148,7 +148,7 @@ export default function MediaObject({
           : ""
       }`}
     >
-      <div className={`${side.copy} md:row-start-1 flex flex-col gap-600`}>
+      <div className={`${side.copy} flex flex-col gap-600 md:row-start-1`}>
         <HeadingReveal
           as="h2"
           // These titles are sentences ("$18 Billion in Sales from Over 4000
@@ -177,7 +177,7 @@ export default function MediaObject({
           hidden state is right on first paint, before GSAP runs. */}
       <div
         ref={maskRef}
-        className={`${side.image} md:row-start-1 relative`}
+        className={`${side.image} relative md:row-start-1`}
         style={{ clipPath: IMAGE_HIDDEN }}
       >
         <Picture
