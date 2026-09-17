@@ -296,13 +296,15 @@ export default function About() {
         onClick={() => openOverlay(RETAIL_MAP)}
       />
       <section id="people" className="flex flex-col gap-1000 px-8 pt-1000 md:pt-3000">
-        <HeadingReveal
-          className="font-display text-5xl uppercase md:text-7xl lg:text-display-h3"
-          text={`Let’s \nMeet Up`}
-        />
-        <TextReveal className="max-w-prose text-lg md:text-xl lg:text-pre-title"
-          text="This is the whole meeting. No account person you'll never see again, no bench of strangers who vanish after the pitch. The people in the room are the people who do the work."
-        />
+        <div className="flex flex-col gap-600">
+          <HeadingReveal
+            className="font-display text-5xl uppercase md:text-7xl lg:text-display-h3"
+            text={`Let’s \nMeet Up`}
+          />
+          <TextReveal className="max-w-prose text-lg md:text-xl lg:text-pre-title"
+            text="This is the whole meeting. No account person you'll never see again, no bench of strangers who vanish after the pitch. The people in the room are the people who do the work."
+          />
+        </div>
         {/* grid-cols-4 at every width put 12 portrait tiles four-across on a
             phone (~80px tiles) — 2-up below md, real 4-up unchanged. */}
         <div className="grid grid-cols-2 gap-400 md:grid-cols-4">
