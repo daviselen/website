@@ -28,6 +28,11 @@ export default function LottieGsapAnimation() {
         onUpdate: () => {
           animRef.current.goToAndStop(playhead.frame, true);
         },
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top bottom-=100',
+          once: true,
+        },
       });
     });
 
