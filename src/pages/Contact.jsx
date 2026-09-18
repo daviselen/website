@@ -73,6 +73,10 @@ export default function Contact() {
               placeholder="Select a subject&hellip;"
             />
           </Field>
+          <Field className="flex flex-col gap-2">
+            <StyledLabel>Message</StyledLabel>
+            <StyledTextarea></StyledTextarea>
+          </Field>
         </form>
       </section>
     </main>
