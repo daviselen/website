@@ -9,7 +9,7 @@
 // viewport (375px). Mobile-first here, same pattern Masthead.jsx/Card.jsx
 // use elsewhere: a plain flex-centered small size below `md`, full real
 // spec (min-width, padding, line-height-as-centering) at `md` and up.
-export default function Button({ variant = "primary", children, ...props }) {
+export default function StyledButton({ variant = "primary", size = "default", children, ...props }) {
   const base =
     "inline-flex w-full items-center justify-center gap-2 rounded-md border px-8 py-4 font-narrow font-light text-lg uppercase transition-colors md:w-auto md:min-w-[480px] md:px-16 md:py-0 md:text-[32px] md:leading-[112px]";
   const variants = {
