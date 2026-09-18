@@ -10,7 +10,7 @@ export default function CTABanner() {
         text={`Let’s Look \nInside the Box`}
         className="font-display text-6xl uppercase leading-none md:text-8xl lg:text-display-h3"
         />
-      <Button variant="solid">Start A Conversation</Button>
+      <Button variant="solid" size="big">Start A Conversation</Button>
     </section>
   );
 }
