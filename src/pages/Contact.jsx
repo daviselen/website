@@ -72,7 +72,7 @@ export default function Contact() {
               label="Subject"
               placeholder="Select a subject&hellip;"
             />
-        </Field>
+          </Field>
         </form>
       </section>
     </main>
