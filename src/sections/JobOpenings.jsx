@@ -4,12 +4,39 @@
 // cheap, whereas unpicking a bespoke design is not. It is also why this
 // section is absent from tests/visual/design-diff.spec.js — there is nothing
 // to diff against.
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, Component, Suspense } from "react";
 import HeadingReveal from "../design-system/components/HeadingReveal.jsx";
 import { JobRow, JobPositionField, JobMetaField } from "../design-system/components/JobRow.jsx";
 import snapshot from "../data/job-openings.json";
 import { applyUrl, jobListUrl } from "../data/adp.js";
 import { normalize, toJobPosting } from "../lib/job-openings.js";
+
+// Standard Error Boundary class component for catching runtime render errors
+class ErrorBoundary extends Component {
+  state = { hasError: false, error: null };
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true, error };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    console.error("JobOpenings Render Error:", error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <section className="mt-1000 px-2 lg:px-8 md:mt-3000">
+          <p className="font-narrow text-2xl">
+            Unable to render job openings at this time.
+          </p>
+        </section>
+      );
+    }
+
+    return this.props.children;
+  }
+}
 
 // User-supplied copy. Rendered verbatim — do not reword, abbreviate, or pair
 // it with a catch-all link to the ADP career center that was not asked for.
@@ -46,7 +73,7 @@ function visibleSignature(openings) {
     .join("\u0002");
 }
 
-export default function JobOpenings() {
+function JobOpeningsContent() {
   // The snapshot IS the initial state, not a fetch target: it is `import`ed,
   // so Vite inlines it into the bundle and it is synchronously available on
   // first render. Hence no loading flag, no spinner, and no empty first paint.
@@ -203,5 +230,21 @@ export default function JobOpenings() {
           </script>
         ))}
     </section>
+  );
+}
+
+export default function JobOpenings() {
+  return (
+    <ErrorBoundary>
+      <Suspense
+        fallback={
+          <section className="mt-1000 px-2 lg:px-8 md:mt-3000">
+            <p className="font-narrow text-2xl">Loading open positions...</p>
+          </section>
+        }
+      >
+        <JobOpeningsContent />
+      </Suspense>
+    </ErrorBoundary>
   );
 }
