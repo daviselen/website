@@ -122,7 +122,7 @@ export default function NavBar({ logoOnly = false }) {
   return (
     <header
       ref={headerRef}
-      className="fixed inset-x-0 top-0 z-50 box-border flex w-auto items-center justify-between bg-surface-default px-2 lg:px-4 py-2 uppercase md:px-8 md:py-4"
+      className="fixed inset-x-0 top-0 z-50 box-border flex w-auto items-center justify-between bg-surface-default px-2 md:px-4 lg:px-8 py-2 md:py-4 uppercase"
     >
       {/* Every `data-nav-item` below is a flex item of its own container, so
           it is blockified — a bare inline <a> would ignore the intro's
