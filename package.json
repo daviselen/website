@@ -25,6 +25,8 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
+    "@contentful/rich-text-react-renderer": "^16.2.2",
+    "@contentful/rich-text-types": "^17.2.7",
     "@gsap/react": "^2.1.2",
     "@headlessui/react": "^2.2.10",
     "@mapbox/mapbox-gl-geocoder": "^5.1.2",

@@ -7,6 +7,7 @@ import HomePage from "./pages/HomePage";
 import About from "./pages/About";
 import Careers from "./pages/Careers";
 import Contact from "./pages/Contact";
+import NewsArticlePage from "./pages/NewsArticle";
 
 const RetailMap = lazy(() => import("./pages/RetailMap"));
 
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
         path: "/contact",
         element: <Contact />,
       },
+      {
+        path: "/news/:slug",
+        element: <NewsArticlePage />
+      }
     ],
   },
 ]);
