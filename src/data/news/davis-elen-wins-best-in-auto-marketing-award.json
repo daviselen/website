@@ -1,0 +1,268 @@
+{
+  "slug": "davis-elen-wins-best-in-auto-marketing-award",
+  "title": "Davis Elen Wins Best In Auto Marketing Award",
+  "publishedAt": "2022-04-12T22:39:43",
+  "categories": [
+    {
+      "name": "News",
+      "slug": "news"
+    }
+  ],
+  "heroImage": {
+    "sys": {
+      "type": "Link",
+      "linkType": "Asset",
+      "id": "asset-social-1080x1080-2"
+    },
+    "fields": {
+      "title": "Social-1080x1080-2.jpg",
+      "description": "",
+      "file": {
+        "url": "/images/social-1080x1080-2.jpg",
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  "body": {
+    "nodeType": "document",
+    "data": {},
+    "content": [
+      {
+        "nodeType": "paragraph",
+        "data": {},
+        "content": [
+          {
+            "nodeType": "text",
+            "value": "Media Post, the preeminent national resource for media, marketing and advertising professionals, has honored Davis Elen Advertising with its top award for ",
+            "marks": [],
+            "data": {}
+          },
+          {
+            "nodeType": "text",
+            "value": "Best Campaign/Activation for a Dealer Group.",
+            "marks": [
+              {
+                "type": "italic"
+              }
+            ],
+            "data": {}
+          },
+          {
+            "nodeType": "text",
+            "value": " This annual award honors agencies and advertisers who are delivering breakthrough campaigns which stand out in today’s dynamic and ever-changing landscape of automotive advertising.",
+            "marks": [],
+            "data": {}
+          }
+        ]
+      },
+      {
+        "nodeType": "paragraph",
+        "data": {},
+        "content": [
+          {
+            "nodeType": "text",
+            "value": "Davis Elen is being recognized for its revolutionary Connected TV (CTV) buying strategy on behalf of the Southern California Toyota Dealers Advertising Association. Working directly with smart TV manufacturers and developers and Innovid, the leading CTV advertising and measurement platform, Davis Elen integrated CTV with the goal of optimizing unique household reach at the highest efficiency levels possible. Through this strategy, the agency reached an eye-popping 1.6 million households, equivalent to nearly 96% of all targeted unique households, at a cost significantly below industry benchmarks.",
+            "marks": [],
+            "data": {}
+          }
+        ]
+      },
+      {
+        "nodeType": "embedded-asset-block",
+        "data": {
+          "target": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "asset-in-situation-spot"
+            },
+            "fields": {
+              "title": "In-Situation-Spot.jpg",
+              "description": "",
+              "file": {
+                "url": "/images/in-situation-spot.jpg",
+                "contentType": "image/jpeg"
+              }
+            }
+          }
+        },
+        "content": []
+      },
+      {
+        "nodeType": "paragraph",
+        "data": {},
+        "content": [
+          {
+            "nodeType": "text",
+            "value": "“I couldn’t be prouder of the incredible, dedicated effort our digital media team has given to this project to trailblaze with the fastest-growing channel today, Connected TV,” says John Papadopoulos, SVP and Director of Media Strategy at Davis Elen. “We recognize the power of CTV, and our first-to-market approach has not only helped us yield significant efficiencies for our client, but it has validated our strategic approach to retail-based media as we enter into this new era of consumerism.”",
+            "marks": [
+              {
+                "type": "italic"
+              }
+            ],
+            "data": {}
+          }
+        ]
+      },
+      {
+        "nodeType": "paragraph",
+        "data": {},
+        "content": [
+          {
+            "nodeType": "text",
+            "value": "As the decades-long agency of record for the Southern California Toyota Dealers, Davis Elen has continually led the industry with its fresh thinking and innovative media strategies that deliver market-leading sales results.",
+            "marks": [],
+            "data": {}
+          }
+        ]
+      },
+      {
+        "nodeType": "paragraph",
+        "data": {},
+        "content": [
+          {
+            "nodeType": "text",
+            "value": "To get more details on this award-winning media strategy and execution, ",
+            "marks": [],
+            "data": {}
+          },
+          {
+            "nodeType": "hyperlink",
+            "data": {
+              "uri": "https://daviselen.com/news/navigating-the-streaming-world/"
+            },
+            "content": [
+              {
+                "nodeType": "text",
+                "value": "click here to view our current case study on Connected TV.",
+                "marks": [],
+                "data": {}
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "nodeType": "embedded-entry-block",
+        "data": {
+          "target": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Entry",
+              "id": "vimeo-644999335"
+            },
+            "fields": {
+              "type": "vimeoVideo",
+              "title": "Offer Card Theater Act II",
+              "videoId": "644999335",
+              "hash": "aafb597e7a"
+            }
+          }
+        },
+        "content": []
+      },
+      {
+        "nodeType": "paragraph",
+        "data": {},
+        "content": [
+          {
+            "nodeType": "text",
+            "value": "See the campaign ",
+            "marks": [],
+            "data": {}
+          },
+          {
+            "nodeType": "hyperlink",
+            "data": {
+              "uri": "https://daviselen.com/case-studies/offer-card-theater-act-ii/"
+            },
+            "content": [
+              {
+                "nodeType": "text",
+                "value": "here.",
+                "marks": [],
+                "data": {}
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "nodeType": "paragraph",
+        "data": {},
+        "content": [
+          {
+            "nodeType": "text",
+            "value": "About MediaPost",
+            "marks": [
+              {
+                "type": "bold"
+              }
+            ],
+            "data": {}
+          }
+        ]
+      },
+      {
+        "nodeType": "paragraph",
+        "data": {},
+        "content": [
+          {
+            "nodeType": "text",
+            "value": "MediaPost is an integrated publishing and conference company whose mission is to provide a complete array of resources for media, marketing, and advertising professionals. MediaPost is the holding company for the following entities: MediaPost.com, 30+ industry conferences and events each year nationwide and in Europe, including the OMMA, Insider Summit, Marketing and Engage conference series, seven annual award shows, and a suite of 50+ industry-focused email newsletters and blogs.",
+            "marks": [],
+            "data": {}
+          }
+        ]
+      },
+      {
+        "nodeType": "paragraph",
+        "data": {},
+        "content": [
+          {
+            "nodeType": "text",
+            "value": "About Davis Elen Advertising",
+            "marks": [
+              {
+                "type": "bold"
+              }
+            ],
+            "data": {}
+          }
+        ]
+      },
+      {
+        "nodeType": "paragraph",
+        "data": {},
+        "content": [
+          {
+            "nodeType": "text",
+            "value": "Davis Elen is a full-service, independently owned advertising agency with $300 million in billings. Headquartered in downtown Los Angeles, it also has four satellite offices across the country. Since its inception in 1948, Davis Elen has remained focused on one guiding principle: Thinking that matters. The agency challenges itself with delivering change-making solutions for its prestigious roster of clients including Toyota, McDonald’s, Lively, Smart & Final, Dice, Zircon, Purity Coffee and PeaTos. Whether it’s brand-building strategies, creative services and/or media planning designed to deliver results, the Davis Elen approach leads with thinking that will cut through the clutter and separate its clients from the competition. For more information, visit ",
+            "marks": [],
+            "data": {}
+          },
+          {
+            "nodeType": "hyperlink",
+            "data": {
+              "uri": "https://daviselen.com/"
+            },
+            "content": [
+              {
+                "nodeType": "text",
+                "value": "www.daviselen.com",
+                "marks": [],
+                "data": {}
+              }
+            ]
+          },
+          {
+            "nodeType": "text",
+            "value": ".",
+            "marks": [],
+            "data": {}
+          }
+        ]
+      }
+    ]
+  }
+}

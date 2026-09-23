@@ -1,0 +1,285 @@
+{
+  "slug": "corolla-thrill-ride",
+  "title": "Why just drive when you can be thrilled?",
+  "publishedAt": "2018-12-18T15:51:00",
+  "categories": [
+    {
+      "name": "News",
+      "slug": "news"
+    }
+  ],
+  "heroImage": {
+    "sys": {
+      "type": "Link",
+      "linkType": "Asset",
+      "id": "asset-w6mul1"
+    },
+    "fields": {
+      "title": "corolla-thrill-ride_post_main-image.jpeg",
+      "description": "Toyota Corolla Thrill Ride",
+      "file": {
+        "url": "/images/corolla-thrill-ride_post_main-image.jpeg",
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  "body": {
+    "nodeType": "document",
+    "data": {},
+    "content": [
+      {
+        "nodeType": "paragraph",
+        "data": {},
+        "content": [
+          {
+            "nodeType": "text",
+            "value": "Showcasing the driving dynamics that are fast becoming a Toyota trademark, the ",
+            "marks": [],
+            "data": {}
+          },
+          {
+            "nodeType": "hyperlink",
+            "data": {
+              "uri": "https://www.buyatoyota.com/socal/"
+            },
+            "content": [
+              {
+                "nodeType": "text",
+                "value": "Southern California Toyota dealers",
+                "marks": [],
+                "data": {}
+              }
+            ]
+          },
+          {
+            "nodeType": "text",
+            "value": " recently hosted a three-day Thrill Ride Event, featuring the new Corolla Hatchback, during the annual LA Auto Show.",
+            "marks": [],
+            "data": {}
+          }
+        ]
+      },
+      {
+        "nodeType": "paragraph",
+        "data": {},
+        "content": [
+          {
+            "nodeType": "text",
+            "value": "Chick Hearn Court at LA Live was converted into a mini-race track where professional stunt drivers treated passersby to an intense 45-second run as the Hatch slalomed its way through evasive maneuvers, hairpin turns and hair-raising 360 donuts.",
+            "marks": [],
+            "data": {}
+          }
+        ]
+      },
+      {
+        "nodeType": "paragraph",
+        "data": {},
+        "content": [
+          {
+            "nodeType": "text",
+            "value": "Eleven So-Cal-based influencers (with a combined following of 2.6 MM) were on hand to experience the event first-hand, including actor and singer Logan Henderson, Tory Belleci from Mythbusters and Danielle Lombard from the Bachelor.",
+            "marks": [],
+            "data": {}
+          }
+        ]
+      },
+      {
+        "nodeType": "paragraph",
+        "data": {},
+        "content": [
+          {
+            "nodeType": "text",
+            "value": "The adrenaline-fueled action and all the WOWs and OMG reactions were captured on camera and will be featured in a series of TV commercials for the SCTDA beginning in January.",
+            "marks": [],
+            "data": {}
+          }
+        ]
+      },
+      {
+        "nodeType": "embedded-asset-block",
+        "data": {
+          "target": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "asset-corolla-1"
+            },
+            "fields": {
+              "title": "corolla-thrill-ride_daniellelombard.jpeg",
+              "description": "Danielle Lombard",
+              "file": {
+                "url": "/images/news/corolla-thrill-ride_daniellelombard.jpeg",
+                "contentType": "image/jpeg"
+              }
+            }
+          }
+        },
+        "content": []
+      },
+      {
+        "nodeType": "paragraph",
+        "data": {},
+        "content": [
+          {
+            "nodeType": "hyperlink",
+            "data": {
+              "uri": "https://www.instagram.com/p/Bq0VzDjnOHp/"
+            },
+            "content": [
+              {
+                "nodeType": "text",
+                "value": "Danielle Lombard",
+                "marks": [],
+                "data": {}
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "nodeType": "embedded-asset-block",
+        "data": {
+          "target": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "asset-corolla-2"
+            },
+            "fields": {
+              "title": "corolla-thrill-ride_loganhenderson.jpeg",
+              "description": "Logan Henderson",
+              "file": {
+                "url": "/images/news/corolla-thrill-ride_loganhenderson.jpeg",
+                "contentType": "image/jpeg"
+              }
+            }
+          }
+        },
+        "content": []
+      },
+      {
+        "nodeType": "paragraph",
+        "data": {},
+        "content": [
+          {
+            "nodeType": "hyperlink",
+            "data": {
+              "uri": "https://www.instagram.com/p/Bq537RNHJdw/"
+            },
+            "content": [
+              {
+                "nodeType": "text",
+                "value": "Logan Henderson",
+                "marks": [],
+                "data": {}
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "nodeType": "embedded-asset-block",
+        "data": {
+          "target": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "asset-corolla-3"
+            },
+            "fields": {
+              "title": "corolla-thrill-ride_img_2267.jpeg",
+              "description": "The Laker Girls",
+              "file": {
+                "url": "/images/news/corolla-thrill-ride_img_2267.jpeg",
+                "contentType": "image/jpeg"
+              }
+            }
+          }
+        },
+        "content": []
+      },
+      {
+        "nodeType": "paragraph",
+        "data": {},
+        "content": [
+          {
+            "nodeType": "hyperlink",
+            "data": {
+              "uri": "https://www.instagram.com/p/Bq5UziqHlEn/"
+            },
+            "content": [
+              {
+                "nodeType": "text",
+                "value": "The Laker Girls",
+                "marks": [],
+                "data": {}
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "nodeType": "embedded-asset-block",
+        "data": {
+          "target": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "asset-corolla-4"
+            },
+            "fields": {
+              "title": "corolla-thrill-ride_torybelluci.jpeg",
+              "description": "Tory Belleci",
+              "file": {
+                "url": "/images/news/corolla-thrill-ride_torybelluci.jpeg",
+                "contentType": "image/jpeg"
+              }
+            }
+          }
+        },
+        "content": []
+      },
+      {
+        "nodeType": "paragraph",
+        "data": {},
+        "content": [
+          {
+            "nodeType": "hyperlink",
+            "data": {
+              "uri": "https://www.instagram.com/p/Bq0hCM6no-b/"
+            },
+            "content": [
+              {
+                "nodeType": "text",
+                "value": "Tory Belleci",
+                "marks": [],
+                "data": {}
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "nodeType": "embedded-asset-block",
+        "data": {
+          "target": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "asset-corolla-5"
+            },
+            "fields": {
+              "title": "corolla-thrill-ride_thrilled-desktop.jpeg",
+              "description": "",
+              "file": {
+                "url": "/images/news/corolla-thrill-ride_thrilled-desktop.jpeg",
+                "contentType": "image/jpeg"
+              }
+            }
+          }
+        },
+        "content": []
+      }
+    ]
+  }
+}

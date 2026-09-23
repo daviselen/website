@@ -1,0 +1,292 @@
+{
+  "slug": "davis-elen-wins-8-telly-awards",
+  "title": "Davis Elen wins EIGHT telly awards",
+  "publishedAt": "2022-06-02T23:40:33",
+  "categories": [
+    {
+      "name": "News",
+      "slug": "news"
+    }
+  ],
+  "heroImage": {
+    "sys": {
+      "type": "Link",
+      "linkType": "Asset",
+      "id": "asset-de-8t"
+    },
+    "fields": {
+      "title": "DE-8T.png",
+      "description": "",
+      "file": {
+        "url": "/images/de-8t.png",
+        "contentType": "image/png"
+      }
+    }
+  },
+  "body": {
+    "nodeType": "document",
+    "data": {},
+    "content": [
+      {
+        "nodeType": "paragraph",
+        "data": {},
+        "content": [
+          {
+            "nodeType": "text",
+            "value": "Yup, we struck Gold again at this year’s Telly Awards. And not just Gold but Silver and Bronze as well. Congrats goes out not just to the creative and production teams who made it happen but to everyone at DE. It’s the day-to-day commitment of each and everyone of us to doing great work that makes DE the world’s best independently owned ad agency.",
+            "marks": [],
+            "data": {}
+          }
+        ]
+      },
+      {
+        "nodeType": "embedded-entry-block",
+        "data": {
+          "target": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Entry",
+              "id": "vimeo-716583662"
+            },
+            "fields": {
+              "type": "vimeoVideo",
+              "title": "TOYOTA OFFER CARD THEATER CAMPAIGN",
+              "videoId": "716583662",
+              "hash": ""
+            }
+          }
+        },
+        "content": []
+      },
+      {
+        "nodeType": "paragraph",
+        "data": {},
+        "content": [
+          {
+            "nodeType": "text",
+            "value": "TOYOTA OFFER CARD THEATER CAMPAIGN\nSouthern California Toyota Dealers\n2022 Gold Telly Winner: Branded Content Campaign-Campaign: Commercials",
+            "marks": [],
+            "data": {}
+          }
+        ]
+      },
+      {
+        "nodeType": "embedded-entry-block",
+        "data": {
+          "target": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Entry",
+              "id": "vimeo-716527241"
+            },
+            "fields": {
+              "type": "vimeoVideo",
+              "title": "“COFFEE FRESH START”",
+              "videoId": "716527241",
+              "hash": ""
+            }
+          }
+        },
+        "content": []
+      },
+      {
+        "nodeType": "paragraph",
+        "data": {},
+        "content": [
+          {
+            "nodeType": "text",
+            "value": "“COFFEE FRESH START”\nMcDonald’s\n2022 Silver Telly Winner: Branded Content Campaign-Campaign: Promotional",
+            "marks": [],
+            "data": {}
+          }
+        ]
+      },
+      {
+        "nodeType": "embedded-entry-block",
+        "data": {
+          "target": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Entry",
+              "id": "vimeo-716524115"
+            },
+            "fields": {
+              "type": "vimeoVideo",
+              "title": "“WHAT’S INSIDE”, 150 YEARS AND COUNTING",
+              "videoId": "716524115",
+              "hash": ""
+            }
+          }
+        },
+        "content": []
+      },
+      {
+        "nodeType": "paragraph",
+        "data": {},
+        "content": [
+          {
+            "nodeType": "text",
+            "value": "“WHAT’S INSIDE”, 150 YEARS AND COUNTING\nSmart & Final\n2022 Silver Telly Winner: Branded Content General-Social",
+            "marks": [],
+            "data": {}
+          }
+        ]
+      },
+      {
+        "nodeType": "embedded-entry-block",
+        "data": {
+          "target": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Entry",
+              "id": "vimeo-716534712"
+            },
+            "fields": {
+              "type": "vimeoVideo",
+              "title": "“CONDUCTOR”, OFFER CARD THEATER",
+              "videoId": "716534712",
+              "hash": ""
+            }
+          }
+        },
+        "content": []
+      },
+      {
+        "nodeType": "paragraph",
+        "data": {},
+        "content": [
+          {
+            "nodeType": "text",
+            "value": "“CONDUCTOR”, OFFER CARD THEATER\nSouthern California Toyota Dealers\n2022 Bronze Telly Winner: Branded Content General-Automotive",
+            "marks": [],
+            "data": {}
+          }
+        ]
+      },
+      {
+        "nodeType": "embedded-entry-block",
+        "data": {
+          "target": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Entry",
+              "id": "vimeo-716525188"
+            },
+            "fields": {
+              "type": "vimeoVideo",
+              "title": "“SHAQELICIOUS”",
+              "videoId": "716525188",
+              "hash": ""
+            }
+          }
+        },
+        "content": []
+      },
+      {
+        "nodeType": "paragraph",
+        "data": {},
+        "content": [
+          {
+            "nodeType": "text",
+            "value": "“SHAQELICIOUS”\nAlkaline 88 \n2022 Silver Telly Winner: Branded Content Campaign-Campaign: Influencer & Celebrity",
+            "marks": [],
+            "data": {}
+          }
+        ]
+      },
+      {
+        "nodeType": "embedded-entry-block",
+        "data": {
+          "target": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Entry",
+              "id": "vimeo-716534909"
+            },
+            "fields": {
+              "type": "vimeoVideo",
+              "title": "“FORKLIFT”, OFFER CARD THEATER",
+              "videoId": "716534909",
+              "hash": ""
+            }
+          }
+        },
+        "content": []
+      },
+      {
+        "nodeType": "paragraph",
+        "data": {},
+        "content": [
+          {
+            "nodeType": "text",
+            "value": "“FORKLIFT”, OFFER CARD THEATER\nSouthern California Toyota Dealers\n2022 Bronze Telly Winner: Branded Content General-Automotive",
+            "marks": [],
+            "data": {}
+          }
+        ]
+      },
+      {
+        "nodeType": "embedded-entry-block",
+        "data": {
+          "target": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Entry",
+              "id": "vimeo-716532464"
+            },
+            "fields": {
+              "type": "vimeoVideo",
+              "title": "“FORTUNE TELLER”, OFFER CARD THEATER",
+              "videoId": "716532464",
+              "hash": ""
+            }
+          }
+        },
+        "content": []
+      },
+      {
+        "nodeType": "paragraph",
+        "data": {},
+        "content": [
+          {
+            "nodeType": "text",
+            "value": "“FORTUNE TELLER”, OFFER CARD THEATER\nSouthern California Toyota Dealers\n2022 Bronze Telly Winner: Branded Content General-Automotive",
+            "marks": [],
+            "data": {}
+          }
+        ]
+      },
+      {
+        "nodeType": "embedded-entry-block",
+        "data": {
+          "target": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Entry",
+              "id": "vimeo-716528369"
+            },
+            "fields": {
+              "type": "vimeoVideo",
+              "title": "“WORLDS APART” LIVELY COMBO PHONES",
+              "videoId": "716528369",
+              "hash": ""
+            }
+          }
+        },
+        "content": []
+      },
+      {
+        "nodeType": "paragraph",
+        "data": {},
+        "content": [
+          {
+            "nodeType": "text",
+            "value": "“WORLDS APART” LIVELY COMBO PHONES, Lively; Best Buy Health \n2022 Bronze Telly Winner – Branded Content General-Health & Safety",
+            "marks": [],
+            "data": {}
+          }
+        ]
+      }
+    ]
+  }
+}

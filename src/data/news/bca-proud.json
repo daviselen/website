@@ -1,0 +1,128 @@
+{
+  "slug": "bca-proud",
+  "title": "Going Pink to Support Breast Cancer Awareness Month",
+  "publishedAt": "2018-10-18T16:10:00",
+  "categories": [
+    {
+      "name": "Culture",
+      "slug": "culture"
+    }
+  ],
+  "heroImage": {
+    "sys": {
+      "type": "Link",
+      "linkType": "Asset",
+      "id": "asset-7et1ai"
+    },
+    "fields": {
+      "title": "breast-cancer-header.png",
+      "description": "Breast Cancer Awareness Month is October",
+      "file": {
+        "url": "/images/breast-cancer-header.png",
+        "contentType": "image/png"
+      }
+    }
+  },
+  "body": {
+    "nodeType": "document",
+    "data": {},
+    "content": [
+      {
+        "nodeType": "paragraph",
+        "data": {},
+        "content": [
+          {
+            "nodeType": "text",
+            "value": "At de, we are proud to support Breast Cancer Awareness month in October. However, this is an on-going fight that lasts long after the month has ended. It’s important that we not only rally around this cause in October but continue to show our support all year long. Here are some ways that you can show your support every day:",
+            "marks": [],
+            "data": {}
+          }
+        ]
+      },
+      {
+        "nodeType": "unordered-list",
+        "data": {},
+        "content": [
+          {
+            "nodeType": "list-item",
+            "data": {},
+            "content": [
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Share knowledge – volunteer and campaign to help women get access to the breast cancer drugs they need",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "‍",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "nodeType": "list-item",
+            "data": {},
+            "content": [
+              {
+                "nodeType": "text",
+                "value": "Know the signs and symptoms of breast cancer and share information women need to know about self-examination",
+                "marks": [],
+                "data": {}
+              }
+            ]
+          },
+          {
+            "nodeType": "list-item",
+            "data": {},
+            "content": [
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Donate to breast cancer research",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "‍",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "nodeType": "list-item",
+            "data": {},
+            "content": [
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Shop for products that support breast cancer awareness",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

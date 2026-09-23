@@ -1,0 +1,142 @@
+{
+  "slug": "alkaline-water-co-selects-davis-elen-as-agency-of-record",
+  "title": "Davis Elen to develop a marketing campaign for The Alkaline Water Company",
+  "publishedAt": "2020-07-07T11:43:00",
+  "categories": [
+    {
+      "name": "News",
+      "slug": "news"
+    }
+  ],
+  "heroImage": {
+    "sys": {
+      "type": "Link",
+      "linkType": "Asset",
+      "id": "asset-wmd1fn"
+    },
+    "fields": {
+      "title": "alkaline88_water_samplepr_3sm.jpg",
+      "description": "",
+      "file": {
+        "url": "/images/alkaline88_water_samplepr_3sm.jpg",
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  "body": {
+    "nodeType": "document",
+    "data": {},
+    "content": [
+      {
+        "nodeType": "paragraph",
+        "data": {},
+        "content": [
+          {
+            "nodeType": "text",
+            "value": "SCOTTSDALE, Ariz. — July 7, 2020",
+            "marks": [
+              {
+                "type": "bold"
+              }
+            ],
+            "data": {}
+          },
+          {
+            "nodeType": "text",
+            "value": " — The Alkaline Water Company Inc. (NASDAQ and CSE: ",
+            "marks": [],
+            "data": {}
+          },
+          {
+            "nodeType": "hyperlink",
+            "data": {
+              "uri": "https://www.nasdaq.com/market-activity/stocks/wter"
+            },
+            "content": [
+              {
+                "nodeType": "text",
+                "value": "WTER",
+                "marks": [],
+                "data": {}
+              }
+            ]
+          },
+          {
+            "nodeType": "text",
+            "value": ") (the “Company”), is a producer of premium bottled alkaline water, flavor-infused waters, and CBD-infused products sold under the brand names ",
+            "marks": [],
+            "data": {}
+          },
+          {
+            "nodeType": "hyperlink",
+            "data": {
+              "uri": "https://thealkalinewaterco.com/"
+            },
+            "content": [
+              {
+                "nodeType": "text",
+                "value": "Alkaline88®",
+                "marks": [],
+                "data": {}
+              }
+            ]
+          },
+          {
+            "nodeType": "text",
+            "value": ", A88 Infused™, and A88CBD™, respectively. Today, the Company announced its partnership with Los Angeles-based advertising agency, Davis Elen Advertising (“Davis Elen”).",
+            "marks": [],
+            "data": {}
+          }
+        ]
+      },
+      {
+        "nodeType": "paragraph",
+        "data": {},
+        "content": [
+          {
+            "nodeType": "text",
+            "value": "“With last year’s successful rebranding of Alkaline88®, paired with the launch of A88 Infused Flavors, A88CBD™ topical and ingestible products, and a new e-commerce platform, a national marketing plan is the next step to reach our full potential. Engaging Davis Elen will both enhance our company’s national profile and accelerate sales of all our health and wellness lifestyle brands. Davis Elen will leverage its vast CPG and retail experience to build consumer loyalty”, said Richard A. Wright, President and CEO of The Alkaline Water Company. “This prestigious agency has an excellent track record of developing both best-in-class marketing strategy and creative campaigns, for some of the world’s largest brands, including McDonald’s and Toyota. With our products now available in over 70,000 retail locations and our recently added direct-to-consumer websites, we looked for an agency that can develop and execute a cohesive marketing plan that will drive all our lifestyle brands. Davis Elen Advertising’s successful achievements across multiple categories made them the obvious choice.”",
+            "marks": [],
+            "data": {}
+          }
+        ]
+      },
+      {
+        "nodeType": "paragraph",
+        "data": {},
+        "content": [
+          {
+            "nodeType": "text",
+            "value": "This new partnership is a milestone in the growth strategy for the Arizona-based water company. With its portfolio of products, The Alkaline Water Company has built a national retail footprint and is expanding into other consumer packaged goods categories with the goal of becoming one of America’s trusted go-to health and wellness lifestyle brands.",
+            "marks": [],
+            "data": {}
+          }
+        ]
+      },
+      {
+        "nodeType": "paragraph",
+        "data": {},
+        "content": [
+          {
+            "nodeType": "text",
+            "value": "Leading with consumer insights, Davis Elen will drive brand strategy and positioning. It will take a comprehensive deep-dive into consumer behaviors, identifying the most optimal audience targets, to meet demand, and earn share. The multichannel campaign is expected to launch in late fall of 2020 and will include TV, radio, outdoor and digital placements, as well as social media and influencer marketing, along with in-store merchandising and POP.",
+            "marks": [],
+            "data": {}
+          }
+        ]
+      },
+      {
+        "nodeType": "paragraph",
+        "data": {},
+        "content": [
+          {
+            "nodeType": "text",
+            "value": "“Data driven insights are core to our strategy and creative development…it’s in everything we do,” said Greg Ahearn, Davis Elen Co-President and Chief Strategy Officer. “In today’s rapidly changing retail environment, we are poised to identify the most valuable consumers across both traditional and digital retail and engage with them in relevant ways that drive results. The Alkaline Water Company brings a unique proposition to the health and wellness space offering a high-quality, natural and eco-friendly range of products within its portfolio. We’re energized by the opportunity to define and amplify their message to elevate their brand and gain share within the marketplace.”",
+            "marks": [],
+            "data": {}
+          }
+        ]
+      }
+    ]
+  }
+}

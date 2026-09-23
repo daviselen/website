@@ -1,0 +1,164 @@
+{
+  "slug": "2017awards",
+  "title": "2017 Awards Roundup",
+  "publishedAt": "2017-04-15T18:11:00",
+  "categories": [
+    {
+      "name": "News",
+      "slug": "news"
+    }
+  ],
+  "heroImage": {
+    "sys": {
+      "type": "Link",
+      "linkType": "Asset",
+      "id": "asset-29esgr"
+    },
+    "fields": {
+      "title": "davis-elen_awards_feature.jpeg",
+      "description": "Davis Elen won a silver ADDY and five bronze ADDY awards",
+      "file": {
+        "url": "/images/davis-elen_awards_feature.jpeg",
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  "body": {
+    "nodeType": "document",
+    "data": {},
+    "content": [
+      {
+        "nodeType": "heading-2",
+        "data": {},
+        "content": [
+          {
+            "nodeType": "text",
+            "value": "If we forgot to thank someone, we’re sorry",
+            "marks": [],
+            "data": {}
+          }
+        ]
+      },
+      {
+        "nodeType": "paragraph",
+        "data": {},
+        "content": [
+          {
+            "nodeType": "text",
+            "value": "We’re more about achieving results than winning awards. But what agency doesn’t like to see a few new gold statues sitting in the lobby? So with that in mind, lets see how Davis Elen did in 2017.",
+            "marks": [],
+            "data": {}
+          }
+        ]
+      },
+      {
+        "nodeType": "paragraph",
+        "data": {},
+        "content": [
+          {
+            "nodeType": "text",
+            "value": "Southern California Toyota led the pack with eleven awards. The “Life is Hard Enough” campaign cleaned up at the Tellys, winning awards for ",
+            "marks": [],
+            "data": {}
+          },
+          {
+            "nodeType": "hyperlink",
+            "data": {
+              "uri": "https://www.tellyawards.com/winners/2017/regional-commercials/craft-use-of-humor/faucets/173511/"
+            },
+            "content": [
+              {
+                "nodeType": "text",
+                "value": "Use of Humor",
+                "marks": [],
+                "data": {}
+              }
+            ]
+          },
+          {
+            "nodeType": "text",
+            "value": ", ",
+            "marks": [],
+            "data": {}
+          },
+          {
+            "nodeType": "hyperlink",
+            "data": {
+              "uri": "https://www.tellyawards.com/winners/2017/regional-commercials/general-automotive"
+            },
+            "content": [
+              {
+                "nodeType": "text",
+                "value": "Automotive Television Commercial",
+                "marks": [],
+                "data": {}
+              }
+            ]
+          },
+          {
+            "nodeType": "text",
+            "value": ", and Overall Automotive Campaign. Team Toyota also scored big at the American Advertising Awards. ",
+            "marks": [],
+            "data": {}
+          },
+          {
+            "nodeType": "hyperlink",
+            "data": {
+              "uri": "https://75a9b631-c489-4b7c-89cb-63c17740251e.filesusr.com/ugd/f0e8db_05c18fab0b594b85bfd93e4705f222d5.pdf"
+            },
+            "content": [
+              {
+                "nodeType": "text",
+                "value": "Bringing home ADDYs",
+                "marks": [],
+                "data": {}
+              }
+            ]
+          },
+          {
+            "nodeType": "text",
+            "value": " for their disruptive “Greenskeeper” and “Mud in Your Eye” print ads.",
+            "marks": [],
+            "data": {}
+          }
+        ]
+      },
+      {
+        "nodeType": "paragraph",
+        "data": {},
+        "content": [
+          {
+            "nodeType": "text",
+            "value": "McDonald’s also took a big bite out of the awards season, bringing home Tellys for the humor-heavy Museum and Yoga spots, which announced the big changes coming to McDonald’s. Our Seattle office got their very own statuette for our Tasty Video parody series staring the Seahawks mascot Blitz. And our LA retail work was recognized with ADDYS and a WEBBY.",
+            "marks": [],
+            "data": {}
+          }
+        ]
+      },
+      {
+        "nodeType": "paragraph",
+        "data": {},
+        "content": [
+          {
+            "nodeType": "text",
+            "value": "Finally, our newest account hit the ground running. The Udacity spot, “Jobs of Tomorrow” won Tellys for both Art Direction and Visual Effects and ADDYS for Television, Motion Graphics and Art Direction.",
+            "marks": [],
+            "data": {}
+          }
+        ]
+      },
+      {
+        "nodeType": "paragraph",
+        "data": {},
+        "content": [
+          {
+            "nodeType": "text",
+            "value": "Congratulations to all the people who made 2017 one of our best award seasons ever.",
+            "marks": [],
+            "data": {}
+          }
+        ]
+      }
+    ]
+  }
+}

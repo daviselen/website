@@ -1,0 +1,234 @@
+{
+  "slug": "chr-vr-experience",
+  "title": "The C-HR R-Tuned VR Experience",
+  "publishedAt": "2018-10-16T16:21:00",
+  "categories": [
+    {
+      "name": "News",
+      "slug": "news"
+    }
+  ],
+  "heroImage": {
+    "sys": {
+      "type": "Link",
+      "linkType": "Asset",
+      "id": "asset-srf8wx"
+    },
+    "fields": {
+      "title": "01_c-hr-main.jpeg",
+      "description": "Toyota C-HR R-Tuned",
+      "file": {
+        "url": "/images/01_c-hr-main.jpeg",
+        "contentType": "image/jpeg"
+      }
+    }
+  },
+  "body": {
+    "nodeType": "document",
+    "data": {},
+    "content": [
+      {
+        "nodeType": "paragraph",
+        "data": {},
+        "content": [
+          {
+            "nodeType": "text",
+            "value": "Crossovers are supposed to be known for their versatility and convenience, not for raising eyebrows on the racetrack.",
+            "marks": [],
+            "data": {}
+          }
+        ]
+      },
+      {
+        "nodeType": "paragraph",
+        "data": {},
+        "content": [
+          {
+            "nodeType": "text",
+            "value": "But the Toyota C-HR R-Tuned defies expectations. At the Willow Springs International Raceway, the C-HR turned in an astonishing time of 1:25:22. That’s under a minute and a half over 2.5 miles of track. And for anyone asking, ",
+            "marks": [],
+            "data": {}
+          },
+          {
+            "nodeType": "text",
+            "value": "“Is that good?”",
+            "marks": [
+              {
+                "type": "italic"
+              }
+            ],
+            "data": {}
+          },
+          {
+            "nodeType": "text",
+            "value": " the answer is a resounding ",
+            "marks": [],
+            "data": {}
+          },
+          {
+            "nodeType": "text",
+            "value": "yes",
+            "marks": [
+              {
+                "type": "italic"
+              }
+            ],
+            "data": {}
+          },
+          {
+            "nodeType": "text",
+            "value": ". In fact, the C-HR R-Tuned beat out nearly the entire heat, save five specialty cars, including the McLaren 650 S Spyder and the Porsche 911 GT3.",
+            "marks": [],
+            "data": {}
+          }
+        ]
+      },
+      {
+        "nodeType": "paragraph",
+        "data": {},
+        "content": [
+          {
+            "nodeType": "text",
+            "value": "Against specialty cars like those? That’s rarified air. So when Davis Elen was offered the chance to hit Willow Springs to test drive and develop a project involving the C-HR R-Tuned, we jumped at the opportunity.",
+            "marks": [],
+            "data": {}
+          }
+        ]
+      },
+      {
+        "nodeType": "paragraph",
+        "data": {},
+        "content": [
+          {
+            "nodeType": "text",
+            "value": "Agency Co-President/CCO David Moranville and Sr. Interactive Art Director Kristina Boudreau coordinated with C-HR R-Tuned creator Dan Gardner as they began developing ideas. ",
+            "marks": [],
+            "data": {}
+          },
+          {
+            "nodeType": "text",
+            "value": "“We decided to go all-in and create an experience that tells the C-HR’s R-Tuned story,”",
+            "marks": [],
+            "data": {}
+          },
+          {
+            "nodeType": "text",
+            "value": " says Kristina. ",
+            "marks": [],
+            "data": {}
+          },
+          {
+            "nodeType": "text",
+            "value": "“But we only had a week to ideate, prep and organize a badass VR shoot.”",
+            "marks": [],
+            "data": {}
+          }
+        ]
+      },
+      {
+        "nodeType": "embedded-entry-block",
+        "data": {
+          "target": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Entry",
+              "id": "vimeo-282146831"
+            },
+            "fields": {
+              "type": "vimeoVideo",
+              "title": "Vimeo video",
+              "videoId": "282146831",
+              "hash": ""
+            }
+          }
+        },
+        "content": []
+      },
+      {
+        "nodeType": "paragraph",
+        "data": {},
+        "content": [
+          {
+            "nodeType": "text",
+            "value": "Check out a teaser for the immersive 4D experience",
+            "marks": [],
+            "data": {}
+          }
+        ]
+      },
+      {
+        "nodeType": "paragraph",
+        "data": {},
+        "content": [
+          {
+            "nodeType": "text",
+            "value": "One week. The execution of any VR project isn’t without its logistical challenges and, given the concept and deadline, this one would be no different. To get the shot we needed, the team constructed a custom rig and mounted it to the car’s roll cage. Our talented VR techs were able to get exhilarating footage despite the challenges that come with shooting on a vehicle with 600 horsepower, tearing around the track.",
+            "marks": [],
+            "data": {}
+          }
+        ]
+      },
+      {
+        "nodeType": "paragraph",
+        "data": {},
+        "content": [
+          {
+            "nodeType": "text",
+            "value": "The team’s efforts resulted in an awesome 4D C-HR R-Tuned experience — complete with haptics and ambisonic sound — that thrilled event-goers all across Southern California, and played a part in the massively successful sales launch of the C-HR.",
+            "marks": [],
+            "data": {}
+          },
+          {
+            "nodeType": "text",
+            "value": "All of this is leading to an immersive installation for the Staples Center in 2019 that will include reliving the C-HR R-Tuned experience, thrilling sports fans and concertgoers even before they take their seats.",
+            "marks": [],
+            "data": {}
+          }
+        ]
+      },
+      {
+        "nodeType": "paragraph",
+        "data": {},
+        "content": [
+          {
+            "nodeType": "text",
+            "value": "One week. Agencies aren’t supposed to be able to do that, but Davis Elen did.",
+            "marks": [],
+            "data": {}
+          }
+        ]
+      },
+      {
+        "nodeType": "embedded-entry-block",
+        "data": {
+          "target": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Entry",
+              "id": "vimeo-282150653"
+            },
+            "fields": {
+              "type": "vimeoVideo",
+              "title": "Vimeo video",
+              "videoId": "282150653",
+              "hash": ""
+            }
+          }
+        },
+        "content": []
+      },
+      {
+        "nodeType": "paragraph",
+        "data": {},
+        "content": [
+          {
+            "nodeType": "text",
+            "value": "The intro and 360˚ footage were also used for social engagement",
+            "marks": [],
+            "data": {}
+          }
+        ]
+      }
+    ]
+  }
+}
