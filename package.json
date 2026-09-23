@@ -13,6 +13,7 @@
   "scripts": {
     "images": "node scripts/generate-image-formats.mjs",
     "jobs": "node scripts/fetch-job-openings.mjs && pwa-assets-generator",
+    "migrate:wordpress": "node scripts/migrate-wordpress.mjs",
     "predev": "npm run images",
     "dev": "vite",
     "prebuild": "npm run images && npm run jobs",
@@ -43,6 +44,7 @@
     "@vite-pwa/assets-generator": "^1.0.2",
     "@vitejs/plugin-react": "^4.3.1",
     "autoprefixer": "^10.4.19",
+    "cheerio": "^1.2.0",
     "eslint": "^9.39.5",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-jsx-a11y": "^6.10.2",
