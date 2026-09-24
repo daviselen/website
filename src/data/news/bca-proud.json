@@ -1,50 +1,47 @@
 {
-  "slug": "bca-proud",
-  "title": "Going Pink to Support Breast Cancer Awareness Month",
-  "publishedAt": "2018-10-18T16:10:00",
-  "categories": [
+  "entries": [
     {
-      "name": "Culture",
-      "slug": "culture"
-    }
-  ],
-  "heroImage": {
-    "sys": {
-      "type": "Link",
-      "linkType": "Asset",
-      "id": "asset-7et1ai"
-    },
-    "fields": {
-      "title": "breast-cancer-header.png",
-      "description": "Breast Cancer Awareness Month is October",
-      "file": {
-        "url": "/images/breast-cancer-header.png",
-        "contentType": "image/png"
-      }
-    }
-  },
-  "body": {
-    "nodeType": "document",
-    "data": {},
-    "content": [
-      {
-        "nodeType": "paragraph",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "text",
-            "value": "At de, we are proud to support Breast Cancer Awareness month in October. However, this is an on-going fight that lasts long after the month has ended. It’s important that we not only rally around this cause in October but continue to show our support all year long. Here are some ways that you can show your support every day:",
-            "marks": [],
-            "data": {}
+      "sys": {
+        "type": "Entry",
+        "id": "bca-proud",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "article"
           }
-        ]
+        }
       },
-      {
-        "nodeType": "unordered-list",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "list-item",
+      "fields": {
+        "slug": {
+          "en-US": "bca-proud"
+        },
+        "title": {
+          "en-US": "Going Pink to Support Breast Cancer Awareness Month"
+        },
+        "publishedAt": {
+          "en-US": "2018-10-18T16:10:00"
+        },
+        "categories": {
+          "en-US": [
+            {
+              "name": "Culture",
+              "slug": "culture"
+            }
+          ]
+        },
+        "heroImage": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "asset-456bf53d87e2"
+            }
+          }
+        },
+        "body": {
+          "en-US": {
+            "nodeType": "document",
             "data": {},
             "content": [
               {
@@ -53,76 +50,301 @@
                 "content": [
                   {
                     "nodeType": "text",
-                    "value": "Share knowledge – volunteer and campaign to help women get access to the breast cancer drugs they need",
-                    "marks": [],
-                    "data": {}
-                  },
-                  {
-                    "nodeType": "text",
-                    "value": "‍",
+                    "value": "At de, we are proud to support Breast Cancer Awareness month in October. However, this is an on-going fight that lasts long after the month has ended. It’s important that we not only rally around this cause in October but continue to show our support all year long. Here are some ways that you can show your support every day:",
                     "marks": [],
                     "data": {}
                   }
                 ]
-              }
-            ]
-          },
-          {
-            "nodeType": "list-item",
-            "data": {},
-            "content": [
+              },
               {
-                "nodeType": "text",
-                "value": "Know the signs and symptoms of breast cancer and share information women need to know about self-examination",
-                "marks": [],
-                "data": {}
-              }
-            ]
-          },
-          {
-            "nodeType": "list-item",
-            "data": {},
-            "content": [
+                "nodeType": "unordered-list",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "list-item",
+                    "data": {},
+                    "content": [
+                      {
+                        "nodeType": "paragraph",
+                        "data": {},
+                        "content": [
+                          {
+                            "nodeType": "text",
+                            "value": "Share knowledge – volunteer and campaign to help women get access to the breast cancer drugs they need",
+                            "marks": [],
+                            "data": {}
+                          },
+                          {
+                            "nodeType": "text",
+                            "value": "\n",
+                            "marks": [],
+                            "data": {}
+                          },
+                          {
+                            "nodeType": "text",
+                            "value": "‍",
+                            "marks": [],
+                            "data": {}
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "list-item",
+                    "data": {},
+                    "content": [
+                      {
+                        "nodeType": "paragraph",
+                        "data": {},
+                        "content": [
+                          {
+                            "nodeType": "text",
+                            "value": "Know the signs and symptoms of breast cancer and share information women need to know about self-examination",
+                            "marks": [],
+                            "data": {}
+                          },
+                          {
+                            "nodeType": "text",
+                            "value": "\n",
+                            "marks": [],
+                            "data": {}
+                          },
+                          {
+                            "nodeType": "text",
+                            "value": "‍",
+                            "marks": [],
+                            "data": {}
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "list-item",
+                    "data": {},
+                    "content": [
+                      {
+                        "nodeType": "paragraph",
+                        "data": {},
+                        "content": [
+                          {
+                            "nodeType": "text",
+                            "value": "Donate to breast cancer research",
+                            "marks": [],
+                            "data": {}
+                          },
+                          {
+                            "nodeType": "text",
+                            "value": "\n",
+                            "marks": [],
+                            "data": {}
+                          },
+                          {
+                            "nodeType": "text",
+                            "value": "‍",
+                            "marks": [],
+                            "data": {}
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "list-item",
+                    "data": {},
+                    "content": [
+                      {
+                        "nodeType": "paragraph",
+                        "data": {},
+                        "content": [
+                          {
+                            "nodeType": "text",
+                            "value": "Shop for products that support breast cancer awareness",
+                            "marks": [],
+                            "data": {}
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-asset-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "asset-78c87109854b"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "hyperlink",
+                    "data": {
+                      "uri": "https://www.beyoutifulfoundation.com/product/beyoutiful-pullover-hoodie-pink/"
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "Beyoutiful Pullover Hoodie",
+                        "marks": [],
+                        "data": {}
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-asset-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "asset-87e83cb5bda6"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "hyperlink",
+                    "data": {
+                      "uri": "https://www.sandandsky.com/products/flash-perfection-exfoliating-treatment#"
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "Sand and Sky Flash Exfoliating Treatment",
+                        "marks": [],
+                        "data": {}
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-asset-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "asset-e9738f34b460"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "hyperlink",
+                    "data": {
+                      "uri": "https://tobitobin.com/collections/candles/products/hope"
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "Tobi Tobin Hope Candle",
+                        "marks": [],
+                        "data": {}
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-asset-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "asset-6cb0f1a5720e"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "hyperlink",
+                    "data": {
+                      "uri": "http://bcrfshoppink.org/product/ulta-bag/"
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "BCRF Collection – Cosmetic Bag",
+                        "marks": [],
+                        "data": {}
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-asset-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "asset-f4386f14407e"
+                    }
+                  }
+                },
+                "content": []
+              },
               {
                 "nodeType": "paragraph",
                 "data": {},
                 "content": [
                   {
                     "nodeType": "text",
-                    "value": "Donate to breast cancer research",
+                    "value": "Under Armour Men’s Power UA Pip Blitzing 2.0 Cap",
                     "marks": [],
                     "data": {}
                   },
                   {
-                    "nodeType": "text",
-                    "value": "‍",
-                    "marks": [],
-                    "data": {}
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "nodeType": "list-item",
-            "data": {},
-            "content": [
-              {
-                "nodeType": "paragraph",
-                "data": {},
-                "content": [
-                  {
-                    "nodeType": "text",
-                    "value": "Shop for products that support breast cancer awareness",
-                    "marks": [],
-                    "data": {}
+                    "nodeType": "hyperlink",
+                    "data": {
+                      "uri": "https://www.underarmour.com/en-us/mens-ua-pip-blitzing-2-0-cap/pid1265192-001"
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "Under Armour Men’s Power UA Pip Blitzing 2.0 Cap",
+                        "marks": [],
+                        "data": {}
+                      }
+                    ]
                   }
                 ]
               }
             ]
           }
-        ]
+        }
       }
-    ]
-  }
+    }
+  ]
 }

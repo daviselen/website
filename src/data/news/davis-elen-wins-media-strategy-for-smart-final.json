@@ -1,178 +1,199 @@
 {
-  "slug": "davis-elen-wins-media-strategy-for-smart-final",
-  "title": "Davis Elen Wins Media Strategy for Smart & Final",
-  "publishedAt": "2021-03-01T12:52:46",
-  "categories": [
+  "entries": [
     {
-      "name": "News",
-      "slug": "news"
-    }
-  ],
-  "heroImage": {
-    "sys": {
-      "type": "Link",
-      "linkType": "Asset",
-      "id": "asset-wbt5pi"
-    },
-    "fields": {
-      "title": "sfpress_sqrthumb_820x820.jpg",
-      "description": "",
-      "file": {
-        "url": "/images/sfpress_sqrthumb_820x820.jpg",
-        "contentType": "image/jpeg"
+      "sys": {
+        "type": "Entry",
+        "id": "davis-elen-wins-media-strategy-for-smart-final",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "article"
+          }
+        }
+      },
+      "fields": {
+        "slug": {
+          "en-US": "davis-elen-wins-media-strategy-for-smart-final"
+        },
+        "title": {
+          "en-US": "Davis Elen Wins Media Strategy for Smart & Final"
+        },
+        "publishedAt": {
+          "en-US": "2021-03-01T12:52:46"
+        },
+        "categories": {
+          "en-US": [
+            {
+              "name": "News",
+              "slug": "news"
+            }
+          ]
+        },
+        "heroImage": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "asset-1adc132dd8ca"
+            }
+          }
+        },
+        "body": {
+          "en-US": {
+            "nodeType": "document",
+            "data": {},
+            "content": [
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "One of the longest operating food retailers in the country has augmented its existing partnership with Davis Elen, to now include media strategy to help grow its business. The new scope of work will complement the strategy, creative, social media, and digital services already provided by the agency.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Davis Elen will now be responsible for overseeing the grocers’ media strategy, planning, and buying efforts for its entire roster of 254 locations throughout California, Nevada, and Arizona. The agency will also be managing the company’s multicultural consumer engagement strategy, specifically putting its specialized resources towards Hispanic media. With 17 demographic marketing areas across the three different states, John Papadopoulos, SVP, Director of Media Strategy, knows that it will take specific solutions focused on local nuances to yield effective media consumption in the diverse and differing markets.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "“At Davis Elen, we lead with insights, especially for media. Our hyper-local and data-driven approach to media buying allows us to find the most effective, yet cost-efficient media options available. Combined with original creative designed to inspire purchase behavior, we are positioned to deliver results that will exceed our client’s expectations and business goals” –",
+                    "marks": [
+                      {
+                        "type": "italic"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "says Papadopoulos.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "As the media agency of record for Smart and Final, Davis Elen has hit the ground running. It launched its first campaign as the 2020-2021 NFL season came to a close, pushing original broadcast, search, and social media content, the week of the",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "Big Game.",
+                    "marks": [
+                      {
+                        "type": "italic"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Smart & Final teamed up with Davis Elen in early 2019, to drive brand strategy and positioning. In those two years, the agency implemented an entirely new brand campaign as well as numerous seasonal marketing plans to drive sales. In its newest role, the agency will manage all media channels including paid social, search, broadcast, and other traditional media for both the legacy and",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "Extra! store formats,",
+                    "marks": [
+                      {
+                        "type": "italic"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "creating a more holistic approach to marketing strategy, which was an intentional move on behalf of Smart & Final.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "“Davis Elen has delivered on its commitment to grow our business through strategy and creative services, and the reality is, they’re also a best-in-class media agency. We believe their approach to media is going to positively impact our business. So it only made sense for us to merge our various agency needs under one roof to get the greatest amount of efficiency and strategic integration as possible”,",
+                    "marks": [
+                      {
+                        "type": "italic"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "said Joe VanDette, Group Vice President of Marketing and Digital.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "heading-2",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "About Smart & Final",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Smart & Final is the smaller, faster grocery warehouse store, headquartered near Los Angeles in Commerce, California. Smart & Final’s 254 store locations offer quality products in a variety of sizes, saving customers time and money without a membership fee. Its larger format stores, Smart & Final Extra!, combine the warehouse store with traditional grocery offerings like farm-fresh produce and natural and organic options, to provide a one-stop-shop for all. In business since 1871, Smart & Final remains committed to giving back to its communities through employee volunteer opportunities and donations to local nonprofits.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              }
+            ]
+          }
+        }
       }
     }
-  },
-  "body": {
-    "nodeType": "document",
-    "data": {},
-    "content": [
-      {
-        "nodeType": "paragraph",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "text",
-            "value": "One of the longest operating food retailers in the country has augmented its existing partnership with Davis Elen, to now include media strategy to help grow its business. The new scope of work will complement the strategy, creative, social media, and digital services already provided by the agency. ",
-            "marks": [],
-            "data": {}
-          }
-        ]
-      },
-      {
-        "nodeType": "paragraph",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "text",
-            "value": "Davis Elen will now be responsible for overseeing the grocers’ media strategy, planning, and buying efforts for its entire roster of 254 locations throughout California, Nevada, and Arizona. The agency will also be managing the company’s multicultural consumer engagement strategy, specifically putting its specialized resources towards Hispanic media. With 17 demographic marketing areas across the three different states, John Papadopoulos, SVP, Director of Media Strategy, knows that it will take specific solutions focused on local nuances to yield effective media consumption in the diverse and differing markets. ",
-            "marks": [],
-            "data": {}
-          }
-        ]
-      },
-      {
-        "nodeType": "paragraph",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "text",
-            "value": "“At Davis Elen, we lead with insights, especially for media. Our hyper-local and data-driven approach to media buying allows us to find the most effective, yet cost-efficient media options available. Combined with original creative designed to inspire purchase behavior, we are positioned to deliver results that will exceed our client’s expectations and business goals” – ",
-            "marks": [
-              {
-                "type": "italic"
-              }
-            ],
-            "data": {}
-          },
-          {
-            "nodeType": "text",
-            "value": "says Papadopoulos.",
-            "marks": [],
-            "data": {}
-          }
-        ]
-      },
-      {
-        "nodeType": "paragraph",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "text",
-            "value": "As the media agency of record for Smart and Final, Davis Elen has hit the ground running. It launched its first campaign as the 2020-2021 NFL season came to a close, pushing original broadcast, search, and social media content, the week of the ",
-            "marks": [],
-            "data": {}
-          },
-          {
-            "nodeType": "text",
-            "value": "Big Game. ",
-            "marks": [
-              {
-                "type": "italic"
-              }
-            ],
-            "data": {}
-          }
-        ]
-      },
-      {
-        "nodeType": "paragraph",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "text",
-            "value": "Smart & Final teamed up with Davis Elen in early 2019, to drive brand strategy and positioning. In those two years, the agency implemented an entirely new brand campaign as well as numerous seasonal marketing plans to drive sales. In its newest role, the agency will manage all media channels including paid social, search, broadcast, and other traditional media for both the legacy and ",
-            "marks": [],
-            "data": {}
-          },
-          {
-            "nodeType": "text",
-            "value": "Extra! store formats,",
-            "marks": [
-              {
-                "type": "italic"
-              }
-            ],
-            "data": {}
-          },
-          {
-            "nodeType": "text",
-            "value": " creating a more holistic approach to marketing strategy, which was an intentional move on behalf of Smart & Final. ",
-            "marks": [],
-            "data": {}
-          }
-        ]
-      },
-      {
-        "nodeType": "paragraph",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "text",
-            "value": "“Davis Elen has delivered on its commitment to grow our business through strategy and creative services, and the reality is, they’re also a best-in-class media agency. We believe their approach to media is going to positively impact our business. So it only made sense for us to merge our various agency needs under one roof to get the greatest amount of efficiency and strategic integration as possible”, ",
-            "marks": [
-              {
-                "type": "italic"
-              }
-            ],
-            "data": {}
-          },
-          {
-            "nodeType": "text",
-            "value": "said Joe VanDette, Group Vice President of Marketing and Digital.",
-            "marks": [],
-            "data": {}
-          }
-        ]
-      },
-      {
-        "nodeType": "paragraph",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "text",
-            "value": "About Smart & Final",
-            "marks": [
-              {
-                "type": "bold"
-              }
-            ],
-            "data": {}
-          }
-        ]
-      },
-      {
-        "nodeType": "paragraph",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "text",
-            "value": "Smart & Final is the smaller, faster grocery warehouse store, headquartered near Los Angeles in Commerce, California. Smart & Final’s 254 store locations offer quality products in a variety of sizes, saving customers time and money without a membership fee. Its larger format stores, Smart & Final Extra!, combine the warehouse store with traditional grocery offerings like farm-fresh produce and natural and organic options, to provide a one-stop-shop for all. In business since 1871, Smart & Final remains committed to giving back to its communities through employee volunteer opportunities and donations to local nonprofits.",
-            "marks": [],
-            "data": {}
-          }
-        ]
-      }
-    ]
-  }
+  ]
 }

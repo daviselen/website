@@ -1,109 +1,130 @@
 {
-  "slug": "davis-elen-accelerates-growth-strategy-names-john-papadopoulos-as-svp-media-director",
-  "title": "Davis Elen Names John Papadopoulos as SVP – Media Director",
-  "publishedAt": "2019-10-28T13:26:00",
-  "categories": [
+  "entries": [
     {
-      "name": "News",
-      "slug": "news"
-    }
-  ],
-  "heroImage": {
-    "sys": {
-      "type": "Link",
-      "linkType": "Asset",
-      "id": "asset-g7ebto"
-    },
-    "fields": {
-      "title": "john-papadopoulos-header.jpeg",
-      "description": "John Papadopoulos joins Davis Elen Advertising",
-      "file": {
-        "url": "/images/john-papadopoulos-header.jpeg",
-        "contentType": "image/jpeg"
+      "sys": {
+        "type": "Entry",
+        "id": "davis-elen-accelerates-growth-strategy-names-john-papadopoulos-as-svp-media-director",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "article"
+          }
+        }
+      },
+      "fields": {
+        "slug": {
+          "en-US": "davis-elen-accelerates-growth-strategy-names-john-papadopoulos-as-svp-media-director"
+        },
+        "title": {
+          "en-US": "Davis Elen Names John Papadopoulos as SVP – Media Director"
+        },
+        "publishedAt": {
+          "en-US": "2019-10-28T13:26:00"
+        },
+        "categories": {
+          "en-US": [
+            {
+              "name": "News",
+              "slug": "news"
+            }
+          ]
+        },
+        "heroImage": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "asset-b244f63982f7"
+            }
+          }
+        },
+        "body": {
+          "en-US": {
+            "nodeType": "document",
+            "data": {},
+            "content": [
+              {
+                "nodeType": "heading-3",
+                "data": {},
+                "content": []
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Davis Elen, one of the West Coast’s largest independently owned advertising agencies, today announced the appointment of John Papadopoulos as Senior Vice President – Media Director.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "In making the announcement, Mark Davis, Chairman and CEO, said: “Bringing John Papadopoulos in as part of our management group is another major step in our ongoing agency evolution. We are committed to adding new world-class talent to our team of industry thought-leaders to help our clients surpass their goals and grow our agency in 2020 and beyond.”",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "“John’s wealth of knowledge across all media channels and strong background in the automotive, retail and CPG categories will deliver immediate dividends to our clients and new business efforts. His energy, passion, experience and leadership will continue to elevate our media practices and accelerate our positive momentum as we head into the new year,” said Greg Ahearn, Co-President and Chief Strategy Officer at Davis Elen.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "In his new role, John will be responsible for leading media strategy, planning, negotiation and execution as well as sports sponsorships and partnerships for all Davis Elen clients.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "“I’m extremely excited to be joining Davis Elen and be a part of the agency’s dynamic evolution and plans for the future. Their client-centric approach, commitment to data driven decision making and focus on delivering results align perfectly with core values I’ve held throughout my career. Their track record of decades-long success with some of the most recognizable brands in the world, made this an incredible opportunity,” said Papadopoulos.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Most recently, John was Vice President at RPA, where he oversaw all facets of Honda media. Throughout his 15-year career, John has also managed media and sports sponsorships for Hyundai’s Western Region and held media leadership positions at both Phelps and Dentsu America, representing an extensive list of clients, including Toyota, Suzuki, Canon USA, Japan Airlines, Nissin Foods, Sutter Home Wines and Union Bank.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              }
+            ]
+          }
+        }
       }
     }
-  },
-  "body": {
-    "nodeType": "document",
-    "data": {},
-    "content": [
-      {
-        "nodeType": "heading-3",
-        "data": {},
-        "content": []
-      },
-      {
-        "nodeType": "paragraph",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "text",
-            "value": "Davis Elen, one of the West Coast’s largest independently owned advertising agencies, today announced the appointment of John Papadopoulos as Senior Vice President – Media Director. ",
-            "marks": [],
-            "data": {}
-          }
-        ]
-      },
-      {
-        "nodeType": "paragraph",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "text",
-            "value": "In making the announcement, Mark Davis, Chairman and CEO, said: “Bringing John Papadopoulos in as part of our management group is another major step in our ongoing agency evolution. We are committed to adding new world-class talent to our team of industry thought-leaders to help our clients surpass their goals and grow our agency in 2020 and beyond.” ",
-            "marks": [],
-            "data": {}
-          }
-        ]
-      },
-      {
-        "nodeType": "paragraph",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "text",
-            "value": "“John’s wealth of knowledge across all media channels and strong background in the automotive, retail and CPG categories will deliver immediate dividends to our clients and new business efforts. His energy, passion, experience and leadership will continue to elevate our media practices and accelerate our positive momentum as we head into the new year,” said Greg Ahearn, Co-President and Chief Strategy Officer at Davis Elen.",
-            "marks": [],
-            "data": {}
-          }
-        ]
-      },
-      {
-        "nodeType": "paragraph",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "text",
-            "value": "In his new role, John will be responsible for leading media strategy, planning, negotiation and execution as well as sports sponsorships and partnerships for all Davis Elen clients.",
-            "marks": [],
-            "data": {}
-          }
-        ]
-      },
-      {
-        "nodeType": "paragraph",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "text",
-            "value": "“I’m extremely excited to be joining Davis Elen and be a part of the agency’s dynamic evolution and plans for the future. Their client-centric approach, commitment to data driven decision making and focus on delivering results align perfectly with core values I’ve held throughout my career. Their track record of decades-long success with some of the most recognizable brands in the world, made this an incredible opportunity,” said Papadopoulos.",
-            "marks": [],
-            "data": {}
-          }
-        ]
-      },
-      {
-        "nodeType": "paragraph",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "text",
-            "value": "Most recently, John was Vice President at RPA, where he oversaw all facets of Honda media. Throughout his 15-year career, John has also managed media and sports sponsorships for Hyundai’s Western Region and held media leadership positions at both Phelps and Dentsu America, representing an extensive list of clients, including Toyota, Suzuki, Canon USA, Japan Airlines, Nissin Foods, Sutter Home Wines and Union Bank.",
-            "marks": [],
-            "data": {}
-          }
-        ]
-      }
-    ]
-  }
+  ]
 }

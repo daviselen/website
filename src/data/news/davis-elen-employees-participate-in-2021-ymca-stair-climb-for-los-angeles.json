@@ -1,68 +1,89 @@
 {
-  "slug": "davis-elen-employees-participate-in-2021-ymca-stair-climb-for-los-angeles",
-  "title": "Davis Elen Steps Up for Downtown LA",
-  "publishedAt": "2021-11-11T12:37:11",
-  "categories": [
+  "entries": [
     {
-      "name": "Culture",
-      "slug": "culture"
-    }
-  ],
-  "heroImage": {
-    "sys": {
-      "type": "Link",
-      "linkType": "Asset",
-      "id": "asset-666f67"
-    },
-    "fields": {
-      "title": "stairclimb-111121.jpg",
-      "description": "Davis Elen employees participate in YMCA Stair Climb",
-      "file": {
-        "url": "/images/news/2021-stair-climb-header.jpg",
-        "contentType": "image/jpeg"
+      "sys": {
+        "type": "Entry",
+        "id": "davis-elen-employees-participate-in-2021-ymca-stair-climb-for-los-angeles",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "article"
+          }
+        }
+      },
+      "fields": {
+        "slug": {
+          "en-US": "davis-elen-employees-participate-in-2021-ymca-stair-climb-for-los-angeles"
+        },
+        "title": {
+          "en-US": "Davis Elen Steps Up for Downtown LA"
+        },
+        "publishedAt": {
+          "en-US": "2021-11-11T12:37:11"
+        },
+        "categories": {
+          "en-US": [
+            {
+              "name": "Culture",
+              "slug": "culture"
+            }
+          ]
+        },
+        "heroImage": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "asset-da8a6c73b310"
+            }
+          }
+        },
+        "body": {
+          "en-US": {
+            "nodeType": "document",
+            "data": {},
+            "content": [
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "With the turn of the season, some may be feeling the ‘autumn fatigue,’ but not these unstoppable climbers from Davis Elen. Instead, they took to the outdoors and participated in the 2021 YMCA Stair Climb for Los Angeles.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "This year marks the 11th year in a row of the agency participating in the charity event to raise money for free and low-cost community programs at “the Y.” Pre-COVID, the participants would gather as teams at the bottom of the US Bank Tower and race to the top of the 75-story building. Since last year, the event went virtual, and this year, it was held both virtually and in person. The virtual team tracked their own steps by hitting the trails or walking around the block; the in-person team reported at the LA Memorial Coliseum and diligently took to the steps of the bleachers.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Team Davis Elen knocked it out of the park once again, raising over $2.2K this year alone, with 84K steps climbed by the virtual team, Not Fast Just Furious, and 10K steps by the in-person team, Twisted Blisters. That brings the donation from Davis Elen over the years to a grand total of $22,350, with 187 Davis Elen employees taking part over the years. A big thank you to everyone who got out there and worked up a sweat and endured the muscle cramps to champion the good cause.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              }
+            ]
+          }
+        }
       }
     }
-  },
-  "body": {
-    "nodeType": "document",
-    "data": {},
-    "content": [
-      {
-        "nodeType": "paragraph",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "text",
-            "value": "With the turn of the season, some may be feeling the ‘autumn fatigue,’ but not these unstoppable climbers from Davis Elen. Instead, they took to the outdoors and participated in the 2021 YMCA Stair Climb for Los Angeles. ",
-            "marks": [],
-            "data": {}
-          }
-        ]
-      },
-      {
-        "nodeType": "paragraph",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "text",
-            "value": "This year marks the 11th year in a row of the agency participating in the charity event to raise money for free and low-cost community programs at “the Y.” Pre-COVID, the participants would gather as teams at the bottom of the US Bank Tower and race to the top of the 75-story building. Since last year, the event went virtual, and this year, it was held both virtually and in person. The virtual team tracked their own steps by hitting the trails or walking around the block; the in-person team reported at the LA Memorial Coliseum and diligently took to the steps of the bleachers. ",
-            "marks": [],
-            "data": {}
-          }
-        ]
-      },
-      {
-        "nodeType": "paragraph",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "text",
-            "value": "Team Davis Elen knocked it out of the park once again, raising over $2.2K this year alone, with 84K steps climbed by the virtual team, Not Fast Just Furious, and 10K steps by the in-person team, Twisted Blisters. That brings the donation from Davis Elen over the years to a grand total of $22,350, with 187 Davis Elen employees taking part over the years. A big thank you to everyone who got out there and worked up a sweat and endured the muscle cramps to champion the good cause. ",
-            "marks": [],
-            "data": {}
-          }
-        ]
-      }
-    ]
-  }
+  ]
 }

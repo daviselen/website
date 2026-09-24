@@ -1,121 +1,134 @@
 {
-  "slug": "coastal-cleanup-day-a-success",
-  "title": "Coastal Cleanup Day a Success",
-  "publishedAt": "2019-10-03T15:56:00",
-  "categories": [
+  "entries": [
     {
-      "name": "Culture",
-      "slug": "culture"
-    }
-  ],
-  "heroImage": {
-    "sys": {
-      "type": "Link",
-      "linkType": "Asset",
-      "id": "asset-6b8ulw"
-    },
-    "fields": {
-      "title": "cleanup.jpg",
-      "description": "",
-      "file": {
-        "url": "/images/cleanup.jpg",
-        "contentType": "image/jpeg"
-      }
-    }
-  },
-  "body": {
-    "nodeType": "document",
-    "data": {},
-    "content": [
-      {
-        "nodeType": "paragraph",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "text",
-            "value": "The ECO Warrior Foundation hosted its 50th and 51st cleanup simultaneously on International Coastal Cleanup Day at Aliso Beach in Laguna Beach, CA and Lake Merritt in Oakland, CA. While the foundation has hosted numerous cleanups in the past at Aliso Beach, it was our first foray into hosting an upstream event in Oakland, Ca. Both events were part of ECO-Warrior’s new statewide ‘Live Litter Free’ campaign.",
-            "marks": [],
-            "data": {}
+      "sys": {
+        "type": "Entry",
+        "id": "coastal-cleanup-day-a-success",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "article"
           }
-        ]
+        }
       },
-      {
-        "nodeType": "paragraph",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "text",
-            "value": "In Laguna Beach 128 volunteers came together to remove 227 pounds of litter, while in Oakland 119 volunteers removed a staggering 871 pounds of litter! The three-hour events went off without a hitch and we couldn’t have imagined a better reception up in Oakland, CA. Especially when noting, 73 of the 119 volunteers were high school and middle school students!",
-            "marks": [],
-            "data": {}
-          }
-        ]
-      },
-      {
-        "nodeType": "paragraph",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "text",
-            "value": "Overall our Coastal Cleanup Day totals for both sites saw 251 volunteers remove 1,098 pounds of litter. This brings the foundation to a total of 51 cleanups hosted and 21,472 pounds of litter removed from our beaches, oceans, waterways and parks.",
-            "marks": [],
-            "data": {}
-          }
-        ]
-      },
-      {
-        "nodeType": "paragraph",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "text",
-            "value": "For more information on how to get involved in our new ‘Live Litter Free’ campaign and for upcoming events please go to ",
-            "marks": [],
-            "data": {}
-          },
-          {
-            "nodeType": "hyperlink",
-            "data": {
-              "uri": "https://www.eco-warrior.org/"
-            },
-            "content": [
-              {
-                "nodeType": "text",
-                "value": "ECO-Warrior.org",
-                "marks": [],
-                "data": {}
-              }
-            ]
-          },
-          {
-            "nodeType": "text",
-            "value": ".",
-            "marks": [],
-            "data": {}
-          }
-        ]
-      },
-      {
-        "nodeType": "embedded-asset-block",
-        "data": {
-          "target": {
+      "fields": {
+        "slug": {
+          "en-US": "coastal-cleanup-day-a-success"
+        },
+        "title": {
+          "en-US": "Coastal Cleanup Day a Success"
+        },
+        "publishedAt": {
+          "en-US": "2019-10-03T15:56:00"
+        },
+        "categories": {
+          "en-US": [
+            {
+              "name": "Culture",
+              "slug": "culture"
+            }
+          ]
+        },
+        "heroImage": {
+          "en-US": {
             "sys": {
               "type": "Link",
               "linkType": "Asset",
-              "id": "asset-b8g698"
-            },
-            "fields": {
-              "title": "culture-coastal-cleanup.jpg",
-              "description": "Davis Elen participates in Coastal Cleanup Day",
-              "file": {
-                "url": "/images/news/culture-coastal-cleanup.jpg",
-                "contentType": "image/jpeg"
-              }
+              "id": "asset-b9bb406834e1"
             }
           }
         },
-        "content": []
+        "body": {
+          "en-US": {
+            "nodeType": "document",
+            "data": {},
+            "content": [
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "The ECO Warrior Foundation hosted its 50th and 51st cleanup simultaneously on International Coastal Cleanup Day at Aliso Beach in Laguna Beach, CA and Lake Merritt in Oakland, CA. While the foundation has hosted numerous cleanups in the past at Aliso Beach, it was our first foray into hosting an upstream event in Oakland, Ca. Both events were part of ECO-Warrior’s new statewide ‘Live Litter Free’ campaign.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "In Laguna Beach 128 volunteers came together to remove 227 pounds of litter, while in Oakland 119 volunteers removed a staggering 871 pounds of litter! The three-hour events went off without a hitch and we couldn’t have imagined a better reception up in Oakland, CA. Especially when noting, 73 of the 119 volunteers were high school and middle school students!",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Overall our Coastal Cleanup Day totals for both sites saw 251 volunteers remove 1,098 pounds of litter. This brings the foundation to a total of 51 cleanups hosted and 21,472 pounds of litter removed from our beaches, oceans, waterways and parks.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "For more information on how to get involved in our new ‘Live Litter Free’ campaign and for upcoming events please go to",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "hyperlink",
+                    "data": {
+                      "uri": "https://www.eco-warrior.org/"
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "ECO-Warrior.org",
+                        "marks": [],
+                        "data": {}
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": ".",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-asset-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "asset-2ee7ac29718b"
+                    }
+                  }
+                },
+                "content": []
+              }
+            ]
+          }
+        }
       }
-    ]
-  }
+    }
+  ]
 }

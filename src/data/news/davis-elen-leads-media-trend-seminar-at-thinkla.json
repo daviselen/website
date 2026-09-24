@@ -1,125 +1,147 @@
 {
-  "slug": "davis-elen-leads-media-trend-seminar-at-thinkla",
-  "title": "Davis Elen Leads Media Trend Seminar at ThinkLA",
-  "publishedAt": "2021-12-14T09:17:03",
-  "categories": [
+  "entries": [
     {
-      "name": "News",
-      "slug": "news"
-    }
-  ],
-  "heroImage": {
-    "sys": {
-      "type": "Link",
-      "linkType": "Asset",
-      "id": "asset-i4nr1h"
-    },
-    "fields": {
-      "title": "de-think-la_1080x1080.jpg",
-      "description": "ThinkLA",
-      "file": {
-        "url": "/images/de-think-la_1080x1080.jpg",
-        "contentType": "image/jpeg"
-      }
-    }
-  },
-  "body": {
-    "nodeType": "document",
-    "data": {},
-    "content": [
-      {
-        "nodeType": "paragraph",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "text",
-            "value": "Davis Elen Discusses with Top Automotive and Media Leaders the Latest Innovations in Post COVID Media at ThinkLA Automotive Conference.",
-            "marks": [
+      "sys": {
+        "type": "Entry",
+        "id": "davis-elen-leads-media-trend-seminar-at-thinkla",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "article"
+          }
+        }
+      },
+      "fields": {
+        "slug": {
+          "en-US": "davis-elen-leads-media-trend-seminar-at-thinkla"
+        },
+        "title": {
+          "en-US": "Davis Elen Leads Media Trend Seminar at ThinkLA"
+        },
+        "publishedAt": {
+          "en-US": "2021-12-14T09:17:03"
+        },
+        "categories": {
+          "en-US": [
+            {
+              "name": "News",
+              "slug": "news"
+            }
+          ]
+        },
+        "heroImage": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "asset-118ee16b39dc"
+            }
+          }
+        },
+        "body": {
+          "en-US": {
+            "nodeType": "document",
+            "data": {},
+            "content": [
               {
-                "type": "bold"
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Davis Elen Discusses with Top Automotive and Media Leaders the Latest Innovations in Post COVID Media at ThinkLA Automotive Conference.",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      },
+                      {
+                        "type": "italic"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
               },
               {
-                "type": "italic"
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "John Papadopoulos, SVP of Media Strategy at Davis Elen, leads an informative and insightful seminar with Doug Eroh, President and GM of the world’s largest auto dealership for the world’s largest car manufacturer, Toyota. John and Doug’s conversation covers not only the significant impact COVID has had on the retail landscape but even more importantly, media best practices for navigating this challenging terrain beyond the pandemic, as we enter a new era of consumerism.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Additionally, Associate Media Director, Drew Olkowski is interviewed by Ryan Iwanoff, Senior Sales Manager on the automotive team at Samsung Ads. During this session, Drew discusses the power of Connected TV and how Davis Elen’s first-to-market approach led to significant efficiencies like cutting the cost of unique reach by 35% and dropping audience duplication to below 5%.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Catch the full story from ThinkLA’s Auto Conference and learn more about how Davis Elen leads the industry with technology-first media practices designed to drive both cost effective and best-in-class results.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-asset-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "asset-d5c3905e4098"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "embedded-entry-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Entry",
+                      "id": "vimeo-649207327"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "embedded-entry-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Entry",
+                      "id": "vimeo-654205900"
+                    }
+                  }
+                },
+                "content": []
               }
-            ],
-            "data": {}
+            ]
           }
-        ]
-      },
-      {
-        "nodeType": "paragraph",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "text",
-            "value": "John Papadopoulos, SVP of Media Strategy at Davis Elen, leads an informative and insightful seminar with Doug Eroh, President and GM of the world’s largest auto dealership for the world’s largest car manufacturer, Toyota. John and Doug’s conversation covers not only the significant impact COVID has had on the retail landscape but even more importantly, media best practices for navigating this challenging terrain beyond the pandemic, as we enter a new era of consumerism.",
-            "marks": [],
-            "data": {}
-          }
-        ]
-      },
-      {
-        "nodeType": "paragraph",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "text",
-            "value": "Additionally, Associate Media Director, Drew Olkowski is interviewed by Ryan Iwanoff, Senior Sales Manager on the automotive team at Samsung Ads. During this session, Drew discusses the power of Connected TV and how Davis Elen’s first-to-market approach led to significant efficiencies like cutting the cost of unique reach by 35% and dropping audience duplication to below 5%.",
-            "marks": [],
-            "data": {}
-          }
-        ]
-      },
-      {
-        "nodeType": "paragraph",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "text",
-            "value": "Catch the full story from ThinkLA’s Auto Conference and learn more about how Davis Elen leads the industry with technology-first media practices designed to drive both cost effective and best-in-class results.",
-            "marks": [],
-            "data": {}
-          }
-        ]
-      },
-      {
-        "nodeType": "embedded-entry-block",
-        "data": {
-          "target": {
-            "sys": {
-              "type": "Link",
-              "linkType": "Entry",
-              "id": "vimeo-649207339"
-            },
-            "fields": {
-              "type": "vimeoVideo",
-              "title": "The New Retail Environment - John Papadopoulos",
-              "videoId": "649207339",
-              "hash": "ba8429b002"
-            }
-          }
-        },
-        "content": []
-      },
-      {
-        "nodeType": "embedded-entry-block",
-        "data": {
-          "target": {
-            "sys": {
-              "type": "Link",
-              "linkType": "Entry",
-              "id": "vimeo-654205900"
-            },
-            "fields": {
-              "type": "vimeoVideo",
-              "title": "Reinventing the Automotive Marketing Model - Drew Olkowski",
-              "videoId": "654205900",
-              "hash": "2d627a3663"
-            }
-          }
-        },
-        "content": []
+        }
       }
-    ]
-  }
+    }
+  ]
 }

@@ -1,567 +1,536 @@
 {
-  "slug": "davis-elen-wins-6-gold-graphis",
-  "title": "Davis Elen wins 6 gold Graphis",
-  "publishedAt": "2021-10-07T17:49:02",
-  "categories": [
+  "entries": [
     {
-      "name": "News",
-      "slug": "news"
-    }
-  ],
-  "heroImage": {
-    "sys": {
-      "type": "Link",
-      "linkType": "Asset",
-      "id": "asset-vs29km"
-    },
-    "fields": {
-      "title": "de-graphis-fi2-1.jpg",
-      "description": "",
-      "file": {
-        "url": "/images/de-graphis-fi2-1.jpg",
-        "contentType": "image/jpeg"
-      }
-    }
-  },
-  "body": {
-    "nodeType": "document",
-    "data": {},
-    "content": [
-      {
-        "nodeType": "paragraph",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "text",
-            "value": "Graphis, a leading international authority in design, advertising, photography and art/illustration, just released their 2022 Annual award winners, celebrating the top creative work from advertising and graphic design agencies worldwide. For Davis Elen, the latest release of the publication has the agency capturing six gold awards. ",
-            "marks": [],
-            "data": {}
+      "sys": {
+        "type": "Entry",
+        "id": "davis-elen-wins-6-gold-graphis",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "article"
           }
-        ]
+        }
       },
-      {
-        "nodeType": "paragraph",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "text",
-            "value": "For nearly 70 years the publication has been selecting exceptional work within three categories: Advertising, Photography, and Art/Illustration and is considered to be one of the highest honors in creative excellence.",
-            "marks": [],
-            "data": {}
-          }
-        ]
-      },
-      {
-        "nodeType": "paragraph",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "text",
-            "value": "“It’s quite a privilege to be recognized by the Graphis and to receive these awards. Our passionate and dedicated creative team are constantly raising the bar with each project they cultivate… and seeing them be recognized for their talents is such a humbling moment. I couldn’t be prouder.”",
-            "marks": [
-              {
-                "type": "italic"
-              }
-            ],
-            "data": {}
-          },
-          {
-            "nodeType": "text",
-            "value": " – David Moranville, Co-President and Chief Creative Officer",
-            "marks": [],
-            "data": {}
-          }
-        ]
-      },
-      {
-        "nodeType": "paragraph",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "text",
-            "value": "Davis Elen has won a Graphis in the past for its photography, but these six gold awards are its first in the Advertising category. ",
-            "marks": [],
-            "data": {}
-          }
-        ]
-      },
-      {
-        "nodeType": "heading-2",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "text",
-            "value": "LAFC Mural",
-            "marks": [],
-            "data": {}
-          }
-        ]
-      },
-      {
-        "nodeType": "paragraph",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "text",
-            "value": "WINNER: GOLD, PRINT/ENVIRONMENTAL",
-            "marks": [
-              {
-                "type": "bold"
-              }
-            ],
-            "data": {}
-          },
-          {
-            "nodeType": "text",
-            "value": "TOYOTA, LAFC PARTNERSHIP, BANC OF CALIFORNIA MURALS",
-            "marks": [
-              {
-                "type": "bold"
-              }
-            ],
-            "data": {}
-          }
-        ]
-      },
-      {
-        "nodeType": "paragraph",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "text",
-            "value": "These murals are a tribute to the trio of falcons that fly overhead before every LAFC home game as well as the long tradition of public art in Los Angeles. The imagery supports the stadium, the Los Angeles Football Club and the city of LA.",
-            "marks": [],
-            "data": {}
-          }
-        ]
-      },
-      {
-        "nodeType": "embedded-entry-block",
-        "data": {
-          "target": {
+      "fields": {
+        "slug": {
+          "en-US": "davis-elen-wins-6-gold-graphis"
+        },
+        "title": {
+          "en-US": "Davis Elen wins 6 gold Graphis"
+        },
+        "publishedAt": {
+          "en-US": "2021-10-07T17:49:02"
+        },
+        "categories": {
+          "en-US": [
+            {
+              "name": "News",
+              "slug": "news"
+            }
+          ]
+        },
+        "heroImage": {
+          "en-US": {
             "sys": {
               "type": "Link",
-              "linkType": "Entry",
-              "id": "youtube-QPlNOwfMLro"
+              "linkType": "Asset",
+              "id": "asset-45f535ddf9ee"
             }
           }
         },
-        "content": []
-      },
-      {
-        "nodeType": "heading-2",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "text",
-            "value": "Toyota, “Offer Card Theatre”",
-            "marks": [],
-            "data": {}
-          }
-        ]
-      },
-      {
-        "nodeType": "paragraph",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "text",
-            "value": "WINNER: GOLD, VIDEO/AUTOMOTIVE",
-            "marks": [
-              {
-                "type": "bold"
-              }
-            ],
-            "data": {}
-          }
-        ]
-      },
-      {
-        "nodeType": "paragraph",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "text",
-            "value": "Here in the world’s most fiercely competitive automotive market, we found a way for our dealer associations to stand out: Let the car and the deal be the star. Our ever-growing market share has been music to our ears.",
-            "marks": [],
-            "data": {}
-          }
-        ]
-      },
-      {
-        "nodeType": "embedded-entry-block",
-        "data": {
-          "target": {
-            "sys": {
-              "type": "Link",
-              "linkType": "Entry",
-              "id": "youtube-Phcw0w-rBp8"
-            }
-          }
-        },
-        "content": []
-      },
-      {
-        "nodeType": "heading-2",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "text",
-            "value": "Lively™, “Sleep Over”",
-            "marks": [],
-            "data": {}
-          }
-        ]
-      },
-      {
-        "nodeType": "paragraph",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "text",
-            "value": "WINNER: GOLD, VIDEO/HEALTHCARE",
-            "marks": [
-              {
-                "type": "bold"
-              }
-            ],
-            "data": {}
-          }
-        ]
-      },
-      {
-        "nodeType": "paragraph",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "text",
-            "value": "There’s a new generation in town. The 65-plus active-aging generation we named GenA®. For our client Lively™, part of Best Buy Health, we sought to inspire this generation to live life to the fullest.",
-            "marks": [],
-            "data": {}
-          }
-        ]
-      },
-      {
-        "nodeType": "embedded-entry-block",
-        "data": {
-          "target": {
-            "sys": {
-              "type": "Link",
-              "linkType": "Entry",
-              "id": "youtube-l_47CrPGcJ8"
-            }
-          }
-        },
-        "content": []
-      },
-      {
-        "nodeType": "heading-2",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "text",
-            "value": "Lively™, “Dinner Party”",
-            "marks": [],
-            "data": {}
-          }
-        ]
-      },
-      {
-        "nodeType": "paragraph",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "text",
-            "value": "WINNER: GOLD, VIDEO/HEALTHCARE",
-            "marks": [
-              {
-                "type": "bold"
-              }
-            ],
-            "data": {}
-          }
-        ]
-      },
-      {
-        "nodeType": "paragraph",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "text",
-            "value": "Nothing boosts morale more than being able to spend time with family and friends. The Lively™ Mobile Plus Medical Alert empowers older Americans to get out and about and to live their lives without fear. ",
-            "marks": [],
-            "data": {}
-          }
-        ]
-      },
-      {
-        "nodeType": "embedded-entry-block",
-        "data": {
-          "target": {
-            "sys": {
-              "type": "Link",
-              "linkType": "Entry",
-              "id": "youtube-sVCH1n-wR1U"
-            }
-          }
-        },
-        "content": []
-      },
-      {
-        "nodeType": "heading-2",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "text",
-            "value": "Davis Elen Essence Video",
-            "marks": [],
-            "data": {}
-          }
-        ]
-      },
-      {
-        "nodeType": "paragraph",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "text",
-            "value": "WINNER: GOLD, VIDEO/SELF-PROMOTION",
-            "marks": [
-              {
-                "type": "bold"
-              }
-            ],
-            "data": {}
-          }
-        ]
-      },
-      {
-        "nodeType": "paragraph",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "text",
-            "value": "In March 2021, Davis Elen reimagined its own brand. The agency took a deep dive into its past and present and reemerged with a fresh new look, a stronger positioning statement and a whole new attitude. This video brings this attitude to life and is the visual expression of Davis Elen’s new brand mantra: ",
-            "marks": [],
-            "data": {}
-          },
-          {
-            "nodeType": "text",
-            "value": "Thinking that Matters.",
-            "marks": [
-              {
-                "type": "italic"
-              }
-            ],
-            "data": {}
-          }
-        ]
-      },
-      {
-        "nodeType": "embedded-entry-block",
-        "data": {
-          "target": {
-            "sys": {
-              "type": "Link",
-              "linkType": "Entry",
-              "id": "youtube-xY3LSgO6kjc"
-            }
-          }
-        },
-        "content": []
-      },
-      {
-        "nodeType": "heading-2",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "text",
-            "value": "Davis Elen Agency Reel",
-            "marks": [],
-            "data": {}
-          }
-        ]
-      },
-      {
-        "nodeType": "paragraph",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "text",
-            "value": "WINNER: GOLD, VIDEO/SELF-PROMOTION",
-            "marks": [
-              {
-                "type": "bold"
-              }
-            ],
-            "data": {}
-          }
-        ]
-      },
-      {
-        "nodeType": "paragraph",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "text",
-            "value": "Davis Elen believes the best resumés are short and sweet. This video combines skillful editing and incredible sound design to highlight the best work of our agency over the past few years.",
-            "marks": [],
-            "data": {}
-          }
-        ]
-      },
-      {
-        "nodeType": "embedded-entry-block",
-        "data": {
-          "target": {
-            "sys": {
-              "type": "Link",
-              "linkType": "Entry",
-              "id": "youtube-rLoTC8rcKXU"
-            }
-          }
-        },
-        "content": []
-      },
-      {
-        "nodeType": "heading-2",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "text",
-            "value": "About The Graphis",
-            "marks": [],
-            "data": {}
-          }
-        ]
-      },
-      {
-        "nodeType": "paragraph",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "hyperlink",
-            "data": {
-              "uri": "http://www.graphis.com"
-            },
+        "body": {
+          "en-US": {
+            "nodeType": "document",
+            "data": {},
             "content": [
               {
-                "nodeType": "text",
-                "value": "Graphis",
-                "marks": [],
-                "data": {}
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Graphis, a leading international authority in design, advertising, photography and art/illustration, just released their 2022 Annual award winners, celebrating the top creative work from advertising and graphic design agencies worldwide. For Davis Elen, the latest release of the publication has the agency capturing six gold awards.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "For nearly 70 years the publication has been selecting exceptional work within three categories: Advertising, Photography, and Art/Illustration and is considered to be one of the highest honors in creative excellence.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "“It’s quite a privilege to be recognized by the Graphis and to receive these awards. Our passionate and dedicated creative team are constantly raising the bar with each project they cultivate… and seeing them be recognized for their talents is such a humbling moment. I couldn’t be prouder.”",
+                    "marks": [
+                      {
+                        "type": "italic"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "– David Moranville, Co-President and Chief Creative Officer",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Davis Elen has won a Graphis in the past for its photography, but these six gold awards are its first in the Advertising category.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "heading-2",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "LAFC Mural",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "WINNER: GOLD, PRINT/ENVIRONMENTAL",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "\n",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "TOYOTA, LAFC PARTNERSHIP, BANC OF CALIFORNIA MURALS",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "These murals are a tribute to the trio of falcons that fly overhead before every LAFC home game as well as the long tradition of public art in Los Angeles. The imagery supports the stadium, the Los Angeles Football Club and the city of LA.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-entry-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Entry",
+                      "id": "youtube-QPlNOwfMLro"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "heading-2",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Toyota, “Offer Card Theatre”",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "WINNER: GOLD, VIDEO/AUTOMOTIVE",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Here in the world’s most fiercely competitive automotive market, we found a way for our dealer associations to stand out: Let the car and the deal be the star. Our ever-growing market share has been music to our ears.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-entry-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Entry",
+                      "id": "youtube-Phcw0w-rBp8"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "heading-2",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Lively™, “Sleep Over”",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "WINNER: GOLD, VIDEO/HEALTHCARE",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "There’s a new generation in town. The 65-plus active-aging generation we named GenA®. For our client Lively™, part of Best Buy Health, we sought to inspire this generation to live life to the fullest.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-entry-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Entry",
+                      "id": "youtube-l_47CrPGcJ8"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "heading-2",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Lively™, “Dinner Party”",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "WINNER: GOLD, VIDEO/HEALTHCARE",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Nothing boosts morale more than being able to spend time with family and friends. The Lively™ Mobile Plus Medical Alert empowers older Americans to get out and about and to live their lives without fear.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-entry-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Entry",
+                      "id": "youtube-sVCH1n-wR1U"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "heading-2",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Davis Elen Essence Video",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "WINNER: GOLD, VIDEO/SELF-PROMOTION",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "In March 2021, Davis Elen reimagined its own brand. The agency took a deep dive into its past and present and reemerged with a fresh new look, a stronger positioning statement and a whole new attitude. This video brings this attitude to life and is the visual expression of Davis Elen’s new brand mantra:",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "Thinking that Matters.",
+                    "marks": [
+                      {
+                        "type": "italic"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-entry-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Entry",
+                      "id": "youtube-xY3LSgO6kjc"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "heading-2",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Davis Elen Agency Reel",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "WINNER: GOLD, VIDEO/SELF-PROMOTION",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Davis Elen believes the best resumés are short and sweet. This video combines skillful editing and incredible sound design to highlight the best work of our agency over the past few years.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-entry-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Entry",
+                      "id": "youtube-rLoTC8rcKXU"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "heading-2",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "About The Graphis",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "hyperlink",
+                    "data": {
+                      "uri": "http://www.graphis.com"
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "Graphis",
+                        "marks": [],
+                        "data": {}
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "is committed to presenting and promoting the work of exceptional talent in Design, Advertising, Photography and Art/Illustration. In addition to the Platinum, Gold, and Silver winners, Graphis also embraces rising talent, all of whom have an equal Archive presentation. In its hardcover Annuals, Platinum and Gold winners receive full-page exposure, and Silver and Merit Winners are also visually presented. Up to 500 entries from each competition are included in the online archive for future reference, where everyone gets the same presentation. Today, the Graphis tradition continues, presenting award-winning work from 1944 to the present in digital and print.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "heading-2",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "About Davis Elen Advertising",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Davis Elen is a full-service, independently owned advertising agency with $300-million in billings. Headquartered in downtown Los Angeles, it also has a presence in six cities across the country including New York, San Francisco, Seattle, San Diego, Washington D.C and Kansas City. Since its inception in 1948, Davis Elen remains focused on one guiding principle:",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "Thinking that Matters",
+                    "marks": [
+                      {
+                        "type": "italic"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": ". The agency challenges itself with delivering change-making solutions for its prestigious roster of clients including Toyota, McDonald’s, Lively, Smart & Final, and many others. Whether it’s brand-building creative services or marketing strategies designed to improve the bottom line, the Davis Elen approach leads with thinking that will cut through the clutter and separate its clients from the competition.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
               }
             ]
-          },
-          {
-            "nodeType": "text",
-            "value": " is committed to presenting and promoting the work of exceptional talent in Design, Advertising, Photography and Art/Illustration. In addition to the Platinum, Gold, and Silver winners, Graphis also embraces rising talent, all of whom have an equal Archive presentation. In its hardcover Annuals, Platinum and Gold winners receive full-page exposure, and Silver and Merit Winners are also visually presented. Up to 500 entries from each competition are included in the online archive for future reference, where everyone gets the same presentation. Today, the Graphis tradition continues, presenting award-winning work from 1944 to the present in digital and print.",
-            "marks": [],
-            "data": {}
           }
-        ]
-      },
-      {
-        "nodeType": "heading-2",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "text",
-            "value": "About Davis Elen Advertising",
-            "marks": [],
-            "data": {}
-          }
-        ]
-      },
-      {
-        "nodeType": "paragraph",
-        "data": {},
-        "content": [
-          {
-            "nodeType": "text",
-            "value": "Davis Elen is a full-service, independently owned advertising agency with $300-million in billings. Headquartered in downtown Los Angeles, it also has a presence in six cities across the country including New York, San Francisco, Seattle, San Diego, Washington D.C and Kansas City. Since its inception in 1948, Davis Elen remains focused on one guiding principle: ",
-            "marks": [],
-            "data": {}
-          },
-          {
-            "nodeType": "text",
-            "value": "Thinking that Matters",
-            "marks": [
-              {
-                "type": "italic"
-              }
-            ],
-            "data": {}
-          },
-          {
-            "nodeType": "text",
-            "value": ". The agency challenges itself with delivering change-making solutions for its prestigious roster of clients including Toyota, McDonald’s, Lively, Smart & Final, and many others. Whether it’s brand-building creative services or marketing strategies designed to improve the bottom line, the Davis Elen approach leads with thinking that will cut through the clutter and separate its clients from the competition.",
-            "marks": [],
-            "data": {}
-          }
-        ]
-      }
-    ]
-  },
-  "embeddedEntries": [
-    {
-      "id": "youtube-QPlNOwfMLro",
-      "contentType": "youtubeVideo",
-      "fields": {
-        "title": "Timelapse: LAFC + Toyota's \"Loyalty Comes Standard\" Mural",
-        "youtubeId": "QPlNOwfMLro",
-        "youtubeUrl": "https://www.youtube.com/watch?v=QPlNOwfMLro",
-        "embedUrl": "https://www.youtube.com/embed/QPlNOwfMLro"
-      }
-    },
-    {
-      "id": "youtube-Phcw0w-rBp8",
-      "contentType": "youtubeVideo",
-      "fields": {
-        "title": "Conductor We Make It Easy L.A. Highlander Hybrid 30-second spot",
-        "youtubeId": "Phcw0w-rBp8",
-        "youtubeUrl": "https://www.youtube.com/watch?v=Phcw0w-rBp8",
-        "embedUrl": "https://www.youtube.com/embed/Phcw0w-rBp8"
-      }
-    },
-    {
-      "id": "youtube-l_47CrPGcJ8",
-      "contentType": "youtubeVideo",
-      "fields": {
-        "title": "Lively Smart \"Sleepover\" 60 second ad",
-        "youtubeId": "l_47CrPGcJ8",
-        "youtubeUrl": "https://www.youtube.com/watch?v=l_47CrPGcJ8",
-        "embedUrl": "https://www.youtube.com/embed/l_47CrPGcJ8"
-      }
-    },
-    {
-      "id": "youtube-sVCH1n-wR1U",
-      "contentType": "youtubeVideo",
-      "fields": {
-        "title": "Lively Mobile Plus \"Dinner Party\" 60 second spot",
-        "youtubeId": "sVCH1n-wR1U",
-        "youtubeUrl": "https://www.youtube.com/watch?v=sVCH1n-wR1U",
-        "embedUrl": "https://www.youtube.com/embed/sVCH1n-wR1U"
-      }
-    },
-    {
-      "id": "youtube-xY3LSgO6kjc",
-      "contentType": "youtubeVideo",
-      "fields": {
-        "title": "Davis Elen Advertising Essence",
-        "youtubeId": "xY3LSgO6kjc",
-        "youtubeUrl": "https://www.youtube.com/watch?v=xY3LSgO6kjc",
-        "embedUrl": "https://www.youtube.com/embed/xY3LSgO6kjc"
-      }
-    },
-    {
-      "id": "youtube-rLoTC8rcKXU",
-      "contentType": "youtubeVideo",
-      "fields": {
-        "title": "Davis Elen Advertising Sizzle Reel ",
-        "youtubeId": "rLoTC8rcKXU",
-        "youtubeUrl": "https://www.youtube.com/watch?v=rLoTC8rcKXU",
-        "embedUrl": "https://www.youtube.com/embed/rLoTC8rcKXU"
+        }
       }
     }
   ]
