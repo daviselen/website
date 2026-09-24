@@ -100,6 +100,12 @@ const people = [
     },
   },
   {
+    name: "Terry Sullivan",
+    video: {
+      mp4: "/videos/people/terry-sullivan.mp4"
+    }
+  },
+  {
     name: "Alonso Núñez Sarrapy",
     img: {
       src: "/images/portraits/alonso-nunez-sarrapy.jpg",
@@ -110,6 +116,12 @@ const people = [
     img: {
       src: "/images/portraits/christina-dominguez.jpg",
     },
+  },
+  {
+    name: "Jennifer Lin",
+    video: {
+      mp4: "/videos/people/jennifer-lin.mp4"
+    }
   },
   {
     name: "Tyler Grinham",
