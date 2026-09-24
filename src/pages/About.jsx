@@ -82,6 +82,12 @@ const people = [
     },
   },
   {
+    name: "Marcos Arroyo",
+    video: {
+      mp4: "/videos/people/marcos-arroyo.mp4"
+    }
+  },
+  {
     name: "Lucía Galicia",
     img: {
       src: "/images/portraits/lucia-galicia.jpg",
@@ -94,23 +100,17 @@ const people = [
     },
   },
   {
-    name: "Joshua Walan",
-    img: {
-      src: "/images/portraits/joshua-walan.jpg",
-    },
-  },
-  {
     name: "Terry Sullivan",
     video: {
       mp4: "/videos/people/terry-sullivan.mp4"
     }
   },
-  {
-    name: "Alonso Núñez Sarrapy",
-    img: {
-      src: "/images/portraits/alonso-nunez-sarrapy.jpg",
-    },
-  },
+  // {
+  //   name: "Alonso Núñez Sarrapy",
+  //   img: {
+  //     src: "/images/portraits/alonso-nunez-sarrapy.jpg",
+  //   },
+  // },
   {
     name: "Christina Dominguez",
     img: {
@@ -124,17 +124,23 @@ const people = [
     }
   },
   {
-    name: "Tyler Grinham",
+    name: "Joshua Walan",
     img: {
-      src: "/images/portraits/tyler-grinham.jpg",
+      src: "/images/portraits/joshua-walan.jpg",
     },
   },
-  {
-    name: "Jorge Rodriguez",
-    img: {
-      src: "/images/portraits/jorge-rodriguez.jpg",
-    },
-  },
+  // {
+  //   name: "Tyler Grinham",
+  //   img: {
+  //     src: "/images/portraits/tyler-grinham.jpg",
+  //   },
+  // },
+  // {
+  //   name: "Jorge Rodriguez",
+  //   img: {
+  //     src: "/images/portraits/jorge-rodriguez.jpg",
+  //   },
+  // },
 ];
 
 const clients = [
