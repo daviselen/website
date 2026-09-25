@@ -105,7 +105,28 @@ const people = [
   {
     name: "Marcos Arroyo",
     video: {
-      mp4: "/videos/people/marcos-arroyo.mp4"
+      mp4: "/videos/people/marcos-arroyo.mp4",
+      webm: "/videos/people/marcos-arroyo.webm"
+    }
+  },
+  {
+    name: "Jenny Rusinko",
+    img: {
+      src: "/images/portraits/jenny-rusinko.jpg",
+    },
+  },
+  {
+    name: "John Papadopoulos",
+    video: {
+      mp4: "/videos/people/john-papadopoulos.mp4",
+      webm: "/videos/people/john-papadopoulos.webm"
+    }
+  },
+  {
+    name: "Jennifer Lin",
+    video: {
+      mp4: "/videos/people/jennifer-lin.mp4",
+      webm: "/videos/people/jennifer-lin.webm"
     }
   },
   // {
@@ -114,12 +135,6 @@ const people = [
   //     src: "/images/portraits/lucia-galicia.jpg",
   //   },
   // },
-  {
-    name: "Jenny Rusinko",
-    img: {
-      src: "/images/portraits/jenny-rusinko.jpg",
-    },
-  },
   // {
   //   name: "Alonso Núñez Sarrapy",
   //   img: {
@@ -132,19 +147,6 @@ const people = [
   //     src: "/images/portraits/christina-dominguez.jpg",
   //   },
   // },
-  {
-    name: "John Papadopoulos",
-    video: {
-      mp4: "/videos/people/john-papadopoulos.mp4",
-      webm: "/videos/people/john-papadopoulos.webm"
-    }
-  },
-  {
-    name: "Jennifer Lin",
-    video: {
-      mp4: "/videos/people/jennifer-lin.mp4"
-    }
-  },
   // {
   //   name: "Joshua Walan",
   //   img: {
