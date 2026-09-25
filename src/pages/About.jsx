@@ -40,6 +40,12 @@ const RETAIL_MAP = {
 
 const people = [
   {
+    name: "Terry Sullivan",
+    video: {
+      mp4: "/videos/people/terry-sullivan.mp4"
+    }
+  },
+  {
     name: "David Moranville",
     // Same `{ webm, mp4 }` shape PortfolioGrid passes to ImageCard, so the
     // <source> ordering (webm first, mp4 fallback) matches the rest of the
@@ -98,12 +104,6 @@ const people = [
     img: {
       src: "/images/portraits/jenny-rusinko.jpg",
     },
-  },
-  {
-    name: "Terry Sullivan",
-    video: {
-      mp4: "/videos/people/terry-sullivan.mp4"
-    }
   },
   // {
   //   name: "Alonso Núñez Sarrapy",
