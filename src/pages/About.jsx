@@ -129,12 +129,12 @@ const people = [
       mp4: "/videos/people/jennifer-lin.mp4"
     }
   },
-  {
-    name: "Joshua Walan",
-    img: {
-      src: "/images/portraits/joshua-walan.jpg",
-    },
-  },
+  // {
+  //   name: "Joshua Walan",
+  //   img: {
+  //     src: "/images/portraits/joshua-walan.jpg",
+  //   },
+  // },
   // {
   //   name: "Tyler Grinham",
   //   img: {
