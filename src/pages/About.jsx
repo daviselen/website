@@ -72,15 +72,21 @@ const people = [
     },
   },
   {
-    name: "Stan Kaplan",
+    name: "Marianne Turner",
     video: {
-      webm: "/videos/people/stan-kaplan.webm",
-      mp4: "/videos/people/stan-kaplan.mp4",
-    },
-    img: {
-      src: "/images/portraits/stan-kaplan.jpg",
-    },
+      mp4: "/videos/people/marianne-turner.mp4"
+    }
   },
+  // {
+  //   name: "Stan Kaplan",
+  //   video: {
+  //     webm: "/videos/people/stan-kaplan.webm",
+  //     mp4: "/videos/people/stan-kaplan.mp4",
+  //   },
+  //   img: {
+  //     src: "/images/portraits/stan-kaplan.jpg",
+  //   },
+  // },
   {
     name: "Cassedy Banks",
     img: {
