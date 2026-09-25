@@ -77,16 +77,16 @@ const people = [
       mp4: "/videos/people/marianne-turner.mp4"
     }
   },
-  // {
-  //   name: "Stan Kaplan",
-  //   video: {
-  //     webm: "/videos/people/stan-kaplan.webm",
-  //     mp4: "/videos/people/stan-kaplan.mp4",
-  //   },
-  //   img: {
-  //     src: "/images/portraits/stan-kaplan.jpg",
-  //   },
-  // },
+  {
+    name: "Stan Kaplan",
+    video: {
+      webm: "/videos/people/stan-kaplan.webm",
+      mp4: "/videos/people/stan-kaplan.mp4",
+    },
+    img: {
+      src: "/images/portraits/stan-kaplan.jpg",
+    },
+  },
   {
     name: "Cassedy Banks",
     img: {
@@ -105,12 +105,12 @@ const people = [
       mp4: "/videos/people/marcos-arroyo.mp4"
     }
   },
-  {
-    name: "Lucía Galicia",
-    img: {
-      src: "/images/portraits/lucia-galicia.jpg",
-    },
-  },
+  // {
+  //   name: "Lucía Galicia",
+  //   img: {
+  //     src: "/images/portraits/lucia-galicia.jpg",
+  //   },
+  // },
   {
     name: "Jenny Rusinko",
     img: {
