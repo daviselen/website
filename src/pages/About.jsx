@@ -126,11 +126,18 @@ const people = [
   //     src: "/images/portraits/alonso-nunez-sarrapy.jpg",
   //   },
   // },
+  // {
+  //   name: "Christina Dominguez",
+  //   img: {
+  //     src: "/images/portraits/christina-dominguez.jpg",
+  //   },
+  // },
   {
-    name: "Christina Dominguez",
-    img: {
-      src: "/images/portraits/christina-dominguez.jpg",
-    },
+    name: "John Papadopoulos",
+    video: {
+      mp4: "/videos/people/john-papadopoulos.mp4",
+      webm: "/videos/people/john-papadopoulos.webm"
+    }
   },
   {
     name: "Jennifer Lin",
