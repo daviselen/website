@@ -43,6 +43,7 @@ export default {
         // Renamed the token to match what it actually traces to now rather
         // than leaving a `blue` token pointing at a color/name pairing that
         // no longer applies.
+        orange: "#f4a117",
         cyan: "#00C3FF", // color/cyan/500, information/500 — "LET ROBOTS DO THE WORK"
         brick: "#B8483D", // named style "Brick" — "Human Imagination" diagram text (now baked into chart.svg, not live text)
         primary: {

@@ -186,3 +186,36 @@ abbr {
     inset 0 0 0 3px #a4de02,
     inset 0 0 0 5px #000;
 } */
+
+.page-news-holiday-party-2018 .news-body > img + img,
+.page-news-holiday-party-2018 .news-body > img:has(+ img) {
+  display: inline-block;
+  width: 32.5%;
+  margin-right: 0.5%;
+  margin-bottom: 0.5%;
+}
+
+.page-news-holiday-party-2018 .news-body > img + img:nth-of-type(55),
+.page-news-holiday-party-2018 .news-body > img + img:nth-of-type(56),
+.page-news-holiday-party-2018 .news-body > img + img:nth-of-type(57) {
+  margin-bottom: 48px;
+}
+
+blockquote {
+  position: relative;
+  margin-left: 0;
+  border-left: .125em solid #f4a117;
+  padding-left: 1em;
+}
+
+blockquote::before {
+  content: open-quote;
+  position: absolute;
+  font-size: 8em;
+  font-family: 'Knockout 67 Full Bantamweight';
+  line-height: .6;
+  color: #9a9a9a;
+  left: .025em;
+  opacity: .35;
+  z-index: 2;
+}

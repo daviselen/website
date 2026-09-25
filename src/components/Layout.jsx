@@ -184,8 +184,14 @@ export default function PageTransition({ overlayColor = "#000" }) {
     };
   }, []);
 
+  const path = location.pathname === '/' 
+    ? 'home' 
+    : location.pathname.replace(/^\//, '').replace(/\//g, '-');
+  
+  const uniqueClass = `page-${path}`;
+
   return (
-    <div className="relative min-h-screen">
+    <div className={`relative min-h-screen ${uniqueClass}`}>
       <OverlayProvider>
         <div className="font-narrow font-light text-neutral-0">
           <NavBarAlt logoOnly={bareChrome} />
