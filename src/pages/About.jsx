@@ -73,6 +73,9 @@ const people = [
   },
   {
     name: "Marianne Turner",
+    img: {
+      src: "/images/portraits/marianne-turner.jpg",
+    },
     video: {
       mp4: "/videos/people/marianne-turner.mp4"
     }
