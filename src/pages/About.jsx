@@ -40,6 +40,12 @@ const RETAIL_MAP = {
 
 const people = [
   {
+    name: "Mark Davis",
+    video: {
+      mp4: "/videos/people/mark-davis.mp4"
+    }
+  },
+  {
     name: "Terry Sullivan",
     video: {
       mp4: "/videos/people/terry-sullivan.mp4"
