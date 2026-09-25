@@ -1,0 +1,163 @@
+{
+  "entries": [
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "de-named-pr-agency-for-mcdonalds-southern-plains-co-op",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "article"
+          }
+        }
+      },
+      "fields": {
+        "slug": {
+          "en-US": "de-named-pr-agency-for-mcdonalds-southern-plains-co-op"
+        },
+        "title": {
+          "en-US": "Davis Elen Named PR Agency for McDonald’s Southern Plains Co-op"
+        },
+        "publishedAt": {
+          "en-US": "2019-11-25T11:21:04"
+        },
+        "categories": {
+          "en-US": [
+            {
+              "name": "News",
+              "slug": "news"
+            }
+          ]
+        },
+        "heroImage": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "asset-96409703f175"
+            }
+          }
+        },
+        "body": {
+          "en-US": {
+            "nodeType": "document",
+            "data": {},
+            "content": [
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Just seven months after being selected as the local strategic and creative agency for the",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "hyperlink",
+                    "data": {
+                      "uri": "https://www.globenewswire.com/news-release/2019/05/01/1813614/0/en/McDONALD-S-SOUTHERN-PLAINS-ASSOCIATION-CO-OP-SELECTS-DAVIS-ELEN-AS-LOCAL-AGENCY.html"
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "McDonald’s Southern Plains Co-op, Davis Elen",
+                        "marks": [],
+                        "data": {}
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "will now also manage its public relations efforts, beginning in 2020.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "DE currently manages PR strategy for local McDonald’s co-ops in Seattle, Portland, Baltimore, Washington, D.C., and now Oklahoma, West Kansas and North Texas (Southern Plains).",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "\n",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "\n",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "“This is an opportunity to take our 2020 plan to the next level for our client by providing a comprehensive public relations strategy that reinforces the local marketing plan. By adding PR, we are able to complement the advertising message, generating a brand-forward, two-way conversation with consumers in all the most relevant spaces,” said Derek Morrison, Vice President of Communications and Public Relations at Davis Elen.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "With 35 years of public relations history as an agency, DE has now moved into a more progressive and non-traditional space within the discipline, focusing heavily on digital and social media engagement, while still employing legacy best practices, like media relations, event promotions and community advocacy programs.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "“We realize that in today’s noisy communications environment, content is king. So our approach is to focus on listening to what matters most to our audience. We then craft both a message and a supporting action plan that shows we’ve heard what they had to say,” Morrison added.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Davis Elen offers a suite of public relations services that includes Social Media Strategy, Influencer Engagement, Media Relations, Crisis Management and Community/Stakeholder Engagement.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "“Having a public relations department that can work side-by-side with our Davis Elen planning, insights, media and creative teams enables us to maximize the overall strategy for our clients’ needs, offering a uniquely holistic approach to managing their business,” said Greg Ahearn, Co-President and Chief Strategy Officer at Davis Elen. “As we move into 2020, we look to expand the role of PR within our service portfolio, continuing to deliver plans that exceed our clients expectations.”",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

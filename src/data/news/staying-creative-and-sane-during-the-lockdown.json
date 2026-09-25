@@ -1,0 +1,105 @@
+{
+  "entries": [
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "staying-creative-and-sane-during-the-lockdown",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "article"
+          }
+        }
+      },
+      "fields": {
+        "slug": {
+          "en-US": "staying-creative-and-sane-during-the-lockdown"
+        },
+        "title": {
+          "en-US": "Staying Creative (and Sane) During the Lockdown"
+        },
+        "publishedAt": {
+          "en-US": "2020-04-18T13:17:00"
+        },
+        "categories": {
+          "en-US": [
+            {
+              "name": "Culture",
+              "slug": "culture"
+            }
+          ]
+        },
+        "heroImage": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "asset-f0e7df80a35b"
+            }
+          }
+        },
+        "body": {
+          "en-US": {
+            "nodeType": "document",
+            "data": {},
+            "content": [
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Miss the pre-COVID-19 days much? We almost miss the LA traffic and that is saying ",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "a lot",
+                    "marks": [
+                      {
+                        "type": "italic"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": ". There was a lot of adjusting and adapting, but now at Week 5 of working from home, the dust has settled and we’re operating at full speed.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Our day still starts around 9, or between the hours of 8–10 depending on each team. On Tuesdays and Thursdays, there’s a virtual coffee hour where many of us join to check in, catch up and share a laugh. While we miss the physical interactions and chats at the office, special appearances of our pets and babies during video conferencing are making things more than interesting. Space, cowboy, college colors-themed meetings are keeping us productive, organized and entertained with our coworkers (and getting us out of our pajamas).",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Given the uncertain, volatile nature of the current situation, we’ve had to be incredibly responsive in both our internal and external communications and in producing work, and expect it’ll be the case for the foreseeable future. But with everyone’s amazing commitment and company-wide events like virtual happy hours, yoga sessions and talent shows to help us de-stress, we know we’ll come through these challenging times stronger than ever.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

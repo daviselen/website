@@ -1,0 +1,119 @@
+{
+  "entries": [
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "stairclimb",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "article"
+          }
+        }
+      },
+      "fields": {
+        "slug": {
+          "en-US": "stairclimb"
+        },
+        "title": {
+          "en-US": "Davis Elen gets high. And it’s all for a great cause."
+        },
+        "publishedAt": {
+          "en-US": "2017-09-22T09:51:00"
+        },
+        "categories": {
+          "en-US": [
+            {
+              "name": "Culture",
+              "slug": "culture"
+            }
+          ]
+        },
+        "heroImage": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "asset-ec8a70a62459"
+            }
+          }
+        },
+        "body": {
+          "en-US": {
+            "nodeType": "document",
+            "data": {},
+            "content": [
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "On Friday September 22, two teams of Davis Elen employees donned yoga pants and shorts to take part in the YMCA’s 24nd Annual Stair Climb. This yearly event is not for the fainthearted. At 1,005 feet, the US Bank Tower is the second tallest building west of the Mississippi. The two teams had to run, climb or walk up 75 stories (that’s 1,664 steps!).",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "This is the second climb for Art Director Chris Joos.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "blockquote",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "paragraph",
+                    "data": {},
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "“Last year I ran up the first 30 stories and used up all my energy. This year I paced myself.”",
+                        "marks": [],
+                        "data": {}
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Steppers were rewarded with a block party featuring live bands, games, food trucks and a (very appreciated) beer garden.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Every dollar raised benefits the YMCA’s essential community programs in and around Downtown Los Angeles. These programs support children, teens, families and seniors.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

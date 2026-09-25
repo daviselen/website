@@ -1,0 +1,161 @@
+{
+  "entries": [
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "mcdonalds-charity-award",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "article"
+          }
+        }
+      },
+      "fields": {
+        "slug": {
+          "en-US": "mcdonalds-charity-award"
+        },
+        "title": {
+          "en-US": "Ronald McDonald House Charities Serves Up Award to Davis Elen"
+        },
+        "publishedAt": {
+          "en-US": "2018-11-09T16:08:00"
+        },
+        "categories": {
+          "en-US": [
+            {
+              "name": "News",
+              "slug": "news"
+            }
+          ]
+        },
+        "heroImage": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "asset-b6771cb1da9a"
+            }
+          }
+        },
+        "body": {
+          "en-US": {
+            "nodeType": "document",
+            "data": {},
+            "content": [
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Davis Elen, one of the founding donors of ",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "hyperlink",
+                    "data": {
+                      "uri": "https://rmhcsc.org/losangeles"
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "the Los Angeles Ronald McDonald House",
+                        "marks": [],
+                        "data": {}
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": ", has been named the recipient of the 2018 Corporate Champion Award. The award is given annually to corporations that have shown exceptional leadership and support for Ronald McDonald House Charities in fulfilling its mission of providing comfort, care and support to children and families in need in Southern California.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "DE has been the ad agency for the McDonald’s Operators of Southern California for over 50 years and a supporter of the Ronald McDonald House Charities since its formation in 1974.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "“Ronald McDonald House is a legendary charitable organization that has been doing incredible work for kids and their families for decades,” commented Malu Santamaria, agency Partner and Group Managing Director for the McDonald’s account. “When you see and hear the gratitude from the families whose lives are impacted, you’re grateful in turn for just being able to be a part of it.”",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "The agency also supports ",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "hyperlink",
+                    "data": {
+                      "uri": "https://golf.rmhcsc.org/"
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "the annual McDonald’s Golf Classic",
+                        "marks": [],
+                        "data": {}
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": " and ",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "hyperlink",
+                    "data": {
+                      "uri": "https://walkforkids.org/"
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "the Ronald McDonald “Walk for Kids,”",
+                        "marks": [],
+                        "data": {}
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": " held every spring. We’ll keep you posted so you can join us in 2019 for this fun event that benefits so many.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

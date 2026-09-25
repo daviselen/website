@@ -1,0 +1,305 @@
+{
+  "entries": [
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "the-davis-elen-master-class-series",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "article"
+          }
+        }
+      },
+      "fields": {
+        "slug": {
+          "en-US": "the-davis-elen-master-class-series"
+        },
+        "title": {
+          "en-US": "The Davis Elen Master Class Series"
+        },
+        "publishedAt": {
+          "en-US": "2021-12-22T17:08:18"
+        },
+        "categories": {
+          "en-US": [
+            {
+              "name": "Culture",
+              "slug": "culture"
+            }
+          ]
+        },
+        "heroImage": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "asset-3ca8e1eefa10"
+            }
+          }
+        },
+        "body": {
+          "en-US": {
+            "nodeType": "document",
+            "data": {},
+            "content": [
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "As an agency that some have dubbed the “University of Advertising,” we like to educate, share and inspire every chance we can. This summer, we launched a new virtual series called the Davis Elen Master Class, where our internal experts shared insights and know-how in their field of specialty. While the series served as a crash course for the interns, the information shared proved relevant and beneficial for everyone involved. We thank all the presenters and participants for their contribution and are excited for the series to continue next year.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Key takeaways from each master class:",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-asset-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "asset-797c5a86a9f3"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "heading-3",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "David Moranville –",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "\n",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "Co-President, CCO",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "“The Difference Between an Idea and a Cake”",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "\n",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "In his class, David talked about the 3-step process that can be applied to anything to exercise the brain to think more creatively to solve the problem at hand. He also assured everyone listening that the answer to everything is right in front of them – it’s just a matter of “looking at things with different eyes, all the time.”",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-asset-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "asset-ffb3d27aa06b"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "heading-3",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Brian Banks – VP, Director of Digital Strategy",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "“Activating Audiences in the Digital Age”",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "\n",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "Brian went over the ins and outs of understanding audiences from the digital standpoint, the benefits and drawbacks of data collection, and what that all means for digital planning. He shared his thoughts on what the end of third-party cookies, i.e., the foundation of current digital marketing, could mean and how to prepare for it.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-asset-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "asset-e70fe70690de"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "heading-3",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Social Media Team",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "“Pandemic Social: How We Connect While Far Apart”",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "\n",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "Our Social Media team highlighted how much impact social media can have in a well-integrated campaign, as well as on its own. The presentation focused on how social media was used to help clients and audiences stay connected while apart as marketing goals and consumer behaviors had changed drastically with the pandemic.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-asset-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "asset-602da6e6d916"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "heading-3",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Terry Sullivan – CFO, COO",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "“Tips for Success”",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "\n",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "Terry touched on how every person can define their own success, and more specifically, achieve success in advertising. He went over the common traits he found in successful people, including managing people and leveraging time well. One piece of advice that we felt could easily be followed was to set aside time for relaxation – because that’s when ideas and dreams can be conceived.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

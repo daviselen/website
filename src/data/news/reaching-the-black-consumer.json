@@ -1,0 +1,127 @@
+{
+  "entries": [
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "reaching-the-black-consumer",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "article"
+          }
+        }
+      },
+      "fields": {
+        "slug": {
+          "en-US": "reaching-the-black-consumer"
+        },
+        "title": {
+          "en-US": "Reaching The Black Consumer"
+        },
+        "publishedAt": {
+          "en-US": "2022-06-19T14:52:00"
+        },
+        "categories": {
+          "en-US": [
+            {
+              "name": "Culture",
+              "slug": "culture"
+            }
+          ]
+        },
+        "heroImage": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "asset-4a3a5b9e22cc"
+            }
+          }
+        },
+        "body": {
+          "en-US": {
+            "nodeType": "document",
+            "data": {},
+            "content": [
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Research and data say your messaging must be authentic when targeting a specific audience segment. Hitting the right mark requires deftness when your audience is hyper-aware, discerning, and trendsetting. So we have teams dedicated to scoping through media, entertainment, and community landscapes, gaining an understanding of what’s relevant to the Black consumer and recommending meaningful ways to impact this audience. Patricia Chambers, VP, Director of Media & Partnerships and Leticia Juárez, Partner/EVP, Strategy & Marketing, lead the agency in planning and executing successful campaigns targeting this key consumer group.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Patricia works with various agency teams to develop strategies that reach the Black consumer in both Southern California and Washington, D.C. for McDonald’s. This includes media, experiential outreach as well as local sports partnerships and amplification through PR. The team works to ensure that our client partners genuinely connect to this consumer and present themselves in relevant environments. The exposure may come via a digital ad, placement of an outdoor billboard, or from one of our e-sports influencers, like Evan “Raynday” Raynr.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Leticia, who oversees Charter/Spectrum direct response efforts, echoes Patricia in that the key is being authentic. And while “authenticity” gets thrown around a lot, its impact is significant. Behind incredibly successful creative campaigns is sharp attention to the tone of messaging and to choosing the right talent to tell an engaging story.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Davis Elen is committed to purposeful outreach to Black consumers. Our targeted marketing efforts have driven segment sales for McDonald’s and broken acquisition records for Spectrum/Charter. The agency relies on cultural insights to develop dedicated strategies and impactful messages that compel positive consumer response, stand out, and lead to success for our clients.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-asset-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "asset-9a69c8e37cb0"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "embedded-asset-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "asset-3fd6722c67f9"
+                    }
+                  }
+                },
+                "content": []
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,162 @@
+{
+  "entries": [
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "de-summer-party-raises-the-roof-at-lafc-home",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "article"
+          }
+        }
+      },
+      "fields": {
+        "slug": {
+          "en-US": "de-summer-party-raises-the-roof-at-lafc-home"
+        },
+        "title": {
+          "en-US": "DE Summer Party at LAFC home"
+        },
+        "publishedAt": {
+          "en-US": "2019-09-06T12:14:00"
+        },
+        "categories": {
+          "en-US": [
+            {
+              "name": "Culture",
+              "slug": "culture"
+            }
+          ]
+        },
+        "heroImage": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "asset-45a0467aa15d"
+            }
+          }
+        },
+        "body": {
+          "en-US": {
+            "nodeType": "document",
+            "data": {},
+            "content": [
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "hyperlink",
+                    "data": {
+                      "uri": "https://www.bancofcaliforniastadium.com/"
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "Banc of California Stadium",
+                        "marks": [],
+                        "data": {}
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "always turns up for",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "LAFC",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "games, but this past Friday it was our goal to get the place poppin’ like never before. With email notifications turned to ‘",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "DND",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "’, Davis Elen took over the private ‘Sunset Deck’ for the annual summer party. An open bar, live DJ, and several games of competitive lawn Jenga, all had the stadium roaring. A few",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "hyperlink",
+                    "data": {
+                      "uri": "https://daviselen-2021.flywheelsites.com/culture/"
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "employees",
+                        "marks": [],
+                        "data": {}
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "even had to catch their breath at the complementary oxygen bar, or take time out for a quick massage. All in all I’d have to say this was the best DE summer party yet… but hey—who’s keeping score?",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-asset-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "asset-3566d8219944"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "embedded-asset-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "asset-c3cdfeb8749e"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "embedded-asset-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "asset-fcf5390f3f0a"
+                    }
+                  }
+                },
+                "content": []
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

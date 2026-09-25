@@ -1,0 +1,253 @@
+{
+  "entries": [
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "fortune-500-exec-joins-top-l-a-based-agency",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "article"
+          }
+        }
+      },
+      "fields": {
+        "slug": {
+          "en-US": "fortune-500-exec-joins-top-l-a-based-agency"
+        },
+        "title": {
+          "en-US": "Fortune 500 Exec Joins Top L.A.-Based Agency"
+        },
+        "publishedAt": {
+          "en-US": "2018-10-09T16:29:00"
+        },
+        "categories": {
+          "en-US": [
+            {
+              "name": "News",
+              "slug": "news"
+            }
+          ]
+        },
+        "heroImage": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "asset-b1729c81a10f"
+            }
+          }
+        },
+        "body": {
+          "en-US": {
+            "nodeType": "document",
+            "data": {},
+            "content": [
+              {
+                "nodeType": "heading-2",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Davis Elen Names Marketing Strategist Greg Ahearn Co-President and COO",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "LOS ANGELES",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": " (October 9, 2018) – Davis Elen, one of the largest independently-owned advertising agencies on the West Coast, today announced the appointment of Greg Ahearn, former Head of Marketing Strategy and Creative for Uber North America, to the post of Co-President and Chief Operating Officer. The agency also announced that Chief Creative Officer David Moranville will partner with Ahearn as Co-President.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "In making the announcement, Mark Davis, Chairman and CEO, said: “We’re excited to have Greg join the Davis Elen family. He is a global marketing executive with a proven track record of success at both Fortune 500 and start-up companies. This is truly a moment of evolution for us and I am confident that the David-Greg combination will power us forward both strategically and creatively to better serve both our current clients as well as drive our new business efforts.”",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "In his new role, Ahearn will be responsible for business development, account services, media, data science and strategic planning. Moranville will lead the agency’s creative, production and social media teams.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "“I am thrilled to join the incredibly talented and diverse team at Davis Elen and to partner with David to deliver a breakthrough combination of strategic thinking and creative execution that will help write the next chapter in an agency with such a storied history.”",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "In addition to his position at Uber, Ahearn also served as Chief Marketing Officer at Leapfrog and Head of Global e-Commerce at Toys “R” Us.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "“I’m looking forward to collaborating with Greg and creating a dynamic new synchronicity to all our client services,” said new agency Co-President and CCO Moranville. “It’s critical to continually innovate both strategically and creatively and this new leadership structure will up our game.”",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "heading-2",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "ABOUT DAVIS ELEN",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-asset-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "asset-b201f1968c78"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Davis Elen is a full-service, independently-owned advertising agency with $300-million in billings. Headquartered in downtown Los Angeles, DE also has six satellite offices across the country. Since its inception in 1948, the agency has focused on creating impactful work for a prestigious roster of clients that includes Toyota, McDonald’s, GreatCall and OneWest Bank.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "For more information, visit ",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "hyperlink",
+                    "data": {
+                      "uri": "https://daviselen.com/"
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "www.daviselen.com",
+                        "marks": [],
+                        "data": {}
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": ".\n",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "CONTACT: Sara Rosales – ",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "hyperlink",
+                    "data": {
+                      "uri": "mailto:sararosales@gmail.com"
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "sararosales@gmail.com",
+                        "marks": [],
+                        "data": {}
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-asset-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "asset-9b540f669d5c"
+                    }
+                  }
+                },
+                "content": []
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

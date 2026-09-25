@@ -1,0 +1,192 @@
+{
+  "entries": [
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "telenovela",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "article"
+          }
+        }
+      },
+      "fields": {
+        "slug": {
+          "en-US": "telenovela"
+        },
+        "title": {
+          "en-US": "Let the “Wheels of Destiny” Roll"
+        },
+        "publishedAt": {
+          "en-US": "2018-03-23T09:18:00"
+        },
+        "categories": {
+          "en-US": [
+            {
+              "name": "News",
+              "slug": "news"
+            }
+          ]
+        },
+        "heroImage": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "asset-91beb7ca7961"
+            }
+          }
+        },
+        "body": {
+          "en-US": {
+            "nodeType": "document",
+            "data": {},
+            "content": [
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "We drove straight past all the standard advertising approaches to create something that would truly resonate in the Hispanic Market: Our very own ",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "telenovela",
+                    "marks": [
+                      {
+                        "type": "italic"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": ".",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "It’s complete with over-the-top personas, perilous twists-and-turns and episodic cliffhangers that compel viewers to continually follow the developing story line.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "We launched with a movie-style trailer that garnered 2,000 views almost overnight and cinematic-style outdoor boards, all the while spreading the word to the mobile-savvy Hispanic market with a full-throttle social media blitz via #",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "hyperlink",
+                    "data": {
+                      "uri": "https://twitter.com/hashtag/LasRuedasDelDestino"
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "LasRuedasDelDestino",
+                        "marks": [],
+                        "data": {}
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": ". What’s next? Tune in to find out.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-entry-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Entry",
+                      "id": "vimeo-255609472"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Frida’s ",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "quinceañera",
+                    "marks": [
+                      {
+                        "type": "italic"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": " plans have been going on for 15 years. It takes the wrong turn when she makes an outrageous confession and a surprising encounter unlocks the door to a steamy past that will have you holding on the edge of your seat. The Ruedas’ destiny will dramatically change forever. Intrigued? You should be.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-asset-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "asset-bda873f1bde0"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "embedded-asset-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "asset-25eddae2168f"
+                    }
+                  }
+                },
+                "content": []
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

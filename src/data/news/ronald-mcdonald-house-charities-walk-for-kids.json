@@ -1,0 +1,153 @@
+{
+  "entries": [
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "ronald-mcdonald-house-charities-walk-for-kids",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "article"
+          }
+        }
+      },
+      "fields": {
+        "slug": {
+          "en-US": "ronald-mcdonald-house-charities-walk-for-kids"
+        },
+        "title": {
+          "en-US": "Ronald McDonald House Charities: Walk For Kids"
+        },
+        "publishedAt": {
+          "en-US": "2021-04-30T11:19:03"
+        },
+        "categories": {
+          "en-US": [
+            {
+              "name": "Culture",
+              "slug": "culture"
+            }
+          ]
+        },
+        "heroImage": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "asset-b013d1e517b6"
+            }
+          }
+        },
+        "body": {
+          "en-US": {
+            "nodeType": "document",
+            "data": {},
+            "content": [
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "There’s only one way to walk 563 miles in one week: TEAMWORK!",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "The DE family got to stepping for the Ronald McDonald’s House Charities Walk For Kids. The goal was 563 miles, which is the exact number of miles it would take to walk to every RMHC in Southern California. So how far did we make it?",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-asset-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "asset-7a05f057d738"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "It took four teams all across SoCal to get the job done. And though we couldn’t be physically close, it felt like we were all working and walking as one. Everybody unplugged, laced up, and made their steps count. And because of that, we were able to raise $1,525 for the RHMC.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "The moral of the story: the journey is more enjoyable when we walk it together.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-asset-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "asset-5f305ed3873c"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "embedded-asset-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "asset-e4339d0183be"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "embedded-asset-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "asset-2950d71b0c33"
+                    }
+                  }
+                },
+                "content": []
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

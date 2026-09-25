@@ -1,0 +1,201 @@
+{
+  "entries": [
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "de-summer-parties-2022",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "article"
+          }
+        }
+      },
+      "fields": {
+        "slug": {
+          "en-US": "de-summer-parties-2022"
+        },
+        "title": {
+          "en-US": "De summer parties 2022"
+        },
+        "publishedAt": {
+          "en-US": "2022-09-12T11:32:57"
+        },
+        "categories": {
+          "en-US": [
+            {
+              "name": "Culture",
+              "slug": "culture"
+            }
+          ]
+        },
+        "heroImage": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "asset-9bc460cae28f"
+            }
+          }
+        },
+        "body": {
+          "en-US": {
+            "nodeType": "document",
+            "data": {},
+            "content": [
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Davis Elen is an agency populated by talented people who like to play as hard as they work. This year’s summer parties were the perfect occasion to let loose and have a little fun and our DC office kicked things off with their party in late July.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "On the afternoon of the 21st, the office descended on chic outdoor bar Calico, for an afternoon of games and fun. There were signature cocktails and mocktails, a custom menu just for the DE crew and a round of birthday cake to celebrate all the employees born in July.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-asset-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "asset-32039bf8ccf3"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "In addition to classic lawn games, there was a team-building challenge. This past spring the DC office took a personality test to determine who in the office takes a more dominant role and who is typically more reserved. At the party, the team bonding activity reversed these roles, placing folks with more assertive personalities into roles where they could follow instructions, and putting normally reserved people into more directorial roles. The assignment was to build something tropical, and in typical DE fashion, agency creativity was fully on display.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "3,000 miles away in Los Angeles, the teams gathered on August 12th for the first in-person summer party in over two years. There was plenty of excitement leading up to the main event, and the Luau at the Lakeside Country Club in Burbank did NOT disappoint. Temperatures were in the 90s, but umbrellas for shade and a nice breeze off the lake made for island vibes aplenty.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-asset-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "asset-09ba471329d3"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Guests donned their Polynesian-style best in a wide range of island florals and were greeted with leis and the agency’s special Mai Tai cocktail which proved to be extremely popular. After guests filled their plates at the buffet and hit the bar for a quick refill, they were ready to partake in the activities and attractions including an incredible inflatable surf simulator, a photo booth, and perhaps most decadent of all, poolside massages. 🤤",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "The DJ kept the energy up and pumping with dance contests, the hula, and lawn games like the water balloon toss, the limbo trivia, plus a steady stream of dance tunes from classics like Lisa Lisa and Cult Jam to dancefloor mainstay the Macarena. Despite the heat, it was the perfect way to spend a summer Friday, and a party that was well worth the wait.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-asset-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "asset-49b298cf4bd8"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "The Seattle office’s party took place on the last day of August. Up in the Pacific Northwest, the team was treated to a beautiful, sunny day, perfect weather for a relaxing boat ride around Lake Union on the Schooler Lavengro. The team relaxed in the sunshine, took in the salty air and enjoyed one another’s company. After returning to land, they headed to the Capitol Hill neighborhood and followed up their afternoon sail with an early dinner at Osteria La Spiga, where they played various team bonding games and ate entirely too much delicious Italian food.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-asset-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "asset-6438a6122d85"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "All in all, the parties were a memorable cap to a wonderful summer, and a joyful reminder that however successful our virtual collaborations have been, in-person, face-to-face contact is still irreplaceable.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

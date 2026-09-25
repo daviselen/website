@@ -1,0 +1,659 @@
+{
+  "entries": [
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "davis-elen-wins-seven-telly-awards",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "article"
+          }
+        }
+      },
+      "fields": {
+        "slug": {
+          "en-US": "davis-elen-wins-seven-telly-awards"
+        },
+        "title": {
+          "en-US": "Davis Elen Wins Seven Telly Awards"
+        },
+        "publishedAt": {
+          "en-US": "2021-06-16T15:14:53"
+        },
+        "categories": {
+          "en-US": [
+            {
+              "name": "News",
+              "slug": "news"
+            }
+          ]
+        },
+        "heroImage": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "asset-f9870909a471"
+            }
+          }
+        },
+        "body": {
+          "en-US": {
+            "nodeType": "document",
+            "data": {},
+            "content": [
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Agency Snags First Gold Award for Its Own Rebranding Work Plus Wins for Toyota, McDonald’s and Smart & Final",
+                    "marks": [
+                      {
+                        "type": "italic"
+                      },
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "The Telly Awards, honoring excellence in video and television across all screens, has announced this year’s winners, including seven wins for Davis Elen Advertising, one of the largest independently owned advertising agencies on the West Coast.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "The agency has previously won 36 Telly awards since 2015 but never before has it won the Gold. Most notably, this year marks another new milestone in the company’s achievements, as three of the agency’s victories this year came from the work done on its own rebranding.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "“It’s an honor to be recognized by the Telly’s and to receive these awards. I want to thank our creatives for their relentless dedication to their craft and the individual team members in account, media, broadcast and production for contributing to this achievement. Culturally, we want to inspire, enrich and uplift everyone who’s a member of our family and moments like this go a long way in doing that.”",
+                    "marks": [
+                      {
+                        "type": "italic"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "– David Moranville, Co-President and Chief Creative Officer.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "The remaining four of the seven Telly Awards Davis Elen won this year were split among its prestigious roster of clients ",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "hyperlink",
+                    "data": {
+                      "uri": "https://www.toyota.com/"
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "Toyota",
+                        "marks": [],
+                        "data": {}
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": ", ",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "hyperlink",
+                    "data": {
+                      "uri": "https://www.mcdonalds.com/us/en-us.html"
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "McDonald’s",
+                        "marks": [],
+                        "data": {}
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": " and ",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "hyperlink",
+                    "data": {
+                      "uri": "https://www.smartandfinal.com/"
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "Smart & Final.",
+                        "marks": [],
+                        "data": {}
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "nodeType": "heading-2",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Davis Elen Essence Video",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "WINNER: GOLD, NON BROADCAST, TITLE DESIGN",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "\n",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "SILVER, NON BROADCAST, 3D GRAPHICS/ANIMATION",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "\n",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "BRONZE, NON BROADCAST, MOTION GRAPHICS / DESIGN",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "In March 2021, Davis Elen reimagined its own brand. The agency took a deep dive into it’s past and present and reemerged with a fresh new look, a stronger positioning statement and a whole new attitude. When you visit daviselen-2021.flywheelsites.com you are greeted by an animated video that is the visual expression of Davis Elen’s new brand mantra: Thinking that Matters. The concept was simple: If you are going to promote your ability to create breakthrough work for clients, you certainly should be able to do the same for yourself. It did just that.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-entry-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Entry",
+                      "id": "youtube-IgcuL-bqoSQ"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "heading-2",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Toyota Offer Card Theatre: “Snowboarding”",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "WINNER: SILVER, BRANDED CONTENT, AUTOMOTIVE",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "hyperlink",
+                    "data": {
+                      "uri": "https://www.buyatoyota.com/socal"
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "Toyota Dealers of Southern California",
+                        "marks": [],
+                        "data": {}
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "requested its agency develop one-of-a-kind creative for its new all-wheel drive RAV4, but with the added challenge of making the price point the focal point of the commercial. Thus, the groundbreaking campaign concept “Offer Card Theatre” was born. Stories unfold against a stark white background with the critical offer message displayed prominently throughout. By staging the action INSIDE the offer card, it creatively speaks to the features and benefits of the",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "hyperlink",
+                    "data": {
+                      "uri": "https://www.toyota.com/rav4/"
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "Toyota RAV4",
+                        "marks": [],
+                        "data": {}
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "while the most current promotion is continually showcased. To highlight both the RAV4’s versatility and price, the agency seamlessly integrated a compelling promotional offer with snowboarders in the “frothiest” place on earth, five minutes before the first chair on a powdery day at the mountain.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-entry-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Entry",
+                      "id": "youtube-PoZafVnDXEY"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "heading-2",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Smart & Final RedZoneRush™",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "WINNER: SILVER, BRANDED CONTENT, SOCIAL",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Davis Elen was tasked by its client to introduce an ownable, integrated campaign driven by social-first content across multiple markets. The goal was to convert followers into customers during one of the biggest shopping weekends of the year, the Super Bowl. Davis Elen introduced the RedZoneRush™ campaign, which was an interactive experience that engaged and entertained customers in the social space. Driven by hyper-relevant meme content, Davis Elen placed comedic posts in real-time during",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "hyperlink",
+                    "data": {
+                      "uri": "https://www.miasbliv.com/"
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "Super Bowl LIV",
+                        "marks": [],
+                        "data": {}
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": ". The content generated 12 million+ impressions and 65k+ engagements across all platforms. With the success of the RedZoneRush™ campaign, the agency has successfully embraced and implemented a new comedic tone on the",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "hyperlink",
+                    "data": {
+                      "uri": "https://www.instagram.com/smartfinal/?hl=en"
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "@SmartFinal",
+                        "marks": [],
+                        "data": {}
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "social handles that continues to grow, engage, and entertain its audience.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-asset-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "asset-0c0870d569d0"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "heading-2",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "McDonald’s Helao",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "WINNER: SILVER, BRANDED CONTENT, PROMOTIONAL",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "hyperlink",
+                    "data": {
+                      "uri": "https://www.mcdonalds.com/us/en-us.html"
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "McDonald’s",
+                        "marks": [],
+                        "data": {}
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "continues to revolutionize the way it speaks to the Hispanic consumer. It’s something called “Fan Truths.” These truths reveal unique market insights in a language that is spoken by people, not marketers. Davis Elen fused this idea of real talk with McCafé’s “treat occasion” and created the catchy reggaeton beat “Helao.” This is a colloquial way to say helado, which is Spanish for cold, and a cool way to add that reggaeton flare to the messaging. Illustrated with the combination of singing and dancing, McCafé Iced Coffee becomes the “mental treat” that gets people moving.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-entry-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Entry",
+                      "id": "youtube-UxXwvdjD5rQ"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "heading-2",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Toyota Hybrid",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "WINNER: BRONZE, BRANDED CONTENT, USE OF ANIMATION",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Davis Elen needed to cut through the clutter of automotive advertising and capture, specifically, the attention of the Asian consumer. Leading with 1st party research insights of the Asian target audience, the agency identified the most compelling story to tell. It needed to be something bold, colorful and brimming with life. Animation was the strategy, and subsequently, a beautiful collaboration between the agency’s illustrators and motion-graphics department bloomed. Southern California was the inspiration, from the color palette to the style of graphics. The imagery takes the viewer from the Santa Monica Pier through the Pacific Palisades to the mountains at sunset and eventually downtown. The animation and the graphics really let the",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "hyperlink",
+                    "data": {
+                      "uri": "https://www.toyota.com/"
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "Toyota",
+                        "marks": [],
+                        "data": {}
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "models shine through.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-entry-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Entry",
+                      "id": "youtube-lUaMELqfVek"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "heading-2",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "About the Telly Awards",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "hyperlink",
+                    "data": {
+                      "uri": "https://www.tellyawards.com/"
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "The Telly Awards",
+                        "marks": [],
+                        "data": {}
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": " is the premier award honoring video and television across all screens. Established in 1979, The Telly Awards receives over 12,000 entries from all 50 states and 5 continents. Entrants are judged by The Telly Awards Judging Council—an industry body of over 200 leading experts including advertising agencies, production companies, and major television networks, reflective of the multi-screen industry The Telly Awards celebrates. Partners of The Telly Awards include NAB, Stash Media, Production Hub, and Independent Filmmaker Project.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "heading-2",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "About Davis Elen Advertising",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Davis Elen is a full-service, independently owned advertising agency with $300-million in billings. Headquartered in downtown Los Angeles, it also has four satellite offices across the country. Since its inception in 1948, Davis Elen remains focused on one guiding principle: Thinking that matters. The agency challenges itself with delivering change-making solutions for its prestigious roster of clients including Toyota, McDonald’s, Lively, Smart & Final, and The Alkaline Water Company. Whether it’s brand-building creative services or marketing strategies designed to improve the bottom line, the Davis Elen approach leads with thinking that will cut through the clutter and separate its clients from the competition.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

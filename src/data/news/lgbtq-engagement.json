@@ -1,0 +1,238 @@
+{
+  "entries": [
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "lgbtq-engagement",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "article"
+          }
+        }
+      },
+      "fields": {
+        "slug": {
+          "en-US": "lgbtq-engagement"
+        },
+        "title": {
+          "en-US": "LGBTQ+ Engagement"
+        },
+        "publishedAt": {
+          "en-US": "2022-06-28T18:35:00"
+        },
+        "categories": {
+          "en-US": [
+            {
+              "name": "Culture",
+              "slug": "culture"
+            }
+          ]
+        },
+        "heroImage": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "asset-2b29789c6426"
+            }
+          }
+        },
+        "body": {
+          "en-US": {
+            "nodeType": "document",
+            "data": {},
+            "content": [
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "June 1st marked the start of Pride Month, kicking off weeks of celebrations, parades, rallies, and of course, lots and lots of parties. As the LGBTQ+ community has fought to gain greater visibility in recent years, Pride has gone from local grassroots community celebrations to a nationally recognized acknowledgment of the LGBTQ+ people’s struggles, victories, and cultural contributions.",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "\n",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "\n",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "With this increased visibility comes an increased interest on the part of brands and corporations. On social media, images of celebration and inclusion were balanced by memes steeped in cynicism about “Rainbow Washing,” the corporate practice of pandering to LGBTQ+ customers during Pride Month, despite no previously demonstrated interest, investment or most importantly, institutional support.",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "\n",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "\n",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "Charges of inauthentic brand engagement around serious social issues can be thorny, so DE’s LGTBQ+ Engagement Team offered a Master Class on the realities of marketing to the LGBTQ+ community. The presentation was led by DE’s SVP of Communications + Brand, Derek Morrison, who outlined the challenges facing brands and the strategies DE is using to help our clients build solid, authentic relationships with the LGBTQ+ audience.",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "\n",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "\n",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "As Derek explained, Pride Month is rooted in activism. It is the result of decades-long efforts on the part of LGBTQ+ people to gain equal rights, fair treatment, and protection under the law. By leveraging Pride as a point of connection to the community, brands need to understand both the history and the present.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-asset-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "asset-a24531e28b31"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "The key to building relationships between brands and the LGTBQ+ community, Derek explained, is authenticity through thoughtful and intentional action. This means meeting the community in the digital and real-world spaces where they live. It means building year-round community engagement and influential relationships. It means genuine, accurate representation without appropriation or exploitation. A brand with an authentic relationship with the LGBTQ+ community is a brand that walks the walk beyond Pride Month. It speaks honestly and integrates its LGBTQ+ messaging into all facets of the brand’s communication, year-long.",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "\n",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "\n",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "Derek described the work DE undertook on behalf of McDonald’s, a brand with a strong commitment to authentic engagement with the LGBTQ+ community, and a history of community-building and philanthropy.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-asset-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "asset-a02823796243"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "McDonald’s has established a mantra for its LGBTQ+ Community. One that is predicated on inclusive and equitable people practices – not just for the corporation but at the restaurant level and with customers. It reads as such: “Lovin my life. Living my truth. Real and out loud. I’m lovin’ it.” So, for Pride 2022, McDonald’s showed its support in a big way. Local franchisees sponsored the creation of a double-decker bus and multiple floats, designed exclusively for Pride, with local Queer-identifying DJs and Influencers on board. There was swag to hand out to crowds, apparel for volunteers, as well as flags and banners – all either designed or produced by Davis Elen. The bus and floats rode through three different Pride parades in Seattle, Chicago and DC, spreading the brand’s message of inclusivity, respect, and support.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-asset-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "asset-ef18cd0a8e00"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Ultimately, as Derek explained, it all returns to the central guiding principle: we do the right thing because it’s the right thing to do, not because we want to get credit for it. As with all authentic action, the McDonald’s execution required a careful, honest consideration of the LGBTQ+ cultural landscape, and the interests and needs of the community. This MasterClass offered the kind of actionable insights that create a path toward long-term success for our clients, while helping to foster a richer understanding of our greater community and a more inclusive culture for everyone.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-asset-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "asset-fd3dfb3ea258"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "embedded-asset-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "asset-755608eca5d4"
+                    }
+                  }
+                },
+                "content": []
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

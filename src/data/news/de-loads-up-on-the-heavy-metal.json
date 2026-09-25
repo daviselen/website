@@ -1,0 +1,288 @@
+{
+  "entries": [
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "de-loads-up-on-the-heavy-metal",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "article"
+          }
+        }
+      },
+      "fields": {
+        "slug": {
+          "en-US": "de-loads-up-on-the-heavy-metal"
+        },
+        "title": {
+          "en-US": "Davis Elen loads up on the heavy metal"
+        },
+        "publishedAt": {
+          "en-US": "2019-10-21T10:27:00"
+        },
+        "categories": {
+          "en-US": [
+            {
+              "name": "News",
+              "slug": "news"
+            }
+          ]
+        },
+        "heroImage": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "asset-bdd83815595a"
+            }
+          }
+        },
+        "body": {
+          "en-US": {
+            "nodeType": "document",
+            "data": {},
+            "content": [
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Anyone who steps off the elevator and walks into the Davis Elen lobby will quickly take notice of a large collection of shiny metal trophies. Turns out, Davis Elen has a storied history of big wins at the Telly Awards. That trend rolls on in 2019.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "This year, the agency took home 16 awards for its work for Toyota’s ",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "hyperlink",
+                    "data": {
+                      "uri": "https://www.tellyawards.com/winners/2019/regional-tv/craft-use-of-humor/go-for-gold-toyota-rav4/215723/"
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "Go For Gold",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "data": {}
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": ",",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "hyperlink",
+                    "data": {
+                      "uri": "https://www.tellyawards.com/winners/2019/regional-tv/craft-use-of-humor/wheels-of-destiny-episode-1-heart-over-wheels-toyota/215711/"
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "Wheels of Destiny",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "data": {}
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": ", ",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "hyperlink",
+                    "data": {
+                      "uri": "https://www.tellyawards.com/winners/2019/regional-tv/general-automotive/thrill-to-drive-toyota-highlander/215932/"
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "Thrill Ride",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "data": {}
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": " and ",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "hyperlink",
+                    "data": {
+                      "uri": "https://www.tellyawards.com/winners/2019/regional-tv/craft-videography-cinematography/toyotally-babes-ride-out-toyota-tacoma/215953"
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "Toyotally",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "data": {}
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "campaigns, as well as GreatCall’s Jitterbug Smart2 ",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "hyperlink",
+                    "data": {
+                      "uri": "https://www.tellyawards.com/winners/2019/regional-tv/general-miscellaneous/jitterbug-smart2-garage-sale/215728"
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "Garage Sale",
+                        "marks": [
+                          {
+                            "type": "italic"
+                          }
+                        ],
+                        "data": {}
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": " spot. They’re all here, so check ‘em out.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "At this rate, we’re going to need a bigger trophy case.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-entry-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Entry",
+                      "id": "vimeo-366605432"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Garage Sale",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-entry-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Entry",
+                      "id": "vimeo-366573858"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Babes Ride Out",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-entry-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Entry",
+                      "id": "vimeo-366573814"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Las Ruedas del Destino 2",
+                    "marks": [
+                      {
+                        "type": "italic"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

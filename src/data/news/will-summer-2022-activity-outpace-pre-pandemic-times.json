@@ -1,0 +1,163 @@
+{
+  "entries": [
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "will-summer-2022-activity-outpace-pre-pandemic-times",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "article"
+          }
+        }
+      },
+      "fields": {
+        "slug": {
+          "en-US": "will-summer-2022-activity-outpace-pre-pandemic-times"
+        },
+        "title": {
+          "en-US": "Will Summer 2022 activity outpace pre-pandemic times?"
+        },
+        "publishedAt": {
+          "en-US": "2022-06-07T10:15:00"
+        },
+        "categories": {
+          "en-US": [
+            {
+              "name": "Culture",
+              "slug": "culture"
+            }
+          ]
+        },
+        "heroImage": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "asset-84e07351472b"
+            }
+          }
+        },
+        "body": {
+          "en-US": {
+            "nodeType": "document",
+            "data": {},
+            "content": [
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Coming out of the pandemic, consumers are more thoughtful than ever about how they spend their time and money. Formerly happy homebodies are anxious to do more compared to pre-pandemic times and are eager to spend money outside the home. They want an outlet from the stress and isolation of these past few years and are intent on making up for lost time by investing in experiences over things.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Davis Elen surveyed 200 U.S. adults in May 2022 and asked them about their planned summer activity.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "88% of U.S. adults 18+ plan to at least maintain attendance at events, group gatherings and other social activity since the pandemic hit. Over half of U.S. adults expect to be going out more this summer compared to the past few years.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-asset-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "asset-b40f0eeae3ca"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Thinking about the amount of events, group gatherings, and other social activity you’ve attended since the pandemic hit, which best describes your activity for Summer 2022:",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "U.S. Adults 18+ overwhelmingly favor travel and BBQs with friends/family over other activities for Summer 2022.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-asset-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "asset-76c52966a82f"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "WHY IT MATTERS:",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Experiential marketing ceased in the wake of the pandemic. But it is back. Knowing where and how to meet customers allows them to dictate their desired levels of interaction, facilitating convenience and personalization. Davis Elen knows how to go beyond visually marketing a product; we create tangible value by forging deeper, engaging, and positive emotional connections with your brand.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

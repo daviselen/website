@@ -1,0 +1,233 @@
+{
+  "entries": [
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "mcd-southern-plains",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "article"
+          }
+        }
+      },
+      "fields": {
+        "slug": {
+          "en-US": "mcd-southern-plains"
+        },
+        "title": {
+          "en-US": "McDonald’s Southern Plains Association Co-op Selects Davis Elen as Local Agency"
+        },
+        "publishedAt": {
+          "en-US": "2019-05-01T10:56:00"
+        },
+        "categories": {
+          "en-US": [
+            {
+              "name": "News",
+              "slug": "news"
+            }
+          ]
+        },
+        "heroImage": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "asset-411f0bbea626"
+            }
+          }
+        },
+        "body": {
+          "en-US": {
+            "nodeType": "document",
+            "data": {},
+            "content": [
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Agency Representation Grows to 1,946 McDonald’s Restaurants Across U.S.",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "\n",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "\n",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "LOS ANGELES",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "(May 1, 2019) – Davis Elen, one of the largest independently-owned advertising agencies on the West Coast, today announced it has been selected as the new McDonald’s Southern Plains Association Co-op’s local strategic and creative agency. The Southern Plains region encompasses Oklahoma, Kansas and Texas. The scope of work for",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "hyperlink",
+                    "data": {
+                      "uri": "https://daviselen-2021.flywheelsites.com/"
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "Davis Elen",
+                        "marks": [],
+                        "data": {}
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "will include strategic planning, proprietary analytics, promotions and support for all areas of co-op management in addition to creative development across all channels.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "With the addition of the Southern Plains Co-op,",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "hyperlink",
+                    "data": {
+                      "uri": "https://daviselen-2021.flywheelsites.com/work/"
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "Davis Elen now represents co-ops in the West, Midwest and Eastern United States",
+                        "marks": [],
+                        "data": {}
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "consisting of six consolidated McDonald’s co-ops in Southern California, as well as the Pacific Northwest and Baltimore-Washington D.C. co-ops, for a total of 1,946 restaurants.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "“What impresses us most about Davis Elen is their level of partnership with each co-op and their ability to understand the market characteristics at a local level. They recognize that each DMA within our co-op is unique and requires a customized planning approach. They bring an ownership mentality and a deep understanding of the business drivers that are key to delivering results at the individual restaurant level,” said Martha Ball, President of the Southern Plains McDonald’s Operators Association.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "“Davis Elen has been a McDonald’s agency partner for over 50 years and we’re proud of the work we’ve done to help McDonald’s achieve success at the local market level. We get into the details and nuances of each co-op’s consumer base which in turn guides our strategy to grow their business locally,” said Malu Santamaria, Group Managing Director for McDonald’s at Davis Elen. “Being awarded the opportunity to work with the great team in the Southern Plains Co-op reaffirms McDonald’s belief in our approach which balances data-driven strategy and great creative to deliver sales,” added Santamaria.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-entry-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Entry",
+                      "id": "vimeo-333581135"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "embedded-entry-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Entry",
+                      "id": "vimeo-333581365"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "embedded-entry-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Entry",
+                      "id": "vimeo-333581316"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "embedded-entry-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Entry",
+                      "id": "vimeo-333581209"
+                    }
+                  }
+                },
+                "content": []
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

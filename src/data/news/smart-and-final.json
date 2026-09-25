@@ -1,0 +1,209 @@
+{
+  "entries": [
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "smart-and-final",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "article"
+          }
+        }
+      },
+      "fields": {
+        "slug": {
+          "en-US": "smart-and-final"
+        },
+        "title": {
+          "en-US": "Davis Elen Asks “What’s your Smart & Final?”"
+        },
+        "publishedAt": {
+          "en-US": "2019-05-29T12:44:00"
+        },
+        "categories": {
+          "en-US": [
+            {
+              "name": "News",
+              "slug": "news"
+            }
+          ]
+        },
+        "heroImage": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "asset-d52ea1a30c0d"
+            }
+          }
+        },
+        "body": {
+          "en-US": {
+            "nodeType": "document",
+            "data": {},
+            "content": [
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "LOS ANGELES",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": " (May 29th, 2019) — In posing a simple question, Davis Elen, one of the largest independently owned advertising agencies on the West Coast, has been selected as the strategic and creative agency partner for ",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "hyperlink",
+                    "data": {
+                      "uri": "https://www.smartandfinal.com/"
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "Smart & Final",
+                        "marks": [],
+                        "data": {}
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": ", the smaller, faster grocery warehouse store.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Davis Elen will leverage its industry-leading retail expertise and deep consumer insights to create a compelling new marketing approach aimed at elevating the Smart & Final brand while delivering tangible results at the store level. The new Smart & Final campaign will focus on the unique reasons shoppers from households to small businesses choose Smart & Final by simply asking real customers: “What’s Your Smart & Final?” This campaign will extend across multiple media channels and in store, running throughout the year.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "“Davis Elen has a track record of creating best-in-class creative and brand strategies for its partners, and we’re looking forward to partnering with them to enhance our integrated marketing efforts through media and elements of in-store signage,” said Joseph VanDette, Smart & Final Group Vice President, Marketing.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "“We’re thrilled to partner with Smart & Final to bring new thinking and a fresh new creative approach to the brand,” said Greg Ahearn, Davis Elen Co-President and COO. “Retail is in our DNA – we understand the need to both build the brand and deliver sales results every day. Our goal is to highlight the unique combination of variety, convenience and value available only at Smart & Final, making it a must-shop destination for every shopper.”",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-entry-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Entry",
+                      "id": "vimeo-339200129"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "embedded-entry-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Entry",
+                      "id": "vimeo-339199889"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "embedded-asset-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "asset-a7f3987f1b0f"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "embedded-asset-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "asset-1f6fd9d4ef3b"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "embedded-asset-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "asset-1935ce4e6987"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "embedded-asset-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "asset-83eff86930a4"
+                    }
+                  }
+                },
+                "content": []
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

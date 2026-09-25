@@ -1,0 +1,4590 @@
+{
+  "entries": [
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "vimeo-255609472",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "vimeoVideo"
+          }
+        }
+      },
+      "fields": {
+        "title": {
+          "en-US": "Vimeo video 255609472"
+        },
+        "videoId": {
+          "en-US": "255609472"
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "vimeo-282146831",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "vimeoVideo"
+          }
+        }
+      },
+      "fields": {
+        "title": {
+          "en-US": "Vimeo video 282146831"
+        },
+        "videoId": {
+          "en-US": "282146831"
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "vimeo-282150653",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "vimeoVideo"
+          }
+        }
+      },
+      "fields": {
+        "title": {
+          "en-US": "Vimeo video 282150653"
+        },
+        "videoId": {
+          "en-US": "282150653"
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "vimeo-316893465",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "vimeoVideo"
+          }
+        }
+      },
+      "fields": {
+        "title": {
+          "en-US": "Vimeo video 316893465"
+        },
+        "videoId": {
+          "en-US": "316893465"
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "vimeo-333581135",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "vimeoVideo"
+          }
+        }
+      },
+      "fields": {
+        "title": {
+          "en-US": "Vimeo video 333581135"
+        },
+        "videoId": {
+          "en-US": "333581135"
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "vimeo-333581365",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "vimeoVideo"
+          }
+        }
+      },
+      "fields": {
+        "title": {
+          "en-US": "Vimeo video 333581365"
+        },
+        "videoId": {
+          "en-US": "333581365"
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "vimeo-333581316",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "vimeoVideo"
+          }
+        }
+      },
+      "fields": {
+        "title": {
+          "en-US": "Vimeo video 333581316"
+        },
+        "videoId": {
+          "en-US": "333581316"
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "vimeo-333581209",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "vimeoVideo"
+          }
+        }
+      },
+      "fields": {
+        "title": {
+          "en-US": "Vimeo video 333581209"
+        },
+        "videoId": {
+          "en-US": "333581209"
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "vimeo-339200129",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "vimeoVideo"
+          }
+        }
+      },
+      "fields": {
+        "title": {
+          "en-US": "Vimeo video 339200129"
+        },
+        "videoId": {
+          "en-US": "339200129"
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "vimeo-339199889",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "vimeoVideo"
+          }
+        }
+      },
+      "fields": {
+        "title": {
+          "en-US": "Vimeo video 339199889"
+        },
+        "videoId": {
+          "en-US": "339199889"
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "vimeo-342873731",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "vimeoVideo"
+          }
+        }
+      },
+      "fields": {
+        "title": {
+          "en-US": "Vimeo video 342873731"
+        },
+        "videoId": {
+          "en-US": "342873731"
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "vimeo-366605432",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "vimeoVideo"
+          }
+        }
+      },
+      "fields": {
+        "title": {
+          "en-US": "Vimeo video 366605432"
+        },
+        "videoId": {
+          "en-US": "366605432"
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "vimeo-366573858",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "vimeoVideo"
+          }
+        }
+      },
+      "fields": {
+        "title": {
+          "en-US": "Vimeo video 366573858"
+        },
+        "videoId": {
+          "en-US": "366573858"
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "vimeo-366573814",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "vimeoVideo"
+          }
+        }
+      },
+      "fields": {
+        "title": {
+          "en-US": "Vimeo video 366573814"
+        },
+        "videoId": {
+          "en-US": "366573814"
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "youtube-zuV_GbowvjE",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "youtubeVideo"
+          }
+        }
+      },
+      "fields": {
+        "title": {
+          "en-US": "YouTube video zuV_GbowvjE"
+        },
+        "videoId": {
+          "en-US": "zuV_GbowvjE"
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "youtube-YKxkzHnNAs8",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "youtubeVideo"
+          }
+        }
+      },
+      "fields": {
+        "title": {
+          "en-US": "YouTube video YKxkzHnNAs8"
+        },
+        "videoId": {
+          "en-US": "YKxkzHnNAs8"
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "youtube-yK5wUzuT3Ls",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "youtubeVideo"
+          }
+        }
+      },
+      "fields": {
+        "title": {
+          "en-US": "YouTube video yK5wUzuT3Ls"
+        },
+        "videoId": {
+          "en-US": "yK5wUzuT3Ls"
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "youtube-IgcuL-bqoSQ",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "youtubeVideo"
+          }
+        }
+      },
+      "fields": {
+        "title": {
+          "en-US": "YouTube video IgcuL-bqoSQ"
+        },
+        "videoId": {
+          "en-US": "IgcuL-bqoSQ"
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "youtube-PoZafVnDXEY",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "youtubeVideo"
+          }
+        }
+      },
+      "fields": {
+        "title": {
+          "en-US": "YouTube video PoZafVnDXEY"
+        },
+        "videoId": {
+          "en-US": "PoZafVnDXEY"
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "youtube-UxXwvdjD5rQ",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "youtubeVideo"
+          }
+        }
+      },
+      "fields": {
+        "title": {
+          "en-US": "YouTube video UxXwvdjD5rQ"
+        },
+        "videoId": {
+          "en-US": "UxXwvdjD5rQ"
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "youtube-lUaMELqfVek",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "youtubeVideo"
+          }
+        }
+      },
+      "fields": {
+        "title": {
+          "en-US": "YouTube video lUaMELqfVek"
+        },
+        "videoId": {
+          "en-US": "lUaMELqfVek"
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "youtube-KDD--Pm_XKI",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "youtubeVideo"
+          }
+        }
+      },
+      "fields": {
+        "title": {
+          "en-US": "YouTube video KDD--Pm_XKI"
+        },
+        "videoId": {
+          "en-US": "KDD--Pm_XKI"
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "youtube-QPlNOwfMLro",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "youtubeVideo"
+          }
+        }
+      },
+      "fields": {
+        "title": {
+          "en-US": "YouTube video QPlNOwfMLro"
+        },
+        "videoId": {
+          "en-US": "QPlNOwfMLro"
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "youtube-Phcw0w-rBp8",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "youtubeVideo"
+          }
+        }
+      },
+      "fields": {
+        "title": {
+          "en-US": "YouTube video Phcw0w-rBp8"
+        },
+        "videoId": {
+          "en-US": "Phcw0w-rBp8"
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "youtube-l_47CrPGcJ8",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "youtubeVideo"
+          }
+        }
+      },
+      "fields": {
+        "title": {
+          "en-US": "YouTube video l_47CrPGcJ8"
+        },
+        "videoId": {
+          "en-US": "l_47CrPGcJ8"
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "youtube-sVCH1n-wR1U",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "youtubeVideo"
+          }
+        }
+      },
+      "fields": {
+        "title": {
+          "en-US": "YouTube video sVCH1n-wR1U"
+        },
+        "videoId": {
+          "en-US": "sVCH1n-wR1U"
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "youtube-xY3LSgO6kjc",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "youtubeVideo"
+          }
+        }
+      },
+      "fields": {
+        "title": {
+          "en-US": "YouTube video xY3LSgO6kjc"
+        },
+        "videoId": {
+          "en-US": "xY3LSgO6kjc"
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "youtube-rLoTC8rcKXU",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "youtubeVideo"
+          }
+        }
+      },
+      "fields": {
+        "title": {
+          "en-US": "YouTube video rLoTC8rcKXU"
+        },
+        "videoId": {
+          "en-US": "rLoTC8rcKXU"
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "vimeo-649207327",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "vimeoVideo"
+          }
+        }
+      },
+      "fields": {
+        "title": {
+          "en-US": "The New Retail Environment - John Papadopoulos"
+        },
+        "videoId": {
+          "en-US": "649207327"
+        },
+        "hash": {
+          "en-US": "ba8429b002"
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "vimeo-654205900",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "vimeoVideo"
+          }
+        }
+      },
+      "fields": {
+        "title": {
+          "en-US": "Reinventing the Automotive Marketing Model - Drew Olkowski"
+        },
+        "videoId": {
+          "en-US": "654205900"
+        },
+        "hash": {
+          "en-US": "2d627a3663"
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "vimeo-644999335",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "vimeoVideo"
+          }
+        }
+      },
+      "fields": {
+        "title": {
+          "en-US": "Vimeo video 644999335"
+        },
+        "videoId": {
+          "en-US": "644999335"
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "vimeo-716583662",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "vimeoVideo"
+          }
+        }
+      },
+      "fields": {
+        "title": {
+          "en-US": "Vimeo video 716583662"
+        },
+        "videoId": {
+          "en-US": "716583662"
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "vimeo-716527241",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "vimeoVideo"
+          }
+        }
+      },
+      "fields": {
+        "title": {
+          "en-US": "Vimeo video 716527241"
+        },
+        "videoId": {
+          "en-US": "716527241"
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "vimeo-716524115",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "vimeoVideo"
+          }
+        }
+      },
+      "fields": {
+        "title": {
+          "en-US": "Vimeo video 716524115"
+        },
+        "videoId": {
+          "en-US": "716524115"
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "vimeo-716534712",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "vimeoVideo"
+          }
+        }
+      },
+      "fields": {
+        "title": {
+          "en-US": "Vimeo video 716534712"
+        },
+        "videoId": {
+          "en-US": "716534712"
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "vimeo-716525188",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "vimeoVideo"
+          }
+        }
+      },
+      "fields": {
+        "title": {
+          "en-US": "Vimeo video 716525188"
+        },
+        "videoId": {
+          "en-US": "716525188"
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "vimeo-716534909",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "vimeoVideo"
+          }
+        }
+      },
+      "fields": {
+        "title": {
+          "en-US": "Vimeo video 716534909"
+        },
+        "videoId": {
+          "en-US": "716534909"
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "vimeo-716532464",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "vimeoVideo"
+          }
+        }
+      },
+      "fields": {
+        "title": {
+          "en-US": "Vimeo video 716532464"
+        },
+        "videoId": {
+          "en-US": "716532464"
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "vimeo-716528369",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "vimeoVideo"
+          }
+        }
+      },
+      "fields": {
+        "title": {
+          "en-US": "Vimeo video 716528369"
+        },
+        "videoId": {
+          "en-US": "716528369"
+        }
+      }
+    }
+  ],
+  "assets": [
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-f881cd0e936f"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen won a silver ADDY and five bronze ADDY awards"
+        },
+        "description": {
+          "en-US": "Davis Elen won a silver ADDY and five bronze ADDY awards"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "davis-elen_awards_feature-f881cd0e936f.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/03/davis-elen_awards_feature-f881cd0e936f.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-c900999f6e9d"
+      },
+      "fields": {
+        "title": {
+          "en-US": "McDonald's"
+        },
+        "description": {
+          "en-US": "McDonald's"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "golden_arches-c900999f6e9d.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/03/golden_arches-c900999f6e9d.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-ec8a70a62459"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen team, the Climb Crew"
+        },
+        "description": {
+          "en-US": "Davis Elen team, the Climb Crew"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "ymca-climb-crew-ec8a70a62459.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/03/ymca-climb-crew-ec8a70a62459.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-b29085c50ac2"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Toyota Thrill Ride"
+        },
+        "description": {
+          "en-US": "Toyota Thrill Ride"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "toyota-thrill-ride_4j0a7350-p-3200-scaled-b29085c50ac2.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/03/toyota-thrill-ride_4j0a7350-p-3200-scaled-b29085c50ac2.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-90abd963dbc5"
+      },
+      "fields": {
+        "title": {
+          "en-US": "An old pencil drawing of Don Quixote and Sancho Panza sitting on their horses, by Wilhelm Marstrand."
+        },
+        "description": {
+          "en-US": "An old pencil drawing of Don Quixote and Sancho Panza sitting on their horses, by Wilhelm Marstrand."
+        },
+        "file": {
+          "en-US": {
+            "fileName": "toyota-thrill-ride_4j0a7396-90abd963dbc5.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/03/toyota-thrill-ride_4j0a7396-90abd963dbc5.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-91beb7ca7961"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Some of the cast and crew of Las Ruedas del Destino"
+        },
+        "description": {
+          "en-US": "Some of the cast and crew of Las Ruedas del Destino"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "las-ruedas-del-destino-cast-and-crew-91beb7ca7961.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/03/las-ruedas-del-destino-cast-and-crew-91beb7ca7961.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-bda873f1bde0"
+      },
+      "fields": {
+        "title": {
+          "en-US": "ruedas-del-destino_1"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "ruedas-del-destino_1-bda873f1bde0.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/03/ruedas-del-destino_1-bda873f1bde0.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-25eddae2168f"
+      },
+      "fields": {
+        "title": {
+          "en-US": "ruedas-del-destino_2-resize"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "ruedas-del-destino_2-resize-25eddae2168f.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/03/ruedas-del-destino_2-resize-25eddae2168f.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-f74f53febc9a"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Havana Nights summer party"
+        },
+        "description": {
+          "en-US": "Havana Nights summer party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "havana_header-scaled-f74f53febc9a.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/03/havana_header-scaled-f74f53febc9a.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-208df8772615"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Havana_gallery13"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "havana_gallery13-208df8772615.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/03/havana_gallery13-208df8772615.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-45751d6e1250"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Havana_gallery17"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "havana_gallery17-45751d6e1250.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/03/havana_gallery17-45751d6e1250.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-3566d8219944"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Havana_gallery15"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "havana_gallery15-3566d8219944.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/03/havana_gallery15-3566d8219944.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-c3cdfeb8749e"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Havana_gallery16"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "havana_gallery16-c3cdfeb8749e.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/03/havana_gallery16-c3cdfeb8749e.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-22166436e2e5"
+      },
+      "fields": {
+        "title": {
+          "en-US": "John Walsh on set"
+        },
+        "description": {
+          "en-US": "John Walsh on set"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "greatcall-thecrew-p-3200-scaled-22166436e2e5.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/03/greatcall-thecrew-p-3200-scaled-22166436e2e5.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-91377a6c86f2"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Cinematographer on set of GreatCall shoot with John Walsh"
+        },
+        "description": {
+          "en-US": "Cinematographer on set of GreatCall shoot with John Walsh"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "greatcall-shoot-91377a6c86f2.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/03/greatcall-shoot-91377a6c86f2.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-e703e85dfcd2"
+      },
+      "fields": {
+        "title": {
+          "en-US": "John Walsh on the casting couch"
+        },
+        "description": {
+          "en-US": "John Walsh on the casting couch"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "greatcal_johnwalsh-e703e85dfcd2.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/03/greatcal_johnwalsh-e703e85dfcd2.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-b1729c81a10f"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Greg Ahearn, Mark Davis, and David Moranville."
+        },
+        "description": {
+          "en-US": "Greg Ahearn, Mark Davis, and David Moranville."
+        },
+        "file": {
+          "en-US": {
+            "fileName": "greg-ahearn_main-image-b1729c81a10f.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/03/greg-ahearn_main-image-b1729c81a10f.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-b201f1968c78"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Greg Ahearn, Mark Davis, and David Moranville."
+        },
+        "description": {
+          "en-US": "Greg Ahearn, Mark Davis, and David Moranville."
+        },
+        "file": {
+          "en-US": {
+            "fileName": "greg-ahearn-2_group-image-b201f1968c78.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/03/greg-ahearn-2_group-image-b201f1968c78.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-9b540f669d5c"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Greg Ahearn, Mark Davis, and David Moranville."
+        },
+        "description": {
+          "en-US": "Greg Ahearn, Mark Davis, and David Moranville."
+        },
+        "file": {
+          "en-US": {
+            "fileName": "greg-ahearn_polaroids-9b540f669d5c.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/03/greg-ahearn_polaroids-9b540f669d5c.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-d1e1d8a97f59"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Toyota C-HR R-Tuned"
+        },
+        "description": {
+          "en-US": "Toyota C-HR R-Tuned"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "01_c-hr-main-d1e1d8a97f59.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/03/01_c-hr-main-d1e1d8a97f59.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-456bf53d87e2"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Breast Cancer Awareness Month is October"
+        },
+        "description": {
+          "en-US": "Breast Cancer Awareness Month is October"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "breast-cancer-header-456bf53d87e2.png",
+            "contentType": "image/png",
+            "upload": "../images/2021/03/breast-cancer-header-456bf53d87e2.png"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-78c87109854b"
+      },
+      "fields": {
+        "title": {
+          "en-US": "beyoutiful-hoodie-pink"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "beyoutiful-hoodie-pink-78c87109854b.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/03/beyoutiful-hoodie-pink-78c87109854b.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-87e83cb5bda6"
+      },
+      "fields": {
+        "title": {
+          "en-US": "country_iso_USA_scrub_carousel_2"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "country_iso_usa_scrub_carousel_2-87e83cb5bda6.png",
+            "contentType": "image/png",
+            "upload": "../images/2021/03/country_iso_usa_scrub_carousel_2-87e83cb5bda6.png"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-e9738f34b460"
+      },
+      "fields": {
+        "title": {
+          "en-US": "tobi-tobin-hope-candle"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "tobi-tobin-hope-candle-e9738f34b460.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/03/tobi-tobin-hope-candle-e9738f34b460.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-6cb0f1a5720e"
+      },
+      "fields": {
+        "title": {
+          "en-US": "BCRF-cosmetic-bag-450x450-1"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "bcrf-cosmetic-bag-450x450-1-6cb0f1a5720e.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/03/bcrf-cosmetic-bag-450x450-1-6cb0f1a5720e.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-f4386f14407e"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Under Armour hat"
+        },
+        "description": {
+          "en-US": "Under Armour hat"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "underarmour_breast_cancer_hat_main-f4386f14407e.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/03/underarmour_breast_cancer_hat_main-f4386f14407e.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-b6771cb1da9a"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Patricia Chambers, Fernando Ruiz, Malu Santamaria, Amy Drell-Tario and Tracy Sanders attended the masquerade ball honoring Davis Elen."
+        },
+        "description": {
+          "en-US": "Patricia Chambers, Fernando Ruiz, Malu Santamaria, Amy Drell-Tario and Tracy Sanders attended the masquerade ball honoring Davis Elen."
+        },
+        "file": {
+          "en-US": {
+            "fileName": "ronald-mcdonald-house_main-image-b6771cb1da9a.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/03/ronald-mcdonald-house_main-image-b6771cb1da9a.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-8d9c31525ec2"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Movember: Grow a mo’, save a bro"
+        },
+        "description": {
+          "en-US": "Movember: Grow a mo’, save a bro"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mustache-header-8d9c31525ec2.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/03/mustache-header-8d9c31525ec2.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-2272cf5306cd"
+      },
+      "fields": {
+        "title": {
+          "en-US": "movember-1"
+        },
+        "description": {
+          "en-US": "Hector Del Pino"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "movember-1-2272cf5306cd.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/03/movember-1-2272cf5306cd.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-b264b98c0bfe"
+      },
+      "fields": {
+        "title": {
+          "en-US": "movember-2"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "movember-2-b264b98c0bfe.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/03/movember-2-b264b98c0bfe.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-1ce14a94b03f"
+      },
+      "fields": {
+        "title": {
+          "en-US": "movember-3"
+        },
+        "description": {
+          "en-US": "Bree Colavin with a cookie mustache"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "movember-3-1ce14a94b03f.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/03/movember-3-1ce14a94b03f.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-cc0d00a136b4"
+      },
+      "fields": {
+        "title": {
+          "en-US": "movember-4"
+        },
+        "description": {
+          "en-US": "Kristina Boudreau with a cookie mustache"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "movember-4-cc0d00a136b4.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/03/movember-4-cc0d00a136b4.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-e64c698d035f"
+      },
+      "fields": {
+        "title": {
+          "en-US": "movember-5"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "movember-5-e64c698d035f.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/03/movember-5-e64c698d035f.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-f9c0ce96edcc"
+      },
+      "fields": {
+        "title": {
+          "en-US": "movember-6"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "movember-6-f9c0ce96edcc.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/03/movember-6-f9c0ce96edcc.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-86d067187947"
+      },
+      "fields": {
+        "title": {
+          "en-US": "movember-7"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "movember-7-86d067187947.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/03/movember-7-86d067187947.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-8b55932b86d5"
+      },
+      "fields": {
+        "title": {
+          "en-US": "movember-8"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "movember-8-8b55932b86d5.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/03/movember-8-8b55932b86d5.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-993e95eec0d7"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Toyota Corolla Thrill Ride"
+        },
+        "description": {
+          "en-US": "Toyota Corolla Thrill Ride"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "corolla-thrill-ride_post_main-image-993e95eec0d7.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/03/corolla-thrill-ride_post_main-image-993e95eec0d7.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-760ac4bd4559"
+      },
+      "fields": {
+        "title": {
+          "en-US": "corolla-thrill-ride_daniellelombard"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "corolla-thrill-ride_daniellelombard-760ac4bd4559.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/03/corolla-thrill-ride_daniellelombard-760ac4bd4559.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-e2eafb5a4504"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen rollerskaters at the roller rink"
+        },
+        "description": {
+          "en-US": "Davis Elen rollerskaters at the roller rink"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "2018-holiday-blog-header-e2eafb5a4504.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/03/2018-holiday-blog-header-e2eafb5a4504.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-0fe043969329"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 1"
+        },
+        "description": {
+          "en-US": "Davis Elen"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006893-0fe043969329.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006893-0fe043969329.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-9218048256a3"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 2"
+        },
+        "description": {
+          "en-US": "Guests of the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006527-9218048256a3.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006527-9218048256a3.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-1d18048578ab"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 3"
+        },
+        "description": {
+          "en-US": "Guests of the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006530-1d18048578ab.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006530-1d18048578ab.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-1f1804857c11"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 4"
+        },
+        "description": {
+          "en-US": "Guests of the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006532-1f1804857c11.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006532-1f1804857c11.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-22180485812a"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 5"
+        },
+        "description": {
+          "en-US": "Melissa Ojeda, Marcos Arroyo and Chesaré Hardy at the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006537-22180485812a.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006537-22180485812a.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-a6180488974d"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 6"
+        },
+        "description": {
+          "en-US": "Guests of the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006543-a6180488974d.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006543-a6180488974d.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-a918048ad23d"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 7"
+        },
+        "description": {
+          "en-US": "David Moranville, Mark Davis and Greg Ahearn at the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006550-a918048ad23d.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006550-a918048ad23d.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-a618048acd24"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 8"
+        },
+        "description": {
+          "en-US": "Guests of the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006553-a618048acd24.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006553-a618048acd24.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-a318048ac80b"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 9"
+        },
+        "description": {
+          "en-US": "Guests of the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006556-a318048ac80b.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006556-a318048ac80b.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-a118048ac4a5"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 10"
+        },
+        "description": {
+          "en-US": "Guests of the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006558-a118048ac4a5.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006558-a118048ac4a5.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-0f18048db566"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 11"
+        },
+        "description": {
+          "en-US": "Guests of the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006560-0f18048db566.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006560-0f18048db566.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-1418048dbde5"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 12"
+        },
+        "description": {
+          "en-US": "Guests of the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006565-1418048dbde5.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006565-1418048dbde5.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-1818048dc4b1"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 13"
+        },
+        "description": {
+          "en-US": "Guests of the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006569-1818048dc4b1.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006569-1818048dc4b1.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-93180490cb89"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 14"
+        },
+        "description": {
+          "en-US": "Guests of the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006576-93180490cb89.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006576-93180490cb89.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-6bcd61144ddf"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 15"
+        },
+        "description": {
+          "en-US": "LaDavius Carson at the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006593-6bcd61144ddf.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006593-6bcd61144ddf.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-a518049708cd"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 16"
+        },
+        "description": {
+          "en-US": "Guests of the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006594-a518049708cd.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006594-a518049708cd.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-9c181449fa91"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 17"
+        },
+        "description": {
+          "en-US": "Guests of the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006600-9c181449fa91.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006600-9c181449fa91.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-de95e337cf25"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 18"
+        },
+        "description": {
+          "en-US": "Mark Davis and Bob Elen at the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006604-de95e337cf25.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006604-de95e337cf25.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-9e181449fdf7"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 19"
+        },
+        "description": {
+          "en-US": "Mark Davis and Marianne Turner at the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006606-9e181449fdf7.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006606-9e181449fdf7.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-19181446e621"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 20"
+        },
+        "description": {
+          "en-US": "Guests of the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006613-19181446e621.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006613-19181446e621.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-1a181446e7d4"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 21"
+        },
+        "description": {
+          "en-US": "Guests of the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006614-1a181446e7d4.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006614-1a181446e7d4.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-8918144ff8f6"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 22"
+        },
+        "description": {
+          "en-US": "Guests of the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006623-8918144ff8f6.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006623-8918144ff8f6.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-8e1814500175"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 23"
+        },
+        "description": {
+          "en-US": "David Moranville, Melissa Ojeda and Greg Ahearn at the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006626-8e1814500175.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006626-8e1814500175.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-2218144d141a"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 24"
+        },
+        "description": {
+          "en-US": "Greg Ahearn playing Will Ferrell playing Buddy the Elf at the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006630-2218144d141a.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006630-2218144d141a.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-1a18144d0682"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 25"
+        },
+        "description": {
+          "en-US": "Guests of the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006638-1a18144d0682.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006638-1a18144d0682.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-121814554d6f"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 26"
+        },
+        "description": {
+          "en-US": "Guests of the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006642-121814554d6f.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006642-121814554d6f.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-111814554bbc"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 27"
+        },
+        "description": {
+          "en-US": "Guests of the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006643-111814554bbc.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006643-111814554bbc.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-0e18145546a3"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 28"
+        },
+        "description": {
+          "en-US": "Guests of the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006646-0e18145546a3.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006646-0e18145546a3.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-901814523ab2"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 29"
+        },
+        "description": {
+          "en-US": "Guests of the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006652-901814523ab2.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006652-901814523ab2.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-8c18145233e6"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 30"
+        },
+        "description": {
+          "en-US": "Guests of the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006656-8c18145233e6.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006656-8c18145233e6.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-9618145244e4"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 31"
+        },
+        "description": {
+          "en-US": "Maira Gutierrez and guest of the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006658-9618145244e4.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006658-9618145244e4.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-1f18145b8234"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 32"
+        },
+        "description": {
+          "en-US": "Guests of the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006661-1f18145b8234.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006661-1f18145b8234.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-1b18145b7b68"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 33"
+        },
+        "description": {
+          "en-US": "Guests of the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006665-1b18145b7b68.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006665-1b18145b7b68.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-1718145b749c"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 34"
+        },
+        "description": {
+          "en-US": "Guests of the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006669-1718145b749c.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006669-1718145b749c.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-9818145866f8"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 35"
+        },
+        "description": {
+          "en-US": "Guests of the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006672-9818145866f8.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006672-9818145866f8.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-931814585e79"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 36"
+        },
+        "description": {
+          "en-US": "Guests of the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006679-931814585e79.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006679-931814585e79.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-891814331290"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 37"
+        },
+        "description": {
+          "en-US": "Guests of the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006683-891814331290.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006683-891814331290.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-941814332541"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 38"
+        },
+        "description": {
+          "en-US": "Guests of the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006688-941814332541.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006688-941814332541.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-0618142ffe20"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 39"
+        },
+        "description": {
+          "en-US": "Guests of the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006690-0618142ffe20.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006690-0618142ffe20.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-61180f0596c6"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 40"
+        },
+        "description": {
+          "en-US": "Guests of the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006700-61180f0596c6.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006700-61180f0596c6.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-78180eff9f2d"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 41"
+        },
+        "description": {
+          "en-US": "Bree Colavin, Karen Doolittle, and Gabrielle Brown at the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006723-78180eff9f2d.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006723-78180eff9f2d.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-f6180f02ab1e"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 42"
+        },
+        "description": {
+          "en-US": "Guests of the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006735-f6180f02ab1e.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006735-f6180f02ab1e.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-e1180ef4143c"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 43"
+        },
+        "description": {
+          "en-US": "Kristina Boudreau, Sandra Jones, Karen Lipker, and Elke Harper at the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006764-e1180ef4143c.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006764-e1180ef4143c.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-6b180ef73491"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 44"
+        },
+        "description": {
+          "en-US": "Guests of the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006778-6b180ef73491.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006778-6b180ef73491.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-ee180f1f83ec"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 45"
+        },
+        "description": {
+          "en-US": "Guests of the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006799-ee180f1f83ec.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006799-ee180f1f83ec.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-2618455979b3"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 46"
+        },
+        "description": {
+          "en-US": "Guests of the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006804-2618455979b3.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006804-2618455979b3.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-2d1845574fc1"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 47"
+        },
+        "description": {
+          "en-US": "Julie Solis and Mark Davis at the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006819-2d1845574fc1.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006819-2d1845574fc1.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-ba1845545681"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 48"
+        },
+        "description": {
+          "en-US": "Bob Elen and seven guests of the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006824-ba1845545681.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006824-ba1845545681.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-371845514211"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 49"
+        },
+        "description": {
+          "en-US": "Guests of the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006837-371845514211.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006837-371845514211.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-3118455137df"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 50"
+        },
+        "description": {
+          "en-US": "Guests of the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006839-3118455137df.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006839-3118455137df.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-a918454e1af0"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 51"
+        },
+        "description": {
+          "en-US": "Guests of the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006849-a918454e1af0.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006849-a918454e1af0.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-2a18454b0d4c"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 52"
+        },
+        "description": {
+          "en-US": "David Moranville and Chesaré Hardy at the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006852-2a18454b0d4c.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006852-2a18454b0d4c.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-25184548cef6"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 53"
+        },
+        "description": {
+          "en-US": "Guests of the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006861-25184548cef6.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006861-25184548cef6.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-2a184548d775"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 54"
+        },
+        "description": {
+          "en-US": "Guests of the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006864-2a184548d775.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006864-2a184548d775.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-b51845713468"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 55"
+        },
+        "description": {
+          "en-US": "Chesaré Hardy and guest of the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006885-b51845713468.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006885-b51845713468.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-1018401554c7"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen Holiday Party 2018 56"
+        },
+        "description": {
+          "en-US": "Guests of the 2018 Davis Elen holiday party"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mirmir113_006901-1018401554c7.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/mirmir113_006901-1018401554c7.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-e69349a06a62"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Some of the case of Las Ruedas del Destino 2"
+        },
+        "description": {
+          "en-US": "Some of the case of Las Ruedas del Destino 2"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "telenovels-season-2-header-e69349a06a62.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2019/03/telenovels-season-2-header-e69349a06a62.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-a91ca0002fe7"
+      },
+      "fields": {
+        "title": {
+          "en-US": "lrdd-tough-tacoma"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "lrdd-tough-tacoma-a91ca0002fe7.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/03/lrdd-tough-tacoma-a91ca0002fe7.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-14d488f78cf7"
+      },
+      "fields": {
+        "title": {
+          "en-US": "lrdd-drama"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "lrdd-drama-14d488f78cf7.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/03/lrdd-drama-14d488f78cf7.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-d540f15ae920"
+      },
+      "fields": {
+        "title": {
+          "en-US": "lrdd-0G9A9406"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "lrdd-0g9a9406-d540f15ae920.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/03/lrdd-0g9a9406-d540f15ae920.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-0e0accd8c5bb"
+      },
+      "fields": {
+        "title": {
+          "en-US": "lrdd-0G9A9245-3"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "lrdd-0g9a9245-3-0e0accd8c5bb.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/03/lrdd-0g9a9245-3-0e0accd8c5bb.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-005d1e34ece7"
+      },
+      "fields": {
+        "title": {
+          "en-US": "lrdd-0G9A8470"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "lrdd-0g9a8470-005d1e34ece7.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/03/lrdd-0g9a8470-005d1e34ece7.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-3a5cde01a7cc"
+      },
+      "fields": {
+        "title": {
+          "en-US": "lrdd-closing-image-left"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "lrdd-closing-image-left-3a5cde01a7cc.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/03/lrdd-closing-image-left-3a5cde01a7cc.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-411f0bbea626"
+      },
+      "fields": {
+        "title": {
+          "en-US": "McDonald’s Southern Plains selected Davis Elen Advertising as their local agency"
+        },
+        "description": {
+          "en-US": "McDonald’s Southern Plains selected Davis Elen Advertising as their local agency"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mcdonalds-billboard-411f0bbea626.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/03/mcdonalds-billboard-411f0bbea626.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-d52ea1a30c0d"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Smart & Final"
+        },
+        "description": {
+          "en-US": "Smart & Final"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "smartandfinal-header-d52ea1a30c0d.png",
+            "contentType": "image/png",
+            "upload": "../images/2021/03/smartandfinal-header-d52ea1a30c0d.png"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-a7f3987f1b0f"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Smart & Final shopper holding her three oranges"
+        },
+        "description": {
+          "en-US": "Smart & Final shopper holding her three oranges"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "smart-and-final-shopper-1-1024x768-a7f3987f1b0f.png",
+            "contentType": "image/png",
+            "upload": "../images/2021/03/smart-and-final-shopper-1-1024x768-a7f3987f1b0f.png"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-1f6fd9d4ef3b"
+      },
+      "fields": {
+        "title": {
+          "en-US": "A family of three: father, mother and newborn baby, shop at Smart & Final"
+        },
+        "description": {
+          "en-US": "A family of three: father, mother and newborn baby, shop at Smart & Final"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "smart-and-final_shopper-2-1024x768-1f6fd9d4ef3b.png",
+            "contentType": "image/png",
+            "upload": "../images/2021/03/smart-and-final_shopper-2-1024x768-1f6fd9d4ef3b.png"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-1935ce4e6987"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Behind the scenes of \"What's your Smart & Final?\": Davis Elen director and crew review footage"
+        },
+        "description": {
+          "en-US": "Behind the scenes of \"What's your Smart & Final?\": Davis Elen director and crew review footage"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "smart-and-final_bts-1-1024x768-1935ce4e6987.png",
+            "contentType": "image/png",
+            "upload": "../images/2021/03/smart-and-final_bts-1-1024x768-1935ce4e6987.png"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-83eff86930a4"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Behind the scenes of \"What's your Smart & Final?\": Davis Elen cameraman films a shopper"
+        },
+        "description": {
+          "en-US": "Behind the scenes of \"What's your Smart & Final?\": Davis Elen cameraman films a shopper"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "smart-and-final_bts-2-1024x768-83eff86930a4.png",
+            "contentType": "image/png",
+            "upload": "../images/2021/03/smart-and-final_bts-2-1024x768-83eff86930a4.png"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-81fcb84ee776"
+      },
+      "fields": {
+        "title": {
+          "en-US": "DE-GenA"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "de-gena-81fcb84ee776.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2019/06/de-gena-81fcb84ee776.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-f89843235d3b"
+      },
+      "fields": {
+        "title": {
+          "en-US": "John Walsh looking cool with sunglasses and a white jacket"
+        },
+        "description": {
+          "en-US": "John Walsh looking cool with sunglasses and a white jacket"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "john_walsh-f89843235d3b.png",
+            "contentType": "image/png",
+            "upload": "../images/2021/02/john_walsh-f89843235d3b.png"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-22f5ee08511c"
+      },
+      "fields": {
+        "title": {
+          "en-US": "McD-50m"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mcd-50m-22f5ee08511c.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2019/06/mcd-50m-22f5ee08511c.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-45a0467aa15d"
+      },
+      "fields": {
+        "title": {
+          "en-US": "DE-LAFC-Thumb"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "de-banc-of-california-stadium-45a0467aa15d.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2019/09/de-banc-of-california-stadium-45a0467aa15d.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-fcf5390f3f0a"
+      },
+      "fields": {
+        "title": {
+          "en-US": "summerparty-header"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "summerparty-header-fcf5390f3f0a.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/03/summerparty-header-fcf5390f3f0a.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-b9bb406834e1"
+      },
+      "fields": {
+        "title": {
+          "en-US": "cleanup"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "cleanup-b9bb406834e1.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/01/cleanup-b9bb406834e1.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-2ee7ac29718b"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen participates in Coastal Cleanup Day"
+        },
+        "description": {
+          "en-US": "Davis Elen participates in Coastal Cleanup Day"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "culture-coastal-cleanup-2ee7ac29718b.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/01/culture-coastal-cleanup-2ee7ac29718b.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-bdd83815595a"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen won four Telly awards in 2019"
+        },
+        "description": {
+          "en-US": "Davis Elen won four Telly awards in 2019"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "davis-elen_awards2019-full-bdd83815595a.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/03/davis-elen_awards2019-full-bdd83815595a.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-b244f63982f7"
+      },
+      "fields": {
+        "title": {
+          "en-US": "John Papadopoulos joins Davis Elen Advertising"
+        },
+        "description": {
+          "en-US": "John Papadopoulos joins Davis Elen Advertising"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "john-papadopoulos-header-b244f63982f7.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/03/john-papadopoulos-header-b244f63982f7.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-96409703f175"
+      },
+      "fields": {
+        "title": {
+          "en-US": "mcd-article"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mcd-article-96409703f175.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2019/11/mcd-article-96409703f175.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-b7a50137607b"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen CMO, David Moranville returning from a surf session"
+        },
+        "description": {
+          "en-US": "Davis Elen CMO, David Moranville returning from a surf session"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "news-de-boldnotold-b7a50137607b.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2019/06/news-de-boldnotold-b7a50137607b.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-2fb8ae1873d0"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Alkaline88_WATER_SamplePR_3SM"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "alkaline88_water_samplepr_3-2fb8ae1873d0.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2020/07/alkaline88_water_samplepr_3-2fb8ae1873d0.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-d9384b6aa6a8"
+      },
+      "fields": {
+        "title": {
+          "en-US": "house-party"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "house-party-d9384b6aa6a8.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/01/house-party-d9384b6aa6a8.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-de421ca7f49b"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Moranville falls into the dunk tank while wearing a ballerina shark costume."
+        },
+        "description": {
+          "en-US": "Davis Moranville falls into the dunk tank while wearing a ballerina shark costume."
+        },
+        "file": {
+          "en-US": {
+            "fileName": "dunk-de421ca7f49b.gif",
+            "contentType": "image/gif",
+            "upload": "../images/2021/01/dunk-de421ca7f49b.gif"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-f0e7df80a35b"
+      },
+      "fields": {
+        "title": {
+          "en-US": "News Masked"
+        },
+        "description": {
+          "en-US": "Man wearing a face mask outdoors"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "news-masked-f0e7df80a35b.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/01/news-masked-f0e7df80a35b.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-a7F3k9X2mQ8z"
+      },
+      "fields": {
+        "title": {
+          "en-US": "View of downtown Los Angeles"
+        },
+        "description": {
+          "en-US": "View of downtown Los Angeles"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "ymca-stair-climb-we-rise-a7F3k9X2mQ8z.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2020/10/ymca-stair-climb-we-rise-a7F3k9X2mQ8z.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-664b92f11b99"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen staff spell out YMCA while physically distancing during the pandemic."
+        },
+        "description": {
+          "en-US": "Davis Elen staff spell out YMCA while physically distancing during the pandemic."
+        },
+        "file": {
+          "en-US": {
+            "fileName": "culture-togetherwerise-664b92f11b99.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2020/10/culture-togetherwerise-664b92f11b99.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-1adc132dd8ca"
+      },
+      "fields": {
+        "title": {
+          "en-US": "SFPRESS_SQRTHUMB_820x820"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "sf-press_header_1920x800-1adc132dd8ca.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/03/sf-press_header_1920x800-1adc132dd8ca.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-b013d1e517b6"
+      },
+      "fields": {
+        "title": {
+          "en-US": "DE-RMHC-Card"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "de-rmhc-wfk-6-b013d1e517b6.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/04/de-rmhc-wfk-6-b013d1e517b6.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-7a05f057d738"
+      },
+      "fields": {
+        "title": {
+          "en-US": "591-miles-2"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "591-miles-2-7a05f057d738.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/04/591-miles-2-7a05f057d738.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-5f305ed3873c"
+      },
+      "fields": {
+        "title": {
+          "en-US": "DE-RMHC-WFK-Mason1-3"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "de-rmhc-wfk-mason1-3-5f305ed3873c.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/04/de-rmhc-wfk-mason1-3-5f305ed3873c.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-e4339d0183be"
+      },
+      "fields": {
+        "title": {
+          "en-US": "DE-RMHC-WFK-Mason2-1"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "de-rmhc-wfk-mason2-1-e4339d0183be.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/04/de-rmhc-wfk-mason2-1-e4339d0183be.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-2950d71b0c33"
+      },
+      "fields": {
+        "title": {
+          "en-US": "DE-RMHC-WFK-Mason3-2"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "de-rmhc-wfk-mason3-2-2950d71b0c33.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/04/de-rmhc-wfk-mason3-2-2950d71b0c33.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-0d1bf7abe825"
+      },
+      "fields": {
+        "title": {
+          "en-US": "DE-WomansDay-Thumb-1"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "de-womansday-thumb-1-0d1bf7abe825.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/05/de-womansday-thumb-1-0d1bf7abe825.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-6f3d3a675d3f"
+      },
+      "fields": {
+        "title": {
+          "en-US": "DE-DZ-5"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "de-dz-5-6f3d3a675d3f.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/05/de-dz-5-6f3d3a675d3f.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-6ae62e2818ed"
+      },
+      "fields": {
+        "title": {
+          "en-US": "DE-MT-6"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "de-mt-6-6ae62e2818ed.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/05/de-mt-6-6ae62e2818ed.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-f4d4a8d6c150"
+      },
+      "fields": {
+        "title": {
+          "en-US": "DE-RP-4"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "de-rp-4-f4d4a8d6c150.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/05/de-rp-4-f4d4a8d6c150.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-3500cb6f16f7"
+      },
+      "fields": {
+        "title": {
+          "en-US": "DE-MS-5"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "de-ms-5-3500cb6f16f7.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/05/de-ms-5-3500cb6f16f7.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-eb6b1af01d50"
+      },
+      "fields": {
+        "title": {
+          "en-US": "DE-LC-6"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "de-lc-6-eb6b1af01d50.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/05/de-lc-6-eb6b1af01d50.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-f9870909a471"
+      },
+      "fields": {
+        "title": {
+          "en-US": "DE-Telly-Header-13"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "de-telly-header-13-f9870909a471.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/06/de-telly-header-13-f9870909a471.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-0c0870d569d0"
+      },
+      "fields": {
+        "title": {
+          "en-US": "SFmeme-3"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "sfmeme-3-0c0870d569d0.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/06/sfmeme-3-0c0870d569d0.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-fc0a5fc205cd"
+      },
+      "fields": {
+        "title": {
+          "en-US": "DE-4A-Thumb"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "de-4a-01-fc0a5fc205cd.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/07/de-4a-01-fc0a5fc205cd.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-746426dbbde2"
+      },
+      "fields": {
+        "title": {
+          "en-US": "DE-4a-Inset-01"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "de-4a-inset-01-746426dbbde2.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/07/de-4a-inset-01-746426dbbde2.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-af181c972d40"
+      },
+      "fields": {
+        "title": {
+          "en-US": "DE-WFH-Thumb"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "de-wfh-header-af181c972d40.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/07/de-wfh-header-af181c972d40.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-26aa100b73bf"
+      },
+      "fields": {
+        "title": {
+          "en-US": "DE-Featured-Image-Square-01"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "de-purity-logo-1920x1080-26aa100b73bf.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/08/de-purity-logo-1920x1080-26aa100b73bf.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-45f535ddf9ee"
+      },
+      "fields": {
+        "title": {
+          "en-US": "DE-Graphis-FI2-1"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "graphis_hero_1920x1080-45f535ddf9ee.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/10/graphis_hero_1920x1080-45f535ddf9ee.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-ad82ea4eb8e1"
+      },
+      "fields": {
+        "title": {
+          "en-US": "MicrosoftTeams-image-26"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "microsoftteams-image-26-ad82ea4eb8e1.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/11/microsoftteams-image-26-ad82ea4eb8e1.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-da8a6c73b310"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen employees participate in YMCA Stair Climb"
+        },
+        "description": {
+          "en-US": "Davis Elen employees participate in YMCA Stair Climb"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "2021-stair-climb-header-da8a6c73b310.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/11/2021-stair-climb-header-da8a6c73b310.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-118ee16b39dc"
+      },
+      "fields": {
+        "title": {
+          "en-US": "ThinkLA"
+        },
+        "description": {
+          "en-US": "ThinkLA"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "de-think-la_1920x1080-118ee16b39dc.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/12/de-think-la_1920x1080-118ee16b39dc.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-d5c3905e4098"
+      },
+      "fields": {
+        "title": {
+          "en-US": "DE-Think-LA_Video-Thumb_John"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "de-think-la_video-thumb_john-d5c3905e4098.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/12/de-think-la_video-thumb_john-d5c3905e4098.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-3ca8e1eefa10"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Group photo of Davis Elen Masterclass Instructors"
+        },
+        "description": {
+          "en-US": "Group photo of Davis Elen Masterclass Instructors"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "de-masterclass-culture_1920x1080-3ca8e1eefa10.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/12/de-masterclass-culture_1920x1080-3ca8e1eefa10.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-797c5a86a9f3"
+      },
+      "fields": {
+        "title": {
+          "en-US": "David-1"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "david-1-797c5a86a9f3.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/12/david-1-797c5a86a9f3.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-ffb3d27aa06b"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Brian"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "brian-ffb3d27aa06b.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/12/brian-ffb3d27aa06b.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-e70fe70690de"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Gabbie"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "gabbie-e70fe70690de.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/12/gabbie-e70fe70690de.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-602da6e6d916"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Terry"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "terry-602da6e6d916.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2021/12/terry-602da6e6d916.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-7e17e51cb036"
+      },
+      "fields": {
+        "title": {
+          "en-US": "MediaPost Auto Award"
+        },
+        "description": {
+          "en-US": "MediaPost Auto Award"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "social-1080x1080-2-7e17e51cb036.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2022/04/social-1080x1080-2-7e17e51cb036.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-167a637e94fa"
+      },
+      "fields": {
+        "title": {
+          "en-US": "In-Situation-Spot"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "in-situation-spot-167a637e94fa.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2022/04/in-situation-spot-167a637e94fa.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-7ad76d0ca5fb"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Featured_400x800-1"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "womens-history-month-header-7ad76d0ca5fb.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2022/04/womens-history-month-header-7ad76d0ca5fb.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-f2d8561c6bdf"
+      },
+      "fields": {
+        "title": {
+          "en-US": "DE-8T"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "tellys-2022-header-f2d8561c6bdf.png",
+            "contentType": "image/png",
+            "upload": "../images/2022/06/tellys-2022-header-f2d8561c6bdf.png"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-84e07351472b"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Featured-Image_600x1000"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "summer-2022-header-84e07351472b.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2022/05/summer-2022-header-84e07351472b.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-b40f0eeae3ca"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Infograph-1"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "infograph-1-b40f0eeae3ca.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2022/05/infograph-1-b40f0eeae3ca.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-76c52966a82f"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Infograph-2"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "infograph-2-76c52966a82f.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2022/05/infograph-2-76c52966a82f.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-4a3a5b9e22cc"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Black Consumer Market (BCM) Featured Image"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "aa-consumer-marketing_header-4a3a5b9e22cc.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2022/05/aa-consumer-marketing_header-4a3a5b9e22cc.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-9a69c8e37cb0"
+      },
+      "fields": {
+        "title": {
+          "en-US": "24789_DE_AACM_BlogSocial_r4_PC-1-1"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "24789_de_aacm_blogsocial_r4_pc-1-1-9a69c8e37cb0.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2022/06/24789_de_aacm_blogsocial_r4_pc-1-1-9a69c8e37cb0.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-3fd6722c67f9"
+      },
+      "fields": {
+        "title": {
+          "en-US": "24789_DE_AACM_BlogSocial_r4_LJ-1-1"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "24789_de_aacm_blogsocial_r4_lj-1-1-3fd6722c67f9.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2022/06/24789_de_aacm_blogsocial_r4_lj-1-1-3fd6722c67f9.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-2b29789c6426"
+      },
+      "fields": {
+        "title": {
+          "en-US": "pride-FI-1"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "pride-fi-1-2b29789c6426.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2022/06/pride-fi-1-2b29789c6426.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-a24531e28b31"
+      },
+      "fields": {
+        "title": {
+          "en-US": "past-pride-1"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "past-pride-1-a24531e28b31.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2022/06/past-pride-1-a24531e28b31.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-a02823796243"
+      },
+      "fields": {
+        "title": {
+          "en-US": "McD-Float-One-V02B"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mcd-float-one-v02b-a02823796243.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2022/06/mcd-float-one-v02b-a02823796243.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-ef18cd0a8e00"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Pride-Pics2"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "pride-pics2-ef18cd0a8e00.png",
+            "contentType": "image/png",
+            "upload": "../images/2022/06/pride-pics2-ef18cd0a8e00.png"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-fd3dfb3ea258"
+      },
+      "fields": {
+        "title": {
+          "en-US": "LGBTQ_Derek-Morrison-1"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "lgbtq_derek-morrison-1-fd3dfb3ea258.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2022/06/lgbtq_derek-morrison-1-fd3dfb3ea258.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-755608eca5d4"
+      },
+      "fields": {
+        "title": {
+          "en-US": "LGBTQ_Anna-Chau-1"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "lgbtq_anna-chau-1-755608eca5d4.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2022/06/lgbtq_anna-chau-1-755608eca5d4.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-a75f33a83541"
+      },
+      "fields": {
+        "title": {
+          "en-US": "AAPI_Blog-Faetured_IMG-600x1000-1"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "aapi_blog-faetured_img-1920x1080-a75f33a83541.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2022/07/aapi_blog-faetured_img-1920x1080-a75f33a83541.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-5df86398f48e"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Infograph-2-2-scaled"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "infograph-2-2-scaled-5df86398f48e.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2022/07/infograph-2-2-scaled-5df86398f48e.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-bc6eff8d6ad7"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Simple-Icons2"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "simple-icons2-bc6eff8d6ad7.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2022/07/simple-icons2-bc6eff8d6ad7.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-d92ba5fc5613"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Gen-Illustration_2_Wide-scaled"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "gen-illustration_2_wide-scaled-d92ba5fc5613.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2022/07/gen-illustration_2_wide-scaled-d92ba5fc5613.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-b20436270713"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Gen-Illustration-1"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "gen-illustration-1-b20436270713.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2022/07/gen-illustration-1-b20436270713.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-9bc460cae28f"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Summer-Party_Featured-IMG_600x1000"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "summer-party-header_1920x1080-9bc460cae28f.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2022/09/summer-party-header_1920x1080-9bc460cae28f.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-32039bf8ccf3"
+      },
+      "fields": {
+        "title": {
+          "en-US": "DC-Summer-Party"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "dc-summer-party-32039bf8ccf3.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2022/09/dc-summer-party-32039bf8ccf3.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-09ba471329d3"
+      },
+      "fields": {
+        "title": {
+          "en-US": "DE-Summer-Party-1"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "de-summer-party-1-09ba471329d3.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2022/09/de-summer-party-1-09ba471329d3.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-49b298cf4bd8"
+      },
+      "fields": {
+        "title": {
+          "en-US": "DE-Summer-Party-2"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "de-summer-party-2-49b298cf4bd8.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2022/09/de-summer-party-2-49b298cf4bd8.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-6438a6122d85"
+      },
+      "fields": {
+        "title": {
+          "en-US": "DC-Group-Photo"
+        },
+        "description": {
+          "en-US": ""
+        },
+        "file": {
+          "en-US": {
+            "fileName": "dc-group-photo-6438a6122d85.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2022/09/dc-group-photo-6438a6122d85.jpg"
+          }
+        }
+      }
+    }
+  ]
+}

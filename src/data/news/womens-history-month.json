@@ -1,0 +1,191 @@
+{
+  "entries": [
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "womens-history-month",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "article"
+          }
+        }
+      },
+      "fields": {
+        "slug": {
+          "en-US": "womens-history-month"
+        },
+        "title": {
+          "en-US": "Women’s History Month"
+        },
+        "publishedAt": {
+          "en-US": "2022-04-28T12:35:48"
+        },
+        "categories": {
+          "en-US": [
+            {
+              "name": "Culture",
+              "slug": "culture"
+            }
+          ]
+        },
+        "heroImage": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "asset-7ad76d0ca5fb"
+            }
+          }
+        },
+        "body": {
+          "en-US": {
+            "nodeType": "document",
+            "data": {},
+            "content": [
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "March was Women’s History Month, and we took the opportunity to check in with some of the remarkable women at DE to talk about what inspires them, both personally and professionally.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "In an era of endless digital self-promotion, where other people’s highlight reels can convince us that success is a constant parade of step-and-repeats, well-lit photoshoots and brand collaborations, these conversations reminded us that the road to success is paved with hard work behind the scenes, work that’s sometimes unglamorous yet incredibly fulfilling.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Our conversations with Angela Presnell, Jessica Westlake and Susan Richey offer the grounding perspective of women with decades of career experience. We talked about the things they love, their take on what makes them successful, and the various people and experiences that shaped their work ethic.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Curious? We thought so. Take a listen to these interviews to find out how Angela Presnell got ketchup in her veins, why Jessica Westlake thinks you should read “Girl on Fire,” and how Susan Richey always makes sure the boss looks good.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Even after years in the business, each of these women remains motivated to approach their work with a genuine desire for collaboration and creativity. In a media landscape where today’s viral sensation is tomorrow’s has-been, these women remind us that hard work and a commitment to true creativity are values that are forever timeless.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "blockquote",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "paragraph",
+                    "data": {},
+                    "content": [
+                      {
+                        "nodeType": "hyperlink",
+                        "data": {
+                          "uri": "https://www.instagram.com/tv/Cbxy1OFL7wW/?utm_source=ig_embed&utm_campaign=loading"
+                        },
+                        "content": [
+                          {
+                            "nodeType": "text",
+                            "value": "A post shared by Davis Elen Advertising (@daviselen) on Instagram",
+                            "marks": [],
+                            "data": {}
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "nodeType": "blockquote",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "paragraph",
+                    "data": {},
+                    "content": [
+                      {
+                        "nodeType": "hyperlink",
+                        "data": {
+                          "uri": "https://www.instagram.com/tv/CcnsOTkL5WD/?utm_source=ig_embed&utm_campaign=loading"
+                        },
+                        "content": [
+                          {
+                            "nodeType": "text",
+                            "value": "A post shared by Davis Elen Advertising (@daviselen) on Instagram",
+                            "marks": [],
+                            "data": {}
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "nodeType": "blockquote",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "paragraph",
+                    "data": {},
+                    "content": [
+                      {
+                        "nodeType": "hyperlink",
+                        "data": {
+                          "uri": "https://www.instagram.com/tv/CdOVPFTP3-m/?utm_source=ig_embed&utm_campaign=loading"
+                        },
+                        "content": [
+                          {
+                            "nodeType": "text",
+                            "value": "A post shared by Davis Elen Advertising (@daviselen) on Instagram",
+                            "marks": [],
+                            "data": {}
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

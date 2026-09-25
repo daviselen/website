@@ -1,0 +1,101 @@
+{
+  "entries": [
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "mcdonalds-agency-news",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "article"
+          }
+        }
+      },
+      "fields": {
+        "slug": {
+          "en-US": "mcdonalds-agency-news"
+        },
+        "title": {
+          "en-US": "Davis Elen joins a very exclusive list of ad agencies"
+        },
+        "publishedAt": {
+          "en-US": "2017-08-01T18:04:00"
+        },
+        "categories": {
+          "en-US": [
+            {
+              "name": "News",
+              "slug": "news"
+            }
+          ]
+        },
+        "heroImage": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "asset-c900999f6e9d"
+            }
+          }
+        },
+        "body": {
+          "en-US": {
+            "nodeType": "document",
+            "data": {},
+            "content": [
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "In July, it was announced that Davis Elen Advertising would be one of seven McDonald’s Co-op Agencies of the future. Davis Elen and the other six groups will be the only agencies authorized to do local McDonald’s advertising in the United States.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "The announcement came after a pitch process where over forty agencies were required to justify their capabilities. The process culminated in a live presentation in Chicago, where each team had to demonstrate their strategic, analytic and creative thinking on a breakfast assignment.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "McDonald’s made this move in order to better engage with its customers and create more cohesive national messaging.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Prior to this, 60 agencies had worked for local McDonald’s Co-Ops.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

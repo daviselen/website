@@ -1,0 +1,145 @@
+{
+  "entries": [
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "latest-client-purity-coffee-earns-top-200-ranking-in-inc-5000-list",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "article"
+          }
+        }
+      },
+      "fields": {
+        "slug": {
+          "en-US": "latest-client-purity-coffee-earns-top-200-ranking-in-inc-5000-list"
+        },
+        "title": {
+          "en-US": "Our Latest Client Purity Coffee Earns Top 200 Ranking In Inc. 5000 List"
+        },
+        "publishedAt": {
+          "en-US": "2021-09-01T15:20:55"
+        },
+        "categories": {
+          "en-US": [
+            {
+              "name": "News",
+              "slug": "news"
+            }
+          ]
+        },
+        "heroImage": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "asset-26aa100b73bf"
+            }
+          }
+        },
+        "body": {
+          "en-US": {
+            "nodeType": "document",
+            "data": {},
+            "content": [
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "2000%+ sales growth lands disruptive coffee company with a #193 ranking overall, and #9 in the Food and Beverage category.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "With a focus on long-term growth, the subscription-based “healthy coffee” company is dedicated to significantly increasing consumer awareness of the health benefits of scientifically formulated coffee. To achieve this, Purity Coffee has just named Davis Elen Advertising as its agency of record.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "“With our experience on global brands in the CPG, Retail, Beverage and Grocery categories, Davis Elen is perfectly suited to help accelerate Purity Coffee’s growth. Our team is focused on helping Purity Coffee create a whole new category of “healthy coffee” and building them into the market leader by delivering strategically sound, inspired creative backed by a fully integrated go to market plan.”",
+                    "marks": [
+                      {
+                        "type": "italic"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "– David Moranville, Davis Elen Co-President / Chief Creative Officer.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "In addition to the extraordinary sales growth, Purity Coffee is holding on to nearly 90% of its subscribers, and with over 11,000 reviews at an average of 4.8/5 stars it’s becoming quite clear how this small coffee company catapulted into the top 200 of this years’ coveted Inc. 5000 list.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "It’s an exciting time to partner with a company like Purity Coffee. They have a high-quality product that leads with integrity, and because of that, they have earned a loyal customer. That’s a good place to be.”",
+                    "marks": [
+                      {
+                        "type": "italic"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "adds Greg Ahearn, Davis Elen Co-President / Chief Strategy Officer “We will lead with those consumer insights and more, to arrive at a focused strategy that will nurture the existing base but more importantly, build awareness among new customers.”",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Purity Coffee’s mission is to craft the world’s healthiest coffees by applying scientific research to each step of the coffee production process and making every decision from farm to cup based on health impact. That simple idea has them arriving on the scene as a disrupter. Davis Elen recognizes this value proposition as the reason behind Purity’s rapid growth and is preparing to leverage its best-in-class talent pool to help Purity Coffee create a whole new category of healthy coffee within the world’s most beloved beverage industry.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

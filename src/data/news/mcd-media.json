@@ -1,0 +1,114 @@
+{
+  "entries": [
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "mcd-media",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "article"
+          }
+        }
+      },
+      "fields": {
+        "slug": {
+          "en-US": "mcd-media"
+        },
+        "title": {
+          "en-US": "DE to manage $50-million in new media buy for McDonald’s"
+        },
+        "publishedAt": {
+          "en-US": "2019-06-19T23:13:00"
+        },
+        "categories": {
+          "en-US": [
+            {
+              "name": "News",
+              "slug": "news"
+            }
+          ]
+        },
+        "heroImage": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "asset-22f5ee08511c"
+            }
+          }
+        },
+        "body": {
+          "en-US": {
+            "nodeType": "document",
+            "data": {},
+            "content": [
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Davis Elen, one of the largest independently owned advertising agencies on the West Coast, today announced it has been selected as the media agency of record for seven McDonald’s co-ops across the U.S. The co-ops include McDonald’s Operators Association of Southern California, Western Washington Operators Association Seattle Area, Tri-States McDonald’s Operators Association, Oregon State Cooperative, Montana State Co-Operative, Southern Plains Operators Association and the Baltimore-Washington-Eastern Shore Regional Advertising Association. Adding the new media planning and buying responsibilities to the existing strategy and creative work developed by the agency establishes a fully integrated partnership, which covers core aspects of each co-op’s local marketing effort.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Davis Elen will now be responsible for overseeing approximately $50 million in media buys across all channels, including broadcast, outdoor, print, digital, social and mobile, supporting the 1,946 restaurants that comprise the seven McDonald’s co-ops.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "“We’re thrilled by the opportunity to assume media planning and buying responsibilities for our seven co-ops in the U.S.,” said Malu Santamaria, Group Managing Director for McDonald’s at Davis Elen. “Handling the media, in addition to strategy development and creative execution, allows us to take a fully integrated approach to the co-op’s local plans and capitalize on local nuances for greater business impact.”",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Davis Elen’s 50-plus year relationship with local McDonald’s co-ops is built on providing total agency support and partnership at the local level in every market it serves. Through this proven approach, Davis Elen has helped each of its partner co-ops significantly outperform the national average in traffic and sales in each of the last five years.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-entry-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Entry",
+                      "id": "vimeo-342873731"
+                    }
+                  }
+                },
+                "content": []
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,195 @@
+{
+  "entries": [
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "the-davis-elen-stay-in-your-house-party",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "article"
+          }
+        }
+      },
+      "fields": {
+        "slug": {
+          "en-US": "the-davis-elen-stay-in-your-house-party"
+        },
+        "title": {
+          "en-US": "The Davis Elen Stay-In-Your-House Party"
+        },
+        "publishedAt": {
+          "en-US": "2020-08-01T15:59:02"
+        },
+        "categories": {
+          "en-US": [
+            {
+              "name": "Culture",
+              "slug": "culture"
+            }
+          ]
+        },
+        "heroImage": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "asset-d9384b6aa6a8"
+            }
+          }
+        },
+        "body": {
+          "en-US": {
+            "nodeType": "document",
+            "data": {},
+            "content": [
+              {
+                "nodeType": "embedded-asset-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "asset-de421ca7f49b"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "David takes a dive into the dunk tank",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "DE went virtual for our summer party this year and we know what you’re thinking: “what does that even mean?” Well, it means a whole lot of laughs. We found out that whether it’s virtual or ",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "IRL",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": ", a party is a party and a smiling face is a smiling face.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "The whole thing went down on Zoom and included 152 employees from six offices around the country, which was super cool. It was hosted by a Hype Team that can only be described as the hypiest hype team to ever hype. They definitely kept that energy up and guided us through this strange new party world.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "As for the party itself it had all the things that parties need. Booze, music, and the best people around. It was set up like a trivia/game-night competition with office and pop culture questions like “Guess the #1 answer to what animated movie makes you cry?” (We all know it’s ",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "hyperlink",
+                    "data": {
+                      "uri": "https://www.imdb.com/title/tt0435761/"
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "Toy Story 3",
+                        "marks": [],
+                        "data": {}
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": ".)",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "The winners of each round got a chance to dunk our ",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "CCO",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": " in a non-virtual dunk tank, a.k.a. a real one. Since we all couldn’t be there live, a few incredibly happy employees were on-site to act as proxy pitchers for the rest of us. As expected, everyone missed the target. But also as expected, everyone cheated and dunked him anyway.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "All in all, it was a success. And of course it was. Because it’s not really where the party is, it’s who you party with.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-entry-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Entry",
+                      "id": "youtube-zuV_GbowvjE"
+                    }
+                  }
+                },
+                "content": []
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

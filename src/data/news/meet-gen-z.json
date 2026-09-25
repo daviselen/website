@@ -1,0 +1,189 @@
+{
+  "entries": [
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "meet-gen-z",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "article"
+          }
+        }
+      },
+      "fields": {
+        "slug": {
+          "en-US": "meet-gen-z"
+        },
+        "title": {
+          "en-US": "Meet Gen Z"
+        },
+        "publishedAt": {
+          "en-US": "2021-11-01T15:28:09"
+        },
+        "categories": {
+          "en-US": [
+            {
+              "name": "Culture",
+              "slug": "culture"
+            }
+          ]
+        },
+        "heroImage": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "asset-ad82ea4eb8e1"
+            }
+          }
+        },
+        "body": {
+          "en-US": {
+            "nodeType": "document",
+            "data": {},
+            "content": [
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Knowing your audience is more than half the battle when it comes to effective marketing. And it’s especially true when you’re targeting Gen Z, the elusive and individualistic group born in the mid-to-late 1990s to the early 2010s. That’s why we tasked our interns, members of Gen Z themselves, with mining in-depth insights about their generation to help us better understand what makes them tick.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Under the guidance of the Davis Elen Insights and Strategy team, the interns conducted an ethnographic study with Gen Z participants, observing behavioral patterns, shopping habits, tech usage, interests and concerns. The fresh insights they uncovered are now being applied here at Davis Elen. We thank all the interns for their hard work and expect to see them making their mark in the industry soon!",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "heading-2",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Gen Z Ethnography Insights From the Study:",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Members of Gen Z were born and raised in the era of smartphones and the social media boom; this naturally made them gravitate toward creating and identifying with niche groups in order to hold fast onto their individuality. While it would be hard to define each niche group, the study clearly defines roles that Gen Zers play within, and on behalf of, their generation.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Learners",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": " (ages 11 to 17, the younger half of Gen Z) don’t yet have buying power, but they will be important for marketers to monitor for future spending trends. They are still learning their preferences, how to use social media and why, what their passions and hobbies are, and their views about politics and society (sustainability, finance, religion, social justice, etc.).",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Creators",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": " are producing content; they are active participants and leaders within Gen Z who push social and political change; they are trendsetters who activate their opinions in every category.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Utilizers",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": " are active participants who love to follow the trends as they become both politically and socially engaged. They are not the first to the punch but drive other utilizers to follow the trends and love to be part of this “unique” generation. They enjoy exploring new ideas and are unafraid to try new things if the Creators and other Utilizers say it’s cool.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Observers",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": " “go with the flow” and may not identify with every radical change that Gen Z projects but are supportive enough to not comment otherwise. They seem to be less affected by generational changes.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

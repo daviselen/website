@@ -9,16 +9,23 @@
 // viewport (375px). Mobile-first here, same pattern Masthead.jsx/Card.jsx
 // use elsewhere: a plain flex-centered small size below `md`, full real
 // spec (min-width, padding, line-height-as-centering) at `md` and up.
+import { Button } from "@headlessui/react";
+
 export default function StyledButton({ variant = "primary", size = "default", children, ...props }) {
   const base =
-    "inline-flex w-full items-center justify-center gap-2 rounded-md border px-8 py-4 font-narrow font-light text-lg uppercase transition-colors md:w-auto md:min-w-[480px] md:px-16 md:py-0 md:text-[32px] md:leading-[112px]";
+    "inline-flex w-full items-center justify-center gap-2 rounded-md border font-narrow font-light uppercase transition-colors";
   const variants = {
     primary: "border-neutral-0 bg-transparent text-neutral-0 hover:bg-neutral-0 hover:text-surface-default",
-    solid: "border-surface-primary-default bg-surface-primary-default text-neutral-0 hover:bg-transparent hover:text-surface-primary-default",
+    solid: "border-surface-primary-default bg-surface-primary-default text-neutral-0 hover:bg-primary-300 hover:text-surface-primary-default",
+  };
+  const sizes = {
+    small: "text-display-h6 w-auto px-600 py-200",
+    default: "text-md md:leading-1000 px-8 py-4",
+    big: "text-lg md:w-auto md:min-w-[480px] md:px-16 md:py-0 md:text-[32px] md:leading-1400 md:leading-[112px] px-8 py-4",
   };
   return (
-    <button className={`${base} ${variants[variant] ?? variants.primary}`} {...props}>
+    <Button className={`${base} ${variants[variant] ?? variants.primary} ${sizes[size] ?? sizes.default}`} {...props}>
       {children}
-    </button>
+    </Button>
   );
 }

@@ -1,0 +1,78 @@
+{
+  "entries": [
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "working-from-home-and-stronger-than-ever",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "article"
+          }
+        }
+      },
+      "fields": {
+        "slug": {
+          "en-US": "working-from-home-and-stronger-than-ever"
+        },
+        "title": {
+          "en-US": "Working-From-Home and Stronger Than Ever"
+        },
+        "publishedAt": {
+          "en-US": "2021-07-29T17:57:27"
+        },
+        "categories": {
+          "en-US": [
+            {
+              "name": "Culture",
+              "slug": "culture"
+            }
+          ]
+        },
+        "heroImage": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "asset-af181c972d40"
+            }
+          }
+        },
+        "body": {
+          "en-US": {
+            "nodeType": "document",
+            "data": {},
+            "content": [
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "The pandemic had stripped us of our usual processes, meetings, and structure. It had tied us to our homes and placed us within strict boundaries. Well, the agency still thrived under extreme circumstances, even rebranded, and came out stronger than ever. And that should come as no surprise. There’s no one who does better, more creative work within a unique set of boundaries than Davis Elen.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-entry-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Entry",
+                      "id": "youtube-KDD--Pm_XKI"
+                    }
+                  }
+                },
+                "content": []
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

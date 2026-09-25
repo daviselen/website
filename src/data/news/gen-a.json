@@ -1,0 +1,203 @@
+{
+  "entries": [
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "gen-a",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "article"
+          }
+        }
+      },
+      "fields": {
+        "slug": {
+          "en-US": "gen-a"
+        },
+        "title": {
+          "en-US": "Gen A​®"
+        },
+        "publishedAt": {
+          "en-US": "2019-06-07T11:34:04"
+        },
+        "categories": {
+          "en-US": [
+            {
+              "name": "News",
+              "slug": "news"
+            }
+          ]
+        },
+        "heroImage": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "asset-b7a50137607b"
+            }
+          }
+        },
+        "body": {
+          "en-US": {
+            "nodeType": "document",
+            "data": {},
+            "content": [
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "It was 11 years ago that we recognized a massive opportunity to speak to an underserved demographic: People over the age of sixty-five.",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "We had just joined forces with GreatCall which at the time was a small startup company. Today, our years of research have helped us define a new senior generation and helped GreatCall go from a company with zero dollars in revenue to one that was recently acquired by Best Buy for nearly a billion dollars.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-asset-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "asset-81fcb84ee776"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "heading-2",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Introducing Gen A​®.",
+                    "marks": [
+                      {
+                        "type": "bold"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-asset-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "asset-f89843235d3b"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "We’ve become the leader in marketing to seniors by challenging basic assumptions, asking tough questions and recognizing new insights. First and foremost was dispensing with the commonly-held belief that there is a homogeneous target market known as 65-plus. It’s not all about “the golden years” and “riding off into the sunset.” These are many different psychographics and life stages in this group that must be understood and addressed separately.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "We have taken ownership of connecting to an audience that has been largely ignored, marginalized or simply dismissed. Today’s seniors, we have discovered, are open to embracing new technologies and desirous of living active, fulfilling lives that would put millenials to shame. Even a life event, like losing a spouse or receiving a problematic medical diagnosis, does not signal the end of a meaningful life. Hope springs eternal both for them and those responsible for their care.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Want to learn more about Gen A​® for your brand? Contact ",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "hyperlink",
+                    "data": {
+                      "uri": "mailto:marianneturner@daviselen.com"
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "Marianne Turner",
+                        "marks": [],
+                        "data": {}
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": " or ",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "hyperlink",
+                    "data": {
+                      "uri": "mailto:gregahearn@daviselen.com"
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "Greg Ahearn",
+                        "marks": [
+                          {
+                            "type": "strikethrough"
+                          }
+                        ],
+                        "data": {}
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": ".",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

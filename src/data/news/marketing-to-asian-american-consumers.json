@@ -1,0 +1,309 @@
+{
+  "entries": [
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "marketing-to-asian-american-consumers",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "article"
+          }
+        }
+      },
+      "fields": {
+        "slug": {
+          "en-US": "marketing-to-asian-american-consumers"
+        },
+        "title": {
+          "en-US": "The Business of Marketing to Asian American Consumers"
+        },
+        "publishedAt": {
+          "en-US": "2022-07-19T11:09:14"
+        },
+        "categories": {
+          "en-US": [
+            {
+              "name": "Culture",
+              "slug": "culture"
+            }
+          ]
+        },
+        "heroImage": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "asset-a75f33a83541"
+            }
+          }
+        },
+        "body": {
+          "en-US": {
+            "nodeType": "document",
+            "data": {},
+            "content": [
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "In recognition of this invaluable and growing segment, here are some interesting facts about the Asian American and Pacific Islander marketing landscape:",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "• The AAPI consumer market is highly diverse, with significant populations that are Chinese, Filipino, Korean, Vietnamese, Asian Indian, Japanese, and Pacific Islander. Each segment has its own language, culture, and traditions.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "• The AAPI consumer market is the fastest-growing multicultural segment. Its growth outpaces Hispanic market growth in Los Angeles and San Diego, markets distinctly known for having some of the largest Hispanic populations in the nation.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-asset-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "asset-5df86398f48e"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "embedded-asset-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "asset-bc6eff8d6ad7"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "heading-3",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "In general, AAPI media consumption is digital-first:",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "• Streaming video on connected TV – 1 in 4 Asians are cord-cutters.",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "\n",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "• They strongly support culturally relevant content on streaming platforms.",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "\n",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "• Millennials and Gen Z Asians are at the forefront of Esports.",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "\n",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "• In-language linear TV news plays a crucial role in the community as a trusted source of information, especially for older Asians.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-asset-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "asset-d92ba5fc5613"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "heading-1",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "The immigration path shapes one’s AAPI identity",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "• Gen 1.0 Foreign-Born Boomers: Having immigrated prior to 1985, they represent the typical American story of searching for a better life. They arrived as a family unit and replicated their home country’s culture.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "• Gen 1.0 Newly Immigrated “Tech-Centric” Workers: Highly educated and tech-savvy, young families and students arrived in the early 2000s for job opportunities in engineering and tech. Fluent in their native language and English, they’re connected with both their home country and local community.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "• Gen 1.0 Newly Immigrated Ultra Rich: Mostly from China, they arrived in 2010 and later with investor green cards looking to buy second homes or investment properties. They have limited English proficiency and are drawn to Asian enclaves already established by the Boomers.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "• Gen 1.5 Foreign Born, U.S. Bred: Bilingual GenXers and Millennials, they straddle acculturated work life and Asian home life.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "• Gen 2.0 Asian Content Topper: Likely Millennials and Gen Z, they were born and raised in the U.S. They are integrated into U.S. culture but also consume Asian-centric content.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-asset-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "asset-b20436270713"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "heading-3",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Multi-generational",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Many Asian American and Pacific Islander households are multi-generational, so we combine traditional and digital tactics, including in-language and culturally relevant English executions. Out-of-home boards are strategically placed where our audiences live. Digital campaigns are targeted at the zip code level. And sponsorships and events are held where they gather, like malls, night markets, and festivals – to ultimately bring our clients to the forefront of the consumers’ minds.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "As a pioneer in marketing to multicultural segments, Davis Elen aims to recognize, embrace and connect with all potential consumers for our clients. Long before most paid heed to the demographic shift, DE founded a Hispanic ad agency in the ‘80s and later expanded our ethnic expertise to AAPI and Black consumers. Our multi-market model develops culturally relevant insights in every area of communication so that our clients can tap into opportunities that make the difference in achieving market dominance.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,235 @@
+{
+  "entries": [
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "together-we-rise-2020-ymca-virtual-stair-climb",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "article"
+          }
+        }
+      },
+      "fields": {
+        "slug": {
+          "en-US": "together-we-rise-2020-ymca-virtual-stair-climb"
+        },
+        "title": {
+          "en-US": "Together We Rise 2020 YMCA Virtual Stair Climb"
+        },
+        "publishedAt": {
+          "en-US": "2020-10-26T15:33:00"
+        },
+        "categories": {
+          "en-US": [
+            {
+              "name": "Culture",
+              "slug": "culture"
+            }
+          ]
+        },
+        "heroImage": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "asset-a7F3k9X2mQ8z"
+            }
+          }
+        },
+        "body": {
+          "en-US": {
+            "nodeType": "document",
+            "data": {},
+            "content": [
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "For the 10th year in a row, Davis Elen rocked the YMCA Stair Climb, a fun charity event focused on bringing new opportunities to the Downtown LA community. Traditionally, the stair climb takes place at the US Bank Tower, and competitors from across Downtown race to the top of the 75-story building. However, this year’s climb was different.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-asset-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "asset-664b92f11b99"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "We took it to the streets and brought it to Social Media. Because if 2020 has taught us anything, it’s that we can do almost anything virtually. One would think there’s nothing virtual about taking hundreds of steps, defying gravity and sweating your life away. However, 20 Davis Elen employees went to different parks, hills and beach steps to make up for the 75 floors of the tower. They showed strength and dedication for the common goal of rising as one and donating to the Downtown Ketchum YMCA.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "By going out there and staying civically engaged, Davis Elen helps “the Y” fund programs for the Pico-Union neighborhood. Some of these programs include mentoring teens for college applications and financial aid applications. They also help with leadership training, career readiness and after school programs while parents finish work. Throughout the last decade, 167 Davis Elen employees have accepted the challenge of helping out our community. This brings the total donation from Davis Elen to a whopping $21,000 and counting. It’s a number that gives us the motivation to keep going for many years to come.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "We’re also proud to give a special shout out to the different DE teams that climbed in the name of charity for the 2020 edition:",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "unordered-list",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "list-item",
+                    "data": {},
+                    "content": [
+                      {
+                        "nodeType": "paragraph",
+                        "data": {},
+                        "content": [
+                          {
+                            "nodeType": "text",
+                            "value": "The Young & The Breathless",
+                            "marks": [],
+                            "data": {}
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "list-item",
+                    "data": {},
+                    "content": [
+                      {
+                        "nodeType": "paragraph",
+                        "data": {},
+                        "content": [
+                          {
+                            "nodeType": "text",
+                            "value": "The Cliff Hangers",
+                            "marks": [],
+                            "data": {}
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "list-item",
+                    "data": {},
+                    "content": [
+                      {
+                        "nodeType": "paragraph",
+                        "data": {},
+                        "content": [
+                          {
+                            "nodeType": "text",
+                            "value": "The StairMasters",
+                            "marks": [],
+                            "data": {}
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "list-item",
+                    "data": {},
+                    "content": [
+                      {
+                        "nodeType": "paragraph",
+                        "data": {},
+                        "content": [
+                          {
+                            "nodeType": "text",
+                            "value": "WFHamstrings",
+                            "marks": [],
+                            "data": {}
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "list-item",
+                    "data": {},
+                    "content": [
+                      {
+                        "nodeType": "paragraph",
+                        "data": {},
+                        "content": [
+                          {
+                            "nodeType": "text",
+                            "value": "The Smoke Show",
+                            "marks": [],
+                            "data": {}
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Check out the video below to catch a glimpse of how our co-workers represented Davis Elen proudly.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-entry-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Entry",
+                      "id": "youtube-YKxkzHnNAs8"
+                    }
+                  }
+                },
+                "content": []
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}
