@@ -6,6 +6,7 @@ import { Field } from "@headlessui/react";
 import StyledField from "../design-system/components/Field";
 import StyledLabel from "../design-system/components/Label.jsx";
 import StyledCombobox from "../design-system/components/Combobox.jsx";
+import StyledTextarea from "../design-system/components/Textarea.jsx";
 
 const topics = [
   { id: 1, name: 'New Business Inquiry' },
