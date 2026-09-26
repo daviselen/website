@@ -66,10 +66,11 @@ const people = [
     },
   },
   {
-    name: "Karen Lipker",
-    img: {
-      src: "/images/portraits/karen-lipker.jpg",
-    },
+    name: "Malu Santamaria",
+    video: {
+      mp4: "/videos/people/malu-santamaria.mp4",
+      webm: "/videos/people/malu-santamaria.webm"
+    }
   },
   {
     name: "Marianne Turner",
@@ -129,6 +130,12 @@ const people = [
       webm: "/videos/people/jennifer-lin.webm"
     }
   },
+  // {
+  //   name: "Karen Lipker",
+  //   img: {
+  //     src: "/images/portraits/karen-lipker.jpg",
+  //   },
+  // },
   // {
   //   name: "Lucía Galicia",
   //   img: {
