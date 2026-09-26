@@ -64,6 +64,7 @@ export default function MastheadImage({
             animates the heading's own `y`, and GSAP writes `transform: none`
             onto it when that tween settles — which would wipe out any
             -translate-y-1/2 the heading carried. Flex centering survives it. */}
+        {title && (
         <div className="absolute inset-y-0 left-8 z-50 flex items-center">
           {/* text-display-h2 (184px/128px) was fixed at every width — real
               spec is desktop-only, and Masthead.jsx's own h1 already scales
@@ -75,6 +76,7 @@ export default function MastheadImage({
             className="font-display text-5xl uppercase leading-none md:text-7xl lg:text-display-h2"
           />
         </div>
+        )}
         <div ref={maskRef} style={{ clipPath: "inset(0% 0% 100% 0%)" }}>
           {/* The radius lives on the <img>, not the outer wrapper: callers put
               page padding (px-8 pb-1000) on that wrapper, so a radius there
