@@ -112,9 +112,10 @@ const people = [
     }
   },
   {
-    name: "Jenny Rusinko",
-    img: {
-      src: "/images/portraits/jenny-rusinko.jpg",
+    name: "Bert Kelley",
+    video: {
+      mp4: "/videos/people/bert-kelley.mp4",
+      webm: "/videos/people/bert-kelley.webm"
     },
   },
   {
@@ -135,6 +136,12 @@ const people = [
   //   name: "Karen Lipker",
   //   img: {
   //     src: "/images/portraits/karen-lipker.jpg",
+  //   },
+  // },
+  // {
+  //   name: "Jenny Rusinko",
+  //   img: {
+  //     src: "/images/portraits/jenny-rusinko.jpg",
   //   },
   // },
   // {
