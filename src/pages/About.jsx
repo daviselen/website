@@ -98,12 +98,12 @@ const people = [
       webm: "/videos/people/brett-bandow.webm"
     },
   },
-  {
-    name: "Zachary Moranville",
-    img: {
-      src: "/images/portraits/zachary-moranville.jpg",
-    },
-  },
+  // {
+  //   name: "Zachary Moranville",
+  //   img: {
+  //     src: "/images/portraits/zachary-moranville.jpg",
+  //   },
+  // },
   {
     name: "Marcos Arroyo",
     video: {
@@ -117,6 +117,16 @@ const people = [
       mp4: "/videos/people/bert-kelley.mp4",
       webm: "/videos/people/bert-kelley.webm"
     },
+  },
+  {
+    name: "Jenny Rusinko",
+    img: {
+      src: "/images/portraits/jenny-rusinko.jpg",
+    },
+    video: {
+      mp4: "/videos/people/jenny-rusinko.mp4",
+      webm: "/videos/people/jenny-rusinko.webm"
+    }
   },
   {
     name: "John Papadopoulos",
@@ -136,12 +146,6 @@ const people = [
   //   name: "Karen Lipker",
   //   img: {
   //     src: "/images/portraits/karen-lipker.jpg",
-  //   },
-  // },
-  // {
-  //   name: "Jenny Rusinko",
-  //   img: {
-  //     src: "/images/portraits/jenny-rusinko.jpg",
   //   },
   // },
   // {
