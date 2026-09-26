@@ -92,9 +92,10 @@ const people = [
     },
   },
   {
-    name: "Cassedy Banks",
-    img: {
-      src: "/images/portraits/cassedy-banks.jpg",
+    name: "Brett Bandow",
+    video: {
+      mp4: "/videos/people/brett-bandow.mp4",
+      webm: "/videos/people/brett-bandow.webm"
     },
   },
   {
@@ -134,6 +135,12 @@ const people = [
   //   name: "Karen Lipker",
   //   img: {
   //     src: "/images/portraits/karen-lipker.jpg",
+  //   },
+  // },
+  // {
+  //   name: "Cassedy Banks",
+  //   img: {
+  //     src: "/images/portraits/cassedy-banks.jpg",
   //   },
   // },
   // {
