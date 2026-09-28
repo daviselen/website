@@ -935,6 +935,27 @@
     {
       "sys": {
         "type": "Asset",
+        "id": "asset-4j0a7386"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Toyota Camry Thrill Ride 2"
+        },
+        "description": {
+          "en-US": "A woman and a man from Davis Elen working behind the camera of the Toyota Camry Thrill Ride"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "toyota-thrill-ride_4J0A7386.jpeg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/02/toyota-thrill-ride_4J0A7386.jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
         "id": "asset-91beb7ca7961"
       },
       "fields": {

@@ -1,0 +1,211 @@
+{
+  "entries": [
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "toyota-camry-thrill-ride",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "article"
+          }
+        }
+      },
+      "fields": {
+        "slug": {
+          "en-US": "toyota-camry-thrill-ride"
+        },
+        "title": {
+          "en-US": "The Fast and the Family Friendly"
+        },
+        "publishedAt": {
+          "en-US": "2018-02-22T09:33:00"
+        },
+        "categories": {
+          "en-US": [
+            {
+              "name": "News",
+              "slug": "news"
+            }
+          ]
+        },
+        "heroImage": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "asset-b29085c50ac2"
+            }
+          }
+        },
+        "body": {
+          "en-US": {
+            "nodeType": "document",
+            "data": {},
+            "content": [
+              {
+                "nodeType": "pre",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Fade in.",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "\n\n",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "An empty highway in DOWNTOWN LOS ANGELES. Steam slowly rises from the wet asphalt. It’s quiet, but there is a feeling of anticipation in the air. Something big is about to happen. A CAR skids to a stop, the door opens and a DRIVER speaks to the camera.",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "\n\n",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "DRIVER",
+                    "marks": [
+                      { "type": "center" }
+                    ],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "\n",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "Wanna go for a ride?",
+                    "marks": [
+                      { "type": "center" }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "No, we didn’t get invited to the set of Fast and Furious 9. No, we didn’t get to grab selfies with Dwayne “The Rock” Johnson. This was even better.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Davis Elen was on-set to shoot the Toyota Camry Thrill Ride. Sponsored by the Southern California Toyota Dealers, this action-packed trip down Chick Hearn Blvd, was the hottest ticket at the Los Angeles Auto Show.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "People lined up in the thousands to climb into a 2018 Toyota Camry XSE, and let professional stunt drivers take them on a course designed to look like an action-movie set. There were evasive maneuvers, sudden stops, drifts, swerves, reverse 180s, adrenaline and plenty of screams.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "A ride this awesome couldn’t be captured in boring old 4K, so we partnered with Vanishing Point Media to create an fully immersive VR experience. So while Toyota fans got to experience the rush of 301 horsepower, we got to play with an amazing new set of toys.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Check out the thrilling results at:",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": "\n",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "hyperlink",
+                    "data": {
+                      "uri": "https://www.southerncalifornia.buyatoyota.com/en/landing/camry-thrill-ride"
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "www.southerncalifornia.buyatoyota.com/en/landing/camry-thrill-ride",
+                        "marks": [],
+                        "data": {}
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-asset-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "asset-90abd963dbc5"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "embedded-asset-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "asset-4j0a7386"
+                    }
+                  }
+                },
+                "content": []
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}
