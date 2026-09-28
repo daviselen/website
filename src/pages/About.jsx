@@ -82,6 +82,34 @@ const people = [
     }
   },
   {
+    name: "Bert Kelley",
+    video: {
+      mp4: "/videos/people/bert-kelley.mp4",
+      webm: "/videos/people/bert-kelley.webm"
+    },
+  },
+  {
+    name: "Jennifer Lin",
+    video: {
+      mp4: "/videos/people/jennifer-lin.mp4",
+      webm: "/videos/people/jennifer-lin.webm"
+    }
+  },
+  {
+    name: "Brett Bandow",
+    video: {
+      mp4: "/videos/people/brett-bandow.mp4",
+      webm: "/videos/people/brett-bandow.webm"
+    },
+  },
+  {
+    name: "John Papadopoulos",
+    video: {
+      mp4: "/videos/people/john-papadopoulos.mp4",
+      webm: "/videos/people/john-papadopoulos.webm"
+    }
+  },
+  {
     name: "Stan Kaplan",
     video: {
       webm: "/videos/people/stan-kaplan.webm",
@@ -89,13 +117,6 @@ const people = [
     },
     img: {
       src: "/images/portraits/stan-kaplan.jpg",
-    },
-  },
-  {
-    name: "Brett Bandow",
-    video: {
-      mp4: "/videos/people/brett-bandow.mp4",
-      webm: "/videos/people/brett-bandow.webm"
     },
   },
   // {
@@ -112,13 +133,6 @@ const people = [
     }
   },
   {
-    name: "Bert Kelley",
-    video: {
-      mp4: "/videos/people/bert-kelley.mp4",
-      webm: "/videos/people/bert-kelley.webm"
-    },
-  },
-  {
     name: "Jenny Rusinko",
     img: {
       src: "/images/portraits/jenny-rusinko.jpg",
@@ -126,20 +140,6 @@ const people = [
     video: {
       mp4: "/videos/people/jenny-rusinko.mp4",
       webm: "/videos/people/jenny-rusinko.webm"
-    }
-  },
-  {
-    name: "John Papadopoulos",
-    video: {
-      mp4: "/videos/people/john-papadopoulos.mp4",
-      webm: "/videos/people/john-papadopoulos.webm"
-    }
-  },
-  {
-    name: "Jennifer Lin",
-    video: {
-      mp4: "/videos/people/jennifer-lin.mp4",
-      webm: "/videos/people/jennifer-lin.webm"
     }
   },
   // {
