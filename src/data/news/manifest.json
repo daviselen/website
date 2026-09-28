@@ -1618,9 +1618,9 @@
         },
         "file": {
           "en-US": {
-            "fileName": "corolla-thrill-ride_post_main-image-993e95eec0d7.jpeg",
+            "fileName": "corolla-thrill-ride_post_main-image-993e95eec0d7.jpg",
             "contentType": "image/jpeg",
-            "upload": "../images/2021/03/corolla-thrill-ride_post_main-image-993e95eec0d7.jpeg"
+            "upload": "../images/2018/12/corolla-thrill-ride_post_main-image-993e95eec0d7.jpg"
           }
         }
       }
@@ -1632,16 +1632,100 @@
       },
       "fields": {
         "title": {
-          "en-US": "corolla-thrill-ride_daniellelombard"
+          "en-US": "Toyota Corolla Thrill Ride Danielle Lombard"
         },
         "description": {
-          "en-US": ""
+          "en-US": "Influencer Danielle Lombard with one hand on the hood of a white Toyota Corolla and the other hand in the air. She's wearing a yellow Felix the Cat shirt, leopard print maxi skirt, and jean jacket with rolled-up sleeves."
         },
         "file": {
           "en-US": {
-            "fileName": "corolla-thrill-ride_daniellelombard-760ac4bd4559.jpeg",
+            "fileName": "corolla-thrill-ride_daniellelombard-760ac4bd4559.jpg",
             "contentType": "image/jpeg",
-            "upload": "../images/2021/03/corolla-thrill-ride_daniellelombard-760ac4bd4559.jpeg"
+            "upload": "../images/2018/12/corolla-thrill-ride_daniellelombard-760ac4bd4559.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-2b695047129d"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Toyota Corolla Thrill Ride Logan Henderson"
+        },
+        "description": {
+          "en-US": "Logan Henderson leaning against the back of a black Toyota 86"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "corolla-thrill-ride_loganhenderson-2b695047129d.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/corolla-thrill-ride_loganhenderson-2b695047129d.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-81d13d4afeff"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Toyota Corolla Thrill Ride the Laker Girls"
+        },
+        "description": {
+          "en-US": "Four of the Laker Girls next to Toyota cars on display outside of the Staples Center"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "corolla-thrill-ride_lakergirls-81d13d4afeff.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/corolla-thrill-ride_lakergirls-81d13d4afeff.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-b49b6ea05a29"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Toyota Corolla Thrill Ride Tory Belleci"
+        },
+        "description": {
+          "en-US": "Tory Belleci leaning on the hood of a black Toyota 86"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "corolla-thrill-ride_torybelleci-b49b6ea05a29.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/corolla-thrill-ride_torybelleci-b49b6ea05a29.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-de5f9cfdbf4a"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Toyota Corolla Thrill Ride background"
+        },
+        "description": {
+          "en-US": "A bright blue Toyota C-HR"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "corolla-thrill-ride_thrilled-desktop-de5f9cfdbf4a.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2018/12/corolla-thrill-ride_thrilled-desktop-de5f9cfdbf4a.jpg"
           }
         }
       }
