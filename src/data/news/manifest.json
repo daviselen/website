@@ -830,6 +830,27 @@
     {
       "sys": {
         "type": "Asset",
+        "id": "asset-fd0001ad1c60"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Bob Davis"
+        },
+        "description": {
+          "en-US": "Black & white portait of Robert Milton Davis"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "bob_davis-fd0001ad1c60.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2017/12/bob_davis-fd0001ad1c60.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
         "id": "asset-f881cd0e936f"
       },
       "fields": {

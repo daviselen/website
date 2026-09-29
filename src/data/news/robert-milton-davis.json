@@ -1,0 +1,85 @@
+{
+	"entries": [
+		{
+			"sys": {
+				"type": "Entry",
+				"id": "robert-milton-davis",
+				"contentType": {
+					"sys": {
+						"type": "Link",
+						"linkType": "ContentType",
+						"id": "article"
+					}
+				}
+			},
+			"fields": {
+				"slug": {
+					"en-US": "robert-milton-davis"
+				},
+				"title": {
+					"en-US": "Robert Milton Davis: 1926 - 2017"
+				},
+				"publishedAt": {
+					"en-US": "2017-12-18T18:24:37"
+				},
+				"categories": {
+					"en-US": [
+						{
+							"name": "News",
+							"slug": "news"
+						}
+					]
+				},
+				"heroImage": {
+					"en-US": {
+						"sys": {
+							"type": "Link",
+							"linkType": "Asset",
+							"id": "asset-fd0001ad1c60"
+						}
+					}
+				},
+				"body": {
+					"en-US": {
+						"nodeType": "document",
+						"data": {},
+						"content": [
+							{
+								"nodeType": "paragraph",
+								"data": {},
+								"content": [
+									{
+										"nodeType": "text",
+										"value": "Robert Milton Davis was born on October 22, 1926 in Pasadena, CA. He grew up in Berkeley, CA with his loving and supportive parents, Leroy and Velma Davis, and his older brother, Bill. He attended Berkeley High School where he excelled academically and as a tenor and tennis player. He dreamed of becoming an opera singer and traveling the world. However, that dream was interrupted by WWII. In 1944, he enlisted in the Army Engineering Program. After the war, he was sent to the Philippines in the Pacific Air Command and then to Tokyo as a member of the Army Intelligence Division.  After 2 ½ years overseas, he returned home to Berkeley and graduated from UC Berkeley with a degree in business administration where he met Joan Mayers. They soon married and moved to Southern California where Bob started working in advertising as an account executive in 1952 at the Mayers Company. Bob soon purchased the Mayers Company in 1958 with his childhood friend Bob “Collie” Colombatto and formed Davis, Johnson, Mogul and Colombatto (DJMC). Bob turned the company into one of the largest independent advertising agencies on the West Coast. He took on important roles in West Coast and National Advertising associations, including serving as secretary/treasurer of the American Association of Advertising Agencies. He was not only a successful advertising executive, but also an entrepreneur, starting a myriad of other successful companies. Sports was equally an all-consuming passion. Bob was a great competitor and especially loved playing tennis and golf. He also thrived on following his favorite sports teams, including Golden Bears football. His love of travel is evidenced by him having stepped foot on almost every continent. Bob’s smile and geniality stay in our memory. He was a beloved friend to many and a generous member of the Monterey Peninsula Community. He passed away at home surrounded by love on December 12, 2017. He is survived by seven children (Ellie, Mark, Peter, Daniel, John, Robin, and Kelsey), 18 grandchildren, and 5 great-grandchildren, and his wife of close to 30 years, Rosalind Gray Davis. In lieu of flowers, please send donations to the ",
+										"marks": [],
+										"data": {}
+									},
+									{
+										"nodeType": "hyperlink",
+										"data": {
+										  "uri": "https://bigsurlandtrust.org/ways-to-give/"
+										},
+										"content": [
+										  {
+											"nodeType": "text",
+											"value": "Big Sur Land Trust",
+											"marks": [],
+											"data": {}
+										  }
+										]
+									},
+									{
+										"nodeType": "text",
+										"value": " and/or the Carmel Foundation. A private service is planned to celebrate his life.",
+										"marks": [],
+										"data": {}
+									}
+								]
+							}
+						]
+					}
+				}
+			}
+		}
+	]
+}
