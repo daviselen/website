@@ -37,7 +37,7 @@ export default function Contact() {
             <HeadingReveal
               as="h2"
               text={`Find out \nwhat’s inside`}
-              className="mb-100 font-display text-5xl uppercase md:text-7xl lg:col-span-6 lg:col-start-7 lg:text-display-h3"
+              className="mb-100 font-display text-5xl uppercase md:text-7xl lg:col-span-6 lg:col-start-7 lg:text-display-h4"
             />
             <div className="lg:col-span-6 lg:col-start-7 lg:pr-600">
               <TextReveal className="mb-300 text-3xl md:text-5xl lg:text-display-stat"
@@ -57,7 +57,7 @@ export default function Contact() {
         <HeadingReveal
           as="h2"
           text={`Locations`}
-          className="font-display text-5xl uppercase leading-none md:text-7xl lg:text-display-h2"
+          className="font-display text-5xl uppercase leading-none md:text-7xl lg:text-display-h3"
         />
         <form className="flex flex-col gap-600">
           <StyledField type="text" label="Name" />
