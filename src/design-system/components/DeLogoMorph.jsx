@@ -1,4 +1,4 @@
-import { useId, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import DeLogo from "./DeLogo.jsx";
 import {
   gsap,
@@ -38,59 +38,53 @@ import {
 // Chat") ever reflows, on load or at hand-off.
 const HOLD = REVEAL_DURATION;
 
-// Where the falling letters get cut off, in this SVG's own user units. The
-// seven of them sit on one baseline, so this is ONE number and one <clipPath>
-// (defined once in <defs>, referenced by both letter groups) rather than seven
-// per-letter clips — each letter dissolves into the line its own bottom rests
-// on, and the shared line is the only geometry that has to be right.
-//
-// 102.362 is the lowest coordinate across all seven paths: six bottom out at
-// 101.551, the S overshoots to 102.362 on its terminal curve. Taking the max
-// rather than the common 101.551 is deliberate — clipping at 101.551 would
-// shave a flat off the resting S before anything moves. The other six start
-// 0.811 units (~0.4rendered px at h-16) above the line, i.e. they begin eating
-// into it immediately.
-//
-// The clip CANNOT be a CSS `clip-path: inset()` like the rest of the codebase
-// uses: on an SVG element that resolves against the element's own fill-box and
-// travels with its transform, so it would ride down with the letter instead of
-// staying put. An SVG <clipPath> with a <rect> is fixed in the group's user
-// space, which is what a mask-at-the-baseline needs.
-const LETTER_CLIP_BOTTOM = 102.362;
-
-// Highest coordinate across the same seven paths (again the S, at 29.6433 —
-// the others start at 30.5696).
-const LETTER_TOP = 29.6433;
-
-// Gap between one letter starting its drop and the next. LINE_DELAY is the
+// Gap between one letter starting its exit and the next. LINE_DELAY is the
 // existing "offset between sequential elements" token (3.847 frames @ 30fps),
 // which is what this is — the same beat the stacked heading lines use, applied
-// to letters instead. Seven letters drop, so the last one starts 6 * LINE_DELAY
-// (~0.77s) after the first and the whole exit runs ~1.64s, close to the two
-// back-to-back group tweens it replaces.
-const DROP_STAGGER = LINE_DELAY;
+// to letters instead. Seven letters exit, so the last one starts 6 * LINE_DELAY
+// (~0.77s) after the first.
+const EXIT_STAGGER = LINE_DELAY;
 
 // 1. Physical & Spatial Constants
+// Horizontal exit motion: small rightward nudge, then accelerating leftward.
+// Reusing the vertical model's physics structure, reprojected onto x-axis.
 const GRAVITY = 9.80665; // m/s^2
 const M_PER_UNIT = 0.01; // 1 SVG unit = 1 cm (visual spatial scale)
 
-const DROP_UNITS = LETTER_CLIP_BOTTOM - LETTER_TOP; // ~72.72 units
-const LIFT_UNITS = 6; // ~3px subtle apex lift upwards
+const NUDGE_UNITS = 6; // ~3px subtle rightward nudge before exiting left
+
+// Representative travel distance for the ease curve (individual letters'
+// actual x travel distances are still derived per-letter at runtime via
+// getBBox() — this only anchors the shared duration/ease timing, matched to
+// the original vertical version's DROP_UNITS magnitude so the overall pace
+// reads the same rather than feeling rushed (a smaller "typical letter
+// width" value here previously made the whole sequence noticeably faster).
+const REPRESENTATIVE_EXIT_DISTANCE = 72;
 
 // 2. Exact Kinematic Durations under constant g
-// Rise time to apex: t1 = sqrt(2 * h_up / g)
-const t1 = Math.sqrt((2 * (LIFT_UNITS * M_PER_UNIT)) / GRAVITY); 
+// Rise time to nudge apex: t1 = sqrt(2 * h_up / g)
+const t1 = Math.sqrt((2 * (NUDGE_UNITS * M_PER_UNIT)) / GRAVITY);
 // Fall time from apex: t2 = sqrt(2 * h_total / g)
-const t2 = Math.sqrt((2 * ((LIFT_UNITS + DROP_UNITS) * M_PER_UNIT)) / GRAVITY); 
+const t2 = Math.sqrt(
+  (2 * ((NUDGE_UNITS + REPRESENTATIVE_EXIT_DISTANCE) * M_PER_UNIT)) / GRAVITY
+);
 
-const TOTAL_PHYSICAL_DURATION = t1 + t2; // ~0.51s total trajectory
+const TOTAL_EXIT_DURATION = t1 + t2; // ~0.51s total trajectory
 
-// 3. Custom Continuous Gravity Ease: y(t) = 0.5*g*t^2 - g*t1*t
-// Returns normalized displacement fraction E(p) where p in [0, 1]
-const gravityTrajectoryEase = (p) => {
-  const t = p * TOTAL_PHYSICAL_DURATION;
+// 3. Custom Continuous Exit Ease: x(t) = 0.5*g*t^2 - g*t1*t
+// Nudges right, then accelerates left. Returns normalized displacement
+// fraction E(p) where p in [0, 1]. Dividing by DISTANCE alone (not
+// NUDGE+DISTANCE) is deliberate, not a typo: algebraically, posMeters at
+// t=t1+t2 always resolves to exactly M_PER_UNIT * REPRESENTATIVE_EXIT_DISTANCE
+// (the t1^2 terms cancel), so THIS is the divisor that makes ease(1) land on
+// exactly 1.0. Dividing by the combined (NUDGE+DISTANCE) instead undershoots
+// the endpoint (~0.83 instead of 1.0 at these constants), which leaves every
+// letter permanently short of its exit target — a persistent visible sliver
+// that never fully clears its clip.
+const exitTrajectoryEase = (p) => {
+  const t = p * TOTAL_EXIT_DURATION;
   const posMeters = 0.5 * GRAVITY * t * t - GRAVITY * t1 * t;
-  return posMeters / (DROP_UNITS * M_PER_UNIT);
+  return posMeters / (REPRESENTATIVE_EXIT_DISTANCE * M_PER_UNIT);
 };
 
 // The morph targets below are de-logo-white.svg's own path data, rescaled from
@@ -155,21 +149,25 @@ export default function DeLogoMorph({ className = "size-16", onComplete }) {
 
   const [showIntro] = useState(!skipIntro);
 
-  // SVG <clipPath> is referenced by id, and ids are document-global — a second
-  // instance (a mobile nav, a style page rendering the logo twice) would emit a
-  // duplicate and both groups would resolve to whichever came first. useId is
-  // the cheap guard against that.
-  const clipId = useId();
 
   const rootRef = useRef(null);
   const timelineRef = useRef(null);
   const svgRef = useRef(null);
   const frameRef = useRef(null);
-  const avisRef = useRef(null);
-  const lenRef = useRef(null);
   const dRef = useRef(null);
   const eRef = useRef(null);
   const finalRef = useRef(null);
+
+  // Per-letter clip rect refs for the horizontal exit mask
+  const clipRectsRef = useRef([]);
+  // The 7 movable <path> letters themselves, index 0-6 matching each
+  // letter's own clip id (letter-clip-0..6 = L,E,N,A,V,I,S) — NOT exit
+  // order (see EXIT_ORDER below for that). Each path is wrapped in its own
+  // <g clip-path> ancestor (untransformed) so the clip stays fixed in place
+  // while GSAP translates the path inside it — clip-path and transform on
+  // the SAME element would make the clip travel with the transform, which
+  // defeats the mask entirely.
+  const letterPathsRef = useRef([]);
 
   useGSAP(
     () => {
@@ -177,6 +175,30 @@ export default function DeLogoMorph({ className = "size-16", onComplete }) {
       // renders the static <DeLogo /> straight away (see below) and this
       // effect has nothing to animate.
       if (skipIntro) return;
+
+      // Compute per-letter clip geometry from bounding boxes
+      const letterPaths = letterPathsRef.current;
+
+      // Exit order sweeps right-to-left across the WHOLE wordmark as one
+      // continuous run, not "LEN left-to-right then AVIS left-to-right":
+      // N, E(of LEN), L, then (skipping the kept E) S, I, V, A. Indices
+      // reference letterPathsRef's own L,E,N,A,V,I,S = 0..6 ordering.
+      const EXIT_ORDER = [2, 1, 0, 6, 5, 4, 3];
+      const exitPaths = EXIT_ORDER.map((idx) => letterPaths[idx]);
+
+      letterPaths.forEach((letterPath, i) => {
+        const bbox = letterPath.getBBox();
+        const clipRect = clipRectsRef.current[i];
+        if (clipRect) {
+          // Position clip rect at the letter's left edge (x = bbox.x)
+          // and width it to the letter's width plus nudge buffer
+          clipRect.setAttribute("x", bbox.x);
+          clipRect.setAttribute("width", bbox.width + NUDGE_UNITS);
+          // Height spans the full viewBox for simplicity (no vertical clipping)
+          clipRect.setAttribute("y", "0");
+          clipRect.setAttribute("height", "132");
+        }
+      });
 
       const tl = gsap.timeline({
         onComplete: () => {
@@ -187,25 +209,29 @@ export default function DeLogoMorph({ className = "size-16", onComplete }) {
 
       timelineRef.current = tl;
 
-      // The letters drop one at a time, L-E-N then A-V-I-S — no opacity
-      // anywhere on them. They stay fully opaque the whole way down and are
-      // eaten by the shared baseline <clipPath>, so each one reads as sinking
-      // through the line it was sitting on rather than dissolving in place.
+      // The letters exit horizontally one at a time, sweeping right-to-left
+      // across the whole wordmark (N, E, L, then S, I, V, A — see EXIT_ORDER
+      // above). Each letter nudges rightward briefly, then accelerates
+      // leftward, disappearing behind its own per-letter clip boundary.
       //
-      // Tweening the group CHILDREN (each <path> is one letter), not the two
-      // <g>s, is what makes a per-letter stagger possible — a group can only
-      // move as one block. They're passed as a single flat array in exit order
-      // rather than as two staggered tweens so the L->S cadence is one evenly
-      // spaced run; two tweens would restart the stagger clock at A and put a
-      // seam in the middle. Array order, not DOM order, drives the stagger, so
-      // LEN leading despite AVIS coming first in the markup costs nothing.
+      // Passed as a single flat array in exit order rather than as separate
+      // staggered tweens so the whole N->A cadence is one evenly spaced run;
+      // separate tweens would restart the stagger clock partway through and
+      // put a seam in the middle. Array order, not DOM order or letterPaths'
+      // own L..S index order, drives the stagger.
+      //
+      // Each letter travels its own x distance (derived from its own bbox.width)
+      // while sharing one duration and easing curve (derived from a
+      // representative travel distance). GSAP's function value `(i, target) =>
+      // ...` lets us compute per-element endpoints while keeping the tween
+      // structure simple.
       tl.to(
-        [...lenRef.current.children, ...avisRef.current.children],
+        exitPaths,
         {
-          y: DROP_UNITS,
-          duration: TOTAL_PHYSICAL_DURATION,
-          ease: gravityTrajectoryEase, // Single continuous parabola
-          stagger: DROP_STAGGER,
+          x: (i, target) => -target.getBBox().width,
+          duration: TOTAL_EXIT_DURATION,
+          ease: exitTrajectoryEase,
+          stagger: EXIT_STAGGER,
         },
         HOLD
       )
@@ -294,15 +320,28 @@ export default function DeLogoMorph({ className = "size-16", onComplete }) {
           aria-hidden="true"
           focusable="false"
         >
-          {/* One clip for all seven falling letters — they share a baseline,
-              so they share this line. Deliberately NOT wrapped around the
-              frame or the kept D/E: the frame runs to y=132 and would lose its
-              bottom edge, and the D/E morph downward to y=99.815 with no need
-              to be cut at all. */}
+          {/* Per-letter clip rects for horizontal exit mask. Each letter
+              animates its own clip boundary inward from the left (via `x`
+              tween) to create a rightward-nudge-then-leftward-exit effect. */}
           <defs>
-            <clipPath id={clipId}>
-              <rect x="0" y="0" width="346" height={LETTER_CLIP_BOTTOM} />
-            </clipPath>
+            {[...Array(7)].map((_, i) => {
+              const clipPathId = `letter-clip-${i}`;
+              return (
+                <clipPath key={clipPathId} id={clipPathId}>
+                  <rect
+                    ref={(el) => {
+                      if (el && clipRectsRef.current) {
+                        clipRectsRef.current[i] = el;
+                      }
+                    }}
+                    x="0"
+                    y="0"
+                    width="346"
+                    height="132"
+                  />
+                </clipPath>
+              );
+            })}
           </defs>
           <path
             ref={frameRef}
@@ -315,22 +354,34 @@ export default function DeLogoMorph({ className = "size-16", onComplete }) {
             fill="currentColor"
             d="M44.5852 88.8137C44.5852 93.3297 43.6563 94.9508 40.9858 94.9508H36.806V37.054H40.9858C43.6563 37.054 44.5852 38.7909 44.5852 43.3069V88.8137ZM40.9858 30.5696H30.304V101.551H40.9858C48.1845 101.551 50.9711 97.0351 50.9711 87.54V44.4648C50.9711 34.9697 48.1845 30.5696 40.9858 30.5696Z"
           />
-          {/* AVIS — drops through the baseline last (see the tween's array
-              order; markup order and exit order are independent). */}
-          <g ref={avisRef} clipPath={`url(#${clipId})`}>
+          {/* AVIS — exits horizontally to the left (see the tween's array
+              order; markup order and exit order are independent). Each
+              letter's own <g clip-path> ancestor stays fixed in place while
+              GSAP translates the <path> inside it. */}
+          <g clipPath="url(#letter-clip-3)">
             <path
+              ref={(el) => (letterPathsRef.current[3] = el)}
               fill="currentColor"
               d="M71.0585 80.824L74.4257 47.9386L76.98 80.824H71.0585ZM71.0585 30.5696L63.0471 101.551H68.9686L70.478 87.1926H77.5606L78.6055 101.551H85.3398L77.7928 30.5696H71.0585Z"
             />
+          </g>
+          <g clipPath="url(#letter-clip-4)">
             <path
+              ref={(el) => (letterPathsRef.current[4] = el)}
               fill="currentColor"
               d="M105.426 84.4136L101.362 30.5696H94.6282L101.943 101.551H108.793L116.689 30.5696H110.651L105.426 84.4136Z"
             />
+          </g>
+          <g clipPath="url(#letter-clip-5)">
             <path
+              ref={(el) => (letterPathsRef.current[5] = el)}
               fill="currentColor"
               d="M135.846 30.5696H129.344V101.551H135.846V30.5696Z"
             />
+          </g>
+          <g clipPath="url(#letter-clip-6)">
             <path
+              ref={(el) => (letterPathsRef.current[6] = el)}
               fill="currentColor"
               d="M155.933 41.4543C155.933 37.6331 157.674 35.7804 160.461 35.7804C162.783 35.7804 164.06 37.7489 164.06 42.0332V52.1073H170.098V41.8016C170.098 34.5066 166.383 29.6433 160.461 29.6433C152.914 29.6433 149.663 35.5488 149.663 43.6543C149.663 50.9493 154.307 61.7181 157.791 68.7815C161.622 76.7713 164.06 83.3715 164.06 90.5507C164.06 94.4877 162.783 96.6878 159.416 96.6878C156.978 96.6878 155.236 94.0245 155.236 90.5507V80.5925H149.083V90.3191C149.083 97.4983 153.03 102.362 159.648 102.362C163.944 102.362 170.214 99.8142 170.214 88.698C170.214 81.2872 166.847 73.0659 162.783 64.3814C158.487 55.2337 155.933 49.6756 155.933 41.4543Z"
             />
@@ -341,17 +392,24 @@ export default function DeLogoMorph({ className = "size-16", onComplete }) {
             fill="currentColor"
             d="M201.911 101.551H219.211V95.414H208.413V68.0867H216.308V61.9496H208.413V36.5908H219.211V30.5696H201.911V101.551Z"
           />
-          {/* LEN — drops through the baseline first, same shared clip. */}
-          <g ref={lenRef} clipPath={`url(#${clipId})`}>
+          {/* LEN — exits horizontally to the left first, per-letter clips. */}
+          <g clipPath="url(#letter-clip-0)">
             <path
+              ref={(el) => (letterPathsRef.current[0] = el)}
               fill="currentColor"
               d="M239.182 30.5698H232.68V101.551H249.632V95.0668H239.182V30.5698Z"
             />
+          </g>
+          <g clipPath="url(#letter-clip-1)">
             <path
+              ref={(el) => (letterPathsRef.current[1] = el)}
               fill="currentColor"
               d="M262.635 101.551H279.935V95.414H269.021V68.0867H276.916V61.9496H269.021V36.5908H279.935V30.5696H262.635V101.551Z"
             />
+          </g>
+          <g clipPath="url(#letter-clip-2)">
             <path
+              ref={(el) => (letterPathsRef.current[2] = el)}
               fill="currentColor"
               d="M315.581 30.5696H309.543V78.6239L307.569 67.6235L299.442 30.5696H293.172V101.551H299.209V54.0757L301.416 64.8445L310.82 101.551H315.581V30.5696Z"
             />
