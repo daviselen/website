@@ -1,0 +1,699 @@
+{
+    "entries": [
+      {
+        "sys": {
+          "type": "Entry",
+          "id": "capturing-mcm-hispanics-hearts-and-minds",
+          "contentType": {
+            "sys": {
+              "type": "Link",
+              "linkType": "ContentType",
+              "id": "article"
+            }
+          }
+        },
+        "fields": {
+          "slug": {
+            "en-US": "capturing-mcm-hispanics-hearts-and-minds"
+          },
+          "title": {
+            "en-US": "Capturing MCM/Hispanics Hearts and Minds for Business Growth"
+          },
+          "description": {
+            "en-US": "Unlock the power of the Hispanic market with Davis Elen's expert multicultural marketing strategies. Connect with the 63M strong market with $2.5T buying power and resonate with your audience on a deeper level. Trust the industry leader to help your business grow."
+          },
+          "publishedAt": {
+            "en-US": "2023-03-03T23:08:33"
+          },
+          "categories": {
+            "en-US": [
+              {
+                "name": "Culture",
+                "slug": "culture"
+              }
+            ]
+          },
+          "heroImage": {
+            "en-US": {
+              "sys": {
+                "type": "Link",
+                "linkType": "Asset",
+                "id": "asset-a7f3c91e2b6d"
+              }
+            }
+          },
+          "body": {
+            "en-US": {
+              "nodeType": "document",
+              "data": {},
+              "content": [
+                {
+                  "nodeType": "paragraph",
+                  "data": {},
+                  "content": [
+                    {
+                      "nodeType": "text",
+                      "value": "Davis Elen has been ahead of the curve in multicultural marketing, co-founding a Hispanic ad agency in the ‘80s and subsequently expanding our ethnic expertise to the Black and Asian American & Pacific Islander (AAPI) markets. Our strength lies in considering multicultural segments from the very beginning of our process through every discipline - research, strategic planning, creative and media - culminating in final executions that hit the mark with each distinct audience. This is exemplified by the work of our sister Hispanic agency Infusion by Castells under the leadership of CEO Liz Castells, as well as our in-house multicultural Davis Elen team led by Malu Santamaria.",
+                      "marks": [],
+                      "data": {}
+                    }
+                  ]
+                },
+                {
+                  "nodeType": "paragraph",
+                  "data": {},
+                  "content": [
+                    {
+                      "nodeType": "text",
+                      "value": "The U.S. Hispanic market is 63 million strong, 20% of population, with $2.5 trillion buying power – 2× Canada, and speaking more Spanish today than 20 years ago. Hispanics are brands’ 18-49 target sweet spot with rising income and education, more kids and longevity – thus ensuring more revenue-generating years. Engaging this audience is a business imperative for today’s successful brands.",
+                      "marks": [],
+                      "data": {}
+                    }
+                  ]
+                },
+                {
+                  "nodeType": "heading-2",
+                  "data": {},
+                  "content": [
+                    {
+                      "nodeType": "text",
+                      "value": "The Terms",
+                      "marks": [],
+                      "data": {}
+                    }
+                  ]
+                },
+                {
+                  "nodeType": "paragraph",
+                  "data": {},
+                  "content": [
+                    {
+                      "nodeType": "text",
+                      "value": "Hispanic:",
+                      "marks": [
+                        {
+                          "type": "bold"
+                        }
+                      ],
+                      "data": {}
+                    },
+                    {
+                        "nodeType": "text",
+                        "value": " Defined by Spanish-language roots – the most widely used term. 71% self-identify as such alone or hyphenated, H55+ skews native origin (58%).",
+                        "marks": [],
+                        "data": {}
+                      }
+                  ]
+                },
+                {
+                    "nodeType": "paragraph",
+                    "data": {},
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "Latino/a:",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "data": {}
+                      },
+                      {
+                          "nodeType": "text",
+                          "value": " Defined by Latin America geography including Mexico, Caribbean, or Latin America. May speak Spanish or other language, e.g., Portuguese. Used by 25%.",
+                          "marks": [],
+                          "data": {}
+                        }
+                    ]
+                  },
+                  {
+                    "nodeType": "paragraph",
+                    "data": {},
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "Latinx:",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "data": {}
+                      },
+                      {
+                          "nodeType": "text",
+                          "value": " Gender-neutral term popular with industry and journalists. Half of the designated target knows of it, and most reject it.",
+                          "marks": [],
+                          "data": {}
+                        }
+                    ]
+                  },
+                  {
+                    "nodeType": "paragraph",
+                    "data": {},
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "Latine:",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "data": {}
+                      },
+                      {
+                          "nodeType": "text",
+                          "value": " Proposed gender-neutral alternative that flows better.",
+                          "marks": [],
+                          "data": {}
+                        }
+                    ]
+                  },
+                  {
+                    "nodeType": "paragraph",
+                    "data": {},
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "Other:",
+                        "marks": [
+                          {
+                            "type": "bold"
+                          }
+                        ],
+                        "data": {}
+                      },
+                      {
+                          "nodeType": "text",
+                          "value": " Tejano (Texans), Chicano (Los Angeles), Boricua (Puerto Rican)",
+                          "marks": [],
+                          "data": {}
+                        }
+                    ]
+                },
+                {
+                  "nodeType": "heading-2",
+                  "data": {},
+                  "content": [
+                    {
+                      "nodeType": "text",
+                      "value": "The Importance of Culture",
+                      "marks": [],
+                      "data": {}
+                    }
+                  ]
+                },
+                {
+                  "nodeType": "paragraph",
+                  "data": {},
+                  "content": [
+                    {
+                      "nodeType": "text",
+                      "value": "Whether developing Hispanic Toyota campaigns that turn into social conversations, targeting Hispanics for McDonald’s co-ops across the country, or creating 360° brand and direct campaigns for Charter/Spectrum, we understand that Spanish is not a Hispanic marketing strategy. English viewing amongst Hispanics trumps Spanish, thus English-cultural content and efforts are key to effective reach.",
+                      "marks": [],
+                      "data": {}
+                    }
+                  ]
+                },
+                {
+                  "nodeType": "embedded-asset-block",
+                  "data": {
+                    "target": {
+                      "sys": {
+                        "type": "Link",
+                        "linkType": "Asset",
+                        "id": "asset-4d8a1f7c3e92"
+                      }
+                    }
+                  },
+                  "content": []
+                },
+                {
+                    "nodeType": "paragraph",
+                    "data": {},
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "Why is cultural communication vital when more and more Hispanics are U.S.-born?",
+                        "marks": [],
+                        "data": {}
+                      }
+                    ]
+                },
+                {
+                    "nodeType": "unordered-list",
+                    "data": {},
+                    "content": [
+                      {
+                        "nodeType": "list-item",
+                        "data": {},
+                        "content": [
+                          {
+                            "nodeType": "paragraph",
+                            "data": {},
+                            "content": [
+                              {
+                                "nodeType": "text",
+                                "value": "80% of U.S.-born Hispanics ‘are deeply connected to their culture and heritage’ (87% of all Hispanics, including foreign-born).",
+                                "marks": [],
+                                "data": {}
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                },
+                {
+                    "nodeType": "paragraph",
+                    "data": {},
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "Culture trumps all dimensions – 75% of Hispanics ‘feel and act differently than their average American friends’",
+                        "marks": [],
+                        "data": {}
+                      }
+                    ]
+                },
+                {
+									"nodeType": "unordered-list",
+									"data": {},
+									"content": [
+										{
+											"nodeType": "list-item",
+											"data": {},
+											"content": [
+												{
+													"nodeType": "paragraph",
+													"data": {},
+													"content": [
+														{
+															"nodeType": "text",
+															"value": "Cultural identity is fluid, an ever-changing balance of all that we are and experience.",
+															"marks": [],
+															"data": {}
+														}
+													]
+												}
+											]
+										}
+									]
+                },
+                {
+                  "nodeType": "embedded-asset-block",
+                  "data": {
+                    "target": {
+                      "sys": {
+                        "type": "Link",
+                        "linkType": "Asset",
+                        "id": "asset-b5e9d2a6c8f1"
+                      }
+                    }
+                  },
+                  "content": []
+                },
+                {
+                  "nodeType": "paragraph",
+                  "data": {},
+                  "content": [
+                    {
+                      "nodeType": "text",
+                      "value": "Unique access to their cultural media, people, language, codes, and references sets them apart. This applies not only to Hispanics, but to multicultural audiences in general.",
+                      "marks": [],
+                      "data": {}
+                    }
+                  ]
+                },
+                {
+                    "nodeType": "embedded-asset-block",
+                    "data": {
+                      "target": {
+                        "sys": {
+                          "type": "Link",
+                          "linkType": "Asset",
+                          "id": "asset-b20436270713"
+                        }
+                      }
+                    },
+                    "content": []
+                },
+                {
+                  "nodeType": "paragraph",
+                  "data": {},
+                  "content": [
+                    {
+                      "nodeType": "text",
+                      "value": "Liz sums it up succinctly - way beyond representation, it’s about being understood. How do we know when a segment’s culture variances are important to the business?",
+                      "marks": [],
+                      "data": {}
+                    }
+                  ]
+                },
+                {
+                    "nodeType": "paragraph",
+                    "data": {},
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "Knowledge-based strategies weigh all the diverse consumers’ factors and identify the differences that matter to drive an ethnic segment’s affinity and find universal preferences or ethnic insights with cross-cultural fluency.",
+                        "marks": [],
+                        "data": {}
+                      }
+                    ]
+                },
+                {
+                  "nodeType": "paragraph",
+                  "data": {},
+                  "content": [
+                    {
+                      "nodeType": "text",
+                      "value": "There are universal truths that resonate across cultures.",
+                      "marks": [],
+                      "data": {}
+                    }
+                  ]
+                },
+								{
+									"nodeType": "embedded-asset-block",
+									"data": {
+										"target": {
+											"sys": {
+												"type": "Link",
+												"linkType": "Asset",
+												"id": "asset-e2f6a9c1d7b4"
+											}
+										}
+									},
+									"content": []
+								},
+								{
+									"nodeType": "embedded-asset-block",
+									"data": {
+										"target": {
+											"sys": {
+												"type": "Link",
+												"linkType": "Asset",
+												"id": "asset-6b3d8f2a9c5e"
+											}
+										}
+									},
+									"content": []
+								},
+                {
+                  "nodeType": "heading-2",
+                  "data": {},
+                  "content": [
+                    {
+                      "nodeType": "text",
+                      "value": "Best Practices",
+                      "marks": [],
+                      "data": {}
+                    }
+                  ]
+                },
+                {
+                  "nodeType": "paragraph",
+                  "data": {},
+                  "content": [
+                    {
+                      "nodeType": "text",
+                      "value": "Over the years, Liz has helped set the standard for best practices that produce optimal results in the multicultural space. Her approach is to help our clients put multicultural opportunities into perspective.",
+                      "marks": [],
+                      "data": {}
+                    }
+                  ]
+                },
+                {
+									"nodeType": "paragraph",
+									"data": {},
+									"content": [
+                    {
+											"nodeType": "text",
+											"value": "What does the Census or customer data mean when it comes to a client’s business upside?",
+											"marks": [],
+											"data": {}
+                    }
+									]
+                },
+								{
+									"nodeType": "unordered-list",
+									"data": {},
+									"content": [
+										{
+											"nodeType": "list-item",
+											"data": {},
+											"content": [
+												{
+													"nodeType": "paragraph",
+													"data": {},
+													"content": [
+														{
+															"nodeType": "text",
+															"value": "We calculate impact based on DMA ethnic density on a cumulative zip-code basis and articulate our findings in client terms.",
+															"marks": [],
+															"data": {}
+														}
+													]
+												}
+											]
+										}
+									]
+                },
+								{
+									"nodeType": "paragraph",
+									"data": {},
+									"content": [
+                    {
+											"nodeType": "text",
+											"value": "How do we help clients measure success and assure they have the right metrics?",
+											"marks": [],
+											"data": {}
+                    }
+									]
+                },
+								{
+									"nodeType": "unordered-list",
+									"data": {},
+									"content": [
+										{
+											"nodeType": "list-item",
+											"data": {},
+											"content": [
+												{
+													"nodeType": "paragraph",
+													"data": {},
+													"content": [
+														{
+															"nodeType": "text",
+															"value": "Agree up front on success metrics, assure proper research, sample sizes and dashboards.",
+															"marks": [],
+															"data": {}
+														}
+													]
+												}
+											]
+										}
+									]
+                },
+								{
+									"nodeType": "paragraph",
+									"data": {},
+									"content": [
+                    {
+											"nodeType": "text",
+											"value": "What areas do we need to be knowledgeable about to be able to guide clients?",
+											"marks": [],
+											"data": {}
+                    }
+									]
+                },
+								{
+									"nodeType": "unordered-list",
+									"data": {},
+									"content": [
+										{
+											"nodeType": "list-item",
+											"data": {},
+											"content": [
+												{
+													"nodeType": "paragraph",
+													"data": {},
+													"content": [
+														{
+															"nodeType": "text",
+															"value": "We assess all customer-facing programs and processes to identify which require recalibration or nuances.",
+															"marks": [],
+															"data": {}
+														}
+													]
+												}
+											]
+										}
+									]
+                },
+								{
+									"nodeType": "paragraph",
+									"data": {},
+									"content": [
+                    {
+											"nodeType": "text",
+											"value": "We help our clients socialize multicultural marketing as a ‘business as usual’ strategy across the C-Suite and key business units.",
+											"marks": [],
+											"data": {}
+                    }
+									]
+                },
+								{
+									"nodeType": "unordered-list",
+									"data": {},
+									"content": [
+										{
+											"nodeType": "list-item",
+											"data": {},
+											"content": [
+												{
+													"nodeType": "paragraph",
+													"data": {},
+													"content": [
+														{
+															"nodeType": "text",
+															"value": "Educate, educate, educate",
+															"marks": [],
+															"data": {}
+														}
+													]
+												}
+											]
+										},
+										{
+											"nodeType": "list-item",
+											"data": {},
+											"content": [
+												{
+													"nodeType": "paragraph",
+													"data": {},
+													"content": [
+														{
+															"nodeType": "text",
+															"value": "It must be a top-down mandate",
+															"marks": [],
+															"data": {}
+														}
+													]
+												}
+											]
+										},
+										{
+											"nodeType": "list-item",
+											"data": {},
+											"content": [
+												{
+													"nodeType": "paragraph",
+													"data": {},
+													"content": [
+														{
+															"nodeType": "text",
+															"value": "Constant consumer / category updates",
+															"marks": [],
+															"data": {}
+														}
+													]
+												}
+											]
+										},
+										{
+											"nodeType": "list-item",
+											"data": {},
+											"content": [
+												{
+													"nodeType": "paragraph",
+													"data": {},
+													"content": [
+														{
+															"nodeType": "text",
+															"value": "Clearly define the road to success across business",
+															"marks": [],
+															"data": {}
+														}
+													]
+												}
+											]
+										},
+										{
+											"nodeType": "list-item",
+											"data": {},
+											"content": [
+												{
+													"nodeType": "paragraph",
+													"data": {},
+													"content": [
+														{
+															"nodeType": "text",
+															"value": "Vigilance for initiatives and campaigns to be truly effective",
+															"marks": [],
+															"data": {}
+														}
+													]
+												}
+											]
+										},
+										{
+											"nodeType": "list-item",
+											"data": {},
+											"content": [
+												{
+													"nodeType": "paragraph",
+													"data": {},
+													"content": [
+														{
+															"nodeType": "text",
+															"value": "Develop Multicultural ‘Sell’ deck, ‘How to’ and Bilingual glossary",
+															"marks": [],
+															"data": {}
+														}
+													]
+												}
+											]
+										},
+										{
+											"nodeType": "list-item",
+											"data": {},
+											"content": [
+												{
+													"nodeType": "paragraph",
+													"data": {},
+													"content": [
+														{
+															"nodeType": "text",
+															"value": "Methodically present assessment and results to key stakeholders",
+															"marks": [],
+															"data": {}
+														}
+													]
+												}
+											]
+										}
+									]
+                },
+								{
+									"nodeType": "paragraph",
+									"data": {},
+									"content": [
+                    {
+											"nodeType": "text",
+											"value": "The key is to make an impactful connection with the right spend and relevant offerings, messaging, and media. It’s about being in-culture – understanding the critical insights that move Hispanics minds and hearts to drive stronger results.",
+											"marks": [],
+											"data": {}
+                    }
+									]
+                }
+              ]
+            }
+          }
+        }
+      }
+    ]
+  }

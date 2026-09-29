@@ -4690,6 +4690,132 @@
           }
         }
       }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-a7f3c91e2b6d"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Hispanic Blog Header"
+        },
+        "description": {
+          "en-US": "Two latina women embracing one another on a Southern California beach"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "hispanic-blog-post_header-a7f3c91e2b6d.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2022/12/hispanic-blog-post_header-a7f3c91e2b6d.jpg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-4d8a1f7c3e92"
+      },
+      "fields": {
+        "title": {
+          "en-US": "English-Hispanic Efforts"
+        },
+        "description": {
+          "en-US": "English-Hispanic Efforts. 37% are lower-mid acculturated, meaning Hispanic dominant. 51% of content viewed is English. 50% are bicultural, meaning they navigate both worlds. 65% of content viewed is English. 13% are acculturated, meaning American dominant. 84% of content viewed is English."
+        },
+        "file": {
+          "en-US": {
+            "fileName": "hispanic-blog-infographic-4d8a1f7c3e92.svg",
+            "contentType": "image/svg",
+            "upload": "../images/2023/03/hispanic-blog-infographic-4d8a1f7c3e92.svg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-b5e9d2a6c8f1"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Hispanic Self-Identity Dimensions"
+        },
+        "description": {
+          "en-US": "Hispanic Self-Identity Dimensions: Country of origin/descent, age & generation, hybrid American, ethnicity, heritage, values, beliefs, gender, politics, interests, family dynamics, passion points, faith/religion, sexuality, lifestage (parent), socio-economic background, style & appearance"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "hispanic-blog-infographic-2-b5e9d2a6c8f1.svg",
+            "contentType": "image/svg",
+            "upload": "../images/2023/03/hispanic-blog-infographic-2-b5e9d2a6c8f1.svg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-91c4e7b3a6d8"
+      },
+      "fields": {
+        "title": {
+          "en-US": "How Big of an Influence My Culture Has on Who I Am"
+        },
+        "description": {
+          "en-US": "How Big of an Influence My Culture Has on Who I Am and My Everyday Life. 75% of Hispanic, 71% of Black and 54% of Asian people said their culture has a big influence on who they are and plays a big part in their everyday life, while 15%, 21% and 33% respectively said it doesn't."
+        },
+        "file": {
+          "en-US": {
+            "fileName": "hispanic-blog-infographic-3-91c4e7b3a6d8.svg",
+            "contentType": "image/svg",
+            "upload": "../images/2023/03/hispanic-blog-infographic-3-91c4e7b3a6d8.svg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-e2f6a9c1d7b4"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Word Wall B"
+        },
+        "description": {
+          "en-US": "love, success, family, celebrations, hurt, humor, parenting, happiness, struggle, faith, choice, creativity, comfort, friendship, kindness, food, tech-savvy, hope, ambition, romance, insecurity, trendiness, joy, aging, fear, equality, childhood, nostalgia, fun, generosity, hunger, patriotism, honor, dignity, the American dream"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mcm-hispanic-word-wall-e2f6a9c1d7b4.svg",
+            "contentType": "image/svg",
+            "upload": "../images/2023/03/mcm-hispanic-word-wall-e2f6a9c1d7b4.svg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-6b3d8f2a9c5e"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Word Wall A"
+        },
+        "description": {
+          "en-US": "collectivity, familia, pasión, touch, loyalty, kids, inclusive, happiness, simpatía, freedom, codes, different, duality, change, trust, tchotchkes, fate, spirit, outsider, choice, art, emotion, music, references, fiesta, foods, success, sayings, growth, tenacity, image, status, language, colorism, history, immigrant, abuela, traditions, optimism, roots, spirituality, time horizon, authenticity, heroes, work ethic, discrimination, learning, brown, recognition, origin, empowerment, respect, community, WOM, risk, patriotism, co-dependent, cultural pride, education, the American dream"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "mcm-hispanic-word-wall-a-6b3d8f2a9c5e.svg",
+            "contentType": "image/svg",
+            "upload": "../images/2023/03/mcm-hispanic-word-wall-a-6b3d8f2a9c5e.svg"
+          }
+        }
+      }
     }
   ]
 }
