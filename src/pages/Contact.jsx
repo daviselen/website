@@ -60,6 +60,11 @@ export default function Contact() {
           className="font-display text-5xl uppercase leading-none md:text-7xl lg:text-display-h3"
         />
         <form className="flex flex-col gap-600">
+      </section>
+      <section
+        id="form"
+        className="mt-1000 flex flex-col gap-600 lg:gap-1000 px-2 lg:px-8 md:mt-3000"
+      >
           <StyledField type="text" label="Name" />
           <StyledField type="tel" label="Phone" />
           <StyledField type="email" label="E-mail" />
