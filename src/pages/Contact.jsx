@@ -147,6 +147,11 @@ export default function Contact() {
           text={`Locations`}
           className="font-display text-5xl uppercase leading-none md:text-7xl lg:text-display-h3"
         />
+        <ul className="flex flex-col">
+          {locations.map((location) => (
+            <LocationRow key={location.id} {...location} />
+          ))}
+        </ul>
       </section>
       <section
         id="form"
