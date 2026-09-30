@@ -254,7 +254,7 @@ export default function HumanAI() {
       />
 
       <div className=" relative z-10 lg:flex lg:items-center lg:justify-between lg:gap-16">
-        <div className="lg:max-w-2xl lg:shrink-0">
+        <div className="lg:max-w-2xl lg:min-w-0">
           {/* data-item-reveal index 0 — document order supplies the delay,
               exactly as it does for the Footer's cities. */}
           <div
