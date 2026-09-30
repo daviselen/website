@@ -7,6 +7,94 @@ import StyledField from "../design-system/components/Field";
 import StyledLabel from "../design-system/components/Label.jsx";
 import StyledCombobox from "../design-system/components/Combobox.jsx";
 import StyledTextarea from "../design-system/components/Textarea.jsx";
+import LocationRow from "../design-system/components/LocationRow.jsx";
+
+const locations = [
+  {
+    id: 1,
+    name: "Los Angeles",
+    address: (
+      <>
+        865 S. Figueroa St. Suite 1200
+        <br />
+        Los Angeles, CA 90017
+      </>
+    ),
+    // Placeholder — swap for the real per-location export once it's pulled
+    // from Figma.
+    image: "/images/contact-location-los-angeles.jpg",
+  },
+  {
+    id: 2,
+    name: "San Diego",
+    address: (
+      <>
+        7750 El Camino Real, Suite 2F
+        <br />
+        Carlsbad, CA 92009
+      </>
+    ),
+    // Placeholder — swap for the real per-location export once it's pulled
+    // from Figma.
+    image: "/images/contact-location-los-angeles.jpg",
+  },
+  {
+    id: 3,
+    name: "Seattle",
+    address: (
+      <>
+        2033 6th Ave., Suite 600
+        <br />
+        Seattle, WA 98121
+      </>
+    ),
+    // Placeholder — swap for the real per-location export once it's pulled
+    // from Figma.
+    image: "/images/contact-location-los-angeles.jpg",
+  },
+  {
+    id: 4,
+    name: "Denver",
+    address: (
+      <>
+        1801 California St., #2400
+        <br />
+        Denver, CO 80202
+      </>
+    ),
+    // Placeholder — swap for the real per-location export once it's pulled
+    // from Figma.
+    image: "/images/contact-location-los-angeles.jpg",
+  },
+  {
+    id: 5,
+    name: "Arlington",
+    address: (
+      <>
+        4201 Wilson Blvd., Floor 3
+        <br />
+        Arlington, VA 22203
+      </>
+    ),
+    // Placeholder — swap for the real per-location export once it's pulled
+    // from Figma.
+    image: "/images/contact-location-los-angeles.jpg",
+  },
+  {
+    id: 6,
+    name: "Kansas City",
+    address: (
+      <>
+        420 Nichols Rd.
+        <br />
+        Kansas City, MO 64112
+      </>
+    ),
+    // Placeholder — swap for the real per-location export once it's pulled
+    // from Figma.
+    image: "/images/contact-location-los-angeles.jpg",
+  },
+];
 
 const topics = [
   { id: 1, name: 'New Business Inquiry' },
