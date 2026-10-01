@@ -23,6 +23,7 @@ export default function LocationRow({ name, address, image, imageAlt = "" }) {
   const labelHoverRef = useRef(null);
   const bgRef = useRef(null);
   const tlRef = useRef(null);
+  const hoverTimeoutRef = useRef(null);
   const [expanded, setExpanded] = useState(false);
 
   useGSAP(
@@ -61,8 +62,17 @@ export default function LocationRow({ name, address, image, imageAlt = "" }) {
   };
 
   const close = () => {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+      hoverTimeoutRef.current = null;
+    }
     setExpanded(false);
     tlRef.current?.reverse();
+  };
+
+  const handleHoverEnter = () => {
+    if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
+    hoverTimeoutRef.current = setTimeout(open, 100);
   };
 
   // Devices without real hover (touch) don't get mouseenter/mouseleave in any
@@ -87,7 +97,7 @@ export default function LocationRow({ name, address, image, imageAlt = "" }) {
         aria-expanded={expanded}
         className="relative grid w-full items-center gap-y-400 overflow-hidden px-500 pb-800 pt-600 text-left"
         style={{ gridTemplateColumns: "1fr 33.333%" }}
-        onMouseEnter={hasHover ? open : undefined}
+        onMouseEnter={hasHover ? handleHoverEnter : undefined}
         onMouseLeave={hasHover ? close : undefined}
         onFocus={open}
         onBlur={close}
