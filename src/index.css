@@ -219,8 +219,3 @@ blockquote::before {
   opacity: .35;
   z-index: 2;
 }
-
-:has(> #contact) {
-  border-bottom: 1px solid transparent;
-  border-image: linear-gradient(90deg, #000 32px, #fff 32px, #fff calc(50% - 16px), transparent calc(50% - 16px));
-}
