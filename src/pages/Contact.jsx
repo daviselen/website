@@ -2,7 +2,7 @@ import MastheadImage from "../design-system/components/MastheadImage";
 import HeadingReveal from "../design-system/components/HeadingReveal";
 import TextReveal from "../design-system/components/TextReveal";
 import CTABanner from "../sections/CTABanner.jsx";
-import { Field } from "@headlessui/react";
+import { Button, Field } from "@headlessui/react";
 import StyledField from "../design-system/components/Field";
 import StyledLabel from "../design-system/components/Label.jsx";
 import StyledCombobox from "../design-system/components/Combobox.jsx";
