@@ -230,8 +230,15 @@ function JobOpeningsContent() {
             // Children, not dangerouslySetInnerHTML: React inserts this as a
             // text node, so the script's textContent is the exact JSON string
             // and JSON.parse() round-trips it.
+            //
+            // The `<` escape guards against description (raw third-party
+            // HTML from ADP's Froala editor — see toJobPosting()) containing
+            // a literal "</script>" that would terminate this tag early in
+            // any context that re-parses this as HTML. Harmless today since
+            // React never does that, but it's the standard JSON-LD hardening
+            // and < round-trips through JSON.parse() identically to `<`.
           >
-            {JSON.stringify(toJobPosting(opening))}
+            {JSON.stringify(toJobPosting(opening)).replace(/</g, "\\u003c")}
           </script>
         ))}
     </section>
