@@ -4,7 +4,7 @@ function StyledLabel({className = "", children}) {
   // Same fix as Input: text-pre-title is the real 32px desktop spec, scaled
   // down for mobile rather than fixed at every width.
   return (
-    <Label className={`font-narrow text-lg font-semibold uppercase md:text-2xl lg:text-pre-title ${className}`}>
+    <Label className={`font-narrow text-body-hiai font-normal uppercase md:text-body-hiai lg:text-body-hiai ${className}`}>
         {children}
     </Label>
   );
