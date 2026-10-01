@@ -39,16 +39,11 @@
 // template-string class name) because Tailwind's JIT scanner needs the literal
 // class text present in a source file — an interpolated `aspect-[${x}]` /
 // `gap-[${n}]` wouldn't reliably get picked up.
-import { useRef } from "react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { memo, useRef } from "react";
+import { gsap, useGSAP } from "../animation";
 import HorizontalReveal from "./HorizontalReveal";
 import Picture from "./Picture";
 import TextReveal from "./TextReveal";
-
-// Register ScrollTrigger plugin
-gsap.registerPlugin(ScrollTrigger);
 
 const aspectClasses = {
   "55/36": "aspect-[55/36]",
@@ -76,7 +71,7 @@ const sizeConfig = {
 //   - FromInsideOut's cards are real photographed examples of client work —
 //     passes itemType="https://schema.org/CreativeWork" plus
 //     headingItemProp="name" and imageItemProp="image".
-export default function Card({
+function Card({
   src,
   alt,
   heading,
@@ -152,3 +147,5 @@ export default function Card({
     </div>
   );
 }
+
+export default memo(Card);

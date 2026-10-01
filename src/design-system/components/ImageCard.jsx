@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { memo, useRef, useState } from "react";
 import { gsap, useGSAP, REVEAL_DURATION, EASE_REVEAL } from "../animation";
 import HorizontalReveal from "../components/HorizontalReveal";
 import TextReveal from "../components/TextReveal";
@@ -15,7 +15,7 @@ const CARD_VISIBLE = "inset(0% 0% 0% 0%)";
 // schema.org item, and is hidden from assistive tech: otherwise the page
 // would announce every project two or three times and publish duplicate
 // CreativeWork items in its structured data.
-export default function ProjectCard({ title, client, src, videoSrc, startColumn2, decorative = false }) {
+function ProjectCard({ title, client, src, videoSrc, startColumn2, decorative = false }) {
   const containerRef = useRef(null);
   const maskRef = useRef(null);
 
@@ -197,3 +197,5 @@ export default function ProjectCard({ title, client, src, videoSrc, startColumn2
       </div>
     );
 }
+
+export default memo(ProjectCard);
