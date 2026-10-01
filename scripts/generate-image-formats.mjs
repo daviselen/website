@@ -86,7 +86,14 @@ async function readManifest() {
       return null;
     }
     return parsed.files ?? {};
-  } catch {
+  } catch (error) {
+    // Missing manifest (first build, or FORCE) is expected and not worth a
+    // warning. A manifest that exists but won't parse is a real problem —
+    // it silently triggers a full derivative rebuild, which should at least
+    // say why.
+    if (error.code !== "ENOENT") {
+      console.warn("Manifest unreadable, rebuilding all derivatives:", error);
+    }
     return null;
   }
 }
@@ -99,7 +106,13 @@ async function fileExists(path) {
   try {
     await stat(path);
     return true;
-  } catch {
+  } catch (error) {
+    // ENOENT (file doesn't exist) is the expected, common case this
+    // function exists to check for — not worth logging. Anything else
+    // (permissions, etc.) is a real problem masquerading as "not found".
+    if (error.code !== "ENOENT") {
+      console.warn(`Unexpected error checking for file "${path}":`, error);
+    }
     return false;
   }
 }
@@ -205,8 +218,12 @@ async function pruneOrphans(cachedFiles, liveKeys) {
       try {
         await unlink(path);
         removed += 1;
-      } catch {
-        // Already gone — nothing to prune.
+      } catch (error) {
+        // ENOENT means already gone — nothing to prune, not an error.
+        // Anything else (permissions, etc.) is a real failure to delete.
+        if (error.code !== "ENOENT") {
+          console.warn(`Failed to prune orphaned derivative "${path}":`, error);
+        }
       }
     }
   }

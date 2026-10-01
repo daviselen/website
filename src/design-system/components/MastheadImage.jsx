@@ -24,9 +24,10 @@ export default function MastheadImage({
       try {
         // Wait until the browser has decoded the image.
         await img.decode();
-      } catch {
+      } catch (error) {
         // decode() can reject in some browsers even though
         // the image is usable, so don't block the animation.
+        console.warn("Image decode failed, continuing anyway:", error);
       }
 
       if (!cancelled) {

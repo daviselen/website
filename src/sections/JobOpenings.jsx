@@ -115,12 +115,17 @@ function JobOpeningsContent() {
           visibleSignature(current) === visibleSignature(live) ? current : live,
         );
         setStatus("live");
-      } catch {
-        // Deliberately silent, including on AbortError. The snapshot stays on
-        // screen and the visitor sees nothing — an error banner over a
-        // listing that is stale by hours would be worse than the staleness
-        // (spec §2.4). This is the entire reason both data paths exist.
-        if (!controller.signal.aborted) setStatus("error");
+      } catch (error) {
+        // Silent to the visitor, including on AbortError — the snapshot
+        // stays on screen and the visitor sees nothing — an error banner
+        // over a listing that is stale by hours would be worse than the
+        // staleness (spec §2.4). This is the entire reason both data paths
+        // exist. Logged, not silent to us: a real ADP outage should still
+        // leave a trace somewhere.
+        if (!controller.signal.aborted) {
+          console.error("Job openings fetch failed:", error);
+          setStatus("error");
+        }
       }
     }
 

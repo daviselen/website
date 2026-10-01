@@ -72,9 +72,12 @@ async function readPreviousSnapshot() {
   try {
     const parsed = JSON.parse(await readFile(SNAPSHOT_PATH, "utf8"));
     return Array.isArray(parsed) ? parsed : [];
-  } catch {
-    // Missing on the very first run, and unparseable only if hand-edited.
-    // Either way there is nothing to carry forward.
+  } catch (error) {
+    // Missing on the very first run — expected, not worth a warning.
+    // Unparseable (only if hand-edited) is a real problem worth surfacing.
+    if (error.code !== "ENOENT") {
+      console.warn("Previous snapshot unreadable, starting fresh:", error);
+    }
     return [];
   }
 }
@@ -229,7 +232,10 @@ async function main() {
   let existing = null;
   try {
     existing = await readFile(SNAPSHOT_PATH, "utf8");
-  } catch {
+  } catch (error) {
+    if (error.code !== "ENOENT") {
+      console.warn("Could not read existing snapshot for comparison:", error);
+    }
     existing = null;
   }
 
