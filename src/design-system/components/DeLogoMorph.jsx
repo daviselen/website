@@ -186,8 +186,15 @@ export default function DeLogoMorph({ className = "size-16", onComplete }) {
       const EXIT_ORDER = [2, 1, 0, 6, 5, 4, 3];
       const exitPaths = EXIT_ORDER.map((idx) => letterPaths[idx]);
 
+      // All reads first, then all writes — getBBox() (read) and
+      // setAttribute() (write) interleaved per letter forces a layout
+      // recalculation on every one of the 7 iterations. Caching the bboxes
+      // here also feeds the exit tween's per-letter travel distance below,
+      // so this is the only getBBox() call this effect makes, not two.
+      const bboxes = letterPaths.map((letterPath) => letterPath.getBBox());
+
       letterPaths.forEach((letterPath, i) => {
-        const bbox = letterPath.getBBox();
+        const bbox = bboxes[i];
         const clipRect = clipRectsRef.current[i];
         if (clipRect) {
           // Position clip rect at the letter's left edge (x = bbox.x)
@@ -228,7 +235,10 @@ export default function DeLogoMorph({ className = "size-16", onComplete }) {
       tl.to(
         exitPaths,
         {
-          x: (i, target) => -target.getBBox().width,
+          // exitPaths[i] came from letterPaths[EXIT_ORDER[i]], so that's the
+          // same index back into the bboxes already read above — avoids a
+          // second layout-forcing getBBox() call per letter.
+          x: (i) => -bboxes[EXIT_ORDER[i]].width,
           duration: TOTAL_EXIT_DURATION,
           ease: exitTrajectoryEase,
           stagger: EXIT_STAGGER,
