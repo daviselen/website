@@ -88,7 +88,31 @@ function Overlay({ payload, onClose }) {
     lastFocusedRef.current = document.activeElement;
 
     const onKeyDown = (e) => {
-      if (e.key === "Escape") onClose();
+      if (e.key === "Escape") {
+        onClose();
+        return;
+      }
+
+      // Trap Tab inside the dialog — without this, a keyboard user can tab
+      // straight through into the page behind the backdrop while it's still
+      // open, since nothing here is marked inert.
+      if (e.key !== "Tab" || !rootRef.current) return;
+
+      const focusable = rootRef.current.querySelectorAll(
+        'button, a[href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      if (focusable.length === 0) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     };
     document.addEventListener("keydown", onKeyDown);
 
