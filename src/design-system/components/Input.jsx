@@ -1,6 +1,6 @@
 import { Input } from '@headlessui/react'
 
-function StyledInput({type = "text", name}) {
+function StyledInput({type = "text", name, placeholder = " "}) {
   const allowedTypes = ['text', 'tel', 'email', 'number', 'password', 'hidden', 'search', 'url'];
 
   // Enforce required option value
