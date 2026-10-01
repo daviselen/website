@@ -7,14 +7,19 @@ import HomePage from "./pages/HomePage";
 import About from "./pages/About";
 import Careers from "./pages/Careers";
 import Contact from "./pages/Contact";
-import NewsArticlePage from "./pages/NewsArticle";
+import NotFound from "./pages/NotFound";
 
 const RetailMap = lazy(() => import("./pages/RetailMap"));
+// Route-split: pulls in @contentful/rich-text-react-renderer and every
+// article's full JSON body (src/data/news/, eager-globbed), none of which
+// is needed until someone actually visits a /news/:slug page.
+const NewsArticlePage = lazy(() => import("./pages/NewsArticle"));
 
 // Define routes using createBrowserRouter
 const router = createBrowserRouter([
   {
     element: <Layout />, // PixelLayout wraps all child routes
+    errorElement: <NotFound />,
     children: [
       {
         path: "/",
@@ -27,7 +32,16 @@ const router = createBrowserRouter([
       {
         path: "/about/retail-map",
         element: (
-          <Suspense fallback={<div className="mx-8 min-h-[50vh]" aria-busy="true" />}>
+          <Suspense
+            fallback={
+              <div
+                className="mx-8 flex min-h-[50vh] items-center justify-center text-lg"
+                aria-busy="true"
+              >
+                Loading map&hellip;
+              </div>
+            }
+          >
             <RetailMap />
           </Suspense>
         ),
@@ -42,8 +56,25 @@ const router = createBrowserRouter([
       },
       {
         path: "/news/:slug",
-        element: <NewsArticlePage />
-      }
+        element: (
+          <Suspense
+            fallback={
+              <div
+                className="flex min-h-screen items-center justify-center text-lg"
+                aria-busy="true"
+              >
+                Loading article&hellip;
+              </div>
+            }
+          >
+            <NewsArticlePage />
+          </Suspense>
+        ),
+      },
+      {
+        path: "*",
+        element: <NotFound />,
+      },
     ],
   },
 ]);
