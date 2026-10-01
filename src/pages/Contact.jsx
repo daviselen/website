@@ -158,7 +158,7 @@ export default function Contact() {
         id="form"
         className="mt-1000 flex flex-col gap-600 lg:gap-1000 md:mt-3000 xl:grid xl:grid-cols-12 xl:gap-400 relative mx-2 lg:mx-8 lg:mt-3000 rounded-md bg-surface-alt py-1000 text-neutral-0"
       >
-        <div className="flex flex-col gap-600 lg:gap-1000 xl:col-start-9 xl:-col-end-1 xl:row-start-1">
+        <div className="flex flex-col gap-400 lg:gap-500 xl:col-start-9 xl:-col-end-1 xl:row-start-1">
           <HeadingReveal
             as="h2"
             text={`Let’s get \nin touch`}
