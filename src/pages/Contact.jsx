@@ -156,9 +156,9 @@ export default function Contact() {
       </section>
       <section
         id="form"
-        className="mt-1000 flex flex-col gap-600 lg:gap-1000 md:mt-3000 xl:grid xl:grid-cols-12 xl:gap-400 relative mx-2 lg:mx-8 lg:mt-3000 rounded-md bg-surface-alt py-500 text-neutral-0"
+        className="mt-1000 flex flex-col gap-600 lg:gap-1000 md:mt-3000 xl:grid xl:grid-cols-12 xl:gap-400 relative mx-2 lg:mx-8 lg:mt-3000 rounded-md bg-surface-alt py-1000 text-neutral-0"
       >
-        <div className="flex flex-col gap-600 lg:gap-1000 xl:col-start-9 xl:-col-end-1">
+        <div className="flex flex-col gap-600 lg:gap-1000 xl:col-start-9 xl:-col-end-1 xl:row-start-1">
           <HeadingReveal
             as="h2"
             text={`Let’s get \nin touch`}
@@ -169,7 +169,7 @@ export default function Contact() {
             className="mb-6 text-lg md:text-xl lg:text-pre-title"
           />
         </div>
-        <form id="contact" className="flex flex-col gap-600 xl:col-start-2 xl:col-end-8 xl:row-start-1" action="" method="">
+        <form id="contact" className="flex flex-col gap-500 xl:col-start-2 xl:col-end-8 xl:row-start-1" action="" method="">
           <StyledField type="text" label="Name" name="full_name" />
           <StyledField type="email" label="E-mail" name="email" />
           <StyledField gap="0">
@@ -187,8 +187,8 @@ export default function Contact() {
             <StyledTextarea></StyledTextarea>
           </StyledField>
         </form>
-        <div className="xl:col-start-9 xl:-col-end-1">
-          <Button className="px-1000 py-400 xl:min-w-[480px] bg-surface-primary-default hover:bg-primary-300 font-narrow font-normal text-pre-title leading-snug text-neutral-0 uppercase rounded-md transition-colors cursor-pointer">Send it</Button>
+        <div className="xl:col-start-9 xl:-col-end-1 xl:row-start-1 self-end">
+          <Button className="px-1000 py-300 xl:min-w-[320px] bg-surface-primary-default hover:bg-primary-300 font-narrow font-normal text-pre-title leading-snug text-neutral-0 hover:text-neutral-1000 uppercase rounded-md transition-colors duration-300 cursor-pointer">Send it</Button>
         </div>
       </section>
     </main>
