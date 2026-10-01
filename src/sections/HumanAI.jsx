@@ -93,8 +93,7 @@
 // justification for hiding specifically at `md`, and re-checking it
 // wasn't part of what was asked; simplified to "visible, stacked below
 // the text" until it goes side-by-side at `lg`.
-import { useRef } from "react";
-import HumanAIAnimation from "../components/HumanAIAnimation.jsx";
+import { lazy, Suspense, useRef } from "react";
 import {
   gsap,
   useGSAP,
@@ -102,6 +101,11 @@ import {
   LINE_DELAY,
   EASE_REVEAL,
 } from "../design-system/animation.js";
+
+// lottie-web is a full animation runtime, and this animation doesn't start
+// until it's scrolled into view (the once:true ScrollTrigger below) — no
+// reason to ship it in the main bundle for every visitor.
+const HumanAIAnimation = lazy(() => import("../components/HumanAIAnimation.jsx"));
 
 const MOVEMENT_FACTOR = 0.25;
 const EXTRA_HEIGHT = MOVEMENT_FACTOR * 100; // 80% height buffer for parallax movement
@@ -317,7 +321,15 @@ export default function HumanAI() {
           alt="Unlock your potential. Human Imagination and Artificial Intelligence synergize to eliminate roadblocks and unlock what's possible. Let robots do the work!"
           className="mx-auto mt-16 block w-full max-w-md lg:mx-0 lg:mt-0 lg:w-[39.655vw] lg:max-w-none lg:shrink-0"
         /> */}
-        <HumanAIAnimation />
+        <Suspense
+          fallback={
+            <div className="mx-auto mt-16 block w-full max-w-md lg:mx-0 lg:mt-0 lg:w-[39.655vw] lg:max-w-none lg:shrink-0">
+              <div className="min-h-3200 min-w-3200" aria-busy="true" />
+            </div>
+          }
+        >
+          <HumanAIAnimation />
+        </Suspense>
       </div>
     </section>
   );
