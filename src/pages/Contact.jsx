@@ -158,6 +158,17 @@ export default function Contact() {
         className="mt-1000 flex flex-col gap-600 lg:gap-1000 px-2 lg:px-8 md:mt-3000"
       >
         <form className="flex flex-col gap-600" action="" method="">
+        <div className="flex flex-col gap-600 lg:gap-1000 xl:col-start-9 xl:-col-end-1">
+          <HeadingReveal
+            as="h2"
+            text={`Let’s get \nin touch`}
+            className="font-display text-5xl uppercase leading-none md:text-7xl lg:text-display-h3"
+          />
+          <TextReveal
+            text="Sed ut perspiciatis unde omnis iste natus error sit voluptatem."
+            className="mb-6 text-lg md:text-xl lg:text-pre-title"
+          />
+        </div>
           <StyledField type="text" label="Name" name="full_name" />
           <StyledField type="tel" label="Phone" name="phone" />
           <StyledField type="email" label="E-mail" name="email" />
@@ -176,6 +187,9 @@ export default function Contact() {
             <StyledTextarea></StyledTextarea>
           </Field>
         </form>
+        <div className="xl:col-start-9 xl:-col-end-1">
+          <Button className="px-1000 py-400 xl:min-w-[480px] bg-surface-primary-default hover:bg-primary-300 font-narrow font-normal text-pre-title leading-snug text-neutral-0 uppercase rounded-md transition-colors cursor-pointer">Send it</Button>
+        </div>
       </section>
     </main>
   );
