@@ -16,7 +16,7 @@ function StyledCombobox({options, placeholder}) {
             <ComboboxInput
                 displayValue={(option) => option?.name}
                 onChange={(event) => setQuery(event.target.value)}
-                className="block w-full border-b-2 border-neutral-200 bg-neutral-800 px-200 py-100 text-lg text-neutral-100 transition-colors invalid:border-red invalid:text-red focus:border-primary-300 focus:outline-none focus:invalid:border-red md:text-2xl lg:text-pre-title"
+                className="block w-full border-0 border-none bg-transparent px-0 py-100 text-lg text-neutral-100 transition-colors invalid:border-red invalid:text-red focus:outline-none focus:invalid:border-red md:text-2xl lg:text-pre-title"
                 placeholder={placeholder}
             />
             

@@ -48,7 +48,7 @@ function StyledTextarea({placeholder = " ", onInput, ...props}) {
         resize(event.currentTarget)
         onInput?.(event)
       }}
-      className="peer data-focus:ring-primary-300 data-focus:border-primary-300 block w-full resize-none overflow-hidden border-b-2 border-neutral-200 bg-neutral-800 px-200 py-100 text-lg transition-all duration-200 invalid:border-red invalid:text-red focus:border-primary-300 focus:invalid:border-red focus:invalid:text-red md:text-2xl lg:text-pre-title"
+      className="peer block w-full resize-none overflow-hidden border-0 border-none bg-transparent px-0 py-100 text-lg transition-all duration-200 focus:outline-none invalid:border-red invalid:text-red focus:invalid:border-red focus:invalid:text-red md:text-2xl lg:text-pre-title"
       {...props}
     ></Textarea>
   )

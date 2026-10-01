@@ -2,7 +2,7 @@ import MastheadImage from "../design-system/components/MastheadImage";
 import HeadingReveal from "../design-system/components/HeadingReveal";
 import TextReveal from "../design-system/components/TextReveal";
 import CTABanner from "../sections/CTABanner.jsx";
-import { Button, Field } from "@headlessui/react";
+import { Button } from "@headlessui/react";
 import StyledField from "../design-system/components/Field";
 import StyledLabel from "../design-system/components/Label.jsx";
 import StyledCombobox from "../design-system/components/Combobox.jsx";
@@ -97,6 +97,7 @@ const locations = [
 ];
 
 const topics = [
+  { id: 0, name: '' },
   { id: 1, name: 'New Business Inquiry' },
   { id: 2, name: 'Public Relations' },
   { id: 3, name: 'Media Planning' },
@@ -170,22 +171,21 @@ export default function Contact() {
         </div>
         <form id="contact" className="flex flex-col gap-600 xl:col-start-2 xl:col-end-8 xl:row-start-1" action="" method="">
           <StyledField type="text" label="Name" name="full_name" />
-          <StyledField type="tel" label="Phone" name="phone" />
           <StyledField type="email" label="E-mail" name="email" />
-          <Field className="flex flex-col gap-2">
-            <StyledLabel className="text-xs font-semibold uppercase tracking-widest text-neutral-400">
+          <StyledField gap="0">
+            <StyledLabel>
               Subject
             </StyledLabel>
-            
+
             <StyledCombobox
               options={topics}
               placeholder="Select a subject&hellip;"
             />
-          </Field>
-          <Field className="flex flex-col gap-2">
+          </StyledField>
+          <StyledField gap="0">
             <StyledLabel>Message</StyledLabel>
             <StyledTextarea></StyledTextarea>
-          </Field>
+          </StyledField>
         </form>
         <div className="xl:col-start-9 xl:-col-end-1">
           <Button className="px-1000 py-400 xl:min-w-[480px] bg-surface-primary-default hover:bg-primary-300 font-narrow font-normal text-pre-title leading-snug text-neutral-0 uppercase rounded-md transition-colors cursor-pointer">Send it</Button>
