@@ -168,7 +168,6 @@ export default function Contact() {
             
             <StyledCombobox
               options={topics}
-              label="Subject"
               placeholder="Select a subject&hellip;"
             />
           </Field>
