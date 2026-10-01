@@ -169,7 +169,7 @@ export default function Contact() {
             className="mb-6 text-lg md:text-xl lg:text-pre-title"
           />
         </div>
-        <form id="contact" className="flex flex-col gap-500 xl:col-start-2 xl:col-end-8 xl:row-start-1" action="" method="">
+        <form id="contact" className="flex flex-col gap-500 xl:col-start-1 xl:col-end-7 xl:row-start-1 xl:*:ml-1000" action="" method="">
           <StyledField type="text" label="Name" name="full_name" gap="0" />
           <StyledField type="email" label="E-mail" name="email" gap="0" />
           <StyledField gap="0">
