@@ -1,11 +1,11 @@
 import { useRef, useState } from "react";
 import { gsap, useGSAP, REVEAL_DURATION, EASE_REVEAL, EASE_OUT } from "../animation";
 
-// The row grows to 800px at Figma's 1856px reference viewport (see
-// HumanAI.jsx's px/1856 vw convention) — 800 / 1856 = 43.1034vw. Clamped with
-// a floor so the row stays legible below that reference width; 43.1034vw
-// alone would shrink to ~160px on a phone.
-const EXPANDED_HEIGHT = "clamp(400px, 43.1034vw, 800px)";
+// The row grows to 640px at Figma's 1856px reference viewport (see
+// HumanAI.jsx's px/1856 vw convention) — 640 / 1856 = 34.4828vw. Clamped with
+// a floor so the row stays legible below that reference width; 34.4828vw
+// alone would shrink to ~128px on a phone.
+const EXPANDED_HEIGHT = "clamp(400px, 34.4828vw, 640px)";
 
 /**
  * A single Contact-page office row: name + address at rest, expanding on
@@ -39,12 +39,17 @@ export default function LocationRow({ name, address, image, imageAlt = "" }) {
           { height: EXPANDED_HEIGHT, duration: 0.5, ease: EASE_OUT },
           "<0.1"
         )
-        .to(bgRef.current, { opacity: 1, duration: 0.4, ease: EASE_OUT }, "<0.15")
+        .fromTo(
+          bgRef.current,
+          { clipPath: "inset(0% 0 100% 0)" },
+          { clipPath: "inset(0% 0 0% 0)", duration: 0.4, ease: EASE_OUT },
+          "<0.25"
+        )
         .fromTo(
           labelHoverRef.current,
           { clipPath: "inset(100% 0 0 0)" },
           { clipPath: "inset(0% 0 0 0)", duration: REVEAL_DURATION, ease: EASE_REVEAL },
-          ">"
+          ">-0.1"
         );
     },
     { scope: rowRef, dependencies: [] }
@@ -100,8 +105,12 @@ export default function LocationRow({ name, address, image, imageAlt = "" }) {
         <div
           ref={bgRef}
           aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 bg-cover bg-center opacity-0"
-          style={{ backgroundImage: `url(${image})`, height: EXPANDED_HEIGHT }}
+          className="pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 bg-cover bg-center"
+          style={{
+            backgroundImage: `url(${image})`,
+            height: EXPANDED_HEIGHT,
+            clipPath: "inset(0% 0 100% 0)",
+          }}
           role="img"
           {...(imageAlt ? { "aria-label": imageAlt } : {})}
         >
