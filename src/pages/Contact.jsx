@@ -158,9 +158,9 @@ export default function Contact() {
         className="mt-1000 flex flex-col gap-600 lg:gap-1000 px-2 lg:px-8 md:mt-3000"
       >
         <form className="flex flex-col gap-600" action="" method="">
-          <StyledField type="text" label="Name" />
-          <StyledField type="tel" label="Phone" />
-          <StyledField type="email" label="E-mail" />
+          <StyledField type="text" label="Name" name="full_name" />
+          <StyledField type="tel" label="Phone" name="phone" />
+          <StyledField type="email" label="E-mail" name="email" />
           <Field className="flex flex-col gap-2">
             <StyledLabel className="text-xs font-semibold uppercase tracking-widest text-neutral-400">
               Subject
