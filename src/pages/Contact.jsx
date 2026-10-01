@@ -165,8 +165,8 @@ export default function Contact() {
             className="font-display text-5xl uppercase leading-none md:text-7xl lg:text-display-h3"
           />
           <TextReveal
-            text="Sed ut perspiciatis unde omnis iste natus error sit voluptatem."
-            className="mb-6 text-lg md:text-xl lg:text-pre-title"
+            text={`Sed ut perspiciatis unde omnis \niste natus error sit voluptatem.`}
+            className="mb-6 text-lg md:text-xl lg:text-pre-title max-w-[24ch]"
           />
         </div>
         <form id="contact" className="flex flex-col gap-500 xl:col-start-1 xl:col-end-7 xl:row-start-1 xl:*:ml-1000" action="" method="">
@@ -179,7 +179,7 @@ export default function Contact() {
 
             <StyledCombobox
               options={topics}
-              placeholder="Select a subject&hellip;"
+              placeholder=""
             />
           </StyledField>
           <StyledField gap="0">
