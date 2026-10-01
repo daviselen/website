@@ -17,7 +17,7 @@ export default function Masthead() {
   return (
     <section id="masthead" className="px-2 md:px-8">
       <MastheadVideo
-        src="/videos/davis-elen-masthead.mp4"
+        vimeoId="1231831922"
         className="h-[calc((100vw-83px)*0.5625)] max-h-[1044px] w-full rounded-md object-cover"
       />
       {/* Image → headline gap is Scale/2300 = 184px (11.5rem) — this was

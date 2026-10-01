@@ -93,6 +93,19 @@ export default {
       borderRadius: {
         md: "8px", // Border/Radius/md — every card/image corner on the page
       },
+      // Deliberate, undocumented addition — not a Figma token. Drives the
+      // masthead mute toggle's equalizer bars; each bar gets its own
+      // animation-delay/-duration inline (see MastheadVideo.jsx) so the 4
+      // bars don't move in lockstep off this one shared keyframe.
+      keyframes: {
+        waveform: {
+          "0%, 100%": { transform: "scaleY(0.3)" },
+          "50%": { transform: "scaleY(1)" },
+        },
+      },
+      animation: {
+        waveform: "waveform 0.6s ease-in-out infinite",
+      },
       fontFamily: {
         // Knockout isn't one family with a weight axis — Hoefler&Co ships
         // each numbered cut as its own family name, and the family name IS
