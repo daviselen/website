@@ -170,8 +170,8 @@ export default function Contact() {
           />
         </div>
         <form id="contact" className="flex flex-col gap-500 xl:col-start-2 xl:col-end-8 xl:row-start-1" action="" method="">
-          <StyledField type="text" label="Name" name="full_name" />
-          <StyledField type="email" label="E-mail" name="email" />
+          <StyledField type="text" label="Name" name="full_name" gap="0" />
+          <StyledField type="email" label="E-mail" name="email" gap="0" />
           <StyledField gap="0">
             <StyledLabel>
               Subject
