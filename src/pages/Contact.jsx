@@ -141,7 +141,7 @@ export default function Contact() {
       </section>
       <section
         id="locations"
-        className="mt-1000 flex flex-col gap-600 lg:gap-1000 px-2 lg:px-8 md:mt-3000"
+        className="mt-1000 flex flex-col gap-600 px-2 md:mt-3000 lg:gap-1000 lg:px-8"
       >
         <HeadingReveal
           as="h2"
@@ -156,7 +156,7 @@ export default function Contact() {
       </section>
       <section
         id="form"
-        className="mt-1000 flex flex-col gap-600 lg:gap-1000 md:mt-3000 xl:grid xl:grid-cols-12 xl:gap-400 relative mx-2 lg:mx-8 lg:mt-3000 rounded-md bg-surface-alt py-1000 text-neutral-0"
+        className="relative mx-2 mt-1000 flex flex-col gap-600 rounded-md bg-surface-alt py-1000 text-neutral-0 md:mt-3000 lg:mx-8 lg:mt-3000 lg:gap-1000 xl:grid xl:grid-cols-12 xl:gap-400"
       >
         <div className="flex flex-col gap-400 lg:gap-500 xl:col-start-9 xl:-col-end-1 xl:row-start-1">
           <HeadingReveal
@@ -166,7 +166,7 @@ export default function Contact() {
           />
           <TextReveal
             text={`Sed ut perspiciatis unde omnis \niste natus error sit voluptatem.`}
-            className="mb-6 text-lg md:text-xl lg:text-pre-title max-w-[24ch]"
+            className="mb-6 max-w-[24ch] text-lg md:text-xl lg:text-pre-title"
           />
         </div>
         <form id="contact" className="flex flex-col gap-500 xl:col-start-1 xl:col-end-7 xl:row-start-1 xl:*:ml-1000" action="" method="">
@@ -187,8 +187,8 @@ export default function Contact() {
             <StyledTextarea></StyledTextarea>
           </StyledField>
         </form>
-        <div className="xl:col-start-9 xl:-col-end-1 xl:row-start-1 self-end">
-          <Button className="px-1000 py-300 xl:min-w-[320px] bg-surface-primary-default hover:bg-primary-300 font-narrow font-normal text-pre-title leading-snug text-neutral-0 hover:text-neutral-1000 uppercase rounded-md transition-colors duration-300 cursor-pointer">Send it</Button>
+        <div className="self-end xl:col-start-9 xl:-col-end-1 xl:row-start-1">
+          <Button className="cursor-pointer rounded-md bg-surface-primary-default px-1000 py-300 font-narrow text-pre-title font-normal uppercase leading-snug text-neutral-0 transition-colors duration-300 hover:bg-primary-300 hover:text-neutral-1000 xl:min-w-[320px]">Send it</Button>
         </div>
       </section>
     </main>

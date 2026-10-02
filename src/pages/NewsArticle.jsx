@@ -130,7 +130,7 @@ function NewsArticle({ article, manifest }) {
           return (
             <a
               href={href}
-              className="inline-flex items-center font-normal text-foreground hover:underline"
+              className="text-foreground inline-flex items-center font-normal hover:underline"
               {...(isExternal
                 ? {
                     target: "_blank",
@@ -142,7 +142,7 @@ function NewsArticle({ article, manifest }) {
 
               {isExternal && (
                 <svg
-                  className="w-4 h-4 ms-2 rtl:rotate-[270deg]"
+                  className="ms-2 size-4 rtl:rotate-[270deg]"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -224,7 +224,7 @@ function NewsArticle({ article, manifest }) {
         ),
 
         pre: (node, children) => (
-          <pre className="my-600 overflow-x-auto rounded-md bg-surface-subtle p-600 font-mono leading-relaxed whitespace-pre-wrap text-foreground">
+          <pre className="bg-surface-subtle text-foreground my-600 overflow-x-auto whitespace-pre-wrap rounded-md p-600 font-mono leading-relaxed">
             {Children.toArray(children)}
           </pre>
         ),
@@ -277,18 +277,18 @@ function NewsArticle({ article, manifest }) {
         {heroImageUrl && (
           <MastheadImage src={heroImageUrl} alt={heroAlt} title={category} />
         )}
-        <div className="flex flex-col gap-200 px-400 text-pre-title max-w-prose">
+        <div className="flex max-w-prose flex-col gap-200 px-400 text-pre-title">
           {pubDate && (
             <time className="font-display tracking-wide" dateTime={publishedAt}>
               {pubDate.toLocaleDateString("en-US", { dateStyle: "long" })}
             </time>
           )}
-          <h1 className="text-display-h3 font-display uppercase">{title}</h1>
+          <h1 className="font-display text-display-h3 uppercase">{title}</h1>
         </div>
       </header>
 
       <div className="news-content">
-        <div className="news-body text-pre-title px-400 *:mb-600 *:max-w-prose *:ul:list-outside *:marker:text-primary-300 [&_ul]:list-outside [&_ul]:list-[square] [&_ul]:pl-600 [&_ul]:text-lg md:[&_ul]:text-xl lg:[&_ul]:text-pre-title [&_li]:mb-300 [&_h2]:text-display-h4 [&_h2]:font-display [&_h2]:mt-1000 [&_h2]:first:mt-0 [&_h2]:first:text-display-h5 [&_h3]:text-display-h5 [&_h3]:font-display [&_h3]:mt-800">
+        <div className="news-body *:ul:list-outside px-400 text-pre-title *:mb-600 *:max-w-prose *:marker:text-primary-300 [&_h2]:mt-1000 [&_h2]:font-display [&_h2]:text-display-h4 [&_h2]:first:mt-0 [&_h2]:first:text-display-h5 [&_h3]:mt-800 [&_h3]:font-display [&_h3]:text-display-h5 [&_li]:mb-300 [&_ul]:list-outside [&_ul]:list-[square] [&_ul]:pl-600 [&_ul]:text-lg md:[&_ul]:text-xl lg:[&_ul]:text-pre-title">
           {documentToReactComponents(body, renderOptions)}
         </div>
       </div>

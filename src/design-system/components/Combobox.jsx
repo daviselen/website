@@ -34,7 +34,7 @@ function StyledCombobox({options, placeholder}) {
             {query.length > 0 && (
                 <ComboboxOption
                     value={{ id: null, name: query }}
-                    className="data-focus:bg-neutral-800 focus:bg-neutral-800 data-focus:text-white focus:text-white flex w-full cursor-pointer items-center justify-between px-4 py-2.5 text-body-hiai transition-colors"
+                    className="data-focus:bg-neutral-800 data-focus:text-white flex w-full cursor-pointer items-center justify-between px-4 py-2.5 text-body-hiai transition-colors focus:bg-neutral-800 focus:text-white"
                 >
                     <span>Use <span className="font-bold">&ldquo;{query}&rdquo;</span></span>
                 </ComboboxOption>
@@ -43,7 +43,7 @@ function StyledCombobox({options, placeholder}) {
                 <ComboboxOption 
                     key={option.id} 
                     value={option.name} 
-                    className="data-hover:bg-neutral-700 hover:bg-neutral-700 data-focus:bg-neutral-800 focus:bg-neutral-800 data-focus:text-white focus:text-white flex w-full cursor-pointer items-center justify-between px-4 py-2.5 text-body-hiai transition-colors"
+                    className="data-hover:bg-neutral-700 data-focus:bg-neutral-800 data-focus:text-white flex w-full cursor-pointer items-center justify-between px-4 py-2.5 text-body-hiai transition-colors hover:bg-neutral-700 focus:bg-neutral-800 focus:text-white"
                 >
                     {option.name}
                 </ComboboxOption>

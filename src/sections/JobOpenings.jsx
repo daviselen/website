@@ -26,7 +26,7 @@ class ErrorBoundary extends Component {
   render() {
     if (this.state.hasError) {
       return (
-        <section className="mt-1000 px-2 lg:px-8 md:mt-3000">
+        <section className="mt-1000 px-2 md:mt-3000 lg:px-8">
           <p className="font-narrow text-2xl">
             Unable to render job openings at this time.
           </p>
@@ -168,7 +168,7 @@ function JobOpeningsContent() {
     <section
       id="job-openings"
       data-status={status}
-      className="mt-1000 flex flex-col gap-600 lg:gap-1000 px-2 lg:px-8 md:mt-3000"
+      className="mt-1000 flex flex-col gap-600 px-2 md:mt-3000 lg:gap-1000 lg:px-8"
     >
       <HeadingReveal
         as="h2"
@@ -250,7 +250,7 @@ export default function JobOpenings() {
     <ErrorBoundary>
       <Suspense
         fallback={
-          <section className="mt-1000 px-2 lg:px-8 md:mt-3000">
+          <section className="mt-1000 px-2 md:mt-3000 lg:px-8">
             <p className="font-narrow text-2xl">Loading open positions...</p>
           </section>
         }

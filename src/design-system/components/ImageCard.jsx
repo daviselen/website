@@ -85,7 +85,7 @@ function ProjectCard({ title, client, src, videoSrc, startColumn2, decorative = 
         itemScope={decorative ? undefined : true}
         itemType={decorative ? undefined : "https://schema.org/CreativeWork"}
         aria-hidden={decorative ? "true" : undefined}
-        className={`relative aspect-[8/9] w-full shrink-0 grow basis-full lg:basis-[32rem] break-inside-avoid overflow-hidden rounded-md transition-all ease-in-out ${
+        className={`relative aspect-[8/9] w-full shrink-0 grow basis-full break-inside-avoid overflow-hidden rounded-md transition-all ease-in-out lg:basis-[32rem] ${
           startColumn2 ? "break-before-column" : ""
         }`}
       >
@@ -160,7 +160,7 @@ function ProjectCard({ title, client, src, videoSrc, startColumn2, decorative = 
           className="chrome-gradient-adjust pointer-events-none absolute inset-0"
           style={{ backgroundImage: "linear-gradient(195deg, transparent 60%, black 130%)" }}
         />
-        <div className="absolute inset-x-4 lg:inset-x-8 bottom-4 lg:bottom-8 flex flex-col gap-100 lg:gap-300 text-neutral-0">
+        <div className="absolute inset-x-4 bottom-4 flex flex-col gap-100 text-neutral-0 lg:inset-x-8 lg:bottom-8 lg:gap-300">
           {/* 4. Conditionally render the text components. 
               Because this wrapper is 'absolute', deferring the render of 
               the text won't break the layout or height of the card. */}

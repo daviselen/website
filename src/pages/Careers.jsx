@@ -56,7 +56,7 @@ export default function Careers() {
       <JobOpenings />
       <section
         id="always_looking"
-        className="mt-1000 flex flex-col gap-600 lg:gap-1000 px-2 lg:px-8 md:mt-3000"
+        className="mt-1000 flex flex-col gap-600 px-2 md:mt-3000 lg:gap-1000 lg:px-8"
       >
         <div className="flex flex-col gap-600">
         <HeadingReveal
@@ -98,7 +98,7 @@ export default function Careers() {
           section's height too. Stacked below md, real 2-up at md+. */}
       <section
         id="culture"
-        className="mt-1000 flex flex-col gap-600 lg:gap-1000 px-2 lg:px-8 md:mt-3000 md:flex-row"
+        className="mt-1000 flex flex-col gap-600 px-2 md:mt-3000 md:flex-row lg:gap-1000 lg:px-8"
       >
         <div className="flex flex-col gap-600 md:basis-[50%]">
           <HeadingReveal

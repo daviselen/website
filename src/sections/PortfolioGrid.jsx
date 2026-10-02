@@ -299,7 +299,7 @@ export default function PortfolioGrid() {
         <HeadingReveal
           as="h2"
           text={`Fresh Out \nof the Box`}
-          className="mb-600 lg:mb-1000 font-display text-6xl uppercase leading-none md:text-8xl lg:text-display-h3"
+          className="mb-600 font-display text-6xl uppercase leading-none md:text-8xl lg:mb-1000 lg:text-display-h3"
         />
       </div>
 
@@ -323,7 +323,7 @@ export default function PortfolioGrid() {
             padded track cannot wrap seamlessly. */}
         <div
           ref={trackRef}
-          className={`flex flex-col lg:flex-row lg:flex-nowrap gap-y-2 gap-x-8 ${animated ? "" : "px-2 lg:px-8"}`}
+          className={`flex flex-col gap-x-8 gap-y-2 lg:flex-row lg:flex-nowrap ${animated ? "" : "px-2 lg:px-8"}`}
           style={{ willChange: "transform" }}
         >
           {Array.from({ length: copies }, (_, copy) =>

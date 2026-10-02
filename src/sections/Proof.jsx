@@ -43,7 +43,7 @@ export default function Proof() {
     <section
       ref={gridRef}
       id="proof"
-      className="grid gap-800 lg:gap-8 px-2 lg:px-8 pb-0 pt-800 lg:pt-3000 md:grid-cols-3"
+      className="grid gap-800 px-2 pb-0 pt-800 md:grid-cols-3 lg:gap-8 lg:px-8 lg:pt-3000"
     >
       {stats.map((s) => (
         <Card key={s.heading} {...s} size="small" parallax="true" />

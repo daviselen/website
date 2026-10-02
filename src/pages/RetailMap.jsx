@@ -242,7 +242,7 @@ export default function RetailMap({ className = "mx-2 lg:mx-8" }) {
            this error box was rendering with none of its intended color.
            Same hex values as Tailwind's default red-50/200/700, as
            arbitrary literals so they don't depend on that scale. */
-        <div className="bg-[#7f1005] border-[#c83726] text-[#fff2f0] mx-2 lg:mx-8 rounded-md border p-6">
+        <div className="mx-2 rounded-md border border-[#c83726] bg-[#7f1005] p-6 text-[#fff2f0] lg:mx-8">
           <h3 className="mb-1 text-lg font-semibold">Map Configuration Error</h3>
           <p className="text-sm">
             Mapbox token is missing. Please configure <code>VITE_MAPBOX_TOKEN</code> in your environment variables.

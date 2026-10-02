@@ -105,9 +105,9 @@ export default function Footer() {
     <footer
       ref={footerRef}
       id="footer"
-      className="mx-2 lg:mx-8 border-y-2 border-neutral-0 py-800 lg:py-20 pb-1000 lg:pb-40"
+      className="mx-2 border-y-2 border-neutral-0 py-800 pb-1000 lg:mx-8 lg:py-20 lg:pb-40"
     >
-      <div className="flex flex-col gap-800 lg:gap-16 md:flex-row md:justify-between">
+      <div className="flex flex-col gap-800 md:flex-row md:justify-between lg:gap-16">
         <div className="flex flex-1 flex-col gap-12">
           {/* data-left-reveal index 0 — document order supplies what
               custom={0} used to. */}
@@ -135,7 +135,7 @@ export default function Footer() {
               transform: "translateZ(0)",
             }}
           >
-          <div className="flex flex-col gap-4 lg:gap-6 font-narrow text-2xl font-light uppercase leading-8">
+          <div className="flex flex-col gap-4 font-narrow text-2xl font-light uppercase leading-8 lg:gap-6">
             <a
               href="mailto:contact@daviselen.com"
               itemProp="email"
@@ -192,7 +192,7 @@ export default function Footer() {
             describes) — it was fixed even at the mobile text-4xl (36px)
             size, which blew the gap between city names out of proportion.
             Scaled at the same ratio: 36 * 2.03 ≈ 73px. */}
-        <ul className="flex flex-1 flex-col gap-4 lg:gap-12 font-display text-4xl uppercase leading-[73px] md:text-[64px] md:leading-[130px]">
+        <ul className="flex flex-1 flex-col gap-4 font-display text-4xl uppercase leading-[73px] md:text-[64px] md:leading-[130px] lg:gap-12">
           {/* Each office city as its own nested Place item (itemProp
               "location" is repeatable on Organization), rather than plain
               text — real office locations, not invented. */}

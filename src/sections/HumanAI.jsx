@@ -240,7 +240,7 @@ export default function HumanAI() {
     <section
       id="human-ai"
       ref={containerRef}
-      className="relative mx-2 lg:mx-8 mt-1000 lg:mt-3000 overflow-hidden rounded-md bg-surface-alt px-200 py-500 text-neutral-0 sm:px-800 md:px-1000 xl:px-1200 2xl:p-1000"
+      className="relative mx-2 mt-1000 overflow-hidden rounded-md bg-surface-alt px-200 py-500 text-neutral-0 sm:px-800 md:px-1000 lg:mx-8 lg:mt-3000 xl:px-1200 2xl:p-1000"
     >
       {/* Parallax CSS Grid Layer. `.bg` was a plain classname doing double
           duty as a JS query hook (eslint's tailwindcss plugin flags any
@@ -258,7 +258,7 @@ export default function HumanAI() {
       />
 
       <div className=" relative z-10 lg:flex lg:items-center lg:justify-between lg:gap-16">
-        <div className="lg:max-w-2xl lg:min-w-0">
+        <div className="lg:min-w-0 lg:max-w-2xl">
           {/* data-item-reveal index 0 — document order supplies the delay,
               exactly as it does for the Footer's cities. */}
           <div
