@@ -60,6 +60,7 @@ export default {
       // these named keys for new work; a follow-up pass could migrate the
       // rest if full 1:1 traceability matters more than the churn.
       spacing: {
+        25: "2px",
         50: "4px",
         100: "8px",
         200: "16px",
@@ -120,12 +121,10 @@ export default {
       backgroundImage: {
         // Rotating gradient for the Contact form field focus state. Uses
         // conic-gradient from --shine-angle (defined via @property in
-        // index.css) and cycles through primary.300 (#a4de02 — "DE Brand
-        // Green"), cyan (#00C3FF — "LET ROBOTS DO THE WORK" accent), and
-        // red (#E85746 — confirmed current Figma value, not DESIGN.md's
-        // stale #D71602). Repeated at the end to create a seamless loop.
+        // index.css) and cycles through shades of DE Brand Green: bright
+        // lime #a4de02, medium #68bb59, dark forest #1e5631, and back.
         "shine-gradient":
-          "conic-gradient(from var(--shine-angle), #a4de02, #00C3FF, #E85746, #a4de02)",
+          "conic-gradient(from var(--shine-angle), #a4de02, #68bb59, #1e5631, #a4de02)",
       },
       fontFamily: {
         // Knockout isn't one family with a weight axis — Hoefler&Co ships
