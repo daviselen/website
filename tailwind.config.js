@@ -102,9 +102,30 @@ export default {
           "0%, 100%": { transform: "scaleY(0.3)" },
           "50%": { transform: "scaleY(1)" },
         },
+        // Rotating shine-border animation for Contact form fields. Animates
+        // the --shine-angle custom property through 360 degrees, driving a
+        // conic-gradient that rotates around the field border. The gradient
+        // cycles through the three brand accent colors (primary green, cyan,
+        // red) as specified in DESIGN.md as "used together exactly once."
+        shine: {
+          to: { "--shine-angle": "360deg" },
+        },
       },
       animation: {
         waveform: "waveform 0.6s ease-in-out infinite",
+        // 4s smooth rotation respects motion-safe pseudo-class for reduced
+        // motion (defined in Field.jsx via Tailwind's built-in variant)
+        shine: "shine 4s linear infinite",
+      },
+      backgroundImage: {
+        // Rotating gradient for the Contact form field focus state. Uses
+        // conic-gradient from --shine-angle (defined via @property in
+        // index.css) and cycles through primary.300 (#a4de02 — "DE Brand
+        // Green"), cyan (#00C3FF — "LET ROBOTS DO THE WORK" accent), and
+        // red (#E85746 — confirmed current Figma value, not DESIGN.md's
+        // stale #D71602). Repeated at the end to create a seamless loop.
+        "shine-gradient":
+          "conic-gradient(from var(--shine-angle), #a4de02, #00C3FF, #E85746, #a4de02)",
       },
       fontFamily: {
         // Knockout isn't one family with a weight axis — Hoefler&Co ships

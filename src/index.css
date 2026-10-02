@@ -92,6 +92,20 @@ body {
   color: #ffffff;
 }
 
+/* Register --shine-angle custom property for smooth animation of the
+   Contact form field focus border. The conic-gradient background-image
+   in tailwind.config.js uses this to rotate the three brand accent
+   colors (primary green / cyan / red) around the field on focus.
+   Without @property registration, browsers snap between keyframe values
+   instead of interpolating smoothly; older browsers without @property
+   support degrade gracefully to a static gradient.
+   https://developer.mozilla.org/en-US/docs/Web/CSS/@property */
+@property --shine-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
 /* get_design_context's reference code had `[text-box-edge:cap_alphabetic]
    [text-box-trim:trim-both]` on nearly every text node — that's Figma's
    own text-box measurement (cap-height to baseline, no ascender/descender

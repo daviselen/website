@@ -5,13 +5,15 @@ import StyledInput from './Input'
 export default function StyledField({type, label, name, children, gap = "100"}) {
     const gapClass = gap === "0" ? "gap-0" : "gap-100";
     return (
-        <Field className={`flex flex-col ${gapClass} bg-neutral-1000 rounded-md px-300 py-200 focus-within:ring-2 focus-within:ring-inset focus-within:ring-surface-primary-default`}>
-            {children ?? (
-                <>
-                    <StyledLabel>{label}</StyledLabel>
-                    <StyledInput type={type} name={name} />
-                </>
-            )}
-        </Field>
+        <div className="rounded-md p-50 focus-within:bg-shine-gradient focus-within:animate-shine">
+            <Field className={`flex flex-col ${gapClass} rounded-md bg-neutral-1000 px-300 py-200`}>
+                {children ?? (
+                    <>
+                        <StyledLabel>{label}</StyledLabel>
+                        <StyledInput type={type} name={name} />
+                    </>
+                )}
+            </Field>
+        </div>
     )
 }
