@@ -1,168 +1,229 @@
-import { useRef, useState } from "react";
-import { gsap, useGSAP, REVEAL_DURATION, EASE_REVEAL, EASE_OUT } from "../animation";
+import { useRef } from "react";
+import { gsap, useGSAP } from "../animation";
 
-// The row grows to 640px at Figma's 1856px reference viewport (see
-// HumanAI.jsx's px/1856 vw convention) — 640 / 1856 = 34.4828vw. Clamped with
-// a floor so the row stays legible below that reference width; 34.4828vw
-// alone would shrink to ~128px on a phone.
-const EXPANDED_HEIGHT = "clamp(400px, 34.4828vw, 640px)";
+// Ported from Codrops' Rapid Image Hover Menu (menuItem.js): a per-frame lerp
+// toward the cursor, with tilt and brightness driven by horizontal speed.
+const LERP = 0.08;
+const MAX_DISTANCE = 100;
+const MAX_ROTATION = 60;
+const MAX_BRIGHTNESS = 4;
+const MASK_DURATION = 0.2;
+const MASK_EASE = "sine.out";
+const SUB_DURATION = 0.3;
+const SUB_OFFSET = "-1rem";
 
-/**
- * A single Contact-page office row: name + address at rest, expanding on
- * hover (or tap, on devices without real hover) into a background photo with
- * a bigger, mask-revealed name.
- *
- * The timeline is built once and replayed with play()/reverse() — never
- * rebuilt per interaction — so repeated hovering can't leak GSAP instances.
- * aria-expanded mirrors the animation direction for assistive tech; GSAP
- * stays the only thing driving the actual visuals.
- */
-export default function LocationRow({ name, address, image, imageAlt = "" }) {
+const { clamp, mapRange, interpolate } = gsap.utils;
+
+function canAnimate() {
+  return (
+    window.matchMedia("(hover: hover) and (pointer: fine)").matches &&
+    !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
+}
+
+export default function LocationRow({ name, address, image }) {
+  const itemRef = useRef(null);
   const rowRef = useRef(null);
-  const labelRef = useRef(null);
-  const labelHoverRef = useRef(null);
-  const bgRef = useRef(null);
-  const tlRef = useRef(null);
-  const hoverTimeoutRef = useRef(null);
-  const [expanded, setExpanded] = useState(false);
+  const revealRef = useRef(null);
+  const innerRef = useRef(null);
+  const imageRef = useRef(null);
+  const addressRef = useRef(null);
+  const tickRef = useRef(null);
+  const pointer = useRef({ x: 0, y: 0 });
+  const motion = useRef({
+    prevX: 0,
+    dirX: 1,
+    tx: 0,
+    ty: 0,
+    rotation: 0,
+    brightness: 1,
+  });
+  const animated = canAnimate();
+
+  const centerOnPointer = () => {
+    const row = rowRef.current.getBoundingClientRect();
+    const reveal = revealRef.current;
+    return {
+      x: pointer.current.x - row.left - reveal.offsetWidth / 2,
+      y: pointer.current.y - row.top - reveal.offsetHeight / 2,
+    };
+  };
 
   useGSAP(
     () => {
-      tlRef.current = gsap.timeline({
-        paused: true,
-        onReverseComplete: () => gsap.set(rowRef.current, { height: "auto" }),
-      });
+      if (!animated) return;
 
-      tlRef.current
-        .to(labelRef.current, { opacity: 0, duration: 0.25, ease: EASE_OUT })
-        .to(
-          rowRef.current,
-          { height: EXPANDED_HEIGHT, duration: 0.5, ease: EASE_OUT },
-          "<0.1"
-        )
-        .fromTo(
-          bgRef.current,
-          { clipPath: "inset(0% 0 100% 0)" },
-          { clipPath: "inset(0% 0 0% 0)", duration: 0.4, ease: EASE_OUT },
-          "<0.25"
-        )
-        .fromTo(
-          labelHoverRef.current,
-          { clipPath: "inset(100% 0 0 0)" },
-          { clipPath: "inset(0% 0 0 0)", duration: REVEAL_DURATION, ease: EASE_REVEAL },
-          ">-0.1"
-        );
+      // Plain opacity, not autoAlpha: autoAlpha also toggles `visibility`,
+      // which would pull the address out of the accessibility tree at rest.
+      // Screen reader users should always have it; this animation is a
+      // visual-only affordance for sighted mouse/keyboard users.
+      gsap.set(addressRef.current, { opacity: 0, x: SUB_OFFSET });
+
+      const tick = () => {
+        const m = motion.current;
+        const dx = pointer.current.x - m.prevX;
+        const distance = clamp(0, MAX_DISTANCE, Math.abs(dx));
+        if (dx !== 0) m.dirX = Math.sign(dx);
+        m.prevX = pointer.current.x;
+
+        const target = centerOnPointer();
+        const rotation = mapRange(0, MAX_DISTANCE, 0, m.dirX * MAX_ROTATION, distance);
+        const brightness = mapRange(0, MAX_DISTANCE, 1, MAX_BRIGHTNESS, distance);
+
+        m.tx = interpolate(m.tx, target.x, LERP);
+        m.ty = interpolate(m.ty, target.y, LERP);
+        m.rotation = interpolate(m.rotation, rotation, LERP);
+        m.brightness = interpolate(m.brightness, brightness, LERP);
+
+        gsap.set(revealRef.current, {
+          x: m.tx,
+          y: m.ty,
+          rotation: m.rotation,
+          filter: `brightness(${m.brightness})`,
+        });
+      };
+      tickRef.current = tick;
+
+      return () => gsap.ticker.remove(tick);
     },
-    { scope: rowRef, dependencies: [] }
+    { scope: rowRef, dependencies: [animated] }
   );
 
-  const open = () => {
-    setExpanded(true);
-    tlRef.current?.play();
+  const handleEnter = (e) => {
+    const m = motion.current;
+    if (e.movementX) m.dirX = Math.sign(e.movementX);
+    pointer.current = { x: e.clientX, y: e.clientY };
+
+    // Snap (no lerp) on entry so the image appears under the cursor instead
+    // of gliding in from wherever it was left on the last hover.
+    const start = centerOnPointer();
+    Object.assign(m, { prevX: e.clientX, tx: start.x, ty: start.y, rotation: 0, brightness: 1 });
+
+    gsap.killTweensOf([innerRef.current, imageRef.current]);
+    gsap.set(revealRef.current, {
+      x: m.tx,
+      y: m.ty,
+      rotation: 0,
+      filter: "brightness(1)",
+      opacity: 1,
+    });
+    // Above the row it just left (still z 1 while its image masks out), so
+    // the incoming image is never covered by an adjacent row.
+    gsap.set(itemRef.current, { zIndex: 2 });
+
+    const from = m.dirX > 0 ? -100 : 100;
+    gsap.fromTo(innerRef.current, { xPercent: from }, { xPercent: 0, duration: MASK_DURATION, ease: MASK_EASE });
+    gsap.fromTo(imageRef.current, { xPercent: -from }, { xPercent: 0, duration: MASK_DURATION, ease: MASK_EASE });
+    gsap.to(addressRef.current, { opacity: 1, x: 0, duration: SUB_DURATION, ease: "power1.out", overwrite: true });
+
+    gsap.ticker.remove(tickRef.current);
+    gsap.ticker.add(tickRef.current);
   };
 
-  const close = () => {
-    if (hoverTimeoutRef.current) {
-      clearTimeout(hoverTimeoutRef.current);
-      hoverTimeoutRef.current = null;
-    }
-    setExpanded(false);
-    tlRef.current?.reverse();
+  const handleLeave = (e) => {
+    const m = motion.current;
+    if (e.movementX) m.dirX = Math.sign(e.movementX);
+    gsap.ticker.remove(tickRef.current);
+
+    gsap.killTweensOf([innerRef.current, imageRef.current]);
+    gsap.set(itemRef.current, { zIndex: 1 });
+
+    const to = m.dirX > 0 ? 100 : -100;
+    gsap.to(innerRef.current, { xPercent: to, duration: MASK_DURATION, ease: MASK_EASE });
+    gsap.to(imageRef.current, {
+      xPercent: -to,
+      duration: MASK_DURATION,
+      ease: MASK_EASE,
+      onComplete: () => {
+        gsap.set(revealRef.current, { opacity: 0 });
+        gsap.set(itemRef.current, { zIndex: "auto" });
+      },
+    });
+    gsap.to(addressRef.current, { opacity: 0, x: SUB_OFFSET, duration: SUB_DURATION, ease: "power1.out", overwrite: true });
   };
 
-  const handleHoverEnter = () => {
-    if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
-    hoverTimeoutRef.current = setTimeout(open, 100);
+  const handleMove = (e) => {
+    pointer.current = { x: e.clientX, y: e.clientY };
   };
 
-  // Devices without real hover (touch) don't get mouseenter/mouseleave in any
-  // useful sense, so tapping toggles the same timeline instead. Devices with
-  // real hover ignore onClick entirely — otherwise a mouse click right after
-  // a hover-triggered open would immediately reverse it.
-  const hasHover =
-    typeof window !== "undefined" &&
-    window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  // Keyboard-only path: no pointer position to chase, so the image is just
+  // centered in the row rather than snapped to a cursor. This is what lets a
+  // sighted user tabbing without a mouse — and VoiceOver/NVDA users, since
+  // the address itself is never visibility-hidden (see the opacity note
+  // above) — reach the same content a mouse hover reveals.
+  const handleFocus = () => {
+    const m = motion.current;
+    const row = rowRef.current.getBoundingClientRect();
+    const reveal = revealRef.current;
+    const center = {
+      x: row.width / 2 - reveal.offsetWidth / 2,
+      y: row.height / 2 - reveal.offsetHeight / 2,
+    };
+    Object.assign(m, { tx: center.x, ty: center.y, rotation: 0, brightness: 1 });
 
-  const handleClick = () => {
-    if (hasHover) return;
-    if (expanded) close();
-    else open();
+    gsap.killTweensOf([innerRef.current, imageRef.current]);
+    gsap.set(revealRef.current, {
+      x: center.x,
+      y: center.y,
+      rotation: 0,
+      filter: "brightness(1)",
+      opacity: 1,
+    });
+    gsap.set(itemRef.current, { zIndex: 2 });
+
+    gsap.fromTo(innerRef.current, { xPercent: -100 }, { xPercent: 0, duration: MASK_DURATION, ease: MASK_EASE });
+    gsap.fromTo(imageRef.current, { xPercent: 100 }, { xPercent: 0, duration: MASK_DURATION, ease: MASK_EASE });
+    gsap.to(addressRef.current, { opacity: 1, x: 0, duration: SUB_DURATION, ease: "power1.out", overwrite: true });
+  };
+
+  const handleBlur = () => {
+    gsap.killTweensOf([innerRef.current, imageRef.current]);
+    gsap.set(itemRef.current, { zIndex: 1 });
+
+    gsap.to(innerRef.current, { xPercent: -100, duration: MASK_DURATION, ease: MASK_EASE });
+    gsap.to(imageRef.current, {
+      xPercent: 100,
+      duration: MASK_DURATION,
+      ease: MASK_EASE,
+      onComplete: () => {
+        gsap.set(revealRef.current, { opacity: 0 });
+        gsap.set(itemRef.current, { zIndex: "auto" });
+      },
+    });
+    gsap.to(addressRef.current, { opacity: 0, x: SUB_OFFSET, duration: SUB_DURATION, ease: "power1.out", overwrite: true });
   };
 
   return (
-    <li className="border-t-2 border-neutral-0 last:border-b-2">
+    <li ref={itemRef} className="relative border-t-2 border-neutral-0 last:border-b-2">
       <button
         type="button"
         ref={rowRef}
-        aria-expanded={expanded}
-        className="relative grid w-full items-center gap-y-400 overflow-hidden px-500 pb-800 pt-600 text-left"
+        className="group relative isolate grid w-full cursor-default items-center gap-y-400 px-500 pb-800 pt-600 text-left"
         style={{ gridTemplateColumns: "1fr 33.333%" }}
-        onMouseEnter={hasHover ? handleHoverEnter : undefined}
-        onMouseLeave={hasHover ? close : undefined}
-        onFocus={open}
-        onBlur={close}
-        onClick={handleClick}
+        onMouseEnter={animated ? handleEnter : undefined}
+        onMouseLeave={animated ? handleLeave : undefined}
+        onMouseMove={animated ? handleMove : undefined}
+        onFocus={animated ? handleFocus : undefined}
+        onBlur={animated ? handleBlur : undefined}
       >
-        {/*
-          Sized to the final expanded height (not the row's own animating
-          height) and vertically centered with top-1/2/-translate-y-1/2, so
-          growth just un-clips a static, already-centered image via the
-          button's overflow-hidden. Tying this to the row's live height
-          instead would make `cover` continuously rescale the image every
-          frame — it'd zoom as much as it revealed, reading as the image
-          sticking to one edge rather than growing from center.
-        */}
         <div
-          ref={bgRef}
+          ref={revealRef}
           aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 bg-cover bg-center"
-          style={{
-            backgroundImage: `url(${image})`,
-            height: EXPANDED_HEIGHT,
-            clipPath: "inset(0% 0 100% 0)",
-          }}
-          role="img"
-          {...(imageAlt ? { "aria-label": imageAlt } : {})}
+          className="pointer-events-none absolute left-0 top-0 -z-10 h-80 w-60 opacity-0"
         >
-          <div
-            className="absolute inset-0"
-            style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
-          />
-          {/*
-            A square (not circular/elliptical) vignette: the gradient box's
-            height matches its own width via aspect-square, then that square
-            is centered vertically and let overflow past the row's top/bottom
-            edges, so only its middle band — where the "circle" reads as a
-            square-ish center-to-edge falloff — is ever visible.
-          */}
-          <div
-            className="absolute left-0 top-1/2 aspect-square w-full -translate-y-1/2"
-            style={{
-              background:
-                "radial-gradient(circle, transparent 0%, rgba(0, 0, 0, 0.8) 100%)",
-            }}
-          />
+          <div ref={innerRef} className="size-full overflow-hidden">
+            <div
+              ref={imageRef}
+              className="size-full bg-cover bg-center"
+              style={{ backgroundImage: `url(${image})` }}
+            />
+          </div>
         </div>
-        <h3 ref={labelRef} className="relative self-end font-display text-display-h5 uppercase">
+        <h3 className="self-end font-display text-display-h5 uppercase transition-colors duration-300 group-hover:text-primary-300 group-focus:text-primary-300">
           {name}
         </h3>
-        <span className="relative self-start text-pre-title">{address}</span>
-        <span
-          ref={labelHoverRef}
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-x-500 bottom-800 font-display text-display-h2 uppercase"
-          style={{
-            clipPath: "inset(100% 0 0 0)",
-            // clip-path's reference box includes padding, so this bleed —
-            // same value HeadingReveal's LINE_BLEED uses — moves the clip
-            // boundary past round letterforms' (S, O, G) optical overshoot
-            // instead of shaving it at this tight display line-height's
-            // exact box edge. Absolutely positioned, so the extra box size
-            // doesn't push any other layout around.
-            paddingBlock: "0.075em",
-          }}
-        >
-          {name}
+        <span ref={addressRef} className="self-start text-pre-title">
+          {address}
         </span>
       </button>
     </li>
