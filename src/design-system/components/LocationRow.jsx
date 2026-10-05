@@ -218,9 +218,7 @@ export default function LocationRow({ name, address, phone, image }) {
         <h3 className="self-end font-display text-display-h5 uppercase transition-colors duration-300 group-hover:text-primary-300 group-focus:text-primary-300">
           {name}
         </h3>
-        <span ref={addressRef} className="self-start text-pre-title">
-          {address}
-        </span>
+        <span className="self-start px-600 text-pre-title">{address}</span>
       </button>
     </li>
   );
