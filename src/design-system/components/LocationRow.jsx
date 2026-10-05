@@ -53,11 +53,7 @@ export default function LocationRow({ name, address, phone, image }) {
     () => {
       if (!animated) return;
 
-      // Plain opacity, not autoAlpha: autoAlpha also toggles `visibility`,
-      // which would pull the address out of the accessibility tree at rest.
-      // Screen reader users should always have it; this animation is a
-      // visual-only affordance for sighted mouse/keyboard users.
-      gsap.set(addressRef.current, { opacity: 0, x: SUB_OFFSET });
+      if (phoneRef.current) gsap.set(phoneRef.current, { opacity: 0, x: SUB_OFFSET });
 
       const tick = () => {
         const m = motion.current;
@@ -114,7 +110,7 @@ export default function LocationRow({ name, address, phone, image }) {
     const from = m.dirX > 0 ? -100 : 100;
     gsap.fromTo(innerRef.current, { xPercent: from }, { xPercent: 0, duration: MASK_DURATION, ease: MASK_EASE });
     gsap.fromTo(imageRef.current, { xPercent: -from }, { xPercent: 0, duration: MASK_DURATION, ease: MASK_EASE });
-    gsap.to(addressRef.current, { opacity: 1, x: 0, duration: SUB_DURATION, ease: "power1.out", overwrite: true });
+    if (phoneRef.current) gsap.to(phoneRef.current, { opacity: 1, x: 0, duration: SUB_DURATION, ease: "power1.out", overwrite: true });
 
     gsap.ticker.remove(tickRef.current);
     gsap.ticker.add(tickRef.current);
@@ -139,7 +135,7 @@ export default function LocationRow({ name, address, phone, image }) {
         gsap.set(itemRef.current, { zIndex: "auto" });
       },
     });
-    gsap.to(addressRef.current, { opacity: 0, x: SUB_OFFSET, duration: SUB_DURATION, ease: "power1.out", overwrite: true });
+    if (phoneRef.current) gsap.to(phoneRef.current, { opacity: 0, x: SUB_OFFSET, duration: SUB_DURATION, ease: "power1.out", overwrite: true });
   };
 
   const handleMove = (e) => {
@@ -173,7 +169,7 @@ export default function LocationRow({ name, address, phone, image }) {
 
     gsap.fromTo(innerRef.current, { xPercent: -100 }, { xPercent: 0, duration: MASK_DURATION, ease: MASK_EASE });
     gsap.fromTo(imageRef.current, { xPercent: 100 }, { xPercent: 0, duration: MASK_DURATION, ease: MASK_EASE });
-    gsap.to(addressRef.current, { opacity: 1, x: 0, duration: SUB_DURATION, ease: "power1.out", overwrite: true });
+    if (phoneRef.current) gsap.to(phoneRef.current, { opacity: 1, x: 0, duration: SUB_DURATION, ease: "power1.out", overwrite: true });
   };
 
   const handleBlur = () => {
@@ -190,7 +186,7 @@ export default function LocationRow({ name, address, phone, image }) {
         gsap.set(itemRef.current, { zIndex: "auto" });
       },
     });
-    gsap.to(addressRef.current, { opacity: 0, x: SUB_OFFSET, duration: SUB_DURATION, ease: "power1.out", overwrite: true });
+    if (phoneRef.current) gsap.to(phoneRef.current, { opacity: 0, x: SUB_OFFSET, duration: SUB_DURATION, ease: "power1.out", overwrite: true });
   };
 
   return (
