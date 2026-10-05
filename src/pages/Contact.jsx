@@ -21,6 +21,7 @@ const locations = [
       </>
     ),
     phone: "(213) 688-7000",
+    mapUrl: "https://maps.google.com/?q=865+S.+Figueroa+St.+Suite+1200+Los+Angeles+CA+90017",
     image: "/images/contact-location-los-angeles.jpg",
   },
   {
@@ -34,6 +35,7 @@ const locations = [
       </>
     ),
     phone: "(213) 688-7000",
+    mapUrl: "https://maps.google.com/?q=7750+El+Camino+Real+Suite+2F+Carlsbad+CA+92009",
     image: "/images/contact-location-san-diego.jpg",
   },
   {
@@ -47,6 +49,7 @@ const locations = [
       </>
     ),
     phone: "(213) 688-7000",
+    mapUrl: "https://maps.google.com/?q=2033+6th+Ave.+Suite+600+Seattle+WA+98121",
     image: "/images/contact-location-seattle.jpg",
   },
   {
@@ -60,6 +63,7 @@ const locations = [
       </>
     ),
     phone: "(213) 688-7000",
+    mapUrl: "https://maps.google.com/?q=1801+California+St.+%232400+Denver+CO+80202",
     image: "/images/contact-location-denver.jpg",
   },
   {
@@ -73,6 +77,7 @@ const locations = [
       </>
     ),
     phone: "(213) 688-7000",
+    mapUrl: "https://maps.google.com/?q=4201+Wilson+Blvd.+Floor+3+Arlington+VA+22203",
     image: "/images/contact-location-arlington.png",
   },
   {
@@ -86,6 +91,7 @@ const locations = [
       </>
     ),
     phone: "(213) 688-7000",
+    mapUrl: "https://maps.google.com/?q=420+Nichols+Rd.+Kansas+City+MO+64112",
     image: "/images/contact-location-kansas-city.jpg",
   },
 ];
