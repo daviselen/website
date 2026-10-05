@@ -20,8 +20,7 @@ const locations = [
         Los Angeles, CA 90017
       </>
     ),
-    // Placeholder — swap for the real per-location export once it's pulled
-    // from Figma.
+    phone: "213-688-7000",
     image: "/images/contact-location-los-angeles.jpg",
   },
   {
@@ -34,9 +33,8 @@ const locations = [
         Carlsbad, CA 92009
       </>
     ),
-    // Placeholder — swap for the real per-location export once it's pulled
-    // from Figma.
-    image: "/images/contact-location-los-angeles.jpg",
+    phone: "760-000-0000",
+    image: "/images/contact-location-san-diego.jpg",
   },
   {
     id: 3,
@@ -48,9 +46,8 @@ const locations = [
         Seattle, WA 98121
       </>
     ),
-    // Placeholder — swap for the real per-location export once it's pulled
-    // from Figma.
-    image: "/images/contact-location-los-angeles.jpg",
+    phone: "206-000-0000",
+    image: "/images/contact-location-seattle.jpg",
   },
   {
     id: 4,
@@ -62,9 +59,8 @@ const locations = [
         Denver, CO 80202
       </>
     ),
-    // Placeholder — swap for the real per-location export once it's pulled
-    // from Figma.
-    image: "/images/contact-location-los-angeles.jpg",
+    phone: "720-000-0000",
+    image: "/images/contact-location-denver.jpg",
   },
   {
     id: 5,
@@ -76,9 +72,8 @@ const locations = [
         Arlington, VA 22203
       </>
     ),
-    // Placeholder — swap for the real per-location export once it's pulled
-    // from Figma.
-    image: "/images/contact-location-los-angeles.jpg",
+    phone: "703-000-0000",
+    image: "/images/contact-location-arlington.png",
   },
   {
     id: 6,
@@ -90,9 +85,8 @@ const locations = [
         Kansas City, MO 64112
       </>
     ),
-    // Placeholder — swap for the real per-location export once it's pulled
-    // from Figma.
-    image: "/images/contact-location-los-angeles.jpg",
+    phone: "816-000-0000",
+    image: "/images/contact-location-kansas-city.jpg",
   },
 ];
 
