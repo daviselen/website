@@ -42,7 +42,7 @@ function StyledCombobox({options, placeholder}) {
             {filteredOptions.map((option) => (
                 <ComboboxOption 
                     key={option.id} 
-                    value={option.name} 
+                    value={option}
                     className="data-hover:bg-neutral-700 data-focus:bg-neutral-800 data-focus:text-white flex w-full cursor-pointer items-center justify-between px-4 py-2.5 text-body-hiai transition-colors hover:bg-neutral-700 focus:bg-neutral-800 focus:text-white"
                 >
                     {option.name}
