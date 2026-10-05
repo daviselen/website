@@ -80,18 +80,30 @@ export default function MastheadVideo({
         // so it collapses to the UA default 150px unless this div is given
         // an explicit size of its own to resolve the iframe's size-full
         // against.
-        className="size-full"
-        style={{ clipPath: "inset(0% 0% 100% 0%)" }}
+        className="relative size-full"
+        style={{
+          clipPath: "inset(0% 0% 100% 0%)",
+          containerType: "size",
+        }}
       >
         <iframe
           ref={videoRef}
           src={`https://player.vimeo.com/video/${vimeoId}?background=1&autoplay=1&loop=1&muted=1`}
-          // background mode is Vimeo's purpose-built silent/looping/autoplay/
-          // chromeless embed — it also auto-scales and crops to cover
-          // whatever size this iframe is, the same job object-cover did for
-          // the plain <video>.
-          className="block size-full rounded-md"
-          style={{ transform: "scale(1.04) translateY(-1%)" }}
+          // background mode is Vimeo's silent/looping/autoplay/chromeless
+          // embed, but it letterboxes the 16:9 video inside the iframe
+          // rather than covering it. So the iframe itself is sized to cover
+          // the mask (cqw/cqh = the mask's size via containerType above) and
+          // centered, with the clip-path/overflow cropping the excess.
+          className="absolute block rounded-md"
+          style={{
+            width: "max(100cqw, calc(100cqh * 16 / 9))",
+            height: "max(100cqh, calc(100cqw * 9 / 16))",
+            // Centered via offsets, not translate(-50%): useMediaReveal's
+            // GSAP tween owns this element's transform (scale/yPercent).
+            left: "calc((100cqw - max(100cqw, 100cqh * 16 / 9)) / 2)",
+            top: "calc((100cqh - max(100cqh, 100cqw * 9 / 16)) / 2)",
+            transform: "scale(1.04) translateY(-1%)",
+          }}
           allow="autoplay; fullscreen"
           title="Davis Elen masthead video"
         />
