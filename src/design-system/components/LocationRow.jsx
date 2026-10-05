@@ -21,13 +21,13 @@ function canAnimate() {
   );
 }
 
-export default function LocationRow({ name, address, image }) {
+export default function LocationRow({ name, address, phone, image }) {
   const itemRef = useRef(null);
   const rowRef = useRef(null);
   const revealRef = useRef(null);
   const innerRef = useRef(null);
   const imageRef = useRef(null);
-  const addressRef = useRef(null);
+  const phoneRef = useRef(null);
   const tickRef = useRef(null);
   const pointer = useRef({ x: 0, y: 0 });
   const motion = useRef({
