@@ -20,7 +20,7 @@ const locations = [
         Los Angeles, CA 90017
       </>
     ),
-    phone: "213-688-7000",
+    phone: "(213) 688-7000",
     image: "/images/contact-location-los-angeles.jpg",
   },
   {
@@ -33,7 +33,7 @@ const locations = [
         Carlsbad, CA 92009
       </>
     ),
-    phone: "760-000-0000",
+    phone: "(213) 688-7000",
     image: "/images/contact-location-san-diego.jpg",
   },
   {
@@ -46,7 +46,7 @@ const locations = [
         Seattle, WA 98121
       </>
     ),
-    phone: "206-000-0000",
+    phone: "(213) 688-7000",
     image: "/images/contact-location-seattle.jpg",
   },
   {
@@ -59,7 +59,7 @@ const locations = [
         Denver, CO 80202
       </>
     ),
-    phone: "720-000-0000",
+    phone: "(213) 688-7000",
     image: "/images/contact-location-denver.jpg",
   },
   {
@@ -72,7 +72,7 @@ const locations = [
         Arlington, VA 22203
       </>
     ),
-    phone: "703-000-0000",
+    phone: "(213) 688-7000",
     image: "/images/contact-location-arlington.png",
   },
   {
@@ -85,7 +85,7 @@ const locations = [
         Kansas City, MO 64112
       </>
     ),
-    phone: "816-000-0000",
+    phone: "(213) 688-7000",
     image: "/images/contact-location-kansas-city.jpg",
   },
 ];
