@@ -4,9 +4,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./components/Layout";
 import "./index.css";
 import HomePage from "./pages/HomePage";
-import About from "./pages/About";
-import Careers from "./pages/Careers";
-import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
 const RetailMap = lazy(() => import("./pages/RetailMap"));
@@ -14,6 +11,12 @@ const RetailMap = lazy(() => import("./pages/RetailMap"));
 // article's full JSON body (src/data/news/, eager-globbed), none of which
 // is needed until someone actually visits a /news/:slug page.
 const NewsArticlePage = lazy(() => import("./pages/NewsArticle"));
+
+// Route-split via the router's own `lazy`, not React.lazy + Suspense: the
+// router resolves the chunk before committing the navigation, so Layout's
+// cover/reveal transition never swaps in a Suspense fallback mid-fade. Only
+// the home page ships in the entry bundle.
+const lazyPage = (module) => ({ Component: module.default });
 
 // Define routes using createBrowserRouter
 const router = createBrowserRouter([
@@ -27,7 +30,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/about",
-        element: <About />,
+        lazy: () => import("./pages/About").then(lazyPage),
       },
       {
         path: "/about/retail-map",
@@ -48,11 +51,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/careers",
-        element: <Careers />,
+        lazy: () => import("./pages/Careers").then(lazyPage),
       },
       {
         path: "/contact",
-        element: <Contact />,
+        lazy: () => import("./pages/Contact").then(lazyPage),
       },
       {
         path: "/news/:slug",

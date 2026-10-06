@@ -40,3 +40,17 @@ export function imageFormatsEnabled(env = process.env) {
 
   return env.VERCEL_ENV === "production";
 }
+
+/**
+ * Widths, in pixels, of the downscaled copies written beside each full-size
+ * derivative (`foo.jpg` -> `foo-640.avif`, `foo-960.webp`, …). <Picture>
+ * lists them as a `srcset` so phones stop downloading desktop-sized files.
+ *
+ * Every width is written for every source, even one narrower than the width
+ * (it is encoded at its own size, never upscaled). That is what lets the
+ * client build the srcset without knowing any image's dimensions: no
+ * candidate it advertises can 404.
+ *
+ * Shared with vite.config.js for the same reason as imageFormatsEnabled().
+ */
+export const RESPONSIVE_WIDTHS = [640, 960, 1280, 1920];
