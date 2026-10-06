@@ -73,7 +73,7 @@ export default function Masthead() {
         {/* text-pre-title (32px) had no mobile/tablet step, unlike the
             headline right above it. */}
         <TextReveal
-          text="Everybody brags about thinking outside the box. Nobody sells anything out there. The box is the budget, the deadline, the strategy somebody already signed off on. That's the room we work in, and it's the room we're good in. Outside the box is a vacation. Inside the box is the job."
+          text="Our creative philosophy is built on the belief that great ideas must live in the real world. Rather than separating creativity from investment, we connect them, allowing ideas, media, and resources to work together as one intelligent system. The result is creativity that is clear in its purpose, responsive to change, disciplined in its investment and powerful enough to move both people and business."
           as="p"
           delay={0.75}
           fromOpacity={0.01}
