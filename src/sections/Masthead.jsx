@@ -32,6 +32,7 @@ export default function Masthead() {
       <MastheadVideo
         vimeoId="1231831922"
         ready={copyRevealed}
+        poster="/images/masthead.jpg"
         className="h-[calc((100vw-83px)*0.5625)] max-h-[1044px] w-full rounded-md object-cover"
       />
       {/* Image → headline gap is Scale/2300 = 184px (11.5rem) — this was
@@ -75,6 +76,7 @@ export default function Masthead() {
           text="Everybody brags about thinking outside the box. Nobody sells anything out there. The box is the budget, the deadline, the strategy somebody already signed off on. That's the room we work in, and it's the room we're good in. Outside the box is a vacation. Inside the box is the job."
           as="p"
           delay={0.75}
+          fromOpacity={0.01}
           onComplete={() => setCopyRevealed(true)}
           className="mt-600 font-narrow text-lg font-light md:text-xl lg:mt-700 lg:pr-[calc(100%-1086px)] lg:text-pre-title"
         />

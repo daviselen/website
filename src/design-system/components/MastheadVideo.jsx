@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useMediaReveal } from "../animation";
+import Picture from "./Picture";
 
 // Per-bar animation-delay/-duration (seconds) so the 4 bars don't move in
 // lockstep off the single shared `waveform` keyframe (tailwind.config.js) —
@@ -32,6 +33,11 @@ export default function MastheadVideo({
   // to it. A fixed delay was not enough — on PageSpeed's slower hardware the
   // reveal finishes later and the video landed ahead of it anyway.
   ready = true,
+  // Still image shown from first paint and faded under the video once it
+  // loads. It is the masthead's LCP candidate: the iframe can never be one,
+  // and without a poster nothing large paints until the video arrives.
+  poster,
+  posterAlt = "",
 }) {
   const [loaded, setLoaded] = useState(false);
   // The embed URL, withheld until the page has painted (see the deferral
@@ -40,12 +46,22 @@ export default function MastheadVideo({
   const [muted, setMuted] = useState(true);
   const wrapRef = useRef(null);
   const maskRef = useRef(null);
+  const mediaRef = useRef(null);
   const videoRef = useRef(null);
+  const posterRef = useRef(null);
   const playerRef = useRef(null);
+  const [posterLoaded, setPosterLoaded] = useState(false);
 
-  // First-frame-gated, not scroll-gated — the player's "loaded" event below
-  // flips `loaded`, which is what gates the shared reveal below.
-  useMediaReveal(wrapRef, { maskRef, mediaRef: videoRef, loaded });
+  // A cached poster can finish before React attaches onLoad.
+  useEffect(() => {
+    if (posterRef.current?.complete) setPosterLoaded(true);
+  }, []);
+
+  // First-frame-gated, not scroll-gated. With a poster the wipe plays as soon
+  // as the poster has decoded, so the masthead paints early; the video then
+  // fades in over it. Without one it waits for the player's "loaded" event.
+  const revealReady = poster ? posterLoaded : loaded;
+  useMediaReveal(wrapRef, { maskRef, mediaRef, loaded: revealReady });
 
   // Defer the embed until window load AND `ready` (or EMBED_FALLBACK_MS
   // after load, whichever is first). The video is ~4.5 MB plus ~350 KB of
@@ -125,7 +141,7 @@ export default function MastheadVideo({
       ref={wrapRef}
       className={`relative overflow-hidden ${className}`}
       style={{
-        visibility: loaded ? "visible" : "hidden",
+        visibility: revealReady ? "visible" : "hidden",
       }}
     >
       <div
@@ -143,6 +159,26 @@ export default function MastheadVideo({
           containerType: "size",
         }}
       >
+        {/* Media layer: useMediaReveal's GSAP tween owns this element's
+            transform (scale/yPercent), so poster and video zoom together. */}
+        <div
+          ref={mediaRef}
+          className="absolute inset-0"
+          style={{ transform: "scale(1.04) translateY(-1%)" }}
+        >
+        {poster && (
+          <Picture
+            ref={posterRef}
+            src={poster}
+            alt={posterAlt}
+            loading="eager"
+            // Lowercase: React 18 has no fetchPriority prop and passes
+            // unknown lowercase attributes through untouched.
+            fetchpriority="high"
+            onLoad={() => setPosterLoaded(true)}
+            className="absolute inset-0 size-full rounded-md object-cover"
+          />
+        )}
         <iframe
           ref={videoRef}
           src={src ?? undefined}
@@ -155,15 +191,17 @@ export default function MastheadVideo({
           style={{
             width: "max(100cqw, calc(100cqh * 16 / 9))",
             height: "max(100cqh, calc(100cqw * 9 / 16))",
-            // Centered via offsets, not translate(-50%): useMediaReveal's
-            // GSAP tween owns this element's transform (scale/yPercent).
             left: "calc((100cqw - max(100cqw, 100cqh * 16 / 9)) / 2)",
             top: "calc((100cqh - max(100cqh, 100cqw * 9 / 16)) / 2)",
-            transform: "scale(1.04) translateY(-1%)",
+            // Over a poster, fade in once the first frame is ready instead
+            // of popping in.
+            opacity: poster && !loaded ? 0 : 1,
+            transition: "opacity 0.6s ease-out",
           }}
           allow="autoplay; fullscreen"
           title="Davis Elen masthead video"
         />
+        </div>
       </div>
       <button
         type="button"

@@ -18,6 +18,12 @@ export default function ParagraphReveal({
   playOnMount = false,
   // Called once the last word has finished revealing.
   onComplete,
+  // Starting opacity of each word. Chrome never counts an opacity:0 element
+  // as painted, so a reveal from 0 sets LCP to whenever the words finish
+  // arriving. A barely-there value (0.01 is invisible on any background)
+  // lets above-the-fold copy count as painted on the first frame without
+  // changing how the reveal looks. Leave at 0 below the fold.
+  fromOpacity = 0,
 }) {
   // Plain intrinsic tag now — motion[as] existed only to attach variants.
   // GSAP animates the real DOM node through a ref, so no wrapper component
@@ -85,7 +91,9 @@ export default function ParagraphReveal({
       itemProp={itemProp}
       className={className}
       // Hidden state inline so it's right on first paint, before GSAP runs.
-      style={{ opacity: 0 }}
+      // With fromOpacity the words carry the hidden state on their own; a
+      // parent at 0 would hide them from LCP regardless.
+      style={{ opacity: fromOpacity > 0 ? 1 : 0 }}
     >
       {words.map((word, i) => (
         <span
@@ -93,7 +101,7 @@ export default function ParagraphReveal({
           data-reveal-word=""
           className="inline-block"
           style={{
-            opacity: 0,
+            opacity: fromOpacity,
             transform: "translateY(8px)",
             filter: "blur(4px)",
           }}
