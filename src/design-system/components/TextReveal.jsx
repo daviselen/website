@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import { gsap, useGSAP, EASE_OUT } from "../animation";
 
 export default function ParagraphReveal({
@@ -16,11 +16,19 @@ export default function ParagraphReveal({
   // initialised at that point can't reliably determine which side of its
   // boundaries we're on and ends up in the reversed (hidden) state.
   playOnMount = false,
+  // Called once the last word has finished revealing.
+  onComplete,
 }) {
   // Plain intrinsic tag now — motion[as] existed only to attach variants.
   // GSAP animates the real DOM node through a ref, so no wrapper component
   // is needed and `as` can be any element name without a motion equivalent.
   const rootRef = useRef(null);
+  // Ref, not a useGSAP dependency: an inline callback is a new function every
+  // render, and rebuilding the timeline for that would restart the reveal.
+  const onCompleteRef = useRef(onComplete);
+  useLayoutEffect(() => {
+    onCompleteRef.current = onComplete;
+  });
 
   // Split into words while preserving normal paragraph flow
   const words = text.split(" ");
@@ -34,6 +42,7 @@ export default function ParagraphReveal({
       // delayChildren + staggerChildren did implicitly.
       const tl = gsap.timeline({
         delay,
+        onComplete: () => onCompleteRef.current?.(),
         ...(playOnMount
           ? // No ScrollTrigger — play straight through on mount.
             {}

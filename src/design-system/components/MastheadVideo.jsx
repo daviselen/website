@@ -19,14 +19,19 @@ const BARS = [
 // background mode: Vimeo's silent, looping, autoplaying, chromeless embed.
 const EMBED_PARAMS = "background=1&autoplay=1&loop=1&muted=1";
 
-// How long after window load to start the embed. Long enough to clear the
-// masthead copy's reveal (TextReveal delay 0.75 s + stagger), which is the
-// LCP element on mobile.
-const EMBED_DELAY_MS = 2000;
+// Upper bound on how long the embed waits for `ready` after window load, so
+// the video still arrives if the caller's signal never fires.
+const EMBED_FALLBACK_MS = 6000;
 
 export default function MastheadVideo({
   vimeoId,
   className = "",
+  // Hold the embed until this is true (and the window has loaded). Masthead
+  // passes "the copy below has finished revealing": that copy is the LCP
+  // element on mobile, and PageSpeed bills every byte downloaded before LCP
+  // to it. A fixed delay was not enough — on PageSpeed's slower hardware the
+  // reveal finishes later and the video landed ahead of it anyway.
+  ready = true,
 }) {
   const [loaded, setLoaded] = useState(false);
   // The embed URL, withheld until the page has painted (see the deferral
@@ -42,27 +47,33 @@ export default function MastheadVideo({
   // flips `loaded`, which is what gates the shared reveal below.
   useMediaReveal(wrapRef, { maskRef, mediaRef: videoRef, loaded });
 
-  // Defer the embed until after window load plus EMBED_DELAY_MS. The video
-  // is ~4.5 MB plus ~350 KB of player JS; started eagerly, all of it lands
-  // before the masthead copy finishes revealing, and Lighthouse's simulated
-  // throttling bills every one of those bytes to LCP (9.7 s on mobile). The
-  // wrapper stays hidden until "loaded" either way, so nothing visible
-  // changes except that the video arrives a beat later.
+  // Defer the embed until window load AND `ready` (or EMBED_FALLBACK_MS
+  // after load, whichever is first). The video is ~4.5 MB plus ~350 KB of
+  // player JS; started eagerly, all of it lands before the LCP paint (9.7 s
+  // on mobile). The wrapper stays hidden until "loaded" either way, so
+  // nothing visible changes except that the video arrives a beat later.
+  const [windowLoaded, setWindowLoaded] = useState(
+    () => document.readyState === "complete"
+  );
+
   useEffect(() => {
-    let timer;
-    const start = () => {
-      timer = window.setTimeout(
-        () => setSrc(`https://player.vimeo.com/video/${vimeoId}?${EMBED_PARAMS}`),
-        EMBED_DELAY_MS
-      );
-    };
-    if (document.readyState === "complete") start();
-    else window.addEventListener("load", start, { once: true });
-    return () => {
-      window.removeEventListener("load", start);
-      window.clearTimeout(timer);
-    };
-  }, [vimeoId]);
+    if (windowLoaded) return undefined;
+    const onLoad = () => setWindowLoaded(true);
+    window.addEventListener("load", onLoad, { once: true });
+    return () => window.removeEventListener("load", onLoad);
+  }, [windowLoaded]);
+
+  useEffect(() => {
+    if (!windowLoaded || src) return undefined;
+    const embed = () =>
+      setSrc(`https://player.vimeo.com/video/${vimeoId}?${EMBED_PARAMS}`);
+    if (ready) {
+      embed();
+      return undefined;
+    }
+    const timer = window.setTimeout(embed, EMBED_FALLBACK_MS);
+    return () => window.clearTimeout(timer);
+  }, [windowLoaded, ready, src, vimeoId]);
 
   useEffect(() => {
     // Player throws on an iframe that isn't a Vimeo embed yet.

@@ -6,8 +6,9 @@
     <title>Davis Elen</title>
     <!-- Preload only the two most-used cuts: Knockout Featherwt is the
          Masthead's 360px above-the-fold headline (the first real content
-         paint), and Ringside Book is the site-wide default body weight
-         (HomePage.jsx sets font-narrow font-light on the root wrapper). Every other
+         paint), and Ringside Light is the site-wide default body weight
+         (Layout.jsx sets font-narrow font-light on the page wrapper) and the
+         Masthead lede, which is the mobile LCP element. Every other
          cut/weight is used further down the page or more narrowly, so
          preloading them too would just compete with these two for
          bandwidth on first load instead of helping. -->
@@ -20,7 +21,7 @@
     />
     <link
       rel="preload"
-      href="/fonts/RingsideNarrow-Book.woff2"
+      href="/fonts/RingsideNarrow-Light.woff2"
       as="font"
       type="font/woff2"
       crossorigin
