@@ -2,6 +2,7 @@ import { memo, useRef, useState } from "react";
 import { gsap, useGSAP, REVEAL_DURATION, EASE_REVEAL } from "../animation";
 import HorizontalReveal from "../components/HorizontalReveal";
 import TextReveal from "../components/TextReveal";
+import Picture from "./Picture";
 
 // 1. The top-to-bottom mask reveal. Inset 100% from the bottom hides the
 // card; animating to 0% wipes it in downward.
@@ -122,7 +123,8 @@ function ProjectCard({ title, client, src, videoSrc, startColumn2, decorative = 
               <source src={videoSrc.mp4} type="video/mp4" />
             </video>
         ) : (
-          <img
+          // Picture serves the generated AVIF/WebP siblings, lazily.
+          <Picture
             src={src}
             alt={decorative ? "" : `${title} — ${client} project photo`}
             itemProp={decorative ? undefined : "image"}

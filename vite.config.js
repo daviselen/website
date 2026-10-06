@@ -1,7 +1,10 @@
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 
-import { imageFormatsEnabled } from "./scripts/image-formats.mjs";
+import {
+  imageFormatsEnabled,
+  RESPONSIVE_WIDTHS,
+} from "./scripts/image-formats.mjs";
 
 // Whether scripts/generate-image-formats.mjs will have written .avif/.webp
 // siblings for this build. Baked in as a literal so <Picture> and the
@@ -15,5 +18,6 @@ export default defineConfig({
   plugins: [react()],
   define: {
     "import.meta.env.VITE_IMAGE_DERIVATIVES": JSON.stringify(IMAGE_DERIVATIVES),
+    "import.meta.env.VITE_IMAGE_WIDTHS": JSON.stringify(RESPONSIVE_WIDTHS),
   },
 });

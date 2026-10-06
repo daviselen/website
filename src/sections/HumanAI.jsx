@@ -93,7 +93,7 @@
 // justification for hiding specifically at `md`, and re-checking it
 // wasn't part of what was asked; simplified to "visible, stacked below
 // the text" until it goes side-by-side at `lg`.
-import { lazy, Suspense, useRef } from "react";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import {
   gsap,
   useGSAP,
@@ -104,7 +104,9 @@ import {
 
 // lottie-web is a full animation runtime, and this animation doesn't start
 // until it's scrolled into view (the once:true ScrollTrigger below) — no
-// reason to ship it in the main bundle for every visitor.
+// reason to ship it in the main bundle for every visitor. It is also only
+// mounted once the section nears the viewport (see nearView below), so
+// neither the chunk nor human-ai-wheel.json competes with the first paint.
 const HumanAIAnimation = lazy(() => import("../components/HumanAIAnimation.jsx"));
 
 const MOVEMENT_FACTOR = 0.25;
@@ -180,8 +182,26 @@ const REVEAL_START_STYLE = {
   transform: `translateY(${REVEAL_OFFSET_Y})`,
 };
 
+// How far ahead of the viewport to start fetching the animation — enough
+// that it is loaded by the time its once:true ScrollTrigger fires.
+const PRELOAD_MARGIN = "800px 0px";
+
 export default function HumanAI() {
   const containerRef = useRef(null);
+  const [nearView, setNearView] = useState(false);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el || nearView) return undefined;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setNearView(true);
+      },
+      { rootMargin: PRELOAD_MARGIN }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [nearView]);
 
   useGSAP(
     () => {
@@ -321,6 +341,8 @@ export default function HumanAI() {
           alt="Unlock your potential. Human Imagination and Artificial Intelligence synergize to eliminate roadblocks and unlock what's possible. Let robots do the work!"
           className="mx-auto mt-16 block w-full max-w-md lg:mx-0 lg:mt-0 lg:w-[39.655vw] lg:max-w-none lg:shrink-0"
         /> */}
+        {/* Placeholder doubles as the not-yet-near-view state, so layout
+            is the same before and after the chunk arrives. */}
         <Suspense
           fallback={
             <div className="mx-auto mt-16 block w-full max-w-md lg:mx-0 lg:mt-0 lg:w-[39.655vw] lg:max-w-none lg:shrink-0">
@@ -328,7 +350,13 @@ export default function HumanAI() {
             </div>
           }
         >
-          <HumanAIAnimation />
+          {nearView ? (
+            <HumanAIAnimation />
+          ) : (
+            <div className="mx-auto mt-16 block w-full max-w-md lg:mx-0 lg:mt-0 lg:w-[39.655vw] lg:max-w-none lg:shrink-0">
+              <div className="min-h-3200 min-w-3200" />
+            </div>
+          )}
         </Suspense>
       </div>
     </section>

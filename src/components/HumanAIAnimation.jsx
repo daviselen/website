@@ -1,5 +1,7 @@
 import { useEffect, useRef } from 'react';
-import lottie from 'lottie-web';
+// SVG-only build: the only renderer used below, at roughly half the size of
+// the full lottie-web bundle.
+import lottie from 'lottie-web/build/player/lottie_light';
 import { gsap } from 'gsap';
 
 export default function LottieGsapAnimation() {

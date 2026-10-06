@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import Player from "@vimeo/player";
 import { useMediaReveal } from "../animation";
 
 // Per-bar animation-delay/-duration (seconds) so the 4 bars don't move in
@@ -17,11 +16,22 @@ const BARS = [
   { delay: 0.08, duration: 0.7 },
 ];
 
+// background mode: Vimeo's silent, looping, autoplaying, chromeless embed.
+const EMBED_PARAMS = "background=1&autoplay=1&loop=1&muted=1";
+
+// How long after window load to start the embed. Long enough to clear the
+// masthead copy's reveal (TextReveal delay 0.75 s + stagger), which is the
+// LCP element on mobile.
+const EMBED_DELAY_MS = 2000;
+
 export default function MastheadVideo({
   vimeoId,
   className = "",
 }) {
   const [loaded, setLoaded] = useState(false);
+  // The embed URL, withheld until the page has painted (see the deferral
+  // effect below). An iframe with no src is inert: no player JS, no video.
+  const [src, setSrc] = useState(null);
   const [muted, setMuted] = useState(true);
   const wrapRef = useRef(null);
   const maskRef = useRef(null);
@@ -32,15 +42,48 @@ export default function MastheadVideo({
   // flips `loaded`, which is what gates the shared reveal below.
   useMediaReveal(wrapRef, { maskRef, mediaRef: videoRef, loaded });
 
+  // Defer the embed until after window load plus EMBED_DELAY_MS. The video
+  // is ~4.5 MB plus ~350 KB of player JS; started eagerly, all of it lands
+  // before the masthead copy finishes revealing, and Lighthouse's simulated
+  // throttling bills every one of those bytes to LCP (9.7 s on mobile). The
+  // wrapper stays hidden until "loaded" either way, so nothing visible
+  // changes except that the video arrives a beat later.
   useEffect(() => {
+    let timer;
+    const start = () => {
+      timer = window.setTimeout(
+        () => setSrc(`https://player.vimeo.com/video/${vimeoId}?${EMBED_PARAMS}`),
+        EMBED_DELAY_MS
+      );
+    };
+    if (document.readyState === "complete") start();
+    else window.addEventListener("load", start, { once: true });
+    return () => {
+      window.removeEventListener("load", start);
+      window.clearTimeout(timer);
+    };
+  }, [vimeoId]);
+
+  useEffect(() => {
+    // Player throws on an iframe that isn't a Vimeo embed yet.
+    if (!src) return undefined;
+
     // Binding Player to the <iframe> already in the JSX below — not handing
     // it an empty container to embed into — on purpose. The container form
     // does an async oEmbed fetch and injects its own iframe, which is its
     // own StrictMode race; see the destroy() note below for the one this
     // iframe form still has to dodge.
-    const player = new Player(videoRef.current);
-    playerRef.current = player;
-    player.on("loaded", () => setLoaded(true));
+    //
+    // The SDK is imported here, not at module scope, so it stays out of the
+    // entry bundle along with the embed it drives.
+    let player;
+    let cancelled = false;
+    import("@vimeo/player").then(({ default: Player }) => {
+      if (cancelled) return;
+      player = new Player(videoRef.current);
+      playerRef.current = player;
+      player.on("loaded", () => setLoaded(true));
+    });
 
     // Not player.destroy(): it unconditionally removes the iframe from the
     // DOM with a raw removeChild, iframe-owning-container case or not. This
@@ -50,8 +93,11 @@ export default function MastheadVideo({
     // back, so the video silently never comes back. Unbinding the listener
     // is all cleanup needs to do; React removes the iframe itself when this
     // component actually unmounts.
-    return () => player.off("loaded");
-  }, [vimeoId]);
+    return () => {
+      cancelled = true;
+      player?.off("loaded");
+    };
+  }, [src]);
 
   const toggleMuted = () => {
     const next = !muted;
@@ -88,7 +134,7 @@ export default function MastheadVideo({
       >
         <iframe
           ref={videoRef}
-          src={`https://player.vimeo.com/video/${vimeoId}?background=1&autoplay=1&loop=1&muted=1`}
+          src={src ?? undefined}
           // background mode is Vimeo's silent/looping/autoplay/chromeless
           // embed, but it letterboxes the 16:9 video inside the iframe
           // rather than covering it. So the iframe itself is sized to cover

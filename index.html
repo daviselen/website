@@ -25,6 +25,12 @@
       type="font/woff2"
       crossorigin
     />
+    <!-- Masthead video origins. The embed itself is deferred until after
+         window load (MastheadVideo.jsx), so warming these connections early
+         is what keeps the swap from poster to video quick. -->
+    <link rel="preconnect" href="https://player.vimeo.com" />
+    <link rel="preconnect" href="https://f.vimeocdn.com" />
+    <link rel="preconnect" href="https://vod-adaptive-ak.vimeocdn.com" />
   </head>
   <body>
     <div id="root"></div>

@@ -8,7 +8,9 @@
  * See the spec in `.zencoder/.../spec.md` §2 for the options that were rejected.
  *
  * Output lands next to the source (`foo.jpg` -> `foo.avif` + `foo.webp`) so the
- * `<Picture>` component can derive both paths by a plain extension swap. The
+ * `<Picture>` component can derive both paths by a plain extension swap. Each
+ * format also gets one downscaled copy per RESPONSIVE_WIDTHS entry
+ * (`foo-640.avif`, …) for <Picture>'s srcset. The
  * derivatives are gitignored and rebuilt by the `predev` / `prebuild` hooks.
  *
  * Production only: encoding ~every raster on the site is the slowest part of a
@@ -30,7 +32,7 @@ import { fileURLToPath } from "node:url";
 
 import sharp from "sharp";
 
-import { imageFormatsEnabled } from "./image-formats.mjs";
+import { imageFormatsEnabled, RESPONSIVE_WIDTHS } from "./image-formats.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const SOURCE_DIR = join(ROOT, "public", "images");
@@ -51,7 +53,7 @@ const SOURCE_EXTENSIONS = new Set([".jpg", ".jpeg", ".png"]);
 const MANIFEST_VERSION = 1;
 
 /** How many images to encode at once. sharp releases the event loop per job. */
-const CONCURRENCY = 4;
+const CONCURRENCY = 8;
 
 const FORCE = process.argv.slice(2).includes("--force");
 
@@ -99,7 +101,12 @@ async function readManifest() {
 }
 
 function currentSettings() {
-  return { maxWidth: MAX_WIDTH, avif: AVIF_OPTIONS, webp: WEBP_OPTIONS };
+  return {
+    maxWidth: MAX_WIDTH,
+    widths: RESPONSIVE_WIDTHS,
+    avif: AVIF_OPTIONS,
+    webp: WEBP_OPTIONS,
+  };
 }
 
 async function fileExists(path) {
@@ -119,7 +126,20 @@ async function fileExists(path) {
 
 function derivativePaths(sourcePath) {
   const base = sourcePath.slice(0, -extname(sourcePath).length);
-  return { avif: `${base}.avif`, webp: `${base}.webp` };
+  return {
+    avif: `${base}.avif`,
+    webp: `${base}.webp`,
+    variants: RESPONSIVE_WIDTHS.map((width) => ({
+      width,
+      avif: `${base}-${width}.avif`,
+      webp: `${base}-${width}.webp`,
+    })),
+  };
+}
+
+/** Every file derivativePaths() names, full-size and downscaled. */
+function allDerivativeFiles({ avif, webp, variants }) {
+  return [avif, webp, ...variants.flatMap((v) => [v.avif, v.webp])];
 }
 
 /**
@@ -132,15 +152,15 @@ async function processSource(sourcePath, cachedFiles) {
   const stats = await stat(sourcePath);
   const buffer = await readFile(sourcePath);
   const hash = createHash("sha256").update(buffer).digest("hex");
-  const { avif, webp } = derivativePaths(sourcePath);
+  const paths = derivativePaths(sourcePath);
+  const { avif, webp, variants } = paths;
 
   const cached = cachedFiles?.[key];
   if (cached?.hash === hash) {
-    const [hasAvif, hasWebp] = await Promise.all([
-      fileExists(avif),
-      fileExists(webp),
-    ]);
-    if (hasAvif && hasWebp) {
+    const present = await Promise.all(
+      allDerivativeFiles(paths).map(fileExists),
+    );
+    if (present.every(Boolean)) {
       return {
         key,
         skipped: true,
@@ -171,6 +191,24 @@ async function processSource(sourcePath, cachedFiles) {
   ]);
 
   await Promise.all([writeFile(avif, avifBuffer), writeFile(webp, webpBuffer)]);
+
+  // Downscaled copies. withoutEnlargement: a source narrower than `width` is
+  // written at its own size, so the file still exists for the srcset.
+  await Promise.all(
+    variants.map(async (variant) => {
+      const resized = pipeline
+        .clone()
+        .resize({ width: variant.width, withoutEnlargement: true });
+      const [variantAvif, variantWebp] = await Promise.all([
+        resized.clone().avif(AVIF_OPTIONS).toBuffer(),
+        resized.clone().webp(WEBP_OPTIONS).toBuffer(),
+      ]);
+      await Promise.all([
+        writeFile(variant.avif, variantAvif),
+        writeFile(variant.webp, variantWebp),
+      ]);
+    }),
+  );
 
   return {
     key,
@@ -213,8 +251,7 @@ async function pruneOrphans(cachedFiles, liveKeys) {
   let removed = 0;
   for (const key of Object.keys(cachedFiles)) {
     if (liveKeys.has(key)) continue;
-    const { avif, webp } = derivativePaths(join(ROOT, key));
-    for (const path of [avif, webp]) {
+    for (const path of allDerivativeFiles(derivativePaths(join(ROOT, key)))) {
       try {
         await unlink(path);
         removed += 1;
@@ -328,14 +365,27 @@ async function main() {
   if (FORCE) console.log("[images] --force: ignoring the manifest.");
 
   const failures = [];
+  let processed = 0;
   const settled = await mapWithConcurrency(
     sources,
     CONCURRENCY,
     async (sourcePath) => {
       try {
-        return await processSource(sourcePath, cachedFiles);
+        const result = await processSource(sourcePath, cachedFiles);
+        processed += 1;
+        const progress = `[${processed}/${sources.length}]`;
+        const status = result.skipped ? "✓ cached" : "✓ encoded";
+        console.log(
+          `${progress} ${status} ${relative(ROOT, sourcePath)} ` +
+            `(${formatBytes(result.sourceBytes)} → ${formatBytes(result.avifBytes)})`,
+        );
+        return result;
       } catch (error) {
         failures.push({ key: relative(ROOT, sourcePath), error });
+        processed += 1;
+        console.log(
+          `[${processed}/${sources.length}] ✗ failed ${relative(ROOT, sourcePath)}: ${error.message}`,
+        );
         return null;
       }
     },

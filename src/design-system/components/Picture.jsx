@@ -17,6 +17,12 @@ import { forwardRef } from "react";
 // advertising .avif we never encoded means no image renders at all.
 const DERIVATIVES_ENABLED = import.meta.env.VITE_IMAGE_DERIVATIVES === true;
 
+// Widths of the downscaled copies the generator writes beside each
+// derivative (RESPONSIVE_WIDTHS in scripts/image-formats.mjs, baked in by
+// vite.config.js). Every width exists for every image, so the srcset below
+// never names a file that 404s.
+const WIDTHS = import.meta.env.VITE_IMAGE_WIDTHS ?? [];
+
 // Only the extensions the generator actually emits siblings for. Anything
 // else (.svg, .gif, an already-optimised .webp) takes the pass-through path
 // below rather than pointing a <source> at a file that would 404.
@@ -46,6 +52,13 @@ function withExtension(src, extension) {
   return `${path.replace(CONVERTED_EXTENSIONS, "")}${extension}${suffix}`;
 }
 
+/** `foo-640.avif 640w, foo-960.avif 960w, …` for one format. */
+function widthSrcSet(src, extension) {
+  return WIDTHS.map(
+    (width) => `${withExtension(src, `-${width}${extension}`)} ${width}w`
+  ).join(", ");
+}
+
 function hasDerivatives(src) {
   if (!DERIVATIVES_ENABLED) return false;
   if (typeof src !== "string" || src === "") return false;
@@ -56,8 +69,28 @@ function hasDerivatives(src) {
   return CONVERTED_EXTENSIONS.test(path);
 }
 
-const Picture = forwardRef(function Picture({ src, alt, ...rest }, ref) {
-  const img = <img ref={ref} src={src} alt={alt} {...rest} />;
+// Lazy by default: every current caller is below the fold (the masthead
+// images go through MastheadImage's own <img>). Eager loads here were ~900 KB
+// of AVIF downloading ahead of the masthead copy, all of which PageSpeed's
+// simulated throttling billed to LCP. Pass loading="eager" for anything that
+// can be the first thing on screen.
+const Picture = forwardRef(function Picture(
+  // sizes: the image's rendered width, for picking a srcset candidate.
+  // Defaults to 100vw — right for the full-bleed mobile layouts PageSpeed
+  // measures; pass something tighter where a desktop layout is narrower.
+  { src, alt, loading = "lazy", decoding = "async", sizes = "100vw", ...rest },
+  ref
+) {
+  const img = (
+    <img
+      ref={ref}
+      src={src}
+      alt={alt}
+      loading={loading}
+      decoding={decoding}
+      {...rest}
+    />
+  );
 
   // Pass-through: no generated siblings exist for this source, so wrapping it
   // in a <picture> would only add a box to the layout for no benefit. This is
@@ -87,12 +120,14 @@ const Picture = forwardRef(function Picture({ src, alt, ...rest }, ref) {
   return (
     <picture className="contents">
       <source
-        srcSet={withExtension(src, ".avif")}
+        srcSet={widthSrcSet(src, ".avif")}
+        sizes={sizes}
         type="image/avif"
         style={HIDDEN_SOURCE}
       />
       <source
-        srcSet={withExtension(src, ".webp")}
+        srcSet={widthSrcSet(src, ".webp")}
+        sizes={sizes}
         type="image/webp"
         style={HIDDEN_SOURCE}
       />
