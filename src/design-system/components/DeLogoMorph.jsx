@@ -318,7 +318,7 @@ export default function DeLogoMorph({ className = "size-16", onComplete }) {
   return (
     <span
       ref={rootRef}
-      className="grid h-10 w-1400 cursor-pointer md:h-16 md:w-2300"
+      className="grid h-600 w-1700 cursor-pointer md:h-800 md:w-2300"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -326,7 +326,7 @@ export default function DeLogoMorph({ className = "size-16", onComplete }) {
         <svg
           ref={svgRef}
           viewBox="0 0 346 132"
-          className="col-start-1 row-start-1 h-10 w-auto justify-self-start text-neutral-0 md:h-16"
+          className="col-start-1 row-start-1 h-600 w-auto justify-self-start text-neutral-0 md:h-16"
           aria-hidden="true"
           focusable="false"
         >

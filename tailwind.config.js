@@ -84,6 +84,7 @@ export default {
         // as fully closed out.
         1400: "112px",
         1600: "128px",
+        1700: "136px",
         1800: "144px",
         2000: "160px",
         2300: "184px",

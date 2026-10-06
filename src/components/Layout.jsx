@@ -199,7 +199,7 @@ export default function PageTransition({ overlayColor = "#000" }) {
         <div id="smooth-wrapper">
           <div id="smooth-content">
             <div
-              className={`min-h-screen bg-surface-default pt-1000 lg:pt-1600 font-narrow font-light text-neutral-0 ${
+              className={`min-h-screen bg-surface-default pt-800 md:pt-1000 lg:pt-1600 font-narrow font-light text-neutral-0 ${
                 bareChrome ? "" : "pb-1000 lg:pb-1800"
               }`}
             >

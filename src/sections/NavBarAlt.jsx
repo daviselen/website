@@ -127,7 +127,7 @@ export default function NavBar({ logoOnly = false }) {
       {/* Every `data-nav-item` below is a flex item of its own container, so
           it is blockified — a bare inline <a> would ignore the intro's
           transform entirely. Keep that true for anything added here. */}
-      <div className="flex flex-1 shrink-0 items-center justify-between py-2 md:py-4">
+      <div className="flex flex-1 shrink-0 items-center justify-between py-0 sm:py-2 md:py-4">
         <Link to="/" data-nav-item="">
           <DeLogoMorph className="size-12 sm:size-14 md:size-16" />
         </Link>

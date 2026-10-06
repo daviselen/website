@@ -137,12 +137,12 @@ function Card({
       </div>
       <div className={`flex flex-col  ${cfg.gapInner}`}>
         <h3
-          className="font-stat text-display-card uppercase leading-none lg:text-display-h6"
+          className="font-stat text-display-card uppercase lg:text-display-h6"
           {...(headingItemProp ? { itemProp: headingItemProp } : {})}
         >
           <HorizontalReveal>{heading}</HorizontalReveal>
         </h3>
-        <p className="font-narrow text-lg font-light leading-relaxed md:text-2xl md:leading-8"><TextReveal text={body}>{body}</TextReveal></p>
+        <p className="font-narrow text-lg font-light leading-[1.33333] md:text-2xl md:leading-8"><TextReveal text={body}>{body}</TextReveal></p>
       </div>
     </div>
   );
