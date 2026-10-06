@@ -69,7 +69,7 @@ export default function HomePage() {
     // pb-1800 (144px = Scale/1800) reproduces trailing space below the
     // page's last element. Verified against the real reference: the
     // "160px spaxer" frame wrapping [cta-block, Footer] has its own
-    // `pb-[var(--scale/1800,144px)]` after Footer — that's genuinely
+    // bottom padding of `Scale/1800` (144px) after Footer — that's genuinely
     // there in the source, not "whatever felt right" — this page was
     // missing it entirely, so the bottom border sat flush against the
     // end of the page with nothing after it.

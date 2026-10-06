@@ -38,7 +38,7 @@ export default function Masthead() {
       {/* Image → headline gap is Scale/2300 = 184px (11.5rem) — this was
           py-16 (64px/4rem) before, read off a stale HP-23 guess instead of
           the real itemSpacing on get_design_context's "section-1" frame
-          (`gap-[var(--scale/2300,184px)]`), which was sitting right there
+          (a gap of `Scale/2300`, 184px), which was sitting right there
           in the reference code. Using the named spacing token (mt-2300)
           instead of a bare mt-[184px] so it's traceable back to Scale/2300.
 
