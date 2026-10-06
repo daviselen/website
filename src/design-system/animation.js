@@ -222,7 +222,7 @@ export function useStaggerReveal(scopeRef, { amount = 0.333 } = {}) {
         scrollTrigger: {
           trigger: scopeRef.current,
           start,
-          end: `bottom-=${threshold} top`,
+          end: "bottom top",
           toggleActions: "play reverse play reverse",
         },
       });
