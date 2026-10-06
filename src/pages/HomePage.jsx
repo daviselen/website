@@ -5,6 +5,7 @@
 // heading and drops the old "DE Tuesdays" card), so SocialPR.jsx is no
 // longer used here — kept in the repo in case a future frame needs it
 // standalone again.
+import { useEffect, useState } from "react";
 import Masthead from "../sections/Masthead.jsx";
 import Proof from "../sections/Proof.jsx";
 import PortfolioGrid from "../sections/PortfolioGrid.jsx";
@@ -13,7 +14,57 @@ import FromInsideOut from "../sections/FromInsideOut.jsx";
 import NewsAwards from "../sections/NewsAwards.jsx";
 import CTABanner from "../sections/CTABanner.jsx";
 
+// Everything below the masthead, in page order. On the first page load these
+// mount one per idle callback instead of in the same render as the masthead:
+// mounting them all at once (plus each one's GSAP/ScrollTrigger setup) was a
+// single ~140ms main-thread task, which is most of PageSpeed's Total Blocking
+// Time. Split up, each mount is its own short task. ScrollTrigger positions
+// stay correct without help — animation.js re-measures whenever the body's
+// height changes, which every one of these mounts does.
+const BELOW_FOLD_SECTIONS = [
+  Proof,
+  PortfolioGrid,
+  HumanAI,
+  FromInsideOut,
+  NewsAwards,
+  CTABanner,
+];
+
+// Upper bound on how long each step waits for an idle period, so a busy main
+// thread still gets the whole page within a few hundred ms.
+const IDLE_TIMEOUT_MS = 200;
+
+// Only the very first home render is staged. Returning to Home through the
+// page transition renders everything at once, as before, so the transition's
+// scroll handling always sees the full page height.
+let stagedOnce = false;
+
+function useStagedCount(total) {
+  const [count, setCount] = useState(() => (stagedOnce ? total : 0));
+
+  useEffect(() => {
+    if (count >= total) {
+      stagedOnce = true;
+      return undefined;
+    }
+    // Safari has no requestIdleCallback; a 1ms timeout still yields to
+    // paint and input between steps.
+    if (typeof window.requestIdleCallback === "function") {
+      const id = window.requestIdleCallback(() => setCount((c) => c + 1), {
+        timeout: IDLE_TIMEOUT_MS,
+      });
+      return () => window.cancelIdleCallback(id);
+    }
+    const id = window.setTimeout(() => setCount((c) => c + 1), 1);
+    return () => window.clearTimeout(id);
+  }, [count, total]);
+
+  return count;
+}
+
 export default function HomePage() {
+  const mounted = useStagedCount(BELOW_FOLD_SECTIONS.length);
+
   return (
     // pb-1800 (144px = Scale/1800) reproduces trailing space below the
     // page's last element. Verified against the real reference: the
@@ -45,12 +96,17 @@ export default function HomePage() {
       <meta itemProp="url" content="https://daviselen.com" />
 
       <Masthead />
-      <Proof />
-      <PortfolioGrid />
-      <HumanAI />
-      <FromInsideOut />
-      <NewsAwards />
-      <CTABanner />
+      {/* Index keys are stable here: the list only ever grows at the end. */}
+      {BELOW_FOLD_SECTIONS.slice(0, mounted).map((Section, i) => (
+        <Section key={i} />
+      ))}
+      {/* Holds the Footer (rendered by Layout, right after this page) at
+          least a screen below the masthead while sections are still
+          mounting. Without it the Footer starts in view and gets pushed
+          down by every mount — a layout shift PageSpeed scored at 0.24. */}
+      {mounted < BELOW_FOLD_SECTIONS.length && (
+        <div className="h-screen" aria-hidden="true" />
+      )}
     </div>
   );
 }
