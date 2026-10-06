@@ -36,7 +36,7 @@
     "lottie-web": "^5.13.0",
     "mapbox-gl": "^3.29.0",
     "react": "^19.3.0",
-    "react-dom": "^18.3.1",
+    "react-dom": "^19.3.0",
     "react-router-dom": "^7.18.2"
   },
   "devDependencies": {
