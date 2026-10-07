@@ -21,7 +21,7 @@ function canAnimate() {
   );
 }
 
-export default function LocationRow({ name, address, phone, image }) {
+export default function LocationRow({ name, address, phone, mapUrl, image }) {
   const itemRef = useRef(null);
   const rowRef = useRef(null);
   const revealRef = useRef(null);
@@ -172,7 +172,8 @@ export default function LocationRow({ name, address, phone, image }) {
     if (phoneRef.current) gsap.to(phoneRef.current, { opacity: 1, x: 0, duration: SUB_DURATION, ease: "power1.out", overwrite: true });
   };
 
-  const handleBlur = () => {
+  const handleBlur = (e) => {
+    if (e.currentTarget.contains(e.relatedTarget)) return;
     gsap.killTweensOf([innerRef.current, imageRef.current]);
     gsap.set(itemRef.current, { zIndex: 1 });
 
@@ -191,11 +192,9 @@ export default function LocationRow({ name, address, phone, image }) {
 
   return (
     <li ref={itemRef} className="relative border-t-2 border-neutral-0 last:border-b-2">
-      <button
-        type="button"
+      <div
         ref={rowRef}
-        className="group relative isolate grid w-full cursor-default items-center gap-y-400 px-500 pb-800 pt-600 text-left"
-        style={{ gridTemplateColumns: "1fr 33.333%" }}
+        className="group relative isolate flex flex-col xl:grid xl:grid-cols-[1fr_1fr_34%] w-full items-center gap-y-300 xl:gap-y-400 px-300 xl:px-500 pb-500 xl:pb-800 pt-400 xl:pt-600"
         onMouseEnter={animated ? handleEnter : undefined}
         onMouseLeave={animated ? handleLeave : undefined}
         onMouseMove={animated ? handleMove : undefined}
@@ -205,7 +204,7 @@ export default function LocationRow({ name, address, phone, image }) {
         <div
           ref={revealRef}
           aria-hidden="true"
-          className="pointer-events-none absolute left-0 top-0 -z-10 aspect-video w-80 opacity-0"
+          className="pointer-events-none absolute left-0 top-0 -z-10 aspect-video w-[25%] opacity-0"
         >
           <div ref={innerRef} className="size-full overflow-hidden">
             <div
@@ -215,11 +214,34 @@ export default function LocationRow({ name, address, phone, image }) {
             />
           </div>
         </div>
-        <h3 className="self-end font-display text-display-h5 uppercase transition-colors duration-300 group-hover:text-primary-300 group-focus:text-primary-300">
+        <h3 className="self-start xl:self-end font-display text-display-h5 uppercase transition-colors duration-300 group-hover:text-primary-300 group-focus-within:text-primary-300">
           {name}
         </h3>
-        <span className="self-start px-600 text-pre-title">{address}</span>
-      </button>
+        {phone && (
+          <div className="flex flex-col gap-200 self-start xl:self-center xl:px-600">
+            <a
+              ref={phoneRef}
+              href={`tel:${phone}`}
+              className="shrink-0 text-pre-title hover:underline"
+            >
+              {phone}
+            </a>
+          </div>
+        )}
+        {mapUrl && (
+          <a
+            href={mapUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="self-start xl:px-600 text-pre-title hover:underline"
+          >
+            {address}
+          </a>
+        )}
+        {!mapUrl && (
+          <span className="self-start xl:px-600 text-pre-title">{address}</span>
+        )}
+      </div>
     </li>
   );
 }
