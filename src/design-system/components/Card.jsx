@@ -40,6 +40,7 @@
 // class text present in a source file — an interpolated `aspect-[${x}]` /
 // `gap-[${n}]` wouldn't reliably get picked up.
 import { memo, useRef } from "react";
+import { Link } from "react-router-dom";
 import { gsap, useGSAP } from "../animation";
 import HorizontalReveal from "./HorizontalReveal";
 import Picture from "./Picture";
@@ -82,6 +83,7 @@ function Card({
   headingItemProp,
   imageItemProp,
   parallax = false,
+  slug,
 }) {
   const cfg = sizeConfig[size] ?? sizeConfig.default;
   const aspectKey = aspect ?? cfg.aspect;
@@ -119,7 +121,7 @@ function Card({
   // it renders VISIBLE by default, so the sections that never animated it
   // (FromInsideOut) are unaffected. The animating parents set the hidden
   // start state themselves via fromTo.
-  return (
+  const cardContent = (
     <div
     ref={containerRef}
       className={`flex flex-col ${parallax ? "will-change-transform" : ""} ${cfg.gap}`}
@@ -146,6 +148,16 @@ function Card({
       </div>
     </div>
   );
+
+  if (slug) {
+    return (
+      <Link to={`/news/${slug}`} className="no-underline hover:opacity-80 transition-opacity">
+        {cardContent}
+      </Link>
+    );
+  }
+
+  return cardContent;
 }
 
 export default memo(Card);
