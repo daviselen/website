@@ -183,16 +183,17 @@ export default function MastheadVideo({
           ref={videoRef}
           src={src ?? undefined}
           // background mode is Vimeo's silent/looping/autoplay/chromeless
-          // embed, but it letterboxes the 16:9 video inside the iframe
-          // rather than covering it. So the iframe itself is sized to cover
-          // the mask (cqw/cqh = the mask's size via containerType above) and
+          // embed, but it letterboxes the video inside the iframe rather
+          // than covering it. The iframe is sized to cover the mask
+          // (cqw/cqh = the mask's size via containerType above) and
           // centered, with the clip-path/overflow cropping the excess.
+          // Ratio matches the video source: 1920×812.
           className="absolute block rounded-md"
           style={{
-            width: "max(100cqw, calc(100cqh * 16 / 9))",
-            height: "max(100cqh, calc(100cqw * 9 / 16))",
-            left: "calc((100cqw - max(100cqw, 100cqh * 16 / 9)) / 2)",
-            top: "calc((100cqh - max(100cqh, 100cqw * 9 / 16)) / 2)",
+            width: "max(100cqw, calc(100cqh * 1920 / 812))",
+            height: "max(100cqh, calc(100cqw * 812 / 1920))",
+            left: "calc((100cqw - max(100cqw, 100cqh * 1920 / 812)) / 2)",
+            top: "calc((100cqh - max(100cqh, 100cqw * 812 / 1920)) / 2)",
             // Over a poster, fade in once the first frame is ready instead
             // of popping in.
             opacity: poster && !loaded ? 0 : 1,
