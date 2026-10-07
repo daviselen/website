@@ -58,10 +58,10 @@ const START_ON_ENTER = `top bottom-=${VIEWPORT_INSET}`;
 // 360px/line this heading genuinely can be taller than a short viewport — where
 // "bottom" never reaches the fold and a `once: true` trigger would simply never
 // fire. In that case fall back to the enter-based start, which always does.
-const startFullyInView = (root) => () =>
-  root.getBoundingClientRect().height + VIEWPORT_INSET >= window.innerHeight
-    ? START_ON_ENTER
-    : `bottom bottom-=${VIEWPORT_INSET}`;
+const startFullyInView = (root, inset) => () =>
+  root.getBoundingClientRect().height + inset >= window.innerHeight
+    ? `top bottom-=${inset}`
+    : `bottom bottom-=${inset}`;
 
 // Both split strategies below animate identically — only the set of elements
 // they hand in differs — so the timeline is built in one place and they can't
@@ -72,11 +72,11 @@ const startFullyInView = (root) => () =>
 // staggered clip-path mask. Keeping them as separate tweens on a shared
 // timeline preserves that split — the block slides as a unit while the masks
 // fire in sequence.
-function buildReveal(root, lines, fullyInView) {
+function buildReveal(root, lines, fullyInView, viewportInset = VIEWPORT_INSET) {
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: root,
-      start: fullyInView ? startFullyInView(root) : START_ON_ENTER,
+      start: fullyInView ? startFullyInView(root, viewportInset) : START_ON_ENTER,
       // once: true — play on first enter; never re-hide or replay.
       once: true,
     },
@@ -128,6 +128,7 @@ export default function HeadingReveal({
   className = "",
   splitLines = false,
   fullyInView = false,
+  viewportInset = VIEWPORT_INSET,
 }) {
   const rootRef = useRef(null);
   const lines = text.split("\n");
@@ -137,7 +138,7 @@ export default function HeadingReveal({
       const root = rootRef.current;
 
       if (!splitLines) {
-        buildReveal(root, "[data-reveal-line]", fullyInView);
+        buildReveal(root, "[data-reveal-line]", fullyInView, viewportInset);
         return;
       }
 
@@ -163,7 +164,7 @@ export default function HeadingReveal({
             marginBlock: LINE_BLEED_PULLBACK,
           });
 
-          tl = buildReveal(root, self.lines, fullyInView);
+          tl = buildReveal(root, self.lines, fullyInView, viewportInset);
           // Returned so SplitText kills it before each re-split; otherwise
           // every font load and resize would leave a live ScrollTrigger
           // pointed at detached line elements.
@@ -177,7 +178,7 @@ export default function HeadingReveal({
         split.revert();
       };
     },
-    { scope: rootRef, dependencies: [text, splitLines, fullyInView] }
+    { scope: rootRef, dependencies: [text, splitLines, fullyInView, viewportInset] }
   );
 
   // SplitText reads the element's text and rebuilds it into line divs, so in
