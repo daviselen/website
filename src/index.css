@@ -90,6 +90,7 @@
 body {
   background-color: #000000;
   color: #ffffff;
+  scrollbar-gutter: stable;
 }
 
 /* Register --shine-angle custom property for smooth animation of the
