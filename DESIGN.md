@@ -54,6 +54,11 @@ typography:
     fontSize: 32px
     lineHeight: 40px
     fontWeight: 400
+  story-body:
+    fontFamily: "Ringside Narrow"
+    fontSize: 40px
+    lineHeight: 50px
+    fontWeight: 400
   link-social:
     fontFamily: "Ringside Narrow"
     fontSize: 18px
@@ -149,6 +154,9 @@ Two families, never mixed within one text role:
   `@font-face` setup. `body` (32px/40px) is the size used for the HI/AI
   concept list; most other body text is smaller (see individual sections
   in code — this file lists the named tokens, not every ad hoc size).
+- **`story-body`:** NEWS STORY article body copy, 40px/50px Book. The
+  Figma text (1824:5733) carries no named style, so this token is named
+  after where it's used rather than a variable.
 - **`link-social`:** the one deliberately tiny, tight-leading text style
   (footer social links) — 18px/18px, not the default body line-height.
 

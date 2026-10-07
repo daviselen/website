@@ -1,0 +1,83 @@
+{
+  "entries": [
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "davis-elen-wins-silver-and-bronze-pencil-at-the-one-show",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "article"
+          }
+        }
+      },
+      "fields": {
+        "slug": {
+          "en-US": "davis-elen-wins-silver-and-bronze-pencil-at-the-one-show"
+        },
+        "title": {
+          "en-US": "Davis Elen Wins a Silver and Bronze Pencil at the One Show"
+        },
+        "layout": {
+          "en-US": "story"
+        },
+        "publishedAt": {
+          "en-US": "2025-02-03T09:00:00"
+        },
+        "categories": {
+          "en-US": [
+            {
+              "name": "News",
+              "slug": "news"
+            }
+          ]
+        },
+        "heroImage": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "asset-95aa4193383f"
+            }
+          }
+        },
+        "body": {
+          "en-US": {
+            "nodeType": "document",
+            "data": {},
+            "content": [
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "link": {
+          "en-US": "https://www.oneclub.org/awards/sandiego/-award/55555/beyond-the-arches/"
+        }
+      }
+    }
+  ]
+}

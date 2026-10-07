@@ -4837,6 +4837,27 @@
           }
         }
       }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-95aa4193383f"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Silver and Bronze Pencils"
+        },
+        "description": {
+          "en-US": "Davis Elen's Silver and Bronze One Show Pencils"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "awards-silver-bronze-pencils-95aa4193383f.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2025/02/awards-silver-bronze-pencils-95aa4193383f.jpg"
+          }
+        }
+      }
     }
   ]
 }

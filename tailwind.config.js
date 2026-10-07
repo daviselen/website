@@ -171,6 +171,7 @@ export default {
         "display-h6": ["56px", { lineHeight: "40px" }],
         "display-stat": ["40px", { lineHeight: "48px" }], // card/heading, det/heading — Proof/News stat headline
         "pre-title": ["32px", { lineHeight: "40px" }],
+        "story-body": ["40px", { lineHeight: "50px" }], // NEWS STORY body copy (1824:5733) — raw 40/50, no named Figma style
         "body-hiai": ["24px", { lineHeight: "32px" }],
         "link-social": ["18px", { lineHeight: "18px" }], // links/social — Footer social links
         "small": ["16px", { lineHeight: "24px" }], // Careers eyebrows

@@ -6,27 +6,7 @@ import { useRef } from "react";
 import Card from "../design-system/components/Card.jsx";
 import HeadingReveal from "../design-system/components/HeadingReveal.jsx";
 import { useStaggerReveal } from "../design-system/animation.js";
-
-const awards = [
-  {
-    heading: "Davis Elen Wins 8 Telly Awards",
-    body: "Eight of them, in one year, for work we would have made anyway.",
-    src: "/images/news-telly-awards.jpg",
-    alt: "Telly Award trophies",
-  },
-  {
-    heading: "Davis Elen Wins a Shorty Award",
-    body: "Our fifth nomination and the one that came with hardware. Social work, judged by people who actually live on social.",
-    src: "/images/news-shorty-award.jpg",
-    alt: "Shorty Award trophy",
-  },
-  {
-    heading: "DE Wins a Silver and Bronze Pencil",
-    body: "Two pencils from The One Show. They're somewhere safe and slightly visible.",
-    src: "/images/news-pencil-award.jpg",
-    alt: "Silver and bronze One Show Pencil awards",
-  },
-];
+import { newsHighlights } from "../data/newsHighlights.js";
 
 export default function NewsAwards() {
   const gridRef = useRef(null);
@@ -48,7 +28,7 @@ export default function NewsAwards() {
           `award` property (a plain Text property — see HomePage.jsx for
           where that Organization itemScope starts). */}
       <div ref={gridRef} className="grid gap-1000 md:grid-cols-3 lg:gap-8">
-        {awards.map((a) => (
+        {newsHighlights.map((a) => (
           <Card key={a.heading} {...a} headingItemProp="award" size="med" />
         ))}
       </div>
