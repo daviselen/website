@@ -47,7 +47,7 @@ export default function Proof() {
     >
       <h2 className="sr-only">The Proof is in the Pudding</h2>
       {stats.map((s) => (
-        <Card key={s.heading} {...s} size="small" parallax="true" />
+        <Card key={s.heading} {...s} size="small" parallax />
       ))}
     </section>
   );
