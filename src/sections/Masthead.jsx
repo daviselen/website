@@ -30,7 +30,7 @@ export default function Masthead() {
   return (
     <section id="masthead" className="px-2 md:px-8">
       <MastheadVideo
-        vimeoId="1233556344"
+        vimeoId="1231831922"
         ready={copyRevealed}
         poster="/images/masthead.jpg"
         className="h-[calc((100vw-83px)*0.4229)] max-h-[785px] w-full rounded-md object-cover"
