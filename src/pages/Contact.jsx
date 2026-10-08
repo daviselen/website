@@ -184,7 +184,7 @@ export default function Contact() {
           </StyledField>
           <StyledField gap="0">
             <StyledLabel>Message</StyledLabel>
-            <StyledTextarea></StyledTextarea>
+            <StyledTextarea name="message"></StyledTextarea>
           </StyledField>
         </form>
         <div className="self-end xl:col-start-9 xl:-col-end-1 xl:row-start-1">
