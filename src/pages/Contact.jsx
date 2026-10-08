@@ -116,6 +116,29 @@ const topics = [
 // and a route into a conversation, which is the useful thing to offer someone
 // who came here and found nothing listed.
 export default function Contact() {
+  const [status, setStatus] = useState("idle"); // idle | submitting | success | error
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setStatus("submitting");
+    const data = new FormData(e.currentTarget);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.get("name"),
+          email: data.get("email"),
+          message: data.get("message"),
+        }),
+      });
+      if (!res.ok) throw new Error(await res.text());
+      setStatus("success");
+    } catch {
+      setStatus("error");
+    }
+  }
+
   return (
     <main
       className="flex min-h-screen flex-col gap-0 bg-surface-default pb-1800 font-narrow font-light text-neutral-0"
@@ -170,7 +193,7 @@ export default function Contact() {
             className="mb-6 max-w-[24ch] text-lg md:text-xl lg:text-pre-title"
           />
         </div>
-        <form id="contact" className="flex flex-col gap-500 xl:col-start-1 xl:col-end-7 xl:row-start-1 xl:*:ml-1000" action="" method="">
+        <form id="contact" onSubmit={handleSubmit} className="flex flex-col gap-500 xl:col-start-1 xl:col-end-7 xl:row-start-1 xl:*:ml-1000">
           <StyledField type="text" label="Name" name="name" gap="0" />
           <StyledField type="email" label="E-mail" name="email" gap="0" />
           <StyledField gap="0">
@@ -188,8 +211,21 @@ export default function Contact() {
             <StyledTextarea name="message"></StyledTextarea>
           </StyledField>
         </form>
-        <div className="self-end xl:col-start-9 xl:-col-end-1 xl:row-start-1">
-          <Button className="cursor-pointer rounded-md bg-surface-primary-default px-1000 py-300 font-narrow text-pre-title font-normal uppercase leading-snug text-neutral-0 transition-colors duration-300 hover:bg-primary-300 hover:text-neutral-1000 xl:min-w-[320px]">Send it</Button>
+        <div className="self-end xl:col-start-9 xl:-col-end-1 xl:row-start-1 xl:flex xl:flex-col xl:items-start xl:gap-300">
+          {status === "success" && (
+            <p className="text-lg text-green-400">Message sent — we&apos;ll be in touch.</p>
+          )}
+          {status === "error" && (
+            <p className="text-lg text-red-400">Something went wrong. Try again or email us directly.</p>
+          )}
+          <Button
+            form="contact"
+            type="submit"
+            disabled={status === "submitting" || status === "success"}
+            className="cursor-pointer rounded-md bg-surface-primary-default px-1000 py-300 font-narrow text-pre-title font-normal uppercase leading-snug text-neutral-0 transition-colors duration-300 hover:bg-primary-300 hover:text-neutral-1000 disabled:opacity-50 xl:min-w-[320px]"
+          >
+            {status === "submitting" ? "Sending…" : "Send it"}
+          </Button>
         </div>
       </section>
     </main>
