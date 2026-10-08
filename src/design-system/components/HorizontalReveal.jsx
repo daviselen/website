@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { gsap, useGSAP, REVEAL_DURATION, EASE_REVEAL } from "../animation";
 
 export default function HorizontalReveal({
+  as: Tag = "span",
   children,
   className = "",
   direction = "left",
@@ -13,6 +14,11 @@ export default function HorizontalReveal({
   // point can't reliably determine which side of its boundaries we're on
   // and ends up stuck in the reversed (hidden) state.
   playOnMount = false,
+  // text is a caller convenience prop (mirrors TextReveal's API) — content
+  // is rendered via children. Destructured here so it doesn't reach the DOM.
+  // eslint-disable-next-line no-unused-vars
+  text,
+  ...rest
 }) {
   const clipPaths = {
     left: {
@@ -66,7 +72,7 @@ export default function HorizontalReveal({
   );
 
   return (
-    <span ref={wrapRef} className={`-my-[0.075em] block overflow-hidden ${className}`}>
+    <Tag ref={wrapRef} className={`-my-[0.075em] block overflow-hidden ${className}`} {...rest}>
       <span
         ref={innerRef}
         className="block w-full py-[0.075em]"
@@ -76,6 +82,6 @@ export default function HorizontalReveal({
       >
         {children}
       </span>
-    </span>
+    </Tag>
   );
 }
