@@ -212,9 +212,13 @@ export function useStaggerReveal(scopeRef, { amount = 0.333 } = {}) {
       // timelines share this start so the fade and the rise begin together.
       const start = `top+=${threshold} bottom`;
 
+      // Smaller Y offset on mobile — 160px pushes the first card far below
+      // the section heading when the grid is stacked in a single column.
+      const offsetY = window.innerWidth < 768 ? 60 : ITEM_OFFSET_Y;
+
       // Set initial state immediately to avoid layout jumps
       gsap.set(scopeRef.current, { opacity: 0 });
-      gsap.set(":scope > *", { y: ITEM_OFFSET_Y, opacity: 0 });
+      gsap.set(":scope > *", { y: offsetY, opacity: 0 });
 
       // 1. Opacity, played. Unchanged from before the scrub existed:
       //    once: false in both scroll directions.
@@ -261,7 +265,7 @@ export function useStaggerReveal(scopeRef, { amount = 0.333 } = {}) {
 
       rise.fromTo(
         ":scope > *",
-        { y: ITEM_OFFSET_Y },
+        { y: offsetY },
         {
           y: 0,
           duration: ITEM_DURATION,
