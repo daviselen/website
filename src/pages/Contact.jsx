@@ -1,3 +1,4 @@
+import { useState } from "react";
 import MastheadImage from "../design-system/components/MastheadImage";
 import HeadingReveal from "../design-system/components/HeadingReveal";
 import TextReveal from "../design-system/components/TextReveal";
