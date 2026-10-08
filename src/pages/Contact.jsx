@@ -102,7 +102,8 @@ const topics = [
   { id: 2, name: 'Public Relations' },
   { id: 3, name: 'Media Planning' },
   { id: 4, name: 'Media Buying' },
-  { id: 5, name: 'Careers' },
+  { id: 5, name: 'Social Media & UGC' },
+  { id: 6, name: 'Careers' },
 ]
 
 // NavBar and Footer are not rendered here: Layout.jsx already mounts both
