@@ -147,7 +147,7 @@ export default function DeLogoMorph({ className = "size-16", onComplete }) {
   );
   const skipIntro = reducedMotion;
 
-  const [showIntro] = useState(!skipIntro);
+  const [showIntro, setShowIntro] = useState(!skipIntro);
 
 
   const rootRef = useRef(null);
@@ -209,7 +209,7 @@ export default function DeLogoMorph({ className = "size-16", onComplete }) {
 
       const tl = gsap.timeline({
         onComplete: () => {
-          // setShowIntro(false);
+          setShowIntro(false);
           onComplete?.();
         },
       });
