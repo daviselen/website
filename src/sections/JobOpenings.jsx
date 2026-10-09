@@ -173,7 +173,7 @@ function JobOpeningsContent() {
       <HeadingReveal
         as="h2"
         text={`Open \nPositions`}
-        className="font-display text-5xl uppercase leading-none md:text-7xl lg:text-display-h3"
+        className="font-display text-7xl uppercase leading-none md:text-8xl lg:text-display-h3"
       />
 
       {openings.length === 0 ? (

@@ -151,7 +151,7 @@ export default function Contact() {
             <HeadingReveal
               as="h2"
               text={`Find out \nwhat’s inside`}
-              className="mb-100 font-display text-5xl uppercase md:text-7xl lg:col-span-6 lg:col-start-7 lg:text-display-h4"
+              className="mb-100 font-display text-7xl uppercase md:text-8xl lg:col-span-6 lg:col-start-7 lg:text-display-h4"
             />
             <div className="lg:col-span-6 lg:col-start-7 lg:pr-600">
               <TextReveal className="mb-300 text-3xl md:text-5xl lg:text-display-stat"
@@ -171,7 +171,7 @@ export default function Contact() {
         <HeadingReveal
           as="h2"
           text={`Locations`}
-          className="font-display text-5xl uppercase leading-none md:text-7xl lg:text-display-h3"
+          className="font-display text-7xl uppercase leading-none md:text-8xl lg:text-display-h3"
         />
         <ul className="flex flex-col">
           {locations.map((location) => (
@@ -187,7 +187,7 @@ export default function Contact() {
           <HeadingReveal
             as="h2"
             text={`Let’s get \nin touch`}
-            className="font-display text-5xl uppercase leading-none md:text-7xl lg:text-display-h3"
+            className="font-display text-7xl uppercase leading-none md:text-8xl lg:text-display-h3"
           />
           <TextReveal
             text={`Sed ut perspiciatis unde omnis \niste natus error sit voluptatem.`}

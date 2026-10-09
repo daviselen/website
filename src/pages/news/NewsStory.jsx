@@ -72,7 +72,7 @@ export default function NewsStory({ article }) {
           <HeadingReveal
             as="h2"
             text={`More \nNews`}
-            className="font-display text-6xl uppercase leading-none md:text-8xl lg:text-display-h3"
+            className="font-display text-7xl uppercase leading-none md:text-8xl lg:text-display-h3"
           />
           <div
             ref={gridRef}

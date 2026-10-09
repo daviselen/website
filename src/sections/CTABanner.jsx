@@ -8,7 +8,7 @@ export default function CTABanner() {
       <HeadingReveal
         as="h2"
         text={`Let’s Look \nInside the Box`}
-        className="font-display text-6xl uppercase leading-none md:text-8xl lg:text-display-h3"
+        className="font-display text-7xl uppercase leading-none md:text-8xl lg:text-display-h3"
         />
       <Button variant="solid" size="big">Start A Conversation</Button>
     </section>

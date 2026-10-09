@@ -64,7 +64,7 @@ export default function Masthead() {
             time the second line appeared — the trigger fired with only the
             first line's cap height past the fold. Waiting for the whole
             block means the reveal plays where it can actually be read. */}
-        <HeadingReveal text={`Think Inside \nthe Box`} as="h1" fullyInView viewportInset={190} className="font-display text-6xl uppercase leading-none md:text-8xl lg:text-display-h1" />
+        <HeadingReveal text={`Think Inside \nthe Box`} as="h1" fullyInView viewportInset={190} className="font-display text-display-h5 uppercase leading-none md:text-8xl lg:text-display-h1" />
         {/* Headline → paragraph gap is Scale/700 = 56px, not the mt-8
             (32px) previously guessed. Real node also has pr-[480px] on the
             whole text block (TITB), not a max-w cap — reproduced here as a

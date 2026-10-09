@@ -19,7 +19,7 @@ export default function NotFound() {
       <TextReveal
         text="That page doesn't exist."
         as="p"
-        className="text-lg md:text-xl"
+        className="text-xl md:text-2xl"
       />
       <Link to="/">
         <StyledButton variant="solid" size="small">

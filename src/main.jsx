@@ -38,7 +38,7 @@ const router = createBrowserRouter([
           <Suspense
             fallback={
               <div
-                className="mx-8 flex min-h-[50vh] items-center justify-center text-lg"
+                className="mx-8 flex min-h-[50vh] items-center justify-center text-xl"
                 aria-busy="true"
               >
                 Loading map&hellip;
@@ -63,7 +63,7 @@ const router = createBrowserRouter([
           <Suspense
             fallback={
               <div
-                className="flex min-h-screen items-center justify-center text-lg"
+                className="flex min-h-screen items-center justify-center text-xl"
                 aria-busy="true"
               >
                 Loading article&hellip;

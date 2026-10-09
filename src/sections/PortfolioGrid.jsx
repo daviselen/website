@@ -310,7 +310,7 @@ export default function PortfolioGrid() {
           stay reachable on touch and under reduced motion. */}
       <div
         ref={clipRef}
-        className={`w-full ${animated ? "overflow-hidden" : "overflow-x-auto"}`}
+        className={`w-full px-2 xl:px-0 ${animated ? "overflow-hidden" : "overflow-x-auto"}`}
         onPointerMove={animated ? handlePointerMove : undefined}
         onPointerLeave={animated ? handlePointerLeave : undefined}
         // pointercancel covers the browser taking the pointer away mid-hover

@@ -45,7 +45,7 @@ const sideConfig = {
 // HumanAI.jsx): small mobile default, real size at `lg`.
 const titleSizes = {
   default: "text-4xl md:text-6xl lg:text-display-h5",
-  large: "text-5xl md:text-7xl lg:text-display-h3",
+  large: "text-7xl md:text-8xl lg:text-display-h3",
 };
 
 // The root element is chosen by which prop is passed, so the whole media

@@ -144,7 +144,7 @@ function Card({
         >
           <HorizontalReveal>{heading}</HorizontalReveal>
         </h3>
-        <p className="font-narrow text-lg font-light leading-[1.33333] md:text-2xl md:leading-8"><TextReveal text={body}>{body}</TextReveal></p>
+        <p className="font-narrow text-xl font-light leading-[1.33333] md:text-2xl md:leading-8"><TextReveal text={body}>{body}</TextReveal></p>
       </div>
     </div>
   );

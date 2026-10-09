@@ -21,7 +21,7 @@ export default function NewsAwards() {
       <HeadingReveal
         as="h2"
         text={`What's \nHappening`}
-        className="mb-400 font-display text-6xl uppercase leading-none md:text-8xl lg:mb-1000 lg:text-display-h3"
+        className="mb-400 font-display text-7xl uppercase leading-none md:text-8xl lg:mb-1000 lg:text-display-h3"
         />
       {/* headingItemProp="award": these headings are real awards, so each
           one becomes a value of the page-level Organization item's

@@ -72,7 +72,7 @@ export default function FromInsideOut() {
     <section id="from-inside-out" className="mt-1000 px-2 lg:mt-3000 lg:px-8">
       <div className="grid gap-8 md:grid-cols-2">
         <div className="flex flex-col gap-600 lg:gap-2000">
-          <HeadingReveal as="h2" className="font-display text-6xl uppercase leading-none md:text-8xl lg:text-display-h3" text={`From the \nInside Out`} />
+          <HeadingReveal as="h2" className="font-display text-7xl uppercase leading-none md:text-8xl lg:text-display-h3" text={`From the \nInside Out`} />
           {/* Real photographed examples of client work, so these get full
               CreativeWork microdata (name + image), unlike Proof's
               unmarked arbitrary stats. */}
