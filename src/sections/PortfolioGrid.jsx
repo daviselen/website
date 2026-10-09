@@ -335,6 +335,9 @@ export default function PortfolioGrid() {
                 // again. They are painted, but they are not content: no alt
                 // text, no schema.org item, hidden from assistive tech.
                 decorative={copy > 0}
+                // Decorative copies only make sense in the horizontal carousel;
+                // hide them below lg where the track is a vertical column.
+                className={copy > 0 ? "hidden lg:block" : undefined}
               />
             ))
           )}

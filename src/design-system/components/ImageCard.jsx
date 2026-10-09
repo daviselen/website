@@ -16,7 +16,7 @@ const CARD_VISIBLE = "inset(0% 0% 0% 0%)";
 // schema.org item, and is hidden from assistive tech: otherwise the page
 // would announce every project two or three times and publish duplicate
 // CreativeWork items in its structured data.
-function ProjectCard({ title, client, src, videoSrc, startColumn2, decorative = false }) {
+function ProjectCard({ title, client, src, videoSrc, startColumn2, decorative = false, className }) {
   const containerRef = useRef(null);
   const maskRef = useRef(null);
 
@@ -88,7 +88,7 @@ function ProjectCard({ title, client, src, videoSrc, startColumn2, decorative = 
         aria-hidden={decorative ? "true" : undefined}
         className={`relative aspect-[8/9] w-full shrink-0 grow basis-full break-inside-avoid overflow-hidden rounded-md transition-all ease-in-out lg:basis-[32rem] ${
           startColumn2 ? "break-before-column" : ""
-        }`}
+        } ${className ?? ""}`}
       >
         {!decorative && <meta itemProp="creator" content="Davis Elen Advertising" />}
         <div
