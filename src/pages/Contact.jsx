@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import MastheadImage from "../design-system/components/MastheadImage";
 import HeadingReveal from "../design-system/components/HeadingReveal";
 import TextReveal from "../design-system/components/TextReveal";
@@ -10,7 +10,7 @@ import StyledCombobox from "../design-system/components/Combobox.jsx";
 import StyledTextarea from "../design-system/components/Textarea.jsx";
 import LocationRow from "../design-system/components/LocationRow.jsx";
 
-const locations = [
+const locationsData = [
   {
     id: 1,
     name: "Los Angeles",
@@ -135,7 +135,7 @@ const locations = [
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@graph": locations.map((loc) => ({
+  "@graph": locationsData.map((loc) => ({
     "@type": "AdvertisingAgency",
     "@id": `https://www.daviselen.com/contact#location-${loc.id}`,
     name: `Davis Elen — ${loc.name}`,
@@ -168,17 +168,13 @@ const topics = [
   { id: 6, name: 'Careers' },
 ]
 
-// NavBar and Footer are not rendered here: Layout.jsx already mounts both
-// around every route, and its wrapper supplies the page background, the
-// font-narrow/neutral-0 defaults, and the py-1800 that clears the fixed
-// header.
-//
 // CTABanner stays on the page even when there are no openings, so the empty
 // state reads as intentional — it carries real, human-written contact copy
 // and a route into a conversation, which is the useful thing to offer someone
 // who came here and found nothing listed.
 export default function Contact() {
   const [status, setStatus] = useState("idle"); // idle | submitting | success | error
+  const [locations, setLocations] = useState(locationsData);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -200,6 +196,16 @@ export default function Contact() {
       setStatus("error");
     }
   }
+
+  useEffect(() => {
+    fetch("/api/locations")
+      .then((r) => r.json())
+      .then(({ ids }) => {
+        if (!ids) return;
+        setLocations(ids.map((id) => locationsData.find((l) => l.id === id)));
+      })
+      .catch(() => {});
+  }, []);
 
   return (
     <main
