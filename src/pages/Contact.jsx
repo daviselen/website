@@ -21,6 +21,12 @@ const locations = [
         Los Angeles, CA 90017
       </>
     ),
+    streetAddress: "865 S. Figueroa St. Suite 1200",
+    addressLocality: "Los Angeles",
+    addressRegion: "CA",
+    postalCode: "90017",
+    latitude: 34.04677624710386,
+    longitude: -118.262972794232,
     phone: "(213) 688-7000",
     mapUrl: "https://maps.google.com/?q=865+S.+Figueroa+St.+Suite+1200+Los+Angeles+CA+90017",
     image: "/images/contact-location-los-angeles.jpg",
@@ -35,6 +41,12 @@ const locations = [
         Carlsbad, CA 92009
       </>
     ),
+    streetAddress: "7750 El Camino Real, Suite 2F",
+    addressLocality: "Carlsbad",
+    addressRegion: "CA",
+    postalCode: "92009",
+    latitude: 33.082276406297,
+    longitude: -117.26650509742225,
     phone: "(213) 688-7000",
     mapUrl: "https://maps.google.com/?q=7750+El+Camino+Real+Suite+2F+Carlsbad+CA+92009",
     image: "/images/contact-location-san-diego.jpg",
@@ -49,6 +61,12 @@ const locations = [
         Seattle, WA 98121
       </>
     ),
+    streetAddress: "2033 6th Ave., Suite 600",
+    addressLocality: "Seattle",
+    addressRegion: "WA",
+    postalCode: "98121",
+    latitude: 47.614824486545736,
+    longitude: -122.33964785782985,
     phone: "(213) 688-7000",
     mapUrl: "https://maps.google.com/?q=2033+6th+Ave.+Suite+600+Seattle+WA+98121",
     image: "/images/contact-location-seattle.jpg",
@@ -63,6 +81,12 @@ const locations = [
         Denver, CO 80202
       </>
     ),
+    streetAddress: "1801 California St., #2400",
+    addressLocality: "Denver",
+    addressRegion: "CO",
+    postalCode: "80202",
+    latitude: 39.74772132744277,
+    longitude: -104.98947169919487,
     phone: "(213) 688-7000",
     mapUrl: "https://maps.google.com/?q=1801+California+St.+%232400+Denver+CO+80202",
     image: "/images/contact-location-denver.jpg",
@@ -77,6 +101,12 @@ const locations = [
         Arlington, VA 22203
       </>
     ),
+    streetAddress: "4201 Wilson Blvd., Floor 3",
+    addressLocality: "Arlington",
+    addressRegion: "VA",
+    postalCode: "22203",
+    latitude: 38.88047980986965,
+    longitude: -77.11097442994593,
     phone: "(213) 688-7000",
     mapUrl: "https://maps.google.com/?q=4201+Wilson+Blvd.+Floor+3+Arlington+VA+22203",
     image: "/images/contact-location-arlington.png",
@@ -91,11 +121,42 @@ const locations = [
         Kansas City, MO 64112
       </>
     ),
+    streetAddress: "420 Nichols Rd.",
+    addressLocality: "Kansas City",
+    addressRegion: "MO",
+    postalCode: "64112",
+    latitude: 39.041445408733466,
+    longitude: -94.5923468712363,
     phone: "(213) 688-7000",
     mapUrl: "https://maps.google.com/?q=420+Nichols+Rd.+Kansas+City+MO+64112",
     image: "/images/contact-location-kansas-city.jpg",
   },
 ];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": locations.map((loc) => ({
+    "@type": "AdvertisingAgency",
+    "@id": `https://www.daviselen.com/contact#location-${loc.id}`,
+    name: `Davis Elen — ${loc.name}`,
+    url: "https://www.daviselen.com/contact",
+    telephone: "+1-213-688-7000",
+    email: "contact@daviselen.com",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: loc.streetAddress,
+      addressLocality: loc.addressLocality,
+      addressRegion: loc.addressRegion,
+      postalCode: loc.postalCode,
+      addressCountry: "US",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: loc.latitude,
+      longitude: loc.longitude,
+    },
+  })),
+};
 
 const topics = [
   { id: 0, name: '' },
@@ -144,6 +205,10 @@ export default function Contact() {
     <main
       className="flex min-h-screen flex-col gap-0 bg-surface-default pb-1800 font-narrow font-light text-neutral-0"
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <section id="top">
         <MastheadImage src="/images/contact-masthead.jpg" alt="Contact Davis Elen Advertising" />
         <div className="px-2 lg:px-8">
