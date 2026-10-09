@@ -17,7 +17,7 @@ export default function NotFound() {
         className="font-display text-6xl uppercase leading-none md:text-8xl"
       />
       <TextReveal
-        text="That page doesn't exist."
+        text="Exploration is also part of our process, but you're lost."
         as="p"
         className="text-xl md:text-2xl"
       />
