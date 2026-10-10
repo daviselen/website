@@ -211,10 +211,9 @@ export default function Contact() {
     <main
       className="flex min-h-screen flex-col gap-0 bg-surface-default pb-1800 font-narrow font-light text-neutral-0"
     >
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <script type="application/ld+json">
+        {JSON.stringify(jsonLd).replace(/</g, "\\u003c")}
+      </script>
       <section id="top">
         <MastheadImage src="/images/contact-masthead.jpg" alt="Contact Davis Elen Advertising" />
         <div className="px-2 lg:px-8">
