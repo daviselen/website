@@ -33,14 +33,24 @@ export default function NewsStory({ article }) {
     return null;
   }
 
-  const { title, heroImageUrl, heroAlt, link, body } = content;
-  const slug = article.entries[0].fields.slug?.["en-US"];
+  const { title, description, heroImageUrl, heroAlt, link, body } = content;
+  const fields = article.entries[0].fields;
+  const slug = fields.slug?.["en-US"];
+  const metaTitle = fields.metaTitle?.["en-US"] ?? null;
+  const jsonLd = fields.jsonLd?.["en-US"] ?? null;
   const moreNews = newsHighlights
     .filter((item) => item.slug !== slug)
     .slice(0, 2);
 
   return (
     <article id="news-story" className="mb-1600 lg:mb-3000">
+      <title>{metaTitle ?? title}</title>
+      {description && <meta name="description" content={description} />}
+      {jsonLd && (
+        <script type="application/ld+json">
+          {JSON.stringify(jsonLd).replace(/</g, "\\u003c")}
+        </script>
+      )}
       {heroImageUrl && <MastheadImage src={heroImageUrl} alt={heroAlt} />}
 
       <div className="grid gap-800 px-2 lg:grid-cols-12 lg:gap-x-8 lg:px-8">
@@ -62,7 +72,7 @@ export default function NewsStory({ article }) {
           )}
         </div>
 
-        <div className="text-2xl font-normal *:mb-600 last:*:mb-0 md:text-3xl xl:text-display-stat lg:col-span-5 lg:pr-400 xl:text-story-body">
+        <div className="font-normal *:mb-600 last:*:mb-0 md:text-3xl xl:text-story-body lg:col-span-5 news-body *:ul:list-outside text-pre-title *:max-w-prose *:marker:text-primary-300 [&_h2]:mt-1000 [&_h2]:font-display [&_h2]:text-display-h4 [&_h2]:first:mt-0 [&_h2]:first:text-display-h5 [&_h3]:mt-800 [&_h3]:font-display [&_h3]:text-display-h5 [&_li]:mb-300 [&_ul]:list-outside [&_ul]:list-[square] [&_ul]:pl-600 [&_ul]:text-lg md:[&_ul]:text-xl lg:[&_ul]:text-pre-title">
           {body}
         </div>
       </div>

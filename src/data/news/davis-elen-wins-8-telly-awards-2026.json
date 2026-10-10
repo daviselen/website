@@ -1,0 +1,649 @@
+{
+  "entries": [
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "davis-elen-wins-8-telly-awards-2026",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "article"
+          }
+        }
+      },
+      "fields": {
+        "slug": {
+          "en-US": "davis-elen-wins-8-telly-awards-2026"
+        },
+        "title": {
+          "en-US": "Davis Elen Wins 8 Telly Awards in 2026"
+        },
+        "metaTitle": {
+          "en-US": "Davis Elen Wins 8 Telly Awards for Branded Content & TV"
+        },
+        "description": {
+          "en-US": "Davis Elen Advertising earns 8 Telly Awards in 2026 across branded content, regional TV, and outdoor media for Toyota, the Lakers, and Smart & Final."
+        },
+        "layout": {
+          "en-US": "story"
+        },
+        "publishedAt": {
+          "en-US": "2026-06-01T08:00:00"
+        },
+        "categories": {
+          "en-US": [
+            {
+              "name": "News",
+              "slug": "news"
+            }
+          ]
+        },
+        "heroImage": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "asset-4d9b2c8f1e3a"
+            }
+          }
+        },
+        "body": {
+          "en-US": {
+            "nodeType": "document",
+            "data": {},
+            "content": [
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Eight trophies. One year. For work we would have made anyway.",
+                    "marks": [
+                      {
+                          "type": "italic"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Awards aren't how we measure success. We measure success by growth, engagement, and whether a piece of communication actually moves people to act. But when the Telly Awards hand out eight honors in a single year across sports partnerships, retail campaigns, and localized animation, it serves as solid proof that our work is cutting through the noise.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "heading-2",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "2026 Telly Award Wins Across Broadcast, Digital, and Outdoor",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "The eight honors span a diverse mix of platforms and clients, reflecting how our teams operate seamlessly across broadcast, digital, and environmental spaces.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "You can view the official entries on the ",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "hyperlink",
+                    "data": {
+                      "uri": "https://www.tellyawards.com/?s=davis+elen&filter=winners"
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "2026 Telly Award Winner Database",
+                        "marks": [],
+                        "data": {}
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": ".",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "heading-3",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Silver Telly Winners",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "unordered-list",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "list-item",
+                    "data": {},
+                    "content": [
+                      {
+                        "nodeType": "paragraph",
+                        "data": {},
+                        "content": [
+                          {
+                            "nodeType": "text",
+                            "value": "Lakers & Toyota 50th Anniversary Campaign",
+                            "marks": [
+                              {
+                                "type": "bold"
+                              }
+                            ],
+                            "data": {}
+                          },
+                          {
+                            "nodeType": "text",
+                            "value": " — Silver Telly | ",
+                            "marks": [],
+                            "data": {}
+                          },
+                          {
+                            "nodeType": "text",
+                            "value": "Branded Content: Campaign Branding",
+                            "marks": [
+                              {
+                                "type": "italic"
+                              }
+                            ],
+                            "data": {}
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "list-item",
+                    "data": {},
+                    "content": [
+                      {
+                        "nodeType": "paragraph",
+                        "data": {},
+                        "content": [
+                          {
+                            "nodeType": "text",
+                            "value": "Smart Shoppers Shop Smart & Final",
+                            "marks": [
+                              {
+                                "type": "bold"
+                              }
+                            ],
+                            "data": {}
+                          },
+                          {
+                            "nodeType": "text",
+                            "value": " — Silver Telly | ",
+                            "marks": [],
+                            "data": {}
+                          },
+                          {
+                            "nodeType": "text",
+                            "value": "Branded Content: B2C Campaign",
+                            "marks": [
+                              {
+                                "type": "italic"
+                              }
+                            ],
+                            "data": {}
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "list-item",
+                    "data": {},
+                    "content": [
+                      {
+                        "nodeType": "paragraph",
+                        "data": {},
+                        "content": [
+                          {
+                            "nodeType": "text",
+                            "value": "Moxi Lakers & Toyota",
+                            "marks": [
+                              {
+                                "type": "bold"
+                              }
+                            ],
+                            "data": {}
+                          },
+                          {
+                            "nodeType": "text",
+                            "value": " — Silver Telly | ",
+                            "marks": [],
+                            "data": {}
+                          },
+                          {
+                            "nodeType": "text",
+                            "value": "Branded Content: Outdoor Environmental Digital Billboard",
+                            "marks": [
+                              {
+                                "type": "italic"
+                              }
+                            ],
+                            "data": {}
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "list-item",
+                    "data": {},
+                    "content": [
+                      {
+                        "nodeType": "paragraph",
+                        "data": {},
+                        "content": [
+                          {
+                            "nodeType": "text",
+                            "value": "“Bring the Family Together”",
+                            "marks": [
+                              {
+                                "type": "bold"
+                              }
+                            ],
+                            "data": {}
+                          },
+                          {
+                            "nodeType": "text",
+                            "value": " — Silver Telly | ",
+                            "marks": [],
+                            "data": {}
+                          },
+                          {
+                            "nodeType": "text",
+                            "value": "Regional TV: Craft 2D Animation",
+                            "marks": [
+                              {
+                                "type": "italic"
+                              }
+                            ],
+                            "data": {}
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "nodeType": "heading-3",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Bronze Telly Winners",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "unordered-list",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "list-item",
+                    "data": {},
+                    "content": [
+                      {
+                        "nodeType": "paragraph",
+                        "data": {},
+                        "content": [
+                          {
+                            "nodeType": "text",
+                            "value": "50th Anniversary Toyota and Lakers TV",
+                            "marks": [
+                              {
+                                "type": "bold"
+                              }
+                            ],
+                            "data": {}
+                          },
+                          {
+                            "nodeType": "text",
+                            "value": " — Bronze Telly | ",
+                            "marks": [],
+                            "data": {}
+                          },
+                          {
+                            "nodeType": "text",
+                            "value": "Regional TV: General Automotive",
+                            "marks": [
+                              {
+                                "type": "italic"
+                              }
+                            ],
+                            "data": {}
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "list-item",
+                    "data": {},
+                    "content": [
+                      {
+                        "nodeType": "paragraph",
+                        "data": {},
+                        "content": [
+                          {
+                            "nodeType": "text",
+                            "value": "Super Bowl Toyota TV",
+                            "marks": [
+                              {
+                                "type": "bold"
+                              }
+                            ],
+                            "data": {}
+                          },
+                          {
+                            "nodeType": "text",
+                            "value": " — Bronze Telly | ",
+                            "marks": [],
+                            "data": {}
+                          },
+                          {
+                            "nodeType": "text",
+                            "value": "Regional TV: General Automotive",
+                            "marks": [
+                              {
+                                "type": "italic"
+                              }
+                            ],
+                            "data": {}
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "list-item",
+                    "data": {},
+                    "content": [
+                      {
+                        "nodeType": "paragraph",
+                        "data": {},
+                        "content": [
+                          {
+                            "nodeType": "text",
+                            "value": "¡Hola Mexico! “Bring the Family Together”",
+                            "marks": [
+                              {
+                                "type": "bold"
+                              }
+                            ],
+                            "data": {}
+                          },
+                          {
+                            "nodeType": "text",
+                            "value": " — Bronze Telly | ",
+                            "marks": [],
+                            "data": {}
+                          },
+                          {
+                            "nodeType": "text",
+                            "value": "Non-Broadcast: Craft 2D Animation",
+                            "marks": [
+                              {
+                                "type": "italic"
+                              }
+                            ],
+                            "data": {}
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "list-item",
+                    "data": {},
+                    "content": [
+                      {
+                        "nodeType": "paragraph",
+                        "data": {},
+                        "content": [
+                          {
+                            "nodeType": "text",
+                            "value": "Calienta Motores Toyota TV",
+                            "marks": [
+                              {
+                                "type": "bold"
+                              }
+                            ],
+                            "data": {}
+                          },
+                          {
+                            "nodeType": "text",
+                            "value": " — Bronze Telly | ",
+                            "marks": [],
+                            "data": {}
+                          },
+                          {
+                            "nodeType": "text",
+                            "value": "Local TV: General Culture & Lifestyle",
+                            "marks": [
+                              {
+                                "type": "italic"
+                              }
+                            ],
+                            "data": {}
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "nodeType": "heading-2",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Built for the Real World",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "What makes this eight-award haul satisfying isn't the hardware itself. It’s the nature of the work.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "These trophies recognize real-world milestones—like celebrating half a century of collaboration between the Los Angeles Lakers and Toyota—and everyday retail executions that drive actual business for Smart & Final. We design campaigns to solve specific marketing challenges within the real boundaries of our clients' business dynamics, rather than chasing industry fads.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Think inside the box. That’s where the real business lives.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "When you combine smart strategy, deep client collaboration, and human imagination with artificial intelligence, the work speaks for itself. And the recognition takes care of itself.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "heading-3",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Ready for Thinking That Matters?",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Explore how our cut-through, targeted, results-driven work transforms real-world brand challenges. ",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "hyperlink",
+                    "data": {
+                      "uri": "/work"
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "Dig into our work",
+                        "marks": [],
+                        "data": {}
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": " or ",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "hyperlink",
+                    "data": {
+                      "uri": "/contact"
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "get in touch with our team",
+                        "marks": [],
+                        "data": {}
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": ".",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "link": {
+          "en-US": "https://www.tellyawards.com/?s=davis+elen&filter=winners"
+        },
+        "jsonLd": {
+          "en-US": {
+            "@context": "https://schema.org",
+            "@type": "NewsArticle",
+            "headline": "Davis Elen Wins 8 Telly Awards in 2026 Across TV, Digital, and Branded Content",
+            "description": "Eight Telly Award wins in a single year across sports partnerships, retail campaigns, and localized animation validate Davis Elen's cut-through, targeted, results-driven work.",
+            "image": [
+              "https://www.daviselen.com/images/telly-awards-2026-hero.jpg"
+            ],
+            "datePublished": "2026-06-01T08:00:00+08:00",
+            "dateModified": "2026-06-01T08:00:00+08:00",
+            "author": {
+              "@type": "Organization",
+              "name": "Davis Elen Advertising",
+              "url": "https://www.daviselen.com"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "Davis Elen Advertising",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://www.daviselen.com/images/logo.png"
+              }
+            },
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": "https://www.daviselen.com/news/davis-elen-wins-8-telly-awards-2026"
+            },
+            "about": [
+              { "@type": "Award", "name": "Telly Awards" },
+              { "@type": "Organization", "name": "Toyota" },
+              { "@type": "Organization", "name": "Los Angeles Lakers" },
+              { "@type": "Organization", "name": "Smart & Final" }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

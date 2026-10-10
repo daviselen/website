@@ -4858,6 +4858,27 @@
           }
         }
       }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-4d9b2c8f1e3a"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen 2026 Telly Awards"
+        },
+        "description": {
+          "en-US": "Davis Elen Advertising 2026 Telly Awards trophies showcase"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "telly-47th-we-are-telly-winners-4d9b2c8f1e3a.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2026/06/telly-47th-we-are-telly-winners-4d9b2c8f1e3a.jpg"
+          }
+        }
+      }
     }
   ]
 }
