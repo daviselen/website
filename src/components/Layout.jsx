@@ -192,6 +192,7 @@ export default function PageTransition({ overlayColor = "#000" }) {
 
   return (
     <div className={`relative min-h-screen ${uniqueClass}`}>
+      <title>Davis Elen</title>
       <OverlayProvider>
         <div className="font-narrow font-light text-neutral-0" role="navigation">
           <NavBarAlt logoOnly={bareChrome} />
