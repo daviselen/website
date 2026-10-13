@@ -14,20 +14,53 @@
 //     image = Card size "med") in cols 2–3, 240px below the copy block and
 //     240px above the footer rule.
 // The frame shows no publish date, so none is rendered.
+//
+// Desktop only: the title + button column pins while the body copy scrolls.
+// It's a ScrollTrigger pin, not CSS sticky, because ScrollSmoother wraps the
+// page in a transformed, overflow-hidden scroller that sticky can't see past.
+// Below lg the column stays in flow, as in the frame.
 import { useRef } from "react";
 import StyledButton from "../../design-system/components/Button";
 import Card from "../../design-system/components/Card";
 import HeadingReveal from "../../design-system/components/HeadingReveal";
 import MastheadImage from "../../design-system/components/MastheadImage";
-import { useStaggerReveal } from "../../design-system/animation";
+import {
+  ScrollTrigger,
+  gsap,
+  useGSAP,
+  useStaggerReveal,
+} from "../../design-system/animation";
 import { newsHighlights } from "../../data/newsHighlights";
 import { useArticleContent } from "./richText";
 
+// Clears the fixed NavBarAlt (96px at lg) with a little air.
+const PIN_TOP = 120;
+
 export default function NewsStory({ article }) {
   const gridRef = useRef(null);
+  const cardsRef = useRef(null);
+  const pinRef = useRef(null);
   const content = useArticleContent(article);
 
-  useStaggerReveal(gridRef, { amount: 0.333 });
+  useStaggerReveal(cardsRef, { amount: 0.333 });
+
+  useGSAP(
+    () => {
+      gsap.matchMedia().add("(min-width: 1024px)", () => {
+        ScrollTrigger.create({
+          trigger: gridRef.current,
+          start: `top top+=${PIN_TOP}`,
+          // Release once the grid's bottom meets the pinned column's bottom,
+          // so the column never hangs past the end of the copy. Measured
+          // lazily so a late font or image height is picked up on refresh.
+          end: () => `bottom top+=${PIN_TOP + pinRef.current.offsetHeight}`,
+          pin: pinRef.current,
+          pinSpacing: false,
+        });
+      });
+    },
+    { scope: gridRef },
+  );
 
   if (!content) {
     return null;
@@ -53,11 +86,19 @@ export default function NewsStory({ article }) {
       )}
       {heroImageUrl && <MastheadImage src={heroImageUrl} alt={heroAlt} />}
 
-      <div className="grid gap-800 px-2 lg:grid-cols-12 lg:gap-x-8 lg:px-8">
-        <div className="flex flex-col items-start gap-800 lg:col-span-7 lg:gap-1800 lg:pr-700">
-          <h1 className="font-display text-6xl uppercase leading-none md:text-8xl xl:text-display-h2">
-            {title}
-          </h1>
+      <div
+        ref={gridRef}
+        className="grid gap-800 px-2 lg:grid-cols-12 lg:gap-x-8 lg:px-8"
+      >
+        <div
+          ref={pinRef}
+          className="flex flex-col items-start gap-800 lg:col-span-7 lg:gap-1800 lg:self-start lg:pr-700"
+        >
+          <HeadingReveal
+            as="h1"
+            className="font-display text-6xl uppercase leading-none md:text-8xl xl:text-display-h2"
+            text={title}
+          ></HeadingReveal>
           {link && (
             <StyledButton
               as="a"
@@ -85,7 +126,7 @@ export default function NewsStory({ article }) {
             className="font-display text-7xl uppercase leading-none md:text-8xl lg:text-display-h3"
           />
           <div
-            ref={gridRef}
+            ref={cardsRef}
             className="grid gap-1000 md:col-span-2 md:grid-cols-2 lg:gap-8"
           >
             {moreNews.map((item) => (
