@@ -220,7 +220,7 @@ export default function Contact() {
           vimeoId="1235614817"
           loop={false}
           poster=""
-          className="h-[calc((100vw-83px)*0.4229)] max-h-[785px] mx-400 rounded-md object-cover"
+          className="h-[calc((100vw-83px)*0.4229)] max-h-[785px] mx-400 rounded-md object-cover mb-1000"
         />
         <div className="px-2 lg:px-8">
           <div className="lg:grid lg:grid-cols-12 lg:gap-400">
