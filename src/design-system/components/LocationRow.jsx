@@ -218,7 +218,7 @@ export default function LocationRow({ name, address, phone, mapUrl, image }) {
           {name}
         </h3>
         {phone && (
-          <div className="flex flex-col gap-200 self-start xl:self-center xl:px-600">
+          <div className="flex flex-col gap-200 self-start xl:self-center xl:px-600 text-right">
             <a
               ref={phoneRef}
               href={`tel:${phone}`}
