@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import MastheadImage from "../design-system/components/MastheadImage";
+import MastheadVideo from "../design-system/components/MastheadVideo";
 import HeadingReveal from "../design-system/components/HeadingReveal";
 import TextReveal from "../design-system/components/TextReveal";
 import CTABanner from "../sections/CTABanner.jsx";
@@ -215,7 +216,11 @@ export default function Contact() {
         {JSON.stringify(jsonLd).replace(/</g, "\\u003c")}
       </script>
       <section id="top">
-        <MastheadImage src="/images/contact-masthead.jpg" alt="Contact Davis Elen Advertising" />
+        <MastheadVideo
+          vimeoId="1235614817"
+          poster=""
+          className="h-[calc((100vw-83px)*0.4229)] max-h-[785px] mx-400 rounded-md object-cover"
+        />
         <div className="px-2 lg:px-8">
           <div className="lg:grid lg:grid-cols-12 lg:gap-400">
             <HeadingReveal
