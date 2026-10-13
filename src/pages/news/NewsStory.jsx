@@ -113,7 +113,7 @@ export default function NewsStory({ article }) {
           )}
         </div>
 
-        <div className="font-normal *:mb-600 last:*:mb-0 md:text-3xl xl:text-pre-title lg:col-span-6 xl:col-span-5 news-body *:ul:list-outside text-pre-title *:max-w-prose *:marker:text-primary-300 [&_h2]:mt-1000 [&_h2]:font-display [&_h2]:text-display-h4 [&_h2]:first:mt-0 [&_h2]:first:text-display-h5 [&_h3]:mt-800 [&_h3]:font-display [&_h3]:text-display-h5 [&_li]:mb-300 [&_ul]:list-outside [&_ul]:list-[square] [&_ul]:pl-600 [&_ul]:text-lg md:[&_ul]:text-xl lg:[&_ul]:text-pre-title">
+        <div className="font-normal *:mb-600 last:*:mb-0 md:text-3xl xl:text-pre-title lg:col-span-6 xl:col-span-5 news-body *:ul:list-outside text-pre-title *:max-w-prose *:marker:text-primary-300 [&_h2]:mt-1000 [&_h2]:font-display [&_h2]:text-display-h4 [&_h2]:uppercase [&_h2]:first:mt-0 [&_h2]:first:text-display-h5 [&_h3]:mt-800 [&_h3]:font-display [&_h3]:text-display-h5 [&_h3]:uppercase [&_li]:mb-300 [&_ul]:list-outside [&_ul]:list-[square] [&_ul]:pl-600 [&_ul]:text-lg md:[&_ul]:text-xl lg:[&_ul]:text-pre-title">
           {body}
         </div>
       </div>
