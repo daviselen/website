@@ -7,12 +7,14 @@ export const newsHighlights = [
     body: "Eight of them, in one year, for work we would have made anyway.",
     src: "/images/news-telly-awards.jpg",
     alt: "Telly Award trophies",
+    slug: "davis-elen-wins-8-telly-awards-2026",
   },
   {
     heading: "Davis Elen Wins a Shorty Award",
     body: "Our fifth nomination and the one that came with hardware. Social work, judged by people who actually live on social.",
     src: "/images/news-shorty-award.jpg",
     alt: "Shorty Award trophy",
+    slug: "davis-elen-wins-a-shorty-award",
   },
   {
     heading: "DE Wins a Silver and Bronze Pencil",
