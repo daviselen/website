@@ -4879,6 +4879,27 @@
           }
         }
       }
+    },
+    {
+      "sys": {
+        "type": "Asset",
+        "id": "asset-33ffc376a12e"
+      },
+      "fields": {
+        "title": {
+          "en-US": "Davis Elen 2026 Shorty Award"
+        },
+        "description": {
+          "en-US": "Davis Elen Advertising 2026 Shorty Award trophy showcase"
+        },
+        "file": {
+          "en-US": {
+            "fileName": "shorty-award-33ffc376a12e.jpg",
+            "contentType": "image/jpeg",
+            "upload": "../images/2026/05/shorty-award-33ffc376a12e.jpg"
+          }
+        }
+      }
     }
   ]
 }

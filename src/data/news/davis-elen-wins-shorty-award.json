@@ -1,0 +1,243 @@
+{
+    "entries": [
+      {
+        "sys": {
+          "type": "Entry",
+          "id": "davis-elen-wins-a-shorty-award",
+          "contentType": {
+            "sys": {
+              "type": "Link",
+              "linkType": "ContentType",
+              "id": "article"
+            }
+          }
+        },
+        "fields": {
+          "slug": {
+            "en-US": "davis-elen-wins-a-shorty-award"
+          },
+          "title": {
+            "en-US": "Davis Elen Wins a Shorty Award"
+          },
+          "layout": {
+            "en-US": "story"
+          },
+          "publishedAt": {
+            "en-US": "2026-05-28T09:00:00"
+          },
+          "categories": {
+            "en-US": [
+              {
+                "name": "News",
+                "slug": "news"
+              }
+            ]
+          },
+          "heroImage": {
+            "en-US": {
+              "sys": {
+                "type": "Link",
+                "linkType": "Asset",
+                "id": "asset-33ffc376a12e"
+              }
+            }
+          },
+          "body": {
+            "en-US": {
+              "nodeType": "document",
+              "data": {},
+              "content": [
+                {
+                  "nodeType": "paragraph",
+                  "data": {},
+                  "content": [
+                    {
+                      "nodeType": "text",
+                      "value": "Five nominations in, this is the one that brought home hardware.",
+                      "marks": [
+                        {
+                            "type": "italic"
+                        }
+                      ],
+                      "data": {}
+                    }
+                  ]
+                },
+                {
+                  "nodeType": "paragraph",
+                  "data": {},
+                  "content": [
+                    {
+                      "nodeType": "text",
+                      "value": "Social work, judged by people who actually build for social. Created for Lively from Best Buy Health, the “Lively Cares” campaign put the Jitterbug Smart4 directly into the hands of real caregivers—showing the daily reality of staying connected when life gets complicated.",
+                      "marks": [],
+                      "data": {}
+                    }
+                  ]
+                },
+                {
+                  "nodeType": "heading-2",
+                  "data": {},
+                  "content": [
+                    {
+                      "nodeType": "text",
+                      "value": "Built for Business, Not the Feed",
+                      "marks": [],
+                      "data": {}
+                    }
+                  ]
+                },
+                {
+                  "nodeType": "paragraph",
+                  "data": {},
+                  "content": [
+                    {
+                      "nodeType": "text",
+                      "value": "We don't chase vanity metrics, trend-jacking, or algorithmic noise. We build campaigns that prioritize tangible business outcomes over industry fads, specifically tailored to the realities of our clients' markets.",
+                      "marks": [],
+                      "data": {}
+                    }
+                  ]
+                },
+                {
+                  "nodeType": "paragraph",
+                  "data": {},
+                  "content": [
+                    {
+                      "nodeType": "text",
+                      "value": "When the Shorty Awards Real Time Academy hands out an honor, it isn't a pat on the back for being clever. It’s confirmation from active digital practitioners that the strategy worked.",
+                      "marks": [],
+                      "data": {}
+                    }
+                  ]
+                },
+                {
+                  "nodeType": "heading-2",
+                  "data": {},
+                  "content": [
+                    {
+                      "nodeType": "text",
+                      "value": "Solving Real Problems",
+                      "marks": [],
+                      "data": {}
+                    }
+                  ]
+                },
+                {
+                  "nodeType": "paragraph",
+                  "data": {},
+                  "content": [
+                    {
+                      "nodeType": "text",
+                      "value": "We start by looking at the constraints. That’s where genuine problem-solving happens. We paired a grounded approach with human imagination to turn healthcare technology into an essential daily utility.",
+                      "marks": [],
+                      "data": {}
+                    }
+                  ]
+                },
+                {
+                  "nodeType": "paragraph",
+                  "data": {},
+                  "content": [
+                    {
+                      "nodeType": "text",
+                      "value": "See the official submission on the ",
+                      "marks": [],
+                      "data": {}
+                    },
+                    {
+                      "nodeType": "hyperlink",
+                      "data": {
+                        "uri": "https://shortyawards.com/18th/lively-cares"
+                      },
+                      "content": [
+                        {
+                          "nodeType": "text",
+                          "value": "Shorty Awards Campaign Showcase",
+                          "marks": [],
+                          "data": {}
+                        }
+                      ]
+                    },
+                    {
+                      "nodeType": "text",
+                      "value": ".",
+                      "marks": [],
+                      "data": {}
+                    }
+                  ]
+                },
+                {
+                  "nodeType": "heading-3",
+                  "data": {},
+                  "content": [
+                    {
+                      "nodeType": "text",
+                      "value": "Ready for Work That Delivers?",
+                      "marks": [],
+                      "data": {}
+                    }
+                  ]
+                },
+                {
+                  "nodeType": "paragraph",
+                  "data": {},
+                  "content": [
+                    {
+                      "nodeType": "text",
+                      "value": "See how our focused, pragmatic approach solves real brand challenges. ",
+                      "marks": [],
+                      "data": {}
+                    },
+                    {
+                      "nodeType": "hyperlink",
+                      "data": {
+                        "uri": "/work"
+                      },
+                      "content": [
+                        {
+                          "nodeType": "text",
+                          "value": "Dig into our work",
+                          "marks": [],
+                          "data": {}
+                        }
+                      ]
+                    },
+                    {
+                      "nodeType": "text",
+                      "value": " or ",
+                      "marks": [],
+                      "data": {}
+                    },
+                    {
+                      "nodeType": "hyperlink",
+                      "data": {
+                        "uri": "/contact"
+                      },
+                      "content": [
+                        {
+                          "nodeType": "text",
+                          "value": "get in touch with our team",
+                          "marks": [],
+                          "data": {}
+                        }
+                      ]
+                    },
+                    {
+                      "nodeType": "text",
+                      "value": ".",
+                      "marks": [],
+                      "data": {}
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "link": {
+            "en-US": "https://shortyawards.com/18th/lively-cares"
+          }
+        }
+      }
+    ]
+}
