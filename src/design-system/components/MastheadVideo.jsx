@@ -17,8 +17,14 @@ const BARS = [
   { delay: 0.08, duration: 0.7 },
 ];
 
-// background mode: Vimeo's silent, looping, autoplaying, chromeless embed.
-const EMBED_PARAMS = "background=1&autoplay=1&loop=1&muted=1";
+// Silent, autoplaying, chromeless embed. Looping uses Vimeo's background mode,
+// which forces repeat regardless of loop=, so play-once drops it and hides the
+// chrome by hand instead. Without background=1 the video fits the iframe
+// rather than covering it; the cover crop below still applies.
+const embedParams = (loop) =>
+  loop
+    ? "background=1&autoplay=1&loop=1&muted=1"
+    : "autoplay=1&muted=1&controls=0&title=0&byline=0&portrait=0";
 
 // Upper bound on how long the embed waits for `ready` after window load, so
 // the video still arrives if the caller's signal never fires.
@@ -33,6 +39,8 @@ export default function MastheadVideo({
   // to it. A fixed delay was not enough — on PageSpeed's slower hardware the
   // reveal finishes later and the video landed ahead of it anyway.
   ready = true,
+  // Repeat the video. Off plays it once and holds the last frame.
+  loop = true,
   // Still image shown from first paint and faded under the video once it
   // loads. It is the masthead's LCP candidate: the iframe can never be one,
   // and without a poster nothing large paints until the video arrives.
@@ -82,14 +90,14 @@ export default function MastheadVideo({
   useEffect(() => {
     if (!windowLoaded || src) return undefined;
     const embed = () =>
-      setSrc(`https://player.vimeo.com/video/${vimeoId}?${EMBED_PARAMS}`);
+      setSrc(`https://player.vimeo.com/video/${vimeoId}?${embedParams(loop)}`);
     if (ready) {
       embed();
       return undefined;
     }
     const timer = window.setTimeout(embed, EMBED_FALLBACK_MS);
     return () => window.clearTimeout(timer);
-  }, [windowLoaded, ready, src, vimeoId]);
+  }, [windowLoaded, ready, src, vimeoId, loop]);
 
   useEffect(() => {
     // Player throws on an iframe that isn't a Vimeo embed yet.

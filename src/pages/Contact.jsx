@@ -218,6 +218,7 @@ export default function Contact() {
       <section id="top">
         <MastheadVideo
           vimeoId="1235614817"
+          loop={false}
           poster=""
           className="h-[calc((100vw-83px)*0.4229)] max-h-[785px] mx-400 rounded-md object-cover"
         />
