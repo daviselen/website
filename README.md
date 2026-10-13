@@ -8,6 +8,8 @@ process for pulling it out of Figma.
 
 # DE5 Website — HP-26 homepage
 
+[![Davis Elen Advertising](https://badge.uptimerobot.com/psp/391b3d65ee3db5ed0d03ff3eb96e6e8f.svg?style=logo&theme=dark)](https://stats.uptimerobot.com/NffeZTCQOQ?utm_source=status_badge&utm_medium=referral)
+
 React + Tailwind build of the DE5 Figma file's homepage frame
 (`tnP43NMbcFkzFKMsdpukDn`), pulled via the Figma REST API (MCP hit a
 Starter-plan rate limit partway through). Originally built from **HP-23**
