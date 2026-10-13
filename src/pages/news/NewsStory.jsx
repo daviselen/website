@@ -92,11 +92,11 @@ export default function NewsStory({ article }) {
       >
         <div
           ref={pinRef}
-          className="flex flex-col items-start gap-800 lg:col-span-7 lg:gap-1800 lg:self-start lg:pr-700"
+          className="flex flex-col items-start gap-800 lg:col-span-6 xl:col-span-7 lg:gap-1800 lg:self-start lg:pr-700"
         >
           <HeadingReveal
             as="h1"
-            className="font-display text-6xl uppercase leading-none md:text-8xl xl:text-display-h2"
+            className="font-display text-6xl uppercase leading-none md:text-8xl xl:text-display-h3"
             text={title}
           ></HeadingReveal>
           {link && (
@@ -113,7 +113,7 @@ export default function NewsStory({ article }) {
           )}
         </div>
 
-        <div className="font-normal *:mb-600 last:*:mb-0 md:text-3xl xl:text-story-body lg:col-span-5 news-body *:ul:list-outside text-pre-title *:max-w-prose *:marker:text-primary-300 [&_h2]:mt-1000 [&_h2]:font-display [&_h2]:text-display-h4 [&_h2]:first:mt-0 [&_h2]:first:text-display-h5 [&_h3]:mt-800 [&_h3]:font-display [&_h3]:text-display-h5 [&_li]:mb-300 [&_ul]:list-outside [&_ul]:list-[square] [&_ul]:pl-600 [&_ul]:text-lg md:[&_ul]:text-xl lg:[&_ul]:text-pre-title">
+        <div className="font-normal *:mb-600 last:*:mb-0 md:text-3xl xl:text-pre-title lg:col-span-6 xl:col-span-5 news-body *:ul:list-outside text-pre-title *:max-w-prose *:marker:text-primary-300 [&_h2]:mt-1000 [&_h2]:font-display [&_h2]:text-display-h4 [&_h2]:first:mt-0 [&_h2]:first:text-display-h5 [&_h3]:mt-800 [&_h3]:font-display [&_h3]:text-display-h5 [&_li]:mb-300 [&_ul]:list-outside [&_ul]:list-[square] [&_ul]:pl-600 [&_ul]:text-lg md:[&_ul]:text-xl lg:[&_ul]:text-pre-title">
           {body}
         </div>
       </div>
@@ -123,7 +123,7 @@ export default function NewsStory({ article }) {
           <HeadingReveal
             as="h2"
             text={`More \nNews`}
-            className="font-display text-7xl uppercase leading-none md:text-8xl lg:text-display-h3"
+            className="font-display text-7xl uppercase leading-none md:text-8xl lg:text-display-h4 xl:text-display-h3"
           />
           <div
             ref={cardsRef}
