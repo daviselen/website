@@ -268,7 +268,7 @@ export default function Contact() {
           />
           <TextReveal
             text={`Sed ut perspiciatis unde omnis \niste natus error sit voluptatem.`}
-            className="mb-6 max-w-[24ch] text-lg md:text-xl lg:text-pre-title"
+            className="mb-6 max-w-[22ch] text-lg md:text-xl lg:text-pre-title"
           />
         </div>
         <form id="contact" onSubmit={handleSubmit} className="flex flex-col gap-500 xl:col-start-1 xl:col-end-7 xl:row-start-1 xl:*:ml-1000">
