@@ -29,6 +29,7 @@ function StyledCombobox({options, placeholder}) {
 
             <ComboboxOptions 
                 anchor="bottom" 
+                modal={false} 
                 className="data-closed:scale-95 data-closed:opacity-0 z-50 mt-2 max-h-60 w-[var(--input-width)] origin-top overflow-y-auto border border-neutral-800 bg-neutral-800 py-1 text-white shadow-2xl transition duration-200 ease-out empty:invisible focus:outline-none"
             >
             {query.length > 0 && (
