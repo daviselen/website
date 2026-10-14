@@ -98,6 +98,7 @@ export default function NewsStory({ article }) {
             as="h1"
             className="font-display text-6xl uppercase leading-none md:text-8xl xl:text-display-h3"
             text={title}
+            splitLines
           ></HeadingReveal>
           {link && (
             <StyledButton
