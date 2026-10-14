@@ -58,9 +58,12 @@ export default function NewsArticlePage() {
     return <NotFound />;
   }
 
+  // Keyed by slug: moving between articles (e.g. via "More News") reuses this
+  // instance, and MastheadImage's reveal only runs on its first load, so the
+  // next article's image would otherwise appear without animating.
   return getArticleLayout(article) === STORY_LAYOUT ? (
-    <NewsStory article={article} />
+    <NewsStory key={slug} article={article} />
   ) : (
-    <NewsArticleArchive article={article} />
+    <NewsArticleArchive key={slug} article={article} />
   );
 }
