@@ -17,13 +17,13 @@
           "en-US": "davis-elen-wins-silver-and-bronze-pencil-at-the-one-show"
         },
         "title": {
-          "en-US": "Davis Elen Wins a Silver and Bronze Pencil at the One Show"
+          "en-US": "Davis Elen Wins a Silver and Bronze Pencil at The One Show"
         },
         "layout": {
           "en-US": "story"
         },
         "publishedAt": {
-          "en-US": "2025-02-03T09:00:00"
+          "en-US": "2024-05-15T09:00:00"
         },
         "categories": {
           "en-US": [
@@ -53,7 +53,35 @@
                 "content": [
                   {
                     "nodeType": "text",
-                    "value": "Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.",
+                    "value": "Two pencils from The One Show. They're somewhere safe and slightly visible.",
+                    "marks": [
+                      {
+                        "type": "italic"
+                      }
+                    ],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Our work on McDonald's “Beyond the Arches” brought home both Silver and Bronze Pencils from The One Show. By highlighting authentic stories of franchise employees across the country, the campaign captured the real human experience behind one of the world's most recognizable brands.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "heading-2",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Real Stories, Real Impact",
                     "marks": [],
                     "data": {}
                   }
@@ -65,7 +93,103 @@
                 "content": [
                   {
                     "nodeType": "text",
-                    "value": "Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+                    "value": "We don't manufacture drama for awards juries. As an independent agency, we look for the true story inside a business challenge and build work that resonates in the real market. When an international panel of creative leaders honors that work, it confirms that grounded storytelling performs.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Explore the winning campaign details on the official ",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "hyperlink",
+                    "data": {
+                      "uri": "https://www.oneclub.org/awards/sandiego/-independantagency/Davis+Elen+Advertising+[s]+Los+Angeles/2024/134/all"
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "One Show Award Entry",
+                        "marks": [],
+                        "data": {}
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": ".",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "heading-3",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Ready for Work That Delivers?",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Explore how our strategy-first approach transforms real brand challenges. ",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "hyperlink",
+                    "data": {
+                      "uri": "/work"
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "Dig into our work",
+                        "marks": [],
+                        "data": {}
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": " or ",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "hyperlink",
+                    "data": {
+                      "uri": "/contact"
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "get in touch with our team",
+                        "marks": [],
+                        "data": {}
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": ".",
                     "marks": [],
                     "data": {}
                   }
