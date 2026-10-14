@@ -46,6 +46,8 @@ export default function MastheadVideo({
   // and without a poster nothing large paints until the video arrives.
   poster,
   posterAlt = "",
+  // Off for silent clips: no sound to toggle, so the mute button is not rendered.
+  hasAudio = true,
 }) {
   const [loaded, setLoaded] = useState(false);
   // The embed URL, withheld until the page has painted (see the deferral
@@ -212,28 +214,30 @@ export default function MastheadVideo({
         />
         </div>
       </div>
-      <button
-        type="button"
-        onClick={toggleMuted}
-        aria-label={muted ? "Unmute video" : "Mute video"}
-        aria-pressed={!muted}
-        className="absolute bottom-300 right-300 flex size-600 items-center justify-center rounded-full border border-neutral-0 bg-neutral-1000/40 text-neutral-0 transition-colors hover:bg-neutral-1000/70"
-      >
-        <span className="flex h-300 items-center gap-50" aria-hidden="true">
-          {BARS.map((bar, i) => (
-            <span
-              key={i}
-              className={`block h-300 w-50 rounded-full bg-neutral-0 transition-transform duration-200 ${muted ? "" : "animate-waveform"}`}
-              style={{
-                transformOrigin: "center",
-                transform: muted ? "scaleY(0.15)" : undefined,
-                animationDelay: `${bar.delay}s`,
-                animationDuration: `${bar.duration}s`,
-              }}
-            />
-          ))}
-        </span>
-      </button>
+      {hasAudio && (
+        <button
+          type="button"
+          onClick={toggleMuted}
+          aria-label={muted ? "Unmute video" : "Mute video"}
+          aria-pressed={!muted}
+          className="absolute bottom-300 right-300 flex size-600 items-center justify-center rounded-full border border-neutral-0 bg-neutral-1000/40 text-neutral-0 transition-colors hover:bg-neutral-1000/70"
+        >
+          <span className="flex h-300 items-center gap-50" aria-hidden="true">
+            {BARS.map((bar, i) => (
+              <span
+                key={i}
+                className={`block h-300 w-50 rounded-full bg-neutral-0 transition-transform duration-200 ${muted ? "" : "animate-waveform"}`}
+                style={{
+                  transformOrigin: "center",
+                  transform: muted ? "scaleY(0.15)" : undefined,
+                  animationDelay: `${bar.delay}s`,
+                  animationDuration: `${bar.duration}s`,
+                }}
+              />
+            ))}
+          </span>
+        </button>
+      )}
     </div>
   );
 }
