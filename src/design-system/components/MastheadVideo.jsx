@@ -114,12 +114,31 @@ export default function MastheadVideo({
     // The SDK is imported here, not at module scope, so it stays out of the
     // entry bundle along with the embed it drives.
     let player;
+    let observer;
+    let ended = false;
     let cancelled = false;
     import("@vimeo/player").then(({ default: Player }) => {
       if (cancelled) return;
       player = new Player(videoRef.current);
       playerRef.current = player;
       player.on("loaded", () => setLoaded(true));
+
+      // Scrolled fully out of view: stop decoding frames, and stop any audio
+      // the user unmuted. The `ended` guard is for loop={false}, where the
+      // video is meant to hold its last frame — without it, scrolling back
+      // would restart a clip that had already finished. Both calls return
+      // promises that reject when the player refuses (an autoplay policy
+      // block on an unmuted resume, a destroyed player), hence the catches;
+      // an unhandled rejection is the only thing that could go wrong here,
+      // and the video simply staying paused is the right fallback.
+      player.on("ended", () => {
+        ended = true;
+      });
+      observer = new IntersectionObserver(([entry]) => {
+        if (!entry.isIntersecting) player.pause().catch(() => {});
+        else if (!ended) player.play().catch(() => {});
+      });
+      observer.observe(wrapRef.current);
     });
 
     // Not player.destroy(): it unconditionally removes the iframe from the
@@ -132,7 +151,9 @@ export default function MastheadVideo({
     // component actually unmounts.
     return () => {
       cancelled = true;
+      observer?.disconnect();
       player?.off("loaded");
+      player?.off("ended");
     };
   }, [src]);
 
