@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./components/Layout";
 import "./index.css";
+import { holdSite } from "./lib/siteReady.js";
 import HomePage from "./pages/HomePage";
 import NotFound from "./pages/NotFound";
 
@@ -95,6 +96,10 @@ const router = createBrowserRouter([
 if (import.meta.env.VITE_IMAGE_DERIVATIVES === true) {
   document.documentElement.classList.add("image-derivatives");
 }
+
+// Before first render, so no reveal can start ahead of the preloader; it
+// releases the site when it lifts (see SitePreloader).
+holdSite();
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
