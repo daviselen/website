@@ -1,4 +1,10 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import { useLocation, useNavigationType, useOutlet } from "react-router-dom";
 import {
   gsap,
@@ -10,6 +16,7 @@ import {
 import { OverlayProvider } from "../design-system/components/Overlay.jsx";
 import NavBarAlt from "../sections/NavBarAlt";
 import Footer from "../sections/Footer";
+import SitePreloader from "./SitePreloader.jsx";
 
 const FADE_DURATION = 0.5;
 
@@ -29,6 +36,9 @@ export default function PageTransition({ overlayColor = "#000" }) {
   const outlet = useOutlet();
 
   const [phase, setPhase] = useState(null); // null | "cover" | "reveal"
+  // Shown once per full page load; client-side navigation never re-mounts it.
+  const [preloading, setPreloading] = useState(true);
+  const finishPreload = useCallback(() => setPreloading(false), []);
   const previousPathname = useRef(location.pathname);
   const overlayRef = useRef(null);
 
@@ -230,6 +240,8 @@ export default function PageTransition({ overlayColor = "#000" }) {
           isolation: "isolate",
         }}
       />
+
+      {preloading && <SitePreloader onDone={finishPreload} />}
     </div>
   );
 }

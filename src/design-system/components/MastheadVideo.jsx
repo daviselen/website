@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useMediaReveal } from "../animation";
 import Picture from "./Picture";
+import { holdForMedia, useSiteReady } from "../../lib/siteReady.js";
 
 // Per-bar animation-delay/-duration (seconds) so the 4 bars don't move in
 // lockstep off the single shared `waveform` keyframe (tailwind.config.js) —
@@ -17,28 +18,22 @@ const BARS = [
   { delay: 0.08, duration: 0.7 },
 ];
 
-// Silent, autoplaying, chromeless embed. Looping uses Vimeo's background mode,
-// which forces repeat regardless of loop=, so play-once drops it and hides the
-// chrome by hand instead. Without background=1 the video fits the iframe
+// Silent, chromeless embed. Autoplay stays on even though the embed loads
+// behind the preloader: Vimeo does not buffer a paused embed (readyState
+// stays 0), so it has to start playing to become ready at all. The player
+// effect below parks it on its first frame the moment it is playing, and the
+// siteReady effect plays it again once the site is released. Looping uses
+// Vimeo's background mode, which forces repeat regardless of loop=, so
+// play-once drops it and hides the chrome by hand instead. Without background=1 the video fits the iframe
 // rather than covering it; the cover crop below still applies.
 const embedParams = (loop) =>
   loop
     ? "background=1&autoplay=1&loop=1&muted=1"
     : "autoplay=1&muted=1&controls=0&title=0&byline=0&portrait=0";
 
-// Upper bound on how long the embed waits for `ready` after window load, so
-// the video still arrives if the caller's signal never fires.
-const EMBED_FALLBACK_MS = 6000;
-
 export default function MastheadVideo({
   vimeoId,
   className = "",
-  // Hold the embed until this is true (and the window has loaded). Masthead
-  // passes "the copy below has finished revealing": that copy is the LCP
-  // element on mobile, and PageSpeed bills every byte downloaded before LCP
-  // to it. A fixed delay was not enough — on PageSpeed's slower hardware the
-  // reveal finishes later and the video landed ahead of it anyway.
-  ready = true,
   // Repeat the video. Off plays it once and holds the last frame.
   loop = true,
   // Still image shown from first paint and faded under the video once it
@@ -50,9 +45,6 @@ export default function MastheadVideo({
   hasAudio = true,
 }) {
   const [loaded, setLoaded] = useState(false);
-  // The embed URL, withheld until the page has painted (see the deferral
-  // effect below). An iframe with no src is inert: no player JS, no video.
-  const [src, setSrc] = useState(null);
   const [muted, setMuted] = useState(true);
   const wrapRef = useRef(null);
   const maskRef = useRef(null);
@@ -73,11 +65,12 @@ export default function MastheadVideo({
   const revealReady = poster ? posterLoaded : loaded;
   useMediaReveal(wrapRef, { maskRef, mediaRef, loaded: revealReady });
 
-  // Defer the embed until window load AND `ready` (or EMBED_FALLBACK_MS
-  // after load, whichever is first). The video is ~4.5 MB plus ~350 KB of
-  // player JS; started eagerly, all of it lands before the LCP paint (9.7 s
-  // on mobile). The wrapper stays hidden until "loaded" either way, so
-  // nothing visible changes except that the video arrives a beat later.
+  // Defer the embed until window load: the video is ~4.5 MB plus ~350 KB of
+  // player JS, and started eagerly it competes with everything that paints.
+  // It does not wait for anything past that, because the preloader is itself
+  // waiting on this video (holdForMedia below) — gating the embed on the
+  // preloader lifting would deadlock. Playback is what waits for the site.
+  const siteReady = useSiteReady();
   const [windowLoaded, setWindowLoaded] = useState(
     () => document.readyState === "complete"
   );
@@ -89,17 +82,34 @@ export default function MastheadVideo({
     return () => window.removeEventListener("load", onLoad);
   }, [windowLoaded]);
 
+  // The embed URL, withheld until then. An iframe with no src is inert: no
+  // player JS, no video.
+  const src = windowLoaded
+    ? `https://player.vimeo.com/video/${vimeoId}?${embedParams(loop)}`
+    : null;
+
+  // Tell the preloader to wait until the video is actually playing, i.e.
+  // buffered enough to start (the player's "loaded" event only means its UI is
+  // up). Released on unmount too, so a video that goes away can never leave
+  // it waiting.
+  const releaseMediaRef = useRef(null);
   useEffect(() => {
-    if (!windowLoaded || src) return undefined;
-    const embed = () =>
-      setSrc(`https://player.vimeo.com/video/${vimeoId}?${embedParams(loop)}`);
-    if (ready) {
-      embed();
-      return undefined;
+    releaseMediaRef.current = holdForMedia();
+    return () => releaseMediaRef.current();
+  }, []);
+
+  // Until the site is released the video is parked on its first frame. These
+  // are refs because the player effect below is keyed on `src` alone
+  // and must not re-bind the player when either changes.
+  const siteReadyRef = useRef(false);
+  const inViewRef = useRef(false);
+  const endedRef = useRef(false);
+  useEffect(() => {
+    siteReadyRef.current = siteReady;
+    if (siteReady && inViewRef.current && !endedRef.current) {
+      playerRef.current?.play().catch(() => {});
     }
-    const timer = window.setTimeout(embed, EMBED_FALLBACK_MS);
-    return () => window.clearTimeout(timer);
-  }, [windowLoaded, ready, src, vimeoId, loop]);
+  }, [siteReady]);
 
   useEffect(() => {
     // Player throws on an iframe that isn't a Vimeo embed yet.
@@ -115,13 +125,28 @@ export default function MastheadVideo({
     // entry bundle along with the embed it drives.
     let player;
     let observer;
-    let ended = false;
+    endedRef.current = false;
     let cancelled = false;
     import("@vimeo/player").then(({ default: Player }) => {
       if (cancelled) return;
       player = new Player(videoRef.current);
       playerRef.current = player;
       player.on("loaded", () => setLoaded(true));
+      // First "playing" = buffered and running. Park it back on frame 0 and
+      // let the preloader go; if the site is already released (the preloader
+      // timed out first) just let it keep playing.
+      let primed = false;
+      player.on("playing", () => {
+        if (primed) return;
+        primed = true;
+        releaseMediaRef.current?.();
+        if (!siteReadyRef.current) {
+          player
+            .pause()
+            .then(() => player.setCurrentTime(0))
+            .catch(() => {});
+        }
+      });
 
       // Scrolled fully out of view: stop decoding frames, and stop any audio
       // the user unmuted. The `ended` guard is for loop={false}, where the
@@ -132,11 +157,14 @@ export default function MastheadVideo({
       // an unhandled rejection is the only thing that could go wrong here,
       // and the video simply staying paused is the right fallback.
       player.on("ended", () => {
-        ended = true;
+        endedRef.current = true;
       });
       observer = new IntersectionObserver(([entry]) => {
+        inViewRef.current = entry.isIntersecting;
         if (!entry.isIntersecting) player.pause().catch(() => {});
-        else if (!ended) player.play().catch(() => {});
+        else if (!endedRef.current && siteReadyRef.current) {
+          player.play().catch(() => {});
+        }
       });
       observer.observe(wrapRef.current);
     });
@@ -153,6 +181,7 @@ export default function MastheadVideo({
       cancelled = true;
       observer?.disconnect();
       player?.off("loaded");
+      player?.off("playing");
       player?.off("ended");
     };
   }, [src]);

@@ -1,4 +1,3 @@
-import { useLayoutEffect, useRef, useState } from "react";
 import HeadingReveal from "../design-system/components/HeadingReveal";
 import MastheadVideo from "../design-system/components/MastheadVideo";
 import TextReveal from "../design-system/components/TextReveal";
@@ -15,23 +14,10 @@ import TextReveal from "../design-system/components/TextReveal";
 // Per design: 8px corner radius, edge-to-edge on mobile, inset with a
 // 32px margin on either side from md up.
 export default function Masthead() {
-  // The lede paragraph is the LCP element on mobile, so the video embed waits
-  // for its reveal to finish (see MastheadVideo's `ready`). When the copy
-  // starts below the fold (desktop, under the 1044px video) it can't be LCP
-  // and its reveal waits on scroll, so there is nothing to wait for.
-  const copyRef = useRef(null);
-  const [copyRevealed, setCopyRevealed] = useState(false);
-
-  useLayoutEffect(() => {
-    const top = copyRef.current?.getBoundingClientRect().top ?? 0;
-    if (top >= window.innerHeight) setCopyRevealed(true);
-  }, []);
-
   return (
     <section id="masthead" className="px-2 md:px-8">
       <MastheadVideo
         vimeoId="1231831922"
-        ready={copyRevealed}
         poster="/images/masthead.jpg"
         className="h-[calc((100vw-83px)*0.4229)] max-h-[785px] w-full rounded-md object-cover"
       />
@@ -53,7 +39,7 @@ export default function Masthead() {
           doubled the left inset on desktop (md:px-8 + px-8) and added an
           inset on mobile that shouldn't be there at all (image is
           edge-to-edge at that breakpoint; the text was not). */}
-      <div ref={copyRef} className="mt-1000 lg:mt-2300">
+      <div className="mt-1000 lg:mt-2300">
         {/* itemProp="slogan": real Organization.slogan property, and this
             headline genuinely is the site's tagline — no content=
             override needed since the visible text IS the value. */}
@@ -78,7 +64,6 @@ export default function Masthead() {
           delay={0.75}
           fromOpacity={0.01}
           scrollTriggerConfig={{ start: "top bottom-=140" }}
-          onComplete={() => setCopyRevealed(true)}
           className="mt-600 font-narrow text-lg font-light md:text-xl lg:mt-700 lg:pr-[calc(100%-1086px)] lg:text-pre-title"
         />
       </div>
