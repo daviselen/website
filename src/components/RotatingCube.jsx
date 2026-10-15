@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { REVEAL_DURATION } from "../design-system/animation.js";
 
-const SIZE = 170; // edge; the isometric silhouette is √2 × this ≈ 240px wide
+const SIZE = 160; // edge; the isometric silhouette is √2 × this ≈ 240px wide
 const HALF = SIZE / 2;
 // Stage is wider than the cube because the cube's body diagonal is √3 × SIZE:
 // the corners would otherwise poke into the copy stacked under it.
