@@ -66,7 +66,7 @@ const REPRESENTATIVE_EXIT_DISTANCE = 72;
 const t1 = Math.sqrt((2 * (NUDGE_UNITS * M_PER_UNIT)) / GRAVITY);
 // Fall time from apex: t2 = sqrt(2 * h_total / g)
 const t2 = Math.sqrt(
-  (2 * ((NUDGE_UNITS + REPRESENTATIVE_EXIT_DISTANCE) * M_PER_UNIT)) / GRAVITY
+  (2 * ((NUDGE_UNITS + REPRESENTATIVE_EXIT_DISTANCE) * M_PER_UNIT)) / GRAVITY,
 );
 
 const TOTAL_EXIT_DURATION = t1 + t2; // ~0.51s total trajectory
@@ -143,12 +143,9 @@ export default function DeLogoMorph({ className = "size-16", onComplete }) {
   const [reducedMotion] = useState(
     () =>
       typeof window !== "undefined" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches,
   );
   const skipIntro = reducedMotion;
-
-  const [showIntro, setShowIntro] = useState(!skipIntro);
-
 
   const rootRef = useRef(null);
   const timelineRef = useRef(null);
@@ -209,7 +206,6 @@ export default function DeLogoMorph({ className = "size-16", onComplete }) {
 
       const tl = gsap.timeline({
         onComplete: () => {
-          setShowIntro(false);
           onComplete?.();
         },
       });
@@ -243,7 +239,7 @@ export default function DeLogoMorph({ className = "size-16", onComplete }) {
           ease: exitTrajectoryEase,
           stagger: EXIT_STAGGER,
         },
-        HOLD
+        HOLD,
       )
         // The morph beat: kept "D" and "E" and the frame around them all
         // interpolate into the monogram's outlines at the same time.
@@ -259,7 +255,7 @@ export default function DeLogoMorph({ className = "size-16", onComplete }) {
             duration: REVEAL_DURATION,
             ease: EASE_REVEAL,
           },
-          "-=1"
+          "-=1",
         )
         .to(
           frameRef.current,
@@ -268,7 +264,7 @@ export default function DeLogoMorph({ className = "size-16", onComplete }) {
             duration: REVEAL_DURATION,
             ease: EASE_REVEAL,
           },
-          "<"
+          "<",
         )
         // Hand off to the real <DeLogo /> img, already mounted underneath at
         // opacity 0. No `repeat`/`yoyo` on this timeline: it has to reach
@@ -282,10 +278,10 @@ export default function DeLogoMorph({ className = "size-16", onComplete }) {
         .to(
           finalRef.current,
           { opacity: 1, duration: REVEAL_DURATION, ease: EASE_REVEAL },
-          "<"
+          "<",
         );
     },
-    { scope: rootRef, dependencies: [skipIntro] }
+    { scope: rootRef, dependencies: [skipIntro] },
   );
 
   const handleMouseEnter = () => {
@@ -322,7 +318,7 @@ export default function DeLogoMorph({ className = "size-16", onComplete }) {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {showIntro && (
+      {
         <svg
           ref={svgRef}
           viewBox="0 0 346 132"
@@ -425,7 +421,7 @@ export default function DeLogoMorph({ className = "size-16", onComplete }) {
             />
           </g>
         </svg>
-      )}
+      }
       <span
         ref={finalRef}
         className="col-start-1 row-start-1 justify-self-start opacity-0"
