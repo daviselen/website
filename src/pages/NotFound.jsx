@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import HeadingReveal from "../design-system/components/HeadingReveal";
 import TextReveal from "../design-system/components/TextReveal";
 import StyledButton from "../design-system/components/Button.jsx";
+import RotatingCube from "../components/RotatingCube.jsx";
 
 // NavBar and Footer are not rendered here: Layout.jsx already mounts both
 // around every route. Used both for the router's "*" catch-all and for a
@@ -9,7 +10,8 @@ import StyledButton from "../design-system/components/Button.jsx";
 // carries no route-specific copy.
 export default function NotFound() {
   return (
-    <main className="flex min-h-screen flex-col items-start justify-center gap-600 bg-surface-default px-2 py-1800 font-narrow font-light text-neutral-0 md:px-8">
+    <main className="flex min-h-screen flex-col items-start justify-center gap-600 bg-surface-default px-2 py-0 font-narrow font-light text-neutral-0 md:px-8">
+      <RotatingCube />
       <HeadingReveal
         text="404"
         as="h1"
