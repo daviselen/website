@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { REVEAL_DURATION } from "../design-system/animation.js";
 import { mediaReady, releaseSite } from "../lib/siteReady.js";
-import RotatingCube, { CUBE_STAGE } from "./RotatingCube.jsx";
+import RotatingCube, { CUBE_STAGE, FILLED_COUNT } from "./RotatingCube.jsx";
 
 const FADE_DURATION = 0.5;
 const GUTTER = 32;
@@ -11,7 +11,8 @@ const MAX_WAIT_MS = 10000;
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-// One milestone per face, in order: fonts, the window load event, then the
+// One milestone per face, in order, until they run out (faces past the last
+// one just light on the next beat): fonts, the window load event, then the
 // images in the first view plus any video that asked to be waited on (the
 // masthead). decode() settles once pixels are ready to paint, not merely when
 // the bytes arrive.
@@ -48,8 +49,8 @@ export default function SitePreloader({ onDone }) {
     const deadline = sleep(MAX_WAIT_MS);
 
     const run = async () => {
-      for (const [i, milestone] of MILESTONES.entries()) {
-        await Promise.race([milestone(), deadline]);
+      for (let i = 0; i < FILLED_COUNT; i += 1) {
+        await Promise.race([MILESTONES[i]?.(), deadline]);
         if (cancelled) return;
         setRevealed(i + 1);
         // Hold until this face has finished before the next milestone can light.
@@ -86,7 +87,7 @@ export default function SitePreloader({ onDone }) {
           <RotatingCube revealed={revealed} />
         </div>
       </div>
-      <p className="text-xl uppercase tracking-widest">Loading</p>
+      <p className="font-stat text-pre-title uppercase tracking-[50%]">Loading</p>
     </div>
   );
 }

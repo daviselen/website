@@ -1,31 +1,31 @@
 import { useEffect, useState } from "react";
 import { REVEAL_DURATION } from "../design-system/animation.js";
 
-const SIZE = 280;
+const SIZE = 170; // edge; the isometric silhouette is √2 × this ≈ 240px wide
 const HALF = SIZE / 2;
 // Stage is wider than the cube because the cube's body diagonal is √3 × SIZE:
 // the corners would otherwise poke into the copy stacked under it.
 export const CUBE_STAGE = Math.round(SIZE * 1.75);
 
 // 45° yaw under a 35.264° tilt is the exact isometric view.
+// Also the reduced-motion pose: the cube-spin keyframes start from it.
 const CUBE_TRANSFORM = "rotateX(-35.264deg) rotateY(45deg)";
 
 // EASE_REVEAL's curve ("M0,0 C0.8,0 0.2,1 1,1"). A GSAP CustomEase has no CSS
 // form, and this has to be CSS: the preloader shows while GSAP is paused.
 const EASE_REVEAL_CSS = "cubic-bezier(0.8, 0, 0.2, 1)";
 
-// Only the two walls facing the viewer and the top are filled. The three
-// behind them stay empty — a filled back wall would never be seen anyway,
-// now that the near ones are opaque. Array order is the reveal order.
+// Five faces are filled; the bottom stays empty, as it's never in view.
+// Array order is the reveal order.
 const FACES = [
   { transform: `translateZ(${HALF}px)`, fill: "rgb(30 86 49)" },
-  { transform: `rotateY(180deg) translateZ(${HALF}px)` },
-  { transform: `rotateY(90deg) translateZ(${HALF}px)` },
   { transform: `rotateY(-90deg) translateZ(${HALF}px)`, fill: "#a4de02" },
   { transform: `rotateX(90deg) translateZ(${HALF}px)`, fill: "#68bb59" },
+  { transform: `rotateY(180deg) translateZ(${HALF}px)`, fill: "#acdf87" },
+  { transform: `rotateY(90deg) translateZ(${HALF}px)`, fill: "#f4a117" },
   { transform: `rotateX(-90deg) translateZ(${HALF}px)` },
 ];
-const FILLED_COUNT = FACES.filter((f) => f.fill).length;
+export const FILLED_COUNT = FACES.filter((f) => f.fill).length;
 
 // The cube is drawn twice: once filled, once as bare edges on top. All 12
 // edges have to read over the colour, and six of them belong to faces that
@@ -40,7 +40,7 @@ function CubeLayer({ wireframe, shown }) {
   const visible = wireframe ? FACES : FACES.filter((f) => f.fill);
   return (
     <div
-      className="absolute inset-0 m-auto"
+      className="absolute inset-0 m-auto animate-cube-spin motion-reduce:animate-none"
       style={{
         width: SIZE,
         height: SIZE,

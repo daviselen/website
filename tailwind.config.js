@@ -116,12 +116,18 @@ export default {
         shine: {
           to: { "--shine-angle": "360deg" },
         },
+        // Full yaw turn for RotatingCube, starting from its isometric pose.
+        "cube-spin": {
+          from: { transform: "rotateX(-35.264deg) rotateY(45deg)" },
+          to: { transform: "rotateX(-35.264deg) rotateY(405deg)" },
+        },
       },
       animation: {
         waveform: "waveform 0.6s ease-in-out infinite",
         // 4s smooth rotation respects motion-safe pseudo-class for reduced
         // motion (defined in Field.jsx via Tailwind's built-in variant)
         shine: "shine 4s linear infinite",
+        "cube-spin": "cube-spin 10s linear infinite",
       },
       backgroundImage: {
         // Rotating gradient for the Contact form field focus state. Uses
