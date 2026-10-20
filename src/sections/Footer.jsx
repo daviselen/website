@@ -166,7 +166,7 @@ export default function Footer() {
               rel="noopener noreferrer" added alongside since these now
               genuinely navigate off-site (not needed for a "#" stub). */}
           <ul className="flex flex-col gap-4 lg:gap-6">
-            {social.map((s) => (
+            {social.map((s, i) => (
               <li key={s.label}>
                 <a
                   href={s.href}
@@ -179,6 +179,7 @@ export default function Footer() {
                     display: "block",
                     padding: "0.075em 0",
                     margin: "-0.075em 0",
+                    ...(i === social.length - 1 && { paddingBottom: "0.25em" }),
                   }}>{s.label}</span>
                 </a>
               </li>
