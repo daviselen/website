@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { REVEAL_DURATION } from "../design-system/animation.js";
 
-const SIZE = 160; // edge; the isometric silhouette is √2 × this ≈ 240px wide
+const SIZE = 113; // edge; the isometric silhouette is √2 × this ≈ 160px wide
 const HALF = SIZE / 2;
 // Stage is wider than the cube because the cube's body diagonal is √3 × SIZE:
 // the corners would otherwise poke into the copy stacked under it.
@@ -18,11 +18,11 @@ const EASE_REVEAL_CSS = "cubic-bezier(0.8, 0, 0.2, 1)";
 // Five faces are filled; the bottom stays empty, as it's never in view.
 // Array order is the reveal order.
 const FACES = [
-  { transform: `translateZ(${HALF}px)`, fill: "rgb(30 86 49)" },
+  { transform: `translateZ(${HALF}px)`, fill: "#1e5631" },
   { transform: `rotateY(-90deg) translateZ(${HALF}px)`, fill: "#a4de02" },
   { transform: `rotateX(90deg) translateZ(${HALF}px)`, fill: "#68bb59" },
   { transform: `rotateY(180deg) translateZ(${HALF}px)`, fill: "#acdf87" },
-  { transform: `rotateY(90deg) translateZ(${HALF}px)`, fill: "#1e5631" },
+  { transform: `rotateY(90deg) translateZ(${HALF}px)`, fill: "#75b91a" },
   { transform: `rotateX(-90deg) translateZ(${HALF}px)` },
 ];
 export const FILLED_COUNT = FACES.filter((f) => f.fill).length;
