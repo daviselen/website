@@ -128,12 +128,6 @@ const people = [
       src: "/images/portraits/stan-kaplan.jpg",
     },
   },
-  // {
-  //   name: "Zachary Moranville",
-  //   img: {
-  //     src: "/images/portraits/zachary-moranville.jpg",
-  //   },
-  // },
   {
     name: "Marcos Arroyo",
     video: {
@@ -149,6 +143,16 @@ const people = [
     video: {
       mp4: "/videos/people/jenny-rusinko.mp4",
       webm: "/videos/people/jenny-rusinko.webm"
+    }
+  },
+  {
+    name: "Zachary Moranville",
+    img: {
+      src: "/images/portraits/zachary-moranville.jpg",
+    },
+    video: {
+      mp4: "/videos/people/zachary-moranville.mp4",
+      webm: "/videos/people/zachary-moranville.webm",
     }
   },
   // {
