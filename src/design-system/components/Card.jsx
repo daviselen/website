@@ -156,7 +156,7 @@ function Card({
 
   if (href) {
     return (
-      <Link to={href} className="no-underline hover:opacity-80 transition-opacity">
+      <Link to={href} className="no-underline">
         {cardContent}
       </Link>
     );
