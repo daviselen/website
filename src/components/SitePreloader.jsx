@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { REVEAL_DURATION } from "../design-system/animation.js";
 import { mediaReady, releaseSite } from "../lib/siteReady.js";
+import LoadingWord from "./LoadingWord.jsx";
 import RotatingCube, { CUBE_STAGE, FILLED_COUNT } from "./RotatingCube.jsx";
 
 const FADE_DURATION = 0.5;
@@ -76,18 +77,21 @@ export default function SitePreloader({ onDone }) {
     <div
       role="status"
       aria-live="polite"
-      className="fixed inset-0 z-50 flex flex-col items-center justify-center gap-600 overflow-hidden bg-surface-default font-narrow text-neutral-0 transition-opacity motion-reduce:transition-none"
+      className="fixed inset-0 z-50 flex flex-col items-center overflow-hidden bg-surface-default font-narrow text-neutral-0 transition-opacity motion-reduce:transition-none"
       style={{
         opacity: leaving ? 0 : 1,
         transitionDuration: `${FADE_DURATION}s`,
       }}
     >
-      <div style={{ width: CUBE_STAGE * scale, height: CUBE_STAGE * scale }}>
-        <div style={{ transform: `scale(${scale})`, transformOrigin: "top left" }}>
-          <RotatingCube revealed={revealed} />
+      {/* Centred in the top half of the screen, not the whole of it. */}
+      <div className="flex h-1/2 flex-col items-center justify-center gap-600">
+        <div style={{ width: CUBE_STAGE * scale, height: CUBE_STAGE * scale }}>
+          <div style={{ transform: `scale(${scale})`, transformOrigin: "top left" }}>
+            <RotatingCube revealed={revealed} />
+          </div>
         </div>
+        <LoadingWord />
       </div>
-      <p className="font-stat text-pre-title uppercase tracking-[50%]">Loading</p>
     </div>
   );
 }
