@@ -84,6 +84,7 @@ function Card({
   imageItemProp,
   parallax = false,
   slug,
+  to,
 }) {
   const cfg = sizeConfig[size] ?? sizeConfig.default;
   const aspectKey = aspect ?? cfg.aspect;
@@ -151,9 +152,11 @@ function Card({
     </div>
   );
 
-  if (slug) {
+  const href = to ?? (slug ? `/news/${slug}` : null);
+
+  if (href) {
     return (
-      <Link to={`/news/${slug}`} className="no-underline hover:opacity-80 transition-opacity">
+      <Link to={href} className="no-underline hover:opacity-80 transition-opacity">
         {cardContent}
       </Link>
     );

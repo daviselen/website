@@ -43,6 +43,15 @@ export const mediaReady = () =>
     check();
   });
 
+// A refresh skips the preloader: the assets are already cached from the
+// load the visitor just sat through. Read once, at module load.
+// shortcut: a hard refresh also reports "reload" and skips the preloader too;
+// telling them apart means inferring from resource timing, which depends on
+// the host's cache headers. Revisit if a hard refresh should preload.
+export const isReload =
+  typeof performance !== "undefined" &&
+  performance.getEntriesByType("navigation")[0]?.type === "reload";
+
 export function holdSite() {
   gsap.globalTimeline.pause();
   setTimeout(releaseSite, HARD_LIMIT_MS);

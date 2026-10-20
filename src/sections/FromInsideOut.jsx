@@ -53,6 +53,7 @@ const social = {
   body: "Fifteen years, every platform that mattered and a few that didn't. Paid, organic, influencer, social PR. It isn't a department down the hall.",
   src: "/images/socialpr-social.jpg",
   alt: "Toyota social media content example",
+  to: "/work/social-media",
 };
 const pr = {
   heading: "Public Relations",

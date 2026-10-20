@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./components/Layout";
 import "./index.css";
-import { holdSite } from "./lib/siteReady.js";
+import { holdSite, isReload, releaseSite } from "./lib/siteReady.js";
 import HomePage from "./pages/HomePage";
 import NotFound from "./pages/NotFound";
 
@@ -102,8 +102,10 @@ if (import.meta.env.VITE_IMAGE_DERIVATIVES === true) {
 }
 
 // Before first render, so no reveal can start ahead of the preloader; it
-// releases the site when it lifts (see SitePreloader).
-holdSite();
+// releases the site when it lifts (see SitePreloader). A refresh has no
+// preloader, so nothing is held.
+if (isReload) releaseSite();
+else holdSite();
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
