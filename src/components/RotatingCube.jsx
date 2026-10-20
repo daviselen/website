@@ -22,7 +22,7 @@ const FACES = [
   { transform: `rotateY(-90deg) translateZ(${HALF}px)`, fill: "#a4de02" },
   { transform: `rotateX(90deg) translateZ(${HALF}px)`, fill: "#68bb59" },
   { transform: `rotateY(180deg) translateZ(${HALF}px)`, fill: "#acdf87" },
-  { transform: `rotateY(90deg) translateZ(${HALF}px)`, fill: "#f4a117" },
+  { transform: `rotateY(90deg) translateZ(${HALF}px)`, fill: "#1e5631" },
   { transform: `rotateX(-90deg) translateZ(${HALF}px)` },
 ];
 export const FILLED_COUNT = FACES.filter((f) => f.fill).length;
