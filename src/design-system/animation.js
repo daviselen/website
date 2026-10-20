@@ -194,9 +194,9 @@ export function useSmoothScroll() {
  *
  * The Y translation is scrubbed — its progress is bound to scroll position
  * over STAGGER_DISTANCE, so the cards rise exactly as far as the user has
- * scrolled and walk back down on a reversed gesture. The fade stays on a
- * played timeline; see the note above STAGGER_DISTANCE for why the two can't
- * both be scrubbed.
+ * scrolled and walk back down on a reversed gesture. The fade plays rather
+ * than scrubs; see the note above STAGGER_DISTANCE for why the two can't both
+ * be scrubbed.
  *
  * @param {object} scopeRef       ref to the grid element
  * @param {number} options.amount fraction of the grid visible before firing
@@ -208,73 +208,88 @@ export function useStaggerReveal(scopeRef, { amount = 0.333 } = {}) {
       const threshold = `${amount * 100}%`;
 
       // Percentages in the first half of a start/end string measure against
-      // the TRIGGER's height, which is what viewport.amount meant. Both
-      // timelines share this start so the fade and the rise begin together.
+      // the TRIGGER's height, which is what viewport.amount meant. The fade and
+      // the rise share this start so they begin together.
       const start = `top+=${threshold} bottom`;
 
       // Smaller Y offset on mobile — 160px pushes the first card far below
       // the section heading when the grid is stacked in a single column.
       const offsetY = window.innerWidth < 768 ? 60 : ITEM_OFFSET_Y;
 
-      // Set initial state immediately to avoid layout jumps
+      // Direct children only — grandchildren run their own reveals.
+      const items = Array.from(scopeRef.current.children);
+
+      // Initial state, set before anything can play.
       gsap.set(scopeRef.current, { opacity: 0 });
-      gsap.set(":scope > *", { y: offsetY, opacity: 0 });
+      gsap.set(items, { y: offsetY, opacity: 0 });
 
-      // 1. Opacity, played. Unchanged from before the scrub existed:
-      //    once: false in both scroll directions.
-      const fade = gsap.timeline({
-        scrollTrigger: {
+      // Each card gets its own standalone tween, not a child of a shared
+      // timeline. A timeline rewinds past a card's start when ScrollTrigger
+      // creates it, and that rewind reverted the card to its unstyled original,
+      // so every card after the first showed at rest. Standalone tweens hold.
+
+      // 1. Opacity, played. The container, then each card on its own slot.
+      //    Plays once the grid is a third into view and stays. Reversing at
+      //    that same line made cards vanish while the grid was still on screen
+      //    on the way back up, so the reverse waits for the grid to leave the
+      //    viewport at the bottom edge.
+      const fades = [
+        [scopeRef.current, { duration: 0.3 }],
+        ...items.map((item, i) => [
+          item,
+          { duration: ITEM_DURATION, ease: EASE_OUT, delay: i * STAGGER_STEP },
+        ]),
+      ];
+      fades.forEach(([target, vars]) => {
+        const tween = gsap.fromTo(
+          target,
+          { opacity: 0 },
+          {
+            opacity: 1,
+            ...vars,
+            scrollTrigger: {
+              trigger: scopeRef.current,
+              start,
+              end: "bottom top",
+              toggleActions: "play none none none",
+            },
+          }
+        );
+        ScrollTrigger.create({
           trigger: scopeRef.current,
-          start,
+          start: "top bottom",
           end: "bottom top",
-          toggleActions: "play reverse play reverse",
-        },
+          onLeaveBack: () => tween.reverse(),
+        });
       });
 
-      // The container's own fade. motion gave this no explicit duration, so
-      // it ran on the library default (~0.3s).
-      fade.fromTo(scopeRef.current, { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0);
-
-      // ":scope > *" is the direct children only — grandchildren (the card's
-      // own image/heading/body, which run their own reveals) must not be
-      // swept up by this selector. Same on both timelines.
-      fade.fromTo(
-        ":scope > *",
-        { opacity: 0 },
-        {
-          opacity: 1,
-          duration: ITEM_DURATION,
-          ease: EASE_OUT,
-          stagger: STAGGER_STEP,
-        },
-        0
-      );
-
-      // 2. Y, scrubbed. "+=" measures from the START, not from the trigger —
-      //    this is the scroll travel the timeline maps onto. No
-      //    `toggleActions`: scrub supersedes it, since there are no discrete
-      //    play/reverse events left to toggle, only a progress value.
-      const rise = gsap.timeline({
-        scrollTrigger: {
-          trigger: scopeRef.current,
-          start,
-          end: `+=${STAGGER_DISTANCE}`,
-          scrub: STAGGER_SCRUB,
-        },
+      // 2. Y, scrubbed over STAGGER_DISTANCE, so the cards rise exactly as far
+      //    as the user has scrolled and walk back down on a reversed gesture.
+      //    A delay would be ignored by a scrubbed tween, so the stagger lives
+      //    in the ease instead: every card runs the same full span, and its ease
+      //    stays at 0 until its own slot in that span.
+      const span = ITEM_DURATION + (items.length - 1) * STAGGER_STEP;
+      items.forEach((item, i) => {
+        const slot = i * STAGGER_STEP;
+        gsap.fromTo(
+          item,
+          { y: offsetY },
+          {
+            y: 0,
+            duration: span,
+            ease: (p) => {
+              const local = (p * span - slot) / ITEM_DURATION;
+              return EASE_OUT(Math.min(Math.max(local, 0), 1));
+            },
+            scrollTrigger: {
+              trigger: scopeRef.current,
+              start,
+              end: `+=${STAGGER_DISTANCE}`,
+              scrub: STAGGER_SCRUB,
+            },
+          }
+        );
       });
-
-      rise.fromTo(
-        ":scope > *",
-        { y: offsetY },
-        {
-          y: 0,
-          duration: ITEM_DURATION,
-          ease: EASE_OUT,
-          stagger: STAGGER_STEP,
-          immediateRender: false,
-        },
-        0
-      );
     },
     { scope: scopeRef }
   );
