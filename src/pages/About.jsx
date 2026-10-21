@@ -119,6 +119,16 @@ const people = [
     }
   },
   {
+    name: "Karen Lipker",
+    img: {
+      src: "/images/portraits/karen-lipker.jpg",
+    },
+    video: {
+      mp4: "/videos/people/karen-lipker.mp4",
+      webm: "/videos/people/karen-lipker.webm"
+    }
+  },
+  {
     name: "Stan Kaplan",
     video: {
       webm: "/videos/people/stan-kaplan.webm",
@@ -127,13 +137,6 @@ const people = [
     img: {
       src: "/images/portraits/stan-kaplan.jpg",
     },
-  },
-  {
-    name: "Marcos Arroyo",
-    video: {
-      mp4: "/videos/people/marcos-arroyo.mp4",
-      webm: "/videos/people/marcos-arroyo.webm"
-    }
   },
   {
     name: "Jenny Rusinko",
@@ -156,16 +159,6 @@ const people = [
     }
   },
   {
-    name: "Karen Lipker",
-    img: {
-      src: "/images/portraits/karen-lipker.jpg",
-    },
-    video: {
-      mp4: "/videos/people/karen-lipker.mp4",
-      webm: "/videos/people/karen-lipker.webm"
-    }
-  },
-  {
     name: "Alejandro Clopatofsky",
     img: {
       src: "/images/portraits/cassedy-banks.jpg",
@@ -181,12 +174,23 @@ const people = [
   //     src: "/images/portraits/lucia-galicia.jpg",
   //   },
   // },
-  // {
-  //   name: "Alonso Núñez Sarrapy",
-  //   img: {
-  //     src: "/images/portraits/alonso-nunez-sarrapy.jpg",
-  //   },
-  // },
+  {
+    name: "Shelly Choi",
+    img: {
+      src: "/images/portraits/shelly-choi.jpg",
+    },
+    video: {
+      mp4: "/videos/people/shelly-choi.mp4",
+      webm: "/videos/people/shelly-choi.webm"
+    }
+  },
+  {
+    name: "Marcos Arroyo",
+    video: {
+      mp4: "/videos/people/marcos-arroyo.mp4",
+      webm: "/videos/people/marcos-arroyo.webm"
+    }
+  },
   // {
   //   name: "Christina Dominguez",
   //   img: {
