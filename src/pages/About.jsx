@@ -385,6 +385,8 @@ export default function About() {
         text="Toyota. Best Buy Health. Smart & Final. One in four McDonald's in the country. Zoom in on the map. We're probably in your neighborhood."
         imgSrc="/images/about-map.jpg"
         imgAlt="Map of Los Angeles County showing the locations of Toyota dealership, McDonald's restaurant, Best Buy and Smart & Final locations."
+        imageTitle="Los Angeles County"
+        imageCta="View the map"
         onClick={() => openOverlay(RETAIL_MAP)}
       />
       <section id="people" className="flex flex-col gap-600 px-2 pt-1000 md:pt-3000 lg:gap-1000 lg:px-8">

@@ -83,6 +83,8 @@ export default function MediaObject({
   text,
   imgSrc,
   imgAlt,
+  imageTitle,
+  imageCta,
   to,
   href,
   onClick,
@@ -192,6 +194,26 @@ export default function MediaObject({
             isInteractive ? "hover:ring-2 hover:ring-inset hover:ring-neutral-800" : ""
           }`}
         />
+        {/* Text laid over the image, bottom-left. Spans, not headings: when
+            the root is a button/link its content must stay phrasing-only,
+            and the real h2 is already in the copy column. */}
+        {(imageTitle || imageCta) && (
+          <span className="absolute bottom-400 left-400 flex flex-col gap-200 md:left-500 xl:gap-300">
+            {imageTitle && (
+              <span className="text-3xl md:text-4xl lg:text-display-stat">{imageTitle}</span>
+            )}
+            {imageCta && (
+              <span className="flex items-center gap-200 text-lg uppercase md:text-2xl">
+                {imageCta}
+                <img
+                  src="/icons/arrow-thin.svg"
+                  alt=""
+                  className="transition-transform group-hover:translate-x-100"
+                />
+              </span>
+            )}
+          </span>
+        )}
         {/* Decorative: alt="" keeps it out of the accessibility tree because
             the badge duplicates what the copy already says (the origin-story
             object carries a "Runtime 15:50" subhead), and the root is already
