@@ -162,8 +162,8 @@ export default function RetailMap({ className = "mx-2 lg:mx-8" }) {
             popup
               .setLngLat(coordinates)
               .setHTML(
-                `<h3 style="font-size: 16px; line-height: 1; color: #1a1a1a; margin-top: 0.5em; margin-bottom: 0.25em;">${companyName}</h3>` +
-                `<p class="text-neutral-0" style="font-size: 11px; line-height: 1.272727; margin-top: 0; margin-bottom: 1em;">${address}</p>`
+                `<h3 style="font-size: 16px; line-height: 1; color: #fff; margin-top: 0.5em; margin-bottom: 0.5em;">${companyName}</h3>` +
+                `<p style="font-size: 11px; line-height: 1.272727; margin-top: 0; margin-bottom: 1em;">${address}</p>`
               )
               .addTo(map);
           });

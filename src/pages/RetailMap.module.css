@@ -57,6 +57,11 @@
   border-radius: 8px;
   padding: 8px 16px;
   box-shadow: 0 3px 14px rgba(0, 0, 0, 0.4);
+  @apply bg-surface-alt text-neutral-0;
+}
+/* Popup is always anchored "bottom" (RetailMap.jsx), so only the top tip. */
+:global(.mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip) {
+  border-top-color: theme("colors.surface.alt");
 }
 .toggle-label {
   display: flex;
