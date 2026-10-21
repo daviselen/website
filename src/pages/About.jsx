@@ -155,18 +155,26 @@ const people = [
       webm: "/videos/people/zachary-moranville.webm",
     }
   },
-  // {
-  //   name: "Karen Lipker",
-  //   img: {
-  //     src: "/images/portraits/karen-lipker.jpg",
-  //   },
-  // },
-  // {
-  //   name: "Cassedy Banks",
-  //   img: {
-  //     src: "/images/portraits/cassedy-banks.jpg",
-  //   },
-  // },
+  {
+    name: "Karen Lipker",
+    img: {
+      src: "/images/portraits/karen-lipker.jpg",
+    },
+    video: {
+      mp4: "/videos/people/karen-lipker.mp4",
+      webm: "/videos/people/karen-lipker.webm"
+    }
+  },
+  {
+    name: "Alejandro Clopatofsky",
+    img: {
+      src: "/images/portraits/cassedy-banks.jpg",
+    },
+    video: {
+      mp4: "/videos/people/alejandro-clopatofsky.mp4",
+      webm: "/videos/people/alejandro-clopatofsky.webm"
+    }
+  },
   // {
   //   name: "Lucía Galicia",
   //   img: {
