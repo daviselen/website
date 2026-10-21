@@ -18,6 +18,7 @@
 //   - Cities are 64px Knockout with an unusually loose 130px line-height
 //     (a deliberate spaced-out look) and a 48px gap, not space-y-2.
 import { useRef } from "react";
+import { Link, useLocation } from "react-router-dom";
 import DeLogo from "../design-system/components/DeLogo.jsx";
 import {
   gsap,
@@ -27,12 +28,29 @@ import {
   EASE_REVEAL,
 } from "../design-system/animation.js";
 
-const cities = ["Los Angeles", "San Diego", "Seattle", "Denver", "Kansas City", "Arlington"];
+const cities = [
+  "Los Angeles",
+  "San Diego",
+  "Seattle",
+  "Denver",
+  "Kansas City",
+  "Arlington",
+];
 // Real URLs, direct from the person who added them as Link values on these
 // text layers in Figma — not a get_design_context pull (Figma was
 // rate-limited when this was needed), so noting that distinction per
 // FIGMA_WORKFLOW.md #10 rather than presenting it with tool-verified
 // confidence.
+const footerNav = [
+  { label: "Home", to: "/" },
+  { label: "About", to: "/about" },
+  { label: "Careers", to: "/careers" },
+  { label: "Contact", to: "/contact" },
+  { label: "Privacy Policy", to: "/privacy-policy" },
+];
+// Same type as the social links below.
+const navLinkClass =
+  "font-narrow text-link-social font-light uppercase hover:text-primary-300";
 const social = [
   { label: "Instagram", href: "https://www.instagram.com/daviselen" },
   { label: "LinkedIn", href: "https://www.linkedin.com/company/daviselen" },
@@ -56,6 +74,7 @@ const REVEAL_END = "bottom top"; // no top inset, so the real viewport top
 
 export default function Footer() {
   const footerRef = useRef(null);
+  const { pathname } = useLocation();
 
   useGSAP(
     () => {
@@ -74,7 +93,7 @@ export default function Footer() {
               end: REVEAL_END,
               toggleActions: "play reverse play reverse",
             },
-          }
+          },
         );
       });
 
@@ -94,20 +113,54 @@ export default function Footer() {
               end: REVEAL_END,
               toggleActions: "play reverse play reverse",
             },
-          }
+          },
         );
       });
     },
-    { scope: footerRef }
+    { scope: footerRef },
   );
 
   return (
     <footer
       ref={footerRef}
       id="footer"
-      className="mx-2 border-y-2 border-neutral-0 py-800 pb-1000 lg:mx-8 lg:py-20 lg:pb-40"
+      className="mx-2 border-b-2 border-neutral-0 lg:mx-8"
     >
-      <div className="flex flex-col gap-800 md:flex-row md:justify-between lg:gap-16">
+      {/* Two equal columns with the same gap as the content row below, so
+          column 2 starts exactly at the left edge of the cities list. The nav
+          sits in column 1 until 1440px, then moves into column 2 (shortcut:
+          1440 is an arbitrary variant — no matching named breakpoint). Back
+          to top always sits at the far right of column 2. */}
+      <div className="grid grid-cols-1 items-center gap-4 border-b-2 border-neutral-0 py-6 md:grid-cols-2 md:gap-800 lg:gap-16">
+        <nav
+          aria-label="Footer"
+          className="flex flex-wrap gap-x-4 gap-y-2 md:col-start-1 md:row-start-1 md:gap-x-8 min-[1440px]:col-start-2"
+        >
+          {footerNav.map((n) =>
+            n.to === pathname ? (
+              <span
+                key={n.to}
+                aria-current="page"
+                className="cursor-default font-narrow text-link-social font-light uppercase opacity-50"
+              >
+                {n.label}
+              </span>
+            ) : (
+              <Link key={n.to} to={n.to} className={navLinkClass}>
+                {n.label}
+              </Link>
+            ),
+          )}
+        </nav>
+        <button
+          type="button"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className={`${navLinkClass} justify-self-end whitespace-nowrap md:col-start-2 md:row-start-1`}
+        >
+          Back to top
+        </button>
+      </div>
+      <div className="flex flex-col gap-800 py-800 pb-1000 md:flex-row md:justify-between lg:gap-16 lg:py-20 lg:pb-40">
         <div className="flex flex-1 flex-col gap-12">
           {/* data-left-reveal index 0 — document order supplies what
               custom={0} used to. */}
@@ -119,12 +172,12 @@ export default function Footer() {
               transform: "translateZ(0)",
             }}
           >
-          {/* itemProp="logo" only on this instance, not NavBar's — same
+            {/* itemProp="logo" only on this instance, not NavBar's — same
               component, two DOM instances; marking both would give the
               Organization item two `logo` values, which is valid but
               redundant, so this picks one (Footer's, since this is also
               where the rest of the contact-block microdata lives). */}
-          <DeLogo className="h-1000 xl:h-[200px] xl:w-2400" itemProp="logo" />
+            <DeLogo className="h-1000 xl:h-[200px] xl:w-2400" itemProp="logo" />
           </div>
 
           <div
@@ -135,19 +188,23 @@ export default function Footer() {
               transform: "translateZ(0)",
             }}
           >
-          <div className="flex flex-col gap-4 font-narrow text-2xl font-light uppercase leading-8 lg:gap-6">
-            <a
-              href="mailto:contact@daviselen.com"
-              itemProp="email"
-              className="hover:text-primary-300"
-            >
-              contact@daviselen.com
-            </a>
-            <a href="tel:2136887000" itemProp="telephone" className="hover:text-primary-300">
-              213.688.7000
-            </a>
+            <div className="flex flex-col gap-4 font-narrow text-2xl font-light uppercase leading-8 lg:gap-6">
+              <a
+                href="mailto:contact@daviselen.com"
+                itemProp="email"
+                className="hover:text-primary-300"
+              >
+                contact@daviselen.com
+              </a>
+              <a
+                href="tel:2136887000"
+                itemProp="telephone"
+                className="hover:text-primary-300"
+              >
+                213.688.7000
+              </a>
+            </div>
           </div>
-        </div>
 
           <div
             className="relative overflow-hidden"
@@ -156,38 +213,41 @@ export default function Footer() {
               margin: "-0.0333333em 0",
             }}
           >
-            <div
-              data-left-reveal=""
-              style={{ clipPath: "inset(0 0 100% 0)" }}
-            >
-          {/* itemProp="sameAs" now that these are real profile URLs, not
+            <div data-left-reveal="" style={{ clipPath: "inset(0 0 100% 0)" }}>
+              {/* itemProp="sameAs" now that these are real profile URLs, not
               placeholder "#"s — sameAs is exactly "the same entity is also
               at this other URL," which wasn't true before. target=_blank +
               rel="noopener noreferrer" added alongside since these now
               genuinely navigate off-site (not needed for a "#" stub). */}
-          <ul className="flex flex-col gap-4 lg:gap-6">
-            {social.map((s, i) => (
-              <li key={s.label}>
-                <a
-                  href={s.href}
-                  itemProp="sameAs"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-narrow text-link-social font-light uppercase hover:text-primary-300"
-                >
-                  <span style={{
-                    display: "block",
-                    padding: "0.075em 0",
-                    margin: "-0.075em 0",
-                    ...(i === social.length - 1 && { paddingBottom: "0.25em" }),
-                  }}>{s.label}</span>
-                </a>
-              </li>
-            ))}
-          </ul>
+              <ul className="flex flex-col gap-4 lg:gap-6">
+                {social.map((s, i) => (
+                  <li key={s.label}>
+                    <a
+                      href={s.href}
+                      itemProp="sameAs"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-narrow text-link-social font-light uppercase hover:text-primary-300"
+                    >
+                      <span
+                        style={{
+                          display: "block",
+                          padding: "0.075em 0",
+                          margin: "-0.075em 0",
+                          ...(i === social.length - 1 && {
+                            paddingBottom: "0.25em",
+                          }),
+                        }}
+                      >
+                        {s.label}
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
         {/* leading-[130px] is the real 64px-desktop line-height (2.03x the
             type size, the deliberately loose look the header comment
             describes) — it was fixed even at the mobile text-4xl (36px)
