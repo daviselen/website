@@ -1,8 +1,14 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect } from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { PostHogErrorBoundary, PostHogProvider } from "posthog-js/react";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  useRouteError,
+} from "react-router-dom";
 import Layout from "./components/Layout";
 import "./index.css";
+import posthog, { isPostHogConfigured } from "./lib/posthog.js";
 import { holdSite, isReload, releaseSite } from "./lib/siteReady.js";
 import HomePage from "./pages/HomePage";
 import NotFound from "./pages/NotFound";
@@ -19,11 +25,21 @@ const NewsArticlePage = lazy(() => import("./pages/NewsArticle"));
 // the home page ships in the entry bundle.
 const lazyPage = (module) => ({ Component: module.default });
 
+function RouteErrorBoundary() {
+  const error = useRouteError();
+
+  useEffect(() => {
+    if (isPostHogConfigured) posthog.captureException(error);
+  }, [error]);
+
+  return <NotFound />;
+}
+
 // Define routes using createBrowserRouter
 const router = createBrowserRouter([
   {
     element: <Layout />, // PixelLayout wraps all child routes
-    errorElement: <NotFound />,
+    errorElement: <RouteErrorBoundary />,
     children: [
       {
         path: "/",
@@ -109,6 +125,10 @@ else holdSite();
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <PostHogProvider client={posthog}>
+      <PostHogErrorBoundary>
+        <RouterProvider router={router} />
+      </PostHogErrorBoundary>
+    </PostHogProvider>
   </React.StrictMode>
 );

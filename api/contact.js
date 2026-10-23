@@ -1,5 +1,6 @@
 // api/contact.js
 import { Resend } from 'resend';
+import { captureServerException } from "./posthog.js";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -30,7 +31,7 @@ function isRateLimited(key) {
   return timestamps.length > RATE_LIMIT_MAX_REQUESTS;
 }
 
-export default async function handler(req, res) {
+async function handleContact(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
@@ -63,19 +64,24 @@ export default async function handler(req, res) {
   // injection even though Resend's JSON API isn't raw SMTP.
   const safeName = name.replace(/[\r\n]+/g, ' ').trim();
 
-  try {
-    // 1. Send Email Notification
-    await resend.emails.send({
-      from: 'Website Form <onboarding@resend.dev>', // Update to verified domain later
-      to: process.env.MY_CONTACT_EMAIL,
-      subject: `New Inquiry from ${safeName}`,
-      replyTo: email,
-      text: `Name: ${safeName}\nEmail: ${email}\n\nMessage:\n${message}`,
-    });
+  // 1. Send Email Notification
+  await resend.emails.send({
+    from: 'Website Form <noreply@daviselen.com>', // Update to verified domain later
+    to: process.env.MY_CONTACT_EMAIL,
+    subject: `New Inquiry from ${safeName}`,
+    replyTo: email,
+    text: `Name: ${safeName}\nEmail: ${email}\n\nMessage:\n${message}`,
+  });
 
-    return res.status(200).json({ success: true });
+  return res.status(200).json({ success: true });
+}
+
+export default async function handler(req, res) {
+  try {
+    return await handleContact(req, res);
   } catch (error) {
     console.error('Contact form submission failed:', error);
+    await captureServerException(error);
     return res.status(500).json({ error: 'Internal server error' });
   }
 }

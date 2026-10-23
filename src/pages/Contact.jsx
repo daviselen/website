@@ -10,6 +10,8 @@ import StyledLabel from "../design-system/components/Label.jsx";
 import StyledCombobox from "../design-system/components/Combobox.jsx";
 import StyledTextarea from "../design-system/components/Textarea.jsx";
 import LocationRow from "../design-system/components/LocationRow.jsx";
+import posthog, { isPostHogConfigured } from "../lib/posthog.js";
+import posthogLogger from "../lib/posthog-logs.js";
 
 const locationsData = [
   {
@@ -192,8 +194,13 @@ export default function Contact() {
         }),
       });
       if (!res.ok) throw new Error(await res.text());
+      if (isPostHogConfigured) {
+        posthog.capture("contact_form_submitted");
+      }
+      posthogLogger.info("contact_form_submission_succeeded");
       setStatus("success");
     } catch {
+      posthogLogger.error("contact_form_submission_failed");
       setStatus("error");
     }
   }

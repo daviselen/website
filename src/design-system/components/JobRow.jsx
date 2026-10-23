@@ -10,12 +10,23 @@
 // would change one of those two behaviors, not just deduplicate markup, so
 // `linkClassName` stays a prop each caller supplies its own real classes to.
 
+import posthog, { isPostHogConfigured } from "../../lib/posthog.js";
+
 export function JobRow({ href, linkClassName, external = false, children }) {
+  const handleClick = () => {
+    if (isPostHogConfigured) {
+      posthog.capture("job_application_started", {
+        application_type: external ? "external" : "contact_form",
+      });
+    }
+  };
+
   return (
     <li className="border-t-2 border-neutral-0 last:border-b-2">
       <a
         href={href}
         className={linkClassName}
+        onClick={handleClick}
         {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
       >
         {children}

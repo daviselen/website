@@ -5,6 +5,7 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import styles from "./RetailMap.module.css";
 import { Checkbox } from "../design-system/components/CheckBox";
+import posthog, { isPostHogConfigured } from "../lib/posthog.js";
 
 const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN;
 
@@ -221,6 +222,12 @@ export default function RetailMap({ className = "mx-2 lg:mx-8" }) {
       if (map && map.getLayer(targetLayerKey)) {
         map.setLayoutProperty(targetLayerKey, "visibility", visible ? "visible" : "none");
       }
+      if (isPostHogConfigured) {
+        posthog.capture("retail_map_layer_toggled", {
+          layer_id: layerId,
+          visible,
+        });
+      }
   
       setToggles((prevToggles) =>
         prevToggles.map((t) =>
@@ -229,8 +236,13 @@ export default function RetailMap({ className = "mx-2 lg:mx-8" }) {
       );
     };
   
-    const zoomTo = (bounds) => {
+    const zoomTo = (bounds, presetId) => {
       if (mapRef.current) mapRef.current.fitBounds(bounds);
+      if (isPostHogConfigured) {
+        posthog.capture("retail_map_zoom_selected", {
+          preset_id: presetId,
+        });
+      }
     };
 
     if (!MAPBOX_TOKEN) {
@@ -277,7 +289,7 @@ export default function RetailMap({ className = "mx-2 lg:mx-8" }) {
           <div id="map" className={`${styles.map}`} ref={containerRef} />
           <div id="zoom" className={styles.zoom}>
             {ZOOMS.map((z) => (
-              <button key={z.id} id={z.id} onClick={() => zoomTo(z.bounds)}>
+              <button key={z.id} id={z.id} onClick={() => zoomTo(z.bounds, z.id)}>
                 {z.label}
               </button>
             ))}

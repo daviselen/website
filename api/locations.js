@@ -1,4 +1,5 @@
 import { geolocation } from "@vercel/functions";
+import { captureServerException } from "./posthog.js";
 
 const locationsData = [
   { id: 1, latitude: 34.04677624710386, longitude: -118.262972794232 },
@@ -21,7 +22,7 @@ function haversineMiles(lat1, lon1, lat2, lon2) {
   return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 }
 
-export async function GET(request) {
+async function handleLocations(request) {
   const { latitude, longitude } = geolocation(request);
 
   if (!latitude || !longitude) {
@@ -40,4 +41,13 @@ export async function GET(request) {
     .map((l) => l.id);
 
   return Response.json({ ids });
+}
+
+export async function GET(request) {
+  try {
+    return await handleLocations(request);
+  } catch (error) {
+    await captureServerException(error);
+    throw error;
+  }
 }
