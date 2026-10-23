@@ -192,14 +192,14 @@ export default function Footer() {
               <a
                 href="mailto:contact@daviselen.com"
                 itemProp="email"
-                className="hover:text-primary-300 light:hover:text-primary-800"
+                className="hover:text-primary-300 light:hover:text-primary-800 transition-colors duration-300"
               >
                 contact@daviselen.com
               </a>
               <a
                 href="tel:2136887000"
                 itemProp="telephone"
-                className="hover:text-primary-300 light:hover:text-primary-800"
+                className="hover:text-primary-300 light:hover:text-primary-800 transition-colors duration-300"
               >
                 213.688.7000
               </a>
