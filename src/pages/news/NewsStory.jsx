@@ -70,7 +70,16 @@ export default function NewsStory({ article }) {
   const fields = article.entries[0].fields;
   const slug = fields.slug?.["en-US"];
   const metaTitle = fields.metaTitle?.["en-US"] ?? null;
-  const jsonLd = fields.jsonLd?.["en-US"] ?? null;
+  const jsonLd = fields.jsonLd?.["en-US"] ?? {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    headline: content.title,
+    description: content.description,
+    datePublished: content.pubDate?.toISOString(),
+    image: content.heroImageUrl ? `https://www.daviselen.com${content.heroImageUrl}` : undefined,
+    url: `https://www.daviselen.com/news/${slug}`,
+    publisher: { "@type": "Organization", name: "Davis Elen Advertising", url: "https://www.daviselen.com" },
+  };
   const moreNews = newsHighlights
     .filter((item) => item.slug !== slug)
     .slice(0, 2);
