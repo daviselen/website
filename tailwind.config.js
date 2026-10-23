@@ -153,14 +153,14 @@ export default {
         //   section h2s, "THE HI x AI LOOP", portfolio card brand name.
         // `stat` (67 Full Bantamweight) = Proof/News/culture card
         //   headlines (Figma's "card/heading" and "det/heading" styles).
-        display: ['"Knockout 68 Full Featherwt"', '"Oswald"', "Impact", "sans-serif"],
-        stat: ['"Knockout 67 Full Bantamweight"', '"Oswald"', "Impact", "sans-serif"],
+        display: ['"Knockout 68 Full Featherwt"', '"Knockout 68 Fallback"', '"Oswald"', "Impact", "sans-serif"],
+        stat: ['"Knockout 67 Full Bantamweight"', '"Knockout 67 Fallback"', '"Oswald"', "Impact", "sans-serif"],
         // Font/Secondary = "Ringside Narrow" (confirmed via
         // get_variable_defs). There is no separate "Ringside Regular"
         // variable — an old HP-23 assumption that was never re-checked;
         // the masthead headline uses Font/Primary (Knockout) same as every
         // other big headline, not a distinct "hero" font.
-        narrow: ['"Ringside Narrow"', '"Arial Narrow"', "sans-serif"],
+        narrow: ['"Ringside Narrow"', '"Ringside Narrow Fallback"', '"Arial Narrow"', "sans-serif"],
       },
       // Real type scale, read directly from get_design_context's resolved
       // font-size/line-height pairs (Font/Headings/H1, Scale/2300, etc.).

@@ -85,6 +85,71 @@
     font-style: normal;
     font-display: swap;
   }
+
+  /* Metric-matched fallbacks. font-display: swap paints text in a fallback
+     font until the real file arrives, and the swap reflows the page unless
+     the fallback occupies the same space. Each face below is a local system
+     font rescaled to the real cut: size-adjust is the ratio of average glyph
+     advance (real / system), measured over uppercase for Knockout and
+     English prose for Ringside; ascent/descent-override are the real
+     font's hhea metrics divided by size-adjust. Impact and Arial Narrow ship
+     with macOS and Windows; where neither exists the face is invalid and
+     the stack falls through to the generic fallback as before. Remeasure if
+     the font files change. */
+  @font-face {
+    font-family: "Knockout 68 Fallback";
+    src: local("Impact");
+    font-weight: normal;
+    size-adjust: 70.0%;
+    ascent-override: 137.1%;
+    descent-override: 34.3%;
+    line-gap-override: 0%;
+  }
+  @font-face {
+    font-family: "Knockout 67 Fallback";
+    src: local("Impact");
+    font-weight: normal;
+    size-adjust: 56.8%;
+    ascent-override: 169.0%;
+    descent-override: 42.3%;
+    line-gap-override: 0%;
+  }
+  @font-face {
+    font-family: "Ringside Narrow Fallback";
+    src: local("Arial Narrow"), local("ArialNarrow");
+    font-weight: 300;
+    size-adjust: 109.4%;
+    ascent-override: 88.2%;
+    descent-override: 21.9%;
+    line-gap-override: 0%;
+  }
+  @font-face {
+    font-family: "Ringside Narrow Fallback";
+    src: local("Arial Narrow"), local("ArialNarrow");
+    font-weight: 400;
+    size-adjust: 110.8%;
+    ascent-override: 87.1%;
+    descent-override: 21.7%;
+    line-gap-override: 0%;
+  }
+  @font-face {
+    font-family: "Ringside Narrow Fallback";
+    src: local("Arial Narrow"), local("ArialNarrow");
+    font-weight: 500;
+    size-adjust: 112.3%;
+    ascent-override: 85.9%;
+    descent-override: 21.4%;
+    line-gap-override: 0%;
+  }
+  @font-face {
+    font-family: "Ringside Narrow Fallback";
+    src: local("Arial Narrow Bold"), local("ArialNarrow-Bold");
+    font-weight: 700;
+    size-adjust: 107.6%;
+    ascent-override: 89.7%;
+    descent-override: 22.3%;
+    line-gap-override: 0%;
+  }
 }
 
 body {
