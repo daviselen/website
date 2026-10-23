@@ -191,7 +191,7 @@ export default function LocationRow({ name, address, phone, mapUrl, image }) {
   };
 
   return (
-    <li ref={itemRef} className="relative border-t-2 border-neutral-0 last:border-b-2">
+    <li ref={itemRef} className="relative border-t-2 border-neutral-0 light:border-neutral-1000 last:border-b-2">
       <div
         ref={rowRef}
         className="group relative isolate flex flex-col xl:grid xl:grid-cols-[1fr_1fr_34%] w-full items-center gap-y-300 xl:gap-y-400 px-300 xl:px-500 pb-500 xl:pb-800 pt-400 xl:pt-600"
@@ -214,7 +214,7 @@ export default function LocationRow({ name, address, phone, mapUrl, image }) {
             />
           </div>
         </div>
-        <h3 className="self-start xl:self-end font-display text-display-h5 uppercase transition-colors duration-300 group-hover:text-primary-300 group-focus-within:text-primary-300">
+        <h3 className="self-start xl:self-end font-display text-display-h5 uppercase transition-colors duration-300 group-hover:text-primary-300 light:group-hover:text-primary-800 group-focus-within:text-primary-300 light:group-focus-within:text-primary-800">
           {name}
         </h3>
         {phone && (

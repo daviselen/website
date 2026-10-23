@@ -198,7 +198,7 @@ function Overlay({ payload, onClose }) {
         type="button"
         aria-label="Close"
         onClick={onClose}
-        className="absolute inset-0 size-full cursor-default bg-surface-default/75 backdrop-blur-sm"
+        className="absolute inset-0 size-full cursor-default bg-surface-default/75 light:bg-neutral-0/75 backdrop-blur-sm"
       />
 
       <div ref={panelRef} className="relative w-full">
@@ -206,12 +206,12 @@ function Overlay({ payload, onClose }) {
           ref={closeRef}
           type="button"
           onClick={onClose}
-          className="absolute right-10 top-10 p-200 font-narrow text-base uppercase text-neutral-0 hover:text-primary-300"
+          className="absolute right-10 top-10 p-200 font-narrow text-base uppercase text-neutral-0 light:text-neutral-1000 hover:text-primary-300 light:hover:text-primary-800"
         >
           <span className="sr-only">Close</span>
           {/* Decorative: the adjacent sr-only "Close" span already gives the
               button its accessible name. */}
-          <img src="/icons/close.svg" alt="" width={24} height={24} />
+          <img src="/icons/close.svg" alt="" width={24} height={24} className="light:invert" />
         </button>
 
         {/* Players are top-aligned and sized by their own aspect ratio, so
@@ -237,7 +237,7 @@ function Overlay({ payload, onClose }) {
             allow="autoplay; fullscreen; picture-in-picture"
             allowFullScreen
             
-            className="block aspect-[16/10] h-auto max-h-[80dvh] w-[90vw] rounded-md bg-surface-default shadow-lg"
+            className="block aspect-[16/10] h-auto max-h-[80dvh] w-[90vw] rounded-md bg-surface-default light:bg-neutral-0 shadow-lg"
           />
         ) : (
           <video

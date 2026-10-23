@@ -39,7 +39,7 @@ const benefits = [
 export default function Careers() {
   return (
     <main
-      className="flex min-h-screen flex-col gap-0 bg-surface-default pb-1800 font-narrow font-light text-neutral-0"
+      className="flex min-h-screen flex-col gap-0 bg-surface-default light:bg-neutral-0 pb-1800 font-narrow font-light text-neutral-0 light:text-neutral-1000"
     >
       <section id="top">
         <MastheadImage src="/images/careers-masthead.jpg" alt="Get a Job" title={`Get \na Job`} />
@@ -73,7 +73,7 @@ export default function Careers() {
             <JobRow
               key={job.href}
               href={job.href}
-              linkClassName="flex flex-col gap-100 pt-600 pb-800 hover:text-primary-300 transition-colors md:flex-row md:items-baseline md:justify-between md:gap-400"
+              linkClassName="flex flex-col gap-100 pt-600 pb-800 hover:text-primary-300 light:hover:text-primary-800 transition-colors md:flex-row md:items-baseline md:justify-between md:gap-400"
             >
               <JobPositionField value={job.title} className="flex flex-col gap-200 px-600 md:basis-[calc(100%-46rem)]" />
               <JobMetaField

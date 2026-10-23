@@ -36,7 +36,7 @@ export default function SocialMedia({ className = "mx-2 lg:mx-8" }) {
 
     return (
         <main
-            className="flex min-h-screen flex-col gap-0 bg-surface-default pb-1800 font-narrow font-light text-neutral-0"
+            className="flex min-h-screen flex-col gap-0 bg-surface-default light:bg-neutral-0 pb-1800 font-narrow font-light text-neutral-0 light:text-neutral-1000"
         >
             <section id="top">
                 <MastheadImage src="/images/social-media-masthead.jpg" alt="Social Media" title={`Social \nMedia`} />

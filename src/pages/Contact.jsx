@@ -217,7 +217,7 @@ export default function Contact() {
 
   return (
     <main
-      className="flex min-h-screen flex-col gap-0 bg-surface-default pb-1800 font-narrow font-light text-neutral-0"
+      className="flex min-h-screen flex-col gap-0 bg-surface-default light:bg-neutral-0 pb-1800 font-narrow font-light text-neutral-0 light:text-neutral-1000"
     >
       <script type="application/ld+json">
         {JSON.stringify(jsonLd).replace(/</g, "\\u003c")}
@@ -265,7 +265,7 @@ export default function Contact() {
       </section>
       <section
         id="form"
-        className="relative mx-2 mt-1000 flex flex-col gap-600 rounded-md bg-surface-alt py-1000 text-neutral-0 md:mt-3000 lg:mx-8 lg:mt-3000 lg:gap-1000 xl:grid xl:grid-cols-12 xl:gap-400"
+        className="relative mx-2 mt-1000 flex flex-col gap-600 rounded-md bg-surface-alt light:bg-neutral-100 py-1000 text-neutral-0 light:text-neutral-1000 md:mt-3000 lg:mx-8 lg:mt-3000 lg:gap-1000 xl:grid xl:grid-cols-12 xl:gap-400"
       >
         <div className="flex flex-col gap-400 lg:gap-500 xl:col-start-9 xl:-col-end-1 xl:row-start-1">
           <HeadingReveal
@@ -301,7 +301,7 @@ export default function Contact() {
             <p className="text-lg text-green-400">Message sent — we&apos;ll be in touch.</p>
           )}
           {status === "error" && (
-            <p className="text-lg text-error-400">Something went wrong. Try again or email us directly.</p>
+            <p className="text-lg text-error-400 light:text-error-600">Something went wrong. Try again or email us directly.</p>
           )}
           <Button
             form="contact"

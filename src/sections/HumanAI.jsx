@@ -121,14 +121,14 @@ const concepts = [
   },
   {
     title: "Let Robots Do The Work",
-    color: "text-information-500",
-    dot: "border-information-500",
+    color: "text-information-500 light:text-information-700",
+    dot: "border-information-500 light:border-information-700",
     copy: "The machine clears the roadblocks and does the doing, at a volume we couldn't touch.",
   },
   {
     title: "Unlock Your Potential",
-    color: "text-primary-300",
-    dot: "border-primary-300",
+    color: "text-primary-300 light:text-primary-800",
+    dot: "border-primary-300 light:border-primary-700",
     copy: "You get the afternoon back. Spend it thinking of the next thing.",
   },
 ];
@@ -144,7 +144,7 @@ const concepts = [
 // It replaced an earlier pair of 1px linear-gradients tiled at 40x40px;
 // that's what the "grid-line" name refers to.
 const gridBackground = {
-  backgroundImage: `linear-gradient(to left, #2b2b2b 2.5px, transparent 2.5px), linear-gradient(to bottom, #2b2b2b 2.5px, transparent 2.5px)`,
+  backgroundImage: `linear-gradient(to left, var(--grid-line) 2.5px, transparent 2.5px), linear-gradient(to bottom, var(--grid-line) 2.5px, transparent 2.5px)`,
   backgroundSize: "40px 40px",
   backgroundPosition: "right center",
 };
@@ -260,7 +260,7 @@ export default function HumanAI() {
     <section
       id="human-ai"
       ref={containerRef}
-      className="relative mx-2 mt-1000 overflow-hidden rounded-md bg-surface-alt px-200 py-500 text-neutral-0 sm:px-800 md:px-1000 lg:mx-8 lg:mt-3000 xl:px-1200 2xl:p-1000"
+      className="relative mx-2 mt-1000 overflow-hidden rounded-md bg-surface-alt light:bg-neutral-100 [--grid-line:#2b2b2b] light:[--grid-line:theme(colors.neutral.200)] px-200 py-500 text-neutral-0 light:text-neutral-1000 sm:px-800 md:px-1000 lg:mx-8 lg:mt-3000 xl:px-1200 2xl:p-1000"
     >
       {/* Parallax CSS Grid Layer. `.bg` was a plain classname doing double
           duty as a JS query hook (eslint's tailwindcss plugin flags any
@@ -286,7 +286,7 @@ export default function HumanAI() {
             className="mb-300 flex items-center gap-6"
             style={REVEAL_START_STYLE}
           >
-            <img src="/icons/hi-mark.svg" alt="" className="w-[304px]" />
+            <img src="/icons/hi-mark.svg" alt="" className="w-[304px] light:invert" />
           </div>
 
           {/* Kept on one line, deliberately: JSX collapses a line break

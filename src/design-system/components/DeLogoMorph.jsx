@@ -322,7 +322,7 @@ export default function DeLogoMorph({ className = "size-16", onComplete }) {
         <svg
           ref={svgRef}
           viewBox="0 0 346 132"
-          className="col-start-1 row-start-1 h-600 w-auto justify-self-start text-neutral-0 md:h-16"
+          className="col-start-1 row-start-1 h-600 w-auto justify-self-start text-neutral-0 light:text-neutral-1000 md:h-16"
           aria-hidden="true"
           focusable="false"
         >

@@ -52,7 +52,7 @@ function CubeLayer({ wireframe, shown }) {
         wireframe ? (
           <div
             key={transform}
-            className="absolute inset-0 border border-neutral-0"
+            className="absolute inset-0 border border-neutral-0 light:border-neutral-1000"
             style={{ transform }}
           />
         ) : (

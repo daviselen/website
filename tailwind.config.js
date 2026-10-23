@@ -184,6 +184,14 @@ export default {
         // lime #a4de02, medium #68bb59, dark forest #1e5631, and back.
         "shine-gradient":
           "conic-gradient(from var(--shine-angle), #a4de02, #68bb59, #1e5631, #a4de02)",
+        // Light mode: same stops as above, except the darkest (Forest/800)
+        // becomes #479027, the lightest green that still holds 3:1 against the
+        // light panel (Neutral/100) — the WCAG minimum for a focus indicator.
+        // Not a Figma color: it sits between Primary/700 (2.7:1, fails) and
+        // Primary/800 (4.4:1). The lime and Forest/500 stops stay as they are,
+        // lighter than 3:1 on purpose, so those parts of the shine are soft.
+        "shine-gradient-light":
+          "conic-gradient(from var(--shine-angle), #a4de02, #68bb59, #479027, #a4de02)",
       },
       fontFamily: {
         // Knockout isn't one family with a weight axis — Hoefler&Co ships
@@ -235,5 +243,11 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    // `light:` styles apply only when <html data-theme="light"> is set. Dark
+    // is the base (unprefixed classes are the dark design) and the OS
+    // preference is deliberately ignored. There is no toggle yet; one would
+    // just set the attribute.
+    ({ addVariant }) => addVariant("light", ':root[data-theme="light"] &'),
+  ],
 };

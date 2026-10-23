@@ -10,7 +10,7 @@ import RotatingCube from "../components/RotatingCube.jsx";
 // carries no route-specific copy.
 export default function NotFound() {
   return (
-    <main className="flex min-h-screen flex-col items-start justify-center gap-600 bg-surface-default px-2 py-0 font-narrow font-light text-neutral-0 md:px-8">
+    <main className="flex min-h-screen flex-col items-start justify-center gap-600 bg-surface-default light:bg-neutral-0 px-2 py-0 font-narrow font-light text-neutral-0 light:text-neutral-1000 md:px-8">
       <RotatingCube />
       <HeadingReveal
         text="404"

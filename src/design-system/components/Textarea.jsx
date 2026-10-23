@@ -49,7 +49,7 @@ function StyledTextarea({placeholder = " ", onInput, ...props}) {
         onInput?.(event)
       }}
       style={{ outline: '0' }}
-      className="peer block w-full resize-none overflow-hidden border-0 border-none bg-transparent px-0 py-100 text-lg outline-none transition-all duration-200 invalid:border-red invalid:text-red focus:invalid:border-red focus:invalid:text-red md:text-2xl lg:text-pre-title"
+      className="peer block w-full resize-none overflow-hidden border-0 border-none bg-transparent px-0 py-100 text-lg outline-none transition-all duration-200 invalid:border-error-400 invalid:text-error-400 focus:invalid:border-error-400 focus:invalid:text-error-400 light:invalid:border-error-600 light:invalid:text-error-600 light:focus:invalid:border-error-600 light:focus:invalid:text-error-600 md:text-2xl lg:text-pre-title"
       {...props}
     ></Textarea>
   )

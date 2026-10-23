@@ -50,7 +50,7 @@ const footerNav = [
 ];
 // Same type as the social links below.
 const navLinkClass =
-  "font-narrow text-link-social font-light uppercase hover:text-primary-300";
+  "font-narrow text-link-social font-light uppercase hover:text-primary-300 light:hover:text-primary-800";
 const social = [
   { label: "Instagram", href: "https://www.instagram.com/daviselen" },
   { label: "LinkedIn", href: "https://www.linkedin.com/company/daviselen" },
@@ -124,14 +124,14 @@ export default function Footer() {
     <footer
       ref={footerRef}
       id="footer"
-      className="mx-2 border-b-2 border-neutral-0 lg:mx-8"
+      className="mx-2 border-b-2 border-neutral-0 light:border-neutral-1000 lg:mx-8"
     >
       {/* Two equal columns with the same gap as the content row below, so
           column 2 starts exactly at the left edge of the cities list. The nav
           sits in column 1 until 1440px, then moves into column 2 (shortcut:
           1440 is an arbitrary variant — no matching named breakpoint). Back
           to top always sits at the far right of column 2. */}
-      <div className="grid grid-cols-1 items-center gap-4 border-b-2 border-neutral-0 py-6 md:grid-cols-2 md:gap-800 lg:gap-16">
+      <div className="grid grid-cols-1 items-center gap-4 border-b-2 border-neutral-0 light:border-neutral-1000 py-6 md:grid-cols-2 md:gap-800 lg:gap-16">
         <nav
           aria-label="Footer"
           className="flex flex-wrap gap-x-4 gap-y-2 md:col-start-1 md:row-start-1 md:gap-x-8 min-[1440px]:col-start-2"
@@ -141,7 +141,7 @@ export default function Footer() {
               <span
                 key={n.to}
                 aria-current="page"
-                className="cursor-default font-narrow text-link-social font-light uppercase opacity-50"
+                className="cursor-default font-narrow text-link-social font-light uppercase opacity-50 light:opacity-60"
               >
                 {n.label}
               </span>
@@ -192,14 +192,14 @@ export default function Footer() {
               <a
                 href="mailto:contact@daviselen.com"
                 itemProp="email"
-                className="hover:text-primary-300"
+                className="hover:text-primary-300 light:hover:text-primary-800"
               >
                 contact@daviselen.com
               </a>
               <a
                 href="tel:2136887000"
                 itemProp="telephone"
-                className="hover:text-primary-300"
+                className="hover:text-primary-300 light:hover:text-primary-800"
               >
                 213.688.7000
               </a>
@@ -227,7 +227,7 @@ export default function Footer() {
                       itemProp="sameAs"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="font-narrow text-link-social font-light uppercase hover:text-primary-300"
+                      className="font-narrow text-link-social font-light uppercase hover:text-primary-300 light:hover:text-primary-800"
                     >
                       <span
                         style={{

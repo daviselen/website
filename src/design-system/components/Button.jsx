@@ -15,7 +15,7 @@ export default function StyledButton({ variant = "primary", size = "default", ch
   const base =
     "inline-flex w-full items-center justify-center gap-2 rounded-md border font-narrow font-light uppercase transition-colors";
   const variants = {
-    primary: "border-neutral-0 bg-transparent text-neutral-0 hover:bg-neutral-0 hover:text-surface-default",
+    primary: "border-neutral-0 light:border-neutral-1000 bg-transparent text-neutral-0 light:text-neutral-1000 hover:bg-neutral-0 hover:text-surface-default light:hover:bg-neutral-1000 light:hover:text-neutral-0",
     solid: "border-surface-primary-default bg-surface-primary-default text-neutral-0 hover:bg-primary-300 hover:text-surface-primary-default",
   };
   const sizes = {

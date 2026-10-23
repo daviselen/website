@@ -31,7 +31,7 @@ const isBareChrome = (pathname) =>
     (route) => pathname === route || pathname.startsWith(`${route}/`)
   );
 
-export default function PageTransition({ overlayColor = "#000" }) {
+export default function PageTransition() {
   const location = useLocation();
   const navigationType = useNavigationType();
   const outlet = useOutlet();
@@ -206,13 +206,13 @@ export default function PageTransition({ overlayColor = "#000" }) {
     <div className={`relative min-h-screen ${uniqueClass}`}>
       <title>Davis Elen</title>
       <OverlayProvider>
-        <div className="font-narrow font-light text-neutral-0" role="navigation">
+        <div className="font-narrow font-light text-neutral-0 light:text-neutral-1000" role="navigation">
           <NavBarAlt logoOnly={bareChrome} />
         </div>
         <div id="smooth-wrapper" role="main">
           <div id="smooth-content">
             <div
-              className={`min-h-screen bg-surface-default pt-800 md:pt-1000 lg:pt-1600 font-narrow font-light text-neutral-0 ${
+              className={`min-h-screen bg-surface-default light:bg-neutral-0 pt-800 md:pt-1000 lg:pt-1600 font-narrow font-light text-neutral-0 light:text-neutral-1000 ${
                 bareChrome ? "" : "pb-1000 lg:pb-1800"
               }`}
             >
@@ -226,9 +226,8 @@ export default function PageTransition({ overlayColor = "#000" }) {
       {/* Hardware-accelerated persistent black curtain */}
       <div
         ref={overlayRef}
-        className="pointer-events-none fixed inset-0 z-50 opacity-0"
+        className="pointer-events-none fixed inset-0 z-50 bg-surface-default light:bg-neutral-0 opacity-0"
         style={{
-          backgroundColor: overlayColor,
           willChange: "opacity",
           transform: "translateZ(0)",
           // `translateZ(0)` alone reliably forces a compositor layer in

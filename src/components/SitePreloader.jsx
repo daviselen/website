@@ -77,7 +77,7 @@ export default function SitePreloader({ onDone }) {
     <div
       role="status"
       aria-live="polite"
-      className="fixed inset-0 z-50 flex flex-col items-center overflow-hidden bg-surface-default font-narrow text-neutral-0 transition-opacity motion-reduce:transition-none"
+      className="fixed inset-0 z-50 flex flex-col items-center overflow-hidden bg-surface-default light:bg-neutral-0 font-narrow text-neutral-0 light:text-neutral-1000 transition-opacity motion-reduce:transition-none"
       style={{
         opacity: leaving ? 0 : 1,
         transitionDuration: `${FADE_DURATION}s`,

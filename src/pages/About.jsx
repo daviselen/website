@@ -357,7 +357,7 @@ export default function About() {
     <main
       itemScope
       itemType="https://schema.org/Organization"
-      className="flex min-h-screen flex-col gap-0 bg-surface-default pb-1000 font-narrow font-light text-neutral-0 lg:pb-1800"
+      className="flex min-h-screen flex-col gap-0 bg-surface-default light:bg-neutral-0 pb-1000 font-narrow font-light text-neutral-0 light:text-neutral-1000 lg:pb-1800"
     >
       <meta itemProp="name" content="Davis Elen Advertising" />
       <meta itemProp="url" content="https://daviselen.com" />
@@ -403,7 +403,7 @@ export default function About() {
             phone (~80px tiles) — 2-up below md, real 4-up unchanged. */}
         <div className="grid grid-cols-2 gap-100 md:grid-cols-4 lg:gap-400">
           {people.map((person, index) => (
-          <div key={index} className="teams-video relative rounded-md bg-surface-alt">
+          <div key={index} className="teams-video relative rounded-md bg-surface-alt light:bg-neutral-100">
             {person.video ? (
               // autoPlay + loop + muted + playsInline is the same background
               // -video contract as MastheadVideo: muted is what makes autoplay
@@ -426,7 +426,7 @@ export default function About() {
               <Picture className="flex aspect-[16/9] h-auto w-full items-center justify-center rounded-md" src={person.img.src} alt={person.name} />
             )}
             {person.video ? (
-              <span className="absolute bottom-100 left-100 flex gap-[6px] rounded-[3px] bg-neutral-1000/50 px-100 text-[12px] tracking-[0.03em]">
+              <span className="absolute bottom-100 left-100 flex gap-[6px] rounded-[3px] bg-neutral-1000/50 px-100 text-neutral-0 text-[12px] tracking-[0.03em]">
                 <span className="py-100">{person.name}</span>
                 <img src="/icons/teams-mic.svg" alt="" />
               </span>
@@ -469,7 +469,7 @@ export default function About() {
               >
                 {(client, itemIndex, isClone) => (
                   <Picture
-                    className="h-auto w-full"
+                    className="h-auto w-full light:invert"
                     src={client.img.src}
                     // Copies past the first are decorative repeats of a logo
                     // the first copy already announced.

@@ -159,7 +159,7 @@ const renderOptions = {
       return (
         <a
           href={href}
-          className="text-foreground inline-flex items-center font-normal hover:underline"
+          className="inline-flex items-center font-normal hover:underline"
           {...(isExternal
             ? {
                 target: "_blank",
@@ -246,7 +246,7 @@ const renderOptions = {
     ),
 
     pre: (node, children) => (
-      <pre className="bg-surface-subtle text-foreground my-600 overflow-x-auto whitespace-pre-wrap rounded-md p-600 font-mono leading-relaxed">
+      <pre className="bg-surface-alt light:bg-neutral-100 my-600 overflow-x-auto whitespace-pre-wrap rounded-md p-600 font-mono leading-relaxed">
         {Children.toArray(children)}
       </pre>
     ),

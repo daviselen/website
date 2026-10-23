@@ -22,7 +22,7 @@ export function JobRow({ href, linkClassName, external = false, children }) {
   };
 
   return (
-    <li className="border-t-2 border-neutral-0 last:border-b-2">
+    <li className="border-t-2 border-neutral-0 light:border-neutral-1000 last:border-b-2">
       <a
         href={href}
         className={linkClassName}
@@ -41,7 +41,7 @@ export function JobRow({ href, linkClassName, external = false, children }) {
 export function JobPositionField({ value, className = "flex flex-col gap-200 px-600" }) {
   return (
     <div className={className}>
-      <span className="text-small uppercase text-neutral-400">Position</span>
+      <span className="text-small uppercase text-neutral-400 light:text-neutral-600">Position</span>
       <span className="font-narrow text-xl uppercase md:text-xl lg:text-pre-title">{value}</span>
     </div>
   );
@@ -53,7 +53,7 @@ export function JobPositionField({ value, className = "flex flex-col gap-200 px-
 export function JobMetaField({ label, value, valueRef, className = "flex flex-col gap-200 px-600" }) {
   return (
     <div className={className}>
-      <span className="text-small uppercase text-neutral-400">{label}</span>
+      <span className="text-small uppercase text-neutral-400 light:text-neutral-600">{label}</span>
       <span ref={valueRef} className="shrink-0 font-narrow text-xl uppercase md:text-xl lg:text-pre-title">
         {value}
       </span>

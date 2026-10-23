@@ -154,7 +154,7 @@ export default function DeLogoIntro({ className = "size-16", onComplete }) {
         <svg
           ref={svgRef}
           viewBox="0 0 346 132"
-          className="col-start-1 row-start-1 h-16 w-auto justify-self-start text-neutral-0"
+          className="col-start-1 row-start-1 h-16 w-auto justify-self-start text-neutral-0 light:text-neutral-1000"
           aria-hidden="true"
           focusable="false"
         >

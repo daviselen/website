@@ -1,24 +1,27 @@
 import { useId } from 'react';
 
+// Only ever rendered in the map's menu (RetailMap), which is dark in both
+// themes because it floats over the dark Mapbox style, so these are the dark
+// styles with no light: counterparts.
 const checkboxStyles = {
   base: 'flex gap-2 items-center group font-sans text-sm transition relative [-webkit-tap-highlight-color:transparent]',
   state: {
-    default: 'text-neutral-800 dark:text-neutral-200 cursor-pointer',
-    disabled: 'text-neutral-300 dark:text-neutral-600 forced-colors:text-[GrayText] cursor-not-allowed',
+    default: 'text-neutral-200 cursor-pointer',
+    disabled: 'text-neutral-600 forced-colors:text-[GrayText] cursor-not-allowed',
   },
 };
 
 const boxStyles = {
   base: 'w-4 h-4 box-border shrink-0 rounded-none flex items-center justify-center border transition appearance-none cursor-pointer disabled:cursor-not-allowed',
   variants: {
-    false: 'bg-white dark:bg-neutral-900 border-[var(--color)] [--color:theme(colors.neutral.400)] dark:[--color:theme(colors.neutral.400)]',
-    true: 'bg-[var(--color)] border-[var(--color)] [--color:theme(colors.neutral.700)] dark:[--color:theme(colors.neutral.300)] forced-colors:[--color:Highlight]!',
+    false: 'bg-neutral-900 border-[var(--color)] [--color:theme(colors.neutral.400)]',
+    true: 'bg-[var(--color)] border-[var(--color)] [--color:theme(colors.neutral.300)] forced-colors:[--color:Highlight]!',
   },
-  invalid: '[--color:theme(colors.error.500)] dark:[--color:theme(colors.error.400)] forced-colors:[--color:Mark]!',
-  disabled: '[--color:theme(colors.neutral.200)] dark:[--color:theme(colors.neutral.700)] forced-colors:[--color:GrayText]!',
+  invalid: '[--color:theme(colors.error.400)] forced-colors:[--color:Mark]!',
+  disabled: '[--color:theme(colors.neutral.700)] forced-colors:[--color:GrayText]!',
 };
 
-const iconStyles = 'w-3 h-3 text-white dark:text-neutral-900 pointer-events-none';
+const iconStyles = 'w-3 h-3 text-neutral-900 pointer-events-none';
 
 export function Checkbox({ 
     label, 
@@ -79,7 +82,7 @@ export function Checkbox({
         </label>
   
         {description && (
-          <span id={descriptionId} className="text-xs text-neutral-500 dark:text-neutral-400">
+          <span id={descriptionId} className="text-xs text-neutral-400">
             {description}
           </span>
         )}

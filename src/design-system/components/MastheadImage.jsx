@@ -74,7 +74,7 @@ export default function MastheadImage({
           <HeadingReveal
             as="h1"
             text={title}
-            className="font-display text-5xl uppercase leading-none md:text-7xl lg:text-display-h2"
+            className="font-display text-5xl uppercase leading-none text-neutral-0 md:text-7xl lg:text-display-h2"
           />
         </div>
         )}

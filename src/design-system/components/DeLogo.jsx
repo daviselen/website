@@ -9,7 +9,7 @@ export default function DeLogo({ className = "size-20", itemProp }) {
     <img
       src="/icons/de-logo-white.svg"
       alt="Davis Elen (DE) logo mark"
-      className={className}
+      className={`${className} light:invert`}
       {...(itemProp ? { itemProp } : {})}
     />
   );

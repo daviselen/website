@@ -4,6 +4,13 @@ import { useEffect, useRef } from 'react';
 import lottie from 'lottie-web/build/player/lottie_light';
 import { gsap } from 'gsap';
 
+// The wheel's colors are baked into the JSON, so light mode loads a recolored
+// copy (public/human-ai-wheel-light.json: the same file with each fill moved
+// to a step that holds 4.5:1 on the light panel). Mirrors the `light:` variant
+// in tailwind.config.js. shortcut: read once at mount, so a theme change shows
+// on the next load; upgrade if a toggle ships.
+const isLight = () => document.documentElement.dataset.theme === 'light';
+
 export default function LottieGsapAnimation() {
   const containerRef = useRef(null);
   const animRef = useRef(null);
@@ -15,7 +22,7 @@ export default function LottieGsapAnimation() {
       renderer: 'svg',
       loop: false,
       autoplay: false,
-      path: '/human-ai-wheel.json', // Place your JSON in the public folder or import it
+      path: isLight() ? '/human-ai-wheel-light.json' : '/human-ai-wheel.json',
     });
 
     let playhead = { frame: 0 };

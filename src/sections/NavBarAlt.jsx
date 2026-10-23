@@ -30,7 +30,7 @@ import DeLogoMorph from "../design-system/components/DeLogoMorph.jsx";
 // behind if the header's height changes.
 const HEADER_HEIGHT = 144
 
-const pillLink = "relative m-0 inline-flex h-400 cursor-pointer items-center justify-center overflow-hidden whitespace-nowrap rounded-full p-2 font-narrow text-base font-light leading-none text-neutral-0 will-change-transform before:absolute before:-inset-1 before:block before:translate-y-full before:bg-surface-primary-default before:transition-all before:duration-500 before:ease-in-out hover:before:translate-y-0"
+const pillLink = "relative m-0 inline-flex h-400 cursor-pointer items-center justify-center overflow-hidden whitespace-nowrap rounded-full p-2 font-narrow text-base font-light leading-none text-neutral-0 light:text-neutral-1000 light:hover:text-neutral-0 will-change-transform before:absolute before:-inset-1 before:block before:translate-y-full before:bg-surface-primary-default before:transition-all before:duration-500 before:ease-in-out hover:before:translate-y-0"
 
 const HIDE_DURATION = 0.3
 const HIDE_OFFSET = -HEADER_HEIGHT // slides up by its own height
@@ -124,7 +124,7 @@ export default function NavBar({ logoOnly = false }) {
   return (
     <header
       ref={headerRef}
-      className="fixed inset-x-0 top-0 z-50 box-border flex w-auto items-center justify-between bg-surface-default p-2 uppercase md:p-4 lg:px-8"
+      className="fixed inset-x-0 top-0 z-50 box-border flex w-auto items-center justify-between bg-surface-default light:bg-neutral-0 p-2 uppercase md:p-4 lg:px-8"
     >
       {/* Every `data-nav-item` below is a flex item of its own container, so
           it is blockified — a bare inline <a> would ignore the intro's
@@ -152,7 +152,7 @@ export default function NavBar({ logoOnly = false }) {
       )}
       {!logoOnly && (
       <div className="hidden md:flex flex-1 items-center justify-end py-2 md:py-4">
-        <Link to="/contact" data-nav-item="" className="relative m-0 inline-flex h-400 cursor-pointer items-center justify-center overflow-hidden whitespace-nowrap rounded-full border-[1.5px] border-neutral-0 p-2 font-narrow text-link-social font-light uppercase leading-none text-neutral-0 transition-colors duration-500 will-change-transform before:absolute before:-inset-1 before:block before:translate-y-full before:bg-surface-primary-default before:transition-all before:duration-300 before:ease-in-out hover:border-surface-primary-default hover:before:translate-y-0 md:h-600 md:px-6 md:py-2 md:text-base md:leading-8">
+        <Link to="/contact" data-nav-item="" className="relative m-0 inline-flex h-400 cursor-pointer items-center justify-center overflow-hidden whitespace-nowrap rounded-full border-[1.5px] border-neutral-0 light:border-neutral-1000 p-2 font-narrow text-link-social font-light uppercase leading-none text-neutral-0 light:text-neutral-1000 light:hover:text-neutral-0 transition-colors duration-500 will-change-transform before:absolute before:-inset-1 before:block before:translate-y-full before:bg-surface-primary-default before:transition-all before:duration-300 before:ease-in-out hover:border-surface-primary-default hover:before:translate-y-0 md:h-600 md:px-6 md:py-2 md:text-base md:leading-8">
           <span className="relative">Let&apos;s Chat</span>
         </Link>
       </div>

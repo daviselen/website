@@ -146,7 +146,7 @@ export default function MediaObject({
       // `pt-3000` (240px) was fixed at every width, not just desktop.
       className={`grid w-full grid-cols-1 gap-400 px-2 pt-1000 text-left md:grid-cols-12 md:grid-rows-1 md:pt-3000 lg:px-8 ${
         isInteractive
-          ? "group focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-300"
+          ? "group focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-300 light:focus-visible:outline-primary-700"
           : ""
       }`}
     >
@@ -159,7 +159,7 @@ export default function MediaObject({
           splitLines
           text={title}
           className={`font-display uppercase ${heading} ${
-            isInteractive ? "transition-colors group-hover:text-neutral-100" : ""
+            isInteractive ? "transition-colors group-hover:text-neutral-100 light:group-hover:text-neutral-700" : ""
           }`}
         />
         <div className={`flex flex-col gap-200 ${side.measure}`}>
@@ -191,14 +191,14 @@ export default function MediaObject({
           // box, so it would be invisible on exactly the interactive cards
           // it exists for. Drawn inside, it survives the clip.
           className={`block size-full rounded-md ${
-            isInteractive ? "hover:ring-2 hover:ring-inset hover:ring-neutral-800" : ""
+            isInteractive ? "hover:ring-2 hover:ring-inset hover:ring-neutral-800 light:hover:ring-neutral-200" : ""
           }`}
         />
         {/* Text laid over the image, bottom-left. Spans, not headings: when
             the root is a button/link its content must stay phrasing-only,
             and the real h2 is already in the copy column. */}
         {(imageTitle || imageCta) && (
-          <span className="absolute bottom-400 left-400 flex flex-col gap-200 md:left-500 xl:gap-300">
+          <span className="absolute bottom-400 left-400 flex flex-col gap-200 text-neutral-0 md:left-500 xl:gap-300">
             {imageTitle && (
               <span className="text-3xl md:text-4xl lg:text-display-stat">{imageTitle}</span>
             )}

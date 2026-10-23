@@ -13,7 +13,7 @@ function linkify(text) {
         href={part}
         target="_blank"
         rel="noreferrer"
-        className="break-all underline hover:text-primary-300"
+        className="break-all underline hover:text-primary-300 light:hover:text-primary-800"
       >
         {part}
       </a>
@@ -60,7 +60,7 @@ function Block({ block }) {
 // that clears the fixed header.
 export default function PrivacyPolicy() {
   return (
-    <main className="flex min-h-screen flex-col gap-0 bg-surface-default pb-1800 font-narrow font-light text-neutral-0">
+    <main className="flex min-h-screen flex-col gap-0 bg-surface-default light:bg-neutral-0 pb-1800 font-narrow font-light text-neutral-0 light:text-neutral-1000">
       <header className="flex flex-col gap-400 px-2 lg:px-8">
         <HeadingReveal
           as="h1"
