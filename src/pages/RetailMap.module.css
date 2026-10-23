@@ -121,8 +121,8 @@
 }
 .sf input[type="checkbox"]:checked {
   --color: #fff;
-  background-color: #fff;
-  border-color: #fff;
+  background-color: rgb(200, 16, 46);
+  border-color: rgb(200, 16, 46);
 }
 .toy input[type="checkbox"]:checked {
   background-color: #e10a1d;
