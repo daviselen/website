@@ -121,8 +121,8 @@ const concepts = [
   },
   {
     title: "Let Robots Do The Work",
-    color: "text-cyan",
-    dot: "border-cyan",
+    color: "text-information-500",
+    dot: "border-information-500",
     copy: "The machine clears the roadblocks and does the doing, at a volume we couldn't touch.",
   },
   {

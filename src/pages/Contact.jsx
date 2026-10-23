@@ -301,7 +301,7 @@ export default function Contact() {
             <p className="text-lg text-green-400">Message sent — we&apos;ll be in touch.</p>
           )}
           {status === "error" && (
-            <p className="text-lg text-red-400">Something went wrong. Try again or email us directly.</p>
+            <p className="text-lg text-error-400">Something went wrong. Try again or email us directly.</p>
           )}
           <Button
             form="contact"

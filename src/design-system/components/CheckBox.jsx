@@ -11,11 +11,11 @@ const checkboxStyles = {
 const boxStyles = {
   base: 'w-4 h-4 box-border shrink-0 rounded-none flex items-center justify-center border transition appearance-none cursor-pointer disabled:cursor-not-allowed',
   variants: {
-    false: 'bg-white dark:bg-neutral-900 border-[var(--color)]', // [--color:var(--color-neutral-400)] dark:[--color:var(--color-neutral-400)] group-pressed:[--color:var(--color-neutral-500)] dark:group-pressed:[--color:var(--color-neutral-300)]
-    true: 'bg-[var(--color)] border-[var(--color)] forced-colors:[var(--color:Highlight)]!', // [--color:var(--color-neutral-700)] group-pressed:[--color:var(--color-neutral-800)] dark:[--color:var(--color-neutral-300)] dark:group-pressed:[--color:var(--color-neutral-200)]
+    false: 'bg-white dark:bg-neutral-900 border-[var(--color)] [--color:theme(colors.neutral.400)] dark:[--color:theme(colors.neutral.400)]',
+    true: 'bg-[var(--color)] border-[var(--color)] [--color:theme(colors.neutral.700)] dark:[--color:theme(colors.neutral.300)] forced-colors:[--color:Highlight]!',
   },
-  invalid: '[--color:var(--color-red-700)] dark:[--color:var(--color-red-600)] forced-colors:[--color:Mark]! group-pressed:[--color:var(--color-red-800)] dark:group-pressed:[--color:var(--color-red-700)]',
-  disabled: '[--color:var(--color-neutral-200)] dark:[--color:var(--color-neutral-700)] forced-colors:[--color:GrayText]!',
+  invalid: '[--color:theme(colors.error.500)] dark:[--color:theme(colors.error.400)] forced-colors:[--color:Mark]!',
+  disabled: '[--color:theme(colors.neutral.200)] dark:[--color:theme(colors.neutral.700)] forced-colors:[--color:GrayText]!',
 };
 
 const iconStyles = 'w-3 h-3 text-white dark:text-neutral-900 pointer-events-none';

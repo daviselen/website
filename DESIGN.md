@@ -10,16 +10,15 @@ description: >
   tokens (kept in sync by hand; this file is the reference, not generated
   from the config or vice versa).
 colors:
-  surface: "#000000"
+  surface-default: "#000000"
   surface-alt: "#1f1f1f"
-  surface-primary: "#1e5631"
+  surface-primary-default: "#1e5631"
   neutral-0: "#ffffff"
   neutral-500: "#818181"
   neutral-700: "#4d4d4d"
-  primary: "#a4de02"
-  red: "#D71602"
-  cyan: "#00C3FF"
-  brick: "#B8483D"
+  primary-300: "#a4de02"
+  error-400: "#e85746"
+  information-500: "#00c3ff"
 typography:
   h1:
     fontFamily: "Knockout 68 Full Featherwt"
@@ -83,7 +82,7 @@ spacing:
   3000: 240px
 components:
   button-primary:
-    backgroundColor: "{colors.surface-primary}"
+    backgroundColor: "{colors.surface-primary-default}"
     textColor: "{colors.neutral-0}"
     rounded: "{rounded.md}"
     typography: "{typography.body}"
@@ -91,19 +90,19 @@ components:
     width: 480px
   button-primary-hover:
     backgroundColor: "{colors.neutral-0}"
-    textColor: "{colors.surface}"
+    textColor: "{colors.surface-default}"
   card:
     rounded: "{rounded.md}"
   nav:
-    backgroundColor: "{colors.surface}"
+    backgroundColor: "{colors.surface-default}"
     textColor: "{colors.neutral-0}"
 ---
 
 ## Overview
 
 Dark, high-contrast, condensed-type-driven. Nearly the entire site sits on
-black or near-black (`surface`, `surface-alt`), with white text and a small
-set of saturated accents (`red`, `cyan`, `primary` green) reserved for
+black or near-black (`surface-default`, `surface-alt`), with white text and a small
+set of saturated accents (`error-400`, `information-500`, `primary-300`) reserved for
 callouts rather than general decoration. Headlines lean on two commercial
 display cuts — Knockout Featherwt and Knockout Bantamweight — set very
 large and always uppercase; body copy is Ringside Narrow throughout. The
@@ -114,27 +113,33 @@ of the visual work.
 
 ## Colors
 
-- **`surface` (#000000):** Page background. Everything sits on this by
-  default (set once, on the root wrapper in `HomePage.jsx`).
-- **`surface-alt` (#1f1f1f):** The one section that breaks from pure black —
-  the HI/AI card. Signals "this is a distinct, elevated panel," not a
-  literal elevation/shadow system (there isn't one on this site).
-- **`surface-primary` (#1e5631):** CTA button fill (the "solid" `Button`
-  variant). The only place this dark green is used — don't reach for it as
-  a general accent.
+Names follow Figma's variable collections. Brand (`Color/Green`, `Coral`,
+`Cyan`, `Forest`, `Amber`, `Neutral`, each 100–900) feeds Alias (`Primary`,
+`Error`, `Information`, `Success`, `Warning`, `Neutral`, same steps), which
+feeds Mapped (`surface/…`, `text/…`, `border/…`). `tailwind.config.js` exposes
+Mapped `surface` plus the full Alias ramps; use those names in code, not the
+Brand ones. Values below are the ones this site actually uses.
+
+- **`surface-default` (#000000, Neutral/1000):** Page background. Everything
+  sits on this by default (set once, on the root wrapper in `HomePage.jsx`).
+- **`surface-alt` (#1f1f1f, Neutral/900):** The one section that breaks from
+  pure black — the HI/AI card. Signals "this is a distinct, elevated panel,"
+  not a literal elevation/shadow system (there isn't one on this site).
+- **`surface-primary-default` (#1e5631, Success/800 = Forest/800):** CTA
+  button fill (the "solid" `Button` variant). The only place this dark green
+  is used — don't reach for it as a general accent.
 - **`neutral-0` (#ffffff):** Primary text and logo color. Since the whole
   page defaults to this on a black background, most text needs no color
   utility at all.
-- **`neutral-500` / `neutral-700` (#818181 / #4d4d4d):** Named "Gray" and
-  "Dark Gray" in Figma. Used sparingly for de-emphasized text.
-- **`primary` (#a4de02), `red` (#D71602), `cyan` (#00C3FF):** The three
-  accent colors used together exactly once, as the HI/AI concept list's
-  color-coding (green/red/cyan square + matching title color per item).
-  Treat this trio as a set — if a fourth concept is ever added, it needs a
-  fourth real accent from Figma, not an invented one.
-- **`brick` (#B8483D):** Named style "Brick." Currently only present inside
-  `chart.svg` (a flattened real asset), not as a live CSS color anywhere in
-  the codebase — kept here so it's still traceable if that ever changes.
+- **`neutral-500` / `neutral-700` (#818181 / #4d4d4d):** Used sparingly for
+  de-emphasized text.
+- **`primary-300` (#a4de02, Green/300), `error-400` (#e85746, Coral/400),
+  `information-500` (#00c3ff, Cyan/500):** The three accent colors used
+  together exactly once, as the HI/AI concept list's color-coding
+  (green/red/cyan square + matching title color per item). Treat this trio
+  as a set — if a fourth concept is ever added, it needs a fourth real
+  accent from Figma, not an invented one. `warning-500` (#f4a117, Amber/500)
+  and `error-500` (#c83726, Coral/500) are also in the palette.
 
 ## Typography
 

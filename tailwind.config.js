@@ -18,36 +18,84 @@ export default {
     extend: {
       colors: {
         surface: {
-          default: "#000000", // surface/default — page background
-          alt: "#1f1f1f", // surface/alt — HI/AI section background
-          "primary-default": "#1e5631", // surface/primary/default — CTA button fill
+          default: "#000000", // surface/default -> Neutral/1000 — page background
+          alt: "#1f1f1f", // surface/alt -> Neutral/900 — HI/AI section background
+          primary: {
+            default: "#1e5631", // surface/primary/default -> Success/800 — CTA button fill
+          },
         },
-        neutral: {
-          0: "#ffffff", // Neutral/0 — primary text/logo color
-          400: "#9a9a9a", // Neutral/400
-          500: "#818181", // Neutral/500, named style "Gray"
-          700: "#4d4d4d", // Neutral/700, named style "Dark Gray"
-          1000: "#000", // Neutral/1000 - primary surface color
+        // The ramps below are Figma's Alias collection, keyed by the Alias
+        // variable name. Each resolves to a Brand-collection ramp (Color/Green,
+        // Coral, Cyan, Forest, Amber), noted per ramp. Use the Alias names in
+        // code; don't add the Brand names (green/amber/cyan would also shadow
+        // Tailwind's default palettes of the same name).
+        neutral: { // Neutral/n -> Color/Neutral/n
+          0: "#ffffff",
+          100: "#e0e0e0",
+          200: "#cdcdcd",
+          300: "#b3b3b3",
+          400: "#9a9a9a",
+          500: "#818181",
+          600: "#666666",
+          700: "#4d4d4d",
+          800: "#333333",
+          900: "#1f1f1f",
+          1000: "#000000",
         },
-        red: "#E85746", // named style "Red" — "WHAT'S POSSIBLE" / HI cube accent — per direct
-        // confirmation this is the correct value, not the #D71602 pulled earlier
-        // via get_design_context (which was accurate at the time it was pulled;
-        // this value has since changed on the Figma side, or the earlier pull
-        // was wrong — the person who can see the file said #E85746 is right,
-        // which per FIGMA_WORKFLOW.md #10 outranks a tool-pulled value).
-        // Was `blue: "#00BBDE"` (named style "Blue"). Since the HI/AI frame
-        // in Figma was restructured for clarity, "LET ROBOTS DO THE WORK"'s
-        // accent now resolves through a different pair of variables
-        // (color/cyan/500 and information/500, both #00C3FF) instead of
-        // that named style — close to the old value but not the same hex.
-        // Renamed the token to match what it actually traces to now rather
-        // than leaving a `blue` token pointing at a color/name pairing that
-        // no longer applies.
-        orange: "#f4a117",
-        cyan: "#00C3FF", // color/cyan/500, information/500 — "LET ROBOTS DO THE WORK"
-        brick: "#B8483D", // named style "Brick" — "Human Imagination" diagram text (now baked into chart.svg, not live text)
-        primary: {
-          300: "#a4de02", // Primary/300, named style "DE Brand Green" — "UNLOCK YOUR POTENTIAL"
+        primary: { // Alias: Primary/n -> Color/Green/n
+          100: "#eef9d6",
+          200: "#cbef95",
+          300: "#a4de02",
+          400: "#8ccb0e",
+          500: "#75b91a",
+          600: "#61a922",
+          700: "#4c9a2a",
+          800: "#35721d",
+          900: "#1f4a12",
+        },
+        error: { // Alias: Error/n -> Color/Coral/n
+          100: "#fff2f0",
+          200: "#ffd6d0",
+          300: "#ff7a6a",
+          400: "#e85746",
+          500: "#c83726",
+          600: "#a42012",
+          700: "#7f1005",
+          800: "#580500",
+          900: "#330100",
+        },
+        information: { // Alias: Information/n -> Color/Cyan/n
+          100: "#e5f9ff",
+          200: "#b8f2ff",
+          300: "#7ae5ff",
+          400: "#3ad2ff",
+          500: "#00c3ff",
+          600: "#009cce",
+          700: "#00739b",
+          800: "#004b68",
+          900: "#002738",
+        },
+        success: { // Alias: Success/n -> Color/Forest/n
+          100: "#e9f6df",
+          200: "#cbeabc",
+          300: "#acdf87",
+          400: "#8acd70",
+          500: "#68bb59",
+          600: "#4f9b43",
+          700: "#37783a",
+          800: "#1e5631",
+          900: "#0f331a",
+        },
+        warning: { // Alias: Warning/n -> Color/Amber/n
+          100: "#fff8ed",
+          200: "#fde8c7",
+          300: "#fad18c",
+          400: "#f7b84f",
+          500: "#f4a117",
+          600: "#c97e09",
+          700: "#985804",
+          800: "#673701",
+          900: "#3b1c00",
         },
       },
       // Figma's spacing scale (Scale/0 .. Scale/3000), keyed by the same
