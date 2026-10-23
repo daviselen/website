@@ -198,7 +198,7 @@ export default function MediaObject({
             the root is a button/link its content must stay phrasing-only,
             and the real h2 is already in the copy column. */}
         {(imageTitle || imageCta) && (
-          <span className="absolute bottom-400 left-400 flex flex-col gap-200 text-neutral-0 md:left-500 xl:gap-300">
+          <span className="absolute bottom-400 left-400 flex flex-col gap-200 text-neutral-0 lg:left-600 lg:bottom-500 xl:left-700 xl:bottom:600 xl:gap-300">
             {imageTitle && (
               <span className="text-3xl md:text-4xl lg:text-display-stat">{imageTitle}</span>
             )}
