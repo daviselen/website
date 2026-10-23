@@ -9,8 +9,6 @@ const MAX_ROTATION = 60;
 const MAX_BRIGHTNESS = 4;
 const MASK_DURATION = 0.2;
 const MASK_EASE = "sine.out";
-const SUB_DURATION = 0.3;
-const SUB_OFFSET = "-1rem";
 
 const { clamp, mapRange, interpolate } = gsap.utils;
 
@@ -21,13 +19,12 @@ function canAnimate() {
   );
 }
 
-export default function LocationRow({ name, address, phone, mapUrl, image }) {
+export default function LocationRow({ name, address, mapUrl, image }) {
   const itemRef = useRef(null);
   const rowRef = useRef(null);
   const revealRef = useRef(null);
   const innerRef = useRef(null);
   const imageRef = useRef(null);
-  const phoneRef = useRef(null);
   const tickRef = useRef(null);
   const pointer = useRef({ x: 0, y: 0 });
   const motion = useRef({
@@ -52,8 +49,6 @@ export default function LocationRow({ name, address, phone, mapUrl, image }) {
   useGSAP(
     () => {
       if (!animated) return;
-
-      if (phoneRef.current) gsap.set(phoneRef.current, { opacity: 0, x: SUB_OFFSET });
 
       const tick = () => {
         const m = motion.current;
@@ -110,8 +105,6 @@ export default function LocationRow({ name, address, phone, mapUrl, image }) {
     const from = m.dirX > 0 ? -100 : 100;
     gsap.fromTo(innerRef.current, { xPercent: from }, { xPercent: 0, duration: MASK_DURATION, ease: MASK_EASE });
     gsap.fromTo(imageRef.current, { xPercent: -from }, { xPercent: 0, duration: MASK_DURATION, ease: MASK_EASE });
-    if (phoneRef.current) gsap.to(phoneRef.current, { opacity: 1, x: 0, duration: SUB_DURATION, ease: "power1.out", overwrite: true });
-
     gsap.ticker.remove(tickRef.current);
     gsap.ticker.add(tickRef.current);
   };
@@ -135,7 +128,6 @@ export default function LocationRow({ name, address, phone, mapUrl, image }) {
         gsap.set(itemRef.current, { zIndex: "auto" });
       },
     });
-    if (phoneRef.current) gsap.to(phoneRef.current, { opacity: 0, x: SUB_OFFSET, duration: SUB_DURATION, ease: "power1.out", overwrite: true });
   };
 
   const handleMove = (e) => {
@@ -169,7 +161,6 @@ export default function LocationRow({ name, address, phone, mapUrl, image }) {
 
     gsap.fromTo(innerRef.current, { xPercent: -100 }, { xPercent: 0, duration: MASK_DURATION, ease: MASK_EASE });
     gsap.fromTo(imageRef.current, { xPercent: 100 }, { xPercent: 0, duration: MASK_DURATION, ease: MASK_EASE });
-    if (phoneRef.current) gsap.to(phoneRef.current, { opacity: 1, x: 0, duration: SUB_DURATION, ease: "power1.out", overwrite: true });
   };
 
   const handleBlur = (e) => {
@@ -187,14 +178,13 @@ export default function LocationRow({ name, address, phone, mapUrl, image }) {
         gsap.set(itemRef.current, { zIndex: "auto" });
       },
     });
-    if (phoneRef.current) gsap.to(phoneRef.current, { opacity: 0, x: SUB_OFFSET, duration: SUB_DURATION, ease: "power1.out", overwrite: true });
   };
 
   return (
     <li ref={itemRef} className="relative border-t-2 border-neutral-0 light:border-neutral-1000 last:border-b-2">
       <div
         ref={rowRef}
-        className="group relative isolate flex flex-col xl:grid xl:grid-cols-[1fr_1fr_34%] w-full items-center gap-y-300 xl:gap-y-400 px-300 xl:px-500 pb-500 xl:pb-800 pt-400 xl:pt-600"
+        className="group relative isolate flex flex-col xl:grid xl:grid-cols-[1fr_34%] w-full items-center gap-y-300 xl:gap-y-400 px-300 xl:px-500 pb-500 xl:pb-800 pt-400 xl:pt-600"
         onMouseEnter={animated ? handleEnter : undefined}
         onMouseLeave={animated ? handleLeave : undefined}
         onMouseMove={animated ? handleMove : undefined}
@@ -217,17 +207,6 @@ export default function LocationRow({ name, address, phone, mapUrl, image }) {
         <h3 className="self-start xl:self-end font-display text-display-h5 uppercase transition-colors duration-300 group-hover:text-primary-300 light:group-hover:text-primary-800 group-focus-within:text-primary-300 light:group-focus-within:text-primary-800">
           {name}
         </h3>
-        {phone && (
-          <div className="flex flex-col gap-200 self-start xl:self-center xl:px-600 text-right">
-            <a
-              ref={phoneRef}
-              href={`tel:${phone}`}
-              className="shrink-0 text-pre-title hover:underline"
-            >
-              {phone}
-            </a>
-          </div>
-        )}
         {mapUrl && (
           <a
             href={mapUrl}
