@@ -46,6 +46,9 @@ const sideConfig = {
 const titleSizes = {
   default: "text-4xl md:text-6xl lg:text-display-h5",
   large: "text-7xl md:text-8xl lg:text-display-h3",
+  // Headings/H2 (184/128) — the Masthead-alt size, used by case-study
+  // media objects whose title is a short two-word display line.
+  xlarge: "text-7xl md:text-9xl lg:text-display-h2",
 };
 
 // The root element is chosen by which prop is passed, so the whole media
