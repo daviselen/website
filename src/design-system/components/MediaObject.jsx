@@ -156,10 +156,10 @@ export default function MediaObject({
       <div className={`${side.copy} flex flex-col gap-400 md:row-start-1 lg:gap-600`}>
         <HeadingReveal
           as="h2"
-          // These titles are sentences ("$18 Billion in Sales from Over 4000
-          // Locations."), not hand-broken display type, so their line breaks
-          // come from the 5-column measure at render time.
-          splitLines
+          // Sentence titles ("$18 Billion in Sales from Over 4000 Locations.")
+          // break at the 5-column measure at render time; a title with an
+          // authored `\n` is hand-broken display type and keeps its breaks.
+          splitLines={!title.includes("\n")}
           text={title}
           className={`font-display uppercase ${heading} ${
             isInteractive ? "transition-colors group-hover:text-neutral-100 light:group-hover:text-neutral-700" : ""
