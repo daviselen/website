@@ -184,6 +184,9 @@ Two families, never mixed within one text role:
   the box's own background or border paints. See FIGMA_WORKFLOW.md #8 for
   the specific bugs this caused when gotten backwards.
 
+- **`borderWidth.1.5` (1.5px)** is the stroke on circular outline buttons
+  (the masthead sound toggle). Other borders use Tailwind's default 1px.
+
 ## Shapes
 
 No shape system beyond `rounded.md`. Squares, circles, and card

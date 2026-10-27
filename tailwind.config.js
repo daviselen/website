@@ -98,6 +98,10 @@ export default {
           900: "#3b1c00",
         },
       },
+      // 1.5px: the masthead sound toggle's circular stroke.
+      borderWidth: {
+        1.5: "1.5px",
+      },
       // Figma's spacing scale (Scale/0 .. Scale/3000), keyed by the same
       // number Figma uses so e.g. `p-400` <-> `Scale/400` <-> 32px is a
       // direct lookup. NOTE: this doesn't replace every existing arbitrary

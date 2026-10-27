@@ -167,7 +167,7 @@ export default function MediaObject({
         />
         <div className={`flex flex-col gap-200 ${side.measure}`}>
           {subhead ? (
-            <span className="font-narrow text-base">{subhead}</span>
+            <TextReveal as="span" className="font-narrow text-base" text={subhead} />
           ) : null}
           <TextReveal
             as="p"
