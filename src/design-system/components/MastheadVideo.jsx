@@ -45,6 +45,10 @@ export default function MastheadVideo({
   hasAudio = true,
 }) {
   const [loaded, setLoaded] = useState(false);
+  // Source aspect ratio (w / h) for the cover sizing below. The default is
+  // the home video's 1920×812; replaced with the real one once the player
+  // reports it, so a different video doesn't letterbox.
+  const [ratio, setRatio] = useState(1920 / 812);
   const [muted, setMuted] = useState(true);
   const wrapRef = useRef(null);
   const maskRef = useRef(null);
@@ -131,7 +135,12 @@ export default function MastheadVideo({
       if (cancelled) return;
       player = new Player(videoRef.current);
       playerRef.current = player;
-      player.on("loaded", () => setLoaded(true));
+      player.on("loaded", () => {
+        setLoaded(true);
+        Promise.all([player.getVideoWidth(), player.getVideoHeight()])
+          .then(([w, h]) => w && h && setRatio(w / h))
+          .catch(() => {});
+      });
       // First "playing" = buffered and running. Park it back on frame 0 and
       // let the preloader go; if the site is already released (the preloader
       // timed out first) just let it keep playing.
@@ -220,12 +229,10 @@ export default function MastheadVideo({
         }}
       >
         {/* Media layer: useMediaReveal's GSAP tween owns this element's
-            transform (scale/yPercent), so poster and video zoom together. */}
-        <div
-          ref={mediaRef}
-          className="absolute inset-0"
-          style={{ transform: "scale(1.04) translateY(-1%)" }}
-        >
+            transform (scale/yPercent), so poster and video zoom together.
+            No inline transform: GSAP would read its translateY(-1%) as a
+            fixed px `y` and leave it there after yPercent settles to 0. */}
+        <div ref={mediaRef} className="absolute inset-0">
         {poster && (
           <Picture
             ref={posterRef}
@@ -242,18 +249,19 @@ export default function MastheadVideo({
         <iframe
           ref={videoRef}
           src={src ?? undefined}
-          // background mode is Vimeo's silent/looping/autoplay/chromeless
-          // embed, but it letterboxes the video inside the iframe rather
-          // than covering it. The iframe is sized to cover the mask
-          // (cqw/cqh = the mask's size via containerType above) and
-          // centered, with the clip-path/overflow cropping the excess.
-          // Ratio matches the video source: 1920×812.
+          // Both embed modes fit the video inside the iframe (background
+          // mode included) rather than covering it, so the iframe is sized
+          // to cover the mask (cqw/cqh = its size via containerType above)
+          // and centered, with the clip-path/overflow cropping the excess.
+          // `ratio` is the video source's w / h; the 16px overscan (8px a
+          // side) pushes the player's own bright 1px bottom-edge line, and
+          // any fractional-size sliver of poster, out past the clip.
           className="absolute block rounded-md"
           style={{
-            width: "max(100cqw, calc(100cqh * 1920 / 812))",
-            height: "max(100cqh, calc(100cqw * 812 / 1920))",
-            left: "calc((100cqw - max(100cqw, 100cqh * 1920 / 812)) / 2)",
-            top: "calc((100cqh - max(100cqh, 100cqw * 812 / 1920)) / 2)",
+            width: `calc(max(100cqw, 100cqh * ${ratio}) + 16px)`,
+            height: `calc(max(100cqh, 100cqw / ${ratio}) + 16px)`,
+            left: `calc((100cqw - max(100cqw, 100cqh * ${ratio})) / 2 - 8px)`,
+            top: `calc((100cqh - max(100cqh, 100cqw / ${ratio})) / 2 - 8px)`,
             // Over a poster, fade in once the first frame is ready instead
             // of popping in.
             opacity: poster && !loaded ? 0 : 1,
@@ -270,13 +278,13 @@ export default function MastheadVideo({
           onClick={toggleMuted}
           aria-label={muted ? "Unmute video" : "Mute video"}
           aria-pressed={!muted}
-          className="absolute bottom-300 right-300 flex size-600 items-center justify-center rounded-full border border-neutral-0 bg-neutral-1000/40 text-neutral-0 transition-colors hover:bg-neutral-1000/70"
+          className="absolute bottom-300 right-300 flex size-500 items-center justify-center rounded-full border-1.5 border-neutral-0 bg-neutral-1000/40 text-neutral-0 transition-colors hover:bg-neutral-1000/70"
         >
-          <span className="flex h-300 items-center gap-50" aria-hidden="true">
+          <span className="flex h-5 items-center gap-50" aria-hidden="true">
             {BARS.map((bar, i) => (
               <span
                 key={i}
-                className={`block h-300 w-50 rounded-full bg-neutral-0 transition-transform duration-200 ${muted ? "" : "animate-waveform"}`}
+                className={`block h-5 w-50 rounded-full bg-neutral-0 transition-transform duration-200 ${muted ? "" : "animate-waveform"}`}
                 style={{
                   transformOrigin: "center",
                   transform: muted ? "scaleY(0.15)" : undefined,
