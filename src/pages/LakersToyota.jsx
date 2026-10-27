@@ -103,7 +103,7 @@ export default function LakersToyota() {
             <HeadingReveal
               as="h1"
               text={`Legendary \nPartners`}
-              className="font-display text-8xl uppercase leading-none md:text-8xl lg:text-display-h2 2xl:text-[272px] 2xl:leading-[192px]"
+              className="font-display text-8xl uppercase leading-none md:text-8xl xl:text-display-h2"
             />
             <TextReveal
               className="text-lg md:text-xl lg:text-pre-title"
@@ -138,7 +138,7 @@ export default function LakersToyota() {
       </section>
       <MediaObject
         titleSize="large"
-        title="The Moxy Downtown LA"
+        title={`The Moxy \nDowntown LA`}
         subhead="RUNTIME :30"
         text="Lorem ipsum dolor sit amet consectetur adipiscing elit quisque faucibus ex sapien vitae pellentesque sem placerat in id cursus."
         imgSrc="/images/work-lakers-toyota-spot-2.jpg"
