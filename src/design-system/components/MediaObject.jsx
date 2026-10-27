@@ -45,10 +45,10 @@ const sideConfig = {
 // HumanAI.jsx): small mobile default, real size at `lg`.
 const titleSizes = {
   default: "text-4xl md:text-6xl lg:text-display-h5",
-  large: "text-7xl md:text-8xl lg:text-display-h3",
+  large: "text-5xl leading-[0.71111] md:text-6xl md:leading-[0.71111] lg:text-7xl lg:leading-[0.71111] xl:text-8xl xl:leading-[0.71111] 2xl:text-display-h3",
   // Headings/H2 (184/128) — the Masthead-alt size, used by case-study
   // media objects whose title is a short two-word display line.
-  xlarge: "text-7xl md:text-9xl lg:text-display-h2",
+  xlarge: "text-6xl leading-[0.71111] md:text-7xl md:leading-[0.71111] lg:text-8xl lg:leading-[0.71111] xl:text-9xl xl:leading-[0.71111] 2xl:text-display-h2",
 };
 
 // The root element is chosen by which prop is passed, so the whole media
@@ -225,7 +225,9 @@ export default function MediaObject({
           <img
             src="/icons/play.svg"
             alt=""
-            className="absolute left-400 top-400"
+            // 120px is the desktop size; the image is ~360px wide on a phone,
+            // where a full-size badge covers a third of it.
+            className="absolute left-200 top-200 size-16 md:left-400 md:top-400 md:size-24 lg:size-auto"
           />
         )}
       </div>

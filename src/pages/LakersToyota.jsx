@@ -99,11 +99,11 @@ export default function LakersToyota() {
           alt="The Toyota building in Los Angeles lit in Lakers purple and gold for 50 years of partnership, 1976 to 2026"
         />
         <div className="grid grid-cols-1 gap-800 px-2 lg:grid-cols-12 lg:gap-x-8 lg:px-8 lg:pt-1000">
-          <div className="flex flex-col gap-600 lg:col-span-6 lg:gap-1000">
+          <div className="flex flex-col gap-300 lg:gap-600 lg:col-span-6 2xl:gap-1000">
             <HeadingReveal
               as="h1"
               text={`Legendary \nPartners`}
-              className="font-display text-6xl uppercase leading-none md:text-8xl lg:text-display-h2 xl:text-[272px] xl:leading-[192px]"
+              className="font-display text-8xl uppercase leading-none md:text-8xl lg:text-display-h2 2xl:text-[272px] 2xl:leading-[192px]"
             />
             <TextReveal
               className="text-lg md:text-xl lg:text-pre-title"
@@ -187,20 +187,24 @@ export default function LakersToyota() {
             src="/images/work-lakers-toyota-ooh-1.jpg"
             alt="A Lakers and Toyota 50th anniversary banner hung on an LA Live building"
             ratio="728 / 1098"
-            className="md:col-span-5 md:row-span-2 md:self-start"
+            className="md:col-span-5 md:self-start"
           />
-          <Shot
-            src="/images/work-lakers-toyota-ooh-2.jpg"
-            alt="A purple LA Live board reading Legendary Partners Since 1976"
-            ratio="880 / 480"
-            className="md:col-span-6 md:col-start-6 md:self-start"
-          />
-          <Shot
-            src="/images/work-lakers-toyota-ooh-3.jpg"
-            alt="A Lakers and Toyota 50th anniversary tower beside Crypto.com Arena"
-            ratio="728 / 452"
-            className="md:col-span-5 md:col-start-6 md:self-start"
-          />
+          {/* One flex column, not two grid rows beside a row-span-2 image: the
+              tall image is taller than the stack, and grid spreads that surplus
+              into the row gap. */}
+          <div className="flex flex-col gap-400 md:col-span-6 md:col-start-6 md:self-start lg:gap-8">
+            <Shot
+              src="/images/work-lakers-toyota-ooh-2.jpg"
+              alt="A purple LA Live board reading Legendary Partners Since 1976"
+              ratio="880 / 480"
+            />
+            <Shot
+              src="/images/work-lakers-toyota-ooh-3.jpg"
+              alt="A Lakers and Toyota 50th anniversary tower beside Crypto.com Arena"
+              ratio="728 / 452"
+              className="md:w-5/6"
+            />
+          </div>
         </div>
       </Channel>
 
