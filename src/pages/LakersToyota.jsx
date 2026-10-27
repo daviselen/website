@@ -1,6 +1,7 @@
 import HeadingReveal from "../design-system/components/HeadingReveal.jsx";
 import MastheadImage from "../design-system/components/MastheadImage.jsx";
 import MediaObject from "../design-system/components/MediaObject.jsx";
+import { useOverlay } from "../design-system/components/Overlay.jsx";
 import Picture from "../design-system/components/Picture.jsx";
 import TextReveal from "../design-system/components/TextReveal.jsx";
 import CTABanner from "../sections/CTABanner.jsx";
@@ -11,6 +12,16 @@ const TITLE = "Lakers & Toyota: Legendary Partners Since 1976 | Davis Elen";
 const DESCRIPTION =
   "Davis Elen marks 50 years of the Lakers and Toyota partnership across broadcast, experiential, out-of-home and digital.";
 const SHARE_IMAGE = "https://www.daviselen.com/images/work-legendary-partners-masthead.jpg";
+
+const MOXY_VIDEO = {
+  embed: "https://player.vimeo.com/video/1239670640?autoplay=1",
+  title: "The Moxy Downtown LA",
+};
+
+const BROADCAST_VIDEO = {
+  embed: "https://player.vimeo.com/video/1239676926?autoplay=1",
+  title: "Broadcast Spot",
+};
 
 const JSON_LD = {
   "@context": "https://schema.org",
@@ -62,6 +73,7 @@ function Channel({ channel, title, children }) {
 }
 
 export default function LakersToyota() {
+  const { openOverlay } = useOverlay();
   return (
     <main
       itemScope
@@ -99,7 +111,7 @@ export default function LakersToyota() {
             />
           </div>
           <TextReveal
-            className="text-lg md:text-xl lg:col-span-5 lg:col-start-8 lg:self-center lg:text-pre-title"
+            className="text-lg md:text-xl lg:col-span-5 lg:col-start-8 lg:self-start lg:text-pre-title"
             text="Lorem ipsum dolor sit amet consectetur adipiscing elit quisque faucibus ex sapien vitae pellentesque sem placerat in id cursus mi pretium tellus duis convallis tempus leo eu aenean sed diam urna tempor pulvinar vivamus fringilla lacus nec metus bibendum egestas iaculis massa nisl malesuada lacinia integer nunc posuere ut hendrerit."
           />
         </div>
@@ -113,6 +125,8 @@ export default function LakersToyota() {
         text="Lorem ipsum dolor sit amet consectetur adipiscing elit quisque faucibus ex sapien vitae pellentesque sem placerat in id cursus."
         imgSrc="/images/work-legendary-partners-thumbnail-1.jpg"
         imgAlt="Lakers and Toyota 50th anniversary broadcast spot"
+        onClick={() => openOverlay(BROADCAST_VIDEO)}
+        opensVideo
       />
 
       <section id="moxy" className="px-2 pt-1000 md:pt-3000 lg:px-8">
@@ -129,6 +143,8 @@ export default function LakersToyota() {
         text="Lorem ipsum dolor sit amet consectetur adipiscing elit quisque faucibus ex sapien vitae pellentesque sem placerat in id cursus."
         imgSrc="/images/work-lakers-toyota-spot-2.jpg"
         imgAlt="A gold 3D Toyota logo billboard above a downtown Los Angeles building"
+        onClick={() => openOverlay(MOXY_VIDEO)}
+        opensVideo
       />
 
       <Channel channel="Experiential" title="LA Live Toyota Owners Event">

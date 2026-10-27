@@ -236,8 +236,12 @@ function Overlay({ payload, onClose }) {
             title={rendered.title ?? "Video player"}
             allow="autoplay; fullscreen; picture-in-picture"
             allowFullScreen
-            
-            className="block aspect-[16/10] h-auto max-h-[80dvh] w-[90vw] rounded-md bg-surface-default light:bg-neutral-0 shadow-lg"
+            // Vimeo's player page is light-scheme while this site declares
+            // dark; mismatched schemes make the browser paint an opaque white
+            // canvas behind the iframe. Matching it keeps the iframe transparent
+            // so the black bg below shows through the load and letterbox bars.
+            style={{ colorScheme: "light" }}
+            className="block aspect-[16/10] h-auto max-h-[80dvh] w-[90vw] rounded-md bg-neutral-1000 shadow-lg"
           />
         ) : (
           <video
