@@ -117,7 +117,7 @@ export default function SitePreloader({ onDone }) {
       }}
     >
       {/* Centred in the top half of the screen, not the whole of it. */}
-      <div className="flex h-1/2 flex-col items-center justify-center gap-600">
+      <div className="flex h-1/2 flex-col items-center justify-center gap-300">
         <div style={{ width: CUBE_STAGE * scale, height: CUBE_STAGE * scale }}>
           <div style={{ transform: `scale(${scale})`, transformOrigin: "top left" }}>
             <IsometricCube progress={progress} />
