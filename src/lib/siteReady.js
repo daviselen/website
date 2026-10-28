@@ -48,9 +48,21 @@ export const mediaReady = () =>
 // shortcut: a hard refresh also reports "reload" and skips the preloader too;
 // telling them apart means inferring from resource timing, which depends on
 // the host's cache headers. Revisit if a hard refresh should preload.
-export const isReload =
+const isReload =
   typeof performance !== "undefined" &&
   performance.getEntriesByType("navigation")[0]?.type === "reload";
+
+// Automated visitors (Lighthouse, Vercel's screenshots, Googlebot) should see
+// the real page, not a loading screen. Automation drivers set
+// navigator.webdriver; the rest announce themselves in the user agent.
+// shortcut: a bot that does neither still sees the preloader, so extend the
+// pattern when one turns up.
+const isBot =
+  typeof navigator !== "undefined" &&
+  (navigator.webdriver ||
+    /bot|crawl|spider|lighthouse|headlesschrome/i.test(navigator.userAgent));
+
+export const skipPreloader = isReload || isBot;
 
 export function holdSite() {
   gsap.globalTimeline.pause();

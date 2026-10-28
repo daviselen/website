@@ -17,7 +17,7 @@ import { OverlayProvider } from "../design-system/components/Overlay.jsx";
 import NavBarAlt from "../sections/NavBarAlt";
 import Footer from "../sections/Footer";
 import SitePreloader from "./SitePreloader.jsx";
-import { isReload } from "../lib/siteReady.js";
+import { skipPreloader } from "../lib/siteReady.js";
 
 const FADE_DURATION = 0.5;
 
@@ -38,8 +38,8 @@ export default function PageTransition() {
 
   const [phase, setPhase] = useState(null); // null | "cover" | "reveal"
   // Shown once per full page load; client-side navigation never re-mounts it.
-  // Skipped on a refresh (see isReload).
-  const [preloading, setPreloading] = useState(!isReload);
+  // Skipped on a refresh or for bots (see skipPreloader).
+  const [preloading, setPreloading] = useState(!skipPreloader);
   const finishPreload = useCallback(() => setPreloading(false), []);
   const previousPathname = useRef(location.pathname);
   const overlayRef = useRef(null);
