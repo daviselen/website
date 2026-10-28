@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { REVEAL_DURATION } from "../design-system/animation.js";
 
 const SIZE = 88; // edge, in px
@@ -5,6 +6,9 @@ export const CUBE_STAGE = SIZE * 2; // the hexagon's height; it's narrower
 
 // Slower than the site's reveals: the faces are the preloader's main event.
 export const FADE_S = REVEAL_DURATION * 2.25;
+
+// How far above its resting place the frame starts, in px.
+const DROP = 24;
 
 // EASE_REVEAL's curve ("M0,0 C0.8,0 0.2,1 1,1"). A GSAP CustomEase has no CSS
 // form, and this has to be CSS: the preloader shows while GSAP is paused.
@@ -69,11 +73,25 @@ const FACES = [
 
 // `progress` is loading progress, 0 to 1.
 export default function IsometricCube({ progress = 0 }) {
+  const [entered, setEntered] = useState(false);
+
+  // A frame later, so the browser has painted the start state to transition from.
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => setEntered(true));
+    return () => cancelAnimationFrame(frame);
+  }, []);
+
   return (
     <svg
       width={CUBE_STAGE}
       height={CUBE_STAGE}
-      className="overflow-visible"
+      className="overflow-visible transition motion-reduce:transition-none"
+      style={{
+        opacity: entered ? 1 : 0,
+        transform: `translateY(${entered ? 0 : -DROP}px)`,
+        transitionDuration: `${REVEAL_DURATION}s`,
+        transitionTimingFunction: EASE_REVEAL_CSS,
+      }}
       viewBox={`${-CUBE_STAGE / 2} ${-CUBE_STAGE / 2} ${CUBE_STAGE} ${CUBE_STAGE}`}
       aria-hidden="true"
     >
