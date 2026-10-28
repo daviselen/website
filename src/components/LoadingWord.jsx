@@ -1,6 +1,3 @@
-import { useEffect, useState } from "react";
-import { REVEAL_DURATION } from "../design-system/animation.js";
-import { FILLED_COUNT } from "./RotatingCube.jsx";
 
 // public/icons/loading.svg, one <path> per letter. The word starts fully
 // tracked out, GAP per letter to 239.5px, and tightens to its native 143.5px.
@@ -17,20 +14,9 @@ const LETTERS = [
   "M143.516 21.568H142.78L142.172 20.48C141.82 21.344 140.988 21.824 139.964 21.824C138.748 21.824 137.18 20.768 137.18 18.176V3.648C137.18 1.504 138.62 0 140.348 0C142.076 0 143.324 1.504 143.324 3.648V7.36H141.596V3.264C141.596 2.56 141.116 1.952 140.348 1.952C139.548 1.952 139.1 2.56 139.1 3.264V18.56C139.1 19.456 139.484 20.032 140.348 20.032C141.18 20.032 141.596 19.456 141.596 18.56V12.896H140.476V11.168H143.516V21.568Z",
 ];
 
-// Tightens once on mount, over as long as the preloader's shortest possible run
-// (a slow load just holds the word at its native spacing). The svg is always
-// its widest, and the letters collapse toward the middle so the word stays
-// centred.
-export default function LoadingWord() {
-  const [grown, setGrown] = useState(false);
-
-  // A frame later, so the browser has painted the start state to transition from.
-  useEffect(() => {
-    const frame = requestAnimationFrame(() => setGrown(true));
-    return () => cancelAnimationFrame(frame);
-  }, []);
-
-  const progress = grown ? 1 : 0;
+// Tightens as `progress` (0 to 1) climbs. The svg is always its widest, and
+// the letters collapse toward the middle so the word stays centred.
+export default function LoadingWord({ progress }) {
   return (
     <svg
       role="img"
@@ -45,11 +31,8 @@ export default function LoadingWord() {
         <path
           key={d}
           d={d}
-          className="transition-transform motion-reduce:transition-none"
           style={{
             transform: `translateX(${SPREAD / 2 * progress + i * GAP * (1 - progress)}px)`,
-            transitionDuration: `${REVEAL_DURATION * FILLED_COUNT}s`,
-            transitionTimingFunction: "linear",
           }}
         />
       ))}
