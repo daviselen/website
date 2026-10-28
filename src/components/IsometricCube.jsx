@@ -31,6 +31,8 @@ const NEAR_SPOKES = [OUTLINE[1], OUTLINE[3], OUTLINE[5]];
 const FAR_SPOKES = [OUTLINE[0], OUTLINE[2], OUTLINE[4]];
 const FAR_EDGE = "#5c5c5c";
 const EDGE_WIDTH = 1.5;
+// Lit faces stay slightly see-through, so the far edges show faintly behind.
+const FACE_OPACITY = 0.8;
 
 function Spokes({ corners, ...props }) {
   return corners.map((corner) => (
@@ -85,7 +87,7 @@ export default function IsometricCube({ progress = 0 }) {
           fill={fill}
           className="transition-opacity motion-reduce:transition-none"
           style={{
-            opacity: progress >= (i + 1) / (FACES.length + 1) ? 1 : 0,
+            opacity: progress >= (i + 1) / (FACES.length + 1) ? FACE_OPACITY : 0,
             transitionDuration: `${FADE_S}s`,
             transitionTimingFunction: EASE_REVEAL_CSS,
           }}
