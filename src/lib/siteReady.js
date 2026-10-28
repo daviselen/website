@@ -48,11 +48,9 @@ export const mediaReady = () =>
 // shortcut: a hard refresh also reports "reload" and skips the preloader too;
 // telling them apart means inferring from resource timing, which depends on
 // the host's cache headers. Revisit if a hard refresh should preload.
-// TEMP: preloader always shows, refresh included. Revert before committing.
-export const isReload = false;
-// export const isReload =
-//   typeof performance !== "undefined" &&
-//   performance.getEntriesByType("navigation")[0]?.type === "reload";
+export const isReload =
+  typeof performance !== "undefined" &&
+  performance.getEntriesByType("navigation")[0]?.type === "reload";
 
 export function holdSite() {
   gsap.globalTimeline.pause();

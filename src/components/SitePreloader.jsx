@@ -84,7 +84,6 @@ export default function SitePreloader({ onDone }) {
 
     const run = async () => {
       for (let i = 0; i < MILESTONES.length; i += 1) {
-        await sleep(2000); // TEMP: slow each face so the preloader is visible
         await Promise.race([MILESTONES[i](), deadline]);
         if (cancelled) return;
         setReached((i + 1) / MILESTONES.length);
