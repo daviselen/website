@@ -7,12 +7,15 @@ export const CUBE_STAGE = SIZE * 2; // the hexagon's height; it's narrower
 // Slower than the site's reveals: the faces are the preloader's main event.
 export const FADE_S = REVEAL_DURATION * 2.25;
 
+// The frame's (and the loading word's) entrance, quicker than a normal reveal.
+export const ENTER_S = REVEAL_DURATION * 0.7;
+
 // How far above its resting place the frame starts, in px.
 const DROP = 24;
 
 // EASE_REVEAL's curve ("M0,0 C0.8,0 0.2,1 1,1"). A GSAP CustomEase has no CSS
 // form, and this has to be CSS: the preloader shows while GSAP is paused.
-const EASE_REVEAL_CSS = "cubic-bezier(0.8, 0, 0.2, 1)";
+export const EASE_REVEAL_CSS = "cubic-bezier(0.8, 0, 0.2, 1)";
 
 // Static isometric view: the near corner and the far corner both project to
 // the centre, so the outline is a hexagon and the 12 edges are that hexagon
@@ -89,7 +92,7 @@ export default function IsometricCube({ progress = 0 }) {
       style={{
         opacity: entered ? 1 : 0,
         transform: `translateY(${entered ? 0 : -DROP}px)`,
-        transitionDuration: `${REVEAL_DURATION}s`,
+        transitionDuration: `${ENTER_S}s`,
         transitionTimingFunction: EASE_REVEAL_CSS,
       }}
       viewBox={`${-CUBE_STAGE / 2} ${-CUBE_STAGE / 2} ${CUBE_STAGE} ${CUBE_STAGE}`}

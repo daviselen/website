@@ -1,4 +1,7 @@
 
+import { useEffect, useState } from "react";
+import { ENTER_S, EASE_REVEAL_CSS } from "./IsometricCube.jsx";
+
 // public/icons/loading.svg, one <path> per letter. The word starts fully
 // tracked out, GAP per letter to 239.5px, and tightens to its native 143.5px.
 const GAP = 16;
@@ -17,6 +20,14 @@ const LETTERS = [
 // Tightens as `progress` (0 to 1) climbs. The svg is always its widest, and
 // the letters collapse toward the middle so the word stays centred.
 export default function LoadingWord({ progress }) {
+  const [entered, setEntered] = useState(false);
+
+  // A frame later, so the browser has painted the start state to transition from.
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => setEntered(true));
+    return () => cancelAnimationFrame(frame);
+  }, []);
+
   return (
     <svg
       role="img"
@@ -25,6 +36,12 @@ export default function LoadingWord({ progress }) {
       height="22"
       viewBox={`0 0 ${WIDTH + SPREAD} 22`}
       fill="currentColor"
+      className="transition-opacity motion-reduce:transition-none"
+      style={{
+        opacity: entered ? 1 : 0,
+        transitionDuration: `${ENTER_S}s`,
+        transitionTimingFunction: EASE_REVEAL_CSS,
+      }}
       xmlns="http://www.w3.org/2000/svg"
     >
       {LETTERS.map((d, i) => (
