@@ -1,4 +1,5 @@
 import { memo, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { gsap, useGSAP, REVEAL_DURATION, EASE_REVEAL } from "../animation";
 import HorizontalReveal from "../components/HorizontalReveal";
 import TextReveal from "../components/TextReveal";
@@ -16,7 +17,7 @@ const CARD_VISIBLE = "inset(0% 0% 0% 0%)";
 // schema.org item, and is hidden from assistive tech: otherwise the page
 // would announce every project two or three times and publish duplicate
 // CreativeWork items in its structured data.
-function ProjectCard({ title, client, src, videoSrc, startColumn2, decorative = false, className }) {
+function ProjectCard({ title, client, src, videoSrc, startColumn2, decorative = false, className, to }) {
   const containerRef = useRef(null);
   const maskRef = useRef(null);
 
@@ -78,8 +79,12 @@ function ProjectCard({ title, client, src, videoSrc, startColumn2, decorative = 
         }
     };
   
+    // Decorative copies are aria-hidden, so they must not be focusable links.
+    const Root = to && !decorative ? Link : "div";
+
     return (
-      <div
+      <Root
+        to={Root === Link ? to : undefined}
         ref={containerRef}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
@@ -196,7 +201,7 @@ function ProjectCard({ title, client, src, videoSrc, startColumn2, decorative = 
           )}
         </div>
         </div>
-      </div>
+      </Root>
     );
 }
 

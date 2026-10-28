@@ -90,6 +90,7 @@ const projects = [
     title: "Legendary Partners",
     client: "Los Angeles Lakers",
     src: "/images/portfolio-legendary-partners-lakers.jpg",
+    to: "/work/lakers-and-toyota-legendary-partners",
   },
   {
     title: "Beyond The Arches",
