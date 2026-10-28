@@ -19,13 +19,13 @@ const stats = [
   },
   {
     heading: "4000+ Retail Locations",
-    body: "Including one in four McDonald's in America. We're in more neighborhoods than most agencies have clients.",
+    body: "We serve clients who are here, there and everywhere nationwide.",
     src: "/images/proof-locations-map.jpg",
     alt: "Map showing Davis Elen client retail locations across Southern California",
   },
   {
     heading: "Independent for Over 75 Years",
-    body: "No holding company. No quarterly panic. Nobody to ask permission from except the client.",
+    body: "Our brand of independent thinking is why clients like Toyota (since 1976) and McDonald’s (since 1965) have counted on us for decades.",
     src: "/images/proof-founding-partners.jpg",
     alt: "Davis Elen original founding partners photo: Henry Mayers, Bob Colombatto, ?, ?, and Bob Davis",
   },

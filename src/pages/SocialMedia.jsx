@@ -46,7 +46,7 @@ export default function SocialMedia({ className = "mx-2 lg:mx-8" }) {
                         leftClassName="lg:pr-300 lg:col-span-6 lg:col-start-1"
                         rightClassName="lg:pr-600 lg:col-span-6 lg:col-start-7"
                         left={`For 15 years, Davis Elen has been at the forefront of social media — fluent in every platform that matters, from the rise of Facebook to the dominance of TikTok and everything in between. \n\nSocial is woven into each account we serve. Paid, organic, influencer, and social PR aren't add-ons, they're integral to our strategic approach.`}
-                        right="As social consumption dominates and our agency continues to modernize, our paid social investments have tripled, driving demand for original creative that performs across every platform. From community management to thousands of UGC assets, from micro-influencers to celebrities and professional athletes — we build real third-party credibility, brand equity, and measurable ROI."
+                        right="As social consumption dominates and our agency continues to modernize, our paid social investments have tripled, driving demand for original creative that performs across every platform: From community management to thousands of UGC assets, from micro-influencers to celebrities and professional athletes, brand equity and measurable ROI."
                     />
                 </div>
             </section>

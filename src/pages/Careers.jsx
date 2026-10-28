@@ -48,8 +48,8 @@ export default function Careers() {
             gridClassName="lg:grid lg:grid-cols-12 lg:gap-400"
             leftClassName="lg:pr-300 lg:col-span-6 lg:col-start-1"
             rightClassName="lg:pr-600 lg:col-span-6 lg:col-start-7"
-            left="Davis Elen is one of the largest independently owned agencies in the country. We've been at it since 1948 and we're not coasting on it. We're looking for people who bring fresh, no-holds-barred thinking and the same independent streak we have. Might be you."
-            right="We're headquartered in downtown LA with ridiculously talented people scattered across the country. Our multicultural staff writes for the general market, the Hispanic market and Asian markets. Sound like your kind of place? Here's what's open."
+            left="Davis Elen is one of the largest independently owned agencies in the country. We have a storied 75-year past, but we’re not resting on what we’ve done. We’re always looking for what’s next – for people who can bring fresh, no-holds-barred thinking and a similar independent spirit to the table. Might that be you?"
+            right="Headquartered in downtown Los Angeles but with highly talented people in offices in other major metro areas, our multicultural staff is expert in crafting work for the General Market, the Hispanic Market and Asian markets. Sound like your kind of place? If so, check out our open positions."
           />
         </div>
       </section>
@@ -109,7 +109,7 @@ export default function Careers() {
           <div>
             <TextReveal
               className="mb-300 pr-600 text-lg md:text-xl lg:text-pre-title"
-              text="Work matters. So does the rest of your life. We put real money behind that:"
+              text="Work is important but so is your life outside of work. Davis Elen dedicates resources and support so you can stay healthy and engaged:"
             />
             {/* <ListMaskReveal
               items={benefits}
@@ -135,7 +135,7 @@ export default function Careers() {
             />
             <TextReveal
               className="pr-600 text-lg md:text-xl lg:text-pre-title"
-              text="Never work under someone who isn't better than you. That's the standard we hire against, and it's why the room is worth showing up to. Davis Elen's work and culture thrive on diversity and we're proud to be an equal opportunity employer."
+              text="Davis Elen’s work and culture thrive on diversity and we are proud to be an equal opportunity employer."
             />
             <TextReveal
               className="pr-600 text-lg md:text-xl lg:text-pre-title"

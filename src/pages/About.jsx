@@ -382,7 +382,7 @@ export default function About() {
       </section>
       <MediaObject
         title="$18 Billion in Sales from Over 4000 Locations."
-        text="Toyota. Best Buy Health. Smart & Final. One in four McDonald's in the country. Zoom in on the map. We're probably in your neighborhood."
+        text="Through retail locations that include Toyota, Best Buy, Smart & Final and over 25% of McDonald’s restaurants nationwide."
         imgSrc="/images/about-map.jpg"
         imgAlt="Map of Los Angeles County showing the locations of Toyota dealership, McDonald's restaurant, Best Buy and Smart & Final locations."
         imageCta="View the map"
@@ -441,7 +441,7 @@ export default function About() {
         title={ORIGIN_STORY.title}
         titleSize="large"
         subhead="Runtime 15:50"
-        text="It started as a print shop in Glendale. Nobody planned the rest of it."
+        text="From a small printing shop in Glendale to one of the largest independently owned ad agencies in the country."
         imgSrc="/images/about-history.jpg"
         imgAlt="Photo of Henry Mayers and the four partners who took over in 1958."
         onClick={() => openOverlay(ORIGIN_STORY)}
