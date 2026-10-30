@@ -5,6 +5,20 @@
     <meta name="color-scheme" content="dark" />
     <meta name="theme-color" content="#000000" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Apply a saved light choice before first paint, so light visitors
+         don't flash dark. ThemeToggle.jsx owns the value after that. -->
+    <script>
+      try {
+        if (localStorage.getItem("theme") === "light")
+          document.documentElement.dataset.theme = "light";
+        const motion = localStorage.getItem("motion");
+        document.documentElement.dataset.motion =
+          motion ||
+          (matchMedia("(prefers-reduced-motion: reduce)").matches
+            ? "reduce"
+            : "full");
+      } catch {}
+    </script>
     <!-- Default title; per-page components override via React 19 hoisting. -->
     <!-- Preload only the two most-used cuts: Knockout Featherwt is the
          Masthead's 360px above-the-fold headline (the first real content
