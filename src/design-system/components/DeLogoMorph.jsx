@@ -1,3 +1,4 @@
+import { prefersReducedMotion } from "../../lib/reducedMotion.js";
 import { useRef, useState } from "react";
 import DeLogo from "./DeLogo.jsx";
 import {
@@ -142,8 +143,7 @@ export default function DeLogoMorph({ className = "size-16", onComplete }) {
   // animated markup at all, not even for one frame.
   const [reducedMotion] = useState(
     () =>
-      typeof window !== "undefined" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+      prefersReducedMotion(),
   );
   const skipIntro = reducedMotion;
 
