@@ -264,6 +264,10 @@ export default function MastheadVideo({
             top: `calc((100cqh - max(100cqh, 100cqw / ${ratio})) / 2 - 8px)`,
             // Over a poster, fade in once the first frame is ready instead
             // of popping in.
+            // Match Vimeo's light-scheme page so the browser doesn't paint an
+            // opaque white canvas behind the iframe in dark mode (same as
+            // Overlay's player).
+            colorScheme: "light",
             opacity: poster && !loaded ? 0 : 1,
             transition: "opacity 0.6s ease-out",
           }}
