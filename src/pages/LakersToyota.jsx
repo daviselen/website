@@ -108,7 +108,13 @@ function Channel({ channel, title, children }) {
           text={channel}
           className="font-display text-5xl uppercase md:text-7xl lg:text-display-h5"
         />
-        <TextReveal className="text-lg md:text-xl lg:text-pre-title" text={title} />
+        {/* Starts as the heading's wipe ends; both fire off the same scroll
+            position, so the heading's own duration is the offset. */}
+        <TextReveal
+          className="text-lg md:text-xl lg:text-pre-title"
+          text={title}
+          delay={REVEAL_DURATION}
+        />
       </div>
       <div className="mt-600 flex flex-col gap-400 lg:mt-1000 lg:gap-1000">
         {children}
