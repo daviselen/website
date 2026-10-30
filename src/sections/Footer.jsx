@@ -280,7 +280,10 @@ export default function Footer() {
         </ul>
         <div className="mt-auto flex flex-wrap items-center gap-x-800 gap-y-4">
           <ThemeToggle />
-          <MotionToggle />
+          {/* Hidden for now; the toggle and its logic are intact. */}
+          <div className="hidden">
+            <MotionToggle />
+          </div>
         </div>
         </div>
       </div>
