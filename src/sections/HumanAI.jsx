@@ -1,3 +1,4 @@
+import { prefersReducedMotion } from "../lib/reducedMotion.js";
 // Rebuilt from get_design_context's real reference for the "HI/AI" frame
 // (nodeId 1715:746). Corrections vs. the previous pass, which was itself
 // built from hand-read raw JSON:
@@ -100,6 +101,7 @@ import {
   REVEAL_DURATION,
   LINE_DELAY,
   EASE_REVEAL,
+  toggleActions,
 } from "../design-system/animation.js";
 
 // lottie-web is a full animation runtime, and this animation doesn't start
@@ -219,14 +221,16 @@ export default function HumanAI() {
               trigger: el,
               start: REVEAL_START,
               end: REVEAL_END,
-              toggleActions: "play reverse play reverse",
+              toggleActions: toggleActions("play reverse play reverse"),
             },
           }
         );
       });
 
       const bg = containerRef.current?.querySelector("[data-bg]");
-      if (!bg) return;
+      // A parallax has no final state worth jumping to: skipped, the layer
+      // just stays where the layout puts it.
+      if (!bg || prefersReducedMotion()) return;
 
       const parent = containerRef.current;
 

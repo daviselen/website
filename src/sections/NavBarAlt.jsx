@@ -1,3 +1,4 @@
+import { prefersReducedMotion } from "../lib/reducedMotion.js";
 import {
   gsap,
   useGSAP,
@@ -72,7 +73,7 @@ export default function NavBar({ logoOnly = false }) {
       // tween exists leaves every item at its resting position — there is no
       // hidden start state to undo, because `from` is what would have
       // applied it.
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
+      if (prefersReducedMotion()) return
 
       // `from`, not `fromTo`: the resting position is whatever the flex
       // layout computed, so the tween must not hardcode an end value.

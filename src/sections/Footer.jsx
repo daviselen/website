@@ -20,12 +20,15 @@
 import { useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import DeLogo from "../design-system/components/DeLogo.jsx";
+import ThemeToggle from "../design-system/components/ThemeToggle.jsx";
+import MotionToggle from "../design-system/components/MotionToggle.jsx";
 import {
   gsap,
   useGSAP,
   REVEAL_DURATION,
   LINE_DELAY,
   EASE_REVEAL,
+  toggleActions,
 } from "../design-system/animation.js";
 
 const cities = [
@@ -91,7 +94,7 @@ export default function Footer() {
               trigger: el,
               start: REVEAL_START,
               end: REVEAL_END,
-              toggleActions: "play reverse play reverse",
+              toggleActions: toggleActions("play reverse play reverse"),
             },
           },
         );
@@ -111,7 +114,7 @@ export default function Footer() {
               trigger: el,
               start: REVEAL_START,
               end: REVEAL_END,
-              toggleActions: "play reverse play reverse",
+              toggleActions: toggleActions("play reverse play reverse"),
             },
           },
         );
@@ -160,8 +163,8 @@ export default function Footer() {
           Back to top
         </button>
       </div>
-      <div className="flex flex-col gap-800 py-800 pb-1000 md:flex-row md:justify-between lg:gap-16 lg:py-20 lg:pb-40">
-        <div className="flex flex-1 flex-col gap-12">
+      <div className="flex flex-col gap-800 py-800 pb-1000 md:flex-row md:justify-between md:pb-400 lg:gap-16 lg:py-20 lg:pb-400">
+        <div className="flex flex-1 flex-col gap-12 md:pb-600 lg:pb-1600">
           {/* data-left-reveal index 0 — document order supplies what
               custom={0} used to. */}
           <div
@@ -253,7 +256,8 @@ export default function Footer() {
             describes) — it was fixed even at the mobile text-4xl (36px)
             size, which blew the gap between city names out of proportion.
             Scaled at the same ratio: 36 * 2.03 ≈ 73px. */}
-        <ul className="flex flex-1 flex-col gap-4 font-display text-4xl uppercase leading-[73px] md:text-[64px] md:leading-[130px] lg:gap-12">
+        <div className="flex flex-1 flex-col gap-[106px]">
+        <ul className="flex flex-col gap-4 font-display text-4xl uppercase leading-[73px] md:text-[64px] md:leading-[130px] lg:gap-12">
           {/* Each office city as its own nested Place item (itemProp
               "location" is repeatable on Organization), rather than plain
               text — real office locations, not invented. */}
@@ -274,6 +278,11 @@ export default function Footer() {
             </li>
           ))}
         </ul>
+        <div className="mt-auto flex flex-wrap items-center gap-x-800 gap-y-4">
+          <ThemeToggle />
+          <MotionToggle />
+        </div>
+        </div>
       </div>
     </footer>
   );

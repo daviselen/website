@@ -88,7 +88,7 @@ export default function IsometricCube({ progress = 0 }) {
     <svg
       width={CUBE_STAGE}
       height={CUBE_STAGE}
-      className="overflow-visible transition motion-reduce:transition-none"
+      className="overflow-visible transition reduced-motion:transition-none"
       style={{
         opacity: entered ? 1 : 0,
         transform: `translateY(${entered ? 0 : -DROP}px)`,
@@ -106,7 +106,7 @@ export default function IsometricCube({ progress = 0 }) {
           key={name}
           points={points}
           fill={fill}
-          className="transition-opacity motion-reduce:transition-none"
+          className="transition-opacity reduced-motion:transition-none"
           style={{
             opacity: progress >= (i + 1) / (FACES.length + 1) ? FACE_OPACITY : 0,
             transitionDuration: `${FADE_S}s`,

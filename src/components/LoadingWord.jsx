@@ -36,7 +36,7 @@ export default function LoadingWord({ progress }) {
       height="22"
       viewBox={`0 0 ${WIDTH + SPREAD} 22`}
       fill="currentColor"
-      className="transition-opacity motion-reduce:transition-none"
+      className="transition-opacity reduced-motion:transition-none"
       style={{
         opacity: entered ? 1 : 0,
         transitionDuration: `${ENTER_S}s`,

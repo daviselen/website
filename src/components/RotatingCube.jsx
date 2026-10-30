@@ -40,7 +40,7 @@ function CubeLayer({ wireframe, shown }) {
   const visible = wireframe ? FACES : FACES.filter((f) => f.fill);
   return (
     <div
-      className="absolute inset-0 m-auto animate-cube-spin motion-reduce:animate-none"
+      className="absolute inset-0 m-auto animate-cube-spin reduced-motion:animate-none"
       style={{
         width: SIZE,
         height: SIZE,
@@ -60,7 +60,7 @@ function CubeLayer({ wireframe, shown }) {
           // its turn.
           <div
             key={transform}
-            className="absolute inset-0 transition-opacity motion-reduce:transition-none"
+            className="absolute inset-0 transition-opacity reduced-motion:transition-none"
             style={{
               transform,
               backgroundColor: fill,
