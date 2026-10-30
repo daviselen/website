@@ -153,17 +153,13 @@ export default function LakersToyota() {
           <div className="flex flex-col gap-300 lg:col-span-6 lg:gap-600 2xl:gap-1000">
             <HeadingReveal
               as="h1"
-              text={`Legendary \nPartners`}
+              text={`A celebration \n50 years \nin the making`}
               className="font-display text-8xl uppercase leading-none md:text-8xl xl:text-display-h2"
-            />
-            <TextReveal
-              className="text-lg md:text-xl lg:text-pre-title"
-              text="Feugiat tristique accumsan maecenas potenti ultricies habitant morbi senectus netus suscipit auctor curabitur facilisi cubilia curae hac habitasse platea dictumst lorem ipsum dolor sit amet consectetur adipiscing elit quisque faucibus ex sapien vitae pellentesque sem placera."
             />
           </div>
           <TextReveal
             className="text-lg md:text-xl lg:col-span-5 lg:col-start-8 lg:self-start lg:text-pre-title"
-            text="Lorem ipsum dolor sit amet consectetur adipiscing elit quisque faucibus ex sapien vitae pellentesque sem placerat in id cursus mi pretium tellus duis convallis tempus leo eu aenean sed diam urna tempor pulvinar vivamus fringilla lacus nec metus bibendum egestas iaculis massa nisl malesuada lacinia integer nunc posuere ut hendrerit."
+            text="In one of the longest-running sports sponsorships in the country, the Los Angeles Lakers and Toyota honored their 50-year relationship with a season-long campaign. We captured the connection between the two iconic brands who share a legacy of passion, performance and perseverance. Both driven to bring their best to Southern California."
           />
         </div>
       </section>
