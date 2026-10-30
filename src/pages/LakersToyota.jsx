@@ -153,7 +153,7 @@ export default function LakersToyota() {
           <div className="flex flex-col gap-300 lg:col-span-6 lg:gap-600 2xl:gap-1000">
             <HeadingReveal
               as="h1"
-              text={`A celebration \n50 years \nin the making`}
+              text={`A celebration \n50 years in \nthe making`}
               className="font-display text-8xl uppercase leading-none md:text-8xl xl:text-display-h2"
             />
           </div>
