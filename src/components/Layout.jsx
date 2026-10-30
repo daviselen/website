@@ -38,7 +38,7 @@ export default function PageTransition() {
 
   const [phase, setPhase] = useState(null); // null | "cover" | "reveal"
   // Shown once per full page load; client-side navigation never re-mounts it.
-  // Skipped on a refresh or for bots (see skipPreloader).
+  // Skipped on a refresh, for bots, or with motion off (see skipPreloader).
   const [preloading, setPreloading] = useState(!skipPreloader);
   const finishPreload = useCallback(() => setPreloading(false), []);
   const previousPathname = useRef(location.pathname);
