@@ -1,3 +1,11 @@
+import { useRef } from "react";
+import {
+  gsap,
+  useGSAP,
+  REVEAL_DURATION,
+  EASE_REVEAL,
+  toggleActions,
+} from "../design-system/animation.js";
 import HeadingReveal from "../design-system/components/HeadingReveal.jsx";
 import MastheadImage from "../design-system/components/MastheadImage.jsx";
 import MediaObject from "../design-system/components/MediaObject.jsx";
@@ -43,14 +51,51 @@ const JSON_LD = {
 
 // Figma crops each photo to a fixed frame; the frame ratio is applied here
 // rather than minted as a Tailwind token per crop, since none are reused.
-function Shot({ src, alt, ratio, className = "" }) {
+// Same top-down wipe and trigger window as MediaObject's image. `className`
+// places the wrapper in its grid; `delay` staggers images shown side by side.
+function Shot({ src, alt, ratio, className = "", imgClassName = "", delay = 0 }) {
+  const maskRef = useRef(null);
+
+  useGSAP(
+    () => {
+      // The offset is a timeline position, not a tween `delay`: ScrollTrigger
+      // plays the animation from its own start and ignores a tween's delay.
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: maskRef.current,
+            start: "top bottom-=100",
+            end: "bottom top",
+            toggleActions: toggleActions("play reverse play reverse"),
+          },
+        })
+        .fromTo(
+          maskRef.current,
+          { clipPath: "inset(0% 0% 100% 0%)" },
+          {
+            clipPath: "inset(0% 0% 0% 0%)",
+            duration: REVEAL_DURATION,
+            ease: EASE_REVEAL,
+          },
+          delay
+        );
+    },
+    { scope: maskRef }
+  );
+
   return (
-    <Picture
-      src={src}
-      alt={alt}
-      style={{ aspectRatio: ratio }}
-      className={`block w-full rounded-md object-cover ${className}`}
-    />
+    <div
+      ref={maskRef}
+      className={className}
+      style={{ clipPath: "inset(0% 0% 100% 0%)" }}
+    >
+      <Picture
+        src={src}
+        alt={alt}
+        style={{ aspectRatio: ratio }}
+        className={`block w-full rounded-md object-cover ${imgClassName}`}
+      />
+    </div>
   );
 }
 
@@ -99,7 +144,7 @@ export default function LakersToyota() {
           alt="The Toyota building in Los Angeles lit in Lakers purple and gold for 50 years of partnership, 1976 to 2026"
         />
         <div className="grid grid-cols-1 gap-800 px-2 lg:grid-cols-12 lg:gap-x-8 lg:px-8 lg:pt-1000">
-          <div className="flex flex-col gap-300 lg:gap-600 lg:col-span-6 2xl:gap-1000">
+          <div className="flex flex-col gap-300 lg:col-span-6 lg:gap-600 2xl:gap-1000">
             <HeadingReveal
               as="h1"
               text={`Legendary \nPartners`}
@@ -152,7 +197,7 @@ export default function LakersToyota() {
           src="/images/work-lakers-toyota-owners-event.jpg"
           alt="Lakers dancers with the Larry O'Brien trophy and 50th anniversary awards in front of a Lakers and Toyota backdrop"
           ratio="1792 / 900"
-          className="object-bottom"
+          imgClassName="object-bottom"
         />
         <div className="grid grid-cols-1 gap-400 md:grid-cols-3 lg:gap-8">
           <Shot
@@ -164,11 +209,13 @@ export default function LakersToyota() {
             src="/images/work-lakers-toyota-proof-2.jpg"
             alt="Crypto.com Arena filled with lights ahead of a Lakers game"
             ratio="576 / 760"
+            delay={0.15}
           />
           <Shot
             src="/images/work-lakers-toyota-proof-3.jpg"
             alt="Gold Larry O'Brien trophy beside 50th anniversary awards"
             ratio="576 / 760"
+            delay={0.3}
           />
         </div>
       </Channel>
@@ -197,11 +244,13 @@ export default function LakersToyota() {
               src="/images/work-lakers-toyota-ooh-2.jpg"
               alt="A purple LA Live board reading Legendary Partners Since 1976"
               ratio="880 / 480"
+              delay={0.15}
             />
             <Shot
               src="/images/work-lakers-toyota-ooh-3.jpg"
               alt="A Lakers and Toyota 50th anniversary tower beside Crypto.com Arena"
               ratio="728 / 452"
+              delay={0.3}
               className="md:w-5/6"
             />
           </div>
