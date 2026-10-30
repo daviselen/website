@@ -1,3 +1,4 @@
+import { prefersReducedMotion } from "../../lib/reducedMotion.js";
 import { useLayoutEffect, useRef, useState } from "react";
 import { gsap, useGSAP } from "../animation";
 
@@ -35,11 +36,6 @@ const PER_VIEW_DEFAULT = 5;
 function resolvePerView(containerWidth) {
   const match = BREAKPOINTS.find(({ maxWidth }) => containerWidth < maxWidth);
   return match ? match.perView : PER_VIEW_DEFAULT;
-}
-
-function prefersReducedMotion() {
-  if (typeof window === "undefined") return false;
-  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
 /**

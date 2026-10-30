@@ -1,5 +1,6 @@
 import { useSyncExternalStore } from "react";
 import { gsap } from "../design-system/animation.js";
+import { prefersReducedMotion } from "./reducedMotion.js";
 
 // The preloader holds back the whole site's motion, not just its own paint.
 // Every reveal on the site is a GSAP tween, so pausing the global timeline
@@ -62,7 +63,9 @@ const isBot =
   (navigator.webdriver ||
     /bot|crawl|spider|lighthouse|headlesschrome/i.test(navigator.userAgent));
 
-export const skipPreloader = isReload || isBot;
+// The preloader is nothing but animation (a building cube and a progress
+// spring), so with motion off there is nothing for it to show.
+export const skipPreloader = isReload || isBot || prefersReducedMotion();
 
 export function holdSite() {
   gsap.globalTimeline.pause();

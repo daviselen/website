@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { gsap, useGSAP } from '../animation';
+import { gsap, useGSAP, toggleActions } from '../animation';
 
 export default function ListMaskReveal({
   items = [],
@@ -28,7 +28,7 @@ export default function ListMaskReveal({
             scrollTrigger: {
               trigger: row,
               start: start,
-              toggleActions: 'play none none reverse',
+              toggleActions: toggleActions('play none none reverse'),
             },
           })
           .to(bar, {

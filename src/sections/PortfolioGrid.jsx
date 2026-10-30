@@ -1,3 +1,4 @@
+import { prefersReducedMotion } from "../lib/reducedMotion.js";
 // Hover-velocity carousel.
 //
 // This replaces the pinned, scroll-scrubbed horizontal section that used to
@@ -117,11 +118,6 @@ const projects = [
 function canHover() {
   if (typeof window === "undefined") return false;
   return window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-}
-
-function prefersReducedMotion() {
-  if (typeof window === "undefined") return false;
-  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
 export default function PortfolioGrid() {

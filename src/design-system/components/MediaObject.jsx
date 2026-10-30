@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { Link } from "react-router-dom";
-import { gsap, useGSAP, REVEAL_DURATION, EASE_REVEAL } from "../animation";
+import { gsap, useGSAP, REVEAL_DURATION, EASE_REVEAL, toggleActions } from "../animation";
 import HeadingReveal from "./HeadingReveal";
 import Picture from "./Picture";
 import TextReveal from "./TextReveal";
@@ -129,7 +129,7 @@ export default function MediaObject({
             // play/reverse toggle survives that: the refresh re-evaluates
             // the real position, reverses the image back to hidden, and it
             // replays on the way in.
-            toggleActions: "play reverse play reverse",
+            toggleActions: toggleActions("play reverse play reverse"),
           },
         }
       );

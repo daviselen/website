@@ -1,6 +1,6 @@
 import { memo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { gsap, useGSAP, REVEAL_DURATION, EASE_REVEAL } from "../animation";
+import { gsap, useGSAP, REVEAL_DURATION, EASE_REVEAL, toggleActions } from "../animation";
 import HorizontalReveal from "../components/HorizontalReveal";
 import TextReveal from "../components/TextReveal";
 import Picture from "./Picture";
@@ -58,7 +58,7 @@ function ProjectCard({ title, client, src, videoSrc, startColumn2, decorative = 
               trigger: containerRef.current,
               start: "top+=20% bottom",
               end: "bottom-=20% top",
-              toggleActions: "play reverse play reverse",
+              toggleActions: toggleActions("play reverse play reverse"),
             },
           }
         );

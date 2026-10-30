@@ -284,7 +284,7 @@ export default function MastheadVideo({
             {BARS.map((bar, i) => (
               <span
                 key={i}
-                className={`block h-5 w-50 rounded-full bg-neutral-0 transition-transform duration-200 ${muted ? "" : "animate-waveform"}`}
+                className={`block h-5 w-50 rounded-full bg-neutral-0 transition-transform duration-200 ${muted ? "" : "animate-waveform reduced-motion:animate-none"}`}
                 style={{
                   transformOrigin: "center",
                   transform: muted ? "scaleY(0.15)" : undefined,

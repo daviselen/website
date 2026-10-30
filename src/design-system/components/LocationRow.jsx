@@ -1,3 +1,4 @@
+import { prefersReducedMotion } from "../../lib/reducedMotion.js";
 import { useRef } from "react";
 import { gsap, useGSAP } from "../animation";
 
@@ -15,7 +16,7 @@ const { clamp, mapRange, interpolate } = gsap.utils;
 function canAnimate() {
   return (
     window.matchMedia("(hover: hover) and (pointer: fine)").matches &&
-    !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    !prefersReducedMotion()
   );
 }
 

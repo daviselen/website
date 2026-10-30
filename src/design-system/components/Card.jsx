@@ -1,3 +1,4 @@
+import { prefersReducedMotion } from "../../lib/reducedMotion.js";
 // Matches Figma's "card" component (nodeId 1918:727, componentSet "card"
 // 1918:748, variant Size=Default) — real text styles "card/heading" and
 // "det/heading" (64px/56px, weight 395, "Knockout 67 Full Bantamweight" —
@@ -94,7 +95,9 @@ function Card({
 
   useGSAP(
     () => {
-      if (!parallax || !imageRef.current || !containerRef.current) return;
+      // A parallax has no final state worth jumping to: skipped, the image
+      // just stays at its resting position.
+      if (!parallax || prefersReducedMotion() || !imageRef.current || !containerRef.current) return;
 
       // Parallax animation
       gsap.fromTo(
