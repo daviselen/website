@@ -1,3 +1,4 @@
+import { prefersReducedMotion } from "../lib/reducedMotion.js";
 // Single source for GSAP plugin registration and the shared motion tokens.
 // Before this, eight files each re-declared `26.153 / 30` and
 // `[0.8, 0, 0.2, 1]` locally, so retiming the site meant editing all eight.
@@ -85,6 +86,21 @@ if (typeof window !== "undefined") {
   document.fonts?.ready.then(queueRefresh);
 }
 
+// Reduced motion (OS setting or the Motion toggle): every tween and timeline
+// still runs, but at 1000x, so each lands on its end state within a frame and
+// its onComplete still fires. shortcut: scroll-scrubbed tweens are driven by
+// scroll, not the clock, so each must opt out at its call site: skip a
+// parallax outright (no end state worth jumping to), or pass `scrub: false`
+// where the end is the resting state. Upgrade to explicit end states if one
+// gets missed.
+if (prefersReducedMotion()) gsap.globalTimeline.timeScale(1000);
+
+// A reveal that reverses when scrolled away would hide its content again, and
+// on the sped-up clock that reads as the content vanishing. With motion off,
+// a reveal plays once and stays.
+export const toggleActions = (normal) =>
+  prefersReducedMotion() ? "play none none none" : normal;
+
 // 26.153 frames @ 30fps — the standard clip-path reveal.
 export const REVEAL_DURATION = 26.153 / 30;
 
@@ -164,7 +180,7 @@ export function useSmoothScroll() {
     // Smooth scrolling overrides how far a gesture travels, which is exactly
     // what someone asking for reduced motion is asking not to happen. Skip
     // the smoother entirely and leave native scrolling alone.
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (prefersReducedMotion()) return;
 
     // Only initialize if ScrollSmoother exists and hasn't been created yet
     if (typeof window !== "undefined" && !ScrollSmoother.get()) {
@@ -259,7 +275,9 @@ export function useStaggerReveal(scopeRef, { amount = 0.333 } = {}) {
           trigger: scopeRef.current,
           start: "top bottom",
           end: "bottom top",
-          onLeaveBack: () => tween.reverse(),
+          onLeaveBack: () => {
+            if (!prefersReducedMotion()) tween.reverse();
+          },
         });
       });
 
@@ -285,7 +303,7 @@ export function useStaggerReveal(scopeRef, { amount = 0.333 } = {}) {
               trigger: scopeRef.current,
               start,
               end: `+=${STAGGER_DISTANCE}`,
-              scrub: STAGGER_SCRUB,
+              scrub: prefersReducedMotion() ? false : STAGGER_SCRUB,
             },
           }
         );
