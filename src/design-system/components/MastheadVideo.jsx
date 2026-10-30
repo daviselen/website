@@ -31,6 +31,9 @@ const embedParams = (loop) =>
     ? "background=1&autoplay=1&loop=1&muted=1"
     : "autoplay=1&muted=1&controls=0&title=0&byline=0&portrait=0";
 
+// Longest the masthead waits for its poster before wiping in anyway.
+const POSTER_FALLBACK_MS = 4000;
+
 export default function MastheadVideo({
   vimeoId,
   className = "",
@@ -56,17 +59,28 @@ export default function MastheadVideo({
   const videoRef = useRef(null);
   const posterRef = useRef(null);
   const playerRef = useRef(null);
-  const [posterLoaded, setPosterLoaded] = useState(false);
+  // The poster has loaded, failed, or taken too long. Any of the three lets
+  // the wipe play: it is the only thing that un-hides the masthead, so gating
+  // it on a success-only `load` left the whole box black for good whenever the
+  // poster request failed (a failed <picture> source does not fall back to the
+  // <img>) or stalled.
+  const [posterSettled, setPosterSettled] = useState(false);
 
-  // A cached poster can finish before React attaches onLoad.
   useEffect(() => {
-    if (posterRef.current?.complete) setPosterLoaded(true);
-  }, []);
+    if (!poster) return undefined;
+    // A cached poster can finish before React attaches onLoad.
+    if (posterRef.current?.complete) setPosterSettled(true);
+    const timer = window.setTimeout(
+      () => setPosterSettled(true),
+      POSTER_FALLBACK_MS
+    );
+    return () => window.clearTimeout(timer);
+  }, [poster]);
 
   // First-frame-gated, not scroll-gated. With a poster the wipe plays as soon
   // as the poster has decoded, so the masthead paints early; the video then
   // fades in over it. Without one it waits for the player's "loaded" event.
-  const revealReady = poster ? posterLoaded : loaded;
+  const revealReady = poster ? posterSettled : loaded;
   useMediaReveal(wrapRef, { maskRef, mediaRef, loaded: revealReady });
 
   // Defer the embed until window load: the video is ~4.5 MB plus ~350 KB of
@@ -242,7 +256,8 @@ export default function MastheadVideo({
             // Lowercase: React 18 has no fetchPriority prop and passes
             // unknown lowercase attributes through untouched.
             fetchpriority="high"
-            onLoad={() => setPosterLoaded(true)}
+            onLoad={() => setPosterSettled(true)}
+            onError={() => setPosterSettled(true)}
             className="absolute inset-0 size-full rounded-md object-cover"
           />
         )}
