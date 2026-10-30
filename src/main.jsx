@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import Layout from "./components/Layout";
 import "./index.css";
+import "./lib/restoreScroll.js";
 import posthog, { isPostHogConfigured } from "./lib/posthog.js";
 import { holdSite, releaseSite, skipPreloader } from "./lib/siteReady.js";
 import HomePage from "./pages/HomePage";
