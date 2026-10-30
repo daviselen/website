@@ -250,8 +250,14 @@ export default {
   plugins: [
     // `light:` styles apply only when <html data-theme="light"> is set. Dark
     // is the base (unprefixed classes are the dark design) and the OS
-    // preference is deliberately ignored. There is no toggle yet; one would
-    // just set the attribute.
-    ({ addVariant }) => addVariant("light", ':root[data-theme="light"] &'),
+    // preference is deliberately ignored. ThemeToggle sets the attribute.
+    //
+    // `reduced-motion:` replaces Tailwind's media-query variant so the Motion
+    // toggle can override the OS setting. index.html sets data-motion from
+    // the OS when there's no saved choice, so this always has a value.
+    ({ addVariant }) => {
+      addVariant("light", ':root[data-theme="light"] &');
+      addVariant("reduced-motion", ':root[data-motion="reduce"] &');
+    },
   ],
 };
