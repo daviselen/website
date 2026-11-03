@@ -22,14 +22,9 @@ const BARS = [
 // behind the preloader: Vimeo does not buffer a paused embed (readyState
 // stays 0), so it has to start playing to become ready at all. The player
 // effect below parks it on its first frame the moment it is playing, and the
-// siteReady effect plays it again once the site is released. Looping uses
-// Vimeo's background mode, which forces repeat regardless of loop=, so
-// play-once drops it and hides the chrome by hand instead. Without background=1 the video fits the iframe
-// rather than covering it; the cover crop below still applies.
-const embedParams = (loop) =>
-  loop
-    ? "background=1&autoplay=1&loop=1&muted=1"
-    : "autoplay=1&muted=1&controls=0&title=0&byline=0&portrait=0";
+// siteReady effect plays it again once the site is released. Background mode
+// is what makes it loop, and it forces the repeat regardless of loop=.
+const EMBED_PARAMS = "background=1&autoplay=1&loop=1&muted=1";
 
 // Longest the masthead waits for its poster before wiping in anyway.
 const POSTER_FALLBACK_MS = 4000;
@@ -37,8 +32,6 @@ const POSTER_FALLBACK_MS = 4000;
 export default function MastheadVideo({
   vimeoId,
   className = "",
-  // Repeat the video. Off plays it once and holds the last frame.
-  loop = true,
   // Still image shown from first paint and faded under the video once it
   // loads. It is the masthead's LCP candidate: the iframe can never be one,
   // and without a poster nothing large paints until the video arrives.
@@ -59,28 +52,25 @@ export default function MastheadVideo({
   const videoRef = useRef(null);
   const posterRef = useRef(null);
   const playerRef = useRef(null);
-  // The poster has loaded, failed, or taken too long. Any of the three lets
-  // the wipe play: it is the only thing that un-hides the masthead, so gating
-  // it on a success-only `load` left the whole box black for good whenever the
-  // poster request failed (a failed <picture> source does not fall back to the
-  // <img>) or stalled.
   const [posterSettled, setPosterSettled] = useState(false);
+  const [timedOut, setTimedOut] = useState(false);
 
+  // The wipe is the only thing that un-hides the masthead, so it must never
+  // depend on a single success-only event: a failed <picture> source does not
+  // fall back to the <img>, and that left the whole box black for good. The
+  // timeout is the backstop.
   useEffect(() => {
     if (!poster) return undefined;
     // A cached poster can finish before React attaches onLoad.
     if (posterRef.current?.complete) setPosterSettled(true);
-    const timer = window.setTimeout(
-      () => setPosterSettled(true),
-      POSTER_FALLBACK_MS
-    );
+    const timer = window.setTimeout(() => setTimedOut(true), REVEAL_FALLBACK_MS);
     return () => window.clearTimeout(timer);
   }, [poster]);
 
   // First-frame-gated, not scroll-gated. With a poster the wipe plays as soon
   // as the poster has decoded, so the masthead paints early; the video then
   // fades in over it. Without one it waits for the player's "loaded" event.
-  const revealReady = poster ? posterSettled : loaded;
+  const revealReady = poster ? posterSettled || timedOut : loaded;
   useMediaReveal(wrapRef, { maskRef, mediaRef, loaded: revealReady });
 
   // Defer the embed until window load: the video is ~4.5 MB plus ~350 KB of
@@ -103,7 +93,7 @@ export default function MastheadVideo({
   // The embed URL, withheld until then. An iframe with no src is inert: no
   // player JS, no video.
   const src = windowLoaded
-    ? `https://player.vimeo.com/video/${vimeoId}?${embedParams(loop)}`
+    ? `https://player.vimeo.com/video/${vimeoId}?${EMBED_PARAMS}`
     : null;
 
   // Tell the preloader to wait until the video is actually playing, i.e.
