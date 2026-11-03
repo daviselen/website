@@ -63,7 +63,7 @@ export default function MastheadVideo({
     if (!poster) return undefined;
     // A cached poster can finish before React attaches onLoad.
     if (posterRef.current?.complete) setPosterSettled(true);
-    const timer = window.setTimeout(() => setTimedOut(true), REVEAL_FALLBACK_MS);
+    const timer = window.setTimeout(() => setTimedOut(true), POSTER_FALLBACK_MS);
     return () => window.clearTimeout(timer);
   }, [poster]);
 
