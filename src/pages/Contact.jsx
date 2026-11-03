@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import MastheadImage from "../design-system/components/MastheadImage";
-import MastheadVideo from "../design-system/components/MastheadVideo";
+import MastheadClip from "../design-system/components/MastheadClip";
 import HeadingReveal from "../design-system/components/HeadingReveal";
 import TextReveal from "../design-system/components/TextReveal";
 import CTABanner from "../sections/CTABanner.jsx";
@@ -223,11 +223,10 @@ export default function Contact() {
         {JSON.stringify(jsonLd).replace(/</g, "\\u003c")}
       </script>
       <section id="top">
-        <MastheadVideo
-          vimeoId="1235614817"
-          loop={false}
-          poster=""
-          hasAudio={false}
+        <MastheadClip
+          webm="/videos/contact_masthead_video.webm"
+          mp4="/videos/contact_masthead_video.mp4"
+          poster="/images/contact-masthead.webp"
           className="aspect-contact-masthead max-h-[785px] mx-400 rounded-md object-cover mb-1000"
         />
         <div className="px-2 lg:px-8">
