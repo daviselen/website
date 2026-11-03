@@ -114,10 +114,32 @@ export default function MastheadVideo({
   const endedRef = useRef(false);
   useEffect(() => {
     siteReadyRef.current = siteReady;
-    if (siteReady && inViewRef.current && !endedRef.current) {
-      playerRef.current?.play().catch(() => {});
-    }
-  }, [siteReady]);
+    const player = playerRef.current;
+    if (!siteReady || !player || !inViewRef.current || endedRef.current) return;
+    player.play().catch(() => {});
+    if (!hasAudio) return;
+    // Best-effort autoplay with sound. Browsers without prior engagement
+    // (Safari always, Chrome for first-time visitors) refuse it by pausing the
+    // video or rejecting the call, so check shortly after and fall back to
+    // muted playback. shortcut: fixed 400ms settle delay, replace with the
+    // player's "pause" event if it proves flaky.
+    const fallback = () => {
+      player.setMuted(true).catch(() => {});
+      setMuted(true);
+      player.play().catch(() => {});
+    };
+    Promise.all([player.setVolume(1), player.setMuted(false)])
+      .then(() => {
+        setMuted(false);
+        window.setTimeout(() => {
+          player
+            .getPaused()
+            .then((paused) => paused && fallback())
+            .catch(() => {});
+        }, 400);
+      })
+      .catch(fallback);
+  }, [siteReady, hasAudio]);
 
   useEffect(() => {
     // Player throws on an iframe that isn't a Vimeo embed yet.
