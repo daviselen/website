@@ -28,18 +28,18 @@ function NewsArticleArchive({ article }) {
         {heroImageUrl && (
           <MastheadImage src={heroImageUrl} alt={heroAlt} title={category} />
         )}
-        <div className="flex max-w-prose flex-col gap-200 px-400 text-pre-title">
+        <div className="flex max-w-prose flex-col gap-200 px-400 text-lg md:text-xl lg:text-pre-title">
           {pubDate && (
             <time className="font-display tracking-wide" dateTime={publishedAt}>
               {pubDate.toLocaleDateString("en-US", { dateStyle: "long" })}
             </time>
           )}
-          <h1 className="font-display text-display-h3 uppercase">{title}</h1>
+          <h1 className="font-display text-6xl uppercase leading-none md:text-8xl xl:text-display-h3">{title}</h1>
         </div>
       </header>
 
       <div className="news-content">
-        <div className="news-body *:ul:list-outside px-400 text-pre-title *:mb-600 *:max-w-prose *:marker:text-primary-300 light:*:marker:text-primary-800 [&_h2]:mt-1000 [&_h2]:font-display [&_h2]:text-display-h4 [&_h2]:first:mt-0 [&_h2]:first:text-display-h5 [&_h3]:mt-800 [&_h3]:font-display [&_h3]:text-display-h5 [&_li]:mb-300 [&_ul]:list-outside [&_ul]:list-[square] [&_ul]:pl-600 [&_ul]:text-lg md:[&_ul]:text-xl lg:[&_ul]:text-pre-title">
+        <div className="news-body *:ul:list-outside px-400 text-lg md:text-xl lg:text-pre-title *:mb-600 *:max-w-prose *:marker:text-primary-300 light:*:marker:text-primary-800 [&_h2]:mt-1000 [&_h2]:font-display [&_h2]:text-display-h4 [&_h2]:first:mt-0 [&_h2]:first:text-display-h5 [&_h3]:mt-800 [&_h3]:font-display [&_h3]:text-display-h5 [&_li]:mb-300 [&_ul]:list-outside [&_ul]:list-[square] [&_ul]:pl-600 [&_ul]:text-lg md:[&_ul]:text-xl lg:[&_ul]:text-pre-title">
           {body}
         </div>
       </div>
