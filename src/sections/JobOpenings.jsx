@@ -138,25 +138,37 @@ function JobOpeningsContent() {
   useEffect(() => {
     if (!locationRefs.current.length) return;
 
-    // 1. Reset widths to 'auto' so we can measure their natural content size
-    locationRefs.current.forEach((el) => {
-      if (el) el.style.width = 'auto';
-    });
+    // Below md the rows are a 2-column grid; a forced min width on the
+    // location column pushes the page wider than the phone, so only match
+    // widths where there's room (md+, 3-across).
+    const md = window.matchMedia("(min-width: 768px)");
 
-    // 2. Find the maximum width among all location spans
-    let maxWidth = 0;
-    locationRefs.current.forEach((el) => {
-      if (el) {
-        maxWidth = Math.max(maxWidth, el.getBoundingClientRect().width);
-      }
-    });
+    const fit = () => {
+      // 1. Reset widths so we can measure their natural content size
+      locationRefs.current.forEach((el) => {
+        if (el) el.style.width = "auto";
+      });
+      if (!md.matches) return;
 
-    // 3. Apply that maximum width to every location span
-    locationRefs.current.forEach((el) => {
-      if (el) {
-        el.style.width = `${maxWidth}px`;
-      }
-    });
+      // 2. Find the maximum width among all location spans
+      let maxWidth = 0;
+      locationRefs.current.forEach((el) => {
+        if (el) {
+          maxWidth = Math.max(maxWidth, el.getBoundingClientRect().width);
+        }
+      });
+
+      // 3. Apply that maximum width to every location span
+      locationRefs.current.forEach((el) => {
+        if (el) {
+          el.style.width = `${maxWidth}px`;
+        }
+      });
+    };
+
+    fit();
+    md.addEventListener("change", fit);
+    return () => md.removeEventListener("change", fit);
   }, [openings]);
 
   // No useStaggerReveal here, unlike the other sections. A scroll-triggered
@@ -194,7 +206,7 @@ function JobOpeningsContent() {
               key={opening.id}
               href={applyUrl(opening.externalJobId)}
               external
-              linkClassName="grid grid-cols-[1fr_auto] md:grid-cols-[1fr_auto_auto] items-baseline pt-600 pb-800 hover:text-primary-300 light:hover:text-primary-800 transition-colors gap-y-400"
+              linkClassName="grid grid-cols-[minmax(0,1fr)_auto] md:grid-cols-[1fr_auto_auto] items-baseline pt-600 pb-800 hover:text-primary-300 light:hover:text-primary-800 transition-colors gap-y-400"
             >
               <JobPositionField value={opening.title} />
               {/* Omitted entirely rather than rendered empty: one live
