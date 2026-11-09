@@ -154,7 +154,7 @@ export default function LakersToyota() {
             <HeadingReveal
               as="h1"
               text={`A celebration \n50 years in \nthe making`}
-              className="font-display text-8xl uppercase leading-none md:text-8xl xl:text-display-h2"
+              className="font-display text-6xl uppercase leading-none md:text-8xl xl:text-display-h2"
             />
           </div>
           <TextReveal
