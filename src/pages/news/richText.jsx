@@ -159,7 +159,7 @@ const renderOptions = {
       return (
         <a
           href={href}
-          className="inline-flex items-center font-normal hover:underline"
+          className="font-normal hover:underline"
           {...(isExternal
             ? {
                 target: "_blank",
@@ -171,7 +171,7 @@ const renderOptions = {
 
           {isExternal && (
             <svg
-              className="ms-2 size-4 rtl:rotate-[270deg]"
+              className="ms-2 inline-block size-4 align-baseline rtl:rotate-[270deg]"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               width="24"
