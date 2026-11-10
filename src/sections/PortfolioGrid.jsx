@@ -153,8 +153,14 @@ export default function PortfolioGrid() {
 
   // Scroll indicator (static scroller only). Its thumb is 1/n of the bar and
   // slides with scroll progress; written straight to the DOM so scrolling
-  // never re-renders. Decorative: the scroller itself is the accessible part.
+  // never re-renders. It is also a pointer control: drag the thumb, or press
+  // anywhere on the bar to jump there and keep dragging. It stays out of the
+  // accessibility tree and the tab order on purpose — the scroller itself is
+  // the keyboard and assistive-tech control, and a second tab stop for the
+  // same scrolling would only be noise.
   const thumbRef = useRef(null);
+  const barRef = useRef(null);
+  const gripRef = useRef(null);
 
   useEffect(() => {
     if (animated) return undefined;
@@ -174,9 +180,60 @@ export default function PortfolioGrid() {
     clip.addEventListener("scroll", update, { passive: true });
     const observer = new ResizeObserver(update);
     observer.observe(clip);
+
+    // Dragging. `grab` is where inside the thumb the pointer holds it (null =
+    // not dragging); pressing the bar rather than the thumb centres the thumb
+    // under the pointer first. Scroll-snap is switched off for the drag —
+    // otherwise every programmatic scrollLeft write is pulled to the nearest
+    // card and the thumb fights the pointer — and restored on release, which
+    // lets the strip settle onto a card.
+    const grip = gripRef.current;
+    const bar = barRef.current;
+    let grab = null;
+
+    const scrollToPointer = (clientX) => {
+      const barRect = bar.getBoundingClientRect();
+      const thumbWidth = thumb.getBoundingClientRect().width;
+      const travel = barRect.width - thumbWidth;
+      if (travel <= 0) return;
+      const progress = Math.min(1, Math.max(0, (clientX - barRect.left - grab) / travel));
+      clip.scrollLeft = progress * (clip.scrollWidth - clip.clientWidth);
+    };
+
+    const onDown = (event) => {
+      if (event.pointerType === "mouse" && event.button !== 0) return;
+      const thumbRect = thumb.getBoundingClientRect();
+      grab =
+        event.clientX >= thumbRect.left && event.clientX <= thumbRect.right
+          ? event.clientX - thumbRect.left
+          : thumbRect.width / 2;
+      clip.style.scrollSnapType = "none";
+      grip.setPointerCapture(event.pointerId);
+      scrollToPointer(event.clientX);
+      event.preventDefault();
+    };
+    const onMove = (event) => {
+      if (grab !== null) scrollToPointer(event.clientX);
+    };
+    const onUp = () => {
+      if (grab === null) return;
+      grab = null;
+      clip.style.scrollSnapType = "";
+    };
+
+    grip.addEventListener("pointerdown", onDown);
+    grip.addEventListener("pointermove", onMove);
+    grip.addEventListener("pointerup", onUp);
+    grip.addEventListener("pointercancel", onUp);
+
     return () => {
       clip.removeEventListener("scroll", update);
       observer.disconnect();
+      grip.removeEventListener("pointerdown", onDown);
+      grip.removeEventListener("pointermove", onMove);
+      grip.removeEventListener("pointerup", onUp);
+      grip.removeEventListener("pointercancel", onUp);
+      clip.style.scrollSnapType = "";
     };
   }, [animated]);
 
@@ -353,14 +410,15 @@ export default function PortfolioGrid() {
           what the velocity is read from. Otherwise: a native scroll-snap
           scroller. It is a labelled, focusable region so keyboard users can
           scroll it with the arrow keys (a scroller with no focusable child
-          is unreachable otherwise), and the bar is hidden on touch only, so
-          mouse users on a narrow window still have one. */}
+          is unreachable otherwise). The native scrollbar is hidden
+          everywhere: the indicator below is the scrollbar, and it can be
+          dragged, so showing both would just be two bars. */}
       <div
         ref={clipRef}
         className={
           animated
             ? "w-full overflow-hidden"
-            : "w-full snap-x snap-mandatory overflow-x-auto overscroll-x-contain scroll-px-300 focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-neutral-0 light:focus-visible:outline-neutral-1000 lg:scroll-px-8 coarse:scrollbar-none"
+            : "w-full snap-x snap-mandatory overflow-x-auto overscroll-x-contain scroll-px-300 focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-neutral-0 light:focus-visible:outline-neutral-1000 lg:scroll-px-8 scrollbar-none"
         }
         role={animated ? undefined : "region"}
         aria-label={animated ? undefined : "Selected work"}
@@ -409,13 +467,19 @@ export default function PortfolioGrid() {
       </div>
 
       {!animated && (
-        <div aria-hidden="true" className="mt-300 px-300 lg:px-8">
-          <div className="h-25 overflow-hidden bg-neutral-700">
-            <div
-              ref={thumbRef}
-              className="h-full bg-neutral-0 light:bg-neutral-1000"
-              style={{ width: `${100 / projects.length}%` }}
-            />
+        <div aria-hidden="true" className="mt-300 flow-root px-300 lg:px-8">
+          {/* The visible bar is 2px (Figma); the grip around it is the hit
+              area. Its padding is cancelled by negative margins, so layout
+              is unchanged. `touch-none` so dragging it on a touch screen
+              moves the strip instead of scrolling the page. */}
+          <div ref={gripRef} className="-my-200 cursor-pointer touch-none select-none py-200">
+            <div ref={barRef} className="h-25 overflow-hidden bg-neutral-700">
+              <div
+                ref={thumbRef}
+                className="h-full bg-neutral-0 light:bg-neutral-1000"
+                style={{ width: `${100 / projects.length}%` }}
+              />
+            </div>
           </div>
         </div>
       )}

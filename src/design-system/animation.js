@@ -193,7 +193,13 @@ export function useSmoothScroll() {
         effects: false,
         // Keep the wheel/touch handling on the main thread so scroll position
         // and the pinned cards can't tear apart on fast gestures.
-        normalizeScroll: true,
+        //
+        // This is exactly what `true` expands to inside ScrollSmoother
+        // (debounce, no content offset), plus allowNestedScroll: without it
+        // the normalizer swallows every wheel event, so a nested scroller
+        // (the home work-samples strip) can't be moved by a trackpad swipe, a
+        // horizontal wheel or Shift+wheel — only by touch.
+        normalizeScroll: { debounce: true, content: false, allowNestedScroll: true },
       });
     }
   }, []); // Empty dependency array ensures it NEVER tears down on navigation

@@ -172,6 +172,13 @@ export default {
       aspectRatio: {
         "contact-masthead": "1853 / 747",
         "image-card": "8 / 9",
+        // Home mobile frame (402): image crops read off the Figma cards at
+        // 354px wide — Proof 257.33, Inside Out 252.65, News 321.67 — and the
+        // masthead media (354 x 443).
+        "4/5": "4 / 5",
+        "11/8": "11 / 8",
+        "7/5": "7 / 5",
+        "11/10": "11 / 10",
       },
       // Deliberate, undocumented addition — not a Figma token. Drives the
       // masthead mute toggle's equalizer bars; each bar gets its own
@@ -285,12 +292,11 @@ export default {
     // toggle can override the OS setting. index.html sets data-motion from
     // the OS when there's no saved choice, so this always has a value.
     //
-    // `coarse:` is touch-first input (no mouse). `scrollbar-none` hides a
-    // scroller's bar; pair it with `coarse:` so mouse users keep one.
+    // `scrollbar-none` hides a scroller's native bar (for scrollers that
+    // supply their own control).
     ({ addVariant, addUtilities }) => {
       addVariant("light", ':root[data-theme="light"] &');
       addVariant("reduced-motion", ':root[data-motion="reduce"] &');
-      addVariant("coarse", "@media (pointer: coarse)");
       addUtilities({
         ".scrollbar-none": {
           "scrollbar-width": "none",
