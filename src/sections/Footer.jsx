@@ -127,7 +127,7 @@ export default function Footer() {
     <footer
       ref={footerRef}
       id="footer"
-      className="mx-2 border-b-2 border-neutral-0 light:border-neutral-1000 lg:mx-8"
+      className="mx-300 border-b-2 border-neutral-0 light:border-neutral-1000 lg:mx-8"
     >
       {/* Two equal columns with the same gap as the content row below, so
           column 2 starts exactly at the left edge of the cities list. The nav
