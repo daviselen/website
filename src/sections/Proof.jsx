@@ -43,11 +43,11 @@ export default function Proof() {
     <section
       ref={gridRef}
       id="proof"
-      className="grid gap-800 px-300 pb-0 pt-800 md:grid-cols-3 lg:gap-8 lg:px-8 lg:pt-3000"
+      className="grid gap-600 px-300 pb-0 pt-800 md:grid-cols-3 md:gap-800 lg:gap-8 lg:px-8 lg:pt-3000"
     >
       <h2 className="sr-only">The Proof is in the Piggy Bank</h2>
       {stats.map((s) => (
-        <Card key={s.heading} {...s} size="small" parallax />
+        <Card key={s.heading} {...s} size="small" aspect="11/8" parallax />
       ))}
     </section>
   );

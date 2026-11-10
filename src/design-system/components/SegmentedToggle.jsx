@@ -12,7 +12,7 @@ export default function SegmentedToggle({ label, options, value, onChange }) {
               type="button"
               aria-pressed={value === option.value}
               onClick={() => onChange(option.value)}
-              className={`cursor-pointer uppercase transition-opacity duration-300 hover:opacity-100 ${
+              className={`relative cursor-pointer uppercase after:absolute after:-inset-y-1.5 after:inset-x-0 transition-opacity duration-300 hover:opacity-100 ${
                 value === option.value ? "font-medium opacity-100" : "opacity-60"
               }`}
             >

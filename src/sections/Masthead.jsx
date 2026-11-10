@@ -19,7 +19,7 @@ export default function Masthead() {
       <MastheadVideo
         vimeoId="1231831922"
         poster="/images/masthead.jpg"
-        className="h-[calc((100vw-83px)*0.4229)] max-h-[785px] w-full rounded-md object-cover"
+        className="aspect-4/5 w-full rounded-md object-cover md:aspect-auto md:h-[calc((100vw-83px)*0.4229)] md:max-h-[785px]"
       />
       {/* Image → headline gap is Scale/2300 = 184px (11.5rem) — this was
           py-16 (64px/4rem) before, read off a stale HP-23 guess instead of

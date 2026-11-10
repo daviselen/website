@@ -51,9 +51,10 @@ const footerNav = [
   { label: "Contact", to: "/contact" },
   { label: "Privacy Policy", to: "/privacy-policy" },
 ];
-// Same type as the social links below.
+// Same type as the social links below. 16/16 on phones (Figma mobile footer),
+// link-social (18/18) from md.
 const navLinkClass =
-  "font-narrow text-link-social font-light uppercase hover:text-primary-300 light:hover:text-primary-800";
+  "relative font-narrow text-base leading-none after:absolute after:-inset-y-2 after:inset-x-0 md:text-link-social font-light uppercase hover:text-primary-300 light:hover:text-primary-800";
 const social = [
   { label: "Instagram", href: "https://www.instagram.com/daviselen" },
   { label: "LinkedIn", href: "https://www.linkedin.com/company/daviselen" },
@@ -78,6 +79,7 @@ const REVEAL_END = "bottom top"; // no top inset, so the real viewport top
 export default function Footer() {
   const footerRef = useRef(null);
   const { pathname } = useLocation();
+  const backToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   useGSAP(
     () => {
@@ -134,17 +136,17 @@ export default function Footer() {
           sits in column 1 until 1440px, then moves into column 2 (shortcut:
           1440 is an arbitrary variant — no matching named breakpoint). Back
           to top always sits at the far right of column 2. */}
-      <div className="grid grid-cols-1 items-center gap-4 border-b-2 border-neutral-0 light:border-neutral-1000 py-6 md:grid-cols-2 md:gap-800 lg:gap-16">
+      <div className="grid grid-cols-1 items-center gap-4 border-b-2 border-neutral-0 light:border-neutral-1000 pb-400 pt-6 md:grid-cols-2 md:gap-800 md:py-6 lg:gap-16">
         <nav
           aria-label="Footer"
-          className="flex flex-wrap gap-x-4 gap-y-2 md:col-start-1 md:row-start-1 md:gap-x-8 min-[1440px]:col-start-2"
+          className="flex flex-wrap gap-x-4 gap-y-3 md:col-start-1 md:gap-y-2 md:row-start-1 md:gap-x-8 min-[1440px]:col-start-2"
         >
           {footerNav.map((n) =>
             n.to === pathname ? (
               <span
                 key={n.to}
                 aria-current="page"
-                className="cursor-default font-narrow text-link-social font-light uppercase opacity-50 light:opacity-60"
+                className="cursor-default font-narrow text-base leading-none md:text-link-social font-light uppercase opacity-50 light:opacity-60"
               >
                 {n.label}
               </span>
@@ -154,16 +156,21 @@ export default function Footer() {
               </Link>
             ),
           )}
+          {/* Phones: "Back to top" is the last item of the wrapping row, as in
+              Figma. From md it is the separate right-aligned button below. */}
+          <button type="button" onClick={backToTop} className={`${navLinkClass} whitespace-nowrap md:hidden`}>
+            Back to top
+          </button>
         </nav>
         <button
           type="button"
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className={`${navLinkClass} justify-self-end whitespace-nowrap md:col-start-2 md:row-start-1`}
+          onClick={backToTop}
+          className={`${navLinkClass} hidden justify-self-end whitespace-nowrap md:col-start-2 md:row-start-1 md:block`}
         >
           Back to top
         </button>
       </div>
-      <div className="flex flex-col gap-800 py-800 pb-1000 md:flex-row md:justify-between md:pb-400 lg:gap-16 lg:py-20 lg:pb-400">
+      <div className="flex flex-col gap-800 py-600 md:flex-row md:justify-between md:py-800 md:pb-400 lg:gap-16 lg:py-20 lg:pb-400">
         <div className="flex flex-1 flex-col gap-12 md:pb-600 lg:pb-1600">
           {/* data-left-reveal index 0 — document order supplies what
               custom={0} used to. */}
@@ -195,14 +202,14 @@ export default function Footer() {
               <a
                 href="mailto:contact@daviselen.com"
                 itemProp="email"
-                className="hover:text-primary-300 light:hover:text-primary-800 transition-colors duration-300"
+                className="relative after:absolute after:-inset-y-1 after:inset-x-0 hover:text-primary-300 light:hover:text-primary-800 transition-colors duration-300"
               >
                 contact@daviselen.com
               </a>
               <a
                 href="tel:2136887000"
                 itemProp="telephone"
-                className="hover:text-primary-300 light:hover:text-primary-800 transition-colors duration-300"
+                className="relative after:absolute after:-inset-y-1 after:inset-x-0 hover:text-primary-300 light:hover:text-primary-800 transition-colors duration-300"
               >
                 213.688.7000
               </a>
@@ -211,12 +218,20 @@ export default function Footer() {
 
           <div
             className="relative overflow-hidden"
+            // 8px each side, cancelled by the margin: room for the links'
+            // invisible hit areas, which this overflow-hidden box would
+            // otherwise clip at the first and last item.
             style={{
-              padding: "0.0333333em 0",
-              margin: "-0.0333333em 0",
+              padding: "8px 0",
+              margin: "-8px 0",
             }}
           >
-            <div data-left-reveal="" style={{ clipPath: "inset(0 0 100% 0)" }}>
+            {/* Same 8px / -8px as the box above: clip-path clips hit-testing too,
+                so the links' invisible hit areas need room inside it. */}
+            <div
+              data-left-reveal=""
+              style={{ clipPath: "inset(0 0 100% 0)", padding: "8px 0", margin: "-8px 0" }}
+            >
               {/* itemProp="sameAs" now that these are real profile URLs, not
               placeholder "#"s — sameAs is exactly "the same entity is also
               at this other URL," which wasn't true before. target=_blank +
@@ -230,7 +245,7 @@ export default function Footer() {
                       itemProp="sameAs"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="font-narrow text-link-social font-light uppercase hover:text-primary-300 light:hover:text-primary-800"
+                      className="relative font-narrow text-base leading-none after:absolute after:-inset-y-2 after:inset-x-0 md:text-link-social font-light uppercase hover:text-primary-300 light:hover:text-primary-800"
                     >
                       <span
                         style={{
@@ -256,8 +271,9 @@ export default function Footer() {
             describes) — it was fixed even at the mobile text-4xl (36px)
             size, which blew the gap between city names out of proportion.
             Scaled at the same ratio: 36 * 2.03 ≈ 73px. */}
+        {/* The cities list is hidden below md: the Figma mobile footer drops it. */}
         <div className="flex flex-1 flex-col gap-[106px]">
-        <ul className="flex flex-col gap-4 font-display text-4xl uppercase leading-[73px] md:text-[64px] md:leading-[130px] lg:gap-12">
+        <ul className="hidden flex-col gap-4 font-display text-4xl uppercase leading-[73px] md:flex md:text-[64px] md:leading-[130px] lg:gap-12">
           {/* Each office city as its own nested Place item (itemProp
               "location" is repeatable on Organization), rather than plain
               text — real office locations, not invented. */}

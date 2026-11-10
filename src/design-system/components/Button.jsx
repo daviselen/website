@@ -21,7 +21,7 @@ export default function StyledButton({ variant = "primary", size = "default", ch
   const sizes = {
     small: "text-xl xl:text-display-h6 w-auto px-600 py-200",
     default: "text-md md:leading-1000 px-8 py-4",
-    big: "text-lg md:w-auto md:min-w-[480px] md:px-16 md:py-0 md:text-[32px] md:leading-1400 md:leading-[112px] px-8 py-4",
+    big: "text-fluid-sm md:w-auto md:min-w-[480px] md:px-16 md:py-0 md:text-[32px] md:leading-1400 md:leading-[112px] px-8 py-4",
   };
   return (
     <Button className={`${base} ${variants[variant] ?? variants.primary} ${sizes[size] ?? sizes.default}`} {...props}>

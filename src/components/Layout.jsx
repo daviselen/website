@@ -206,7 +206,7 @@ export default function PageTransition() {
     <div className={`relative min-h-screen ${uniqueClass}`}>
       <title>Davis Elen</title>
       <OverlayProvider>
-        <div className="font-narrow font-light text-neutral-0 light:text-neutral-1000" role="navigation">
+        <div className="font-narrow font-light text-neutral-0 light:text-neutral-1000">
           <NavBarAlt logoOnly={bareChrome} />
         </div>
         <div id="smooth-wrapper" role="main">

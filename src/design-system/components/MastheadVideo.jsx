@@ -265,9 +265,7 @@ export default function MastheadVideo({
             src={poster}
             alt={posterAlt}
             loading="eager"
-            // Lowercase: React 18 has no fetchPriority prop and passes
-            // unknown lowercase attributes through untouched.
-            fetchpriority="high"
+            fetchPriority="high"
             onLoad={() => setPosterSettled(true)}
             onError={() => setPosterSettled(true)}
             className="absolute inset-0 size-full rounded-md object-cover"

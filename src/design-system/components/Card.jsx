@@ -52,12 +52,18 @@ const aspectClasses = {
   "11/6": "aspect-[11/6]",
   "6/5": "aspect-[6/5]",
   "3/2": "aspect-[3/2]",
+  // Home mobile crops (Figma 402 frame); the md+ half is the existing ratio.
+  "11/8": "aspect-11/8 md:aspect-[3/2]",
+  "7/5": "aspect-7/5 md:aspect-[11/6]",
+  "11/10": "aspect-11/10 md:aspect-[6/5]",
 };
 
 const sizeConfig = {
-  default: { gap: "gap-700", gapInner: "gap-400", aspect: "55/36" },
-  med: { gap: "gap-400", gapInner: "gap-300", aspect: "6/5" },
-  small: { gap: "gap-400", gapInner: "gap-300", aspect: "3/2" },
+  // Below md every size uses the Figma mobile card spec: 24px from image to
+  // copy (Scale/300) and 20px from heading to body.
+  default: { gap: "gap-300 md:gap-700", gapInner: "gap-5 md:gap-400", aspect: "55/36" },
+  med: { gap: "gap-300 md:gap-400", gapInner: "gap-5 md:gap-300", aspect: "6/5" },
+  small: { gap: "gap-300 md:gap-400", gapInner: "gap-5 md:gap-300", aspect: "3/2" },
 };
 
 // schema.org microdata is opt-in via these three props, all undefined by
@@ -149,7 +155,7 @@ function Card({
           <HorizontalReveal>{heading}</HorizontalReveal>
         </h3>
         {body && (
-        <p className="font-narrow text-fluid-sm font-light md:text-2xl md:leading-8"><TextReveal text={body}>{body}</TextReveal></p>
+        <TextReveal as="p" className="font-narrow text-fluid-sm font-light md:text-2xl md:leading-8" text={body}>{body}</TextReveal>
         )}
       </div>
     </div>

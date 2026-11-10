@@ -30,7 +30,7 @@
 // needed. That offset was exactly the kind of invented number workflow
 // item #9 warns against.
 //
-// aspect="11/6": this section's card images are 880/480 (11/6), same as
+// aspect="7/5": this section's card images are 880/480 (11/6), same as
 // the portfolio grid — <Card /> defaults to 6/5 (Proof/News), so this is
 // the section that needs the override.
 //
@@ -71,14 +71,14 @@ const culture = {
 export default function FromInsideOut() {
   return (
     <section id="from-inside-out" className="mt-1000 px-300 lg:mt-3000 lg:px-8">
-      <div className="grid gap-8 md:grid-cols-2">
-        <div className="flex flex-col gap-600 lg:gap-2000">
+      <div className="grid gap-600 md:grid-cols-2 md:gap-8">
+        <div className="flex flex-col gap-400 md:gap-600 lg:gap-2000">
           <HeadingReveal as="h2" className="font-display text-fluid-2xl uppercase leading-none md:text-8xl lg:text-display-h3" text={`From the \nInside Out`} />
           {/* Real photographed examples of client work, so these get full
               CreativeWork microdata (name + image), unlike Proof's
               unmarked arbitrary stats. */}
           <Card
-            aspect="11/6"
+            aspect="7/5"
             {...social}
             itemType="https://schema.org/CreativeWork"
             headingItemProp="name"
@@ -87,14 +87,14 @@ export default function FromInsideOut() {
         </div>
         <div className="flex flex-col gap-600 lg:gap-2000">
           <Card
-            aspect="11/6"
+            aspect="7/5"
             {...pr}
             itemType="https://schema.org/CreativeWork"
             headingItemProp="name"
             imageItemProp="image"
           />
           <Card
-            aspect="11/6"
+            aspect="7/5"
             {...culture}
             itemType="https://schema.org/CreativeWork"
             headingItemProp="name"

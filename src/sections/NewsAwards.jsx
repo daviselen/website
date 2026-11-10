@@ -27,9 +27,9 @@ export default function NewsAwards() {
           one becomes a value of the page-level Organization item's
           `award` property (a plain Text property — see HomePage.jsx for
           where that Organization itemScope starts). */}
-      <div ref={gridRef} className="grid gap-1000 md:grid-cols-3 lg:gap-8">
+      <div ref={gridRef} className="grid gap-600 md:grid-cols-3 md:gap-1000 lg:gap-8">
         {newsHighlights.map((a) => (
-          <Card key={a.heading} {...a} headingItemProp="award" size="med" />
+          <Card key={a.heading} {...a} headingItemProp="award" size="med" aspect="11/10" />
         ))}
       </div>
     </section>

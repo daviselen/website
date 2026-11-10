@@ -290,7 +290,7 @@ export default function HumanAI() {
             className="mb-300 flex items-center gap-6"
             style={REVEAL_START_STYLE}
           >
-            <img src="/icons/hi-mark.svg" alt="" className="w-[304px] light:invert" />
+            <img src="/icons/hi-mark.svg" alt="HI: Human Imagination x Artificial Intelligence" className="w-[304px] max-w-full light:invert" />
           </div>
 
           {/* Kept on one line, deliberately: JSX collapses a line break
