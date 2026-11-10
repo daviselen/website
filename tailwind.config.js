@@ -12,6 +12,27 @@
 // unused anywhere in the current code). Nothing here should exist without
 // either a real variable behind it or an explicit comment saying it's a
 // deliberate, undocumented addition.
+// Fluid phone type, WordPress-preset style. Each size is anchored to the
+// Figma mobile frame (402px, iPhone 17 Pro) so it equals the design value
+// exactly at 402 and scales linearly across FLUID_MIN..FLUID_MAX, clamped at
+// both ends — 320 (smallest phones) to 480 (largest, = the `xs` breakpoint).
+// `minRatio` is the size at 320 as a fraction of the anchor. Line-height is
+// unitless so it scales with the size. Use these below md, then hand off to
+// the existing breakpoint steps (md:text-… / lg:text-display-…).
+const FLUID_MIN = 320;
+const FLUID_ANCHOR = 402;
+const FLUID_MAX = 480;
+
+function fluid(anchor, lineHeightPx, minRatio) {
+  const min = +(anchor * minRatio).toFixed(2);
+  const slope = +((anchor - min) / (FLUID_ANCHOR - FLUID_MIN)).toFixed(4); // px per px of viewport
+  const max = +(anchor + slope * (FLUID_MAX - FLUID_ANCHOR)).toFixed(2);
+  return [
+    `clamp(${min}px, calc(${anchor}px + ${slope} * (100vw - ${FLUID_ANCHOR}px)), ${max}px)`,
+    { lineHeight: `${+(lineHeightPx / anchor).toFixed(4)}` },
+  ];
+}
+
 export default {
   content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
@@ -244,6 +265,13 @@ export default {
         "body-hiai": ["24px", { lineHeight: "32px" }],
         "link-social": ["18px", { lineHeight: "18px" }], // links/social — Footer social links
         "small": ["16px", { lineHeight: "24px" }], // Careers eyebrows
+        // Fluid phone presets (anchor size/line-height at 402 → size at 320).
+        "fluid-sm": fluid(16, 24, 0.9375), // body copy
+        "fluid-md": fluid(24, 32, 0.9167), // footer contact, lead text
+        "fluid-lg": fluid(40, 32, 0.875), // card titles
+        "fluid-xl": fluid(56, 40, 0.82), // HI x AI h2
+        "fluid-2xl": fluid(72, 72, 0.8), // section h2s
+        "fluid-3xl": fluid(96, 72, 0.78), // masthead h1
       },
     },
   },
