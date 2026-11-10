@@ -264,7 +264,7 @@ export default function HumanAI() {
     <section
       id="human-ai"
       ref={containerRef}
-      className="relative mx-2 mt-1000 overflow-hidden rounded-md bg-surface-alt light:bg-neutral-100 [--grid-line:#2b2b2b] light:[--grid-line:theme(colors.neutral.200)] px-200 py-500 text-neutral-0 light:text-neutral-1000 sm:px-800 md:px-1000 lg:mx-8 lg:mt-3000 xl:px-1200 2xl:p-1000"
+      className="relative mx-300 mt-1000 overflow-hidden rounded-md bg-surface-alt light:bg-neutral-100 [--grid-line:#2b2b2b] light:[--grid-line:theme(colors.neutral.200)] px-200 py-500 text-neutral-0 light:text-neutral-1000 sm:px-800 md:px-1000 lg:mx-8 lg:mt-3000 xl:px-1200 2xl:p-1000"
     >
       {/* Parallax CSS Grid Layer. `.bg` was a plain classname doing double
           duty as a JS query hook (eslint's tailwindcss plugin flags any
@@ -300,7 +300,7 @@ export default function HumanAI() {
               no space at all — not just "less space than expected." */}
           <h2
             data-item-reveal=""
-            className="font-display text-4xl uppercase leading-none md:text-6xl lg:text-display-h4"
+            className="font-display text-fluid-xl uppercase md:text-6xl md:leading-none lg:text-display-h4"
             style={REVEAL_START_STYLE}
           >
             THE <abbr title="Human Imagination">H<span className="tracking-[0.08em]">I</span></abbr><span className="lowercase tracking-widest">x</span><abbr title="Artificial Intelligence">AI</abbr> Loop
@@ -317,12 +317,12 @@ export default function HumanAI() {
                 <div className="flex w-full items-center gap-100">
                   <div className={`size-[22px] shrink-0 border-4 ${c.dot}`} />
                   <h3
-                    className={`flex-1 font-narrow text-xl font-semibold uppercase md:text-2xl lg:text-body-hiai ${c.color}`}
+                    className={`flex-1 font-narrow text-fluid-sm font-semibold uppercase md:text-2xl lg:text-body-hiai ${c.color}`}
                   >
                     {c.title}
                   </h3>
                 </div>
-                <p className="max-w-[42ch] font-narrow text-xl font-light leading-tight md:text-2xl lg:text-body-hiai">
+                <p className="max-w-[42ch] font-narrow text-fluid-sm font-light md:text-2xl md:leading-tight lg:text-body-hiai">
                   {c.copy}
                 </p>
               </li>
