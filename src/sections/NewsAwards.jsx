@@ -17,11 +17,11 @@ export default function NewsAwards() {
   useStaggerReveal(gridRef, { amount: 0.333 });
 
   return (
-    <section id="news-awards" className="mt-1000 px-2 lg:mt-0 lg:px-8">
+    <section id="news-awards" className="mt-1000 px-300 lg:mt-0 lg:px-8">
       <HeadingReveal
         as="h2"
         text={`What's \nHappening`}
-        className="mb-400 font-display text-7xl uppercase leading-none md:text-8xl lg:mb-1000 lg:text-display-h3"
+        className="mb-400 font-display text-fluid-2xl uppercase leading-none md:text-8xl lg:mb-1000 lg:text-display-h3"
         />
       {/* headingItemProp="award": these headings are real awards, so each
           one becomes a value of the page-level Organization item's
