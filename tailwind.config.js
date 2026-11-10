@@ -284,9 +284,11 @@ export default {
     // `reduced-motion:` replaces Tailwind's media-query variant so the Motion
     // toggle can override the OS setting. index.html sets data-motion from
     // the OS when there's no saved choice, so this always has a value.
-    ({ addVariant }) => {
+    //
+    // `coarse:` is touch-first input (no mouse). `scrollbar-none` hides a
       addVariant("light", ':root[data-theme="light"] &');
       addVariant("reduced-motion", ':root[data-motion="reduce"] &');
+      addVariant("coarse", "@media (pointer: coarse)");
     },
   ],
 };
