@@ -31,7 +31,7 @@ import { prefersReducedMotion } from "../lib/reducedMotion.js";
 //
 // A tween would need a start and an end; this has neither, because `target`
 // changes continuously as the cursor moves and the loop never terminates.
-import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import HeadingReveal from "../design-system/components/HeadingReveal";
 import ProjectCard from "../design-system/components/ImageCard";
 import { gsap, useGSAP } from "../design-system/animation";
@@ -110,14 +110,17 @@ const projects = [
   },
 ];
 
-// A hover-driven strip is inert on a device that cannot hover, so the carousel
-// is only built where the input to it exists; everything else gets the static
-// fallback (one card set, native horizontal scrolling). `pointer: fine` is
-// part of the test on purpose — a stylus reports `hover: hover` but gives no
-// continuous cursor position to read a velocity from.
-function canHover() {
+// The looping, cursor-driven strip is a desktop-only enhancement. It needs a
+// mouse (`hover` + `fine` — a stylus reports `hover: hover` but gives no
+// continuous position to read a velocity from) and room for it (lg+), and it
+// is off under reduced motion. Everywhere else — phones, tablets, touch
+// laptops, narrow windows — the strip is a plain native scroller (see
+// `animated` below), which is what touch, keyboard and assistive tech drive.
+const ANIMATED_QUERY = "(min-width: 1024px) and (hover: hover) and (pointer: fine)";
+
+function shouldAnimate() {
   if (typeof window === "undefined") return false;
-  return window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  return window.matchMedia(ANIMATED_QUERY).matches && !prefersReducedMotion();
 }
 
 export default function PortfolioGrid() {
@@ -135,10 +138,47 @@ export default function PortfolioGrid() {
   // this the strip would snap back to its resting position mid-glide.
   const offsetRef = useRef(null);
 
-  // Read once, at mount: the section RENDERS differently when there is no
-  // hover to drive it, so this is a render input rather than something the
-  // ticker checks per frame.
-  const [animated] = useState(() => canHover() && !prefersReducedMotion());
+  // A render input, not something the ticker checks per frame: the section
+  // renders differently (looping copies vs one native scroller). Kept in sync
+  // with the media query so resizing a window across lg, or docking a
+  // keyboard-and-mouse to a tablet, switches modes instead of stranding one.
+  const [animated, setAnimated] = useState(shouldAnimate);
+
+  useEffect(() => {
+    const query = window.matchMedia(ANIMATED_QUERY);
+    const sync = () => setAnimated(shouldAnimate());
+    query.addEventListener("change", sync);
+    return () => query.removeEventListener("change", sync);
+  }, []);
+
+  // Scroll indicator (static scroller only). Its thumb is 1/n of the bar and
+  // slides with scroll progress; written straight to the DOM so scrolling
+  // never re-renders. Decorative: the scroller itself is the accessible part.
+  const thumbRef = useRef(null);
+
+  useEffect(() => {
+    if (animated) return undefined;
+    const clip = clipRef.current;
+    const thumb = thumbRef.current;
+    if (!clip || !thumb) return undefined;
+
+    const update = () => {
+      const max = clip.scrollWidth - clip.clientWidth;
+      const progress = max > 0 ? clip.scrollLeft / max : 0;
+      // The thumb is 1/n of the bar wide, so travelling the rest of the bar
+      // is (n − 1) thumb-widths.
+      thumb.style.transform = `translateX(${progress * (projects.length - 1) * 100}%)`;
+    };
+
+    update();
+    clip.addEventListener("scroll", update, { passive: true });
+    const observer = new ResizeObserver(update);
+    observer.observe(clip);
+    return () => {
+      clip.removeEventListener("scroll", update);
+      observer.disconnect();
+    };
+  }, [animated]);
 
   // `copies` is how many times the card set is repeated, and `setWidth` is the
   // exact px width of one repeat — the distance the strip wraps over. Both are
@@ -197,9 +237,14 @@ export default function PortfolioGrid() {
 
   useGSAP(
     () => {
-      if (!animated || !setWidth) return undefined;
-
       const track = trackRef.current;
+      // Left the loop (resized below lg, reduced motion on): drop the strip's
+      // leftover transform so the native scroller starts at its own origin.
+      if (!animated) {
+        gsap.set(track, { clearProps: "transform" });
+        return undefined;
+      }
+      if (!setWidth) return undefined;
 
       // What makes it infinite: offset is folded back into a window exactly
       // one set wide every frame. Every copy is identical, so the two ends of
@@ -289,6 +334,9 @@ export default function PortfolioGrid() {
     targetSpeedRef.current = 0;
   };
 
+  // Decorative loop copies exist only in the animated strip.
+  const visibleCopies = animated ? copies : 1;
+
   return (
     <section id="portfolio-grid" ref={sectionRef} className="pb-0 pt-1000 lg:pt-3000">
       {/* Heading lives outside the clip so it isn't cropped by overflow-hidden */}
@@ -296,18 +344,27 @@ export default function PortfolioGrid() {
         <HeadingReveal
           as="h2"
           text={`Fresh Out \nof the Box`}
-          className="mb-600 font-display text-6xl uppercase leading-none md:text-8xl lg:mb-1000 lg:text-display-h3"
+          className="mb-400 font-display text-fluid-2xl uppercase leading-none md:text-8xl lg:mb-1000 lg:text-display-h3"
         />
       </div>
 
-      {/* Clip boundary — full viewport width, no padding, hard overflow cut.
-          This is also the hover surface: the cursor's position across THIS
-          box is what the velocity is read from. Without hover it becomes a
-          natively scrollable strip instead, so the cards past the right edge
-          stay reachable on touch and under reduced motion. */}
+      {/* Clip boundary. Animated (desktop mouse): a hard overflow cut that is
+          also the hover surface — the cursor's position across THIS box is
+          what the velocity is read from. Otherwise: a native scroll-snap
+          scroller. It is a labelled, focusable region so keyboard users can
+          scroll it with the arrow keys (a scroller with no focusable child
+          is unreachable otherwise), and the bar is hidden on touch only, so
+          mouse users on a narrow window still have one. */}
       <div
         ref={clipRef}
-        className={`w-full px-2 xl:px-0 ${animated ? "overflow-hidden" : "overflow-x-auto"}`}
+        className={
+          animated
+            ? "w-full overflow-hidden"
+            : "w-full snap-x snap-mandatory overflow-x-auto overscroll-x-contain scroll-px-300 focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-neutral-0 light:focus-visible:outline-neutral-1000 lg:scroll-px-8 coarse:scrollbar-none"
+        }
+        role={animated ? undefined : "region"}
+        aria-label={animated ? undefined : "Selected work"}
+        tabIndex={animated ? undefined : 0}
         onPointerMove={animated ? handlePointerMove : undefined}
         onPointerLeave={animated ? handlePointerLeave : undefined}
         // pointercancel covers the browser taking the pointer away mid-hover
@@ -315,31 +372,53 @@ export default function PortfolioGrid() {
         // that would otherwise stop the strip.
         onPointerCancel={animated ? handlePointerLeave : undefined}
       >
-        {/* The strip. `px-8` only in the static fallback: the looping version
+        {/* The strip. Padded only in the static scroller: the looping version
             gets its left gutter from the resting offset instead, because a
-            padded track cannot wrap seamlessly. */}
-        <div
+            padded track cannot wrap seamlessly. The right gutter is a
+            zero-width `after` item: padding on an overflowing flex container
+            is not part of the scrollable area, but the gap before an item is. 1px
+            wide, pulled back 1px, because a zero-area box is ignored there.
+            `role="list"` because
+            list-style: none makes Safari drop the list semantics. */}
+        {/* eslint-disable-next-line jsx-a11y/no-redundant-roles -- deliberate, see above */}
+        <ul
           ref={trackRef}
-          className={`flex flex-col gap-x-8 gap-y-2 lg:flex-row lg:flex-nowrap ${animated ? "" : "px-2 lg:px-8"}`}
+          role="list"
+          className={`flex gap-x-300 lg:gap-x-8 ${animated ? "" : "pl-300 after:-ml-px after:block after:w-px after:shrink-0 lg:pl-8"}`}
           style={{ willChange: "transform" }}
         >
-          {Array.from({ length: copies }, (_, copy) =>
+          {Array.from({ length: visibleCopies }, (_, copy) =>
             projects.map((project, index) => (
-              <ProjectCard
+              // Sizing lives on the item, not the card. Phones: card width is
+              // the scroller minus the left gutter, a 40px (Scale/500) sliver
+              // of the next card and the gap before it — the cue that it scrolls — capped at
+              // 32rem so a wide phone or a landscape one doesn't get a card
+              // taller than its screen.
+              <li
                 key={`${copy}-${index}`}
-                {...project}
-                // Copies past the first are the same eight case studies over
-                // again. They are painted, but they are not content: no alt
-                // text, no schema.org item, hidden from assistive tech.
-                decorative={copy > 0}
-                // Decorative copies only make sense in the horizontal carousel;
-                // hide them below lg where the track is a vertical column.
-                className={copy > 0 ? "hidden lg:block" : undefined}
-              />
+                // Loop copies repeat the eight case studies; hidden from
+                // assistive tech so the list still reads as eight.
+                aria-hidden={copy > 0 ? "true" : undefined}
+                className="max-w-lg shrink-0 basis-[calc(100%-theme(spacing.500)-theme(spacing.300))] snap-start"
+              >
+                <ProjectCard {...project} decorative={copy > 0} />
+              </li>
             ))
           )}
-        </div>
+        </ul>
       </div>
+
+      {!animated && (
+        <div aria-hidden="true" className="mt-300 px-300 lg:px-8">
+          <div className="h-25 overflow-hidden bg-neutral-700">
+            <div
+              ref={thumbRef}
+              className="h-full bg-neutral-0 light:bg-neutral-1000"
+              style={{ width: `${100 / projects.length}%` }}
+            />
+          </div>
+        </div>
+      )}
     </section>
   );
 }
