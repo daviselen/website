@@ -286,9 +286,17 @@ export default {
     // the OS when there's no saved choice, so this always has a value.
     //
     // `coarse:` is touch-first input (no mouse). `scrollbar-none` hides a
+    // scroller's bar; pair it with `coarse:` so mouse users keep one.
+    ({ addVariant, addUtilities }) => {
       addVariant("light", ':root[data-theme="light"] &');
       addVariant("reduced-motion", ':root[data-motion="reduce"] &');
       addVariant("coarse", "@media (pointer: coarse)");
+      addUtilities({
+        ".scrollbar-none": {
+          "scrollbar-width": "none",
+          "&::-webkit-scrollbar": { display: "none" },
+        },
+      });
     },
   ],
 };
