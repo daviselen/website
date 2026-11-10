@@ -91,7 +91,7 @@ function ProjectCard({ title, client, src, videoSrc, startColumn2, decorative = 
         itemScope={decorative ? undefined : true}
         itemType={decorative ? undefined : "https://schema.org/CreativeWork"}
         aria-hidden={decorative ? "true" : undefined}
-        className={`relative aspect-[8/9] w-full shrink-0 grow basis-full break-inside-avoid overflow-hidden rounded-md transition-all ease-in-out lg:basis-[32rem] ${
+        className={`relative aspect-image-card w-full break-inside-avoid overflow-hidden rounded-md transition-all ease-in-out ${
           startColumn2 ? "break-before-column" : ""
         } ${className ?? ""}`}
       >
