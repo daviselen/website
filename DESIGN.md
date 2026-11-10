@@ -36,6 +36,15 @@ typography:
     fontFamily: "Knockout 68 Full Featherwt"
     fontSize: 104px
     lineHeight: 80px
+  # Fluid phone presets (tailwind.config.js `fluid()`): the value is the Figma
+  # mobile size at 402px; each scales linearly 320-480px and clamps at both
+  # ends. fontSize shown as 320px / 402px / 480px. Line-height is unitless.
+  fluid-sm: { fontSize: "15 / 16 / 16.95px", lineHeight: 1.5 }
+  fluid-md: { fontSize: "22 / 24 / 25.9px", lineHeight: 1.3333 }
+  fluid-lg: { fontSize: "35 / 40 / 44.76px", lineHeight: 0.8 }
+  fluid-xl: { fontSize: "45.92 / 56 / 65.59px", lineHeight: 0.7143 }
+  fluid-2xl: { fontSize: "57.6 / 72 / 85.7px", lineHeight: 1 }
+  fluid-3xl: { fontSize: "74.88 / 96 / 116.09px", lineHeight: 0.75 }
   h5:
     fontFamily: "Knockout 68 Full Featherwt"
     fontSize: 80px
