@@ -171,6 +171,7 @@ export default {
       // Not a Figma token: the Contact masthead video's frame ratio (1756×720).
       aspectRatio: {
         "contact-masthead": "1853 / 747",
+        "image-card": "8 / 9",
       },
       // Deliberate, undocumented addition — not a Figma token. Drives the
       // masthead mute toggle's equalizer bars; each bar gets its own
