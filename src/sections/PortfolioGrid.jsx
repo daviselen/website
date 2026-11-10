@@ -292,7 +292,7 @@ export default function PortfolioGrid() {
   return (
     <section id="portfolio-grid" ref={sectionRef} className="pb-0 pt-1000 lg:pt-3000">
       {/* Heading lives outside the clip so it isn't cropped by overflow-hidden */}
-      <div className="px-2 lg:px-8">
+      <div className="px-300 lg:px-8">
         <HeadingReveal
           as="h2"
           text={`Fresh Out \nof the Box`}

@@ -175,7 +175,7 @@ function ProjectCard({ title, client, src, videoSrc, startColumn2, decorative = 
             <>
               <TextReveal
                 itemProp={decorative ? undefined : "name"}
-                className="font-narrow text-base font-light leading-6 md:text-2xl md:leading-8"
+                className="font-narrow text-fluid-sm font-light md:text-2xl md:leading-8"
                 text={title}
                 // playOnMount: the text mounts only after the card's clip-path
                 // reveal finishes (isRevealed gate), so by definition the card
@@ -190,7 +190,7 @@ function ProjectCard({ title, client, src, videoSrc, startColumn2, decorative = 
               <HorizontalReveal
                 as="h3"
                 itemProp={decorative ? undefined : "about"}
-                className="font-display text-4xl uppercase leading-none md:text-6xl lg:text-display-card"
+                className="font-display text-pre-title uppercase leading-none md:text-6xl lg:text-display-card"
                 text={client}
                 // Same reasoning as TextReveal above.
                 playOnMount

@@ -125,12 +125,12 @@ export default function NavBar({ logoOnly = false }) {
   return (
     <header
       ref={headerRef}
-      className="fixed inset-x-0 top-0 z-50 box-border flex w-auto items-center justify-between bg-surface-default light:bg-neutral-0 p-2 uppercase md:p-4 lg:px-8"
+      className="fixed inset-x-0 top-0 z-50 box-border flex w-auto items-center justify-between bg-surface-default light:bg-neutral-0 px-300 py-100 uppercase md:p-4 lg:px-8"
     >
       {/* Every `data-nav-item` below is a flex item of its own container, so
           it is blockified — a bare inline <a> would ignore the intro's
           transform entirely. Keep that true for anything added here. */}
-      <div className="flex flex-1 shrink-0 items-center justify-between py-0 sm:py-2 md:py-4">
+      <div className="flex flex-1 shrink-0 items-center justify-between py-0 md:py-4">
         <Link to="/" data-nav-item="">
           <DeLogoMorph className="size-12 sm:size-14 md:size-16" />
         </Link>
