@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect, useRef } from "react";
 import MastheadImage from "../design-system/components/MastheadImage";
 import CTABanner from "../sections/CTABanner";
 import MediaObject from "../design-system/components/MediaObject.jsx";
@@ -351,6 +351,41 @@ const CLIENT_ROWS = Array.from(
   (_, row) => clients.slice(row * ROW_SIZE, row * ROW_SIZE + ROW_SIZE)
 );
 
+// preload="none" keeps the ~16 tiles from downloading up front; each tile
+// plays only while near the viewport. Same background-video contract as
+// MastheadVideo: muted + playsInline make autoplay legal on Safari/iOS.
+function PersonVideo({ person }) {
+  const ref = useRef(null);
+  useEffect(() => {
+    const video = ref.current;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) video.play().catch(() => {});
+        else video.pause();
+      },
+      { rootMargin: "200px" },
+    );
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <video
+      ref={ref}
+      className="aspect-video h-auto w-full rounded-md object-cover"
+      poster={person.img?.src}
+      aria-label={person.name}
+      preload="none"
+      loop
+      muted
+      playsInline
+    >
+      <source src={person.video.webm} type="video/webm" />
+      <source src={person.video.mp4} type="video/mp4" />
+    </video>
+  );
+}
+
 export default function About() {
   const { openOverlay } = useOverlay();
   return (
@@ -404,23 +439,9 @@ export default function About() {
           {people.map((person, index) => (
           <div key={index} className="teams-video relative rounded-md bg-surface-alt light:bg-neutral-100">
             {person.video ? (
-              // autoPlay + loop + muted + playsInline is the same background
-              // -video contract as MastheadVideo: muted is what makes autoplay
-              // legal in Safari/Chrome, playsInline what stops iOS taking it
-              // fullscreen. aspect-video is Tailwind's built-in 16/9, so the
-              // tile keeps the exact ratio the <Picture> below it uses.
-              <video
-                className="aspect-video h-auto w-full rounded-md object-cover"
-                poster={person.img?.src}
-                aria-label={person.name}
-                autoPlay
-                loop
-                muted
-                playsInline
-              >
-                <source src={person.video.webm} type="video/webm" />
-                <source src={person.video.mp4} type="video/mp4" />
-              </video>
+              // aspect-video is Tailwind's built-in 16/9, so the tile keeps the
+              // exact ratio the <Picture> below it uses.
+              <PersonVideo person={person} />
             ) : (
               <Picture className="flex aspect-[16/9] h-auto w-full items-center justify-center rounded-md" src={person.img.src} alt={person.name} />
             )}
