@@ -2,9 +2,7 @@
 // homepage with real autolayout — children now come in true visual order,
 // no more sorting by absolute Y like HP-23 required. "SocialPR" was merged
 // into "FromInsideOut" (HP-26 groups them under one "FROM THE INSIDE OUT"
-// heading and drops the old "DE Tuesdays" card), so SocialPR.jsx is no
-// longer used here — kept in the repo in case a future frame needs it
-// standalone again.
+// heading and drops the old "DE Tuesdays" card), so SocialPR.jsx was deleted.
 import { useEffect, useState } from "react";
 import Masthead from "../sections/Masthead.jsx";
 import Proof from "../sections/Proof.jsx";

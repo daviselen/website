@@ -34,7 +34,6 @@ const TAILWIND_TOKEN_RULES_WARN_FILES = [
   "src/sections/NewsAwards.jsx",
   "src/sections/CTABanner.jsx",
   "src/sections/Footer.jsx",
-  "src/sections/SocialPR.jsx",
   "src/design-system/components/Button.jsx",
   "src/design-system/components/Card.jsx",
   "src/design-system/components/DeLogo.jsx",
