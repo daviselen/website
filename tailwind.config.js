@@ -171,6 +171,9 @@ export default {
       // Not a Figma token: the Contact masthead video's frame ratio (1756×720).
       aspectRatio: {
         "contact-masthead": "1853 / 747",
+        // Not a Figma token: the News story hero frame (1792 x 720), so the
+        // hero reserves its height before the image arrives.
+        "news-hero": "1792 / 720",
         "image-card": "8 / 9",
         // Home mobile frame (402): image crops read off the Figma cards at
         // 354px wide — Proof 257.33, Inside Out 252.65, News 321.67 — and the

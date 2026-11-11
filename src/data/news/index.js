@@ -1,13 +1,9 @@
-// Vite glob import: automatically loads all article JSON files in this
-// directory. manifest.json is the shared asset/embed lookup, not an article.
-const modules = import.meta.glob(["./*.json", "!./manifest.json"], {
-  eager: true,
+// One lazy chunk per article, keyed by filename (which equals the slug).
+// manifest.json is the shared asset/embed lookup, not an article.
+const loaders = import.meta.glob(["./*.json", "!./manifest.json"], {
+  import: "default",
 });
 
-const publishedAt = (article) =>
-  new Date(article.entries?.[0]?.fields?.publishedAt?.["en-US"] ?? 0);
-
-// Extract the default or module exports and sort them newest first
-export const articles = Object.values(modules)
-  .map((mod) => mod.default || mod)
-  .sort((a, b) => publishedAt(b) - publishedAt(a));
+// Resolves to the article JSON, or null when the slug has no file.
+export const loadArticle = (slug) =>
+  loaders[`./${slug}.json`]?.() ?? Promise.resolve(null);

@@ -93,7 +93,13 @@ export default function NewsStory({ article }) {
           {JSON.stringify(jsonLd).replace(/</g, "\\u003c")}
         </script>
       )}
-      {heroImageUrl && <MastheadImage src={heroImageUrl} alt={heroAlt} />}
+      {heroImageUrl && (
+        <MastheadImage
+          src={heroImageUrl}
+          alt={heroAlt}
+          className="aspect-news-hero"
+        />
+      )}
 
       <div
         ref={gridRef}

@@ -1,9 +1,9 @@
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { articles } from "../data/news/index";
+import { loadArticle } from "../data/news/index";
 import MastheadImage from "../design-system/components/MastheadImage";
 import NotFound from "./NotFound";
 import {
-  LOCALE,
   STORY_LAYOUT,
   getArticleLayout,
   useArticleContent,
@@ -50,9 +50,21 @@ function NewsArticleArchive({ article }) {
 export default function NewsArticlePage() {
   const { slug } = useParams();
 
-  const article = articles.find(
-    (article) => article.entries?.[0]?.fields?.slug?.[LOCALE] === slug,
-  );
+  // `undefined` while the article chunk loads, `null` when the slug has no file.
+  const [loaded, setLoaded] = useState({});
+  useEffect(() => {
+    let current = true;
+    loadArticle(slug).then((article) => {
+      if (current) setLoaded({ slug, article });
+    });
+    return () => {
+      current = false;
+    };
+  }, [slug]);
+
+  // Holds the page open while the chunk loads so the footer doesn't jump up.
+  if (loaded.slug !== slug) return <div className="min-h-screen" aria-hidden />;
+  const article = loaded.article;
 
   if (!article) {
     return <NotFound />;
