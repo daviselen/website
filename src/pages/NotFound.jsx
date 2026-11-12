@@ -10,18 +10,18 @@ import RotatingCube from "../components/RotatingCube.jsx";
 // carries no route-specific copy.
 export default function NotFound() {
   return (
-    <main className="flex min-h-screen flex-col items-start justify-center gap-600 bg-surface-default light:bg-neutral-0 px-2 py-0 font-narrow font-light text-neutral-0 light:text-neutral-1000 md:px-8">
+    <main className="flex min-h-screen flex-col items-start justify-center gap-600 bg-surface-default light:bg-neutral-0 px-300 py-0 font-narrow font-light text-neutral-0 light:text-neutral-1000 md:px-8">
       <RotatingCube />
       <HeadingReveal
         text="404"
         as="h1"
         fullyInView
-        className="font-display text-6xl uppercase leading-none md:text-8xl"
+        className="font-display text-fluid-2xl uppercase leading-none md:text-8xl"
       />
       <TextReveal
         text="Exploration is also part of our process, but you're lost."
         as="p"
-        className="text-xl md:text-2xl"
+        className="text-fluid-sm md:text-2xl"
       />
       <Link to="/">
         <StyledButton variant="solid" size="small">

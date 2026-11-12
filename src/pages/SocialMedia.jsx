@@ -26,7 +26,7 @@ const examples = [
     },
   ];
 
-export default function SocialMedia({ className = "mx-2 lg:mx-8" }) {
+export default function SocialMedia({ className = "mx-300 lg:mx-8" }) {
     const gridRef = useRef(null);
 
     // Note the ref goes on the inner grid, NOT the <section> — the section also
@@ -40,7 +40,7 @@ export default function SocialMedia({ className = "mx-2 lg:mx-8" }) {
         >
             <section id="top">
                 <MastheadImage src="/images/social-media-masthead.jpg" alt="Social Media" title={`Social \nMedia`} />
-                <div className="px-2 lg:px-8">
+                <div className="px-300 lg:px-8">
                     <SplitIntro
                         gridClassName="lg:grid lg:grid-cols-12 lg:gap-400"
                         leftClassName="lg:pr-300 lg:col-span-6 lg:col-start-1"
@@ -57,7 +57,7 @@ export default function SocialMedia({ className = "mx-2 lg:mx-8" }) {
                 imgSrc="/images/social-media-shorty-awards.jpg"
                 imgAlt="Davis Elen Advertising has won a number of Shorty Awards"
             />
-            <section id="social-media-examples" className="w-full px-2 pt-1000 text-left md:pt-3000 lg:px-8">
+            <section id="social-media-examples" className="w-full px-300 pt-1000 text-left md:pt-3000 lg:px-8">
                 <div ref={gridRef} className="grid gap-1000 md:grid-cols-3 lg:gap-8">
                     {examples.map((example) => (
                         <Card key={example.heading} {...example} headingItemProp="award" size="med" />

@@ -198,7 +198,7 @@ export default function Footer() {
               transform: "translateZ(0)",
             }}
           >
-            <div className="flex flex-col gap-4 font-narrow text-2xl font-light uppercase leading-8 lg:gap-6 py-[0.075em]">
+            <div className="flex flex-col gap-4 font-narrow text-fluid-md font-light uppercase md:text-2xl md:leading-8 lg:gap-6 py-[0.075em]">
               <a
                 href="mailto:contact@daviselen.com"
                 itemProp="email"

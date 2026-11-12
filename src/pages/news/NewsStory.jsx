@@ -103,7 +103,7 @@ export default function NewsStory({ article }) {
 
       <div
         ref={gridRef}
-        className="grid gap-800 px-2 lg:grid-cols-12 lg:gap-x-8 lg:px-8"
+        className="grid gap-800 px-300 lg:grid-cols-12 lg:gap-x-8 lg:px-8"
       >
         <div
           ref={pinRef}
@@ -111,7 +111,7 @@ export default function NewsStory({ article }) {
         >
           <HeadingReveal
             as="h1"
-            className="font-display text-6xl uppercase leading-none md:text-8xl xl:text-display-h3"
+            className="font-display text-fluid-2xl uppercase leading-none md:text-8xl xl:text-display-h3"
             text={title}
             splitLines
           ></HeadingReveal>
@@ -129,17 +129,17 @@ export default function NewsStory({ article }) {
           )}
         </div>
 
-        <div className="font-normal *:mb-600 last:*:mb-0 md:text-3xl xl:text-pre-title lg:col-span-6 xl:col-span-5 news-body *:ul:list-outside text-pre-title *:max-w-prose *:marker:text-primary-300 light:*:marker:text-primary-800 [&_h2]:mt-1000 [&_h2]:font-display [&_h2]:text-display-h4 [&_h2]:uppercase [&_h2]:first:mt-0 [&_h2]:first:text-display-h5 [&_h3]:mt-800 [&_h3]:font-display [&_h3]:text-display-h5 [&_h3]:uppercase [&_li]:mb-300 [&_ul]:list-outside [&_ul]:list-[square] [&_ul]:pl-600 [&_ul]:text-lg md:[&_ul]:text-xl lg:[&_ul]:text-pre-title">
+        <div className="font-normal *:mb-600 last:*:mb-0 md:text-3xl xl:text-pre-title lg:col-span-6 xl:col-span-5 news-body *:ul:list-outside text-fluid-sm *:max-w-prose *:marker:text-primary-300 light:*:marker:text-primary-800 [&_h2]:mt-1000 [&_h2]:font-display [&_h2]:text-fluid-2xl md:[&_h2]:text-display-h4 [&_h2]:uppercase [&_h2]:first:mt-0 [&_h2]:first:text-fluid-2xl md:[&_h2]:first:text-display-h5 [&_h3]:mt-800 [&_h3]:font-display [&_h3]:text-fluid-xl md:[&_h3]:text-display-h5 [&_h3]:uppercase [&_li]:mb-300 [&_ul]:list-outside [&_ul]:list-[square] [&_ul]:pl-600 [&_ul]:text-fluid-sm md:[&_ul]:text-xl lg:[&_ul]:text-pre-title">
           {body}
         </div>
       </div>
 
       {moreNews.length > 0 && (
-        <section className="mt-1600 grid gap-1000 px-2 md:grid-cols-3 lg:mt-3000 lg:gap-8 lg:px-8">
+        <section className="mt-1600 grid gap-1000 px-300 md:grid-cols-3 lg:mt-3000 lg:gap-8 lg:px-8">
           <HeadingReveal
             as="h2"
             text={`More \nNews`}
-            className="font-display text-7xl uppercase leading-none md:text-8xl lg:text-display-h4 xl:text-display-h3"
+            className="font-display text-fluid-2xl uppercase leading-none md:text-8xl lg:text-display-h4 xl:text-display-h3"
           />
           <div
             ref={cardsRef}

@@ -26,8 +26,8 @@ function linkify(text) {
 // Level 2 is a section, 3 a subsection, 4 a sub-subsection; the source page
 // uses the same three steps.
 const HEADING_CLASSES = {
-  2: "mt-1000 font-display text-display-h5 uppercase leading-none",
-  3: "mt-600 text-2xl md:text-3xl",
+  2: "mt-1000 font-display text-fluid-2xl uppercase md:text-display-h5 md:leading-none",
+  3: "mt-600 text-fluid-md md:text-3xl",
   4: "mt-400 text-xl md:text-2xl",
 };
 
@@ -61,16 +61,16 @@ function Block({ block }) {
 export default function PrivacyPolicy() {
   return (
     <main className="flex min-h-screen flex-col gap-0 bg-surface-default light:bg-neutral-0 pb-1800 font-narrow font-light text-neutral-0 light:text-neutral-1000">
-      <header className="flex flex-col gap-400 px-2 lg:px-8">
+      <header className="flex flex-col gap-400 px-300 lg:px-8">
         <HeadingReveal
           as="h1"
           text="Privacy Policy"
           fullyInView
-          className="font-display text-display-h3 uppercase leading-none"
+          className="font-display text-fluid-2xl uppercase md:text-display-h3 md:leading-none"
         />
-        <p className="text-lg md:text-xl">Last updated: {PRIVACY_LAST_UPDATED}</p>
+        <p className="text-fluid-sm md:text-xl">Last updated: {PRIVACY_LAST_UPDATED}</p>
       </header>
-      <article className="mt-800 flex max-w-prose flex-col gap-400 px-2 text-lg md:text-xl lg:px-8">
+      <article className="mt-800 flex max-w-prose flex-col gap-400 px-300 text-fluid-sm md:text-xl lg:px-8">
         {PRIVACY_BLOCKS.map((block, i) => (
           <Block key={i} block={block} />
         ))}

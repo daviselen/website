@@ -400,7 +400,7 @@ export default function About() {
       <section id="top">
         <MastheadImage src="/images/about-masthead.jpg" alt="About Davis Elen Advertising" title={`Inside \nthe Box`} />
         {/* <Picture src="/images/about-masthead.jpg" alt="About Davis Elen Advertising" className="block w-full h-auto rounded-md" /> */}
-        <div className="px-2 lg:px-8">
+        <div className="px-300 lg:px-8">
           {/* grid-cols-12 with a fixed col-span-6 was applying at every
               width — on a phone that's a ~150px-wide copy column with every
               word wrapping. Single column below md, real 2-up split at md+
@@ -423,13 +423,13 @@ export default function About() {
         imageCta="View the map"
         onClick={() => openOverlay(RETAIL_MAP)}
       />
-      <section id="people" className="flex flex-col gap-600 px-2 pt-1000 md:pt-3000 lg:gap-1000 lg:px-8">
+      <section id="people" className="flex flex-col gap-600 px-300 pt-1000 md:pt-3000 lg:gap-1000 lg:px-8">
         <div className="flex flex-col gap-600">
           <HeadingReveal
-            className="font-display text-5xl uppercase md:text-7xl lg:text-display-h3"
+            className="font-display text-fluid-2xl uppercase md:text-7xl lg:text-display-h3"
             text={`Let’s \nMeet Up`}
           />
-          <TextReveal className="max-w-prose text-lg md:text-xl lg:text-pre-title"
+          <TextReveal className="max-w-prose text-fluid-sm md:text-xl lg:text-pre-title"
             text="This is the whole meeting. No account person you'll never see again, no bench of strangers who vanish after the pitch. The people in the room are the people who do the work."
           />
         </div>
@@ -468,13 +468,13 @@ export default function About() {
         onClick={() => openOverlay(ORIGIN_STORY)}
         opensVideo
       />
-      <section id="clients" className="flex flex-col gap-0 px-2 pt-1000 md:pt-3000 lg:px-8">
+      <section id="clients" className="flex flex-col gap-0 px-300 pt-1000 md:pt-3000 lg:px-8">
         <HeadingReveal
           as="h2"
-          className="mb-1200 font-display text-5xl uppercase md:text-7xl lg:text-display-h3"
+          className="mb-1200 font-display text-fluid-2xl uppercase md:text-7xl lg:text-display-h3"
           text={`Client \nExperience`}
         />
-        {/* Full-bleed breakout: the section keeps its px-2/px-8 so the heading
+        {/* Full-bleed breakout: the section keeps its px-300/px-8 so the heading
             stays gutter-aligned, and only the rows run edge to edge. -mx-2/
             -mx-8 are the matching negative margins (real classes, unlike
             -mx-400), so it clears the repo's no-arbitrary-value rule. */}

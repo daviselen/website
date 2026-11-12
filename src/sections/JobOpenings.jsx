@@ -26,8 +26,8 @@ class ErrorBoundary extends Component {
   render() {
     if (this.state.hasError) {
       return (
-        <section className="mt-1000 px-2 md:mt-3000 lg:px-8">
-          <p className="font-narrow text-2xl">
+        <section className="mt-1000 px-300 md:mt-3000 lg:px-8">
+          <p className="font-narrow text-fluid-md">
             Unable to render job openings at this time.
           </p>
         </section>
@@ -180,16 +180,16 @@ function JobOpeningsContent() {
     <section
       id="job-openings"
       data-status={status}
-      className="mt-1000 flex flex-col gap-600 px-2 md:mt-3000 lg:gap-1000 lg:px-8"
+      className="mt-1000 flex flex-col gap-600 px-300 md:mt-3000 lg:gap-1000 lg:px-8"
     >
       <HeadingReveal
         as="h2"
         text={`Open \nPositions`}
-        className="font-display text-7xl uppercase leading-none md:text-8xl lg:text-display-h3"
+        className="font-display text-fluid-2xl uppercase leading-none md:text-8xl lg:text-display-h3"
       />
 
       {openings.length === 0 ? (
-        <p className="font-narrow text-2xl">{EMPTY_COPY}</p>
+        <p className="font-narrow text-fluid-md">{EMPTY_COPY}</p>
       ) : (
         <ul className="flex flex-col">
           {openings.map((opening, index) => (
@@ -206,7 +206,7 @@ function JobOpeningsContent() {
               key={opening.id}
               href={applyUrl(opening.externalJobId)}
               external
-              linkClassName="grid grid-cols-[minmax(0,1fr)_auto] md:grid-cols-[1fr_auto_auto] items-baseline pt-600 pb-800 hover:text-primary-300 light:hover:text-primary-800 transition-colors gap-y-400"
+              linkClassName="grid grid-cols-1 md:grid-cols-[1fr_auto_auto] items-baseline pt-600 pb-800 hover:text-primary-300 light:hover:text-primary-800 transition-colors gap-y-400"
             >
               <JobPositionField value={opening.title} />
               {/* Omitted entirely rather than rendered empty: one live
@@ -262,8 +262,8 @@ export default function JobOpenings() {
     <ErrorBoundary>
       <Suspense
         fallback={
-          <section className="mt-1000 px-2 md:mt-3000 lg:px-8">
-            <p className="font-narrow text-2xl">Loading open positions...</p>
+          <section className="mt-1000 px-300 md:mt-3000 lg:px-8">
+            <p className="font-narrow text-fluid-md">Loading open positions...</p>
           </section>
         }
       >

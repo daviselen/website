@@ -101,17 +101,17 @@ function Shot({ src, alt, ratio, className = "", imgClassName = "", delay = 0 })
 
 function Channel({ channel, title, children }) {
   return (
-    <section className="px-2 pt-1000 md:pt-3000 lg:px-8">
+    <section className="px-300 pt-1000 md:pt-3000 lg:px-8">
       <div className="flex flex-col gap-200 border-t-2 border-neutral-100 pt-400 light:border-neutral-800">
         <HeadingReveal
           as="h2"
           text={channel}
-          className="font-display text-5xl uppercase md:text-7xl lg:text-display-h5"
+          className="font-display text-fluid-2xl uppercase md:text-7xl lg:text-display-h5"
         />
         {/* Starts as the heading's wipe ends; both fire off the same scroll
             position, so the heading's own duration is the offset. */}
         <TextReveal
-          className="text-lg md:text-xl lg:text-pre-title"
+          className="text-fluid-sm md:text-xl lg:text-pre-title"
           text={title}
           delay={REVEAL_DURATION}
         />
@@ -149,16 +149,16 @@ export default function LakersToyota() {
           src="/images/work-legendary-partners-masthead.jpg"
           alt="The Toyota building in Los Angeles lit in Lakers purple and gold for 50 years of partnership, 1976 to 2026"
         />
-        <div className="grid grid-cols-1 gap-800 px-2 lg:grid-cols-12 lg:gap-x-8 lg:px-8 lg:pt-1000">
+        <div className="grid grid-cols-1 gap-800 px-300 lg:grid-cols-12 lg:gap-x-8 lg:px-8 lg:pt-1000">
           <div className="flex flex-col gap-300 lg:col-span-6 lg:gap-600 2xl:gap-1000">
             <HeadingReveal
               as="h1"
               text={`A celebration \n50 years in \nthe making`}
-              className="font-display text-6xl uppercase leading-none md:text-8xl xl:text-display-h2"
+              className="font-display text-fluid-2xl uppercase leading-none md:text-8xl xl:text-display-h2"
             />
           </div>
           <TextReveal
-            className="text-lg md:text-xl lg:col-span-5 lg:col-start-8 lg:self-start lg:text-pre-title"
+            className="text-fluid-sm md:text-xl lg:col-span-5 lg:col-start-8 lg:self-start lg:text-pre-title"
             text="In one of the longest-running sports sponsorships in the country, the Los Angeles Lakers and Toyota honored their 50-year relationship with a season-long campaign. We captured the connection between the two iconic brands who share a legacy of passion, performance and perseverance. Both driven to bring their best to Southern California."
           />
         </div>
@@ -176,7 +176,7 @@ export default function LakersToyota() {
         opensVideo
       />
 
-      <section id="moxy" className="px-2 pt-1000 md:pt-3000 lg:px-8">
+      <section id="moxy" className="px-300 pt-1000 md:pt-3000 lg:px-8">
         <Shot
           src="/images/work-lakers-toyota-moxy.jpg"
           alt="A 50th anniversary Lakers and Toyota billboard wrapping a downtown Los Angeles corner at night"

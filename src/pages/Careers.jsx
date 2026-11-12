@@ -43,7 +43,7 @@ export default function Careers() {
     >
       <section id="top">
         <MastheadImage src="/images/careers-masthead.jpg" alt="Get a Job" title={`Get \na Job`} />
-        <div className="px-2 lg:px-8">
+        <div className="px-300 lg:px-8">
           <SplitIntro
             gridClassName="lg:grid lg:grid-cols-12 lg:gap-400"
             leftClassName="lg:pr-300 lg:col-span-6 lg:col-start-1"
@@ -56,15 +56,15 @@ export default function Careers() {
       <JobOpenings />
       <section
         id="always_looking"
-        className="mt-1000 flex flex-col gap-600 px-2 md:mt-3000 lg:gap-1000 lg:px-8"
+        className="mt-1000 flex flex-col gap-600 px-300 md:mt-3000 lg:gap-1000 lg:px-8"
       >
         <div className="flex flex-col gap-600">
         <HeadingReveal
           as="h3"
           text={`Always \nLooking`}
-          className="font-display text-5xl uppercase leading-none md:text-7xl lg:text-display-h3"
+          className="font-display text-fluid-2xl uppercase leading-none md:text-7xl lg:text-display-h3"
         />
-        <TextReveal className="max-w-prose text-lg md:text-xl lg:text-pre-title"
+        <TextReveal className="max-w-prose text-fluid-sm md:text-xl lg:text-pre-title"
           text="These aren't posted because they're open. They're posted because we'll always make time for someone good."
         />
         </div>
@@ -98,25 +98,25 @@ export default function Careers() {
           section's height too. Stacked below md, real 2-up at md+. */}
       <section
         id="culture"
-        className="mt-1000 flex flex-col gap-600 px-2 md:mt-3000 md:flex-row lg:gap-1000 lg:px-8"
+        className="mt-1000 flex flex-col gap-600 px-300 md:mt-3000 md:flex-row lg:gap-1000 lg:px-8"
       >
         <div className="flex flex-col gap-600 md:basis-[50%]">
           <HeadingReveal
             as="h3"
             text={`Live your \nbest life`}
-            className="font-display text-5xl uppercase leading-none md:text-7xl lg:text-display-h3"
+            className="font-display text-fluid-2xl uppercase leading-none md:text-7xl lg:text-display-h3"
           />
           <div>
             <TextReveal
-              className="mb-300 pr-600 text-lg md:text-xl lg:text-pre-title"
+              className="mb-300 pr-600 text-fluid-sm md:text-xl lg:text-pre-title"
               text="Work is important but so is your life outside of work. Davis Elen dedicates resources and support so you can stay healthy and engaged:"
             />
             {/* <ListMaskReveal
               items={benefits}
               barColor="#ff3366"
-              className="text-pre-title list-[square] pl-200"
+              className="text-fluid-sm md:text-xl lg:text-pre-title list-[square] pl-200"
             /> */}
-            <ul className="list-outside list-[square] pl-600 text-lg md:text-xl lg:text-pre-title">
+            <ul className="list-outside list-[square] pl-600 text-fluid-sm md:text-xl lg:text-pre-title">
               {benefits.map((benefit) => (
                 <li key={benefit} className="mb-300">{benefit}</li>
               ))}
@@ -131,14 +131,14 @@ export default function Careers() {
             <HeadingReveal
               as="h3"
               text={`Hang with the \nbest people`}
-              className="font-display text-5xl uppercase leading-none md:text-7xl lg:text-display-h3"
+              className="font-display text-fluid-2xl uppercase leading-none md:text-7xl lg:text-display-h3"
             />
             <TextReveal
-              className="pr-600 text-lg md:text-xl lg:text-pre-title"
+              className="pr-600 text-fluid-sm md:text-xl lg:text-pre-title"
               text="Davis Elen’s work and culture thrive on diversity and we are proud to be an equal opportunity employer."
             />
             <TextReveal
-              className="pr-600 text-lg md:text-xl lg:text-pre-title"
+              className="pr-600 text-fluid-sm md:text-xl lg:text-pre-title"
               text="All individuals seeking employment at Davis Elen are considered without regard to race, color, religion, national origin, age, sex, marital status, ancestry, physical or mental disability, veteran status, gender identity, sexual orientation, or any other legally protected characteristic."
             />
           </div>

@@ -147,7 +147,7 @@ export default function MediaObject({
       // DOM order — `grid-rows-1` + `row-start-1` on both children would
       // otherwise force them into the same cell instead of stacking, and
       // `pt-3000` (240px) was fixed at every width, not just desktop.
-      className={`grid w-full grid-cols-1 gap-400 px-2 pt-1000 text-left md:grid-cols-12 md:grid-rows-1 md:pt-3000 lg:px-8 ${
+      className={`grid w-full grid-cols-1 gap-400 px-300 pt-1000 text-left md:grid-cols-12 md:grid-rows-1 md:pt-3000 lg:px-8 ${
         isInteractive
           ? "group focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-300 light:focus-visible:outline-primary-700"
           : ""
@@ -171,7 +171,7 @@ export default function MediaObject({
           ) : null}
           <TextReveal
             as="p"
-            className="text-lg md:text-xl lg:text-pre-title"
+            className="text-fluid-sm md:text-xl lg:text-pre-title"
             text={text}
           />
         </div>

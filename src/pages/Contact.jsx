@@ -227,14 +227,14 @@ export default function Contact() {
           webm="/videos/contact_masthead_video.webm"
           mp4="/videos/contact_masthead_video.mp4"
           poster="/images/contact-masthead.webp"
-          className="aspect-contact-masthead max-h-[785px] mx-400 rounded-md object-cover mb-1000"
+          className="aspect-contact-masthead max-h-[785px] mx-300 md:mx-400 rounded-md object-cover mb-1000"
         />
-        <div className="px-2 lg:px-8">
+        <div className="px-300 lg:px-8">
           <div className="lg:grid lg:grid-cols-12 lg:gap-400">
             <HeadingReveal
               as="h2"
               text={`Find out \nwhat’s inside`}
-              className="mb-100 font-display text-7xl uppercase md:text-8xl lg:col-span-6 lg:col-start-7 lg:text-display-h4"
+              className="mb-100 font-display text-fluid-2xl uppercase md:text-8xl lg:col-span-6 lg:col-start-7 lg:text-display-h4"
             />
             <div className="lg:col-span-6 lg:col-start-7 lg:pr-600">
               <TextReveal className="mb-300 text-3xl md:text-5xl lg:text-display-stat"
@@ -249,12 +249,12 @@ export default function Contact() {
       </section>
       <section
         id="locations"
-        className="mt-1000 flex flex-col gap-600 px-2 md:mt-3000 lg:gap-1000 lg:px-8"
+        className="mt-1000 flex flex-col gap-600 px-300 md:mt-3000 lg:gap-1000 lg:px-8"
       >
         <HeadingReveal
           as="h2"
           text={`Locations`}
-          className="font-display text-7xl uppercase leading-none md:text-8xl lg:text-display-h3"
+          className="font-display text-fluid-2xl uppercase leading-none md:text-8xl lg:text-display-h3"
         />
         <ul className="flex flex-col">
           {locations.map((location) => (
@@ -264,17 +264,17 @@ export default function Contact() {
       </section>
       <section
         id="form"
-        className="relative mx-2 mt-1000 flex flex-col gap-600 rounded-md bg-surface-alt light:bg-neutral-100 py-1000 text-neutral-0 light:text-neutral-1000 md:mt-3000 lg:mx-8 lg:mt-3000 lg:gap-1000 xl:grid xl:grid-cols-12 xl:gap-400"
+        className="relative mx-300 mt-1000 flex flex-col gap-600 rounded-md bg-surface-alt light:bg-neutral-100 py-1000 text-neutral-0 light:text-neutral-1000 md:mt-3000 lg:mx-8 lg:mt-3000 lg:gap-1000 xl:grid xl:grid-cols-12 xl:gap-400"
       >
         <div className="flex flex-col gap-400 lg:gap-500 xl:col-start-9 xl:-col-end-1 xl:row-start-1">
           <HeadingReveal
             as="h2"
             text={`Let’s get \nin touch`}
-            className="font-display text-7xl uppercase leading-none md:text-8xl lg:text-display-h3"
+            className="font-display text-fluid-2xl uppercase leading-none md:text-8xl lg:text-display-h3"
           />
           <TextReveal
             text={`Sed ut perspiciatis unde omnis \niste natus error sit voluptatem.`}
-            className="mb-6 max-w-[22ch] text-lg md:text-xl lg:text-pre-title"
+            className="mb-6 max-w-[22ch] text-fluid-sm md:text-xl lg:text-pre-title"
           />
         </div>
         <form id="contact" onSubmit={handleSubmit} className="flex flex-col gap-500 xl:col-start-1 xl:col-end-7 xl:row-start-1 xl:*:ml-1000">
@@ -297,16 +297,16 @@ export default function Contact() {
         </form>
         <div className="self-end xl:col-start-9 xl:-col-end-1 xl:row-start-1 xl:flex xl:flex-col xl:items-start xl:gap-300">
           {status === "success" && (
-            <p className="text-lg text-green-400">Message sent — we&apos;ll be in touch.</p>
+            <p className="text-fluid-sm text-green-400">Message sent — we&apos;ll be in touch.</p>
           )}
           {status === "error" && (
-            <p className="text-lg text-error-400 light:text-error-600">Something went wrong. Try again or email us directly.</p>
+            <p className="text-fluid-sm text-error-400 light:text-error-600">Something went wrong. Try again or email us directly.</p>
           )}
           <Button
             form="contact"
             type="submit"
             disabled={status === "submitting" || status === "success"}
-            className="cursor-pointer rounded-md bg-surface-primary-default px-1000 py-300 font-narrow text-pre-title font-normal uppercase leading-snug text-neutral-0 transition-colors duration-300 hover:bg-primary-300 hover:text-neutral-1000 disabled:opacity-50 xl:min-w-[320px]"
+            className="cursor-pointer rounded-md bg-surface-primary-default px-1000 py-300 font-narrow text-fluid-sm md:text-pre-title font-normal uppercase leading-snug text-neutral-0 transition-colors duration-300 hover:bg-primary-300 hover:text-neutral-1000 disabled:opacity-50 xl:min-w-[320px]"
           >
             {status === "submitting" ? "Sending…" : "Send it"}
           </Button>
