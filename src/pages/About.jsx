@@ -191,6 +191,13 @@ const people = [
       webm: "/videos/people/marcos-arroyo.webm"
     }
   },
+  {
+    name: "Jessica Westlake",
+    video: {
+      mp4: "/videos/people/jessica-westlake.mp4",
+      webm: "/videos/people/jessica-westlake.webm"
+    }
+  },
   // {
   //   name: "Christina Dominguez",
   //   img: {
