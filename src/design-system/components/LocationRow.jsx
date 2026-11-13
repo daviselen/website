@@ -185,7 +185,7 @@ export default function LocationRow({ name, address, mapUrl, image }) {
     <li ref={itemRef} className="relative border-t-2 border-neutral-0 light:border-neutral-1000 last:border-b-2">
       <div
         ref={rowRef}
-        className="group relative isolate flex flex-col xl:grid xl:grid-cols-[1fr_34%] w-full items-center gap-y-300 xl:gap-y-400 px-300 xl:px-500 pb-500 xl:pb-800 pt-400 xl:pt-600"
+        className="group relative isolate flex flex-col xl:grid xl:grid-cols-[1fr_34%] w-full items-center gap-y-300 xl:gap-y-400 px-0 md:px-300 xl:px-500 pb-500 xl:pb-800 pt-400 xl:pt-600"
         onMouseEnter={animated ? handleEnter : undefined}
         onMouseLeave={animated ? handleLeave : undefined}
         onMouseMove={animated ? handleMove : undefined}
@@ -205,7 +205,7 @@ export default function LocationRow({ name, address, mapUrl, image }) {
             />
           </div>
         </div>
-        <h3 className="self-start xl:self-end font-display text-display-h5 uppercase transition-colors duration-300 group-hover:text-primary-300 light:group-hover:text-primary-800 group-focus-within:text-primary-300 light:group-focus-within:text-primary-800">
+        <h3 className="self-start xl:self-end font-display text-fluid-lg uppercase md:text-display-h5 transition-colors duration-300 group-hover:text-primary-300 light:group-hover:text-primary-800 group-focus-within:text-primary-300 light:group-focus-within:text-primary-800">
           {name}
         </h3>
         {mapUrl && (
@@ -213,13 +213,13 @@ export default function LocationRow({ name, address, mapUrl, image }) {
             href={mapUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="self-start xl:px-600 text-pre-title hover:underline"
+            className="self-start text-fluid-sm hover:underline md:text-pre-title xl:px-600"
           >
             {address}
           </a>
         )}
         {!mapUrl && (
-          <span className="self-start xl:px-600 text-pre-title">{address}</span>
+          <span className="self-start text-fluid-sm md:text-pre-title xl:px-600">{address}</span>
         )}
       </div>
     </li>

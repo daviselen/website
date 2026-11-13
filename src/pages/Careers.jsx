@@ -39,7 +39,7 @@ const benefits = [
 export default function Careers() {
   return (
     <main
-      className="flex min-h-screen flex-col gap-0 bg-surface-default light:bg-neutral-0 pb-1800 font-narrow font-light text-neutral-0 light:text-neutral-1000"
+      className="flex min-h-screen flex-col gap-0 bg-surface-default light:bg-neutral-0 pb-1000 sm:pb-1200 md:pb-1400 lg:pb-1800 font-narrow font-light text-neutral-0 light:text-neutral-1000"
     >
       <section id="top">
         <MastheadImage src="/images/careers-masthead.jpg" alt="Get a Job" title={`Get \na Job`} />
@@ -73,18 +73,15 @@ export default function Careers() {
             <JobRow
               key={job.href}
               href={job.href}
-              linkClassName="flex flex-col gap-100 pt-600 pb-800 hover:text-primary-300 light:hover:text-primary-800 transition-colors md:flex-row md:items-baseline md:justify-between md:gap-400"
             >
-              <JobPositionField value={job.title} className="flex flex-col gap-200 px-600 md:basis-[calc(100%-46rem)]" />
+              <JobPositionField value={job.title} />
               <JobMetaField
                 label="Group"
                 value={<span className="inline-block">Creative</span>}
-                className="flex flex-col gap-200 px-600 md:basis-80"
               />
               <JobMetaField
                 label="Location"
                 value={<span className="inline-block">Los Angeles, <abbr title="California">CA</abbr></span>}
-                className="flex flex-col gap-200 px-600 md:basis-[26rem]"
               />
             </JobRow>
           ))}
@@ -98,7 +95,7 @@ export default function Careers() {
           section's height too. Stacked below md, real 2-up at md+. */}
       <section
         id="culture"
-        className="mt-1000 flex flex-col gap-600 px-300 md:mt-3000 md:flex-row lg:gap-1000 lg:px-8"
+        className="mt-1000 flex flex-col gap-1000 px-300 md:mt-3000 md:flex-row md:gap-600 lg:gap-1000 lg:px-8"
       >
         <div className="flex flex-col gap-600 md:basis-[50%]">
           <HeadingReveal
@@ -108,7 +105,7 @@ export default function Careers() {
           />
           <div>
             <TextReveal
-              className="mb-300 pr-600 text-fluid-sm md:text-xl lg:text-pre-title"
+              className="mb-300 text-fluid-sm md:pr-600 md:text-xl lg:text-pre-title"
               text="Work is important but so is your life outside of work. Davis Elen dedicates resources and support so you can stay healthy and engaged:"
             />
             {/* <ListMaskReveal
@@ -116,14 +113,14 @@ export default function Careers() {
               barColor="#ff3366"
               className="text-fluid-sm md:text-xl lg:text-pre-title list-[square] pl-200"
             /> */}
-            <ul className="list-outside list-[square] pl-600 text-fluid-sm md:text-xl lg:text-pre-title">
+            <ul className="list-outside list-[square] pl-200 sm:pl-400 md:pl-600 text-fluid-sm md:text-xl lg:text-pre-title">
               {benefits.map((benefit) => (
                 <li key={benefit} className="mb-300">{benefit}</li>
               ))}
             </ul>
           </div>
         </div>
-        <div className="flex flex-col gap-1000 md:basis-[50%]">
+        <div className="flex flex-col gap-600 md:basis-[50%] md:gap-1000">
           <img src="/images/careers-best-people.jpg" alt="The best people: Giancarlo Llacar, Alexander Bell, Jason Corey"
             className="rounded-md"
           />
@@ -134,11 +131,11 @@ export default function Careers() {
               className="font-display text-fluid-2xl uppercase leading-none md:text-7xl lg:text-display-h3"
             />
             <TextReveal
-              className="pr-600 text-fluid-sm md:text-xl lg:text-pre-title"
+              className="text-fluid-sm md:pr-600 md:text-xl lg:text-pre-title"
               text="Davis Elen’s work and culture thrive on diversity and we are proud to be an equal opportunity employer."
             />
             <TextReveal
-              className="pr-600 text-fluid-sm md:text-xl lg:text-pre-title"
+              className="text-fluid-sm md:pr-600 md:text-xl lg:text-pre-title"
               text="All individuals seeking employment at Davis Elen are considered without regard to race, color, religion, national origin, age, sex, marital status, ancestry, physical or mental disability, veteran status, gender identity, sexual orientation, or any other legally protected characteristic."
             />
           </div>

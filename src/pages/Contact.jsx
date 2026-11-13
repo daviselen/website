@@ -264,9 +264,9 @@ export default function Contact() {
       </section>
       <section
         id="form"
-        className="relative mx-300 mt-1000 flex flex-col gap-600 rounded-md bg-surface-alt light:bg-neutral-100 py-1000 text-neutral-0 light:text-neutral-1000 md:mt-3000 lg:mx-8 lg:mt-3000 lg:gap-1000 xl:grid xl:grid-cols-12 xl:gap-400"
+        className="relative mx-300 mt-1000 flex flex-col gap-600 rounded-md bg-surface-alt light:bg-neutral-100 px-200 py-500 sm:px-800 md:py-1000 lg:px-0 text-neutral-0 light:text-neutral-1000 md:mt-3000 lg:mx-8 lg:mt-3000 lg:gap-1000 xl:grid xl:grid-cols-12 xl:gap-400"
       >
-        <div className="flex flex-col gap-400 lg:gap-500 xl:col-start-9 xl:-col-end-1 xl:row-start-1">
+        <div className="flex flex-col gap-600 lg:gap-500 xl:col-start-9 xl:-col-end-1 xl:row-start-1">
           <HeadingReveal
             as="h2"
             text={`Let’s get \nin touch`}

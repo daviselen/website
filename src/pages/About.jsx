@@ -407,7 +407,7 @@ export default function About() {
               (Careers.jsx's matching intro block already gates this
               correctly with `lg:grid`; this one had no gate at all). */}
           <SplitIntro
-            gridClassName="grid grid-cols-1 gap-400 md:grid-cols-12"
+            gridClassName="grid grid-cols-1 gap-100 md:gap-200 lg:gap-300 xl:gap-400 md:grid-cols-12"
             leftClassName="md:col-span-6 md:col-start-1"
             rightClassName="md:col-span-6 md:col-start-7"
             left="Davis Elen has been in business since 1948 and independent every single day of it. No holding company, no parent, nobody upstairs to run it past. That isn't nostalgia. It's just how we like to work."

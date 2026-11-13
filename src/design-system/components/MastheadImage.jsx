@@ -53,7 +53,7 @@ export default function MastheadImage({
   useMediaReveal(wrapRef, { maskRef, mediaRef: imgRef, loaded });
 
   return (
-    <div className="overflow-hidden rounded-md px-8 pb-1000">
+    <div className="overflow-hidden rounded-md px-300 pb-1000 lg:px-8">
       <div
         ref={wrapRef}
         className={`relative overflow-hidden ${className}`}
@@ -66,7 +66,7 @@ export default function MastheadImage({
             onto it when that tween settles — which would wipe out any
             -translate-y-1/2 the heading carried. Flex centering survives it. */}
         {title && (
-        <div className="absolute inset-y-0 left-8 z-50 flex items-center">
+        <div className="absolute inset-y-0 left-300 z-50 lg:left-8 flex items-center">
           {/* text-display-h2 (184px/128px) was fixed at every width — real
               spec is desktop-only, and Masthead.jsx's own h1 already scales
               the same way (text-6xl -> md:text-8xl -> lg:text-display-h1);

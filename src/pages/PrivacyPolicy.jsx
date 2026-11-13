@@ -26,7 +26,7 @@ function linkify(text) {
 // Level 2 is a section, 3 a subsection, 4 a sub-subsection; the source page
 // uses the same three steps.
 const HEADING_CLASSES = {
-  2: "mt-1000 font-display text-fluid-2xl uppercase md:text-display-h5 md:leading-none",
+  2: "mt-1000 font-display text-fluid-lg uppercase md:text-display-h5 md:leading-none",
   3: "mt-600 text-fluid-md md:text-3xl",
   4: "mt-400 text-xl md:text-2xl",
 };

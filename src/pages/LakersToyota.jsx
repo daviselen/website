@@ -106,7 +106,7 @@ function Channel({ channel, title, children }) {
         <HeadingReveal
           as="h2"
           text={channel}
-          className="font-display text-fluid-2xl uppercase md:text-7xl lg:text-display-h5"
+          className="font-display text-fluid-lg uppercase md:text-7xl lg:text-display-h5"
         />
         {/* Starts as the heading's wipe ends; both fire off the same scroll
             position, so the heading's own duration is the offset. */}
@@ -149,7 +149,7 @@ export default function LakersToyota() {
           src="/images/work-legendary-partners-masthead.jpg"
           alt="The Toyota building in Los Angeles lit in Lakers purple and gold for 50 years of partnership, 1976 to 2026"
         />
-        <div className="grid grid-cols-1 gap-800 px-300 lg:grid-cols-12 lg:gap-x-8 lg:px-8 lg:pt-1000">
+        <div className="grid grid-cols-1 gap-600 px-300 lg:grid-cols-12 lg:gap-800 lg:gap-x-8 lg:px-8 lg:pt-1000">
           <div className="flex flex-col gap-300 lg:col-span-6 lg:gap-600 2xl:gap-1000">
             <HeadingReveal
               as="h1"

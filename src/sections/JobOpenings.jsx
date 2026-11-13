@@ -206,7 +206,6 @@ function JobOpeningsContent() {
               key={opening.id}
               href={applyUrl(opening.externalJobId)}
               external
-              linkClassName="grid grid-cols-1 md:grid-cols-[1fr_auto_auto] items-baseline pt-600 pb-800 hover:text-primary-300 light:hover:text-primary-800 transition-colors gap-y-400"
             >
               <JobPositionField value={opening.title} />
               {/* Omitted entirely rather than rendered empty: one live

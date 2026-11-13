@@ -39,7 +39,7 @@ function NewsArticleArchive({ article }) {
       </header>
 
       <div className="news-content">
-        <div className="news-body *:ul:list-outside px-300 lg:px-8 text-fluid-sm md:text-xl lg:text-pre-title *:mb-600 *:max-w-prose *:marker:text-primary-300 light:*:marker:text-primary-800 [&_h2]:mt-1000 [&_h2]:font-display [&_h2]:text-fluid-2xl md:[&_h2]:text-display-h4 [&_h2]:first:mt-0 [&_h2]:first:text-fluid-2xl md:[&_h2]:first:text-display-h5 [&_h3]:mt-800 [&_h3]:font-display [&_h3]:text-fluid-xl md:[&_h3]:text-display-h5 [&_li]:mb-300 [&_ul]:list-outside [&_ul]:list-[square] [&_ul]:pl-600 [&_ul]:text-fluid-sm md:[&_ul]:text-xl lg:[&_ul]:text-pre-title">
+        <div className="news-body *:ul:list-outside px-300 lg:px-8 text-fluid-sm md:text-xl lg:text-pre-title *:mb-600 *:max-w-prose *:marker:text-primary-300 light:*:marker:text-primary-800 [&_h2]:mt-1000 [&_h2]:font-display [&_h2]:text-fluid-xl md:[&_h2]:text-display-h4 [&_h2]:first:mt-0 [&_h2]:first:text-fluid-lg md:[&_h2]:first:text-display-h5 [&_h3]:mt-800 [&_h3]:font-display [&_h3]:text-fluid-lg md:[&_h3]:text-display-h5 [&_li]:mb-300 [&_ul]:list-outside [&_ul]:list-[square] [&_ul]:pl-600 [&_ul]:text-fluid-sm md:[&_ul]:text-xl lg:[&_ul]:text-pre-title">
           {body}
         </div>
       </div>
