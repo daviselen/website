@@ -198,6 +198,13 @@ const people = [
       webm: "/videos/people/jessica-westlake.webm"
     }
   },
+  {
+    name: "Derek Morrison",
+    video: {
+      mp4: "/videos/people/derek-morrison.mp4",
+      webm: "/videos/people/derek-morrison.webm"
+    }
+  },
   // {
   //   name: "Christina Dominguez",
   //   img: {
