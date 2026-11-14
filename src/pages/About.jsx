@@ -205,6 +205,13 @@ const people = [
       webm: "/videos/people/derek-morrison.webm"
     }
   },
+  {
+    name: "Brian Banks",
+    video: {
+      mp4: "/videos/people/brian-banks.mp4",
+      webm: "/videos/people/brian-banks.webm"
+    }
+  },
   // {
   //   name: "Christina Dominguez",
   //   img: {
