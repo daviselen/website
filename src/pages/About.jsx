@@ -8,6 +8,7 @@ import { useOverlay } from "../design-system/components/Overlay.jsx";
 import HeadingReveal from "../design-system/components/HeadingReveal.jsx";
 import Marquee from "../design-system/components/Marquee.jsx";
 import Picture from "../design-system/components/Picture.jsx";
+import { holdForMedia } from "../lib/siteReady.js";
 
 // Hosted on Vimeo rather than self-served from /public/videos, so the overlay
 // gets its `embed` payload (an iframe player URL) instead of `src`. The
@@ -377,6 +378,21 @@ const CLIENT_ROWS = Array.from(
 // MastheadVideo: muted + playsInline make autoplay legal on Safari/iOS.
 function PersonVideo({ person }) {
   const ref = useRef(null);
+
+  // Hold the preloader until the poster is decoded, so the tiles paint with
+  // their thumbnails instead of empty boxes. Settles on error too (the
+  // preloader's own MAX_WAIT_MS caps a slow one). The video files stay
+  // preload="none": thumbnails only, not ~16 videos.
+  useEffect(() => {
+    const src = person.img?.src;
+    if (!src) return undefined;
+    const release = holdForMedia();
+    const img = new Image();
+    img.src = src;
+    img.decode().catch(() => {}).then(release);
+    return release;
+  }, [person.img?.src]);
+
   useEffect(() => {
     const video = ref.current;
     const observer = new IntersectionObserver(
