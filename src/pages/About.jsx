@@ -129,16 +129,6 @@ const people = [
     }
   },
   {
-    name: "Shelly Choi",
-    img: {
-      src: "/images/portraits/shelly-choi.jpg",
-    },
-    video: {
-      mp4: "/videos/people/shelly-choi.mp4",
-      webm: "/videos/people/shelly-choi.webm"
-    }
-  },
-  {
     name: "Stan Kaplan",
     video: {
       webm: "/videos/people/stan-kaplan.webm",
@@ -147,6 +137,16 @@ const people = [
     img: {
       src: "/images/portraits/stan-kaplan.jpg",
     },
+  },
+  {
+    name: "Shelly Choi",
+    img: {
+      src: "/images/portraits/shelly-choi.jpg",
+    },
+    video: {
+      mp4: "/videos/people/shelly-choi.mp4",
+      webm: "/videos/people/shelly-choi.webm"
+    }
   },
   // {
   //   name: "Jenny Rusinko",
