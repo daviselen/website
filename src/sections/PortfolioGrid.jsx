@@ -102,6 +102,7 @@ const projects = [
     title: "Keys To Tech",
     client: "DICE",
     src: "/images/portfolio-keys-to-tech-dice.jpg",
+    to: "/work/dice-branding",
   },
   {
     title: "Super Snorkel Tours",
