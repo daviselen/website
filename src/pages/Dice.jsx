@@ -6,7 +6,7 @@ import Shot from "../design-system/components/Shot.jsx";
 import TextReveal from "../design-system/components/TextReveal.jsx";
 import CTABanner from "../sections/CTABanner.jsx";
 
-const PATH = "/work/dice";
+const PATH = "/work/dice-branding";
 const CANONICAL = `https://www.daviselen.com${PATH}`;
 const TITLE = "Dice: We Speak Tech | Davis Elen";
 const DESCRIPTION =
