@@ -78,15 +78,6 @@ export default function Dice() {
         </div>
       </section>
 
-      <MediaObject
-        imageSide="left"
-        titleSize="h3"
-        title={`Where Tech \nConnects`}
-        subhead="Tagline"
-        imgSrc="/images/work-dice-tagline.jpg"
-        imgAlt="Dice.com tagline artwork reading Where tech connects"
-      />
-
       <section className="px-300 pt-1000 md:pt-3000 lg:px-8">
         <Shot>
           <DiceTypeAnimation />
@@ -150,8 +141,7 @@ export default function Dice() {
       </Channel>
 
       {/* One heading for the whole section, so Channel carries no children:
-          MediaObject brings its own page padding and can't nest inside it.
-          Instagram gets a plain label below, with no rule, to stay one section. */}
+          MediaObject brings its own page padding and can't nest inside it. */}
       <Channel channel="Social Media" title="YouTube" />
 
       <MediaObject
@@ -165,18 +155,10 @@ export default function Dice() {
         flush
       />
 
-      <section className="px-300 pt-1000 md:pt-3000 lg:px-8">
-        <TextReveal
-          className="mb-600 text-fluid-sm md:text-xl lg:mb-1000 lg:text-pre-title"
-          text="Instagram"
-        />
+      <Channel channel="Social Media" title="Instagram">
         <div className="grid grid-cols-1 gap-400 md:grid-cols-3 lg:grid-cols-12 lg:gap-8">
           {INSTAGRAM_VIDEOS.map((id, i) => (
-            <Shot
-              key={id}
-              delay={i * 0.15}
-              className="lg:col-span-4"
-            >
+            <Shot key={id} delay={i * 0.15} className="lg:col-span-4">
               <VideoEmbed
                 src={`https://player.vimeo.com/video/${id}?dnt=1`}
                 title={`Dice.com influencer video ${i + 1}`}
@@ -185,7 +167,7 @@ export default function Dice() {
             </Shot>
           ))}
         </div>
-      </section>
+      </Channel>
 
       <CTABanner />
     </main>
