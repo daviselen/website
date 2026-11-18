@@ -1,17 +1,10 @@
-import { useRef } from "react";
-import {
-  gsap,
-  useGSAP,
-  REVEAL_DURATION,
-  EASE_REVEAL,
-  toggleActions,
-} from "../design-system/animation.js";
 import HeadingReveal from "../design-system/components/HeadingReveal.jsx";
+import Channel from "../design-system/components/Channel.jsx";
 import MastheadImage from "../design-system/components/MastheadImage.jsx";
 import MediaObject from "../design-system/components/MediaObject.jsx";
 import { useOverlay } from "../design-system/components/Overlay.jsx";
-import Picture from "../design-system/components/Picture.jsx";
 import TextReveal from "../design-system/components/TextReveal.jsx";
+import Shot from "../design-system/components/Shot.jsx";
 import CTABanner from "../sections/CTABanner.jsx";
 
 const PATH = "/work/lakers-and-toyota-legendary-partners";
@@ -48,80 +41,6 @@ const JSON_LD = {
     url: "https://www.daviselen.com",
   },
 };
-
-// Figma crops each photo to a fixed frame; the frame ratio is applied here
-// rather than minted as a Tailwind token per crop, since none are reused.
-// Same top-down wipe and trigger window as MediaObject's image. `className`
-// places the wrapper in its grid; `delay` staggers images shown side by side.
-function Shot({ src, alt, ratio, className = "", imgClassName = "", delay = 0 }) {
-  const maskRef = useRef(null);
-
-  useGSAP(
-    () => {
-      // The offset is a timeline position, not a tween `delay`: ScrollTrigger
-      // plays the animation from its own start and ignores a tween's delay.
-      gsap
-        .timeline({
-          scrollTrigger: {
-            trigger: maskRef.current,
-            start: "top bottom-=100",
-            end: "bottom top",
-            toggleActions: toggleActions("play reverse play reverse"),
-          },
-        })
-        .fromTo(
-          maskRef.current,
-          { clipPath: "inset(0% 0% 100% 0%)" },
-          {
-            clipPath: "inset(0% 0% 0% 0%)",
-            duration: REVEAL_DURATION,
-            ease: EASE_REVEAL,
-          },
-          delay
-        );
-    },
-    { scope: maskRef }
-  );
-
-  return (
-    <div
-      ref={maskRef}
-      className={className}
-      style={{ clipPath: "inset(0% 0% 100% 0%)" }}
-    >
-      <Picture
-        src={src}
-        alt={alt}
-        style={{ aspectRatio: ratio }}
-        className={`block w-full rounded-md object-cover ${imgClassName}`}
-      />
-    </div>
-  );
-}
-
-function Channel({ channel, title, children }) {
-  return (
-    <section className="px-300 pt-1000 md:pt-3000 lg:px-8">
-      <div className="flex flex-col gap-200 border-t-2 border-neutral-100 pt-400 light:border-neutral-800">
-        <HeadingReveal
-          as="h2"
-          text={channel}
-          className="font-display text-fluid-lg uppercase md:text-7xl lg:text-display-h5"
-        />
-        {/* Starts as the heading's wipe ends; both fire off the same scroll
-            position, so the heading's own duration is the offset. */}
-        <TextReveal
-          className="text-fluid-sm md:text-xl lg:text-pre-title"
-          text={title}
-          delay={REVEAL_DURATION}
-        />
-      </div>
-      <div className="mt-600 flex flex-col gap-400 lg:mt-1000 lg:gap-1000">
-        {children}
-      </div>
-    </section>
-  );
-}
 
 export default function LakersToyota() {
   const { openOverlay } = useOverlay();

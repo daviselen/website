@@ -45,6 +45,9 @@ const sideConfig = {
 // HumanAI.jsx): small mobile default, real size at `lg`.
 const titleSizes = {
   default: "text-fluid-lg md:text-6xl lg:text-display-h5",
+  // Headings/H3 (144/104) — the Dice "Where Tech Connects" title. `large`
+  // above stops at display-h4 (104/80) despite its comment.
+  h3: "text-fluid-xl leading-[0.71111] md:text-6xl md:leading-[0.71111] lg:text-7xl lg:leading-[0.71111] xl:text-8xl xl:leading-[0.71111] 2xl:text-display-h3",
   large: "text-fluid-xl leading-[0.71111] md:text-6xl md:leading-[0.71111] lg:text-7xl lg:leading-[0.71111] xl:text-8xl xl:leading-[0.71111] 2xl:text-display-h4",
   // Headings/H2 (184/128) — the Masthead-alt size, used by case-study
   // media objects whose title is a short two-word display line.
@@ -169,11 +172,14 @@ export default function MediaObject({
           {subhead ? (
             <TextReveal as="span" className="font-narrow text-base" text={subhead} />
           ) : null}
-          <TextReveal
-            as="p"
-            className="text-fluid-sm md:text-xl lg:text-pre-title"
-            text={text}
-          />
+          {/* Dice's media objects are a title and a one-word label only. */}
+          {text ? (
+            <TextReveal
+              as="p"
+              className="text-fluid-sm md:text-xl lg:text-pre-title"
+              text={text}
+            />
+          ) : null}
         </div>
       </div>
       {/* The grid placement moves onto this mask wrapper so the clipped box
@@ -201,7 +207,7 @@ export default function MediaObject({
             the root is a button/link its content must stay phrasing-only,
             and the real h2 is already in the copy column. */}
         {(imageTitle || imageCta) && (
-          <span className="absolute bottom-400 left-400 flex flex-col gap-200 text-neutral-0 lg:left-600 lg:bottom-500 xl:left-700 xl:bottom:600 xl:gap-300">
+          <span className="absolute bottom-400 left-400 flex flex-col gap-200 text-neutral-0 lg:left-600 lg:bottom-500 xl:left-700 xl:bottom-600 xl:gap-300">
             {imageTitle && (
               <span className="text-3xl md:text-4xl lg:text-display-stat">{imageTitle}</span>
             )}

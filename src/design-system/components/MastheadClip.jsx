@@ -71,7 +71,7 @@ export default function MastheadClip({ webm, mp4, poster, className = "" }) {
             aria-hidden="true"
             className="absolute inset-0 size-full rounded-md object-cover"
           >
-            <source src={webm} type="video/webm" />
+            {webm && <source src={webm} type="video/webm" />}
             <source src={mp4} type="video/mp4" />
           </video>
         </div>

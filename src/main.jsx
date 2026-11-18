@@ -84,6 +84,10 @@ const router = createBrowserRouter([
         lazy: () => import("./pages/LakersToyota").then(lazyPage),
       },
       {
+        path: "/work/dice",
+        lazy: () => import("./pages/Dice").then(lazyPage),
+      },
+      {
         path: "/privacy-policy",
         lazy: () => import("./pages/PrivacyPolicy").then(lazyPage),
       },
