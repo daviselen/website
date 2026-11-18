@@ -95,6 +95,7 @@ export default function MediaObject({
   href,
   onClick,
   opensVideo = false,
+  flush = false,
   ...rest
 }) {
   const side = sideConfig[imageSide] ?? sideConfig.right;
@@ -150,7 +151,11 @@ export default function MediaObject({
       // DOM order — `grid-rows-1` + `row-start-1` on both children would
       // otherwise force them into the same cell instead of stacking, and
       // `pt-3000` (240px) was fixed at every width, not just desktop.
-      className={`grid w-full grid-cols-1 gap-400 px-300 pt-1000 text-left md:grid-cols-12 md:grid-rows-1 md:pt-3000 lg:px-8 ${
+      className={`grid w-full grid-cols-1 gap-400 px-300 text-left md:grid-cols-12 md:grid-rows-1 lg:px-8 ${
+        // `flush` is for a media object that sits right under a heading, where
+        // the section gap is already supplied (Dice social: label -> content).
+        flush ? "pt-600 lg:pt-1000" : "pt-1000 md:pt-3000"
+      } ${
         isInteractive
           ? "group focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-300 light:focus-visible:outline-primary-700"
           : ""
@@ -207,7 +212,7 @@ export default function MediaObject({
             the root is a button/link its content must stay phrasing-only,
             and the real h2 is already in the copy column. */}
         {(imageTitle || imageCta) && (
-          <span className="absolute bottom-400 left-400 flex flex-col gap-200 text-neutral-0 lg:left-600 lg:bottom-500 xl:left-700 xl:bottom-600 xl:gap-300">
+          <span className="absolute bottom-400 left-400 flex flex-col gap-200 text-neutral-0 lg:bottom-500 lg:left-600 xl:bottom-600 xl:left-700 xl:gap-300">
             {imageTitle && (
               <span className="text-3xl md:text-4xl lg:text-display-stat">{imageTitle}</span>
             )}

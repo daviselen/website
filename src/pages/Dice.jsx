@@ -150,8 +150,9 @@ export default function Dice() {
       </Channel>
 
       {/* One heading for the whole section, so Channel carries no children:
-          MediaObject brings its own page padding and can't nest inside it. */}
-      <Channel channel="Social Media" title="YouTube and Instagram" />
+          MediaObject brings its own page padding and can't nest inside it.
+          Instagram gets a plain label below, with no rule, to stay one section. */}
+      <Channel channel="Social Media" title="YouTube" />
 
       <MediaObject
         imageSide="left"
@@ -161,9 +162,14 @@ export default function Dice() {
         imgAlt="Still from the YouTube video 7 Reasons I Love Being a Software Engineer"
         onClick={() => openOverlay(YOUTUBE_VIDEO)}
         opensVideo
+        flush
       />
 
       <section className="px-300 pt-1000 md:pt-3000 lg:px-8">
+        <TextReveal
+          className="mb-600 text-fluid-sm md:text-xl lg:mb-1000 lg:text-pre-title"
+          text="Instagram"
+        />
         <div className="grid grid-cols-1 gap-400 md:grid-cols-3 lg:grid-cols-12 lg:gap-8">
           {INSTAGRAM_VIDEOS.map((id, i) => (
             <Shot
