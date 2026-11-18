@@ -19,9 +19,11 @@ export default function Channel({ channel, title, children }) {
           delay={REVEAL_DURATION}
         />
       </div>
-      <div className="mt-600 flex flex-col gap-400 lg:mt-1000 lg:gap-1000">
-        {children}
-      </div>
+      {children && (
+        <div className="mt-600 flex flex-col gap-400 lg:mt-1000 lg:gap-1000">
+          {children}
+        </div>
+      )}
     </section>
   );
 }

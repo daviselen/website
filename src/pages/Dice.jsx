@@ -1,9 +1,11 @@
+import { useOverlay } from "../design-system/components/Overlay.jsx";
 import HeadingReveal from "../design-system/components/HeadingReveal.jsx";
 import Channel from "../design-system/components/Channel.jsx";
 import DiceTypeAnimation from "../design-system/components/DiceTypeAnimation.jsx";
 import MastheadClip from "../design-system/components/MastheadClip.jsx";
 import MediaObject from "../design-system/components/MediaObject.jsx";
 import Shot from "../design-system/components/Shot.jsx";
+import VideoEmbed from "../design-system/components/VideoEmbed.jsx";
 import TextReveal from "../design-system/components/TextReveal.jsx";
 import CTABanner from "../sections/CTABanner.jsx";
 
@@ -12,6 +14,13 @@ const CANONICAL = `https://www.daviselen.com${PATH}`;
 const TITLE = "Dice: We Speak Tech | Davis Elen";
 const DESCRIPTION =
   "Davis Elen rebuilt the Dice.com brand from the ground up, covering messaging, visual identity and advertising around one ownable truth: Where tech connects.";
+// Vimeo IDs of the three vertical influencer videos, in display order.
+const YOUTUBE_VIDEO = {
+  embed: "https://www.youtube.com/embed/rwSqk-ITESA?autoplay=1&rel=0",
+  title: "7 Reasons I Love Being a Software Engineer",
+};
+const INSTAGRAM_VIDEOS = ["838758842", "838758895", "838760353"];
+
 const SHARE_IMAGE = "https://www.daviselen.com/images/work-dice-masthead.jpg";
 
 const JSON_LD = {
@@ -30,6 +39,7 @@ const JSON_LD = {
 };
 
 export default function Dice() {
+  const { openOverlay } = useOverlay();
   return (
     <main
       itemScope
@@ -138,6 +148,38 @@ export default function Dice() {
           />
         </div>
       </Channel>
+
+      {/* One heading for the whole section, so Channel carries no children:
+          MediaObject brings its own page padding and can't nest inside it. */}
+      <Channel channel="Social Media" title="YouTube and Instagram" />
+
+      <MediaObject
+        imageSide="left"
+        titleSize="large"
+        title={`7 Reasons I \nLove Being a \nSoftware \nEngineer`}
+        imgSrc="/images/work-dice-youtube.jpg"
+        imgAlt="Still from the YouTube video 7 Reasons I Love Being a Software Engineer"
+        onClick={() => openOverlay(YOUTUBE_VIDEO)}
+        opensVideo
+      />
+
+      <section className="px-300 pt-1000 md:pt-3000 lg:px-8">
+        <div className="grid grid-cols-1 gap-400 md:grid-cols-3 lg:grid-cols-12 lg:gap-8">
+          {INSTAGRAM_VIDEOS.map((id, i) => (
+            <Shot
+              key={id}
+              delay={i * 0.15}
+              className="lg:col-span-4"
+            >
+              <VideoEmbed
+                src={`https://player.vimeo.com/video/${id}?dnt=1`}
+                title={`Dice.com influencer video ${i + 1}`}
+                ratio="9 / 16"
+              />
+            </Shot>
+          ))}
+        </div>
+      </section>
 
       <CTABanner />
     </main>
