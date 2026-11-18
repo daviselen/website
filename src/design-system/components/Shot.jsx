@@ -12,7 +12,7 @@ import Picture from "./Picture";
 // rather than minted as a Tailwind token per crop, since none are reused.
 // Same top-down wipe and trigger window as MediaObject's image. `className`
 // places the wrapper in its grid; `delay` staggers images shown side by side.
-export default function Shot({ src, alt, ratio, className = "", imgClassName = "", delay = 0 }) {
+export default function Shot({ src, alt, ratio, className = "", imgClassName = "", delay = 0, children }) {
   const maskRef = useRef(null);
 
   useGSAP(
@@ -48,12 +48,14 @@ export default function Shot({ src, alt, ratio, className = "", imgClassName = "
       className={className}
       style={{ clipPath: "inset(0% 0% 100% 0%)" }}
     >
-      <Picture
-        src={src}
-        alt={alt}
-        style={{ aspectRatio: ratio }}
-        className={`block w-full rounded-md object-cover ${imgClassName}`}
-      />
+      {children ?? (
+        <Picture
+          src={src}
+          alt={alt}
+          style={{ aspectRatio: ratio }}
+          className={`block w-full rounded-md object-cover ${imgClassName}`}
+        />
+      )}
     </div>
   );
 }

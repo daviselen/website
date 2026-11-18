@@ -1,5 +1,6 @@
 import HeadingReveal from "../design-system/components/HeadingReveal.jsx";
 import Channel from "../design-system/components/Channel.jsx";
+import DiceTypeAnimation from "../design-system/components/DiceTypeAnimation.jsx";
 import MastheadClip from "../design-system/components/MastheadClip.jsx";
 import MediaObject from "../design-system/components/MediaObject.jsx";
 import Shot from "../design-system/components/Shot.jsx";
@@ -77,11 +78,9 @@ export default function Dice() {
       />
 
       <section className="px-300 pt-1000 md:pt-3000 lg:px-8">
-        <Shot
-          src="/images/work-dice-hero-shot.jpg"
-          alt="Dice.com brand campaign hero image"
-          ratio="1792 / 900"
-        />
+        <Shot>
+          <DiceTypeAnimation />
+        </Shot>
       </section>
 
       <MediaObject
