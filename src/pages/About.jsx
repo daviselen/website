@@ -129,6 +129,16 @@ const people = [
     }
   },
   {
+    name: "Shelly Choi",
+    img: {
+      src: "/images/portraits/shelly-choi.jpg",
+    },
+    video: {
+      mp4: "/videos/people/shelly-choi.mp4",
+      webm: "/videos/people/shelly-choi.webm"
+    }
+  },
+  {
     name: "Stan Kaplan",
     video: {
       webm: "/videos/people/stan-kaplan.webm",
@@ -148,13 +158,6 @@ const people = [
   //     webm: "/videos/people/jenny-rusinko.webm"
   //   }
   // },
-  {
-    name: "Jessica Westlake",
-    video: {
-      mp4: "/videos/people/jessica-westlake.mp4",
-      webm: "/videos/people/jessica-westlake.webm"
-    }
-  },
   {
     name: "Zachary Moranville",
     img: {
@@ -182,23 +185,6 @@ const people = [
   //   },
   // },
   {
-    name: "Shelly Choi",
-    img: {
-      src: "/images/portraits/shelly-choi.jpg",
-    },
-    video: {
-      mp4: "/videos/people/shelly-choi.mp4",
-      webm: "/videos/people/shelly-choi.webm"
-    }
-  },
-  {
-    name: "Marcos Arroyo",
-    video: {
-      mp4: "/videos/people/marcos-arroyo.mp4",
-      webm: "/videos/people/marcos-arroyo.webm"
-    }
-  },
-  {
     name: "Derek Morrison",
     video: {
       mp4: "/videos/people/derek-morrison.mp4",
@@ -206,10 +192,24 @@ const people = [
     }
   },
   {
+    name: "Jessica Westlake",
+    video: {
+      mp4: "/videos/people/jessica-westlake.mp4",
+      webm: "/videos/people/jessica-westlake.webm"
+    }
+  },
+  {
     name: "Brian Banks",
     video: {
       mp4: "/videos/people/brian-banks.mp4",
       webm: "/videos/people/brian-banks.webm"
+    }
+  },
+  {
+    name: "Marcos Arroyo",
+    video: {
+      mp4: "/videos/people/marcos-arroyo.mp4",
+      webm: "/videos/people/marcos-arroyo.webm"
     }
   },
   // {
