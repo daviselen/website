@@ -92,6 +92,7 @@ function Card({
   parallax = false,
   slug,
   to,
+  onClick,
 }) {
   const cfg = sizeConfig[size] ?? sizeConfig.default;
   const aspectKey = aspect ?? cfg.aspect;
@@ -168,6 +169,15 @@ function Card({
       <Link to={href} className="no-underline">
         {cardContent}
       </Link>
+    );
+  }
+
+  // A card that opens something (a video overlay) rather than navigating.
+  if (onClick) {
+    return (
+      <button type="button" onClick={onClick} className="text-left">
+        {cardContent}
+      </button>
     );
   }
 

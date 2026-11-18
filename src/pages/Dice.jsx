@@ -1,11 +1,13 @@
+import { useRef } from "react";
 import { useOverlay } from "../design-system/components/Overlay.jsx";
 import HeadingReveal from "../design-system/components/HeadingReveal.jsx";
+import Card from "../design-system/components/Card.jsx";
 import Channel from "../design-system/components/Channel.jsx";
 import DiceTypeAnimation from "../design-system/components/DiceTypeAnimation.jsx";
 import MastheadClip from "../design-system/components/MastheadClip.jsx";
 import MediaObject from "../design-system/components/MediaObject.jsx";
 import Shot from "../design-system/components/Shot.jsx";
-import VideoEmbed from "../design-system/components/VideoEmbed.jsx";
+import { useStaggerReveal } from "../design-system/animation.js";
 import TextReveal from "../design-system/components/TextReveal.jsx";
 import CTABanner from "../sections/CTABanner.jsx";
 
@@ -14,12 +16,29 @@ const CANONICAL = `https://www.daviselen.com${PATH}`;
 const TITLE = "Dice: We Speak Tech | Davis Elen";
 const DESCRIPTION =
   "Davis Elen rebuilt the Dice.com brand from the ground up, covering messaging, visual identity and advertising around one ownable truth: Where tech connects.";
-// Vimeo IDs of the three vertical influencer videos, in display order.
 const YOUTUBE_VIDEO = {
   embed: "https://www.youtube.com/embed/rwSqk-ITESA?autoplay=1&rel=0",
   title: "7 Reasons I Love Being a Software Engineer",
 };
-const INSTAGRAM_VIDEOS = ["838758842", "838758895", "838760353"];
+// Vimeo IDs of the three vertical influencer videos, in display order.
+const INSTAGRAM_VIDEOS = [
+  {
+    id: "838758842",
+    title: "3 Tips On Writing a Resume with NO Prior Job Experience",
+  },
+  {
+    id: "838758895",
+    title: "Aral is Answering Some of Your Tech Career-Related Questions",
+  },
+  {
+    id: "838760353",
+    title: "3 Things Not to Say to a Tech Recruiter",
+  },
+].map((v, i) => ({
+  ...v,
+  src: `/images/work-dice-instagram-${i + 1}.jpg`,
+  embed: `https://player.vimeo.com/video/${v.id}?autoplay=1&dnt=1`,
+}));
 
 const SHARE_IMAGE = "https://www.daviselen.com/images/work-dice-masthead.jpg";
 
@@ -40,6 +59,8 @@ const JSON_LD = {
 
 export default function Dice() {
   const { openOverlay } = useOverlay();
+  const instagramRef = useRef(null);
+  useStaggerReveal(instagramRef, { amount: 0.333 });
   return (
     <main
       itemScope
@@ -156,15 +177,20 @@ export default function Dice() {
       />
 
       <Channel channel="Social Media" title="Instagram">
-        <div className="grid grid-cols-1 gap-400 md:grid-cols-3 lg:grid-cols-12 lg:gap-8">
-          {INSTAGRAM_VIDEOS.map((id, i) => (
-            <Shot key={id} delay={i * 0.15} className="lg:col-span-4">
-              <VideoEmbed
-                src={`https://player.vimeo.com/video/${id}?dnt=1`}
-                title={`Dice.com influencer video ${i + 1}`}
-                ratio="9 / 16"
-              />
-            </Shot>
+        <div
+          ref={instagramRef}
+          className="grid gap-600 md:grid-cols-3 md:gap-1000 lg:gap-8"
+        >
+          {INSTAGRAM_VIDEOS.map((v) => (
+            <Card
+              key={v.id}
+              src={v.src}
+              alt={`Still from the video ${v.title}`}
+              heading={v.title}
+              size="med"
+              aspect="11/10"
+              onClick={() => openOverlay({ embed: v.embed, title: v.title })}
+            />
           ))}
         </div>
       </Channel>
