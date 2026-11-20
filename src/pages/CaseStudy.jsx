@@ -4,7 +4,6 @@ import MastheadImage from "../design-system/components/MastheadImage.jsx";
 import MastheadVideo from "../design-system/components/MastheadVideo.jsx";
 import TextReveal from "../design-system/components/TextReveal.jsx";
 import { caseStudies } from "../data/caseStudies.js";
-import CTABanner from "../sections/CTABanner.jsx";
 import NotFound from "./NotFound.jsx";
 
 // Placeholder: swap per campaign once real masthead art exists.
@@ -61,7 +60,7 @@ export default function CaseStudy() {
               vimeoId={vimeoId}
               poster={PLACEHOLDER_IMAGE}
               posterAlt={`${campaign} for ${client}`}
-              className="aspect-contact-masthead w-full rounded-md"
+              className="aspect-video w-full rounded-md"
             />
           </div>
         ) : (
@@ -87,8 +86,6 @@ export default function CaseStudy() {
           />
         </div>
       </section>
-
-      <CTABanner />
     </main>
   );
 }

@@ -79,12 +79,15 @@ function ProjectCard({ title, client, src, videoSrc, startColumn2, decorative = 
         }
     };
   
-    // Decorative copies are aria-hidden, so they must not be focusable links.
-    const Root = to && !decorative ? Link : "div";
+    // Decorative loop copies are the ones on screen half the time, so they
+    // must click through too; aria-hidden + tabIndex -1 keeps them out of
+    // assistive tech and the tab order.
+    const Root = to ? Link : "div";
 
     return (
       <Root
         to={Root === Link ? to : undefined}
+        tabIndex={decorative && Root === Link ? -1 : undefined}
         ref={containerRef}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
