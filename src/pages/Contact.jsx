@@ -191,6 +191,7 @@ export default function Contact() {
           name: data.get("name"),
           email: data.get("email"),
           message: data.get("message"),
+          topic: data.get("topic"),
         }),
       });
       if (!res.ok) throw new Error(await res.text());
@@ -286,6 +287,7 @@ export default function Contact() {
             </StyledLabel>
 
             <StyledCombobox
+              name="topic"
               options={topics}
               placeholder=""
             />

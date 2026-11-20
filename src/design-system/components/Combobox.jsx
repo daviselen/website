@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Combobox, ComboboxButton, ComboboxInput, ComboboxOption, ComboboxOptions } from "@headlessui/react";
 
-function StyledCombobox({options, placeholder}) {
+function StyledCombobox({options, placeholder, name}) {
     const [selectedOption, setSelectedOption] = useState(options[0])
     const [query, setQuery] = useState('')
   
@@ -12,6 +12,7 @@ function StyledCombobox({options, placeholder}) {
 
   return (
     <Combobox value={selectedOption} onChange={setSelectedOption} onClose={() => setQuery('')}>
+        {name && <input type="hidden" name={name} value={selectedOption?.name ?? ''} />}
         <div className="relative">
             <ComboboxInput
                 displayValue={(option) => option?.name}

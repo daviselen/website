@@ -9,6 +9,17 @@ const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MAX_NAME_LENGTH = 200;
 const MAX_MESSAGE_LENGTH = 5000;
 
+// Keys must match `topics` in src/pages/Contact.jsx. Anything else (including
+// the combobox's free-text option) goes to MY_CONTACT_EMAIL.
+const TOPIC_RECIPIENTS = {
+  'New Business Inquiry': 'contact@daviselen.com',
+  'Public Relations': 'contact@daviselen.com',
+  'Media Planning': 'contact@daviselen.com',
+  'Media Buying': 'contact@daviselen.com',
+  'Social Media & UGC': 'contact@daviselen.com',
+  'Careers': 'contact@daviselen.com',
+};
+
 // Best-effort only: this Map lives in the function instance's memory, which
 // a serverless platform can spin up fresh per request/region at any time —
 // it will not catch every abuser across instances. It's still a real gate
@@ -45,7 +56,7 @@ async function handleContact(req, res) {
     return res.status(429).json({ error: 'Too many requests' });
   }
 
-  const { name, email, message } = req.body;
+  const { name, email, message, topic } = req.body;
 
   if (!name || !email || !message) {
     return res.status(400).json({ error: 'Missing required fields' });
@@ -64,14 +75,22 @@ async function handleContact(req, res) {
   // injection even though Resend's JSON API isn't raw SMTP.
   const safeName = name.replace(/[\r\n]+/g, ' ').trim();
 
+  const knownTopic =
+    typeof topic === 'string' && Object.hasOwn(TOPIC_RECIPIENTS, topic)
+      ? topic
+      : null;
+
   // 1. Send Email Notification
-  await resend.emails.send({
-    from: 'Website Form <noreply@daviselen.com>', // Update to verified domain later
-    to: process.env.MY_CONTACT_EMAIL,
-    subject: `New Inquiry from ${safeName}`,
+  const { error } = await resend.emails.send({
+    from: 'Davis Elen <website@mail.daviselen.com>',
+    to: knownTopic ? TOPIC_RECIPIENTS[knownTopic] : process.env.MY_CONTACT_EMAIL,
+    subject: `New Inquiry${knownTopic ? ` (${knownTopic})` : ''} from ${safeName}`,
     replyTo: email,
-    text: `Name: ${safeName}\nEmail: ${email}\n\nMessage:\n${message}`,
+    text: `Name: ${safeName}\nEmail: ${email}\nTopic: ${knownTopic ?? 'Not specified'}\n\nMessage:\n${message}`,
   });
+
+  // The SDK returns errors instead of throwing; surface them to the catch.
+  if (error) throw new Error(`Resend: ${error.message}`);
 
   return res.status(200).json({ success: true });
 }
