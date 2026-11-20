@@ -1,6 +1,8 @@
 // api/contact.js
 import { Resend } from 'resend';
 import { captureServerException } from "./posthog.js";
+import { renderContactEmail } from "./contactEmail.js";
+import { isKnownTopic, recipientFor } from "./contactRoutes.js";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -8,17 +10,6 @@ const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const MAX_NAME_LENGTH = 200;
 const MAX_MESSAGE_LENGTH = 5000;
-
-// Keys must match `topics` in src/pages/Contact.jsx. Anything else (including
-// the combobox's free-text option) goes to MY_CONTACT_EMAIL.
-const TOPIC_RECIPIENTS = {
-  'New Business Inquiry': 'contact@daviselen.com',
-  'Public Relations': 'contact@daviselen.com',
-  'Media Planning': 'contact@daviselen.com',
-  'Media Buying': 'contact@daviselen.com',
-  'Social Media & UGC': 'contact@daviselen.com',
-  'Careers': 'contact@daviselen.com',
-};
 
 // Best-effort only: this Map lives in the function instance's memory, which
 // a serverless platform can spin up fresh per request/region at any time —
@@ -75,17 +66,15 @@ async function handleContact(req, res) {
   // injection even though Resend's JSON API isn't raw SMTP.
   const safeName = name.replace(/[\r\n]+/g, ' ').trim();
 
-  const knownTopic =
-    typeof topic === 'string' && Object.hasOwn(TOPIC_RECIPIENTS, topic)
-      ? topic
-      : null;
+  const knownTopic = isKnownTopic(topic) ? topic : null;
 
   // 1. Send Email Notification
   const { error } = await resend.emails.send({
     from: 'Davis Elen <website@mail.daviselen.com>',
-    to: knownTopic ? TOPIC_RECIPIENTS[knownTopic] : process.env.MY_CONTACT_EMAIL,
+    to: recipientFor(knownTopic),
     subject: `New Inquiry${knownTopic ? ` (${knownTopic})` : ''} from ${safeName}`,
     replyTo: email,
+    html: renderContactEmail({ name: safeName, email, topic: knownTopic, message }),
     text: `Name: ${safeName}\nEmail: ${email}\nTopic: ${knownTopic ?? 'Not specified'}\n\nMessage:\n${message}`,
   });
 

@@ -165,8 +165,8 @@ const topics = [
   { id: 0, name: '' },
   { id: 1, name: 'New Business Inquiry' },
   { id: 2, name: 'Public Relations' },
-  { id: 3, name: 'Media Planning' },
-  { id: 4, name: 'Media Buying' },
+  { id: 3, name: 'Media Planning & Buying' },
+  { id: 4, name: 'Media Billing' },
   { id: 5, name: 'Social Media & UGC' },
   { id: 6, name: 'Careers' },
 ]
