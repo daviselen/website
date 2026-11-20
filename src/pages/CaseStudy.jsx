@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import HeadingReveal from "../design-system/components/HeadingReveal.jsx";
 import MastheadImage from "../design-system/components/MastheadImage.jsx";
+import MastheadVideo from "../design-system/components/MastheadVideo.jsx";
 import TextReveal from "../design-system/components/TextReveal.jsx";
 import { caseStudies } from "../data/caseStudies.js";
 import CTABanner from "../sections/CTABanner.jsx";
@@ -14,7 +15,7 @@ export default function CaseStudy() {
   const study = caseStudies[slug];
   if (!study) return <NotFound />;
 
-  const { campaign, client, headline, copy } = study;
+  const { campaign, client, headline, copy, vimeoId } = study;
   const title = `${campaign}: ${client} | Davis Elen`;
   const url = `https://www.daviselen.com/work/${slug}`;
   const image = `https://www.daviselen.com${PLACEHOLDER_IMAGE}`;
@@ -52,11 +53,24 @@ export default function CaseStudy() {
       </script>
 
       <section id="top">
-        <MastheadImage
-          key={slug}
-          src={PLACEHOLDER_IMAGE}
-          alt={`${campaign} for ${client}`}
-        />
+        {vimeoId ? (
+          // Same outer padding as MastheadImage so the two line up.
+          <div className="px-300 pb-500 md:pb-700 lg:px-8 lg:pb-800 xl:pb-1000">
+            <MastheadVideo
+              key={slug}
+              vimeoId={vimeoId}
+              poster={PLACEHOLDER_IMAGE}
+              posterAlt={`${campaign} for ${client}`}
+              className="aspect-contact-masthead w-full rounded-md"
+            />
+          </div>
+        ) : (
+          <MastheadImage
+            key={slug}
+            src={PLACEHOLDER_IMAGE}
+            alt={`${campaign} for ${client}`}
+          />
+        )}
         <div className="grid grid-cols-1 gap-600 px-300 lg:grid-cols-12 lg:gap-800 lg:gap-x-8 lg:px-8 lg:pt-1000">
           <div className="flex flex-col gap-300 lg:col-span-6 lg:gap-600 2xl:gap-1000">
             <HeadingReveal
