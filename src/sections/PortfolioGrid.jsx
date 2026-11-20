@@ -67,11 +67,13 @@ const projects = [
     title: "We Got You",
     client: "Toyota",
     src: "/images/portfolio-we-got-you-toyota.jpg",
+    to: "/work/we-got-you",
   },
   {
     title: "Hola Mexico Film Festival",
     client: "McDonald's",
     src: "/images/portfolio-hola-mexico-mcdonalds.jpg",
+    to: "/work/hola-mexico-film-festival",
     // videoSrc: {
     //   webm: "/videos/portfolio-hola-mexico-mcdonalds.webm",
     //   mp4: "/videos/portfolio-hola-mexico-mcdonalds.mp4",
@@ -81,11 +83,13 @@ const projects = [
     title: "Let's Admit It",
     client: "Best Buy Health",
     src: "/images/portfolio-lets-admit-it-best-buy-health.jpg",
+    to: "/work/lets-admit-it",
   },
   {
     title: "Alex in the Wild",
     client: "Smart & Final",
     src: "/images/portfolio-alex-in-the-wild-smart-final.jpg",
+    to: "/work/alex-in-the-wild",
   },
   {
     title: "Legendary Partners",
@@ -97,6 +101,7 @@ const projects = [
     title: "Beyond The Arches",
     client: "McDonald's",
     src: "/images/portfolio-beyond-the-arches-mcdonalds.jpg",
+    to: "/work/beyond-the-arches",
   },
   {
     title: "Keys To Tech",
@@ -108,6 +113,7 @@ const projects = [
     title: "Super Snorkel Tours",
     client: "Body Glove Cruises",
     src: "/images/portfolio-super-snorkel-body-glove.jpg",
+    to: "/work/super-snorkel-tours",
   },
 ];
 
