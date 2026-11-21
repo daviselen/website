@@ -37,7 +37,7 @@ export default function CaseStudy() {
     <main
       itemScope
       itemType="https://schema.org/CreativeWork"
-      className="flex min-h-screen flex-col gap-0 bg-surface-default pb-1000 font-narrow font-light text-neutral-0 light:bg-neutral-0 light:text-neutral-1000 lg:pb-1800">
+      className="flex min-h-screen flex-col gap-0 bg-surface-default pb-1000 font-narrow font-light text-neutral-0 light:bg-neutral-0 light:text-neutral-1000 lg:pb-1800 xl:pb-3000">
       <title>{title}</title>
       <meta name="description" content={copy} />
       <link rel="canonical" href={url} />
