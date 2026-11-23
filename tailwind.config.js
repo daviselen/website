@@ -182,6 +182,8 @@ export default {
         "11/8": "11 / 8",
         "7/5": "7 / 5",
         "11/10": "11 / 10",
+        // Not a Figma token: the We Got You case study video (1920 x 800).
+        "12/5": "12 / 5",
       },
       // Deliberate, undocumented addition — not a Figma token. Drives the
       // masthead mute toggle's equalizer bars; each bar gets its own

@@ -14,7 +14,7 @@ export default function CaseStudy() {
   const study = caseStudies[slug];
   if (!study) return <NotFound />;
 
-  const { campaign, client, headline, copy, vimeoId } = study;
+  const { campaign, client, headline, copy, vimeoId, mastheadAspect = "aspect-video" } = study;
   const title = `${campaign}: ${client} | Davis Elen`;
   const url = `https://www.daviselen.com/work/${slug}`;
   const image = `https://www.daviselen.com${PLACEHOLDER_IMAGE}`;
@@ -58,7 +58,7 @@ export default function CaseStudy() {
             <MastheadVideo
               key={slug}
               vimeoId={vimeoId}
-              className="aspect-video w-full rounded-md"
+              className={`${mastheadAspect} w-full rounded-md`}
             />
           </div>
         ) : (

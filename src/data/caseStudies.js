@@ -12,6 +12,7 @@ export const caseStudies = {
     campaign: "We Got You",
     client: "Toyota",
     vimeoId: "1248772363",
+    mastheadAspect: "aspect-12/5",
     headline: "We know \nwhat drives \nyou",
     copy: "Toyota wanted to speak to Southern California in the way people actually live it. Not as one audience, but many. So we built a community-based marketing initiative that pairs every vehicle in the lineup with the person who drives it, grounded in real passions and lifestyles rather than broad demographics. The result was “We got you,” work that proves no matter how you live your life, there's a Toyota built exactly for you.",
   },
