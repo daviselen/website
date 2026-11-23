@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useRef } from "react";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import MastheadImage from "../design-system/components/MastheadImage";
 import CTABanner from "../sections/CTABanner";
 import MediaObject from "../design-system/components/MediaObject.jsx";
@@ -48,21 +48,27 @@ const RETAIL_MAP = {
   ),
 };
 
+// `vimeoId` (optional): when set, the tile plays the Vimeo background embed
+// and the self-hosted `video` is ignored. Without it the tile falls back to
+// the self-hosted file.
 const people = [
   {
     name: "Mark Davis",
+    vimeoId: "1249436011",
     video: {
       mp4: "/videos/people/mark-davis.mp4"
     }
   },
   {
     name: "Terry Sullivan",
+    vimeoId: "1249436022",
     video: {
       mp4: "/videos/people/terry-sullivan.mp4"
     }
   },
   {
     name: "David Moranville",
+    vimeoId: "1249436023",
     // Same `{ webm, mp4 }` shape PortfolioGrid passes to ImageCard, so the
     // <source> ordering (webm first, mp4 fallback) matches the rest of the
     // site. `img` stays as the poster frame: it's what shows before the
@@ -77,6 +83,7 @@ const people = [
   },
   {
     name: "Malu Santamaria",
+    vimeoId: "1249436009",
     video: {
       mp4: "/videos/people/malu-santamaria.mp4",
       webm: "/videos/people/malu-santamaria.webm"
@@ -84,6 +91,7 @@ const people = [
   },
   {
     name: "Marianne Turner",
+    vimeoId: "1249436012",
     img: {
       src: "/images/portraits/marianne-turner.jpg",
     },
@@ -93,6 +101,7 @@ const people = [
   },
   {
     name: "Bert Kelley",
+    vimeoId: "1249435965",
     video: {
       mp4: "/videos/people/bert-kelley.mp4",
       webm: "/videos/people/bert-kelley.webm"
@@ -100,6 +109,7 @@ const people = [
   },
   {
     name: "Jennifer Lin",
+    vimeoId: "1249435997",
     video: {
       mp4: "/videos/people/jennifer-lin.mp4",
       webm: "/videos/people/jennifer-lin.webm"
@@ -107,6 +117,7 @@ const people = [
   },
   {
     name: "Brett Bandow",
+    vimeoId: "1249435994",
     video: {
       mp4: "/videos/people/brett-bandow.mp4",
       webm: "/videos/people/brett-bandow.webm"
@@ -114,6 +125,7 @@ const people = [
   },
   {
     name: "John Papadopoulos",
+    vimeoId: "1249436001",
     video: {
       mp4: "/videos/people/john-papadopoulos.mp4",
       webm: "/videos/people/john-papadopoulos.webm"
@@ -121,6 +133,7 @@ const people = [
   },
   {
     name: "Karen Lipker",
+    vimeoId: "1249435962",
     img: {
       src: "/images/portraits/karen-lipker.jpg",
     },
@@ -131,6 +144,7 @@ const people = [
   },
   {
     name: "Stan Kaplan",
+    vimeoId: "1249436026",
     video: {
       webm: "/videos/people/stan-kaplan.webm",
       mp4: "/videos/people/stan-kaplan.mp4",
@@ -141,6 +155,7 @@ const people = [
   },
   {
     name: "Shelly Choi",
+    vimeoId: "1249435961",
     img: {
       src: "/images/portraits/shelly-choi.jpg",
     },
@@ -161,6 +176,7 @@ const people = [
   // },
   {
     name: "Zachary Moranville",
+    vimeoId: "1249435964",
     img: {
       src: "/images/portraits/zachary-moranville.jpg",
     },
@@ -171,6 +187,7 @@ const people = [
   },
   {
     name: "Alejandro Clopatofsky",
+    vimeoId: "1249435952",
     img: {
       src: "/images/portraits/cassedy-banks.jpg",
     },
@@ -187,6 +204,7 @@ const people = [
   // },
   {
     name: "Derek Morrison",
+    vimeoId: "1249435954",
     video: {
       mp4: "/videos/people/derek-morrison.mp4",
       webm: "/videos/people/derek-morrison.webm"
@@ -194,6 +212,7 @@ const people = [
   },
   {
     name: "Jessica Westlake",
+    vimeoId: "1249435951",
     video: {
       mp4: "/videos/people/jessica-westlake.mp4",
       webm: "/videos/people/jessica-westlake.webm"
@@ -201,6 +220,7 @@ const people = [
   },
   {
     name: "Brian Banks",
+    vimeoId: "1249435950",
     video: {
       mp4: "/videos/people/brian-banks.mp4",
       webm: "/videos/people/brian-banks.webm"
@@ -208,6 +228,7 @@ const people = [
   },
   {
     name: "Marcos Arroyo",
+    vimeoId: "1249436013",
     video: {
       mp4: "/videos/people/marcos-arroyo.mp4",
       webm: "/videos/people/marcos-arroyo.webm"
@@ -373,25 +394,29 @@ const CLIENT_ROWS = Array.from(
   (_, row) => clients.slice(row * ROW_SIZE, row * ROW_SIZE + ROW_SIZE)
 );
 
-// preload="none" keeps the ~16 tiles from downloading up front; each tile
-// plays only while near the viewport. Same background-video contract as
-// MastheadVideo: muted + playsInline make autoplay legal on Safari/iOS.
-function PersonVideo({ person }) {
-  const ref = useRef(null);
-
-  // Hold the preloader until the poster is decoded, so the tiles paint with
-  // their thumbnails instead of empty boxes. Settles on error too (the
-  // preloader's own MAX_WAIT_MS caps a slow one). The video files stay
-  // preload="none": thumbnails only, not ~16 videos.
+// Hold the preloader until a tile's poster is decoded, so the tiles paint with
+// their thumbnails instead of empty boxes. Settles on error too (the
+// preloader's own MAX_WAIT_MS caps a slow one).
+function usePosterHold(src) {
   useEffect(() => {
-    const src = person.img?.src;
     if (!src) return undefined;
     const release = holdForMedia();
     const img = new Image();
     img.src = src;
     img.decode().catch(() => {}).then(release);
     return release;
-  }, [person.img?.src]);
+  }, [src]);
+}
+
+// Self-hosted fallback, used only for tiles without a `vimeoId`.
+// preload="none" keeps the tiles from downloading up front; each tile plays
+// only while near the viewport. Same background-video contract as
+// MastheadVideo: muted + playsInline make autoplay legal on Safari/iOS.
+function PersonVideo({ person }) {
+  const ref = useRef(null);
+
+  // The video files stay preload="none": thumbnails only, not ~16 videos.
+  usePosterHold(person.img?.src);
 
   useEffect(() => {
     const video = ref.current;
@@ -420,6 +445,100 @@ function PersonVideo({ person }) {
       <source src={person.video.webm} type="video/webm" />
       <source src={person.video.mp4} type="video/mp4" />
     </video>
+  );
+}
+
+// Same background-mode params MastheadVideo uses: no player chrome, muted,
+// looping, autoplaying.
+const PERSON_EMBED_PARAMS = "background=1&autoplay=1&loop=1&muted=1";
+
+// Vimeo tile. The iframe is created only once the tile nears the viewport
+// (an iframe with no src is inert: no player JS, no video), and it is paused
+// while the tile is off-screen so the tiles aren't all decoding at once. The
+// poster sits underneath and the embed fades in once it reports playing.
+function VimeoPersonVideo({ person }) {
+  const wrapRef = useRef(null);
+  const iframeRef = useRef(null);
+  const [mounted, setMounted] = useState(false);
+  const [playing, setPlaying] = useState(false);
+
+  usePosterHold(person.img?.src);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        setMounted(true);
+        observer.disconnect();
+      },
+      { rootMargin: "200px" },
+    );
+    observer.observe(wrapRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  // Bound to the iframe already in the JSX, not to a container, for the same
+  // reason as MastheadVideo. The SDK is imported lazily to keep it out of the
+  // entry bundle. Its destroy() is skipped for the same StrictMode reason.
+  useEffect(() => {
+    if (!mounted) return undefined;
+    let cancelled = false;
+    let player;
+    let observer;
+    import("@vimeo/player").then(({ default: Player }) => {
+      if (cancelled) return;
+      player = new Player(iframeRef.current);
+      player.on("playing", () => setPlaying(true));
+      observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) player.play().catch(() => {});
+          else player.pause().catch(() => {});
+        },
+        { rootMargin: "200px" },
+      );
+      observer.observe(wrapRef.current);
+    });
+    return () => {
+      cancelled = true;
+      observer?.disconnect();
+      player?.off("playing");
+    };
+  }, [mounted]);
+
+  return (
+    <div
+      ref={wrapRef}
+      className="relative aspect-video w-full overflow-hidden rounded-md"
+    >
+      {person.img && (
+        <Picture
+          src={person.img.src}
+          alt=""
+          className="absolute inset-0 size-full object-cover"
+        />
+      )}
+      <iframe
+        ref={iframeRef}
+        src={
+          mounted
+            ? `https://player.vimeo.com/video/${person.vimeoId}?${PERSON_EMBED_PARAMS}`
+            : undefined
+        }
+        title={`${person.name} video`}
+        allow="autoplay"
+        className="absolute block transition-opacity duration-500"
+        style={{
+          // 8px overscan a side pushes the player's bright bottom-edge line
+          // out of the clip (same trick as MastheadVideo).
+          top: -8,
+          left: -8,
+          width: "calc(100% + 16px)",
+          height: "calc(100% + 16px)",
+          colorScheme: "light",
+          opacity: playing ? 1 : 0,
+        }}
+      />
+    </div>
   );
 }
 
@@ -475,14 +594,16 @@ export default function About() {
         <div className="grid grid-cols-2 gap-100 md:grid-cols-4 lg:gap-400">
           {people.map((person, index) => (
           <div key={index} className="teams-video relative rounded-md bg-surface-alt light:bg-neutral-100">
-            {person.video ? (
+            {person.vimeoId ? (
+              <VimeoPersonVideo person={person} />
+            ) : person.video ? (
               // aspect-video is Tailwind's built-in 16/9, so the tile keeps the
               // exact ratio the <Picture> below it uses.
               <PersonVideo person={person} />
             ) : (
               <Picture className="flex aspect-[16/9] h-auto w-full items-center justify-center rounded-md" src={person.img.src} alt={person.name} />
             )}
-            {person.video ? (
+            {person.vimeoId || person.video ? (
               <span className="absolute bottom-100 left-100 flex gap-[6px] rounded-[3px] bg-neutral-1000/50 px-100 text-neutral-0 text-[12px] tracking-[0.03em]">
                 <span className="py-100">{person.name}</span>
                 <img src="/icons/teams-mic.svg" alt="" />
