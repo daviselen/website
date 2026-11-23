@@ -27,7 +27,7 @@ export default function MoreWork({ current }) {
             alt={`${title} for ${client}`}
             to={to}
             size="med"
-            aspect="11/10"
+            aspect="image-card"
           />
         ))}
       </div>

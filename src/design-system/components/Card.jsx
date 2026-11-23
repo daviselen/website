@@ -56,6 +56,9 @@ const aspectClasses = {
   "11/8": "aspect-11/8 md:aspect-[3/2]",
   "7/5": "aspect-7/5 md:aspect-[11/6]",
   "11/10": "aspect-11/10 md:aspect-[6/5]",
+  // The home "Fresh Out of the Box" ImageCard ratio (8/9), for case study
+  // cards shown outside that strip.
+  "image-card": "aspect-image-card",
 };
 
 const sizeConfig = {
