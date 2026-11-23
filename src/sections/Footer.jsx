@@ -17,7 +17,7 @@
 //     tracking-widest.
 //   - Cities are 64px Knockout with an unusually loose 130px line-height
 //     (a deliberate spaced-out look) and a 48px gap, not space-y-2.
-import { useRef } from "react";
+import { useRef, useSyncExternalStore } from "react";
 import { Link, useLocation } from "react-router-dom";
 import DeLogo from "../design-system/components/DeLogo.jsx";
 import ThemeToggle from "../design-system/components/ThemeToggle.jsx";
@@ -76,10 +76,23 @@ const social = [
 const REVEAL_START = "top bottom-=100"; // viewport margin "0px 0px -100px 0px"
 const REVEAL_END = "bottom top"; // no top inset, so the real viewport top
 
+// Same 1440px as the nav's min-[1440px] move into column 2: from there the
+// theme switcher takes the emptied left end of the menu row. One instance,
+// placed by JS rather than two copies swapped by CSS, because ThemeToggle
+// holds its selection in local state and a hidden copy would go stale.
+const WIDE_QUERY = "(min-width: 1440px)";
+const subscribeWide = (onChange) => {
+  const query = window.matchMedia(WIDE_QUERY);
+  query.addEventListener("change", onChange);
+  return () => query.removeEventListener("change", onChange);
+};
+const getWide = () => window.matchMedia(WIDE_QUERY).matches;
+
 export default function Footer() {
   const footerRef = useRef(null);
   const { pathname } = useLocation();
   const backToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+  const wide = useSyncExternalStore(subscribeWide, getWide);
 
   useGSAP(
     () => {
@@ -137,6 +150,11 @@ export default function Footer() {
           1440 is an arbitrary variant — no matching named breakpoint). Back
           to top always sits at the far right of column 2. */}
       <div className="grid grid-cols-1 items-center gap-4 border-b-2 border-neutral-0 light:border-neutral-1000 pb-400 pt-6 md:grid-cols-2 md:gap-800 md:py-6 lg:gap-16">
+        {wide && (
+          <div className="md:col-start-1 md:row-start-1">
+            <ThemeToggle />
+          </div>
+        )}
         <nav
           aria-label="Footer"
           className="flex flex-wrap gap-x-4 gap-y-3 md:col-start-1 md:gap-y-2 md:row-start-1 md:gap-x-8 min-[1440px]:col-start-2"
@@ -295,7 +313,7 @@ export default function Footer() {
           ))}
         </ul>
         <div className="mt-auto flex flex-wrap items-center gap-x-800 gap-y-4">
-          <ThemeToggle />
+          {!wide && <ThemeToggle />}
           {/* Hidden for now; the toggle and its logic are intact. */}
           <div className="hidden">
             <MotionToggle />
