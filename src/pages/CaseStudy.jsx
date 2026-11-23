@@ -58,8 +58,6 @@ export default function CaseStudy() {
             <MastheadVideo
               key={slug}
               vimeoId={vimeoId}
-              poster={PLACEHOLDER_IMAGE}
-              posterAlt={`${campaign} for ${client}`}
               className="aspect-video w-full rounded-md"
             />
           </div>
