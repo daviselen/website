@@ -154,6 +154,17 @@ const people = [
     },
   },
   {
+    name: "Amy Drell",
+    vimeoId: "1249447446",
+    img: {
+      src: "/images/portraits/amy-drell.jpg",
+    },
+    video: {
+      mp4: "/videos/people/amy-drell.mp4",
+      webm: "/videos/people/amy-drell.webm"
+    }
+  },
+  {
     name: "Shelly Choi",
     vimeoId: "1249435961",
     img: {
