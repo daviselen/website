@@ -10,6 +10,7 @@ import Shot from "../design-system/components/Shot.jsx";
 import { useStaggerReveal } from "../design-system/animation.js";
 import TextReveal from "../design-system/components/TextReveal.jsx";
 import CTABanner from "../sections/CTABanner.jsx";
+import MoreWork from "../sections/MoreWork.jsx";
 
 const PATH = "/work/dice-branding";
 const CANONICAL = `https://www.daviselen.com${PATH}`;
@@ -195,6 +196,7 @@ export default function Dice() {
         </div>
       </Channel>
 
+      <MoreWork current={PATH} />
       <CTABanner />
     </main>
   );

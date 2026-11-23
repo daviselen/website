@@ -35,6 +35,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import HeadingReveal from "../design-system/components/HeadingReveal";
 import ProjectCard from "../design-system/components/ImageCard";
 import { gsap, useGSAP } from "../design-system/animation";
+import { work as projects } from "../data/work.js";
 
 // Strip px per second at the very edge of the clip, falling off linearly to 0
 // at the centre. THE SPEED DIAL. Most of the strip's width maps to a small
@@ -61,61 +62,6 @@ const IDLE_SPEED = 0.5;
 // The px-8 site gutter, as a number because the resting position is computed,
 // not declared — see RESTING OFFSET below.
 const GUTTER = 32;
-
-const projects = [
-  {
-    title: "We Got You",
-    client: "Toyota",
-    src: "/images/portfolio-we-got-you-toyota.jpg",
-    to: "/work/we-got-you",
-  },
-  {
-    title: "Hola Mexico Film Festival",
-    client: "McDonald's",
-    src: "/images/portfolio-hola-mexico-mcdonalds.jpg",
-    to: "/work/hola-mexico-film-festival",
-    // videoSrc: {
-    //   webm: "/videos/portfolio-hola-mexico-mcdonalds.webm",
-    //   mp4: "/videos/portfolio-hola-mexico-mcdonalds.mp4",
-    // },
-  },
-  {
-    title: "Let's Admit It",
-    client: "Best Buy Health",
-    src: "/images/portfolio-lets-admit-it-best-buy-health.jpg",
-    to: "/work/lets-admit-it",
-  },
-  {
-    title: "Alex in the Wild",
-    client: "Smart & Final",
-    src: "/images/portfolio-alex-in-the-wild-smart-final.jpg",
-    to: "/work/alex-in-the-wild",
-  },
-  {
-    title: "Legendary Partners",
-    client: "Los Angeles Lakers",
-    src: "/images/portfolio-legendary-partners-lakers.jpg",
-    to: "/work/lakers-and-toyota-legendary-partners",
-  },
-  {
-    title: "Beyond The Arches",
-    client: "McDonald's",
-    src: "/images/portfolio-beyond-the-arches-mcdonalds.jpg",
-    to: "/work/beyond-the-arches",
-  },
-  {
-    title: "Keys To Tech",
-    client: "DICE",
-    src: "/images/portfolio-keys-to-tech-dice.jpg",
-    to: "/work/dice-branding",
-  },
-  {
-    title: "Super Snorkel Tours",
-    client: "Body Glove Cruises",
-    src: "/images/portfolio-super-snorkel-body-glove.jpg",
-    to: "/work/super-snorkel-tours",
-  },
-];
 
 // The looping, cursor-driven strip is a desktop-only enhancement. It needs a
 // mouse (`hover` + `fine` — a stylus reports `hover: hover` but gives no

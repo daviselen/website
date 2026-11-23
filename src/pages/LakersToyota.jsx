@@ -6,6 +6,7 @@ import { useOverlay } from "../design-system/components/Overlay.jsx";
 import TextReveal from "../design-system/components/TextReveal.jsx";
 import Shot from "../design-system/components/Shot.jsx";
 import CTABanner from "../sections/CTABanner.jsx";
+import MoreWork from "../sections/MoreWork.jsx";
 
 const PATH = "/work/lakers-and-toyota-legendary-partners";
 const CANONICAL = `https://www.daviselen.com${PATH}`;
@@ -186,6 +187,7 @@ export default function LakersToyota() {
         />
       </Channel>
 
+      <MoreWork current={PATH} />
       <CTABanner />
     </main>
   );

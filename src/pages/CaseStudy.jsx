@@ -4,6 +4,7 @@ import MastheadImage from "../design-system/components/MastheadImage.jsx";
 import MastheadVideo from "../design-system/components/MastheadVideo.jsx";
 import TextReveal from "../design-system/components/TextReveal.jsx";
 import { caseStudies } from "../data/caseStudies.js";
+import MoreWork from "../sections/MoreWork.jsx";
 import NotFound from "./NotFound.jsx";
 
 // Placeholder: swap per campaign once real masthead art exists.
@@ -84,6 +85,7 @@ export default function CaseStudy() {
           />
         </div>
       </section>
+      <MoreWork key={slug} current={`/work/${slug}`} />
     </main>
   );
 }
