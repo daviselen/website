@@ -409,7 +409,7 @@ export default function About() {
     <main
       itemScope
       itemType="https://schema.org/Organization"
-      className="flex min-h-screen flex-col gap-0 bg-surface-default light:bg-neutral-0 pb-1000 font-narrow font-light text-neutral-0 light:text-neutral-1000 lg:pb-1800"
+      className="flex min-h-screen flex-col gap-0 bg-surface-default pb-1000 font-narrow font-light text-neutral-0 light:bg-neutral-0 light:text-neutral-1000 lg:pb-1800"
     >
       <meta itemProp="name" content="Davis Elen Advertising" />
       <meta itemProp="url" content="https://daviselen.com" />
@@ -454,16 +454,16 @@ export default function About() {
             phone (~80px tiles) — 2-up below md, real 4-up unchanged. */}
         <div className="grid grid-cols-2 gap-100 md:grid-cols-4 lg:gap-400">
           {people.map((person, index) => (
-          <div key={index} className="teams-video relative rounded-md bg-surface-alt light:bg-neutral-100">
+          <div key={index} className="relative rounded-md bg-surface-alt light:bg-neutral-100">
             {person.video ? (
               // aspect-video is Tailwind's built-in 16/9, so the tile keeps the
               // exact ratio the <Picture> below it uses.
               <PersonVideo person={person} />
             ) : (
-              <Picture className="flex aspect-[16/9] h-auto w-full items-center justify-center rounded-md" src={person.img.src} alt={person.name} />
+              <Picture className="flex aspect-video h-auto w-full items-center justify-center rounded-md" src={person.img.src} alt={person.name} />
             )}
             {person.video ? (
-              <span className="absolute bottom-100 left-100 flex gap-[6px] rounded-[3px] bg-neutral-1000/50 px-100 text-neutral-0 text-[12px] tracking-[0.03em]">
+              <span className="absolute bottom-100 left-100 flex gap-1.5 rounded bg-neutral-1000/50 px-100 text-xs leading-normal tracking-wide text-neutral-0">
                 <span className="py-100">{person.name}</span>
                 <img src="/icons/teams-mic.svg" alt="" />
               </span>
