@@ -29,6 +29,7 @@ React 19 + Vite 8 + Tailwind 3 rebuild of the DE5 Figma file (`tnP43NMbcFkzFKMsd
 npm run dev                       # vite dev server on :5173 (predev: npm run images)
 npm run build                     # production build (CI gate); prebuild runs images + jobs
 npm run jobs                      # refresh src/data/job-openings.json from ADP + PWA assets
+npm run encode:video -- <src> <dst.mp4>  # macOS: 960x540 600 kbps H.264 for About people tiles
 npm run lint                      # eslint .; lint:fix to autofix
 npm run test:visual               # playwright; auto-boots dev server
 npm run test:visual -- design-diff # pixel diff vs committed Figma exports

@@ -12,6 +12,8 @@
   "type": "module",
   "scripts": {
     "images": "node scripts/generate-image-formats.mjs",
+    "encode:video": "osascript -l JavaScript scripts/encode-video.jxa",
+    "vimeo:links": "node scripts/vimeo-file-links.mjs",
     "jobs": "node scripts/fetch-job-openings.mjs && pwa-assets-generator",
     "migrate:wordpress": "node scripts/migrate-wordpress.mjs",
     "predev": "npm run images",

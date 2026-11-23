@@ -1,0 +1,93 @@
+// Re-encodes a clip for a small looping tile (the About page people grid):
+// H.264 High, video only, fast-start, 960x540 at 600 kbps by default.
+// macOS only. It drives AVFoundation's hardware encoder through JavaScript
+// for Automation, so it needs no ffmpeg install.
+//
+//   npm run encode:video -- <source> <output.mp4> [width height bitsPerSecond]
+//
+// 960x540 covers the widest tile (~600 CSS px on a 2x display) and 600 kbps
+// was indistinguishable from the 1080p masters at tile size.
+ObjC.import("AVFoundation");
+ObjC.import("CoreMedia");
+ObjC.import("Foundation");
+
+const cls = (name) => $.NSClassFromString(name);
+const READING = 1;
+const COMPLETED = 2;
+
+function run(argv) {
+  const [src, dst, width = "960", height = "540", bps = "600000"] = argv;
+  if (!src || !dst) throw new Error("usage: encode-video.jxa <source> <output.mp4> [width height bitsPerSecond]");
+  const fm = $.NSFileManager.defaultManager;
+  fm.removeItemAtPathError(dst, null);
+
+  const asset = cls("AVURLAsset").URLAssetWithURLOptions($.NSURL.fileURLWithPath(src), $());
+  const tracks = asset.tracksWithMediaType($.AVMediaTypeVideo);
+  if (Number(tracks.count) === 0) throw new Error(`no video track in ${src}`);
+  const track = tracks.objectAtIndex(0);
+
+  const reader = cls("AVAssetReader").alloc.initWithAssetError(asset, null);
+  const output = cls("AVAssetReaderTrackOutput").alloc.initWithTrackOutputSettings(
+    track,
+    $({ PixelFormatType: 875704438 }), // kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange
+  );
+  output.alwaysCopiesSampleData = false;
+  reader.addOutput(output);
+
+  const writer = cls("AVAssetWriter").alloc.initWithURLFileTypeError(
+    $.NSURL.fileURLWithPath(dst),
+    $.AVFileTypeMPEG4,
+    null,
+  );
+  writer.shouldOptimizeForNetworkUse = true;
+  const input = cls("AVAssetWriterInput").assetWriterInputWithMediaTypeOutputSettings(
+    $.AVMediaTypeVideo,
+    $({
+      AVVideoCodecKey: $.AVVideoCodecTypeH264,
+      AVVideoWidthKey: Number(width),
+      AVVideoHeightKey: Number(height),
+      AVVideoScalingModeKey: "AVVideoScalingModeResizeAspectFill",
+      AVVideoCompressionPropertiesKey: {
+        AverageBitRate: Number(bps),
+        MaxKeyFrameIntervalDuration: 2,
+        AllowFrameReordering: true,
+        ProfileLevel: "H264_High_AutoLevel",
+      },
+    }),
+  );
+  input.expectsMediaDataInRealTime = false;
+  input.transform = track.preferredTransform;
+  writer.addInput(input);
+
+  if (!reader.startReading) throw new Error(`reader: ${ObjC.unwrap(reader.error.localizedDescription)}`);
+  if (!writer.startWriting) throw new Error(`writer: ${ObjC.unwrap(writer.error.localizedDescription)}`);
+  writer.startSessionAtSourceTime($.kCMTimeZero);
+
+  let frames = 0;
+  for (;;) {
+    while (!input.readyForMoreMediaData) delay(0.005);
+    const buffer = output.copyNextSampleBuffer;
+    if (Number(reader.status) !== READING) break;
+    if (!input.appendSampleBuffer(buffer)) {
+      throw new Error(`append failed: ${ObjC.unwrap(writer.error.localizedDescription)}`);
+    }
+    frames++;
+  }
+  if (Number(reader.status) !== COMPLETED) {
+    throw new Error(`read failed after ${frames} frames: ${ObjC.unwrap(reader.error.localizedDescription)}`);
+  }
+  input.markAsFinished;
+  writer.finishWriting;
+  if (Number(writer.status) !== COMPLETED) throw new Error(`write failed after ${frames} frames`);
+
+  // AVAssetWriter can leave `<name>.sb-*` temp files beside the output.
+  const dir = ObjC.unwrap($(dst).stringByDeletingLastPathComponent);
+  const base = ObjC.unwrap($(dst).lastPathComponent);
+  const siblings = ObjC.deepUnwrap(fm.contentsOfDirectoryAtPathError(dir, null)) ?? [];
+  for (const name of siblings) {
+    if (name.startsWith(`${base}.sb-`)) fm.removeItemAtPathError(`${dir}/${name}`, null);
+  }
+
+  const bytes = ObjC.unwrap(fm.attributesOfItemAtPathError(dst, null).objectForKey("NSFileSize"));
+  return `${dst}: ${frames} frames, ${(bytes / 1e3).toFixed(0)} KB`;
+}
