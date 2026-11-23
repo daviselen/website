@@ -24,6 +24,14 @@ if (missingVariable) {
       capture_unhandled_rejections: true,
       capture_console_errors: false,
     },
+    // shortcut: drops the browser's benign ResizeObserver warning by message, revisit if real ResizeObserver errors need tracking
+    before_send: (event) =>
+      event?.event === "$exception" &&
+      JSON.stringify(event.properties?.$exception_list).includes(
+        "ResizeObserver loop completed",
+      )
+        ? null
+        : event,
     logs: {
       serviceName: "davis-elen-website",
       environment: import.meta.env.MODE,
