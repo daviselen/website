@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useMediaReveal } from "../animation";
 import { holdForMedia, useSiteReady } from "../../lib/siteReady.js";
+import { useVideoFailsafe } from "../../lib/useVideoFailsafe.js";
 
 // Longest the masthead waits for the video's first frame before wiping in
 // anyway, showing `poster`.
@@ -19,6 +20,8 @@ export default function MastheadClip({ webm, mp4, poster, className = "" }) {
   // single success-only event.
   const [ready, setReady] = useState(false);
   const siteReady = useSiteReady();
+  // A clip that never loads is left showing `poster`.
+  useVideoFailsafe(videoRef);
 
   useMediaReveal(wrapRef, { maskRef, mediaRef, loaded: ready });
 

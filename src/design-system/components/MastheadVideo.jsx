@@ -32,6 +32,16 @@ const EMBED_PARAMS = "background=1&autoplay=1&loop=1&muted=1";
 // first frame) before wiping in anyway.
 const REVEAL_FALLBACK_MS = 4000;
 
+// The embed waits for window load, but one hung request elsewhere on the page
+// would otherwise keep it from ever starting.
+const WINDOW_LOAD_FALLBACK_MS = 5000;
+
+// An embed that hasn't started playing this long after it was mounted is
+// remounted, up to MAX_EMBED_RETRIES times, then given up on: the iframe is
+// hidden over the poster and the controls are dropped.
+const EMBED_STALL_MS = 8000;
+const MAX_EMBED_RETRIES = 2;
+
 export default function MastheadVideo({
   vimeoId,
   className = "",
@@ -132,13 +142,21 @@ export default function MastheadVideo({
     if (windowLoaded) return undefined;
     const onLoad = () => setWindowLoaded(true);
     window.addEventListener("load", onLoad, { once: true });
-    return () => window.removeEventListener("load", onLoad);
+    const timer = window.setTimeout(onLoad, WINDOW_LOAD_FALLBACK_MS);
+    return () => {
+      window.removeEventListener("load", onLoad);
+      window.clearTimeout(timer);
+    };
   }, [windowLoaded]);
 
+  const [attempt, setAttempt] = useState(0);
+  const [failed, setFailed] = useState(false);
+
   // The embed URL, withheld until then. An iframe with no src is inert: no
-  // player JS, no video.
+  // player JS, no video. The attempt number makes each retry a fresh URL, and
+  // so (as the iframe's key) a fresh iframe and player.
   const src = windowLoaded
-    ? `https://player.vimeo.com/video/${vimeoId}?${EMBED_PARAMS}`
+    ? `https://player.vimeo.com/video/${vimeoId}?${EMBED_PARAMS}${attempt ? `&retry=${attempt}` : ""}`
     : null;
 
   // The no-poster backstop, timed from when the embed starts loading rather
@@ -191,6 +209,24 @@ export default function MastheadVideo({
     let observer;
     endedRef.current = false;
     let cancelled = false;
+    let primed = false;
+
+    // A hidden tab may legitimately hold off autoplay, so only a visible
+    // one counts as stalled.
+    let stallTimer;
+    const watchStall = () => {
+      stallTimer = window.setTimeout(() => {
+        if (primed) return;
+        if (document.visibilityState !== "visible") return watchStall();
+        setLoaded(false);
+        if (attempt < MAX_EMBED_RETRIES) setAttempt(attempt + 1);
+        else {
+          setFailed(true);
+          releaseMediaRef.current?.();
+        }
+      }, EMBED_STALL_MS);
+    };
+    watchStall();
     import("@vimeo/player").then(({ default: Player }) => {
       if (cancelled) return;
       player = new Player(videoRef.current);
@@ -207,7 +243,6 @@ export default function MastheadVideo({
       player.on("play", () => setPaused(false));
       player.on("pause", () => setPaused(true));
       player.on("timeupdate", ({ seconds }) => setAtStart(seconds < 0.25));
-      let primed = false;
       player.on("playing", () => {
         if (primed) return;
         primed = true;
@@ -256,6 +291,7 @@ export default function MastheadVideo({
     // component actually unmounts.
     return () => {
       cancelled = true;
+      window.clearTimeout(stallTimer);
       observer?.disconnect();
       player?.off("loaded");
       player?.off("playing");
@@ -264,7 +300,7 @@ export default function MastheadVideo({
       player?.off("pause");
       player?.off("timeupdate");
     };
-  }, [src]);
+  }, [src, attempt]);
 
   const toggleMuted = () => {
     const next = !muted;
@@ -351,6 +387,7 @@ export default function MastheadVideo({
           />
         )}
         <iframe
+          key={src}
           ref={videoRef}
           src={src ?? undefined}
           // Both embed modes fit the video inside the iframe (background
@@ -372,7 +409,7 @@ export default function MastheadVideo({
             // opaque white canvas behind the iframe in dark mode (same as
             // Overlay's player).
             colorScheme: "light",
-            opacity: poster && !loaded ? 0 : 1,
+            opacity: failed || (poster && !loaded) ? 0 : 1,
             transition: "opacity 0.6s ease-out",
           }}
           allow="autoplay; fullscreen"
@@ -382,7 +419,7 @@ export default function MastheadVideo({
       </div>
       <div
         ref={controlsRef}
-        className={`absolute bottom-300 right-300 flex gap-100 ${revealed ? "" : "invisible"}`}
+        className={`absolute bottom-300 right-300 flex gap-100 ${revealed && !failed ? "" : "invisible"}`}
       >
           <button
             type="button"

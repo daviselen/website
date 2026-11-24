@@ -9,6 +9,7 @@ import HeadingReveal from "../design-system/components/HeadingReveal.jsx";
 import Marquee from "../design-system/components/Marquee.jsx";
 import Picture from "../design-system/components/Picture.jsx";
 import { holdForMedia } from "../lib/siteReady.js";
+import { useVideoFailsafe } from "../lib/useVideoFailsafe.js";
 
 // Hosted on Vimeo rather than self-served from /public/videos, so the overlay
 // gets its `embed` payload (an iframe player URL) instead of `src`. The
@@ -359,6 +360,7 @@ const CLIENT_ROWS = Array.from(
 // MastheadVideo: muted + playsInline make autoplay legal on Safari/iOS.
 function PersonVideo({ person }) {
   const ref = useRef(null);
+  useVideoFailsafe(ref);
 
   // Hold the preloader until the poster is decoded, so the tiles paint with
   // their thumbnails instead of empty boxes. Settles on error too (the
