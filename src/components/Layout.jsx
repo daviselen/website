@@ -50,6 +50,7 @@ export default function PageTransition() {
   const pendingOutletRef = useRef(outlet);
   const navigationTypeRef = useRef(navigationType);
   const pendingPathnameRef = useRef(location.pathname);
+  const pendingHashRef = useRef("");
   // Tracks the pending double-rAF used to defer the route swap below; kept
   // in a ref so it can be cancelled if the component unmounts mid-transition.
   const swapRafRef = useRef(null);
@@ -84,6 +85,7 @@ export default function PageTransition() {
     navigationTypeRef.current = navigationType;
     pendingOutletRef.current = outlet;
     pendingPathnameRef.current = location.pathname;
+    pendingHashRef.current = location.hash;
 
     // Immediately kick off the transition phase
     setPhase("cover");
@@ -155,6 +157,17 @@ export default function PageTransition() {
                   requestAnimationFrame(() => {
                     const ST = ScrollTrigger || window.ScrollTrigger;
                     if (ST) ST.refresh();
+                    // A link like /contact#form: the new page is mounted by
+                    // now, so jump (behind the curtain) to its anchor.
+                    const hash = pendingHashRef.current;
+                    const target =
+                      navigationTypeRef.current === "PUSH" && hash
+                        ? document.getElementById(decodeURIComponent(hash.slice(1)))
+                        : null;
+                    if (target) {
+                      if (smoother) smoother.scrollTo(target, false, "top 80px");
+                      else target.scrollIntoView();
+                    }
                   });
 
                   // Start reveal phase

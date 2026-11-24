@@ -1,4 +1,5 @@
 // From HP-23 "LBST" group — "Let's look inside the box" CTA.
+import { Link } from "react-router-dom";
 import Button from "../design-system/components/Button.jsx";
 import HeadingReveal from "../design-system/components/HeadingReveal.jsx";
 
@@ -10,7 +11,7 @@ export default function CTABanner() {
         text={`Let’s Look \nInside the Box`}
         className="font-display text-fluid-2xl uppercase leading-none md:text-8xl lg:text-display-h3"
         />
-      <Button variant="solid" size="big">Start A Conversation</Button>
+      <Button as={Link} to="/contact#form" variant="solid" size="big">Start A Conversation</Button>
     </section>
   );
 }
