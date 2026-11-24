@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { gsap, useMediaReveal } from "../animation";
+import { gsap, useGSAP, useMediaReveal } from "../animation";
 import { prefersReducedMotion } from "../../lib/reducedMotion.js";
 import Picture from "./Picture";
 import PlayPauseIcon from "./PlayPauseIcon";
@@ -64,6 +64,8 @@ export default function MastheadVideo({
   // being released, doesn't resume a video the user stopped.
   const userPausedRef = useRef(false);
   const restartIconRef = useRef(null);
+  const controlsRef = useRef(null);
+  const [revealed, setRevealed] = useState(false);
 
   // The wipe is the only thing that un-hides the masthead, so it must never
   // depend on a single success-only event: a failed <picture> source does not
@@ -87,8 +89,34 @@ export default function MastheadVideo({
     maskRef,
     mediaRef,
     loaded: revealReady,
-    onComplete: onRevealed,
+    onComplete: () => {
+      setRevealed(true);
+      onRevealed?.();
+    },
   });
+
+  // The controls stay hidden until the wipe has finished, then fade up one by
+  // one. clearProps hands opacity back to the buttons' own hover/disabled
+  // classes afterwards.
+  useGSAP(
+    () => {
+      if (!revealed) return;
+      const reduced = prefersReducedMotion();
+      gsap.fromTo(
+        controlsRef.current.children,
+        { autoAlpha: 0, y: 8 },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: reduced ? 0 : 0.5,
+          stagger: reduced ? 0 : 0.12,
+          ease: "power2.out",
+          clearProps: "opacity,visibility,transform",
+        }
+      );
+    },
+    { scope: controlsRef, dependencies: [revealed] }
+  );
 
   // Defer the embed until window load: the video is ~4.5 MB plus ~350 KB of
   // player JS, and started eagerly it competes with everything that paints.
@@ -352,7 +380,10 @@ export default function MastheadVideo({
         />
         </div>
       </div>
-      <div className="absolute bottom-300 right-300 flex gap-100">
+      <div
+        ref={controlsRef}
+        className={`absolute bottom-300 right-300 flex gap-100 ${revealed ? "" : "invisible"}`}
+      >
           <button
             type="button"
             onClick={restart}
