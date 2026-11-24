@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import Button from "../design-system/components/Button.jsx";
 import HeadingReveal from "../design-system/components/HeadingReveal.jsx";
 import MastheadImage from "../design-system/components/MastheadImage.jsx";
 import MastheadVideo from "../design-system/components/MastheadVideo.jsx";
@@ -15,7 +16,7 @@ export default function CaseStudy() {
   const study = caseStudies[slug];
   if (!study) return <NotFound />;
 
-  const { campaign, client, headline, copy, vimeoId, mastheadAspect = "aspect-video" } = study;
+  const { campaign, client, headline, copy, vimeoId, link, mastheadAspect = "aspect-video" } = study;
   const title = `${campaign}: ${client} | Davis Elen`;
   const url = `https://www.daviselen.com/work/${slug}`;
   const image = `https://www.daviselen.com${PLACEHOLDER_IMAGE}`;
@@ -84,6 +85,22 @@ export default function CaseStudy() {
             className="text-fluid-sm md:text-xl lg:col-span-5 lg:col-start-8 lg:self-start lg:text-pre-title"
             text={copy}
           />
+          {link && (
+            // Own full-width row, like CTABanner: the big button's 480px
+            // min-width would otherwise stretch the copy column at lg.
+            <div className="lg:col-span-12">
+              <Button
+                as="a"
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="solid"
+                size="big"
+              >
+                {link.label}
+              </Button>
+            </div>
+          )}
         </div>
       </section>
       <MoreWork key={slug} current={`/work/${slug}`} />

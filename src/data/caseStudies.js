@@ -33,8 +33,14 @@ export const caseStudies = {
   "beyond-the-arches": {
     campaign: "Beyond the Arches",
     client: "McDonald's",
+    vimeoId: "926360455",
     headline: "Going beyond \nexpectations",
-    copy: "Our “Beyond the Arches” campaign took a sharp tour from traditional McDonald’s creative work. A client for nearly sixty years, McDonald’s trusted us to take a deep dive into the lives, struggles and success stories of their employees. Much more than purveyors of burgers and fries, this campaign provided a more complete picture of the people who help make what is arguably the most popular brand in the world what it is today.",
+    copy: "Our “Beyond the Arches” campaign took a sharp turn from traditional McDonald’s creative work. A client for nearly sixty years, McDonald’s trusted us to take a deep dive into the lives, struggles and success stories of their people. Each film, like Ted Williams’, is a regional story told in the person’s own words. Much more than purveyors of burgers and fries, they are the people who make the most popular brand in the world what it is today.",
+    // Optional outbound button under the copy.
+    link: {
+      href: "https://mcdonaldsregionalstories.com",
+      label: "Visit the site",
+    },
   },
   "super-snorkel-tours": {
     campaign: "Super Snorkel Tours",
