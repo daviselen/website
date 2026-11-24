@@ -40,11 +40,6 @@ export default function MastheadVideo({
   // and without a poster nothing large paints until the video arrives.
   poster,
   posterAlt = "",
-  // Off for silent clips: no sound to toggle, so the mute button is not rendered.
-  hasAudio = true,
-  // Play/pause + restart buttons in place of the mute button. Playing from
-  // them is always with sound.
-  controls = false,
 }) {
   const [loaded, setLoaded] = useState(false);
   // Source aspect ratio (w / h) for the cover sizing below. The default is
@@ -65,8 +60,7 @@ export default function MastheadVideo({
   const [atStart, setAtStart] = useState(true);
   // Set by the pause button so that scrolling back into view, or the site
   // being released, doesn't resume a video the user stopped.
-  // With controls the video starts in that same stopped state: no autoplay.
-  const userPausedRef = useRef(controls);
+  const userPausedRef = useRef(false);
   const restartIconRef = useRef(null);
 
   // The wipe is the only thing that un-hides the masthead, so it must never
@@ -141,30 +135,10 @@ export default function MastheadVideo({
     const player = playerRef.current;
     if (!siteReady || !player || !inViewRef.current || endedRef.current) return;
     if (userPausedRef.current) return;
+    // Always starts muted (EMBED_PARAMS); the mute button is the only way
+    // sound comes on, so autoplay is never refused.
     player.play().catch(() => {});
-    if (!hasAudio) return;
-    // Best-effort autoplay with sound. Browsers without prior engagement
-    // (Safari always, Chrome for first-time visitors) refuse it by pausing the
-    // video or rejecting the call, so check shortly after and fall back to
-    // muted playback. shortcut: fixed 400ms settle delay, replace with the
-    // player's "pause" event if it proves flaky.
-    const fallback = () => {
-      player.setMuted(true).catch(() => {});
-      setMuted(true);
-      player.play().catch(() => {});
-    };
-    Promise.all([player.setVolume(1), player.setMuted(false)])
-      .then(() => {
-        setMuted(false);
-        window.setTimeout(() => {
-          player
-            .getPaused()
-            .then((paused) => paused && fallback())
-            .catch(() => {});
-        }, 400);
-      })
-      .catch(fallback);
-  }, [siteReady, hasAudio]);
+  }, [siteReady]);
 
   useEffect(() => {
     // Player throws on an iframe that isn't a Vimeo embed yet.
@@ -267,24 +241,20 @@ export default function MastheadVideo({
     setMuted(next);
   };
 
-  // Called from click handlers: the gesture is what lets audio start.
-  const playWithSound = () => {
+  // Resumes in whatever mute state the viewer left it in.
+  const play = () => {
     const player = playerRef.current;
     if (!player) return;
     userPausedRef.current = false;
     endedRef.current = false;
-    setMuted(false);
-    Promise.all([player.setVolume(1), player.setMuted(false)])
-      .catch(() => {})
-      .then(() => player.play())
-      .catch(() => {});
+    player.play().catch(() => {});
   };
 
   const togglePlay = () => {
     if (!paused) {
       userPausedRef.current = true;
       playerRef.current?.pause().catch(() => {});
-    } else playWithSound();
+    } else play();
   };
 
   const restart = () => {
@@ -302,7 +272,7 @@ export default function MastheadVideo({
     player
       .setCurrentTime(0)
       .catch(() => {})
-      .then(playWithSound);
+      .then(play);
   };
 
   return (
@@ -375,8 +345,7 @@ export default function MastheadVideo({
         />
         </div>
       </div>
-      {controls && (
-        <div className="absolute bottom-300 right-300 flex gap-100">
+      <div className="absolute bottom-300 right-300 flex gap-100">
           <button
             type="button"
             onClick={restart}
@@ -394,37 +363,34 @@ export default function MastheadVideo({
           <button
             type="button"
             onClick={togglePlay}
-            aria-label={paused ? "Play video with sound" : "Pause video"}
+            aria-label={paused ? "Play video" : "Pause video"}
             className="size-500 rounded-full transition-opacity hover:opacity-80"
           >
             <PlayPauseIcon playing={!paused} className="size-full" />
           </button>
+          <button
+            type="button"
+            onClick={toggleMuted}
+            aria-label={muted ? "Unmute video" : "Mute video"}
+            aria-pressed={!muted}
+            className="flex size-500 items-center justify-center rounded-full border-1.5 border-neutral-0 bg-neutral-1000/40 text-neutral-0 transition-colors hover:bg-neutral-1000/70"
+          >
+            <span className="flex h-5 items-center gap-50" aria-hidden="true">
+              {BARS.map((bar, i) => (
+                <span
+                  key={i}
+                  className={`block h-5 w-50 rounded-full bg-neutral-0 transition-transform duration-200 ${muted ? "" : "animate-waveform reduced-motion:animate-none"}`}
+                  style={{
+                    transformOrigin: "center",
+                    transform: muted ? "scaleY(0.15)" : undefined,
+                    animationDelay: `${bar.delay}s`,
+                    animationDuration: `${bar.duration}s`,
+                  }}
+                />
+              ))}
+            </span>
+          </button>
         </div>
-      )}
-      {hasAudio && !controls && (
-        <button
-          type="button"
-          onClick={toggleMuted}
-          aria-label={muted ? "Unmute video" : "Mute video"}
-          aria-pressed={!muted}
-          className="absolute bottom-300 right-300 flex size-500 items-center justify-center rounded-full border-1.5 border-neutral-0 bg-neutral-1000/40 text-neutral-0 transition-colors hover:bg-neutral-1000/70"
-        >
-          <span className="flex h-5 items-center gap-50" aria-hidden="true">
-            {BARS.map((bar, i) => (
-              <span
-                key={i}
-                className={`block h-5 w-50 rounded-full bg-neutral-0 transition-transform duration-200 ${muted ? "" : "animate-waveform reduced-motion:animate-none"}`}
-                style={{
-                  transformOrigin: "center",
-                  transform: muted ? "scaleY(0.15)" : undefined,
-                  animationDelay: `${bar.delay}s`,
-                  animationDuration: `${bar.duration}s`,
-                }}
-              />
-            ))}
-          </span>
-        </button>
-      )}
     </div>
   );
 }
