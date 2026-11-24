@@ -223,8 +223,15 @@ export function useSmoothScroll() {
  * @param {object} scopeRef       ref to the grid element
  * @param {number} options.amount fraction of the grid visible before firing
  *                                (motion's viewport.amount)
+ * @param {boolean} options.fadeOnlyBelowMd  skip the rise below md. For a grid
+ *                                that is a horizontal scroll strip there: a
+ *                                card parked low overflows the strip's box,
+ *                                which clips it and makes the strip scroll.
  */
-export function useStaggerReveal(scopeRef, { amount = 0.333 } = {}) {
+export function useStaggerReveal(
+  scopeRef,
+  { amount = 0.333, fadeOnlyBelowMd = false } = {}
+) {
   useGSAP(
     () => {
       const threshold = `${amount * 100}%`;
@@ -236,7 +243,8 @@ export function useStaggerReveal(scopeRef, { amount = 0.333 } = {}) {
 
       // Smaller Y offset on mobile — 160px pushes the first card far below
       // the section heading when the grid is stacked in a single column.
-      const offsetY = window.innerWidth < 768 ? 60 : ITEM_OFFSET_Y;
+      const phone = window.innerWidth < 768;
+      const offsetY = phone ? (fadeOnlyBelowMd ? 0 : 60) : ITEM_OFFSET_Y;
 
       // Direct children only — grandchildren run their own reveals.
       const items = Array.from(scopeRef.current.children);
