@@ -193,7 +193,7 @@ export default function Footer() {
           {/* Phones, per design: no "Back to top"; Privacy Policy takes its
               place in this row (the list above hides its own copy below md).
               From md "Back to top" is the right-aligned button below. */}
-          <div className="flex basis-full items-center justify-between gap-x-4 md:hidden">
+          <div className="flex basis-full items-center gap-x-4 md:hidden">
             {pathname === "/privacy-policy" ? (
               <span
                 aria-current="page"
@@ -223,7 +223,7 @@ export default function Footer() {
       {/* No gap below md: the right column (cities, Motion toggle) is empty
           there, but a flex gap would still add 64px under the social links. */}
       <div className="flex flex-col gap-0 py-600 md:flex-row md:gap-800 md:justify-between md:py-800 md:pb-400 lg:gap-16 lg:py-20 lg:pb-400">
-        <div className="flex flex-1 flex-col gap-12 md:pb-600 lg:pb-1600">
+        <div className="flex flex-1 flex-col gap-12 pb-200 md:pb-600 lg:pb-1600">
           {/* data-left-reveal index 0 — document order supplies what
               custom={0} used to. */}
           <div
