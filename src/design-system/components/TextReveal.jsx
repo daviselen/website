@@ -24,6 +24,8 @@ export default function ParagraphReveal({
   // lets above-the-fold copy count as painted on the first frame without
   // changing how the reveal looks. Leave at 0 below the fold.
   fromOpacity = 0,
+  // Keep the copy hidden, with no trigger armed, until this goes false.
+  hold = false,
 }) {
   // Plain intrinsic tag now — motion[as] existed only to attach variants.
   // GSAP animates the real DOM node through a ref, so no wrapper component
@@ -41,6 +43,7 @@ export default function ParagraphReveal({
 
   useGSAP(
     () => {
+      if (hold) return;
       // motion propagated `variants` from parent to children automatically;
       // GSAP has no such inheritance, so the parent fade and the per-word
       // stagger become two explicit tweens on one timeline. Position "0"
@@ -82,7 +85,7 @@ export default function ParagraphReveal({
         delay
       );
     },
-    { scope: rootRef, dependencies: [text, staggerSpeed, delay, playOnMount] }
+    { scope: rootRef, dependencies: [text, staggerSpeed, delay, playOnMount, hold] }
   );
 
   return (

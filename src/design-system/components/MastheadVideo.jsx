@@ -40,6 +40,8 @@ export default function MastheadVideo({
   // and without a poster nothing large paints until the video arrives.
   poster,
   posterAlt = "",
+  // Called once the masthead wipe has finished.
+  onRevealed,
 }) {
   const [loaded, setLoaded] = useState(false);
   // Source aspect ratio (w / h) for the cover sizing below. The default is
@@ -81,7 +83,12 @@ export default function MastheadVideo({
   // the player's "loaded" only means its UI is up, and wiping then reveals an
   // all-black box before the first frame pops in.
   const revealReady = (poster ? posterSettled : playing) || timedOut;
-  useMediaReveal(wrapRef, { maskRef, mediaRef, loaded: revealReady });
+  useMediaReveal(wrapRef, {
+    maskRef,
+    mediaRef,
+    loaded: revealReady,
+    onComplete: onRevealed,
+  });
 
   // Defer the embed until window load: the video is ~4.5 MB plus ~350 KB of
   // player JS, and started eagerly it competes with everything that paints.

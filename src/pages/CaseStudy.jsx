@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Button from "../design-system/components/Button.jsx";
 import HeadingReveal from "../design-system/components/HeadingReveal.jsx";
@@ -13,7 +14,27 @@ const PLACEHOLDER_IMAGE = "/images/contact-masthead.jpg";
 
 export default function CaseStudy() {
   const { slug } = useParams();
+  // Keyed so the hold below starts fresh for each study.
+  return <CaseStudyView key={slug} slug={slug} />;
+}
+
+function CaseStudyView({ slug }) {
   const study = caseStudies[slug];
+  // The headline and copy sit inside the first viewport on most screens, so
+  // their scroll triggers are already past on load and they'd animate in
+  // alongside the masthead. Hold them until the video has wiped in, unless
+  // the visitor has already scrolled: then they're reading, not waiting.
+  const hasVideo = Boolean(study?.vimeoId);
+  const [holdText, setHoldText] = useState(
+    () => hasVideo && window.scrollY === 0
+  );
+  useEffect(() => {
+    if (!holdText) return undefined;
+    const release = () => setHoldText(false);
+    window.addEventListener("scroll", release, { once: true, passive: true });
+    return () => window.removeEventListener("scroll", release);
+  }, [holdText]);
+
   if (!study) return <NotFound />;
 
   const { campaign, client, headline, copy, vimeoId, link, mastheadAspect = "aspect-video" } = study;
@@ -60,6 +81,7 @@ export default function CaseStudy() {
             <MastheadVideo
               key={slug}
               vimeoId={vimeoId}
+              onRevealed={() => setHoldText(false)}
               className={`${mastheadAspect} w-full rounded-md`}
             />
           </div>
@@ -76,6 +98,7 @@ export default function CaseStudy() {
               key={slug}
               as="h1"
               text={headline}
+              hold={holdText}
               className="font-display text-fluid-2xl uppercase leading-none md:text-8xl xl:text-display-h3 2xl:text-display-h2"
             />
           </div>
@@ -83,6 +106,7 @@ export default function CaseStudy() {
             key={slug}
             className="text-fluid-sm md:text-xl lg:col-span-5 lg:col-start-8 lg:self-start lg:text-pre-title"
             text={copy}
+            hold={holdText}
           />
           {link && (
             // Own full-width row, like CTABanner: the big button's 480px

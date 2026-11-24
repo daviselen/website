@@ -341,14 +341,19 @@ export function useStaggerReveal(
  * @param {object}  maskRef   ref to the clip-path mask element
  * @param {object}  mediaRef  ref to the <img>/<video> being scaled
  * @param {boolean} loaded    gate — the tween only builds once this is true
+ * @param {function} onComplete  called when the wipe has finished
  */
-export function useMediaReveal(scopeRef, { maskRef, mediaRef, loaded }) {
+export function useMediaReveal(
+  scopeRef,
+  { maskRef, mediaRef, loaded, onComplete }
+) {
   useGSAP(
     () => {
       if (!loaded) return;
 
       const tl = gsap.timeline({
         defaults: { duration: REVEAL_DURATION, ease: EASE_REVEAL },
+        onComplete,
       });
 
       tl.fromTo(
