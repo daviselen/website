@@ -61,23 +61,6 @@ export default function MastheadImage({
           visibility: loaded ? "visible" : "hidden",
         }}
       >
-        {/* Centering lives on this wrapper, not the heading: HeadingReveal
-            animates the heading's own `y`, and GSAP writes `transform: none`
-            onto it when that tween settles — which would wipe out any
-            -translate-y-1/2 the heading carried. Flex centering survives it. */}
-        {title && (
-        <div className="absolute inset-y-0 left-300 z-50 lg:left-8 flex items-center">
-          {/* text-display-h2 (184px/128px) was fixed at every width — real
-              spec is desktop-only, and Masthead.jsx's own h1 already scales
-              the same way (text-6xl -> md:text-8xl -> lg:text-display-h1);
-              this one had no mobile/tablet step at all. */}
-          <HeadingReveal
-            as="h1"
-            text={title}
-            className="font-display text-fluid-2xl uppercase leading-none text-neutral-0 md:text-7xl lg:text-display-h2"
-          />
-        </div>
-        )}
         <div ref={maskRef} style={{ clipPath: "inset(0% 0% 100% 0%)" }}>
           {/* The radius lives on the <img>, not the outer wrapper: callers put
               page padding (px-8 pb-1000) on that wrapper, so a radius there
@@ -91,6 +74,25 @@ export default function MastheadImage({
             className="block size-full rounded-md object-cover"
           />
         </div>
+        {/* Below md the heading sits in flow under the image; from md it is
+            overlaid on it. Centering lives on this wrapper, not the heading:
+            HeadingReveal animates the heading's own `y`, and GSAP writes
+            `transform: none` onto it when that tween settles — which would
+            wipe out any -translate-y-1/2 the heading carried. Flex centering
+            survives it. */}
+        {title && (
+          <div className="pt-300 md:absolute md:inset-y-0 md:left-300 md:z-50 md:flex md:items-center md:pt-0 lg:left-8">
+            {/* text-display-h2 (184px/128px) was fixed at every width — real
+                spec is desktop-only, and Masthead.jsx's own h1 already scales
+                the same way (text-6xl -> md:text-8xl -> lg:text-display-h1);
+                this one had no mobile/tablet step at all. */}
+            <HeadingReveal
+              as="h1"
+              text={title}
+              className="font-display text-fluid-2xl uppercase leading-none text-neutral-0 md:text-7xl lg:text-display-h2"
+            />
+          </div>
+        )}
       </div>
     </div>
   );

@@ -212,7 +212,7 @@ export default function PageTransition() {
         <div id="smooth-wrapper" role="main">
           <div id="smooth-content">
             <div
-              className={`min-h-screen bg-surface-default light:bg-neutral-0 pt-800 md:pt-1000 lg:pt-1600 font-narrow font-light text-neutral-0 light:text-neutral-1000 ${
+              className={`min-h-screen bg-surface-default light:bg-neutral-0 pt-1200 md:pt-1000 lg:pt-1600 font-narrow font-light text-neutral-0 light:text-neutral-1000 ${
                 bareChrome ? "" : "pb-1000 lg:pb-1800"
               }`}
             >

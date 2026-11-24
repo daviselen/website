@@ -77,6 +77,7 @@ export default function Careers() {
               <JobPositionField value={job.title} />
               <JobMetaField
                 label="Group"
+                className="hidden gap-100 sm:px-200 md:flex md:flex-col md:px-400 lg:gap-200 lg:px-600"
                 value={<span className="inline-block">Creative</span>}
               />
               <JobMetaField

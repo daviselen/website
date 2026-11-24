@@ -8,7 +8,7 @@
 import posthog, { isPostHogConfigured } from "../../lib/posthog.js";
 
 const ROW_LAYOUT =
-  "grid grid-cols-1 md:grid-cols-[1fr_auto_auto] items-baseline py-200 lg:pt-600 lg:pb-800 hover:text-primary-300 light:hover:text-primary-800 transition-colors gap-y-200 lg:gap-y-400";
+  "grid grid-cols-1 md:grid-cols-[1fr_auto_auto] items-baseline py-200 lg:pt-600 lg:pb-800 hover:text-primary-300 light:hover:text-primary-800 transition-colors gap-y-100 md:gap-y-200 lg:gap-y-400";
 
 export function JobRow({ href, external = false, children }) {
   const handleClick = () => {
@@ -51,8 +51,9 @@ export function JobPositionField({ value, className = "flex flex-col gap-100 lg:
 export function JobMetaField({ label, value, valueRef, className = "flex flex-col gap-100 lg:gap-200 px-0 sm:px-200 md:px-400 lg:px-600" }) {
   return (
     <div className={className}>
-      <span className="text-small uppercase text-neutral-400 light:text-neutral-600">{label}</span>
-      <span ref={valueRef} className="shrink-0 font-narrow text-xl uppercase md:text-xl lg:text-pre-title">
+      {/* The Location label is dropped on phones; the value speaks for itself. */}
+      <span className={`text-small uppercase text-neutral-400 light:text-neutral-600 ${label === "Location" ? "hidden md:inline" : ""}`}>{label}</span>
+      <span ref={valueRef} className={`shrink-0 font-narrow uppercase ${label === "Location" ? "text-small md:text-xl" : "text-xl"} lg:text-pre-title`}>
         {value}
       </span>
     </div>

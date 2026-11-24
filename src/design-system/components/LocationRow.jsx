@@ -195,7 +195,7 @@ export default function LocationRow({ name, address, mapUrl, image }) {
         <div
           ref={revealRef}
           aria-hidden="true"
-          className="pointer-events-none absolute left-0 top-0 -z-10 aspect-video w-[25%] opacity-0"
+          className="pointer-events-none absolute left-0 top-0 -z-10 aspect-video w-1/2 opacity-0 md:w-1/4"
         >
           <div ref={innerRef} className="size-full overflow-hidden">
             <div
