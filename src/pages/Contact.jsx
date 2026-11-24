@@ -275,7 +275,7 @@ export default function Contact() {
           />
           <TextReveal
             text={`Tell us what you’re working on. \nWe’d love to hear about it.`}
-            className="mb-0 max-w-[32ch] md:mb-6 text-fluid-sm md:text-xl lg:text-pre-title"
+            className="mb-0 max-w-[32ch] md:mb-6 lg:max-w-none text-fluid-sm md:text-xl lg:text-pre-title xl:text-2xl min-[1440px]:text-pre-title"
           />
         </div>
         <form id="contact" onSubmit={handleSubmit} className="flex flex-col gap-200 md:gap-500 xl:col-start-1 xl:col-end-7 xl:row-start-1 xl:*:ml-1000">

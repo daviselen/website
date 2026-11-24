@@ -176,22 +176,36 @@ export default function Footer() {
               <span
                 key={n.to}
                 aria-current="page"
-                className="cursor-default font-narrow text-base leading-none md:text-link-social font-light uppercase opacity-50 light:opacity-60"
+                className={`${n.to === "/privacy-policy" ? "hidden md:inline " : ""}cursor-default font-narrow text-base leading-none md:text-link-social font-light uppercase opacity-50 light:opacity-60`}
               >
                 {n.label}
               </span>
             ) : (
-              <Link key={n.to} to={n.to} className={navLinkClass}>
+              <Link
+                key={n.to}
+                to={n.to}
+                className={`${navLinkClass}${n.to === "/privacy-policy" ? " hidden md:inline" : ""}`}
+              >
                 {n.label}
               </Link>
             ),
           )}
-          {/* Phones: "Back to top" is the last item of the wrapping row, as in
-              Figma. From md it is the separate right-aligned button below. */}
+          {/* Phones, per design: no "Back to top"; Privacy Policy takes its
+              place in this row (the list above hides its own copy below md).
+              From md "Back to top" is the right-aligned button below. */}
           <div className="flex basis-full items-center justify-between gap-x-4 md:hidden">
-            <button type="button" onClick={backToTop} className={`${navLinkClass} whitespace-nowrap`}>
-              Back to top
-            </button>
+            {pathname === "/privacy-policy" ? (
+              <span
+                aria-current="page"
+                className="cursor-default whitespace-nowrap font-narrow text-base font-light uppercase leading-none opacity-50 light:opacity-60"
+              >
+                Privacy Policy
+              </span>
+            ) : (
+              <Link to="/privacy-policy" className={`${navLinkClass} whitespace-nowrap`}>
+                Privacy Policy
+              </Link>
+            )}
             {!md && <ThemeToggle />}
           </div>
         </nav>
@@ -206,7 +220,9 @@ export default function Footer() {
           {md && !wide && <ThemeToggle />}
         </div>
       </div>
-      <div className="flex flex-col gap-800 py-600 md:flex-row md:justify-between md:py-800 md:pb-400 lg:gap-16 lg:py-20 lg:pb-400">
+      {/* No gap below md: the right column (cities, Motion toggle) is empty
+          there, but a flex gap would still add 64px under the social links. */}
+      <div className="flex flex-col gap-0 py-600 md:flex-row md:gap-800 md:justify-between md:py-800 md:pb-400 lg:gap-16 lg:py-20 lg:pb-400">
         <div className="flex flex-1 flex-col gap-12 md:pb-600 lg:pb-1600">
           {/* data-left-reveal index 0 — document order supplies what
               custom={0} used to. */}

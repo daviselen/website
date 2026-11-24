@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from "react";
+import { Fragment, useLayoutEffect, useRef } from "react";
 import { gsap, useGSAP, EASE_OUT } from "../animation";
 
 export default function ParagraphReveal({
@@ -95,20 +95,28 @@ export default function ParagraphReveal({
       // parent at 0 would hide them from LCP regardless.
       style={{ opacity: fromOpacity > 0 ? 1 : 0 }}
     >
-      {words.map((word, i) => (
-        <span
-          key={i}
-          data-reveal-word=""
-          className="inline-block"
-          style={{
-            opacity: fromOpacity,
-            transform: "translateY(8px)",
-            filter: "blur(4px)",
-          }}
-        >
-          {word}&nbsp;
-        </span>
-      ))}
+      {words.map((word, i) => {
+        // A word that starts with "\n" is an authored line break. Below lg
+        // it is ignored so the copy reflows to the phone width; from lg it
+        // is a real break.
+        const breaks = word.startsWith("\n");
+        return (
+          <Fragment key={i}>
+            {breaks && <br className="hidden lg:inline" />}
+            <span
+              data-reveal-word=""
+              className="inline-block"
+              style={{
+                opacity: fromOpacity,
+                transform: "translateY(8px)",
+                filter: "blur(4px)",
+              }}
+            >
+              {breaks ? word.slice(1) : word}&nbsp;
+            </span>
+          </Fragment>
+        );
+      })}
     </Tag>
   );
 }
