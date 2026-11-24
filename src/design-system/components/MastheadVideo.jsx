@@ -26,8 +26,9 @@ const BARS = [
 // is what makes it loop, and it forces the repeat regardless of loop=.
 const EMBED_PARAMS = "background=1&autoplay=1&loop=1&muted=1";
 
-// Longest the masthead waits for its poster before wiping in anyway.
-const POSTER_FALLBACK_MS = 4000;
+// Longest the masthead waits for its poster (or, without one, for the video's
+// first frame) before wiping in anyway.
+const REVEAL_FALLBACK_MS = 4000;
 
 export default function MastheadVideo({
   vimeoId,
@@ -53,6 +54,7 @@ export default function MastheadVideo({
   const posterRef = useRef(null);
   const playerRef = useRef(null);
   const [posterSettled, setPosterSettled] = useState(false);
+  const [playing, setPlaying] = useState(false);
   const [timedOut, setTimedOut] = useState(false);
 
   // The wipe is the only thing that un-hides the masthead, so it must never
@@ -63,14 +65,16 @@ export default function MastheadVideo({
     if (!poster) return undefined;
     // A cached poster can finish before React attaches onLoad.
     if (posterRef.current?.complete) setPosterSettled(true);
-    const timer = window.setTimeout(() => setTimedOut(true), POSTER_FALLBACK_MS);
+    const timer = window.setTimeout(() => setTimedOut(true), REVEAL_FALLBACK_MS);
     return () => window.clearTimeout(timer);
   }, [poster]);
 
   // First-frame-gated, not scroll-gated. With a poster the wipe plays as soon
   // as the poster has decoded, so the masthead paints early; the video then
-  // fades in over it. Without one it waits for the player's "loaded" event.
-  const revealReady = poster ? posterSettled || timedOut : loaded;
+  // fades in over it. Without one it waits for the video's first "playing":
+  // the player's "loaded" only means its UI is up, and wiping then reveals an
+  // all-black box before the first frame pops in.
+  const revealReady = (poster ? posterSettled : playing) || timedOut;
   useMediaReveal(wrapRef, { maskRef, mediaRef, loaded: revealReady });
 
   // Defer the embed until window load: the video is ~4.5 MB plus ~350 KB of
@@ -95,6 +99,14 @@ export default function MastheadVideo({
   const src = windowLoaded
     ? `https://player.vimeo.com/video/${vimeoId}?${EMBED_PARAMS}`
     : null;
+
+  // The no-poster backstop, timed from when the embed starts loading rather
+  // than from mount, so a slow window load doesn't use it up.
+  useEffect(() => {
+    if (poster || !src) return undefined;
+    const timer = window.setTimeout(() => setTimedOut(true), REVEAL_FALLBACK_MS);
+    return () => window.clearTimeout(timer);
+  }, [poster, src]);
 
   // Tell the preloader to wait until the video is actually playing, i.e.
   // buffered enough to start (the player's "loaded" event only means its UI is
@@ -174,6 +186,7 @@ export default function MastheadVideo({
       player.on("playing", () => {
         if (primed) return;
         primed = true;
+        setPlaying(true);
         releaseMediaRef.current?.();
         if (!siteReadyRef.current) {
           player
