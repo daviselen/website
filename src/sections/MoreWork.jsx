@@ -8,13 +8,13 @@ import { useRef } from "react";
 import Card from "../design-system/components/Card.jsx";
 import HeadingReveal from "../design-system/components/HeadingReveal.jsx";
 import ScrollIndicator from "../design-system/components/ScrollIndicator.jsx";
-import { useStaggerReveal } from "../design-system/animation.js";
+import { LINE_DELAY, useStaggerReveal } from "../design-system/animation.js";
 import { nextWork } from "../data/work.js";
 
 export default function MoreWork({ current }) {
   const scrollerRef = useRef(null);
   const gridRef = useRef(null);
-  useStaggerReveal(gridRef, { amount: 0.333, fadeOnlyBelowMd: true });
+  useStaggerReveal(gridRef, { amount: 0.333, fadeOnly: true });
   const items = nextWork(current);
 
   return (
@@ -42,7 +42,7 @@ export default function MoreWork({ current }) {
           role="list"
           className="flex gap-x-300 pl-300 after:-ml-px after:block after:w-px after:shrink-0 md:grid md:grid-cols-3 md:gap-1000 md:pl-0 md:after:hidden lg:gap-8"
         >
-          {items.map(({ title, client, src, to }) => (
+          {items.map(({ title, client, src, to }, i) => (
             // basis-5/6 of the strip's content box leaves the same ~40px
             // sliver of the next card as the home page's strip.
             <li key={to} className="max-w-lg shrink-0 basis-5/6 snap-start md:max-w-none md:basis-auto">
@@ -54,6 +54,8 @@ export default function MoreWork({ current }) {
                 to={to}
                 size="med"
                 aspect="image-card"
+                maskReveal
+                maskDelay={i * LINE_DELAY}
               />
             </li>
           ))}
