@@ -71,12 +71,12 @@ export default function CaseStudy() {
           />
         )}
         <div className="grid grid-cols-1 gap-600 px-300 lg:grid-cols-12 lg:gap-800 lg:gap-x-8 lg:px-8 lg:pt-1000">
-          <div className="flex flex-col gap-300 lg:col-span-6 lg:gap-600 2xl:gap-1000">
+          <div className="flex flex-col gap-300 lg:col-span-6 xl:col-span-7 min-[1721px]:col-span-6 lg:gap-600 2xl:gap-1000">
             <HeadingReveal
               key={slug}
               as="h1"
               text={headline}
-              className="font-display text-fluid-2xl uppercase leading-none md:text-8xl xl:text-display-h2"
+              className="font-display text-fluid-2xl uppercase leading-none md:text-8xl xl:text-display-h3 2xl:text-display-h2"
             />
           </div>
           <TextReveal
