@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { useMediaReveal } from "../animation";
+import { gsap, useMediaReveal } from "../animation";
+import { prefersReducedMotion } from "../../lib/reducedMotion.js";
 import Picture from "./Picture";
+import PlayPauseIcon from "./PlayPauseIcon";
 import { holdForMedia, useSiteReady } from "../../lib/siteReady.js";
 
 // Per-bar animation-delay/-duration (seconds) so the 4 bars don't move in
@@ -40,6 +42,9 @@ export default function MastheadVideo({
   posterAlt = "",
   // Off for silent clips: no sound to toggle, so the mute button is not rendered.
   hasAudio = true,
+  // Play/pause + restart buttons in place of the mute button. Playing from
+  // them is always with sound.
+  controls = false,
 }) {
   const [loaded, setLoaded] = useState(false);
   // Source aspect ratio (w / h) for the cover sizing below. The default is
@@ -56,6 +61,13 @@ export default function MastheadVideo({
   const [posterSettled, setPosterSettled] = useState(false);
   const [playing, setPlaying] = useState(false);
   const [timedOut, setTimedOut] = useState(false);
+  const [paused, setPaused] = useState(true);
+  const [atStart, setAtStart] = useState(true);
+  // Set by the pause button so that scrolling back into view, or the site
+  // being released, doesn't resume a video the user stopped.
+  // With controls the video starts in that same stopped state: no autoplay.
+  const userPausedRef = useRef(controls);
+  const restartIconRef = useRef(null);
 
   // The wipe is the only thing that un-hides the masthead, so it must never
   // depend on a single success-only event: a failed <picture> source does not
@@ -128,6 +140,7 @@ export default function MastheadVideo({
     siteReadyRef.current = siteReady;
     const player = playerRef.current;
     if (!siteReady || !player || !inViewRef.current || endedRef.current) return;
+    if (userPausedRef.current) return;
     player.play().catch(() => {});
     if (!hasAudio) return;
     // Best-effort autoplay with sound. Browsers without prior engagement
@@ -182,13 +195,16 @@ export default function MastheadVideo({
       // First "playing" = buffered and running. Park it back on frame 0 and
       // let the preloader go; if the site is already released (the preloader
       // timed out first) just let it keep playing.
+      player.on("play", () => setPaused(false));
+      player.on("pause", () => setPaused(true));
+      player.on("timeupdate", ({ seconds }) => setAtStart(seconds < 0.25));
       let primed = false;
       player.on("playing", () => {
         if (primed) return;
         primed = true;
         setPlaying(true);
         releaseMediaRef.current?.();
-        if (!siteReadyRef.current) {
+        if (!siteReadyRef.current || userPausedRef.current) {
           player
             .pause()
             .then(() => player.setCurrentTime(0))
@@ -210,7 +226,11 @@ export default function MastheadVideo({
       observer = new IntersectionObserver(([entry]) => {
         inViewRef.current = entry.isIntersecting;
         if (!entry.isIntersecting) player.pause().catch(() => {});
-        else if (!endedRef.current && siteReadyRef.current) {
+        else if (
+          !endedRef.current &&
+          siteReadyRef.current &&
+          !userPausedRef.current
+        ) {
           player.play().catch(() => {});
         }
       });
@@ -231,6 +251,9 @@ export default function MastheadVideo({
       player?.off("loaded");
       player?.off("playing");
       player?.off("ended");
+      player?.off("play");
+      player?.off("pause");
+      player?.off("timeupdate");
     };
   }, [src]);
 
@@ -242,6 +265,44 @@ export default function MastheadVideo({
     // bearing, not just tidy.
     playerRef.current?.setMuted(next);
     setMuted(next);
+  };
+
+  // Called from click handlers: the gesture is what lets audio start.
+  const playWithSound = () => {
+    const player = playerRef.current;
+    if (!player) return;
+    userPausedRef.current = false;
+    endedRef.current = false;
+    setMuted(false);
+    Promise.all([player.setVolume(1), player.setMuted(false)])
+      .catch(() => {})
+      .then(() => player.play())
+      .catch(() => {});
+  };
+
+  const togglePlay = () => {
+    if (!paused) {
+      userPausedRef.current = true;
+      playerRef.current?.pause().catch(() => {});
+    } else playWithSound();
+  };
+
+  const restart = () => {
+    const player = playerRef.current;
+    if (!player) return;
+    // One quick counter-clockwise turn. Only the arrow visibly moves: the
+    // circle is symmetric.
+    if (!prefersReducedMotion()) {
+      gsap.fromTo(
+        restartIconRef.current,
+        { rotation: 0 },
+        { rotation: -360, duration: 0.5, ease: "power2.out", overwrite: true }
+      );
+    }
+    player
+      .setCurrentTime(0)
+      .catch(() => {})
+      .then(playWithSound);
   };
 
   return (
@@ -314,7 +375,33 @@ export default function MastheadVideo({
         />
         </div>
       </div>
-      {hasAudio && (
+      {controls && (
+        <div className="absolute bottom-300 right-300 flex gap-100">
+          <button
+            type="button"
+            onClick={restart}
+            disabled={atStart}
+            aria-label="Restart video"
+            className="size-500 rounded-full transition-opacity hover:opacity-80 disabled:cursor-default disabled:opacity-40 disabled:hover:opacity-40"
+          >
+            <img
+              ref={restartIconRef}
+              src="/icons/icon-restart.svg"
+              alt=""
+              className="size-full"
+            />
+          </button>
+          <button
+            type="button"
+            onClick={togglePlay}
+            aria-label={paused ? "Play video with sound" : "Pause video"}
+            className="size-500 rounded-full transition-opacity hover:opacity-80"
+          >
+            <PlayPauseIcon playing={!paused} className="size-full" />
+          </button>
+        </div>
+      )}
+      {hasAudio && !controls && (
         <button
           type="button"
           onClick={toggleMuted}

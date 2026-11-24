@@ -59,6 +59,7 @@ export default function CaseStudy() {
             <MastheadVideo
               key={slug}
               vimeoId={vimeoId}
+              controls
               className={`${mastheadAspect} w-full rounded-md`}
             />
           </div>
