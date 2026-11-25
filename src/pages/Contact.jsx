@@ -265,20 +265,20 @@ export default function Contact() {
       </section>
       <section
         id="form"
-        className="relative mx-300 mt-1000 flex flex-col gap-600 rounded-md bg-surface-alt light:bg-neutral-100 px-200 py-500 sm:px-800 md:py-1000 lg:px-0 text-neutral-0 light:text-neutral-1000 md:mt-3000 lg:mx-8 lg:mt-3000 lg:gap-1000 xl:grid xl:grid-cols-12 xl:gap-400"
+        className="relative mx-300 mt-1000 flex flex-col gap-400 md:gap-600 rounded-md bg-surface-alt light:bg-neutral-100 px-200 py-500 sm:px-800 md:py-1000 lg:px-0 text-neutral-0 light:text-neutral-1000 md:mt-3000 lg:mx-8 lg:mt-3000 lg:gap-1000 xl:grid xl:grid-cols-12 xl:gap-400"
       >
-        <div className="flex flex-col gap-600 lg:gap-500 xl:col-start-9 xl:-col-end-1 xl:row-start-1">
+        <div className="flex flex-col gap-300 md:gap-600 lg:gap-500 xl:col-start-9 xl:-col-end-1 xl:row-start-1">
           <HeadingReveal
             as="h2"
             text={`Let’s get \nin touch`}
             className="font-display text-fluid-2xl uppercase leading-none md:text-8xl lg:text-display-h3"
           />
           <TextReveal
-            text={`Sed ut perspiciatis unde omnis \niste natus error sit voluptatem.`}
-            className="mb-6 max-w-[22ch] text-fluid-sm md:text-xl lg:text-pre-title"
+            text={`Tell us what you’re working on. \nWe’d love to hear about it.`}
+            className="mb-0 max-w-[32ch] md:mb-6 lg:max-w-none text-fluid-sm md:text-xl lg:text-pre-title xl:text-2xl min-[1440px]:text-pre-title"
           />
         </div>
-        <form id="contact" onSubmit={handleSubmit} className="flex flex-col gap-500 xl:col-start-1 xl:col-end-7 xl:row-start-1 xl:*:ml-1000">
+        <form id="contact" onSubmit={handleSubmit} className="flex flex-col gap-200 md:gap-500 xl:col-start-1 xl:col-end-7 xl:row-start-1 xl:*:ml-1000">
           <StyledField type="text" label="Name" name="name" gap="0" />
           <StyledField type="email" label="E-mail" name="email" gap="0" />
           <StyledField gap="0">

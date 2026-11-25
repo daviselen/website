@@ -15,7 +15,7 @@ import { prefersReducedMotion } from "./reducedMotion.js";
 
 // Backstop in case the preloader never reports back (it throws, or is
 // unmounted mid-run): the site must not stay frozen.
-const HARD_LIMIT_MS = 20000;
+const HARD_LIMIT_MS = 8000;
 
 let ready = false;
 const listeners = new Set();

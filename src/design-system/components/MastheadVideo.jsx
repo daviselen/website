@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { useMediaReveal } from "../animation";
+import { gsap, useGSAP, useMediaReveal } from "../animation";
+import { prefersReducedMotion } from "../../lib/reducedMotion.js";
 import Picture from "./Picture";
+import PlayPauseIcon from "./PlayPauseIcon";
 import { holdForMedia, useSiteReady } from "../../lib/siteReady.js";
 
 // Per-bar animation-delay/-duration (seconds) so the 4 bars don't move in
@@ -26,8 +28,19 @@ const BARS = [
 // is what makes it loop, and it forces the repeat regardless of loop=.
 const EMBED_PARAMS = "background=1&autoplay=1&loop=1&muted=1";
 
-// Longest the masthead waits for its poster before wiping in anyway.
-const POSTER_FALLBACK_MS = 4000;
+// Longest the masthead waits for its poster (or, without one, for the video's
+// first frame) before wiping in anyway.
+const REVEAL_FALLBACK_MS = 4000;
+
+// The embed waits for window load, but one hung request elsewhere on the page
+// would otherwise keep it from ever starting.
+const WINDOW_LOAD_FALLBACK_MS = 5000;
+
+// An embed that hasn't started playing this long after it was mounted is
+// remounted, up to MAX_EMBED_RETRIES times, then given up on: the iframe is
+// hidden over the poster and the controls are dropped.
+const EMBED_STALL_MS = 8000;
+const MAX_EMBED_RETRIES = 2;
 
 export default function MastheadVideo({
   vimeoId,
@@ -37,8 +50,8 @@ export default function MastheadVideo({
   // and without a poster nothing large paints until the video arrives.
   poster,
   posterAlt = "",
-  // Off for silent clips: no sound to toggle, so the mute button is not rendered.
-  hasAudio = true,
+  // Called once the masthead wipe has finished.
+  onRevealed,
 }) {
   const [loaded, setLoaded] = useState(false);
   // Source aspect ratio (w / h) for the cover sizing below. The default is
@@ -53,7 +66,16 @@ export default function MastheadVideo({
   const posterRef = useRef(null);
   const playerRef = useRef(null);
   const [posterSettled, setPosterSettled] = useState(false);
+  const [playing, setPlaying] = useState(false);
   const [timedOut, setTimedOut] = useState(false);
+  const [paused, setPaused] = useState(true);
+  const [atStart, setAtStart] = useState(true);
+  // Set by the pause button so that scrolling back into view, or the site
+  // being released, doesn't resume a video the user stopped.
+  const userPausedRef = useRef(false);
+  const restartIconRef = useRef(null);
+  const controlsRef = useRef(null);
+  const [revealed, setRevealed] = useState(false);
 
   // The wipe is the only thing that un-hides the masthead, so it must never
   // depend on a single success-only event: a failed <picture> source does not
@@ -63,15 +85,48 @@ export default function MastheadVideo({
     if (!poster) return undefined;
     // A cached poster can finish before React attaches onLoad.
     if (posterRef.current?.complete) setPosterSettled(true);
-    const timer = window.setTimeout(() => setTimedOut(true), POSTER_FALLBACK_MS);
+    const timer = window.setTimeout(() => setTimedOut(true), REVEAL_FALLBACK_MS);
     return () => window.clearTimeout(timer);
   }, [poster]);
 
   // First-frame-gated, not scroll-gated. With a poster the wipe plays as soon
   // as the poster has decoded, so the masthead paints early; the video then
-  // fades in over it. Without one it waits for the player's "loaded" event.
-  const revealReady = poster ? posterSettled || timedOut : loaded;
-  useMediaReveal(wrapRef, { maskRef, mediaRef, loaded: revealReady });
+  // fades in over it. Without one it waits for the video's first "playing":
+  // the player's "loaded" only means its UI is up, and wiping then reveals an
+  // all-black box before the first frame pops in.
+  const revealReady = (poster ? posterSettled : playing) || timedOut;
+  useMediaReveal(wrapRef, {
+    maskRef,
+    mediaRef,
+    loaded: revealReady,
+    onComplete: () => {
+      setRevealed(true);
+      onRevealed?.();
+    },
+  });
+
+  // The controls stay hidden until the wipe has finished, then fade up one by
+  // one. clearProps hands opacity back to the buttons' own hover/disabled
+  // classes afterwards.
+  useGSAP(
+    () => {
+      if (!revealed) return;
+      const reduced = prefersReducedMotion();
+      gsap.fromTo(
+        controlsRef.current.children,
+        { autoAlpha: 0, y: 8 },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: reduced ? 0 : 0.5,
+          stagger: reduced ? 0 : 0.12,
+          ease: "power2.out",
+          clearProps: "opacity,visibility,transform",
+        }
+      );
+    },
+    { scope: controlsRef, dependencies: [revealed] }
+  );
 
   // Defer the embed until window load: the video is ~4.5 MB plus ~350 KB of
   // player JS, and started eagerly it competes with everything that paints.
@@ -87,14 +142,30 @@ export default function MastheadVideo({
     if (windowLoaded) return undefined;
     const onLoad = () => setWindowLoaded(true);
     window.addEventListener("load", onLoad, { once: true });
-    return () => window.removeEventListener("load", onLoad);
+    const timer = window.setTimeout(onLoad, WINDOW_LOAD_FALLBACK_MS);
+    return () => {
+      window.removeEventListener("load", onLoad);
+      window.clearTimeout(timer);
+    };
   }, [windowLoaded]);
 
+  const [attempt, setAttempt] = useState(0);
+  const [failed, setFailed] = useState(false);
+
   // The embed URL, withheld until then. An iframe with no src is inert: no
-  // player JS, no video.
+  // player JS, no video. The attempt number makes each retry a fresh URL, and
+  // so (as the iframe's key) a fresh iframe and player.
   const src = windowLoaded
-    ? `https://player.vimeo.com/video/${vimeoId}?${EMBED_PARAMS}`
+    ? `https://player.vimeo.com/video/${vimeoId}?${EMBED_PARAMS}${attempt ? `&retry=${attempt}` : ""}`
     : null;
+
+  // The no-poster backstop, timed from when the embed starts loading rather
+  // than from mount, so a slow window load doesn't use it up.
+  useEffect(() => {
+    if (poster || !src) return undefined;
+    const timer = window.setTimeout(() => setTimedOut(true), REVEAL_FALLBACK_MS);
+    return () => window.clearTimeout(timer);
+  }, [poster, src]);
 
   // Tell the preloader to wait until the video is actually playing, i.e.
   // buffered enough to start (the player's "loaded" event only means its UI is
@@ -116,30 +187,11 @@ export default function MastheadVideo({
     siteReadyRef.current = siteReady;
     const player = playerRef.current;
     if (!siteReady || !player || !inViewRef.current || endedRef.current) return;
+    if (userPausedRef.current) return;
+    // Always starts muted (EMBED_PARAMS); the mute button is the only way
+    // sound comes on, so autoplay is never refused.
     player.play().catch(() => {});
-    if (!hasAudio) return;
-    // Best-effort autoplay with sound. Browsers without prior engagement
-    // (Safari always, Chrome for first-time visitors) refuse it by pausing the
-    // video or rejecting the call, so check shortly after and fall back to
-    // muted playback. shortcut: fixed 400ms settle delay, replace with the
-    // player's "pause" event if it proves flaky.
-    const fallback = () => {
-      player.setMuted(true).catch(() => {});
-      setMuted(true);
-      player.play().catch(() => {});
-    };
-    Promise.all([player.setVolume(1), player.setMuted(false)])
-      .then(() => {
-        setMuted(false);
-        window.setTimeout(() => {
-          player
-            .getPaused()
-            .then((paused) => paused && fallback())
-            .catch(() => {});
-        }, 400);
-      })
-      .catch(fallback);
-  }, [siteReady, hasAudio]);
+  }, [siteReady]);
 
   useEffect(() => {
     // Player throws on an iframe that isn't a Vimeo embed yet.
@@ -157,6 +209,24 @@ export default function MastheadVideo({
     let observer;
     endedRef.current = false;
     let cancelled = false;
+    let primed = false;
+
+    // A hidden tab may legitimately hold off autoplay, so only a visible
+    // one counts as stalled.
+    let stallTimer;
+    const watchStall = () => {
+      stallTimer = window.setTimeout(() => {
+        if (primed) return;
+        if (document.visibilityState !== "visible") return watchStall();
+        setLoaded(false);
+        if (attempt < MAX_EMBED_RETRIES) setAttempt(attempt + 1);
+        else {
+          setFailed(true);
+          releaseMediaRef.current?.();
+        }
+      }, EMBED_STALL_MS);
+    };
+    watchStall();
     import("@vimeo/player").then(({ default: Player }) => {
       if (cancelled) return;
       player = new Player(videoRef.current);
@@ -170,12 +240,15 @@ export default function MastheadVideo({
       // First "playing" = buffered and running. Park it back on frame 0 and
       // let the preloader go; if the site is already released (the preloader
       // timed out first) just let it keep playing.
-      let primed = false;
+      player.on("play", () => setPaused(false));
+      player.on("pause", () => setPaused(true));
+      player.on("timeupdate", ({ seconds }) => setAtStart(seconds < 0.25));
       player.on("playing", () => {
         if (primed) return;
         primed = true;
+        setPlaying(true);
         releaseMediaRef.current?.();
-        if (!siteReadyRef.current) {
+        if (!siteReadyRef.current || userPausedRef.current) {
           player
             .pause()
             .then(() => player.setCurrentTime(0))
@@ -197,7 +270,11 @@ export default function MastheadVideo({
       observer = new IntersectionObserver(([entry]) => {
         inViewRef.current = entry.isIntersecting;
         if (!entry.isIntersecting) player.pause().catch(() => {});
-        else if (!endedRef.current && siteReadyRef.current) {
+        else if (
+          !endedRef.current &&
+          siteReadyRef.current &&
+          !userPausedRef.current
+        ) {
           player.play().catch(() => {});
         }
       });
@@ -214,12 +291,16 @@ export default function MastheadVideo({
     // component actually unmounts.
     return () => {
       cancelled = true;
+      window.clearTimeout(stallTimer);
       observer?.disconnect();
       player?.off("loaded");
       player?.off("playing");
       player?.off("ended");
+      player?.off("play");
+      player?.off("pause");
+      player?.off("timeupdate");
     };
-  }, [src]);
+  }, [src, attempt]);
 
   const toggleMuted = () => {
     const next = !muted;
@@ -229,6 +310,40 @@ export default function MastheadVideo({
     // bearing, not just tidy.
     playerRef.current?.setMuted(next);
     setMuted(next);
+  };
+
+  // Resumes in whatever mute state the viewer left it in.
+  const play = () => {
+    const player = playerRef.current;
+    if (!player) return;
+    userPausedRef.current = false;
+    endedRef.current = false;
+    player.play().catch(() => {});
+  };
+
+  const togglePlay = () => {
+    if (!paused) {
+      userPausedRef.current = true;
+      playerRef.current?.pause().catch(() => {});
+    } else play();
+  };
+
+  const restart = () => {
+    const player = playerRef.current;
+    if (!player) return;
+    // One quick counter-clockwise turn. Only the arrow visibly moves: the
+    // circle is symmetric.
+    if (!prefersReducedMotion()) {
+      gsap.fromTo(
+        restartIconRef.current,
+        { rotation: 0 },
+        { rotation: -360, duration: 0.5, ease: "power2.out", overwrite: true }
+      );
+    }
+    player
+      .setCurrentTime(0)
+      .catch(() => {})
+      .then(play);
   };
 
   return (
@@ -272,6 +387,7 @@ export default function MastheadVideo({
           />
         )}
         <iframe
+          key={src}
           ref={videoRef}
           src={src ?? undefined}
           // Both embed modes fit the video inside the iframe (background
@@ -293,7 +409,7 @@ export default function MastheadVideo({
             // opaque white canvas behind the iframe in dark mode (same as
             // Overlay's player).
             colorScheme: "light",
-            opacity: poster && !loaded ? 0 : 1,
+            opacity: failed || (poster && !loaded) ? 0 : 1,
             transition: "opacity 0.6s ease-out",
           }}
           allow="autoplay; fullscreen"
@@ -301,30 +417,55 @@ export default function MastheadVideo({
         />
         </div>
       </div>
-      {hasAudio && (
-        <button
-          type="button"
-          onClick={toggleMuted}
-          aria-label={muted ? "Unmute video" : "Mute video"}
-          aria-pressed={!muted}
-          className="absolute bottom-300 right-300 flex size-500 items-center justify-center rounded-full border-1.5 border-neutral-0 bg-neutral-1000/40 text-neutral-0 transition-colors hover:bg-neutral-1000/70"
-        >
-          <span className="flex h-5 items-center gap-50" aria-hidden="true">
-            {BARS.map((bar, i) => (
-              <span
-                key={i}
-                className={`block h-5 w-50 rounded-full bg-neutral-0 transition-transform duration-200 ${muted ? "" : "animate-waveform reduced-motion:animate-none"}`}
-                style={{
-                  transformOrigin: "center",
-                  transform: muted ? "scaleY(0.15)" : undefined,
-                  animationDelay: `${bar.delay}s`,
-                  animationDuration: `${bar.duration}s`,
-                }}
-              />
-            ))}
-          </span>
-        </button>
-      )}
+      <div
+        ref={controlsRef}
+        className={`absolute bottom-300 right-300 flex gap-100 ${revealed && !failed ? "" : "invisible"}`}
+      >
+          <button
+            type="button"
+            onClick={restart}
+            disabled={atStart}
+            aria-label="Restart video"
+            className="size-500 rounded-full transition-opacity hover:opacity-80 disabled:cursor-default disabled:opacity-40 disabled:hover:opacity-40"
+          >
+            <img
+              ref={restartIconRef}
+              src="/icons/icon-restart.svg"
+              alt=""
+              className="size-full"
+            />
+          </button>
+          <button
+            type="button"
+            onClick={togglePlay}
+            aria-label={paused ? "Play video" : "Pause video"}
+            className="size-500 rounded-full transition-opacity hover:opacity-80"
+          >
+            <PlayPauseIcon playing={!paused} className="size-full" />
+          </button>
+          <button
+            type="button"
+            onClick={toggleMuted}
+            aria-label={muted ? "Unmute video" : "Mute video"}
+            aria-pressed={!muted}
+            className="flex size-500 items-center justify-center rounded-full border-1.5 border-neutral-0 bg-neutral-1000/40 text-neutral-0 transition-colors hover:bg-neutral-1000/70"
+          >
+            <span className="flex h-5 items-center gap-50" aria-hidden="true">
+              {BARS.map((bar, i) => (
+                <span
+                  key={i}
+                  className={`block h-5 w-50 rounded-full bg-neutral-0 transition-transform duration-200 ${muted ? "" : "animate-waveform reduced-motion:animate-none"}`}
+                  style={{
+                    transformOrigin: "center",
+                    transform: muted ? "scaleY(0.15)" : undefined,
+                    animationDelay: `${bar.delay}s`,
+                    animationDuration: `${bar.duration}s`,
+                  }}
+                />
+              ))}
+            </span>
+          </button>
+        </div>
     </div>
   );
 }

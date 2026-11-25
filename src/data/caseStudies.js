@@ -26,15 +26,21 @@ export const caseStudies = {
   "alex-in-the-wild": {
     campaign: "Alex in the Wild",
     client: "Smart & Final",
-    vimeoId: "1110424070",
+    vimeoId: "1249863288",
     headline: "Food shopping \nwith a side \nof humor",
     copy: "Sometimes a light touch can go a long way when dealing with a major consumer concern. With affordability increasingly top-of-mind to everyday shoppers, this is the approach we're taking for Smart & Final. Our quirky store associate Alex offers comic relief with a down-to-earth message: You don’t have to compromise on quality and value to still get those much-needed savings.",
   },
   "beyond-the-arches": {
     campaign: "Beyond the Arches",
     client: "McDonald's",
+    vimeoId: "926360455",
     headline: "Going beyond \nexpectations",
-    copy: "Our “Beyond the Arches” campaign took a sharp tour from traditional McDonald’s creative work. A client for nearly sixty years, McDonald’s trusted us to take a deep dive into the lives, struggles and success stories of their employees. Much more than purveyors of burgers and fries, this campaign provided a more complete picture of the people who help make what is arguably the most popular brand in the world what it is today.",
+    copy: "Our “Beyond the Arches” campaign took a sharp turn from traditional McDonald’s creative work. A client for nearly sixty years, McDonald’s trusted us to take a deep dive into the lives, struggles and success stories of their people. Each film, like Ted Williams’, is a regional story told in the person’s own words. Much more than purveyors of burgers and fries, they are the people who make the most popular brand in the world what it is today.",
+    // Optional outbound button under the copy.
+    link: {
+      href: "https://mcdonaldsregionalstories.com",
+      label: "Visit the site",
+    },
   },
   "super-snorkel-tours": {
     campaign: "Super Snorkel Tours",

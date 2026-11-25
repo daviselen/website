@@ -9,6 +9,7 @@ import HeadingReveal from "../design-system/components/HeadingReveal.jsx";
 import Marquee from "../design-system/components/Marquee.jsx";
 import Picture from "../design-system/components/Picture.jsx";
 import { holdForMedia } from "../lib/siteReady.js";
+import { useVideoFailsafe } from "../lib/useVideoFailsafe.js";
 
 // Hosted on Vimeo rather than self-served from /public/videos, so the overlay
 // gets its `embed` payload (an iframe player URL) instead of `src`. The
@@ -125,12 +126,9 @@ const people = [
     video: "/videos/people/amy-drell.mp4"
   },
   {
-    name: "Shelly Choi",
-    vimeo: "https://player.vimeo.com/progressive_redirect/playback/1249435961/rendition/540p/file.mp4%20%28540p%29.mp4?loc=external&signature=679d6890a79a22132d96b7687fa5351ec2da211f45ac5a20e6a7c4c2df7f1614",
-    img: {
-      src: "/images/portraits/shelly-choi.jpg",
-    },
-    video: "/videos/people/shelly-choi.mp4"
+    name: "Jessica Westlake",
+    vimeo: "https://player.vimeo.com/progressive_redirect/playback/1249435951/rendition/540p/file.mp4%20%28540p%29.mp4?loc=external&signature=5a3f3d156527ed6261c0c6fbd8674f6d2a7e92f6172ac46d7c96083efe0770f3",
+    video: "/videos/people/jessica-westlake.mp4"
   },
   // {
   //   name: "Jenny Rusinko",
@@ -158,21 +156,23 @@ const people = [
     },
     video: "/videos/people/alejandro-clopatofsky.mp4"
   },
-  // {
-  //   name: "Lucía Galicia",
-  //   img: {
-  //     src: "/images/portraits/lucia-galicia.jpg",
-  //   },
-  // },
+  {
+    name: "Shelly Choi",
+    vimeo: "https://player.vimeo.com/progressive_redirect/playback/1249435961/rendition/540p/file.mp4%20%28540p%29.mp4?loc=external&signature=679d6890a79a22132d96b7687fa5351ec2da211f45ac5a20e6a7c4c2df7f1614",
+    img: {
+      src: "/images/portraits/shelly-choi.jpg",
+    },
+    video: "/videos/people/shelly-choi.mp4"
+  },
   {
     name: "Derek Morrison",
     vimeo: "https://player.vimeo.com/progressive_redirect/playback/1249435954/rendition/540p/file.mp4%20%28540p%29.mp4?loc=external&signature=f17df01be7f9627112407878f83f50056e5acd7fd9758210181806c396973b55",
     video: "/videos/people/derek-morrison.mp4"
   },
   {
-    name: "Jessica Westlake",
-    vimeo: "https://player.vimeo.com/progressive_redirect/playback/1249435951/rendition/540p/file.mp4%20%28540p%29.mp4?loc=external&signature=5a3f3d156527ed6261c0c6fbd8674f6d2a7e92f6172ac46d7c96083efe0770f3",
-    video: "/videos/people/jessica-westlake.mp4"
+    name: "Julie Saracco",
+    vimeo: "https://player.vimeo.com/progressive_redirect/playback/1249457961/rendition/540p/file.mp4%20%28540p%29.mp4?loc=external&signature=04c46683324c5c6a61b664a515842a4607ecc17f061009769e1fa6ba093544fc",
+    video: "/videos/people/julie-saracco.mp4"
   },
   {
     name: "Brian Banks",
@@ -183,11 +183,6 @@ const people = [
     name: "Marcos Arroyo",
     vimeo: "https://player.vimeo.com/progressive_redirect/playback/1249436013/rendition/540p/file.mp4%20%28540p%29.mp4?loc=external&signature=9fe4569303e94c55587cf51bca7752f1dd45b4425930fed03a82dcab6a01a32c",
     video: "/videos/people/marcos-arroyo.mp4"
-  },
-  {
-    name: "Julie Saracco",
-    vimeo: "https://player.vimeo.com/progressive_redirect/playback/1249457961/rendition/540p/file.mp4%20%28540p%29.mp4?loc=external&signature=04c46683324c5c6a61b664a515842a4607ecc17f061009769e1fa6ba093544fc",
-    video: "/videos/people/julie-saracco.mp4"
   },
   // {
   //   name: "Christina Dominguez",
@@ -359,6 +354,7 @@ const CLIENT_ROWS = Array.from(
 // MastheadVideo: muted + playsInline make autoplay legal on Safari/iOS.
 function PersonVideo({ person }) {
   const ref = useRef(null);
+  useVideoFailsafe(ref);
 
   // Hold the preloader until the poster is decoded, so the tiles paint with
   // their thumbnails instead of empty boxes. Settles on error too (the
@@ -409,7 +405,7 @@ export default function About() {
     <main
       itemScope
       itemType="https://schema.org/Organization"
-      className="flex min-h-screen flex-col gap-0 bg-surface-default light:bg-neutral-0 pb-1000 font-narrow font-light text-neutral-0 light:text-neutral-1000 lg:pb-1800"
+      className="flex min-h-screen flex-col gap-0 bg-surface-default pb-1000 font-narrow font-light text-neutral-0 light:bg-neutral-0 light:text-neutral-1000 lg:pb-1800"
     >
       <meta itemProp="name" content="Davis Elen Advertising" />
       <meta itemProp="url" content="https://daviselen.com" />
@@ -454,16 +450,16 @@ export default function About() {
             phone (~80px tiles) — 2-up below md, real 4-up unchanged. */}
         <div className="grid grid-cols-2 gap-100 md:grid-cols-4 lg:gap-400">
           {people.map((person, index) => (
-          <div key={index} className="teams-video relative rounded-md bg-surface-alt light:bg-neutral-100">
+          <div key={index} className="relative rounded-md bg-surface-alt light:bg-neutral-100">
             {person.video ? (
               // aspect-video is Tailwind's built-in 16/9, so the tile keeps the
               // exact ratio the <Picture> below it uses.
               <PersonVideo person={person} />
             ) : (
-              <Picture className="flex aspect-[16/9] h-auto w-full items-center justify-center rounded-md" src={person.img.src} alt={person.name} />
+              <Picture className="flex aspect-video h-auto w-full items-center justify-center rounded-md" src={person.img.src} alt={person.name} />
             )}
             {person.video ? (
-              <span className="absolute bottom-100 left-100 flex gap-[6px] rounded-[3px] bg-neutral-1000/50 px-100 text-neutral-0 text-[12px] tracking-[0.03em]">
+              <span className="absolute bottom-100 left-100 flex gap-1.5 rounded bg-neutral-1000/50 px-100 text-xs leading-normal tracking-wide text-neutral-0">
                 <span className="py-100">{person.name}</span>
                 <img src="/icons/teams-mic.svg" alt="" />
               </span>

@@ -1,4 +1,6 @@
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Button from "../design-system/components/Button.jsx";
 import HeadingReveal from "../design-system/components/HeadingReveal.jsx";
 import MastheadImage from "../design-system/components/MastheadImage.jsx";
 import MastheadVideo from "../design-system/components/MastheadVideo.jsx";
@@ -12,10 +14,30 @@ const PLACEHOLDER_IMAGE = "/images/contact-masthead.jpg";
 
 export default function CaseStudy() {
   const { slug } = useParams();
+  // Keyed so the hold below starts fresh for each study.
+  return <CaseStudyView key={slug} slug={slug} />;
+}
+
+function CaseStudyView({ slug }) {
   const study = caseStudies[slug];
+  // The headline and copy sit inside the first viewport on most screens, so
+  // their scroll triggers are already past on load and they'd animate in
+  // alongside the masthead. Hold them until the video has wiped in, unless
+  // the visitor has already scrolled: then they're reading, not waiting.
+  const hasVideo = Boolean(study?.vimeoId);
+  const [holdText, setHoldText] = useState(
+    () => hasVideo && window.scrollY === 0
+  );
+  useEffect(() => {
+    if (!holdText) return undefined;
+    const release = () => setHoldText(false);
+    window.addEventListener("scroll", release, { once: true, passive: true });
+    return () => window.removeEventListener("scroll", release);
+  }, [holdText]);
+
   if (!study) return <NotFound />;
 
-  const { campaign, client, headline, copy, vimeoId, mastheadAspect = "aspect-video" } = study;
+  const { campaign, client, headline, copy, vimeoId, link, mastheadAspect = "aspect-video" } = study;
   const title = `${campaign}: ${client} | Davis Elen`;
   const url = `https://www.daviselen.com/work/${slug}`;
   const image = `https://www.daviselen.com${PLACEHOLDER_IMAGE}`;
@@ -59,6 +81,7 @@ export default function CaseStudy() {
             <MastheadVideo
               key={slug}
               vimeoId={vimeoId}
+              onRevealed={() => setHoldText(false)}
               className={`${mastheadAspect} w-full rounded-md`}
             />
           </div>
@@ -70,19 +93,37 @@ export default function CaseStudy() {
           />
         )}
         <div className="grid grid-cols-1 gap-600 px-300 lg:grid-cols-12 lg:gap-800 lg:gap-x-8 lg:px-8 lg:pt-1000">
-          <div className="flex flex-col gap-300 lg:col-span-6 lg:gap-600 2xl:gap-1000">
+          <div className="flex flex-col gap-300 lg:col-span-6 xl:col-span-7 min-[1721px]:col-span-6 lg:gap-600 2xl:gap-1000">
             <HeadingReveal
               key={slug}
               as="h1"
               text={headline}
-              className="font-display text-fluid-2xl uppercase leading-none md:text-8xl xl:text-display-h2"
+              hold={holdText}
+              className="font-display text-fluid-2xl uppercase leading-none md:text-8xl xl:text-display-h3 2xl:text-display-h2"
             />
           </div>
           <TextReveal
             key={slug}
             className="text-fluid-sm md:text-xl lg:col-span-5 lg:col-start-8 lg:self-start lg:text-pre-title"
             text={copy}
+            hold={holdText}
           />
+          {link && (
+            // Own full-width row, like CTABanner: the big button's 480px
+            // min-width would otherwise stretch the copy column at lg.
+            <div className="lg:col-span-12">
+              <Button
+                as="a"
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="solid"
+                size="big"
+              >
+                {link.label}
+              </Button>
+            </div>
+          )}
         </div>
       </section>
       <MoreWork key={slug} current={`/work/${slug}`} />

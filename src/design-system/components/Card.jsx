@@ -42,7 +42,13 @@ import { prefersReducedMotion } from "../../lib/reducedMotion.js";
 // `gap-[${n}]` wouldn't reliably get picked up.
 import { memo, useRef } from "react";
 import { Link } from "react-router-dom";
-import { gsap, useGSAP } from "../animation";
+import {
+  gsap,
+  useGSAP,
+  REVEAL_DURATION,
+  EASE_REVEAL,
+  toggleActions,
+} from "../animation";
 import HorizontalReveal from "./HorizontalReveal";
 import Picture from "./Picture";
 import TextReveal from "./TextReveal";
@@ -56,6 +62,9 @@ const aspectClasses = {
   "11/8": "aspect-11/8 md:aspect-[3/2]",
   "7/5": "aspect-7/5 md:aspect-[11/6]",
   "11/10": "aspect-11/10 md:aspect-[6/5]",
+  // The home "Fresh Out of the Box" ImageCard ratio (8/9), for case study
+  // cards shown outside that strip.
+  "image-card": "aspect-image-card",
 };
 
 const sizeConfig = {
@@ -90,6 +99,12 @@ function Card({
   headingItemProp,
   imageItemProp,
   parallax = false,
+  // Wipes the image in top-down on scroll, the same reveal as Shot and
+  // MediaObject. Opt-in: most Card grids fade the whole card instead.
+  // `maskDelay` staggers cards that enter together (a timeline position,
+  // not a tween delay, which ScrollTrigger would ignore).
+  maskReveal = false,
+  maskDelay = 0,
   slug,
   to,
   onClick,
@@ -99,6 +114,33 @@ function Card({
   // Refs for targeting elements and overflow clipping
   const containerRef = useRef(null);
   const imageRef = useRef(null);
+  const maskRef = useRef(null);
+
+  useGSAP(
+    () => {
+      if (!maskReveal || !maskRef.current) return;
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: maskRef.current,
+            start: "top bottom-=100",
+            end: "bottom top",
+            toggleActions: toggleActions("play reverse play reverse"),
+          },
+        })
+        .fromTo(
+          maskRef.current,
+          { clipPath: "inset(0% 0% 100% 0%)" },
+          {
+            clipPath: "inset(0% 0% 0% 0%)",
+            duration: REVEAL_DURATION,
+            ease: EASE_REVEAL,
+          },
+          maskDelay
+        );
+    },
+    { scope: maskRef, dependencies: [maskReveal, maskDelay] }
+  );
 
   useGSAP(
     () => {
@@ -139,7 +181,11 @@ function Card({
       {...(itemType ? { itemScope: true, itemType } : {})}
     >
       {/* Wrapper with overflow-hidden so the scaled/moving image stays inside bounds */}
-      <div className={`${aspectClasses[aspectKey] ?? aspectClasses[cfg.aspect]} w-full overflow-hidden rounded-md`}>
+      <div
+        ref={maskRef}
+        className={`${aspectClasses[aspectKey] ?? aspectClasses[cfg.aspect]} w-full overflow-hidden rounded-md`}
+        style={maskReveal ? { clipPath: "inset(0% 0% 100% 0%)" } : undefined}
+      >
         <Picture
           ref={imageRef}
           src={src}

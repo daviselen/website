@@ -2,7 +2,7 @@
 // selected option is full strength, the others faded.
 export default function SegmentedToggle({ label, options, value, onChange }) {
   return (
-    <div className="flex items-center gap-3 font-narrow text-link-social font-light uppercase">
+    <div className="flex items-center gap-3 font-narrow text-base leading-none md:text-link-social font-light uppercase">
       <span>{label}</span>
       <div role="group" aria-label={label} className="flex items-center gap-3">
         {options.map((option, i) => (

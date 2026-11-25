@@ -120,6 +120,8 @@ function buildReveal(root, lines, fullyInView, viewportInset = VIEWPORT_INSET) {
  *   the viewport, instead of firing as its top edge crosses the fold. For
  *   display type tall enough that the difference is visible — see
  *   startFullyInView above.
+ * @param {boolean} hold  Don't arm the reveal yet; the heading stays hidden
+ *   until this goes false. Non-split path only.
  */
 export default function HeadingReveal({
   text,
@@ -129,6 +131,7 @@ export default function HeadingReveal({
   splitLines = false,
   fullyInView = false,
   viewportInset = VIEWPORT_INSET,
+  hold = false,
 }) {
   const rootRef = useRef(null);
   const lines = text.split("\n");
@@ -138,6 +141,7 @@ export default function HeadingReveal({
       const root = rootRef.current;
 
       if (!splitLines) {
+        if (hold) return;
         buildReveal(root, "[data-reveal-line]", fullyInView, viewportInset);
         return;
       }
@@ -178,7 +182,7 @@ export default function HeadingReveal({
         split.revert();
       };
     },
-    { scope: rootRef, dependencies: [text, splitLines, fullyInView, viewportInset] }
+    { scope: rootRef, dependencies: [text, splitLines, fullyInView, viewportInset, hold] }
   );
 
   // SplitText reads the element's text and rebuilds it into line divs, so in

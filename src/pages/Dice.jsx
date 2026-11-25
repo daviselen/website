@@ -84,7 +84,6 @@ export default function Dice() {
       <section id="top">
         <MastheadClip
           mp4="/videos/dice_masthead_video.mp4"
-          poster="/images/work-dice-masthead.jpg"
           className="mx-300 mb-1000 aspect-contact-masthead rounded-md object-cover md:mx-400"
         />
         <div className="grid grid-cols-1 gap-600 px-300 lg:grid-cols-12 lg:gap-800 lg:gap-x-8 lg:px-8 lg:pt-1000">
@@ -106,22 +105,32 @@ export default function Dice() {
         </Shot>
       </section>
 
-      <MediaObject
-        titleSize="large"
-        title={`Brand \nPersonality`}
-        subhead="Messaging"
-        imgSrc="/images/work-dice-brand-personality.jpg"
-        imgAlt="Dice.com brand personality messaging artwork"
-      />
-
-      <Channel channel="Brand Identity" title="Photography and Logos">
-        {/* Figma also layers the brand hero asset (3533:943, 112% tall) over this
-            node; treated as a stray layer and not built. Unverified by screenshot. */}
-        <Shot
-          src="/images/work-dice-photography-system.jpg"
-          alt="The Dice.com photography system: a grid of black and white portraits of tech professionals"
-          ratio="1792 / 900"
-        />
+      <Channel channel="Brand Identity" title="&nbsp;">
+        <div className="grid grid-cols-1 gap-600 md:grid-cols-3 md:gap-400 lg:gap-8">
+          <Card
+            size="med"
+            heading="Logos"
+            src="/images/work-dice-logos.jpg"
+            alt="The Dice.com primary, secondary and tertiary logos"
+            maskReveal
+          />
+          <Card
+            size="med"
+            heading="Typography"
+            src="/images/work-dice-typography.jpg"
+            alt="The Degular typeface specimen used across Dice.com"
+            maskReveal
+            maskDelay={0.15}
+          />
+          <Card
+            size="med"
+            heading="Color Palette"
+            src="/images/work-dice-color-palette.jpg"
+            alt="The Dice.com color palette: Ruby, Onyx, Pearl, Garnet, Emerald, Topaz, Citrine and Platinum"
+            maskReveal
+            maskDelay={0.3}
+          />
+        </div>
       </Channel>
 
       <Channel channel="Campaign" title="Key Visuals">
@@ -136,6 +145,16 @@ export default function Dice() {
             alt="Dice.com key visual featuring tech professionals"
             ratio="880 / 622"
             delay={0.15}
+          />
+        </div>
+      </Channel>
+
+      <Channel channel="Outdoor" title="&nbsp;">
+        <div className="grid grid-cols-1 gap-400 lg:gap-8">
+          <Shot
+            src="/images/work-dice-outdoor.jpg"
+            alt="Dice.com billboard with the tagline 'Take `fn` `ctrl` of your career.'"
+            ratio="896 / 405"
           />
         </div>
       </Channel>

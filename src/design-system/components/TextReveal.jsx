@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from "react";
+import { Fragment, useLayoutEffect, useRef } from "react";
 import { gsap, useGSAP, EASE_OUT } from "../animation";
 
 export default function ParagraphReveal({
@@ -24,6 +24,8 @@ export default function ParagraphReveal({
   // lets above-the-fold copy count as painted on the first frame without
   // changing how the reveal looks. Leave at 0 below the fold.
   fromOpacity = 0,
+  // Keep the copy hidden, with no trigger armed, until this goes false.
+  hold = false,
 }) {
   // Plain intrinsic tag now — motion[as] existed only to attach variants.
   // GSAP animates the real DOM node through a ref, so no wrapper component
@@ -41,6 +43,7 @@ export default function ParagraphReveal({
 
   useGSAP(
     () => {
+      if (hold) return;
       // motion propagated `variants` from parent to children automatically;
       // GSAP has no such inheritance, so the parent fade and the per-word
       // stagger become two explicit tweens on one timeline. Position "0"
@@ -82,7 +85,7 @@ export default function ParagraphReveal({
         delay
       );
     },
-    { scope: rootRef, dependencies: [text, staggerSpeed, delay, playOnMount] }
+    { scope: rootRef, dependencies: [text, staggerSpeed, delay, playOnMount, hold] }
   );
 
   return (
@@ -95,20 +98,28 @@ export default function ParagraphReveal({
       // parent at 0 would hide them from LCP regardless.
       style={{ opacity: fromOpacity > 0 ? 1 : 0 }}
     >
-      {words.map((word, i) => (
-        <span
-          key={i}
-          data-reveal-word=""
-          className="inline-block"
-          style={{
-            opacity: fromOpacity,
-            transform: "translateY(8px)",
-            filter: "blur(4px)",
-          }}
-        >
-          {word}&nbsp;
-        </span>
-      ))}
+      {words.map((word, i) => {
+        // A word that starts with "\n" is an authored line break. Below lg
+        // it is ignored so the copy reflows to the phone width; from lg it
+        // is a real break.
+        const breaks = word.startsWith("\n");
+        return (
+          <Fragment key={i}>
+            {breaks && <br className="hidden lg:inline" />}
+            <span
+              data-reveal-word=""
+              className="inline-block"
+              style={{
+                opacity: fromOpacity,
+                transform: "translateY(8px)",
+                filter: "blur(4px)",
+              }}
+            >
+              {breaks ? word.slice(1) : word}&nbsp;
+            </span>
+          </Fragment>
+        );
+      })}
     </Tag>
   );
 }

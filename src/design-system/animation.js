@@ -223,8 +223,16 @@ export function useSmoothScroll() {
  * @param {object} scopeRef       ref to the grid element
  * @param {number} options.amount fraction of the grid visible before firing
  *                                (motion's viewport.amount)
+ * @param {boolean} options.fadeOnly  skip the rise at every size: cards fade
+ *                                in place, in sequence, with no vertical move.
+ *                                MoreWork's phone strip needs this too: a card
+ *                                parked low overflows the strip's box, which
+ *                                clips it and makes the strip scroll.
  */
-export function useStaggerReveal(scopeRef, { amount = 0.333 } = {}) {
+export function useStaggerReveal(
+  scopeRef,
+  { amount = 0.333, fadeOnly = false } = {}
+) {
   useGSAP(
     () => {
       const threshold = `${amount * 100}%`;
@@ -236,7 +244,8 @@ export function useStaggerReveal(scopeRef, { amount = 0.333 } = {}) {
 
       // Smaller Y offset on mobile — 160px pushes the first card far below
       // the section heading when the grid is stacked in a single column.
-      const offsetY = window.innerWidth < 768 ? 60 : ITEM_OFFSET_Y;
+      const phone = window.innerWidth < 768;
+      const offsetY = fadeOnly ? 0 : phone ? 60 : ITEM_OFFSET_Y;
 
       // Direct children only — grandchildren run their own reveals.
       const items = Array.from(scopeRef.current.children);
@@ -292,6 +301,7 @@ export function useStaggerReveal(scopeRef, { amount = 0.333 } = {}) {
       //    A delay would be ignored by a scrubbed tween, so the stagger lives
       //    in the ease instead: every card runs the same full span, and its ease
       //    stays at 0 until its own slot in that span.
+      if (fadeOnly) return;
       const span = ITEM_DURATION + (items.length - 1) * STAGGER_STEP;
       items.forEach((item, i) => {
         const slot = i * STAGGER_STEP;
@@ -333,14 +343,19 @@ export function useStaggerReveal(scopeRef, { amount = 0.333 } = {}) {
  * @param {object}  maskRef   ref to the clip-path mask element
  * @param {object}  mediaRef  ref to the <img>/<video> being scaled
  * @param {boolean} loaded    gate — the tween only builds once this is true
+ * @param {function} onComplete  called when the wipe has finished
  */
-export function useMediaReveal(scopeRef, { maskRef, mediaRef, loaded }) {
+export function useMediaReveal(
+  scopeRef,
+  { maskRef, mediaRef, loaded, onComplete }
+) {
   useGSAP(
     () => {
       if (!loaded) return;
 
       const tl = gsap.timeline({
         defaults: { duration: REVEAL_DURATION, ease: EASE_REVEAL },
+        onComplete,
       });
 
       tl.fromTo(
