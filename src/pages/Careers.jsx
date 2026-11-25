@@ -49,7 +49,7 @@ export default function Careers() {
             leftClassName="lg:pr-300 lg:col-span-6 lg:col-start-1"
             rightClassName="lg:pr-600 lg:col-span-6 lg:col-start-7"
             left="Davis Elen is one of the largest independently owned agencies in the country. We have a storied 75-year past, but we’re not resting on what we’ve done. We’re always looking for what’s next – for people who can bring fresh, no-holds-barred thinking and a similar independent spirit to the table. Might that be you?"
-            right="Headquartered in downtown Los Angeles but with highly talented people in offices in other major metro areas, our multicultural staff is expert in crafting work for the General Market, the Hispanic Market and Asian markets. Sound like your kind of place? If so, check out our open positions."
+            right="Headquartered in downtown Los Angeles but with highly talented people in offices in other major metro areas, our multicultural staff is expert in crafting work for the General Market, the Hispanic Market and Asian Markets. Sound like your kind of place? If so, check out our open positions."
           />
         </div>
       </section>
