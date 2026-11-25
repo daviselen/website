@@ -84,7 +84,6 @@ export default function Dice() {
       <section id="top">
         <MastheadClip
           mp4="/videos/dice_masthead_video.mp4"
-          poster="/images/work-dice-masthead.jpg"
           className="mx-300 mb-1000 aspect-contact-masthead rounded-md object-cover md:mx-400"
         />
         <div className="grid grid-cols-1 gap-600 px-300 lg:grid-cols-12 lg:gap-800 lg:gap-x-8 lg:px-8 lg:pt-1000">
