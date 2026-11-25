@@ -157,17 +157,22 @@ const people = [
     video: "/videos/people/alejandro-clopatofsky.mp4"
   },
   {
-    name: "Derek Morrison",
-    vimeo: "https://player.vimeo.com/progressive_redirect/playback/1249435954/rendition/540p/file.mp4%20%28540p%29.mp4?loc=external&signature=f17df01be7f9627112407878f83f50056e5acd7fd9758210181806c396973b55",
-    video: "/videos/people/derek-morrison.mp4"
-  },
-  {
     name: "Shelly Choi",
     vimeo: "https://player.vimeo.com/progressive_redirect/playback/1249435961/rendition/540p/file.mp4%20%28540p%29.mp4?loc=external&signature=679d6890a79a22132d96b7687fa5351ec2da211f45ac5a20e6a7c4c2df7f1614",
     img: {
       src: "/images/portraits/shelly-choi.jpg",
     },
     video: "/videos/people/shelly-choi.mp4"
+  },
+  {
+    name: "Derek Morrison",
+    vimeo: "https://player.vimeo.com/progressive_redirect/playback/1249435954/rendition/540p/file.mp4%20%28540p%29.mp4?loc=external&signature=f17df01be7f9627112407878f83f50056e5acd7fd9758210181806c396973b55",
+    video: "/videos/people/derek-morrison.mp4"
+  },
+  {
+    name: "Julie Saracco",
+    vimeo: "https://player.vimeo.com/progressive_redirect/playback/1249457961/rendition/540p/file.mp4%20%28540p%29.mp4?loc=external&signature=04c46683324c5c6a61b664a515842a4607ecc17f061009769e1fa6ba093544fc",
+    video: "/videos/people/julie-saracco.mp4"
   },
   {
     name: "Brian Banks",
@@ -178,11 +183,6 @@ const people = [
     name: "Marcos Arroyo",
     vimeo: "https://player.vimeo.com/progressive_redirect/playback/1249436013/rendition/540p/file.mp4%20%28540p%29.mp4?loc=external&signature=9fe4569303e94c55587cf51bca7752f1dd45b4425930fed03a82dcab6a01a32c",
     video: "/videos/people/marcos-arroyo.mp4"
-  },
-  {
-    name: "Julie Saracco",
-    vimeo: "https://player.vimeo.com/progressive_redirect/playback/1249457961/rendition/540p/file.mp4%20%28540p%29.mp4?loc=external&signature=04c46683324c5c6a61b664a515842a4607ecc17f061009769e1fa6ba093544fc",
-    video: "/videos/people/julie-saracco.mp4"
   },
   // {
   //   name: "Christina Dominguez",
