@@ -42,7 +42,7 @@ export default function Careers() {
       className="flex min-h-screen flex-col gap-0 bg-surface-default light:bg-neutral-0 pb-1000 sm:pb-1200 md:pb-1400 lg:pb-1800 font-narrow font-light text-neutral-0 light:text-neutral-1000"
     >
       <section id="top">
-        <MastheadImage src="/images/careers-masthead.jpg" alt="Get a Job" title={`Get \na Job`} />
+        <MastheadImage src="/images/careers-masthead.jpg" alt="Join the Team" title={`Join \nthe Team`} />
         <div className="px-300 lg:px-8">
           <SplitIntro
             gridClassName="lg:grid lg:grid-cols-12 lg:gap-400"
