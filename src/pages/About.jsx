@@ -156,12 +156,6 @@ const people = [
     },
     video: "/videos/people/alejandro-clopatofsky.mp4"
   },
-  // {
-  //   name: "Lucía Galicia",
-  //   img: {
-  //     src: "/images/portraits/lucia-galicia.jpg",
-  //   },
-  // },
   {
     name: "Derek Morrison",
     vimeo: "https://player.vimeo.com/progressive_redirect/playback/1249435954/rendition/540p/file.mp4%20%28540p%29.mp4?loc=external&signature=f17df01be7f9627112407878f83f50056e5acd7fd9758210181806c396973b55",
