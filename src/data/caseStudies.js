@@ -26,7 +26,7 @@ export const caseStudies = {
   "alex-in-the-wild": {
     campaign: "Alex in the Wild",
     client: "Smart & Final",
-    vimeoId: "1110424070",
+    vimeoId: "1249863288",
     headline: "Food shopping \nwith a side \nof humor",
     copy: "Sometimes a light touch can go a long way when dealing with a major consumer concern. With affordability increasingly top-of-mind to everyday shoppers, this is the approach we're taking for Smart & Final. Our quirky store associate Alex offers comic relief with a down-to-earth message: You don’t have to compromise on quality and value to still get those much-needed savings.",
   },
