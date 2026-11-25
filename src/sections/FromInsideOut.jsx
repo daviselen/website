@@ -55,52 +55,25 @@ const social = {
   alt: "Toyota social media content example",
   to: "/work/social-media",
 };
-const pr = {
-  heading: "Public Relations",
-  body: "Earned coverage, events, partnerships and the occasional stunt. If it gets people talking without a media buy behind it, we're interested.",
-  src: "/images/socialpr-public-relations.jpg",
-  alt: "Public relations event photo",
-};
-const culture = {
-  heading: "DE Culture",
-  body: "Mixed teams. Strong opinions. Steak and bones for everybody. We'd rather slow down the crazy ones than push the nice ones.",
-  src: "/images/socialpr-de-culture.jpg",
-  alt: "Davis Elen team member portrait",
-};
+// The Public Relations and DE Culture cards are hidden until their pages are
+// built; Social Media sits in PR's slot (right column, top) meanwhile. Their
+// copy, images and two-column layout are in this file's git history.
 
 export default function FromInsideOut() {
   return (
     <section id="from-inside-out" className="mt-1000 px-300 lg:mt-3000 lg:px-8">
       <div className="grid gap-600 md:grid-cols-2 md:gap-8">
-        <div className="flex flex-col gap-400 md:gap-600 lg:gap-2000">
-          <HeadingReveal as="h2" className="font-display text-fluid-2xl uppercase leading-none md:text-8xl lg:text-display-h3" text={`From the \nInside Out`} />
-          {/* Real photographed examples of client work, so these get full
-              CreativeWork microdata (name + image), unlike Proof's
-              unmarked arbitrary stats. */}
-          <Card
-            aspect="11/6"
-            {...social}
-            itemType="https://schema.org/CreativeWork"
-            headingItemProp="name"
-            imageItemProp="image"
-          />
-        </div>
-        <div className="flex flex-col gap-600 lg:gap-2000">
-          <Card
-            aspect="11/6"
-            {...pr}
-            itemType="https://schema.org/CreativeWork"
-            headingItemProp="name"
-            imageItemProp="image"
-          />
-          <Card
-            aspect="11/6"
-            {...culture}
-            itemType="https://schema.org/CreativeWork"
-            headingItemProp="name"
-            imageItemProp="image"
-          />
-        </div>
+        <HeadingReveal as="h2" className="font-display text-fluid-2xl uppercase leading-none md:text-8xl lg:text-display-h3" text={`From the \nInside Out`} />
+        {/* Real photographed examples of client work, so these get full
+            CreativeWork microdata (name + image), unlike Proof's
+            unmarked arbitrary stats. */}
+        <Card
+          aspect="11/6"
+          {...social}
+          itemType="https://schema.org/CreativeWork"
+          headingItemProp="name"
+          imageItemProp="image"
+        />
       </div>
     </section>
   );

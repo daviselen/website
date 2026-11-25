@@ -42,14 +42,14 @@ export default function Careers() {
       className="flex min-h-screen flex-col gap-0 bg-surface-default light:bg-neutral-0 pb-1000 sm:pb-1200 md:pb-1400 lg:pb-1800 font-narrow font-light text-neutral-0 light:text-neutral-1000"
     >
       <section id="top">
-        <MastheadImage src="/images/careers-masthead.jpg" alt="Get a Job" title={`Get \na Job`} />
+        <MastheadImage src="/images/careers-masthead.jpg" alt="Join the Team" title={`Join \nthe Team`} />
         <div className="px-300 lg:px-8">
           <SplitIntro
             gridClassName="lg:grid lg:grid-cols-12 lg:gap-400"
             leftClassName="lg:pr-300 lg:col-span-6 lg:col-start-1"
             rightClassName="lg:pr-600 lg:col-span-6 lg:col-start-7"
             left="Davis Elen is one of the largest independently owned agencies in the country. We have a storied 75-year past, but we’re not resting on what we’ve done. We’re always looking for what’s next – for people who can bring fresh, no-holds-barred thinking and a similar independent spirit to the table. Might that be you?"
-            right="Headquartered in downtown Los Angeles but with highly talented people in offices in other major metro areas, our multicultural staff is expert in crafting work for the General Market, the Hispanic Market and Asian markets. Sound like your kind of place? If so, check out our open positions."
+            right="Headquartered in downtown Los Angeles but with highly talented people in offices in other major metro areas, our multicultural staff is expert in crafting work for the General Market, the Hispanic Market and Asian Markets. Sound like your kind of place? If so, check out our open positions."
           />
         </div>
       </section>

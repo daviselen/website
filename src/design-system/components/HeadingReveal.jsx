@@ -77,8 +77,11 @@ function buildReveal(root, lines, fullyInView, viewportInset = VIEWPORT_INSET) {
     scrollTrigger: {
       trigger: root,
       start: fullyInView ? startFullyInView(root, viewportInset) : START_ON_ENTER,
-      // once: true — play on first enter; never re-hide or replay.
-      once: true,
+      // Play on first enter; never re-hide. Not `once: true`: that kills the
+      // trigger the moment it fires, and a trigger created already past its
+      // start (arriving from a scrolled page) fires inside its own creation,
+      // so it kills itself mid-refresh and corrupts ScrollTrigger's list.
+      toggleActions: "play none none none",
     },
   });
 

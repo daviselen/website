@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useRef } from "react";
+import { lazy, Suspense, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import MastheadImage from "../design-system/components/MastheadImage";
 import CTABanner from "../sections/CTABanner";
 import MediaObject from "../design-system/components/MediaObject.jsx";
@@ -399,6 +399,111 @@ function PersonVideo({ person }) {
   );
 }
 
+// Page size follows the grid's column count (1 / 3 / 4 columns, matching the
+// grid classes below) so a page is always whole rows: 4 / 6 / 12 people.
+const PAGE_SIZES = [
+  { query: "(min-width: 1024px)", size: 12 },
+  { query: "(min-width: 768px)", size: 6 },
+];
+const PHONE_PAGE_SIZE = 4;
+
+function pageSize() {
+  return PAGE_SIZES.find(({ query }) => window.matchMedia(query).matches)?.size ?? PHONE_PAGE_SIZE;
+}
+
+function subscribePageSize(callback) {
+  const lists = PAGE_SIZES.map(({ query }) => window.matchMedia(query));
+  lists.forEach((l) => l.addEventListener("change", callback));
+  return () => lists.forEach((l) => l.removeEventListener("change", callback));
+}
+
+function PagerButton({ direction, disabled, onClick }) {
+  const label = direction < 0 ? "Previous page" : "Next page";
+  return (
+    <button
+      type="button"
+      aria-label={label}
+      disabled={disabled}
+      onClick={onClick}
+      className={`flex size-600 shrink-0 items-center justify-center rounded-full bg-neutral-1000/70 text-neutral-0 transition-opacity hover:bg-neutral-1000 focus-visible:outline focus-visible:outline-2 focus-visible:outline-neutral-0 disabled:pointer-events-none disabled:opacity-40`}
+    >
+      {/* Masked so the icon takes the button's text colour in both themes. */}
+      <span
+        aria-hidden="true"
+        className={`size-300 bg-current lg:size-400 ${direction < 0 ? "-scale-x-100" : ""}`}
+        style={{
+          maskImage: "url(/icons/next.svg)",
+          WebkitMaskImage: "url(/icons/next.svg)",
+          maskSize: "contain",
+          WebkitMaskSize: "contain",
+          maskRepeat: "no-repeat",
+          WebkitMaskRepeat: "no-repeat",
+          maskPosition: "center",
+          WebkitMaskPosition: "center",
+        }}
+      />
+    </button>
+  );
+}
+
+// Gallery paging in the manner of a Teams call: < 1 / 2 >, left-aligned under
+// the grid, with the arrows dimmed at the ends.
+function PeopleGrid() {
+  const perPage = useSyncExternalStore(subscribePageSize, pageSize, () => PHONE_PAGE_SIZE);
+  // Tracks the first person on screen rather than a page number, so resizing
+  // across a breakpoint keeps that person visible.
+  const [first, setFirst] = useState(0);
+  const page = Math.floor(first / perPage);
+  const pages = Math.ceil(people.length / perPage);
+  const visible = people.slice(page * perPage, (page + 1) * perPage);
+  const fillers = perPage - visible.length;
+  const goTo = (n) => setFirst(n * perPage);
+
+  return (
+    <div
+      role="group"
+      aria-roledescription="carousel"
+      aria-label="People"
+      className="flex flex-col gap-600 lg:gap-1000"
+    >
+      <div>
+        {/* One column on phones, 3-up from md, the real 4-up from lg. */}
+        <div className="grid grid-cols-1 gap-100 md:grid-cols-3 md:gap-200 lg:grid-cols-4 lg:gap-400">
+          {visible.map((person) => (
+            <div key={person.name} className="relative rounded-md bg-surface-alt light:bg-neutral-100">
+              {person.video ? (
+                // aspect-video is Tailwind's built-in 16/9, so the tile keeps the
+                // exact ratio the <Picture> below it uses.
+                <PersonVideo person={person} />
+              ) : (
+                <Picture className="flex aspect-video h-auto w-full items-center justify-center rounded-md" src={person.img.src} alt={person.name} />
+              )}
+              {person.video && (
+                <span className="absolute bottom-100 left-100 flex gap-1.5 rounded bg-neutral-1000/50 px-100 text-xs leading-normal tracking-wide text-neutral-0">
+                  <span className="py-100">{person.name}</span>
+                  <img src="/icons/teams-mic.svg" alt="" />
+                </span>
+              )}
+            </div>
+          ))}
+          {/* Keeps a short last page the same height, so the content below
+              doesn't jump when paging. */}
+          {Array.from({ length: fillers }, (_, i) => (
+            <div key={i} aria-hidden="true" className="invisible aspect-video" />
+          ))}
+        </div>
+      </div>
+      <div className="flex items-center justify-center gap-100">
+        <PagerButton direction={-1} disabled={page === 0} onClick={() => goTo(page - 1)} />
+        <span aria-live="polite" className="text-center text-sm lg:text-body-hiai">
+          {page + 1} / {pages}
+        </span>
+        <PagerButton direction={1} disabled={page === pages - 1} onClick={() => goTo(page + 1)} />
+      </div>
+    </div>
+  );
+}
+
 export default function About() {
   const { openOverlay } = useOverlay();
   return (
@@ -446,29 +551,7 @@ export default function About() {
             text="This is the whole meeting. No account person you'll never see again, no bench of strangers who vanish after the pitch. The people in the room are the people who do the work."
           />
         </div>
-        {/* grid-cols-4 at every width put 12 portrait tiles four-across on a
-            phone (~80px tiles) — 2-up below md, real 4-up unchanged. */}
-        <div className="grid grid-cols-2 gap-100 md:grid-cols-4 lg:gap-400">
-          {people.map((person, index) => (
-          <div key={index} className="relative rounded-md bg-surface-alt light:bg-neutral-100">
-            {person.video ? (
-              // aspect-video is Tailwind's built-in 16/9, so the tile keeps the
-              // exact ratio the <Picture> below it uses.
-              <PersonVideo person={person} />
-            ) : (
-              <Picture className="flex aspect-video h-auto w-full items-center justify-center rounded-md" src={person.img.src} alt={person.name} />
-            )}
-            {person.video ? (
-              <span className="absolute bottom-100 left-100 flex gap-1.5 rounded bg-neutral-1000/50 px-100 text-xs leading-normal tracking-wide text-neutral-0">
-                <span className="py-100">{person.name}</span>
-                <img src="/icons/teams-mic.svg" alt="" />
-              </span>
-            ) : (
-              <></>
-            )}
-          </div>
-          ))}
-        </div>
+        <PeopleGrid />
       </section>
       <MediaObject
         imageSide="left"

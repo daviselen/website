@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { REVEAL_DURATION } from "../design-system/animation.js";
 
-const SIZE = 88; // edge; the isometric silhouette is √2 × this ≈ 124px wide
-const HALF = SIZE / 2;
-// Stage is wider than the cube because the cube's body diagonal is √3 × SIZE:
-// the corners would otherwise poke into the copy stacked under it.
-export const CUBE_STAGE = Math.round(SIZE * 1.75);
+// The edge length is a CSS variable so callers can size the cube responsively
+// (any CSS length, `clamp()` included); everything below is derived from it.
+const DEFAULT_SIZE = "88px";
+const HALF = "calc(var(--cube) / 2)";
+// Stage is wider than the cube because the cube's body diagonal is √3 × the
+// edge: the corners would otherwise poke into whatever sits beside it.
+const STAGE = "calc(var(--cube) * 1.75)";
 
 // 45° yaw under a 35.264° tilt is the exact isometric view.
 // Also the reduced-motion pose: the cube-spin keyframes start from it.
@@ -18,12 +20,12 @@ const EASE_REVEAL_CSS = "cubic-bezier(0.8, 0, 0.2, 1)";
 // Five faces are filled; the bottom stays empty, as it's never in view.
 // Array order is the reveal order.
 const FACES = [
-  { transform: `translateZ(${HALF}px)`, fill: "#1e5631" },
-  { transform: `rotateY(-90deg) translateZ(${HALF}px)`, fill: "#a4de02" },
-  { transform: `rotateX(90deg) translateZ(${HALF}px)`, fill: "#68bb59" },
-  { transform: `rotateY(180deg) translateZ(${HALF}px)`, fill: "#acdf87" },
-  { transform: `rotateY(90deg) translateZ(${HALF}px)`, fill: "#75b91a" },
-  { transform: `rotateX(-90deg) translateZ(${HALF}px)` },
+  { transform: `translateZ(${HALF})`, fill: "#1e5631" },
+  { transform: `rotateY(-90deg) translateZ(${HALF})`, fill: "#a4de02" },
+  { transform: `rotateX(90deg) translateZ(${HALF})`, fill: "#68bb59" },
+  { transform: `rotateY(180deg) translateZ(${HALF})`, fill: "#acdf87" },
+  { transform: `rotateY(90deg) translateZ(${HALF})`, fill: "#75b91a" },
+  { transform: `rotateX(-90deg) translateZ(${HALF})` },
 ];
 export const FILLED_COUNT = FACES.filter((f) => f.fill).length;
 
@@ -42,8 +44,8 @@ function CubeLayer({ wireframe, shown }) {
     <div
       className="absolute inset-0 m-auto animate-cube-spin reduced-motion:animate-none"
       style={{
-        width: SIZE,
-        height: SIZE,
+        width: "var(--cube)",
+        height: "var(--cube)",
         transform: CUBE_TRANSFORM,
         transformStyle: "preserve-3d",
       }}
@@ -78,7 +80,7 @@ function CubeLayer({ wireframe, shown }) {
 // `revealed` is how many coloured faces are lit. Left out, the faces light
 // one after another on mount; given, the caller drives it and spaces the
 // increases by REVEAL_DURATION so the fades never overlap.
-export default function RotatingCube({ revealed }) {
+export default function RotatingCube({ revealed, size = DEFAULT_SIZE }) {
   const [auto, setAuto] = useState(0);
 
   useEffect(() => {
@@ -92,7 +94,7 @@ export default function RotatingCube({ revealed }) {
   const shown = revealed ?? auto;
 
   return (
-    <div className="relative" style={{ width: CUBE_STAGE, height: CUBE_STAGE }}>
+    <div className="relative" style={{ "--cube": size, width: STAGE, height: STAGE }}>
       <CubeLayer shown={shown} />
       <CubeLayer wireframe />
     </div>
