@@ -7,7 +7,13 @@ import {
   useRouteError,
 } from "react-router-dom";
 import Layout from "./components/Layout";
+import ErrorPage from "./components/ErrorPage";
 import "./index.css";
+import {
+  isChunkError,
+  recoverFromChunkError,
+  registerRouter,
+} from "./lib/chunkRecovery.js";
 import "./lib/restoreScroll.js";
 import posthog, { isPostHogConfigured } from "./lib/posthog.js";
 import { holdSite, releaseSite, skipPreloader } from "./lib/siteReady.js";
@@ -26,103 +32,136 @@ const NewsArticlePage = lazy(() => import("./pages/NewsArticle"));
 // the home page ships in the entry bundle.
 const lazyPage = (module) => ({ Component: module.default });
 
+// Renders inside Layout's outlet, so a page crash keeps the nav and footer.
+// A stale-deploy chunk failure reloads once (chunkRecovery.js) rather than
+// reporting a 404 for a URL that exists.
 function RouteErrorBoundary() {
+  const error = useRouteError();
+  const chunk = isChunkError(error);
+
+  useEffect(() => {
+    if (chunk) recoverFromChunkError(error);
+    else if (isPostHogConfigured) posthog.captureException(error);
+  }, [error, chunk]);
+
+  return <ErrorPage chunk={chunk} />;
+}
+
+// Layout itself threw: nothing of the chrome can be trusted, so static markup.
+function RootErrorBoundary() {
   const error = useRouteError();
 
   useEffect(() => {
     if (isPostHogConfigured) posthog.captureException(error);
   }, [error]);
 
-  return <NotFound />;
+  return <ErrorPage />;
+}
+
+// Pair with $pageview: pageviews without app_mounted are failed boots.
+function AppMounted() {
+  useEffect(() => {
+    if (isPostHogConfigured)
+      posthog.capture("app_mounted", { sha: import.meta.env.VITE_COMMIT_SHA });
+  }, []);
+  return null;
 }
 
 // Define routes using createBrowserRouter
 const router = createBrowserRouter([
   {
     element: <Layout />, // PixelLayout wraps all child routes
-    errorElement: <RouteErrorBoundary />,
+    errorElement: <RootErrorBoundary />,
     children: [
       {
-        path: "/",
-        element: <HomePage />,
-      },
-      {
-        path: "/about",
-        lazy: () => import("./pages/About").then(lazyPage),
-      },
-      {
-        path: "/about/retail-map",
-        element: (
-          <Suspense
-            fallback={
-              <div
-                className="mx-8 flex min-h-[50vh] items-center justify-center text-xl"
-                aria-busy="true"
+        // Pathless: scopes errors to the page, inside Layout.
+        errorElement: <RouteErrorBoundary />,
+        children: [
+          {
+            path: "/",
+            element: <HomePage />,
+          },
+          {
+            path: "/about",
+            lazy: () => import("./pages/About").then(lazyPage),
+          },
+          {
+            path: "/about/retail-map",
+            element: (
+              <Suspense
+                fallback={
+                  <div
+                    className="mx-8 flex min-h-[50vh] items-center justify-center text-xl"
+                    aria-busy="true"
+                  >
+                    Loading map&hellip;
+                  </div>
+                }
               >
-                Loading map&hellip;
-              </div>
-            }
-          >
-            <RetailMap />
-          </Suspense>
-        ),
-      },
-      {
-        path: "/careers",
-        lazy: () => import("./pages/Careers").then(lazyPage),
-      },
-      {
-        path: "/contact",
-        lazy: () => import("./pages/Contact").then(lazyPage),
-      },
-      {
-        path: "/work/social-media",
-        lazy: () => import("./pages/SocialMedia").then(lazyPage),
-      },
-      {
-        path: "/work/lakers-and-toyota-legendary-partners",
-        lazy: () => import("./pages/LakersToyota").then(lazyPage),
-      },
-      {
-        path: "/work/super-snorkel-tours",
-        lazy: () => import("./pages/BodyGlove").then(lazyPage),
-      },
-      {
-        path: "/work/:slug",
-        lazy: () => import("./pages/CaseStudy").then(lazyPage),
-      },
-      {
-        path: "/work/dice-branding",
-        lazy: () => import("./pages/Dice").then(lazyPage),
-      },
-      {
-        path: "/privacy-policy",
-        lazy: () => import("./pages/PrivacyPolicy").then(lazyPage),
-      },
-      {
-        path: "/news/:slug",
-        element: (
-          <Suspense
-            fallback={
-              <div
-                className="flex min-h-screen items-center justify-center text-xl"
-                aria-busy="true"
+                <RetailMap />
+              </Suspense>
+            ),
+          },
+          {
+            path: "/careers",
+            lazy: () => import("./pages/Careers").then(lazyPage),
+          },
+          {
+            path: "/contact",
+            lazy: () => import("./pages/Contact").then(lazyPage),
+          },
+          {
+            path: "/work/social-media",
+            lazy: () => import("./pages/SocialMedia").then(lazyPage),
+          },
+          {
+            path: "/work/lakers-and-toyota-legendary-partners",
+            lazy: () => import("./pages/LakersToyota").then(lazyPage),
+          },
+          {
+            path: "/work/super-snorkel-tours",
+            lazy: () => import("./pages/BodyGlove").then(lazyPage),
+          },
+          {
+            path: "/work/:slug",
+            lazy: () => import("./pages/CaseStudy").then(lazyPage),
+          },
+          {
+            path: "/work/dice-branding",
+            lazy: () => import("./pages/Dice").then(lazyPage),
+          },
+          {
+            path: "/privacy-policy",
+            lazy: () => import("./pages/PrivacyPolicy").then(lazyPage),
+          },
+          {
+            path: "/news/:slug",
+            element: (
+              <Suspense
+                fallback={
+                  <div
+                    className="flex min-h-screen items-center justify-center text-xl"
+                    aria-busy="true"
+                  >
+                    Loading article&hellip;
+                  </div>
+                }
               >
-                Loading article&hellip;
-              </div>
-            }
-          >
-            <NewsArticlePage />
-          </Suspense>
-        ),
-      },
-      {
-        path: "*",
-        element: <NotFound />,
+                <NewsArticlePage />
+              </Suspense>
+            ),
+          },
+          {
+            path: "*",
+            element: <NotFound />,
+          },
+        ],
       },
     ],
   },
 ]);
+
+registerRouter(router);
 
 // Opts the stylesheet into the generated AVIF/WebP siblings. Only
 // .hi-x-ai-bg needs it — it is the one raster the site paints as a CSS
@@ -143,9 +182,10 @@ else holdSite();
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <PostHogProvider client={posthog}>
-      <PostHogErrorBoundary>
+      <PostHogErrorBoundary fallback={<ErrorPage />}>
         <RouterProvider router={router} />
+        <AppMounted />
       </PostHogErrorBoundary>
     </PostHogProvider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );

@@ -70,6 +70,9 @@ export default ({ mode }) => {
       }),
     ],
     define: {
+      "import.meta.env.VITE_COMMIT_SHA": JSON.stringify(
+        process.env.VERCEL_GIT_COMMIT_SHA ?? "dev"
+      ),
       "import.meta.env.VITE_IMAGE_DERIVATIVES": JSON.stringify(IMAGE_DERIVATIVES),
       "import.meta.env.VITE_IMAGE_WIDTHS": JSON.stringify(RESPONSIVE_WIDTHS),
     },
