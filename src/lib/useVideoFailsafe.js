@@ -31,8 +31,11 @@ export function useVideoFailsafe(ref) {
       retryTimer = window.setTimeout(() => {
         retryTimer = undefined;
         attempt += 1;
+        // Also playing by now counts: play() may have been asked for after
+        // the failure was spotted.
+        const resume = wantsPlay || !video.paused;
         video.load();
-        if (wantsPlay) video.play().catch(() => {});
+        if (resume) video.play().catch(() => {});
       }, RETRY_DELAYS_MS[attempt]);
     };
 
@@ -64,10 +67,15 @@ export function useVideoFailsafe(ref) {
     video.addEventListener("waiting", armStall);
     video.addEventListener("playing", onPlaying);
     video.addEventListener("pause", onPause);
-    // The last source may already have failed before this effect ran.
-    if (video.networkState === HTMLMediaElement.NETWORK_NO_SOURCE) retry();
+    // The last source may already have failed before this effect ran. Checked
+    // a task later: NO_SOURCE is also the state while the browser is still
+    // picking a source, and reloading then rewinds a clip that's playing fine.
+    const initialCheck = window.setTimeout(() => {
+      if (video.networkState === HTMLMediaElement.NETWORK_NO_SOURCE) retry();
+    }, 0);
 
     return () => {
+      window.clearTimeout(initialCheck);
       window.clearTimeout(retryTimer);
       window.clearTimeout(stallTimer);
       video.removeEventListener("error", onError, true);
