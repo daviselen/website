@@ -27,9 +27,9 @@ export default function NotFound() {
         </div>
       </div>
       <div className="mt-500 flex flex-col gap-400 md:mt-700 lg:mt-800 lg:grid lg:grid-cols-12 lg:gap-400 xl:mt-1000">
-        <div className="flex flex-col items-start gap-400 lg:col-span-6 lg:col-start-7 lg:pr-600">
+        <div className="flex flex-col items-start gap-400 lg:col-span-6 lg:col-start-1 lg:pr-600">
           <TextReveal
-            text="Exploration is also part of our process, but you're lost."
+            text={"Exploration is also part of our process, \nbut you're lost."}
             as="p"
             className="text-fluid-sm md:text-xl lg:text-pre-title"
           />
