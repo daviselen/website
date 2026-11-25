@@ -106,6 +106,34 @@ export default function Dice() {
         </Shot>
       </section>
 
+      <Channel channel="Brand Identity" title="&nbsp;">
+        <div className="grid grid-cols-1 gap-600 md:grid-cols-3 md:gap-400 lg:gap-8">
+          <Card
+            size="med"
+            heading="Logos"
+            src="/images/work-dice-logos.jpg"
+            alt="The Dice.com primary, secondary and tertiary logos"
+            maskReveal
+          />
+          <Card
+            size="med"
+            heading="Typography"
+            src="/images/work-dice-typography.jpg"
+            alt="The Degular typeface specimen used across Dice.com"
+            maskReveal
+            maskDelay={0.15}
+          />
+          <Card
+            size="med"
+            heading="Color Palette"
+            src="/images/work-dice-color-palette.jpg"
+            alt="The Dice.com color palette: Ruby, Onyx, Pearl, Garnet, Emerald, Topaz, Citrine and Platinum"
+            maskReveal
+            maskDelay={0.3}
+          />
+        </div>
+      </Channel>
+
       <Channel channel="Campaign" title="Key Visuals">
         <div className="grid grid-cols-1 gap-400 md:grid-cols-2 lg:gap-8">
           <Shot
@@ -122,7 +150,7 @@ export default function Dice() {
         </div>
       </Channel>
 
-      <Channel channel="Outdoor">
+      <Channel channel="Outdoor" title="&nbsp;">
         <div className="grid grid-cols-1 gap-400 lg:gap-8">
           <Shot
             src="/images/work-dice-outdoor.jpg"
