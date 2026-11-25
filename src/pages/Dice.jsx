@@ -106,24 +106,6 @@ export default function Dice() {
         </Shot>
       </section>
 
-      <MediaObject
-        titleSize="large"
-        title={`Brand \nPersonality`}
-        subhead="Messaging"
-        imgSrc="/images/work-dice-brand-personality.jpg"
-        imgAlt="Dice.com brand personality messaging artwork"
-      />
-
-      <Channel channel="Brand Identity" title="Photography and Logos">
-        {/* Figma also layers the brand hero asset (3533:943, 112% tall) over this
-            node; treated as a stray layer and not built. Unverified by screenshot. */}
-        <Shot
-          src="/images/work-dice-photography-system.jpg"
-          alt="The Dice.com photography system: a grid of black and white portraits of tech professionals"
-          ratio="1792 / 900"
-        />
-      </Channel>
-
       <Channel channel="Campaign" title="Key Visuals">
         <div className="grid grid-cols-1 gap-400 md:grid-cols-2 lg:gap-8">
           <Shot
