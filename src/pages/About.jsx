@@ -414,7 +414,7 @@ function PagerButton({ direction, disabled, onClick }) {
       {/* Masked so the icon takes the button's text colour in both themes. */}
       <span
         aria-hidden="true"
-        className={`size-200 bg-current lg:size-300 ${direction < 0 ? "-scale-x-100" : ""}`}
+        className={`size-300 bg-current lg:size-400 ${direction < 0 ? "-scale-x-100" : ""}`}
         style={{
           maskImage: "url(/icons/next.svg)",
           WebkitMaskImage: "url(/icons/next.svg)",
@@ -473,9 +473,9 @@ function PeopleGrid() {
           ))}
         </div>
       </div>
-      <div className="flex items-center gap-100">
+      <div className="flex items-center justify-center gap-100">
         <PagerButton direction={-1} disabled={page === 0} onClick={() => setPage(page - 1)} />
-        <span aria-live="polite" className="text-center text-sm tabular-nums lg:text-body-hiai">
+        <span aria-live="polite" className="text-center text-sm lg:text-body-hiai">
           {page + 1} / {pages}
         </span>
         <PagerButton direction={1} disabled={page === pages - 1} onClick={() => setPage(page + 1)} />
