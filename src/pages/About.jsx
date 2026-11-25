@@ -126,12 +126,9 @@ const people = [
     video: "/videos/people/amy-drell.mp4"
   },
   {
-    name: "Shelly Choi",
-    vimeo: "https://player.vimeo.com/progressive_redirect/playback/1249435961/rendition/540p/file.mp4%20%28540p%29.mp4?loc=external&signature=679d6890a79a22132d96b7687fa5351ec2da211f45ac5a20e6a7c4c2df7f1614",
-    img: {
-      src: "/images/portraits/shelly-choi.jpg",
-    },
-    video: "/videos/people/shelly-choi.mp4"
+    name: "Jessica Westlake",
+    vimeo: "https://player.vimeo.com/progressive_redirect/playback/1249435951/rendition/540p/file.mp4%20%28540p%29.mp4?loc=external&signature=5a3f3d156527ed6261c0c6fbd8674f6d2a7e92f6172ac46d7c96083efe0770f3",
+    video: "/videos/people/jessica-westlake.mp4"
   },
   // {
   //   name: "Jenny Rusinko",
@@ -171,9 +168,12 @@ const people = [
     video: "/videos/people/derek-morrison.mp4"
   },
   {
-    name: "Jessica Westlake",
-    vimeo: "https://player.vimeo.com/progressive_redirect/playback/1249435951/rendition/540p/file.mp4%20%28540p%29.mp4?loc=external&signature=5a3f3d156527ed6261c0c6fbd8674f6d2a7e92f6172ac46d7c96083efe0770f3",
-    video: "/videos/people/jessica-westlake.mp4"
+    name: "Shelly Choi",
+    vimeo: "https://player.vimeo.com/progressive_redirect/playback/1249435961/rendition/540p/file.mp4%20%28540p%29.mp4?loc=external&signature=679d6890a79a22132d96b7687fa5351ec2da211f45ac5a20e6a7c4c2df7f1614",
+    img: {
+      src: "/images/portraits/shelly-choi.jpg",
+    },
+    video: "/videos/people/shelly-choi.mp4"
   },
   {
     name: "Brian Banks",
