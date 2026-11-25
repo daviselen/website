@@ -47,7 +47,7 @@
     "resend": "^6.39.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.39.5",
+    "@eslint/js": "^10.0.1",
     "@playwright/test": "^1.62.1",
     "@posthog/rollup-plugin": "^1.6.2",
     "@vite-pwa/assets-generator": "^1.0.2",
