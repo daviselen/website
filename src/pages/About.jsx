@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useRef, useState } from "react";
+import { lazy, Suspense, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import MastheadImage from "../design-system/components/MastheadImage";
 import CTABanner from "../sections/CTABanner";
 import MediaObject from "../design-system/components/MediaObject.jsx";
@@ -399,7 +399,23 @@ function PersonVideo({ person }) {
   );
 }
 
-const PEOPLE_PER_PAGE = 12;
+// Page size follows the grid's column count (1 / 3 / 4 columns, matching the
+// grid classes below) so a page is always whole rows: 4 / 6 / 12 people.
+const PAGE_SIZES = [
+  { query: "(min-width: 1024px)", size: 12 },
+  { query: "(min-width: 768px)", size: 6 },
+];
+const PHONE_PAGE_SIZE = 4;
+
+function pageSize() {
+  return PAGE_SIZES.find(({ query }) => window.matchMedia(query).matches)?.size ?? PHONE_PAGE_SIZE;
+}
+
+function subscribePageSize(callback) {
+  const lists = PAGE_SIZES.map(({ query }) => window.matchMedia(query));
+  lists.forEach((l) => l.addEventListener("change", callback));
+  return () => lists.forEach((l) => l.removeEventListener("change", callback));
+}
 
 function PagerButton({ direction, disabled, onClick }) {
   const label = direction < 0 ? "Previous page" : "Next page";
@@ -433,10 +449,15 @@ function PagerButton({ direction, disabled, onClick }) {
 // Gallery paging in the manner of a Teams call: < 1 / 2 >, left-aligned under
 // the grid, with the arrows dimmed at the ends.
 function PeopleGrid() {
-  const [page, setPage] = useState(0);
-  const pages = Math.ceil(people.length / PEOPLE_PER_PAGE);
-  const visible = people.slice(page * PEOPLE_PER_PAGE, (page + 1) * PEOPLE_PER_PAGE);
-  const fillers = PEOPLE_PER_PAGE - visible.length;
+  const perPage = useSyncExternalStore(subscribePageSize, pageSize, () => PHONE_PAGE_SIZE);
+  // Tracks the first person on screen rather than a page number, so resizing
+  // across a breakpoint keeps that person visible.
+  const [first, setFirst] = useState(0);
+  const page = Math.floor(first / perPage);
+  const pages = Math.ceil(people.length / perPage);
+  const visible = people.slice(page * perPage, (page + 1) * perPage);
+  const fillers = perPage - visible.length;
+  const goTo = (n) => setFirst(n * perPage);
 
   return (
     <div
@@ -446,9 +467,8 @@ function PeopleGrid() {
       className="flex flex-col gap-600 lg:gap-1000"
     >
       <div>
-        {/* grid-cols-4 at every width put 12 portrait tiles four-across on a
-            phone (~80px tiles) — 2-up below md, real 4-up unchanged. */}
-        <div className="grid grid-cols-2 gap-100 md:grid-cols-4 lg:gap-400">
+        {/* One column on phones, 3-up from md, the real 4-up from lg. */}
+        <div className="grid grid-cols-1 gap-100 md:grid-cols-3 md:gap-200 lg:grid-cols-4 lg:gap-400">
           {visible.map((person) => (
             <div key={person.name} className="relative rounded-md bg-surface-alt light:bg-neutral-100">
               {person.video ? (
@@ -474,11 +494,11 @@ function PeopleGrid() {
         </div>
       </div>
       <div className="flex items-center justify-center gap-100">
-        <PagerButton direction={-1} disabled={page === 0} onClick={() => setPage(page - 1)} />
+        <PagerButton direction={-1} disabled={page === 0} onClick={() => goTo(page - 1)} />
         <span aria-live="polite" className="text-center text-sm lg:text-body-hiai">
           {page + 1} / {pages}
         </span>
-        <PagerButton direction={1} disabled={page === pages - 1} onClick={() => setPage(page + 1)} />
+        <PagerButton direction={1} disabled={page === pages - 1} onClick={() => goTo(page + 1)} />
       </div>
     </div>
   );
