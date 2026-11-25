@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useRef } from "react";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import MastheadImage from "../design-system/components/MastheadImage";
 import CTABanner from "../sections/CTABanner";
 import MediaObject from "../design-system/components/MediaObject.jsx";
@@ -399,6 +399,77 @@ function PersonVideo({ person }) {
   );
 }
 
+const PEOPLE_PER_PAGE = 12;
+
+function PagerButton({ direction, disabled, onClick, className }) {
+  const label = direction < 0 ? "Previous page" : "Next page";
+  return (
+    <button
+      type="button"
+      aria-label={label}
+      disabled={disabled}
+      onClick={onClick}
+      className={`absolute top-1/2 z-10 flex size-600 -translate-y-1/2 items-center justify-center rounded-full bg-neutral-1000/70 text-neutral-0 transition-opacity hover:bg-neutral-1000 focus-visible:outline focus-visible:outline-2 focus-visible:outline-neutral-0 disabled:pointer-events-none disabled:opacity-0 ${className}`}
+    >
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" className={direction < 0 ? "" : "rotate-180"}>
+        <path d="M12.5 4 6.5 10l6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    </button>
+  );
+}
+
+// Gallery paging in the manner of a Teams call: arrows float over the grid's
+// edges and vanish at the ends, with a "1 / 2" page count underneath.
+function PeopleGrid() {
+  const [page, setPage] = useState(0);
+  const pages = Math.ceil(people.length / PEOPLE_PER_PAGE);
+  const visible = people.slice(page * PEOPLE_PER_PAGE, (page + 1) * PEOPLE_PER_PAGE);
+  const fillers = PEOPLE_PER_PAGE - visible.length;
+
+  return (
+    <div
+      role="group"
+      aria-roledescription="carousel"
+      aria-label="People"
+      className="flex flex-col items-center gap-300"
+    >
+      <div className="relative w-full">
+        <PagerButton direction={-1} disabled={page === 0} onClick={() => setPage(page - 1)} className="left-100" />
+        {/* grid-cols-4 at every width put 12 portrait tiles four-across on a
+            phone (~80px tiles) — 2-up below md, real 4-up unchanged. */}
+        <div className="grid grid-cols-2 gap-100 md:grid-cols-4 lg:gap-400">
+          {visible.map((person) => (
+            <div key={person.name} className="relative rounded-md bg-surface-alt light:bg-neutral-100">
+              {person.video ? (
+                // aspect-video is Tailwind's built-in 16/9, so the tile keeps the
+                // exact ratio the <Picture> below it uses.
+                <PersonVideo person={person} />
+              ) : (
+                <Picture className="flex aspect-video h-auto w-full items-center justify-center rounded-md" src={person.img.src} alt={person.name} />
+              )}
+              {person.video && (
+                <span className="absolute bottom-100 left-100 flex gap-1.5 rounded bg-neutral-1000/50 px-100 text-xs leading-normal tracking-wide text-neutral-0">
+                  <span className="py-100">{person.name}</span>
+                  <img src="/icons/teams-mic.svg" alt="" />
+                </span>
+              )}
+            </div>
+          ))}
+          {/* Keeps a short last page the same height, so the content below
+              doesn't jump when paging. */}
+          {Array.from({ length: fillers }, (_, i) => (
+            <div key={i} aria-hidden="true" className="invisible aspect-video" />
+          ))}
+        </div>
+        <PagerButton direction={1} disabled={page === pages - 1} onClick={() => setPage(page + 1)} className="right-100" />
+      </div>
+      <span aria-live="polite" className="rounded-full bg-surface-alt px-200 py-100 text-sm tabular-nums light:bg-neutral-100">
+        {page + 1} / {pages}
+      </span>
+    </div>
+  );
+}
+
 export default function About() {
   const { openOverlay } = useOverlay();
   return (
@@ -446,29 +517,7 @@ export default function About() {
             text="This is the whole meeting. No account person you'll never see again, no bench of strangers who vanish after the pitch. The people in the room are the people who do the work."
           />
         </div>
-        {/* grid-cols-4 at every width put 12 portrait tiles four-across on a
-            phone (~80px tiles) — 2-up below md, real 4-up unchanged. */}
-        <div className="grid grid-cols-2 gap-100 md:grid-cols-4 lg:gap-400">
-          {people.map((person, index) => (
-          <div key={index} className="relative rounded-md bg-surface-alt light:bg-neutral-100">
-            {person.video ? (
-              // aspect-video is Tailwind's built-in 16/9, so the tile keeps the
-              // exact ratio the <Picture> below it uses.
-              <PersonVideo person={person} />
-            ) : (
-              <Picture className="flex aspect-video h-auto w-full items-center justify-center rounded-md" src={person.img.src} alt={person.name} />
-            )}
-            {person.video ? (
-              <span className="absolute bottom-100 left-100 flex gap-1.5 rounded bg-neutral-1000/50 px-100 text-xs leading-normal tracking-wide text-neutral-0">
-                <span className="py-100">{person.name}</span>
-                <img src="/icons/teams-mic.svg" alt="" />
-              </span>
-            ) : (
-              <></>
-            )}
-          </div>
-          ))}
-        </div>
+        <PeopleGrid />
       </section>
       <MediaObject
         imageSide="left"
