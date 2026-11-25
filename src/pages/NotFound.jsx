@@ -23,16 +23,16 @@ export default function NotFound() {
           className="font-display text-fluid-2xl uppercase leading-none md:text-7xl lg:text-display-h2"
         />
         <div aria-hidden="true" className="mr-200 md:mr-400 lg:mr-600 xl:mr-800">
-          <RotatingCube size="clamp(96px, 14vw, 280px)" />
+          <RotatingCube size="clamp(80px, 12vw, 240px)" />
         </div>
       </div>
-      <div className="mt-500 flex flex-col gap-400 md:mt-700 lg:mt-800 lg:grid lg:grid-cols-12 lg:items-start lg:gap-400 xl:mt-1000">
-        <TextReveal
-          text="Exploration is also part of our process, but you're lost."
-          as="p"
-          className="text-fluid-sm md:text-xl lg:col-span-6 lg:col-start-1 lg:row-start-1 lg:pr-600 lg:text-pre-title"
-        />
-        <div className="lg:col-span-6 lg:col-start-7 lg:row-start-1">
+      <div className="mt-500 flex flex-col gap-400 md:mt-700 lg:mt-800 lg:grid lg:grid-cols-12 lg:gap-400 xl:mt-1000">
+        <div className="flex flex-col items-start gap-400 lg:col-span-6 lg:col-start-7 lg:pr-600">
+          <TextReveal
+            text="Exploration is also part of our process, but you're lost."
+            as="p"
+            className="text-fluid-sm md:text-xl lg:text-pre-title"
+          />
           <StyledButton as={Link} to="/" variant="solid" size="big">
             Back home
           </StyledButton>
