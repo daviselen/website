@@ -140,6 +140,16 @@ export default function Dice() {
         </div>
       </Channel>
 
+      <Channel channel="Outdoor">
+        <div className="grid grid-cols-1 gap-400 lg:gap-8">
+          <Shot
+            src="/images/work-dice-outdoor.jpg"
+            alt="Dice.com billboard with the tagline 'Take `fn` `ctrl` of your career.'"
+            ratio="896 / 405"
+          />
+        </div>
+      </Channel>
+
       <Channel channel="Digital" title="Display">
         <div className="grid grid-cols-1 gap-400 md:grid-cols-3 lg:gap-8">
           <Shot
