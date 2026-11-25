@@ -401,7 +401,7 @@ function PersonVideo({ person }) {
 
 const PEOPLE_PER_PAGE = 12;
 
-function PagerButton({ direction, disabled, onClick, className }) {
+function PagerButton({ direction, disabled, onClick }) {
   const label = direction < 0 ? "Previous page" : "Next page";
   return (
     <button
@@ -409,17 +409,29 @@ function PagerButton({ direction, disabled, onClick, className }) {
       aria-label={label}
       disabled={disabled}
       onClick={onClick}
-      className={`absolute top-1/2 z-10 flex size-600 -translate-y-1/2 items-center justify-center rounded-full bg-neutral-1000/70 text-neutral-0 transition-opacity hover:bg-neutral-1000 focus-visible:outline focus-visible:outline-2 focus-visible:outline-neutral-0 disabled:pointer-events-none disabled:opacity-0 ${className}`}
+      className={`flex size-600 shrink-0 items-center justify-center rounded-full bg-neutral-1000/70 text-neutral-0 transition-opacity hover:bg-neutral-1000 focus-visible:outline focus-visible:outline-2 focus-visible:outline-neutral-0 disabled:pointer-events-none disabled:opacity-40`}
     >
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" className={direction < 0 ? "" : "rotate-180"}>
-        <path d="M12.5 4 6.5 10l6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
+      {/* Masked so the icon takes the button's text colour in both themes. */}
+      <span
+        aria-hidden="true"
+        className={`size-200 bg-current lg:size-300 ${direction < 0 ? "-scale-x-100" : ""}`}
+        style={{
+          maskImage: "url(/icons/next.svg)",
+          WebkitMaskImage: "url(/icons/next.svg)",
+          maskSize: "contain",
+          WebkitMaskSize: "contain",
+          maskRepeat: "no-repeat",
+          WebkitMaskRepeat: "no-repeat",
+          maskPosition: "center",
+          WebkitMaskPosition: "center",
+        }}
+      />
     </button>
   );
 }
 
-// Gallery paging in the manner of a Teams call: arrows float over the grid's
-// edges and vanish at the ends, with a "1 / 2" page count underneath.
+// Gallery paging in the manner of a Teams call: < 1 / 2 >, left-aligned under
+// the grid, with the arrows dimmed at the ends.
 function PeopleGrid() {
   const [page, setPage] = useState(0);
   const pages = Math.ceil(people.length / PEOPLE_PER_PAGE);
@@ -431,10 +443,9 @@ function PeopleGrid() {
       role="group"
       aria-roledescription="carousel"
       aria-label="People"
-      className="flex flex-col items-center gap-300"
+      className="flex flex-col gap-600 lg:gap-1000"
     >
-      <div className="relative w-full">
-        <PagerButton direction={-1} disabled={page === 0} onClick={() => setPage(page - 1)} className="left-100" />
+      <div>
         {/* grid-cols-4 at every width put 12 portrait tiles four-across on a
             phone (~80px tiles) — 2-up below md, real 4-up unchanged. */}
         <div className="grid grid-cols-2 gap-100 md:grid-cols-4 lg:gap-400">
@@ -461,11 +472,14 @@ function PeopleGrid() {
             <div key={i} aria-hidden="true" className="invisible aspect-video" />
           ))}
         </div>
-        <PagerButton direction={1} disabled={page === pages - 1} onClick={() => setPage(page + 1)} className="right-100" />
       </div>
-      <span aria-live="polite" className="rounded-full bg-surface-alt px-200 py-100 text-sm tabular-nums light:bg-neutral-100">
-        {page + 1} / {pages}
-      </span>
+      <div className="flex items-center gap-100">
+        <PagerButton direction={-1} disabled={page === 0} onClick={() => setPage(page - 1)} />
+        <span aria-live="polite" className="text-center text-sm tabular-nums lg:text-body-hiai">
+          {page + 1} / {pages}
+        </span>
+        <PagerButton direction={1} disabled={page === pages - 1} onClick={() => setPage(page + 1)} />
+      </div>
     </div>
   );
 }
